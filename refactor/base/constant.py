@@ -1,0 +1,31 @@
+import torch
+
+INT_SCALE = torch.tensor(1024)
+PERCENT_SCALE = torch.tensor(10000)
+
+LEVEL = torch.tensor(120)
+LEVEL_SCALE = torch.tensor(450)
+LEVEL_CONSTANT = torch.tensor(45750)
+
+CRITICAL_STRIKE_SCALE = torch.tensor(9.530) * (LEVEL_SCALE * LEVEL - LEVEL_CONSTANT)
+CRITICAL_DAMAGE_SCALE = torch.tensor(3.335) * (LEVEL_SCALE * LEVEL - LEVEL_CONSTANT)
+OVERCOME_SCALE = torch.tensor(9.530) * (LEVEL_SCALE * LEVEL - LEVEL_CONSTANT)
+HASTE_SCALE = torch.tensor(11.695) * (LEVEL_SCALE * LEVEL - LEVEL_CONSTANT)
+SURPLUS_SCALE = torch.tensor(13.192) * (LEVEL_SCALE * LEVEL - LEVEL_CONSTANT)
+STRAIN_SCALE = torch.tensor(9.189) * (LEVEL_SCALE * LEVEL - LEVEL_CONSTANT)
+
+SHIELD_SCALE = torch.tensor(5.091)
+
+MAJOR_BASE = torch.tensor(179)
+WEAPON_DAMAGE_BASE = torch.tensor(540)
+ATTACK_POWER_BASE = torch.tensor(360)
+MINOR_BASE = torch.tensor(799)
+
+CRITICAL_DAMAGE_BASE = torch.tensor(1.75)
+
+AGILITY_TO_CRITICAL_STRIKE = torch.tensor(655)
+STRENGTH_TO_ATTACK_POWER = torch.tensor(153)
+STRENGTH_TO_OVERCOME = torch.tensor(307)
+SPIRIT_TO_CRITICAL_STRIKE = torch.tensor(655)
+SPUNK_TO_ATTACK_POWER = torch.tensor(184)
+SPUNK_TO_OVERCOME = torch.tensor(307)
