@@ -1,12 +1,12 @@
-from dataclasses import dataclass, field
-from typing import List
+from dataclasses import dataclass
+
+from broadcast_service import broadcast_service
 
 from base.constant import *
 
 
 @dataclass
 class Attribute:
-    """Self"""
     agility_base: int = 0
     agility_gain: int = 0
     strength_base: int = 0
@@ -16,9 +16,6 @@ class Attribute:
     spunk_base: int = 0
     spunk_gain: int = 0
 
-    weapon_damage_rand: int = 0
-    weapon_damage_base: int = 0
-    weapon_damage_gain: int = 0
     surplus_base: int = 0
     surplus_gain: int = 0
     strain_base: int = 0
@@ -42,11 +39,6 @@ class Attribute:
     physical_overcome_gain: int = 0
     magical_overcome_base: int = 0
     magical_overcome_gain: int = 0
-
-    physical_shield_ignore_gain: int = 0
-    magical_shield_ignore_gain: int = 0
-
-    """Target"""
 
     def __post_init__(self):
         initialized_vars = vars(self)
@@ -76,18 +68,6 @@ class Attribute:
         return self.spirit_base + self.spirit_base * self.spirit_gain // INT_SCALE
 
     """"""
-
-    @property
-    def base_weapon_damage(self):
-        return self.weapon_damage_base + self.weapon_damage_rand / 2
-
-    @property
-    def final_weapon_damage(self):
-        return self.weapon_damage_base + \
-               self.weapon_damage_base * self.weapon_damage_gain // INT_SCALE + \
-               self.weapon_damage_rand / 2
-
-    weapon_damage = final_weapon_damage
 
     @property
     def base_surplus(self):
@@ -121,7 +101,7 @@ class Attribute:
 
     @property
     def haste(self):
-        return INT_SCALE / (INT_SCALE + self.final_haste * INT_SCALE + self.haste_gain)
+        return self.final_haste + self.haste_gain / INT_SCALE
 
     """"""
 
@@ -240,5 +220,99 @@ class Attribute:
     def overcome(self):
         # raise NotImplementedError
         return self.physical_overcome
+
+    """
+        update functions
+    """
+
+    def update_agility_base(self, value: int):
+        self.agility_base += value
+
+    def update_agility_gain(self, value: int):
+        self.agility_gain += value
+
+    def update_strength_base(self, value: int):
+        self.strength_base += value
+
+    def update_strength_gain(self, value: int):
+        self.strength_gain += value
+
+    def update_spirit_base(self, value: int):
+        self.spirit_base += value
+
+    def update_spirit_gain(self, value: int):
+        self.spirit_gain += value
+
+    def update_spunk_base(self, value: int):
+        self.spunk_base += value
+
+    def update_spunk_gain(self, value: int):
+        self.spunk_gain += value
+
+    def update_surplus_base(self, value: int):
+        self.surplus_base += value
+
+    def update_surplus_gain(self, value: int):
+        self.surplus_gain += value
+
+    def update_strain_base(self, value: int):
+        self.strain_base += value
+
+    def update_strain_gain(self, value: int):
+        self.strain_gain += value
+
+    def update_haste_base(self, value: int):
+        self.haste_base += value
+
+    def update_haste_gain(self, value: int):
+        self.haste_gain += value
+
+    def update_physical_attack_power_base(self, value: int):
+        self.physical_attack_power_base += value
+
+    def update_physical_attack_power_gain(self, value: int):
+        self.physical_attack_power_gain += value
+
+    def update_magical_attack_power_base(self, value: int):
+        self.magical_attack_power_base += value
+
+    def update_magical_attack_power_gain(self, value: int):
+        self.magical_attack_power_gain += value
+
+    def update_physical_critical_strike_base(self, value: int):
+        self.physical_critical_strike_base += value
+
+    def update_physical_critical_strike_gain(self, value: int):
+        self.physical_critical_strike_gain += value
+
+    def update_magical_critical_strike_base(self, value: int):
+        self.magical_critical_strike_base += value
+
+    def update_magical_critical_strike_gain(self, value: int):
+        self.magical_critical_strike_gain += value
+
+    def update_physical_critical_damage_base(self, value: int):
+        self.physical_critical_damage_base += value
+
+    def update_physical_critical_damage_gain(self, value: int):
+        self.physical_critical_damage_gain += value
+
+    def update_magical_critical_damage_base(self, value: int):
+        self.magical_critical_damage_base += value
+
+    def update_magical_critical_damage_gain(self, value: int):
+        self.magical_critical_damage_gain += value
+
+    def update_physical_overcome_base(self, value: int):
+        self.physical_overcome_base += value
+
+    def update_physical_overcome_gain(self, value: int):
+        self.physical_overcome_gain += value
+
+    def update_magical_overcome_base(self, value: int):
+        self.magical_overcome_base += value
+
+    def update_magical_overcome_gain(self, value: int):
+        self.magical_overcome_gain += value
 
 

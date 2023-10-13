@@ -1,14 +1,14 @@
 from dataclasses import dataclass
-from typing import List
 
+from base import Timeline
 from base.attribute import Attribute
 
 
 @dataclass
-class Self:
+class Agent:
     name: str
 
-    attribute: Attribute
+    timeline: Timeline
 
     casting: bool
     channeling: bool
@@ -17,13 +17,17 @@ class Self:
     energy: int
     power: int
 
-    buffs: dict
     talents: dict
     recipes: dict
+
+    physical_shield_ignore_gain: int = 0
+    magical_shield_ignore_gain: int = 0
+
+    def update(self, gap):
+        self.casting -= gap
+        self.channeling -= gap
 
 
 class Target:
     name: str
-
-    attribute: Attribute
 

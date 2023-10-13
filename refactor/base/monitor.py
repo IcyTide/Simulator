@@ -1,20 +1,12 @@
-from dataclasses import dataclass, field
-from broadcast_service import broadcast_service
+from dataclasses import dataclass
 
 
 @dataclass
-class A:
+class Temp:
     a: int = 2
-    x: int = 0
 
-    def __post_init__(self):
-        broadcast_service.subscribe("x", self.update)
-
-    def update(self, x):
-        self.x = x
+    def p(self, a=a):
+        print(a)
 
 
-inst = A()
-print(inst.x)
-broadcast_service.broadcast("x", 4)
-print(inst.x)
+Temp().p(4)
