@@ -1,11 +1,14 @@
 import torch
 
 INT_SCALE = torch.tensor(1024)
+PERCENT = torch.tensor(100)
 PERCENT_SCALE = torch.tensor(10000)
 
 LEVEL = torch.tensor(120)
 LEVEL_SCALE = torch.tensor(450)
 LEVEL_CONSTANT = torch.tensor(45750)
+
+MAX_GCD_GROUP = 10
 
 CRITICAL_STRIKE_SCALE = torch.tensor(9.530) * (LEVEL_SCALE * LEVEL - LEVEL_CONSTANT)
 CRITICAL_DAMAGE_SCALE = torch.tensor(3.335) * (LEVEL_SCALE * LEVEL - LEVEL_CONSTANT)

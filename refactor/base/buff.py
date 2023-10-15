@@ -10,10 +10,10 @@ class Buff:
     name: str
 
     timeline: Timeline
+    status: Status
 
     skills: dict
     buffs: dict
-    status: Status
 
     activate: bool = True
 
