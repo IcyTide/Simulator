@@ -1,95 +1,76 @@
 from dataclasses import dataclass
 
 from base import Timeline
-from base.status import Status
+from base.status import Status, Snapshot
 
 
 @dataclass
 class Buff:
-    uid: int
-    name: str
-
-    timeline: Timeline
-    status: Status
-
-    skills: dict
-    buffs: dict
-
+    name: str = ""
+    status: Status = None
     activate: bool = True
-
-    cd: int = 0
 
     duration: int = 0
     duration_max: int = 0
 
-    stack: int = 1
     stack_add: int = 1
     stack_remove: int = 1
     stack_max: int = 1
 
-    current_cd: int = 0
-    current_duration: int = 0
-    current_stack: int = 0
+    add_effect: list = None
+    remove_effect: list = None
 
-    @property
-    def condition(self):
-        return True
+    snapshot: Snapshot = None
 
-    @property
-    def ready(self):
-        return self.activate and self.condition
+    def __post_init__(self):
+        if not self.duration_max and self.duration:
+            self.duration_max = self.duration
 
-    def insert(self):
-        gaps = (e for e in (self.current_cd, self.current_duration) if e > 0)
-        if gaps:
-            self.timeline.set(min(gaps), self)
+        self.add_effect = []
+        self.remove_effect = []
+    # def extend(self, stack=None, duration=None):
+    #     if stack is None:
+    #         stack = self.stack_add
+    #     if duration is None:
+    #         duration = self.duration
+    #     self.status.stacks[self] = min(self.stack_max, self.status.stacks[self] + stack)
+    #     for _ in range(stack):
+    #         self.add_effect()
+    #     self.status.durations[self] = min(self.duration_max, self.status.durations[self] + duration)
 
-    def set_duration(self, duration):
-        self.current_duration = max(duration, self.duration_max)
-        if not self.current_duration:
-            self.remove_stack(self.current_stack)
+    def add(self):
+        for effect in self.add_effect:
+            effect()
 
-    def add_duration(self, duration):
-        self.set_duration(self.current_duration + duration)
+    def remove(self):
+        for effect in self.remove_effect:
+            effect()
 
-    def set_cd(self, cd):
-        self.current_cd = max(cd, 0)
+    def refresh(self, stack=None, duration=None):
+        if stack is None:
+            stack = self.stack_add
+        if duration is None:
+            duration = self.duration_max
+        stack = min(self.stack_max - self.status.stacks[self], stack)
+        self.status.stacks[self] += stack
+        for _ in range(stack):
+            self.add()
 
-    def add_cd(self, cd):
-        self.set_cd(self.cd + cd)
+        self.status.durations[self] = min(self.duration_max, duration)
 
-    def update(self, gap):
-        self.set_duration(gap)
-        self.set_cd(gap)
-        self.insert()
+    def consume(self, stack=None):
+        if stack is None:
+            stack = self.stack_remove
+        stack = min(stack, self.status.stacks[self])
+        self.status.stacks[self] -= stack
+        for _ in range(stack):
+            for effect in self.remove_effect:
+                effect()
+        if not self.status.stacks[self]:
+            self.status.durations[self] = 0
 
-    def set_stack(self, stack):
-        self.current_stack = max(stack, self.stack_max)
-
-        if not self.current_stack:
-            self.set_duration(0)
-
-    def add_effect(self):
-        pass
-
-    def add_stack(self, stack):
-        stack_residual = max(stack, self.stack_max - self.current_stack)
-        for _ in range(stack_residual):
-            self.add_effect()
-        self.set_stack(stack_residual)
-
-    def remove_effect(self):
-        pass
-
-    def remove_stack(self, stack):
-        stack_residual = min(stack, self.current_stack)
-        for _ in range(stack_residual):
-            self.remove_effect()
-        self.set_stack(-stack_residual)
-
-    def refresh(self, stack=stack_add, duration=duration):
-        self.add_stack(stack)
-        self.set_duration(duration)
-
-    def consume(self, stack=stack_remove):
-        self.remove_stack(stack)
+    def expire(self):
+        for _ in range(self.status.stacks[self]):
+            for effect in self.remove_effect:
+                effect()
+        self.status.stacks[self] = 0
