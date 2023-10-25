@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import List
+
 from base.attribute import Attribute
-from base.buff import Buff
+
 from base.constant import MAX_GCD_GROUP
-from base.skill import Skill
 
 
 @dataclass
@@ -18,45 +18,70 @@ class Snapshot:
 
 
 class Status:
-    def __init__(self, attribute: Attribute, skills: List[Skill], buffs: List[Buff]):
+    def __init__(self, attribute: Attribute, skills: List, buffs: List, event_seq: List):
         self.attribute = attribute
+
+        self.gcd_group = [0 for _ in range(MAX_GCD_GROUP)]
+        self.casting = 0
+        self.current_time = 0
+
+        self.skills = {}
+        self.cds = {}
+        self.energies = {}
         self.counts = {}
         self.intervals = {}
 
-        self.skills = {}
-        self.gcd_group = [0 for _ in MAX_GCD_GROUP]
-        self.cds = {}
-        self.energies = {}
         for skill in skills:
             self.skills[skill.name] = skill
-            self.gcd_group[skill.gcd_index] = 0
 
-            self.cds[skill] = 0
-            self.energies[skill] = skill.energy
-            self.intervals[skill] = 0
-            self.counts[skill] = 0
+            self.energies[skill.name] = skill.energy
+            self.counts[skill.name] = 0
 
         self.buffs = {}
         self.durations = {}
         self.stacks = {}
+
         for buff in buffs:
             self.buffs[buff.name] = buff
 
-            self.durations[buff] = 0
-            self.stacks[buff] = 0
+            self.stacks[buff.name] = 0
+
+        self.event_seq = event_seq
 
     def timer(self, gap=1):
-        for skill in self.skills.values():
-            self.intervals[skill] -= gap
-            if not self.intervals[skill] and self.counts[skill]:
-                skill.damage()
+        self.current_time += gap
 
-            self.cds[skill] -= gap
+        damage_skills = []
+        for skill, interval in self.intervals.items():
+            self.intervals[skill] = max(0, interval - gap)
+            if not self.intervals[skill]:
+                damage_skills.append(skill)
+        for skill in damage_skills:
+            self.intervals.pop(skill)
+            self.skills[skill].damage()
+
+        recharge_skills = []
+        for skill, cd in self.cds.items():
+            self.cds[skill] = max(0, cd - gap)
             if not self.cds[skill]:
-                skill.recharge()
+                recharge_skills.append(skill)
+        for skill in recharge_skills:
+            self.cds.pop(skill)
+            self.skills[skill].recharge()
 
-        for buff in self.buffs.values():
-            self.durations[buff] -= gap
+        expire_buffs = []
+        for buff, duration in self.durations.items():
+            self.durations[buff] = max(0, duration - gap)
             if not self.durations[buff]:
-                buff.expire()
+                expire_buffs.append(buff)
+        for buff in expire_buffs:
+            self.durations.pop(buff)
+            self.buffs[buff].expire()
 
+        for gcd_index, gcd in enumerate(self.gcd_group):
+            self.gcd_group[gcd_index] = max(0, gcd - gap)
+
+        self.casting = max(0, self.casting - gap)
+
+    def record(self, name, event, status):
+        self.event_seq.append((self.current_time / 16, name, event, status))

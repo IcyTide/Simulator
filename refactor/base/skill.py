@@ -1,7 +1,8 @@
 import random
 from dataclasses import dataclass
 
-from base.status import Status, Snapshot
+from base.constant import DAMAGE_SCALE, PHYSICAL_DAMAGE_SCALE, INT_SCALE, SURPLUS_SCALE, DOT_DAMAGE_SCALE
+from base.status import Status
 
 
 @dataclass
@@ -14,6 +15,7 @@ class Skill:
     cast_while_casting: bool = False
     is_instant: bool = False
     is_snapshot: bool = False
+    is_dot: bool = False
 
     gcd_index: int = 0
 
@@ -29,32 +31,66 @@ class Skill:
     pre_damage_effect: list = None
     post_damage_effect: list = None
 
-    base_damage: int = 0
-    weapon_damage_cof: int = 0
-    surplus_cof = 0
+    base_damage_base: float = 0
+    rand_damage_base: float = 0
 
-    attack_power_cof_base: int = 0
-    attack_power_cof_gain: int = 0
+    attack_power_cof_base: float = 0
+    weapon_damage_cof_base: float = 0
+    surplus_cof_base: float = 0
 
-    damage_addition_gain: int = 0
-    pve_addition_gain: int = 0
-    shield_ignore_gain: int = 0
-    critical_strike_gain: int = 0
-    critical_damage_gain: int = 0
+    base_damage_gain: float = 1
+    rand_damage_gain: float = 1
+    attack_power_cof_gain: float = 1
+    weapon_damage_cof_gain: float = 1
+
+    damage_addition_gain: float = 1
+    pve_addition_gain: float = 1
+    shield_ignore_gain: float = 0
+    critical_strike_gain: float = 0
+    critical_damage_gain: float = 0
 
     def __post_init__(self):
         self.pre_cast_effect = []
         self.post_cast_effect = []
         self.pre_damage_effect = []
         self.post_damage_effect = []
-        if not self.is_cast:
-            self.gcd_base = 0
 
     """ attributes """
     @property
-    def attack_power_cof(self):
+    def base_damage(self):
+        return self.base_damage_base + self.base_damage_base * self.base_damage_gain
+
+    @property
+    def rand_damage(self):
+        return self.rand_damage_base + self.rand_damage_base * self.rand_damage_gain
+
+    @property
+    def base_attack_power_cof(self):
         return self.attack_power_cof_base + self.attack_power_cof_base * self.attack_power_cof_gain
-    
+
+    @property
+    def attack_power_cof(self):
+        if self.is_dot:
+            return self.base_attack_power_cof * self.interval / DOT_DAMAGE_SCALE / PHYSICAL_DAMAGE_SCALE
+        else:
+            return self.base_attack_power_cof / DAMAGE_SCALE / PHYSICAL_DAMAGE_SCALE
+
+    @property
+    def base_weapon_damage_cof(self):
+        return self.weapon_damage_cof_base + self.weapon_damage_cof_base * self.weapon_damage_cof_gain
+
+    @property
+    def weapon_damage_cof(self):
+        return self.base_weapon_damage_cof // INT_SCALE
+
+    @property
+    def base_surplus_cof(self):
+        return self.surplus_cof + 1 if self.surplus_cof < 0 else self.surplus_cof
+
+    @property
+    def surplus_cof(self):
+        return (self.base_surplus_cof // INT_SCALE + INT_SCALE) // INT_SCALE * SURPLUS_SCALE
+
     @property
     def critical_strike(self):
         return self.status.attribute.critical_strike + self.critical_strike_gain
@@ -76,9 +112,11 @@ class Skill:
     def available(self):
         if not self.activate:
             return False
-        if not self.status.gcd_group[self.gcd_index]:
+        if self.status.gcd_group[self.gcd_index]:
             return False
-        if not self.status.energies[self]:
+        if not self.status.energies[self.name]:
+            return False
+        if self.status.casting and not self.cast_while_casting:
             return False
         return self.condition
 
@@ -102,7 +140,10 @@ class Skill:
 
     @property
     def gcd(self):
-        return self.gcd_base // (1 + self.status.attribute.haste)
+        if self.is_cast:
+            return self.gcd_base // (1 + self.status.attribute.haste)
+        else:
+            return 0
 
     @property
     def cd(self):
@@ -110,17 +151,20 @@ class Skill:
 
     @property
     def snapshot(self):
-        return Snapshot()
+        return {k: v for k, v in self.status.stacks.items() if v}
 
     def set_gcd(self):
         self.status.gcd_group[self.gcd_index] = self.gcd
 
-    def set_dot(self):
-        dot = self.status.buffs[self.name]
+    def set_buff(self):
+        buff = self.status.buffs[self.name]
         if self.is_snapshot:
-            dot.snapshot = self.snapshot
+            buff.snapshot = self.snapshot
 
-        dot.refresh(duration=sum([self.status.intervals[dot]] + self.intervals[1:]))
+        if self.name in self.status.intervals:
+            buff.refresh(duration=sum([self.status.intervals[self.name]] + self.intervals[1:]))
+        else:
+            buff.refresh()
 
     @property
     def roll(self):
@@ -128,65 +172,76 @@ class Skill:
 
     """ action functions """
     def recharge(self):
-        self.status.energies[self] = self.energy
+        self.status.energies[self.name] = self.energy
 
     def pre_cast(self):
         if self.gcd:
             self.set_gcd()
         if self.cd:
-            self.status.cds[self] += self.cd
-            self.status.energies[self] -= 1
+            if self.name in self.status.cds:
+                self.status.cds[self.name] += self.cd
+            else:
+                self.status.cds[self.name] = self.cd
+
+            self.status.energies[self.name] -= 1
         # self.status.set_casting(self.is_cast * self.duration)
 
-        if self.count:
-            self.status.counts[self] = self.count
+        self.status.counts[self.name] = self.count
+        self.status.intervals[self.name] = self.intervals[0]
 
-        self.status.intervals[self] = self.intervals[0]
+        if self.is_cast:
+            self.status.casting = self.status.intervals[self.name]
         for effect in self.pre_cast_effect:
-            effect()
+            effect(self)
 
     def cast(self):
         self.pre_cast()
 
         if not self.base_damage:
-            return
+            self.post_cast()
 
         if self.is_instant:
-            self.status.counts[self] += 1
-            self.status.intervals[self] = 0
+            self.status.counts[self.name] += 1
+            self.status.intervals[self.name] = 0
 
-        if not self.status.intervals[self]:
+        while self.name in self.status.intervals and not self.status.intervals[self.name]:
             self.damage()
 
     def post_cast(self):
-        self.status.counts[self] = 0
-        self.status.intervals[self] = 0
+        self.status.counts[self.name] = 0
+        self.status.intervals.pop(self.name)
 
         # self.status.set_casting(0)
 
         for effect in self.post_cast_effect:
-            effect()
+            effect(self)
 
     def pre_damage(self):
         for effect in self.pre_damage_effect:
-            effect()
+            effect(self)
 
     def damage(self):
         self.pre_damage()
-        # TODO: damage
+        self.record()
         self.post_damage()
 
-        if not self.status.counts[self]:
+        if not self.status.counts[self.name]:
             self.post_cast()
 
+    def record(self):
+        if self.is_snapshot:
+            self.status.record(self.name, "damage", self.status.buffs[self.name].snapshot)
+        else:
+            self.status.record(self.name, "damage", self.snapshot)
+        if self.surplus_cof_base:
+            self.status.record(self.name + "-破招", "damage", self.snapshot)
+
     def post_damage(self):
-        self.status.counts[self] -= 1
-        self.status.intervals[self] = self.intervals[self.status.counts[self]]
+        self.status.counts[self.name] -= 1
+        self.status.intervals[self.name] = self.intervals[self.status.counts[self.name]]
+
+        if self.is_cast:
+            self.status.casting = self.status.intervals[self.name]
 
         for effect in self.post_damage_effect:
-            effect()
-
-
-class Melee(Skill):
-    pass
-
+            effect(self)

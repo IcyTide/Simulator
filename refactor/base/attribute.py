@@ -58,12 +58,12 @@ class Attribute:
 
     damage_addition: int = 0
     pve_addition: int = 0
-
-    def __post_init__(self):
-        initialized_vars = vars(self)
-        for name, value in initialized_vars.items():
-            if name.endswith("_base") and isinstance(value, int):
-                setattr(self, name, torch.tensor(value, dtype=torch.int))
+    #
+    # def __post_init__(self):
+    #     initialized_vars = vars(self)
+    #     for name, value in initialized_vars.items():
+    #         if name.endswith("_base") and isinstance(value, int):
+    #             setattr(self, name, torch.tensor(value, dtype=torch.int))
     """ major attributes """
 
     @property
