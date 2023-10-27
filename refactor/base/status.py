@@ -6,24 +6,12 @@ from base.attribute import Attribute
 from base.constant import MAX_GCD_GROUP
 
 
-@dataclass
-class Snapshot:
-    attack_power: int = 0
-    attack_power_cof: int = 0
-
-    critical_strike: int = 0
-    critical_damage: int = 0
-    strain: int = 0
-    damage_addition: int = 0
-
-
 class Status:
     def __init__(self, attribute: Attribute, skills: List, buffs: List, event_seq: List):
         self.attribute = attribute
 
         self.gcd_group = [0 for _ in range(MAX_GCD_GROUP)]
         self.casting = 0
-        self.current_time = 0
 
         self.skills = {}
         self.cds = {}
@@ -46,10 +34,16 @@ class Status:
 
             self.stacks[buff.name] = 0
 
+        self.current_frame = 0
+        self.total_damage = 0
         self.event_seq = event_seq
 
     def timer(self, gap=1):
-        self.current_time += gap
+        self.current_frame += gap
+        self.casting = max(0, self.casting - gap)
+
+        for gcd_index, gcd in enumerate(self.gcd_group):
+            self.gcd_group[gcd_index] = max(0, gcd - gap)
 
         damage_skills = []
         for skill, interval in self.intervals.items():
@@ -67,7 +61,7 @@ class Status:
                 recharge_skills.append(skill)
         for skill in recharge_skills:
             self.cds.pop(skill)
-            self.skills[skill].recharge()
+            self.skills[skill].ready()
 
         expire_buffs = []
         for buff, duration in self.durations.items():
@@ -76,12 +70,7 @@ class Status:
                 expire_buffs.append(buff)
         for buff in expire_buffs:
             self.durations.pop(buff)
-            self.buffs[buff].expire()
+            self.buffs[buff].clear()
 
-        for gcd_index, gcd in enumerate(self.gcd_group):
-            self.gcd_group[gcd_index] = max(0, gcd - gap)
-
-        self.casting = max(0, self.casting - gap)
-
-    def record(self, name, event, status):
-        self.event_seq.append((self.current_time / 16, name, event, status))
+    def record(self, name, event, damage):
+        self.event_seq.append((self.current_frame, name, event, damage))

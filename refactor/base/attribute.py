@@ -1,14 +1,44 @@
 from dataclasses import dataclass
+
 from .constant import *
+
+
+"""
+    TODO: add update func to replace property
+"""
 
 
 @dataclass
 class Target:
     level: int = 124
-    physical_shield: int = 0
-    magical_shield: int = 0
+    physical_shield_base: int = 27550
+    magical_shield_base: int = 27550
+
+    physical_shield_gain: int = 0
+    magical_shield_gain: int = 0
+
     physical_vulnerable: int = 0
     magical_vulnerable: int = 0
+
+    @property
+    def shield_base(self):
+        return self.physical_shield_base
+
+    @property
+    def shield_gain(self):
+        return self.physical_shield_gain
+
+    def shield(self, shield_ignore_base, shield_ignore_gain):
+        shield = self.shield_base - self.shield_base * shield_ignore_base + self.shield_gain
+        return shield - shield * shield_ignore_gain
+
+    def defense(self, shield_ignore_base, shield_ignore_gain):
+        shield = self.shield(shield_ignore_base, shield_ignore_gain)
+        return shield / (shield + SHIELD_SCALE * (LEVEL_SCALE * self.level - LEVEL_CONSTANT))
+
+    @property
+    def vulnerable(self):
+        return self.physical_vulnerable
 
 
 @dataclass
@@ -17,54 +47,72 @@ class Attribute:
 
     level: int = 120
     agility_base: int = 0
-    agility_gain: int = 0
+    agility_gain: float = 0
     strength_base: int = 0
-    strength_gain: int = 0
+    strength_gain: float = 0
     spirit_base: int = 0
-    spirit_gain: int = 0
+    spirit_gain: float = 0
     spunk_base: int = 0
-    spunk_gain: int = 0
+    spunk_gain: float = 0
 
     surplus_base: int = 0
-    surplus_gain: int = 0
+
     strain_base: int = 0
-    strain_gain: int = 0
+    strain_gain: float = 0
     haste_base: int = 0
-    haste_gain: int = 0
+    haste_gain: float = 0
 
     physical_attack_power_base: int = 0
-    physical_attack_power_gain: int = 0
+    physical_attack_power_gain: float = 0
     magical_attack_power_base: int = 0
-    magical_attack_power_gain: int = 0
+    magical_attack_power_gain: float = 0
     physical_critical_strike_base: int = 0
-    physical_critical_strike_gain: int = 0
+    physical_critical_strike_gain: float = 0
     magical_critical_strike_base: int = 0
-    magical_critical_strike_gain: int = 0
+    magical_critical_strike_gain: float = 0
     physical_critical_damage_base: int = 0
-    physical_critical_damage_gain: int = 0
+    physical_critical_damage_gain: float = 0
     magical_critical_damage_base: int = 0
-    magical_critical_damage_gain: int = 0
+    magical_critical_damage_gain: float = 0
     physical_overcome_base: int = 0
-    physical_overcome_gain: int = 0
+    physical_overcome_gain: float = 0
     magical_overcome_base: int = 0
-    magical_overcome_gain: int = 0
+    magical_overcome_gain: float = 0
 
     weapon_damage_rand: int = 0
     weapon_damage_base: int = 0
-    weapon_damage_gain: int = 0
+    weapon_damage_gain: float = 0
 
-    physical_shield_ignore: int = 0
-    magical_shield_ignore: int = 0
+    physical_shield_ignore_base: float = 0
+    magical_shield_ignore_base: float = 0
+    physical_shield_ignore_gain: float = 0
+    magical_shield_ignore_gain: float = 0
 
-    damage_addition: int = 0
-    pve_addition: int = 0
-    #
-    # def __post_init__(self):
-    #     initialized_vars = vars(self)
-    #     for name, value in initialized_vars.items():
-    #         if name.endswith("_base") and isinstance(value, int):
-    #             setattr(self, name, torch.tensor(value, dtype=torch.int))
+    damage_addition: float = 0
+    pve_addition: float = 0
+
     """ major attributes """
+
+    def __post_init__(self):
+        self.grad_scale = {
+            "agility_base": MAJOR_BASE,
+            "spunk_base": MAJOR_BASE,
+            "strength_base": MAJOR_BASE,
+            "spirit_base": MAJOR_BASE,
+            "surplus_base": MINOR_BASE,
+            "strain_base": MINOR_BASE,
+            # "haste_base": MINOR_BASE,
+            "physical_attack_power_base": ATTACK_POWER_BASE,
+            "magical_attack_power_base": ATTACK_POWER_BASE,
+            "physical_critical_strike_base": MINOR_BASE,
+            "magical_critical_strike_base": MINOR_BASE,
+            "physical_critical_damage_base": MINOR_BASE,
+            "magical_critical_damage_base": MINOR_BASE,
+            "physical_overcome_base": MINOR_BASE,
+            "magical_overcome_base": MINOR_BASE,
+            "weapon_damage_base": WEAPON_DAMAGE_BASE
+        }
+        self.grad_attrs = []
 
     @property
     def agility(self):
@@ -82,17 +130,14 @@ class Attribute:
     def spirit(self):
         return self.spirit_base + self.spirit_base * self.spirit_gain
 
+    @property
+    def major(self):
+        raise NotImplementedError
     """ minor attributes """
 
     @property
-    def base_surplus(self):
+    def surplus(self):
         return self.surplus_base
-
-    @property
-    def final_surplus(self):
-        return self.surplus_base + self.surplus_gain
-
-    surplus = final_surplus
 
     @property
     def base_strain(self):
@@ -140,7 +185,7 @@ class Attribute:
 
     @property
     def attack_power(self):
-        return self.physical_attack_power
+        raise NotImplementedError
 
     @property
     def base_physical_critical_strike(self):
@@ -168,7 +213,7 @@ class Attribute:
 
     @property
     def critical_strike(self):
-        return self.physical_critical_strike
+        raise NotImplementedError
 
     @property
     def base_physical_critical_damage(self):
@@ -196,7 +241,7 @@ class Attribute:
 
     @property
     def critical_damage(self):
-        return self.physical_critical_damage
+        raise NotImplementedError
 
     @property
     def base_physical_overcome(self):
@@ -212,7 +257,7 @@ class Attribute:
 
     @property
     def base_magical_overcome(self):
-        return self.magical_overcome_base + self.strength_base * STRENGTH_TO_OVERCOME
+        return self.magical_overcome_base + self.spunk_base * SPUNK_TO_OVERCOME
 
     @property
     def final_magical_overcome(self):
@@ -224,7 +269,7 @@ class Attribute:
 
     @property
     def overcome(self):
-        return self.physical_overcome
+        raise NotImplementedError
 
     """ others """
 
@@ -236,3 +281,15 @@ class Attribute:
     def weapon_damage(self):
         return self.weapon_damage_base + self.weapon_damage_base * self.weapon_damage_gain + \
                self.weapon_damage_rand / 2
+
+    @property
+    def shield_ignore_base(self):
+        raise NotImplementedError
+
+    @property
+    def shield_ignore_gain(self):
+        raise NotImplementedError
+
+    @property
+    def level_reduction(self):
+        return LEVEL_REDUCTION * (self.target.level - self.level)

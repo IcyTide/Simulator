@@ -1,6 +1,7 @@
+import random
 from dataclasses import dataclass
 
-from base.status import Status, Snapshot
+from base.status import Status
 
 
 @dataclass
@@ -9,8 +10,12 @@ class Buff:
     status: Status = None
     activate: bool = True
 
-    duration: int = 0
-    duration_max: int = 0
+    is_dot: bool = False
+
+    cd: int = 0
+    probability: float = 0
+    duration: int = 3600 * 16
+    duration_max: int = 3600 * 16
 
     stack_add: int = 1
     stack_remove: int = 1
@@ -18,8 +23,6 @@ class Buff:
 
     add_effect: list = None
     remove_effect: list = None
-
-    snapshot: Snapshot = None
 
     def __post_init__(self):
         self.add_effect = []
@@ -34,6 +37,17 @@ class Buff:
     #         self.add_effect()
     #     self.status.durations[self] = min(self.duration_max, self.status.durations[self] + duration)
 
+    @property
+    def condition(self):
+        return True
+
+    @property
+    def roll(self):
+        return random.random()
+
+    def ready(self):
+        self.activate = True
+
     def add(self):
         for effect in self.add_effect:
             effect(self)
@@ -42,31 +56,49 @@ class Buff:
         for effect in self.remove_effect:
             effect(self)
 
-    def refresh(self, stack=None, duration=None):
-        if stack is None:
-            stack = self.stack_add
-        if duration is None:
-            duration = self.duration_max
+    def trigger(self):
+        if not self.activate:
+            return
+        if not self.condition:
+            return
+        if not self.probability or self.roll < self.probability:
 
-        stack = min(self.stack_max - self.status.stacks[self.name], stack)
-        self.status.stacks[self.name] += stack
+            self.refresh()
+            if self.cd:
+                self.activate = False
+                self.status.cds[self.name] = self.cd
 
-        for _ in range(stack):
-            self.add()
+    def refresh(self):
+        stack = min(self.stack_max - self.status.stacks[self.name], self.stack_add)
+        if stack:
+            self.status.stacks[self.name] += stack
 
-        self.status.durations[self.name] = min(self.duration_max, duration)
+            for _ in range(stack):
+                self.add()
 
-    def consume(self, stack=None):
-        if stack is None:
-            stack = self.stack_remove
+        if self.is_dot:
+            if self.name in self.status.intervals:
+                self.status.durations[self.name] = self.status.intervals[self.name] + \
+                                                   sum(self.status.skills[self.name].intervals[1:])
+            else:
+                self.status.durations[self.name] = sum(self.status.skills[self.name].intervals)
+        else:
+            self.status.durations[self.name] = min(self.duration_max, self.duration)
+
+    def consume(self):
+        stack = self.stack_remove
+
         stack = min(stack, self.status.stacks[self.name])
         self.status.stacks[self.name] -= stack
-        for _ in range(stack):
-            self.remove()
-        if not self.status.stacks[self.name]:
-            self.status.durations.pop(self.name)
 
-    def expire(self):
+        if stack:
+            for _ in range(stack):
+                self.remove()
+
+            if not self.status.stacks[self.name]:
+                self.status.durations.pop(self.name)
+
+    def clear(self):
         for _ in range(self.status.stacks[self.name]):
             self.remove()
 

@@ -1,13 +1,50 @@
 from base.buff import Buff
 
 
+class ShuoQi(Buff):
+    def __init__(self):
+        super(ShuoQi, self).__init__()
+        self.name = "朔气"
+
+        self.probability = 0.1
+
+        self.duration = 4 * 16
+        self.duration_max = self.duration
+
+    def add(self):
+        super(ShuoQi, self).add()
+        self.status.attribute.physical_critical_strike_gain += 0.04
+        self.status.attribute.physical_critical_damage_gain += 0.04
+
+    def remove(self):
+        super(ShuoQi, self).remove()
+        self.status.attribute.physical_critical_strike_gain -= 0.04
+        self.status.attribute.physical_critical_damage_gain -= 0.04
+
+
+class WaterWeapon(Buff):
+    def __init__(self):
+        super(WaterWeapon, self).__init__()
+        self.name = "水特效"
+
+        self.duration = 10 * 16
+        self.duration_max = self.duration
+
+        self.stack_max = 10
+
+    def add(self):
+        super(WaterWeapon, self).add()
+        self.status.attribute.physical_attack_power_base += 200
+
+    def remove(self):
+        super(WaterWeapon, self).remove()
+        self.status.attribute.physical_attack_power_base -= 200
+
+
 class XiuMingChenShen(Buff):
     def __init__(self):
         super(XiuMingChenShen, self).__init__()
         self.name = "秀明尘身"
-
-        self.duration = 3600 * 16
-        self.duration_max = self.duration
 
 
 class SongYanZhuWu(Buff):
@@ -16,9 +53,6 @@ class SongYanZhuWu(Buff):
     def __init__(self):
         super(SongYanZhuWu, self).__init__()
         self.name = "松烟竹雾"
-
-        self.duration = 3600 * 16
-        self.duration_max = self.duration
 
     def remove(self):
         super(SongYanZhuWu, self).remove()
@@ -31,17 +65,13 @@ class XueXuJinPing(Buff):
         super(XueXuJinPing, self).__init__()
         self.name = "雪絮金屏"
 
-        self.duration = 3600 * 16
-        self.duration_max = self.duration
-
 
 class NaoXuMiDot(Buff):
     def __init__(self):
         super(NaoXuMiDot, self).__init__()
         self.name = "闹须弥-持续"
 
-        self.duration = 8 * 48
-        self.duration_max = self.duration
+        self.is_dot = True
 
 
 class JianBiQingYeDot(Buff):
@@ -49,8 +79,7 @@ class JianBiQingYeDot(Buff):
         super(JianBiQingYeDot, self).__init__()
         self.name = "坚壁清野-持续"
 
-        self.duration = 10 * 16
-        self.duration_max = self.duration
+        self.is_dot = True
 
 
 class ChuGe(Buff):
@@ -65,7 +94,7 @@ class ChuGe(Buff):
 
     def remove(self):
         super(ChuGe, self).remove()
-        self.status.buffs["楚歌-计数"].expire()
+        self.status.buffs["楚歌-计数"].clear()
 
 
 class ChuGeCount(Buff):
@@ -78,12 +107,16 @@ class ChuGeCount(Buff):
 
         self.stack_max = 5
 
+    @property
+    def condition(self):
+        return self.status.stacks["楚歌"]
+
     def add(self):
         super(ChuGeCount, self).add()
         if self.status.stacks[self.name] == self.stack_max:
             for _ in range(self.status.stacks["楚歌"]):
                 self.status.skills["楚歌"].cast()
-            self.status.buffs["楚歌"].expire()
+            self.status.buffs["楚歌"].clear()
 
 
 class JianChen(Buff):
@@ -91,8 +124,7 @@ class JianChen(Buff):
         super(JianChen, self).__init__()
         self.name = "见尘"
 
-        self.duration = sum([5, 6, 6, 6, 6])
-        self.duration_max = self.duration
+        self.is_dot = True
 
 
 class HanFeng(Buff):
@@ -127,16 +159,13 @@ class XiangQiCount(Buff):
         super(XiangQiCount, self).__init__()
         self.name = "降麒式-计数"
 
-        self.duration = 3600 * 16
-        self.duration_max = self.duration
-
         self.stack_max = 6
 
     def add(self):
         super(XiangQiCount, self).add()
         if self.status.stacks[self.name] == 6:
-            self.expire()
-        self.status.buffs["降麒式-就绪"].refresh()
+            self.clear()
+            self.status.buffs["降麒式-就绪"].trigger()
 
 
 class XiangQiReady(Buff):
@@ -158,14 +187,15 @@ class XiangQiReady(Buff):
 
 class XiangQiDot(Buff):
     def __init__(self):
+        super(XiangQiDot, self).__init__()
         self.name = "降麒式-持续"
 
-        self.duration = 15 * 16
-        self.duration_max = self.duration
+        self.is_dot = True
 
 
 class XiangQiShi(Buff):
     def __init__(self):
+        super(XiangQiShi, self).__init__()
         self.name = "降麒式"
 
         self.duration = 15 * 16
@@ -173,13 +203,14 @@ class XiangQiShi(Buff):
 
     def add(self):
         super(XiangQiShi, self).add()
-        self.status.buffs["降麒式-计数"].expire()
-        self.status.buffs["降麒式-就绪"].expire()
+        self.status.buffs["降麒式-计数"].clear()
+        self.status.buffs["降麒式-就绪"].clear()
         self.status.attribute.damage_addition += 0.2
 
     def remove(self):
         self.status.attribute.damage_addition -= 0.2
 
 
-buffs = [XiuMingChenShen(), SongYanZhuWu(), XueXuJinPing(), NaoXuMiDot(), JianBiQingYeDot(), ChuGe(), ChuGeCount(),
+buffs = [WaterWeapon(), ShuoQi(),
+         XiuMingChenShen(), SongYanZhuWu(), XueXuJinPing(), NaoXuMiDot(), JianBiQingYeDot(), ChuGe(), ChuGeCount(),
          JianChen(), HanFeng(), XiangQiCount(), XiangQiReady(), XiangQiDot(), XiangQiShi()]

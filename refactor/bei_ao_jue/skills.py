@@ -1,3 +1,4 @@
+from base.constant import ATTACK_POWER_COF, WEAPON_DAMAGE_COF, DOT_ATTACK_POWER_COF, SURPLUS_COF
 from base.skill import Skill
 
 """
@@ -14,8 +15,8 @@ class ShuangFengDaoFa(Skill):
 
         self.base_damage_base = 1
 
-        self.attack_power_cof_base = 16 * 10
-        self.weapon_damage_cof_base = 1024
+        self.attack_power_cof_base = ATTACK_POWER_COF(16)
+        self.weapon_damage_cof_base = WEAPON_DAMAGE_COF(1024)
 
 
 class XiuMingChenShen(Skill):
@@ -32,9 +33,9 @@ class XiuMingChenShen(Skill):
 
     def post_cast(self):
         super(XiuMingChenShen, self).post_cast()
-        self.status.buffs["秀明尘身"].refresh()
-        self.status.buffs["松烟竹雾"].expire()
-        self.status.buffs["雪絮金屏"].expire()
+        self.status.buffs["秀明尘身"].trigger()
+        self.status.buffs["松烟竹雾"].clear()
+        self.status.buffs["雪絮金屏"].clear()
 
 
 class SongYanZhuWu(Skill):
@@ -51,9 +52,9 @@ class SongYanZhuWu(Skill):
 
     def post_cast(self):
         super(SongYanZhuWu, self).post_cast()
-        self.status.buffs["秀明尘身"].expire()
-        self.status.buffs["松烟竹雾"].refresh()
-        self.status.buffs["雪絮金屏"].expire()
+        self.status.buffs["秀明尘身"].clear()
+        self.status.buffs["松烟竹雾"].trigger()
+        self.status.buffs["雪絮金屏"].clear()
 
 
 class XueXuJinPing(Skill):
@@ -70,9 +71,9 @@ class XueXuJinPing(Skill):
 
     def post_cast(self):
         super(XueXuJinPing, self).post_cast()
-        self.status.buffs["秀明尘身"].expire()
-        self.status.buffs["松烟竹雾"].expire()
-        self.status.buffs["雪絮金屏"].refresh()
+        self.status.buffs["秀明尘身"].clear()
+        self.status.buffs["松烟竹雾"].clear()
+        self.status.buffs["雪絮金屏"].trigger()
 
 
 class LeiZouFengQie(Skill):
@@ -81,11 +82,11 @@ class LeiZouFengQie(Skill):
         self.name = "雷走风切"
 
         self.gcd_index = 1
-        self.cd_base = 18 * 16
+        self.cd_base = 16 * 16
 
         self.base_damage_base = 175
         self.rand_damage_base = 15
-        self.attack_power_cof_base = 224 * 0.8 * 0.7
+        self.attack_power_cof_base = ATTACK_POWER_COF(224 * 0.8 * 0.7)
 
     @property
     def condition(self):
@@ -102,8 +103,8 @@ class ShangJiangJunYin(Skill):
 
         self.base_damage_base = 300
         self.rand_damage_base = 15
-        self.attack_power_cof_base = 160 * 0.9 * 1.1 * 1.05
-        self.weapon_damage_cof_base = 1024
+        self.attack_power_cof_base = ATTACK_POWER_COF(160*0.9*1.1*1.05)
+        self.weapon_damage_cof_base = WEAPON_DAMAGE_COF(1024)
 
     @property
     def condition(self):
@@ -120,13 +121,27 @@ class PoFuChenZhou(Skill):
 
         self.base_damage_base = 350
         self.rand_damage_base = 20
-        self.attack_power_cof_base = 400 * 0.9 * 0.95 * 1.1 * 1.15
-        self.weapon_damage_cof_base = 2048
-        self.surplus_cof_base = 1024 * 1024 * (0.875 - 1)
+        self.attack_power_cof_base = ATTACK_POWER_COF(400 * 0.9 * 0.95 * 1.1 * 1.15)
+        self.weapon_damage_cof_base = WEAPON_DAMAGE_COF(2048)
 
     @property
     def condition(self):
         return self.status.stacks["秀明尘身"]
+
+    def post_cast(self):
+        super(PoFuChenZhou, self).post_cast()
+        self.status.skills["破釜沉舟-破招"].cast()
+
+
+class PoFuChenZhouSurplus(Skill):
+    def __init__(self):
+        super(PoFuChenZhouSurplus, self).__init__()
+        self.name = "破釜沉舟-破招"
+
+        self.is_cast = False
+
+        self.base_damage_base = 1
+        self.surplus_cof_base = SURPLUS_COF(1024 * 1024 * (0.875 - 1))
 
 
 class NaoXuMiDot(Skill):
@@ -135,17 +150,17 @@ class NaoXuMiDot(Skill):
         self.name = "闹须弥-持续"
 
         self.is_cast = False
-        self.is_dot = True
         self.is_snapshot = True
 
         self.count_base = 8
         self.interval_base = 48
 
-        self.attack_power_cof_base = 280
+        self.base_damage_base = 1
+        self.attack_power_cof_base = DOT_ATTACK_POWER_COF(280, self.interval_base)
 
-    def post_cast(self):
-        super(NaoXuMiDot, self).post_cast()
-        self.set_buff()
+    def pre_cast(self):
+        super(NaoXuMiDot, self).pre_cast()
+        self.status.buffs["闹须弥-持续"].trigger()
 
 
 class NaoXuMi(Skill):
@@ -180,6 +195,17 @@ class QinLongLiuZhan(Skill):
         self.status.skills["惊燕式"].cast()
 
 
+class QinLongLiuZhanSurplus(Skill):
+    def __init__(self):
+        super(QinLongLiuZhanSurplus, self).__init__()
+        self.name = "擒龙六斩-破招"
+
+        self.is_cast = False
+
+        self.base_damage_base = 1
+        self.surplus_cof_base = SURPLUS_COF(1024 * 1024 * (0.275 - 1))
+
+
 class JingYanShi(Skill):
     def __init__(self):
         super(JingYanShi, self).__init__()
@@ -190,21 +216,21 @@ class JingYanShi(Skill):
 
         self.base_damage_base = 80
         self.rand_damage_base = 10
-        self.attack_power_cof_base = 64 * 1.3 * 1.2
-        self.weapon_damage_cof_base = 1024
-        self.surplus_cof_base = 1024 * 1024 * (0.275 - 1)
+        self.attack_power_cof_base = ATTACK_POWER_COF(64 * 1.3 * 1.2)
+        self.weapon_damage_cof_base = WEAPON_DAMAGE_COF(1024)
 
     def pre_cast(self):
         super(JingYanShi, self).pre_cast()
         self.status.cds["擒龙六斩"] = self.cd
 
     def post_damage(self):
-        super(JingYanShi, self).post_damage()
         self.attack_power_cof_gain += 0.25
+        super(JingYanShi, self).post_damage()
 
     def post_cast(self):
+        self.attack_power_cof_gain -= 0.25 * self.count
         super(JingYanShi, self).post_cast()
-        self.attack_power_cof_gain = 1
+        self.status.skills["擒龙六斩-破招"].cast()
         self.status.skills["逐鹰式"].activate = True
 
 
@@ -213,14 +239,15 @@ class ZhuYingShi(Skill):
         super(ZhuYingShi, self).__init__()
         self.name = "逐鹰式"
 
+        self.activate = False
+
         self.cd_base = 10 * 16
         self.interval_list = [4, 6]
 
         self.base_damage_base = 80
         self.rand_damage_base = 10
-        self.attack_power_cof_base = 64 * 1.3 * 1.2
-        self.weapon_damage_cof_base = 1024
-        self.surplus_cof_base = 1024 * 1024 * (0.275 - 1)
+        self.attack_power_cof_base = ATTACK_POWER_COF(64 * 1.3 * 1.2)
+        self.weapon_damage_cof_base = WEAPON_DAMAGE_COF(1024)
 
     @property
     def condition(self):
@@ -231,12 +258,14 @@ class ZhuYingShi(Skill):
         self.status.cds["擒龙六斩"] += self.cd
 
     def post_damage(self):
-        super(ZhuYingShi, self).post_damage()
         self.attack_power_cof_gain += 0.5
+        super(ZhuYingShi, self).post_damage()
 
     def post_cast(self):
+        self.activate = False
+        self.attack_power_cof_gain -= 0.5 * self.count
         super(ZhuYingShi, self).post_cast()
-        self.attack_power_cof_gain = 1
+        self.status.skills["擒龙六斩-破招"].cast()
 
 
 class JianBiQingYeDot(Skill):
@@ -250,11 +279,11 @@ class JianBiQingYeDot(Skill):
 
         self.base_damage_base = 250
         self.rand_damage_base = 20
-        self.attack_power_cof_base = 160 * 1.1
+        self.attack_power_cof_base = ATTACK_POWER_COF(160 * 1.1)
 
     def pre_cast(self):
         super(JianBiQingYeDot, self).pre_cast()
-        self.set_buff()
+        self.status.buffs["坚壁清野-持续"].trigger()
 
 
 class JianBiQingYe(Skill):
@@ -266,7 +295,7 @@ class JianBiQingYe(Skill):
 
         self.base_damage_base = 430
         self.rand_damage_base = 20
-        self.attack_power_cof_base = 0
+        self.attack_power_cof_base = ATTACK_POWER_COF(288 * 1.2 * 0.7 * 1.1)
 
     @property
     def condition(self):
@@ -275,6 +304,17 @@ class JianBiQingYe(Skill):
     def post_cast(self):
         super(JianBiQingYe, self).post_cast()
         self.status.skills["坚壁清野-持续"].cast()
+
+
+class DaoXiaoFengYinSurplus(Skill):
+    def __init__(self):
+        super(DaoXiaoFengYinSurplus, self).__init__()
+        self.name = "刀啸风吟-破招"
+
+        self.is_cast = False
+
+        self.base_damage_base = 1
+        self.surplus_cof_base = SURPLUS_COF(1024 * 1024 * (0.1375 - 1))
 
 
 class DaoXiaoFengYin(Skill):
@@ -287,12 +327,15 @@ class DaoXiaoFengYin(Skill):
         self.base_damage_base = 250
         self.rand_damage_base = 20
 
-        self.attack_power_cof_base = 256 * 1.2 * 1.05 * 1.1 * 1.1 * 1.05
-        self.surplus_cof_base = 1024 * 1024 * (0.1375 - 1)
+        self.attack_power_cof_base = ATTACK_POWER_COF(256 * 1.2 * 1.05 * 1.1 * 1.1 * 1.05)
 
     @property
     def condition(self):
         return self.status.stacks["雪絮金屏"]
+
+    def post_cast(self):
+        super(DaoXiaoFengYin, self).post_cast()
+        self.status.skills["刀啸风吟-破招"].cast()
 
 
 """
@@ -309,15 +352,15 @@ class JianChen(Skill):
 
         self.interval_list = [5, 6, 6, 6, 6]
 
-        self.base_damage_base = 300 * 0.5
-        self.rand_damage_base = 15 * 0.5
+        self.base_damage_base = 100 * 1.45 * 0.5
+        self.rand_damage_base = 10 * 1.45 * 0.5
 
-        self.attack_power_cof_base = 160 * 0.9 * 1.1 * 0.7
-        self.weapon_damage_cof_base = 1024 * 0.25
+        self.attack_power_cof_base = ATTACK_POWER_COF(60 * 1.45 * 1.1 * 0.7)
+        self.weapon_damage_cof_base = WEAPON_DAMAGE_COF(1024 * 1.45 * 0.25)
 
     def pre_cast(self):
         super(JianChen, self).pre_cast()
-        self.set_buff()
+        self.status.buffs["见尘"].trigger()
 
 
 class ChuGe(Skill):
@@ -327,9 +370,9 @@ class ChuGe(Skill):
 
         self.is_cast = False
 
-        self.base_damage_base = 70
+        self.base_damage_base = 55
         self.rand_damage_base = 5
-        self.attack_power_cof_base = 1200 * 0.8
+        self.attack_power_cof_base = ATTACK_POWER_COF(1200 * 0.8)
 
 
 # class LinJiang(Skill):
@@ -351,9 +394,11 @@ class JueQi(Skill):
 
         self.is_cast = False
 
+        self.probability = 0.3
+
         self.base_damage_base = 250
         self.rand_damage_base = 20
-        self.attack_power_cof_base = 120
+        self.attack_power_cof_base = ATTACK_POWER_COF(120)
 
     def post_cast(self):
         super(JueQi, self).post_cast()
@@ -369,15 +414,15 @@ class XiangQiDot(Skill):
 
         self.interval_list = [16] * 15
 
-        self.base_damage_base = 190
-        self.rand_damage_base = 15
+        self.base_damage_base = 50
+        self.rand_damage_base = 5
 
-        self.attack_power_cof_base = 60 * 2
-        self.weapon_damage_cof_base = 2048
+        self.attack_power_cof_base = ATTACK_POWER_COF(60 * 2)
+        self.weapon_damage_cof_base = WEAPON_DAMAGE_COF(1024)
 
     def pre_cast(self):
         super(XiangQiDot, self).pre_cast()
-        self.set_buff()
+        self.status.buffs["降麒式-持续"].trigger()
 
 
 class XiangQiShi(Skill):
@@ -385,14 +430,22 @@ class XiangQiShi(Skill):
         super(XiangQiShi, self).__init__()
         self.name = "降麒式"
 
+        self.activate = False
+
         self.gcd_base = 0
+
+    @property
+    def condition(self):
+        return self.status.stacks["松烟竹雾"]
 
     def post_cast(self):
         super(XiangQiShi, self).post_cast()
-        self.set_buff()
+        self.status.buffs["降麒式"].trigger()
         self.status.skills["降麒式-持续"].cast()
 
 
-skills = [ShuangFengDaoFa(), XiuMingChenShen(), SongYanZhuWu(), XueXuJinPing(), LeiZouFengQie(), ShangJiangJunYin(),
-          PoFuChenZhou(), NaoXuMiDot(), NaoXuMi(), QinLongLiuZhan(), JingYanShi(), ZhuYingShi(), JianBiQingYeDot(),
-          JianBiQingYe(), DaoXiaoFengYin(), JianChen(), ChuGe(), JueQi(), XiangQiDot(), XiangQiShi()]
+skills = [ShuangFengDaoFa(), XiuMingChenShen(), SongYanZhuWu(), XueXuJinPing(), LeiZouFengQie(),
+          ShangJiangJunYin(), PoFuChenZhou(), PoFuChenZhouSurplus(),
+          NaoXuMiDot(), NaoXuMi(), QinLongLiuZhan(), QinLongLiuZhanSurplus(), JingYanShi(), ZhuYingShi(),
+          JianBiQingYeDot(), JianBiQingYe(), DaoXiaoFengYin(), DaoXiaoFengYinSurplus(),
+          JianChen(), ChuGe(), JueQi(), XiangQiDot(), XiangQiShi()]
