@@ -4,18 +4,32 @@ import requests
 import pandas as pd
 
 
+# position_map = {
+#     "帽子": 3,
+#     "上衣": 2,
+#     "腰带": 6,
+#     "护腕": 10,
+#     "下装": 8,
+#     "鞋子": 9,
+#     "项链": 4,
+#     "腰坠": 7,
+#     "戒指": 5,
+#     "远程武器": 1,
+#     "近身武器": 0
+# }
+
 position_map = {
-    "帽子": 3,
-    "上衣": 2,
-    "腰带": 6,
-    "护腕": 10,
-    "下装": 8,
-    "鞋子": 9,
-    "项链": 4,
-    "腰坠": 7,
-    "戒指": 5,
-    "远程武器": 1,
-    "近身武器": 0
+    "hat": 3,
+    "jacket": 2,
+    "belt": 6,
+    "wrist": 10,
+    "bottoms": 8,
+    "shoes": 9,
+    "necklace": 4,
+    "pendant": 7,
+    "ring": 5,
+    "tertiary_weapon": 1,
+    "primary_weapon": 0
 }
 
 suffix_map = {
@@ -113,11 +127,6 @@ def get_equip_detail(equip, position):
 
 
 if __name__ == '__main__':
-    rows = []
     for position in position_map:
-        for equip in get_equips_list(position):
-            rows.append(get_equip_detail(equip, position))
-        # rows.extend(get_equips_list(position))
-    json.dump(rows, open("../ui/equipment.json", "w", encoding="utf-8"), ensure_ascii=False)
-    # df = pd.DataFrame(rows).dropna(axis=1, how="all")
-    # df.to_excel("temp.xlsx", index=False)
+        json.dump(get_equips_list(position), open(f"assets/{position}.json", "w", encoding="utf-8"), ensure_ascii=False)
+
