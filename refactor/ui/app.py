@@ -1,5 +1,5 @@
 import gradio as gr
-from components.equipment import build_equipment
+from ui.components.equipment import build_equipment
 
 
 if __name__ == '__main__':

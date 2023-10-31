@@ -14,29 +14,32 @@ POSITION_TRANSLATE = {
 }
 
 ATTR_TYPE_MAP = {
-    "atMeleeWeaponDamageBase": "weapon_damage_base",
-    "atMeleeWeaponDamageRand": "weapon_damage_rand",
     "atStrengthBase": "strength_base",
+    "atSurplusValueBase": "surplus_base",
+    "atStrainBase": "strain_base",
+    "atHasteBase": "haste_base",
     "atPhysicsAttackPowerBase": "physical_attack_power_base",
     "atPhysicsOvercomeBase": "physical_overcome_base",
     "atPhysicsCriticalStrike": "physical_critical_strike_base",
     "atPhysicsCriticalDamagePowerBase": "physical_critical_damage_base",
-    "atHasteBase": "haste_base",
-    "atSurplusValueBase": "surplus_base",
-    "atStrainBase": "strain_base"
+    "atMeleeWeaponDamageBase": "weapon_damage_base",
+    "atMeleeWeaponDamageRand": "weapon_damage_rand"
 }
+ATTR_TYPE_REVERSE = {v: k for k, v in ATTR_TYPE_MAP.items()}
 ATTR_TYPE_TRANSLATE = {
-    "weapon_damage_base": "基础武器伤害",
-    "weapon_damage_rand": "浮动武器伤害",
     "strength_base": "力道",
+    "surplus_base": "破招",
+    "strain_base": "无双",
+    "haste_base": "加速",
     "physical_attack_power_base": "外功攻击",
     "physical_critical_strike_base": "外功会心",
     "physical_critical_damage_base": "外功会效",
     "physical_overcome_base": "外功破防",
-    "haste_base": "加速",
-    "surplus_base": "破招",
-    "strain_base": "无双"
+    "weapon_damage_base": "基础武器伤害",
+    "weapon_damage_rand": "浮动武器伤害"
 }
+ATTR_TYPE_TRANSLATE_REVERSE = {v: k for k, v in ATTR_TYPE_TRANSLATE.items()}
+
 ATTR_MAP = {
     "Overcome": "破防",
     "Critical": "会心",
@@ -44,6 +47,25 @@ ATTR_MAP = {
     "Haste": "加速",
     "Surplus": "破招",
     "Strain": "无双"
+}
+
+ATTRIBUTE_MAP = {
+    "strength": "力道",
+    "surplus": "破招",
+    "base_strain": "无双等级",
+    "strain": "无双",
+    "base_haste": "加速等级",
+    "haste": "加速",
+    "base_physical_attack_power": "基础外功攻击",
+    "physical_attack_power": "外功攻击",
+    "base_physical_critical_strike": "外功会心等级",
+    "physical_critical_strike": "外功会心",
+    "base_physical_critical_damage": "外功会效等级",
+    "physical_critical_damage": "外功会效",
+    "base_physical_overcome": "外功破防等级",
+    "physical_overcome": "外功破防",
+    "weapon_damage_base": "基础武器伤害",
+    "weapon_damage_rand": "浮动武器伤害"
 }
 MAX_EMBED_ATTR = 3
 MAX_BASE_ATTR = 6

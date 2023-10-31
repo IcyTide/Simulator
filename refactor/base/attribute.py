@@ -43,7 +43,7 @@ class Target:
 
 @dataclass
 class Attribute:
-    target: Target
+    target: Target = None
 
     level: int = 120
     agility_base: int = 0
@@ -94,6 +94,12 @@ class Attribute:
     """ major attributes """
 
     def __post_init__(self):
+        self.agility_base += 41
+        self.spunk_base += 41
+        self.strength_base += 41
+        self.spirit_base += 41
+        if not self.target:
+            self.target = Target()
         self.grad_scale = {
             "agility_base": MAJOR_BASE,
             "spunk_base": MAJOR_BASE,

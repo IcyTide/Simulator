@@ -3,7 +3,7 @@ import os
 
 import requests
 
-from constant import *
+from ui.constant import *
 
 POSITION_MAP = {
     "hat": 3,
@@ -64,6 +64,7 @@ def get_equips_list(position):
     while res['pages'] > params['page']:
         params['page'] += 1
         res = requests.get(url, params=params).json()
+        result.extend(res['list'])
     return result
 
 
@@ -73,7 +74,7 @@ def get_enchants_list(position):
     params = enchant_params.copy()
     params['position'] = position
     res = requests.get(url, params=params)
-    result = [e for e in sorted(res.json(), key=lambda x: x['Attribute1Value1'], reverse=True) if
+    result = [e for e in sorted(res.json(), key=lambda x: x['Score'], reverse=True) if
               e['Attribute1ID'] in ATTR_TYPE_MAP]
     return result
 
@@ -91,13 +92,16 @@ def get_stones_list():
     while res['pages'] > params['page']:
         params['page'] += 1
         res = requests.get(url, params=params).json()
+        result.extend(res['list'])
+    result = [e for e in result if e['Attribute1ID'] in ATTR_TYPE_MAP and e['Attribute2ID'] in ATTR_TYPE_MAP and e[
+        'Attribute3ID'] in ATTR_TYPE_MAP]
     return result
 
 
 if __name__ == '__main__':
-    for position in POSITION_MAP:
-        json.dump(get_equips_list(position),
-                  open(os.path.join(EQUIPMENTS_DIR, f"{position}.json"), "w", encoding="utf-8"), ensure_ascii=False)
-        json.dump(get_enchants_list(position),
-                  open(os.path.join(ENCHANTS_DIR, f"{position}.json"), "w", encoding="utf-8"), ensure_ascii=False)
+    # for position in POSITION_MAP:
+    #     json.dump(get_equips_list(position),
+    #               open(os.path.join(EQUIPMENTS_DIR, f"{position}.json"), "w", encoding="utf-8"), ensure_ascii=False)
+    #     json.dump(get_enchants_list(position),
+    #               open(os.path.join(ENCHANTS_DIR, f"{position}.json"), "w", encoding="utf-8"), ensure_ascii=False)
     json.dump(get_stones_list(), open(STONES_DIR, "w", encoding="utf-8"), ensure_ascii=False)
