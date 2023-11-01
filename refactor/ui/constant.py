@@ -1,3 +1,6 @@
+from bei_ao_jue.gains import attribute_set_gain, dao_xiao_set_gain, shang_jiang_set_gain, dao_xiao_divine_gain, \
+    water_weapon_gain, xiang_wang_divine_gain, divine_effect, shang_jiang_divine_gain, wind_pendant_gain
+
 POSITION_TRANSLATE = {
     "帽子": "hat",
     "上衣": "jacket",
@@ -20,6 +23,7 @@ ATTR_TYPE_MAP = {
     "atHasteBase": "haste_base",
     "atPhysicsAttackPowerBase": "physical_attack_power_base",
     "atPhysicsOvercomeBase": "physical_overcome_base",
+    "atAllTypeCriticalStrike": "all_critical_strike_base",
     "atPhysicsCriticalStrike": "physical_critical_strike_base",
     "atPhysicsCriticalDamagePowerBase": "physical_critical_damage_base",
     "atMeleeWeaponDamageBase": "weapon_damage_base",
@@ -33,6 +37,7 @@ ATTR_TYPE_TRANSLATE = {
     "haste_base": "加速",
     "physical_attack_power_base": "外功攻击",
     "physical_critical_strike_base": "外功会心",
+    "all_critical_strike_base": "全会心",
     "physical_critical_damage_base": "外功会效",
     "physical_overcome_base": "外功破防",
     "weapon_damage_base": "基础武器伤害",
@@ -40,13 +45,25 @@ ATTR_TYPE_TRANSLATE = {
 }
 ATTR_TYPE_TRANSLATE_REVERSE = {v: k for k, v in ATTR_TYPE_TRANSLATE.items()}
 
-ATTR_MAP = {
+EQUIP_ATTR_MAP = {
     "Overcome": "破防",
     "Critical": "会心",
     "CriticalDamage": "会效",
     "Haste": "加速",
     "Surplus": "破招",
     "Strain": "无双"
+}
+STONE_ATTR_MAP = {
+    "atStrengthBase": "力道",
+    "atSurplusValueBase": "破招",
+    "atStrainBase": "无双",
+    "atHasteBase": "加速",
+    "atPhysicsAttackPowerBase": "攻击",
+    "atPhysicsCriticalStrike": "会心",
+    "atAllTypeCriticalStrike": "会心",
+    "atPhysicsCriticalDamagePowerBase": "会效",
+    "atPhysicsOvercomeBase": "破防",
+    "atMeleeWeaponDamageBase": "武器伤害",
 }
 
 ATTRIBUTE_MAP = {
@@ -77,15 +94,43 @@ MAX_EMBED_LEVEL = 8
 MAX_STRENGTH_LEVEL = 8
 MAX_STONE_LEVEL = 6
 
-EQUIPMENTS_DIR = "assets/equipments"
-ENCHANTS_DIR = "assets/enchants"
-STONES_DIR = "assets/stones.json"
+EQUIPMENTS_DIR = "ui/assets/equipments.json"
+ENCHANTS_DIR = "ui/assets/enchants.json"
+STONES_DIR = "ui/assets/stones.json"
 
 SPECIAL_ENCHANT_POSITIONS = ["hat", "jacket", "belt", "wrist", "shoes"]
 STONE_POSITIONS = ["primary_weapon"]
+WIND_PENDANT_SKILL_ID = "6800"
 
-BASE_ATTR = {
-
+GAINS_TRANSLATE = {
+    "1925": "朔气4%套装",
+    "4290": "刀啸风吟10%套装",
+    "4291": "上将军印10%套装",
+    "2401": "水特效 67 外功攻击",
+    "2498": "水特效 88 外功攻击",
+    "2540": "水特效 98 外功攻击",
+    "102": "风特效 6408 外功破防",
+    "109": "风特效 8330 外功破防",
+    "116": "风特效 9291 外功破防",
+    "4294": "刀啸风吟5%橙武",
+    "4295": "项王击鼎5%橙武",
+    "2430": "橙武特效",
+    "1942": "上将军印-神兵"
+}
+GAINS_MAP = {
+    "1925": attribute_set_gain,
+    "4290": dao_xiao_set_gain,
+    "4291": shang_jiang_set_gain,
+    "2401": water_weapon_gain(67),
+    "2498": water_weapon_gain(88),
+    "2540": water_weapon_gain(98),
+    "102": wind_pendant_gain(6408),
+    "109": wind_pendant_gain(8330),
+    "116": wind_pendant_gain(9291),
+    "4294": dao_xiao_divine_gain,
+    "4295": xiang_wang_divine_gain,
+    "2430": divine_effect,
+    "1942": shang_jiang_divine_gain
 }
 
 

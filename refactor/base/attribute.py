@@ -2,7 +2,6 @@ from dataclasses import dataclass
 
 from .constant import *
 
-
 """
     TODO: add update func to replace property
 """
@@ -46,6 +45,8 @@ class Attribute:
     target: Target = None
 
     level: int = 120
+    all_major_base: int = 0
+    all_major_gain: int = 0
     agility_base: int = 0
     agility_gain: float = 0
     strength_base: int = 0
@@ -66,14 +67,20 @@ class Attribute:
     physical_attack_power_gain: float = 0
     magical_attack_power_base: int = 0
     magical_attack_power_gain: float = 0
+
+    all_critical_strike_base: int = 0
+    all_critical_strike_gain: float = 0
     physical_critical_strike_base: int = 0
     physical_critical_strike_gain: float = 0
     magical_critical_strike_base: int = 0
     magical_critical_strike_gain: float = 0
+
+    all_critical_damage_gain: float = 0
     physical_critical_damage_base: int = 0
     physical_critical_damage_gain: float = 0
     magical_critical_damage_base: int = 0
     magical_critical_damage_gain: float = 0
+
     physical_overcome_base: int = 0
     physical_overcome_gain: float = 0
     magical_overcome_base: int = 0
@@ -94,10 +101,6 @@ class Attribute:
     """ major attributes """
 
     def __post_init__(self):
-        self.agility_base += 41
-        self.spunk_base += 41
-        self.strength_base += 41
-        self.spirit_base += 41
         if not self.target:
             self.target = Target()
         self.grad_scale = {
@@ -121,24 +124,41 @@ class Attribute:
         self.grad_attrs = []
 
     @property
+    def base_agility(self):
+        return self.agility_base + self.all_major_base
+
+    @property
     def agility(self):
-        return self.agility_base + self.agility_base * self.agility_gain
+        return self.base_agility + self.base_agility * (self.agility_gain + self.all_major_gain)
+
+    @property
+    def base_spunk(self):
+        return self.spunk_base + self.all_major_base
 
     @property
     def spunk(self):
-        return self.spunk_base + self.spunk_base * self.spunk_gain
+        return self.base_spunk + self.base_spunk * (self.spunk_gain + self.all_major_gain)
+
+    @property
+    def base_strength(self):
+        return self.strength_base + self.all_major_base
 
     @property
     def strength(self):
-        return self.strength_base + self.strength_base * self.strength_gain
+        return self.base_strength + self.base_strength * (self.strength_gain + self.all_major_gain)
+
+    @property
+    def base_spirit(self):
+        return self.spirit + self.all_major_base
 
     @property
     def spirit(self):
-        return self.spirit_base + self.spirit_base * self.spirit_gain
+        return self.base_spirit + self.base_spirit * (self.spirit_gain + self.all_major_gain)
 
     @property
     def major(self):
         raise NotImplementedError
+
     """ minor attributes """
 
     @property
@@ -195,7 +215,8 @@ class Attribute:
 
     @property
     def base_physical_critical_strike(self):
-        return self.physical_critical_strike_base + self.agility * AGILITY_TO_CRITICAL_STRIKE
+        return self.physical_critical_strike_base + self.all_critical_strike_base + \
+               self.agility * AGILITY_TO_CRITICAL_STRIKE
 
     @property
     def final_physical_critical_strike(self):
@@ -203,11 +224,12 @@ class Attribute:
 
     @property
     def physical_critical_strike(self):
-        return self.final_physical_critical_strike + self.physical_critical_strike_gain
+        return self.final_physical_critical_strike + self.physical_critical_strike_gain + self.all_critical_strike_gain
 
     @property
     def base_magical_critical_strike(self):
-        return self.magical_critical_strike_base + self.spirit * SPIRIT_TO_CRITICAL_STRIKE
+        return self.magical_critical_strike_base + self.all_critical_strike_base + \
+               self.spirit * SPIRIT_TO_CRITICAL_STRIKE
 
     @property
     def final_magical_critical_strike(self):
@@ -215,7 +237,7 @@ class Attribute:
 
     @property
     def magical_critical_strike(self):
-        return self.final_magical_critical_strike + self.magical_critical_strike_gain
+        return self.final_magical_critical_strike + self.magical_critical_strike_gain + self.all_critical_strike_gain
 
     @property
     def critical_strike(self):
@@ -231,7 +253,8 @@ class Attribute:
 
     @property
     def physical_critical_damage(self):
-        return CRITICAL_DAMAGE_BASE + self.final_physical_critical_damage + self.physical_critical_damage_gain
+        return CRITICAL_DAMAGE_BASE + self.final_physical_critical_damage + self.physical_critical_damage_gain + \
+               self.all_critical_damage_gain
 
     @property
     def base_magical_critical_damage(self):
@@ -243,7 +266,8 @@ class Attribute:
 
     @property
     def magical_critical_damage(self):
-        return CRITICAL_DAMAGE_BASE + self.final_magical_critical_damage + self.magical_critical_damage_gain
+        return CRITICAL_DAMAGE_BASE + self.final_magical_critical_damage + self.magical_critical_damage_gain + \
+               self.all_critical_damage_gain
 
     @property
     def critical_damage(self):

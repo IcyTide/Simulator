@@ -4,6 +4,7 @@ from ui.components.equipment import build_equipment
 
 if __name__ == '__main__':
     with gr.Blocks() as app:
-        build_equipment()
+        with gr.Tab("配装"):
+            build_equipment()
     app.queue()
     app.launch()

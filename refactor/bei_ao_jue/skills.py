@@ -444,6 +444,20 @@ class XiangQiShi(Skill):
         self.status.skills["降麒式-持续"].cast()
 
 
+class ShangJiangJunYinDivine(Skill):
+    def __init__(self):
+        super(ShangJiangJunYinDivine, self).__init__()
+        self.name = "上将军印-神兵"
+
+        self.is_cast = False
+
+        self.probability = 0.1
+
+        self.base_damage_base = 20
+        self.rand_damage_base = 2
+        self.attack_power_cof_base = ATTACK_POWER_COF(25)
+
+
 skills = [ShuangFengDaoFa(), XiuMingChenShen(), SongYanZhuWu(), XueXuJinPing(), LeiZouFengQie(),
           ShangJiangJunYin(), PoFuChenZhou(), PoFuChenZhouSurplus(),
           NaoXuMiDot(), NaoXuMi(), QinLongLiuZhan(), QinLongLiuZhanSurplus(), JingYanShi(), ZhuYingShi(),

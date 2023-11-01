@@ -54,10 +54,10 @@ enchant_params = {
 
 
 def get_equips_list(position):
-    position = POSITION_MAP[position]
-    url = f"https://node.jx3box.com/equip/{SUFFIX_MAP[position]}"
+    position_id = POSITION_MAP[position]
+    url = f"https://node.jx3box.com/equip/{SUFFIX_MAP[position_id]}"
     params = equip_params.copy()
-    params['position'] = position
+    params['position'] = position_id
     result = []
     res = requests.get(url, params=params).json()
     result.extend(res['list'])
@@ -65,17 +65,40 @@ def get_equips_list(position):
         params['page'] += 1
         res = requests.get(url, params=params).json()
         result.extend(res['list'])
+
+    def get_equip_name(row):
+        name = row['Name']
+        attrs = " ".join([EQUIP_ATTR_MAP[attr] for attr in EQUIP_ATTR_MAP if attr in row['_Attrs']])
+        level = row['Level']
+        return f"{name} ({attrs}) {level}"
+
+    for e in result:
+        e['index'] = get_equip_name(e)
+        e['position'] = position
+
     return result
 
 
 def get_enchants_list(position):
-    position = POSITION_MAP[position]
+    position_id = POSITION_MAP[position]
     url = f"https://node.jx3box.com/enchant/primary"
     params = enchant_params.copy()
-    params['position'] = position
+    params['position'] = position_id
     res = requests.get(url, params=params)
     result = [e for e in sorted(res.json(), key=lambda x: x['Score'], reverse=True) if
               e['Attribute1ID'] in ATTR_TYPE_MAP]
+
+    def get_enchant_name(row):
+        if not row:
+            return ""
+        name = row['Name']
+        attr = row['AttriName']
+        return f"{name} {attr}"
+
+    for e in result:
+        e['index'] = get_enchant_name(e)
+        e['position'] = position
+
     return result
 
 
@@ -95,13 +118,26 @@ def get_stones_list():
         result.extend(res['list'])
     result = [e for e in result if e['Attribute1ID'] in ATTR_TYPE_MAP and e['Attribute2ID'] in ATTR_TYPE_MAP and e[
         'Attribute3ID'] in ATTR_TYPE_MAP]
+
+    def get_stone_name(row):
+        name = row['Name']
+        attrs = " ".join([STONE_ATTR_MAP[attr] for attr in row['_Attrs'] if attr in STONE_ATTR_MAP])
+        return f"{name} ({attrs})"
+
+    for e in result:
+        e['index'] = get_stone_name(e)
+
     return result
 
 
 if __name__ == '__main__':
+    # equip_list = []
+    # enchant_list = []
     # for position in POSITION_MAP:
-    #     json.dump(get_equips_list(position),
-    #               open(os.path.join(EQUIPMENTS_DIR, f"{position}.json"), "w", encoding="utf-8"), ensure_ascii=False)
-    #     json.dump(get_enchants_list(position),
-    #               open(os.path.join(ENCHANTS_DIR, f"{position}.json"), "w", encoding="utf-8"), ensure_ascii=False)
+    #     equip_list.extend(get_equips_list(position))
+    #     enchant_list.extend(get_enchants_list(position))
+    # json.dump(equip_list,
+    #           open(EQUIPMENTS_DIR, "w", encoding="utf-8"), ensure_ascii=False)
+    # json.dump(enchant_list,
+    #           open(ENCHANTS_DIR, "w", encoding="utf-8"), ensure_ascii=False)
     json.dump(get_stones_list(), open(STONES_DIR, "w", encoding="utf-8"), ensure_ascii=False)

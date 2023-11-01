@@ -6,8 +6,9 @@ from base.attribute import Attribute, Target
 class BeiAoJue(Attribute):
     def __init__(self, *args, **kwargs):
         super(BeiAoJue, self).__init__(*args, **kwargs)
+        self.all_major_base += 41
         self.physical_attack_power_base += 3725
-        self.pve_addition = 0.09
+        self.pve_addition += 0.09
 
         # self.grad_attrs = ['strength_base', 'surplus_base', 'strain_base', 'physical_attack_power_base',
         #                    'physical_critical_strike_base', 'physical_critical_damage_base',

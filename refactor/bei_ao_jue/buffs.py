@@ -22,25 +22,6 @@ class ShuoQi(Buff):
         self.status.attribute.physical_critical_damage_gain -= 0.04
 
 
-class WaterWeapon(Buff):
-    def __init__(self):
-        super(WaterWeapon, self).__init__()
-        self.name = "水特效"
-
-        self.duration = 10 * 16
-        self.duration_max = self.duration
-
-        self.stack_max = 10
-
-    def add(self):
-        super(WaterWeapon, self).add()
-        self.status.attribute.physical_attack_power_base += 200
-
-    def remove(self):
-        super(WaterWeapon, self).remove()
-        self.status.attribute.physical_attack_power_base -= 200
-
-
 class XiuMingChenShen(Buff):
     def __init__(self):
         super(XiuMingChenShen, self).__init__()
