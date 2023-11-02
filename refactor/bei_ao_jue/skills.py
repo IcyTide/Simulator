@@ -223,9 +223,9 @@ class JingYanShi(Skill):
         super(JingYanShi, self).pre_cast()
         self.status.cds["擒龙六斩"] = self.cd
 
-    def post_damage(self):
+    def post_hit(self):
         self.attack_power_cof_gain += 0.25
-        super(JingYanShi, self).post_damage()
+        super(JingYanShi, self).post_hit()
 
     def post_cast(self):
         self.attack_power_cof_gain -= 0.25 * self.count
@@ -257,9 +257,9 @@ class ZhuYingShi(Skill):
         super(ZhuYingShi, self).pre_cast()
         self.status.cds["擒龙六斩"] += self.cd
 
-    def post_damage(self):
+    def post_hit(self):
         self.attack_power_cof_gain += 0.5
-        super(ZhuYingShi, self).post_damage()
+        super(ZhuYingShi, self).post_hit()
 
     def post_cast(self):
         self.activate = False

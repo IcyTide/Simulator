@@ -1,5 +1,7 @@
 from bei_ao_jue.gains import attribute_set_gain, dao_xiao_set_gain, shang_jiang_set_gain, dao_xiao_divine_gain, \
     water_weapon_gain, xiang_wang_divine_gain, divine_effect, shang_jiang_divine_gain, wind_pendant_gain
+from general.gains import special_enchant_hat_gain, special_enchant_jacket_gain, special_enchant_belt_gain, \
+    special_enchant_wrist_gain, special_enchant_shoes_gain
 
 POSITION_TRANSLATE = {
     "帽子": "hat",
@@ -97,21 +99,53 @@ MAX_STONE_LEVEL = 6
 EQUIPMENTS_DIR = "ui/assets/equipments.json"
 ENCHANTS_DIR = "ui/assets/enchants.json"
 STONES_DIR = "ui/assets/stones.json"
+EQUIPS_CONFIG_DIR = "ui/config/equips.json"
 
-SPECIAL_ENCHANT_POSITIONS = ["hat", "jacket", "belt", "wrist", "shoes"]
 STONE_POSITIONS = ["primary_weapon"]
 WIND_PENDANT_SKILL_ID = "6800"
+
+
+SPECIAL_ENCHANT_MAP = {
+    "hat": {
+        12800: "15436-11",
+        11500: "15436-10",
+        10600: "15436-9"
+    },
+    "jacket": {
+        12800: "22151-11",
+        11500: "22151-10",
+        10600: "22151-9"
+    },
+    "belt": {
+        0: "22169"
+    },
+    "wrist": {
+        0: "22166"
+    },
+    "shoes": {
+        0: "33247"
+    },
+}
 
 GAINS_TRANSLATE = {
     "1925": "朔气4%套装",
     "4290": "刀啸风吟10%套装",
     "4291": "上将军印10%套装",
-    "2401": "水特效 67 外功攻击",
-    "2498": "水特效 88 外功攻击",
-    "2540": "水特效 98 外功攻击",
-    "102": "风特效 6408 外功破防",
-    "109": "风特效 8330 外功破防",
-    "116": "风特效 9291 外功破防",
+    "2401": "水特效 67 外攻",
+    "2498": "水特效 88 外攻",
+    "2540": "水特效 98 外攻",
+    "15436-9": "大附魔头 822 破防",
+    "15436-10": "大附魔头 999 破防",
+    "15436-11": "大附魔头 1098 破防",
+    "22151-9": "大附魔衣 442/371 内/外攻",
+    "22151-10": "大附魔衣 538/450 内/外攻",
+    "22151-11": "大附魔衣 591/495 内/外攻",
+    "22169": "大附魔腰",
+    "22166": "大附魔手",
+    "33247": "大附魔脚",
+    "6800-102": "风特效 6408 外破",
+    "6800-109": "风特效 8330 外破",
+    "6800-116": "风特效 9291 外破",
     "4294": "刀啸风吟5%橙武",
     "4295": "项王击鼎5%橙武",
     "2430": "橙武特效",
@@ -121,12 +155,21 @@ GAINS_MAP = {
     "1925": attribute_set_gain,
     "4290": dao_xiao_set_gain,
     "4291": shang_jiang_set_gain,
+    "15436-9": special_enchant_hat_gain(822),
+    "15436-10": special_enchant_hat_gain(999),
+    "15436-11": special_enchant_hat_gain(1098),
+    "22151-9": special_enchant_jacket_gain(442, 371),
+    "22151-10": special_enchant_jacket_gain(538, 450),
+    "22151-11": special_enchant_jacket_gain(591, 495),
+    "22169": special_enchant_belt_gain,
+    "22166": special_enchant_wrist_gain,
+    "33247": special_enchant_shoes_gain,
     "2401": water_weapon_gain(67),
     "2498": water_weapon_gain(88),
     "2540": water_weapon_gain(98),
-    "102": wind_pendant_gain(6408),
-    "109": wind_pendant_gain(8330),
-    "116": wind_pendant_gain(9291),
+    "6800-102": wind_pendant_gain(6408),
+    "6800-109": wind_pendant_gain(8330),
+    "6800-116": wind_pendant_gain(9291),
     "4294": dao_xiao_divine_gain,
     "4295": xiang_wang_divine_gain,
     "2430": divine_effect,

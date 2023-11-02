@@ -52,7 +52,7 @@ class Status:
                 damage_skills.append(skill)
         for skill in damage_skills:
             self.intervals.pop(skill)
-            self.skills[skill].damage()
+            self.skills[skill].hit()
 
         recharge_skills = []
         for skill, cd in self.cds.items():

@@ -45,7 +45,7 @@ def shuang_tian(status: Status):
 
         self.weapon_damage_cof_gain -= 0.15 * min(4, count)
 
-    status.skills["上将军印"].post_damage_effect.append(shuang_tian_post_damage)
+    status.skills["上将军印"].post_hit_effect.append(shuang_tian_post_damage)
     status.skills["上将军印"].post_cast_effect.append(shuang_tian_post_cast)
 
 
@@ -60,7 +60,7 @@ def han_feng(status: Status):
     def han_feng_post_damage(self: Skill):
         self.status.buffs["含风"].refresh()
 
-    status.skills["刀啸风吟"].post_damage_effect.append(han_feng_post_damage)
+    status.skills["刀啸风吟"].post_hit_effect.append(han_feng_post_damage)
 
 
 def fen_jiang(status: Status):
@@ -88,7 +88,7 @@ def chu_ge(status: Status):
     related_skills = ["霜风刀法", "雷走风切", "上将军印", "破釜沉舟", "坚壁清野-持续",
                       "坚壁清野", "刀啸风吟", "惊燕式", "逐鹰式", "降麒式-持续"]
     for skill in related_skills:
-        status.skills[skill].post_damage_effect.append(chu_ge_post_damage)
+        status.skills[skill].post_hit_effect.append(chu_ge_post_damage)
 
 
 def jue_qi(status: Status):
@@ -101,7 +101,7 @@ def jue_qi(status: Status):
     related_skills = ["霜风刀法", "雷走风切", "上将军印", "破釜沉舟", "坚壁清野-持续",
                       "坚壁清野", "刀啸风吟", "惊燕式", "逐鹰式", "降麒式-持续"]
     for skill in related_skills:
-        status.skills[skill].post_damage_effect.append(jue_qi_post_damage)
+        status.skills[skill].post_hit_effect.append(jue_qi_post_damage)
 
 
 def zhong_yan(status: Status):

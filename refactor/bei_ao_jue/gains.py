@@ -43,11 +43,11 @@ def water_weapon_gain(value):
 
         status.buffs["水特效"].value = value
 
-        def water_weapon_post_damage(self: Skill):
+        def water_weapon_post_hit(self: Skill):
             self.status.buffs["水特效"].trigger()
 
         for skill in related_skills:
-            status.skills[skill].post_damage_effect.append(water_weapon_post_damage)
+            status.skills[skill].post_hit_effect.append(water_weapon_post_hit)
 
     return inner
 
@@ -57,3 +57,4 @@ def wind_pendant_gain(value):
         status.buffs["风特效"].value = value
 
     return inner
+
