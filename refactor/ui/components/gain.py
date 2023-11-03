@@ -1,13 +1,19 @@
 import random
+from dataclasses import dataclass
 from functools import cached_property, cache
 
 
 # import gradio as gr
 
 
-class C:
-    def __init__(self):
-        self.a = 3
+@dataclass
+class P:
+    MAP = {
+        1: 2,
+        2: 3
+    }
+    a: int = 1
+    b: int = MAP[a]
 
     @property
     def p1(self):
@@ -16,7 +22,7 @@ class C:
     @p1.setter
     def p1(self, a):
         self.a = a
-        delattr(self, "p3")
+        delattr(self, "p2")
 
     @cached_property
     def p2(self):
@@ -24,14 +30,12 @@ class C:
 
     @cached_property
     def p3(self):
-        print(self.p2)
         return self.p2 + random.random()
 
 
-c = C()
-
-print(c.p3)
-print(c.p3)
-c.p1 += 3
-print(c.p3)
-print(c.p3)
+c = P(a=2)
+print(c.p2)
+print(c.p2)
+c.p1 = 3
+print(c.p2)
+print(c.p2)

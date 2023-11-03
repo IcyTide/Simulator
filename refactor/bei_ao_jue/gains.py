@@ -3,12 +3,12 @@ from base.status import Status
 
 
 def dao_xiao_set_gain(status: Status):
-    status.skills["刀啸风吟"].damage_addition_gain += 0.1
+    status.skills["刀啸风吟"].skill_damage_addition += 0.1
 
 
 def shang_jiang_set_gain(status: Status):
-    status.skills["上将军印"].damage_addition_gain += 0.1
-    status.skills["见尘"].damage_addition_gain += 0.1
+    status.skills["上将军印"].skill_damage_addition += 0.1
+    status.skills["见尘"].skill_damage_addition += 0.1
 
 
 def attribute_set_gain(status: Status):
@@ -22,7 +22,7 @@ def attribute_set_gain(status: Status):
 
 
 def dao_xiao_divine_gain(status: Status):
-    status.skills["刀啸风吟"].damage_addition_gain += 0.05
+    status.skills["刀啸风吟"].skill_damage_addition += 0.05
 
 
 def xiang_wang_divine_gain(status: Status):
@@ -58,3 +58,5 @@ def wind_pendant_gain(value):
 
     return inner
 
+
+gains = [dao_xiao_set_gain, shang_jiang_set_gain, attribute_set_gain]

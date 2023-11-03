@@ -20,27 +20,27 @@ POSITION_TRANSLATE = {
 
 ATTR_TYPE_MAP = {
     "atStrengthBase": "strength_base",
-    "atSurplusValueBase": "surplus_base",
+    "atSurplusValueBase": "surplus",
     "atStrainBase": "strain_base",
     "atHasteBase": "haste_base",
     "atPhysicsAttackPowerBase": "physical_attack_power_base",
     "atPhysicsOvercomeBase": "physical_overcome_base",
     "atAllTypeCriticalStrike": "all_critical_strike_base",
     "atPhysicsCriticalStrike": "physical_critical_strike_base",
-    "atPhysicsCriticalDamagePowerBase": "physical_critical_damage_base",
+    "atPhysicsCriticalDamagePowerBase": "physical_critical_power_base",
     "atMeleeWeaponDamageBase": "weapon_damage_base",
     "atMeleeWeaponDamageRand": "weapon_damage_rand"
 }
 ATTR_TYPE_REVERSE = {v: k for k, v in ATTR_TYPE_MAP.items()}
 ATTR_TYPE_TRANSLATE = {
     "strength_base": "力道",
-    "surplus_base": "破招",
+    "surplus": "破招",
     "strain_base": "无双",
     "haste_base": "加速",
     "physical_attack_power_base": "外功攻击",
     "physical_critical_strike_base": "外功会心",
     "all_critical_strike_base": "全会心",
-    "physical_critical_damage_base": "外功会效",
+    "physical_critical_power_base": "外功会效",
     "physical_overcome_base": "外功破防",
     "weapon_damage_base": "基础武器伤害",
     "weapon_damage_rand": "浮动武器伤害"
@@ -71,17 +71,18 @@ STONE_ATTR_MAP = {
 ATTRIBUTE_MAP = {
     "strength": "力道",
     "surplus": "破招",
-    "base_strain": "无双等级",
+    "strain_base": "无双等级",
     "strain": "无双",
-    "base_haste": "加速等级",
+    "haste_base": "加速等级",
     "haste": "加速",
     "base_physical_attack_power": "基础外功攻击",
     "physical_attack_power": "外功攻击",
     "base_physical_critical_strike": "外功会心等级",
     "physical_critical_strike": "外功会心",
-    "base_physical_critical_damage": "外功会效等级",
-    "physical_critical_damage": "外功会效",
-    "base_physical_overcome": "外功破防等级",
+    "physical_critical_power_base": "外功会效等级",
+    "physical_critical_power": "外功会效",
+    "base_physical_overcome": "基础外功破防",
+    "final_physical_overcome": "最终外功破防",
     "physical_overcome": "外功破防",
     "weapon_damage_base": "基础武器伤害",
     "weapon_damage_rand": "浮动武器伤害"

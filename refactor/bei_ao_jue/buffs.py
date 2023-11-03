@@ -8,18 +8,18 @@ class ShuoQi(Buff):
 
         self.probability = 0.1
 
-        self.duration = 4 * 16
+        self.duration = 6 * 16
         self.duration_max = self.duration
 
     def add(self):
         super(ShuoQi, self).add()
         self.status.attribute.physical_critical_strike_gain += 0.04
-        self.status.attribute.physical_critical_damage_gain += 0.04
+        self.status.attribute.physical_critical_power_gain += 0.04
 
     def remove(self):
         super(ShuoQi, self).remove()
         self.status.attribute.physical_critical_strike_gain -= 0.04
-        self.status.attribute.physical_critical_damage_gain -= 0.04
+        self.status.attribute.physical_critical_power_gain -= 0.04
 
 
 class XiuMingChenShen(Buff):
@@ -50,7 +50,7 @@ class XueXuJinPing(Buff):
 class NaoXuMiDot(Buff):
     def __init__(self):
         super(NaoXuMiDot, self).__init__()
-        self.name = "闹须弥-持续"
+        self.name = "闹须弥·持续"
 
         self.is_dot = True
 
@@ -58,7 +58,7 @@ class NaoXuMiDot(Buff):
 class JianBiQingYeDot(Buff):
     def __init__(self):
         super(JianBiQingYeDot, self).__init__()
-        self.name = "坚壁清野-持续"
+        self.name = "坚壁清野·持续"
 
         self.is_dot = True
 
@@ -75,13 +75,13 @@ class ChuGe(Buff):
 
     def remove(self):
         super(ChuGe, self).remove()
-        self.status.buffs["楚歌-计数"].clear()
+        self.status.buffs["楚歌·计数"].clear()
 
 
 class ChuGeCount(Buff):
     def __init__(self):
         super(ChuGeCount, self).__init__()
-        self.name = "楚歌-计数"
+        self.name = "楚歌·计数"
 
         self.duration = 6 * 16
         self.duration_max = self.duration
@@ -123,14 +123,14 @@ class HanFeng(Buff):
     def add(self):
         super(HanFeng, self).add()
         self.status.attribute.physical_critical_strike_gain += 0.05
-        self.status.attribute.physical_critical_damage_gain += 0.05
+        self.status.attribute.physical_critical_power_gain += 0.05
         for skill in self.related_skills:
             self.status.skills[skill].damage_addition_gain += 0.05
 
     def remove(self):
         super(HanFeng, self).remove()
         self.status.attribute.physical_critical_strike_gain -= 0.05
-        self.status.attribute.physical_critical_damage_gain -= 0.05
+        self.status.attribute.physical_critical_power_gain -= 0.05
         for skill in self.related_skills:
             self.status.skills[skill].damage_addition_gain -= 0.05
 
@@ -138,7 +138,7 @@ class HanFeng(Buff):
 class XiangQiCount(Buff):
     def __init__(self):
         super(XiangQiCount, self).__init__()
-        self.name = "降麒式-计数"
+        self.name = "降麒式·计数"
 
         self.stack_max = 6
 
@@ -146,13 +146,13 @@ class XiangQiCount(Buff):
         super(XiangQiCount, self).add()
         if self.status.stacks[self.name] == 6:
             self.clear()
-            self.status.buffs["降麒式-就绪"].trigger()
+            self.status.buffs["降麒式·就绪"].trigger()
 
 
 class XiangQiReady(Buff):
     def __init__(self):
         super(XiangQiReady, self).__init__()
-        self.name = "降麒式-就绪"
+        self.name = "降麒式·就绪"
 
         self.duration = 15 * 16
         self.duration_max = self.duration
@@ -169,7 +169,7 @@ class XiangQiReady(Buff):
 class XiangQiDot(Buff):
     def __init__(self):
         super(XiangQiDot, self).__init__()
-        self.name = "降麒式-持续"
+        self.name = "降麒式·持续"
 
         self.is_dot = True
 
@@ -184,14 +184,14 @@ class XiangQiShi(Buff):
 
     def add(self):
         super(XiangQiShi, self).add()
-        self.status.buffs["降麒式-计数"].clear()
-        self.status.buffs["降麒式-就绪"].clear()
+        self.status.buffs["降麒式·计数"].clear()
+        self.status.buffs["降麒式·就绪"].clear()
         self.status.attribute.damage_addition += 0.2
 
     def remove(self):
         self.status.attribute.damage_addition -= 0.2
 
 
-buffs = [WaterWeapon(), ShuoQi(),
+buffs = [ShuoQi(),
          XiuMingChenShen(), SongYanZhuWu(), XueXuJinPing(), NaoXuMiDot(), JianBiQingYeDot(), ChuGe(), ChuGeCount(),
          JianChen(), HanFeng(), XiangQiCount(), XiangQiReady(), XiangQiDot(), XiangQiShi()]

@@ -21,9 +21,8 @@ class Status:
 
         for skill in skills:
             self.skills[skill.name] = skill
-
-            self.energies[skill.name] = skill.energy
-            self.counts[skill.name] = 0
+            if skill.is_cast:
+                self.energies[skill.name] = skill.energy
 
         self.buffs = {}
         self.durations = {}
@@ -32,10 +31,7 @@ class Status:
         for buff in buffs:
             self.buffs[buff.name] = buff
 
-            self.stacks[buff.name] = 0
-
         self.current_frame = 0
-        self.total_damage = 0
         self.event_seq = event_seq
 
     def timer(self, gap=1):
@@ -51,7 +47,6 @@ class Status:
             if not self.intervals[skill]:
                 damage_skills.append(skill)
         for skill in damage_skills:
-            self.intervals.pop(skill)
             self.skills[skill].hit()
 
         recharge_skills = []
@@ -60,7 +55,6 @@ class Status:
             if not self.cds[skill]:
                 recharge_skills.append(skill)
         for skill in recharge_skills:
-            self.cds.pop(skill)
             self.skills[skill].ready()
 
         expire_buffs = []
@@ -69,7 +63,6 @@ class Status:
             if not self.durations[buff]:
                 expire_buffs.append(buff)
         for buff in expire_buffs:
-            self.durations.pop(buff)
             self.buffs[buff].clear()
 
     def record(self, name, event, damage):

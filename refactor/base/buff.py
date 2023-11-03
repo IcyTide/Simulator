@@ -69,40 +69,45 @@ class Buff:
                 self.status.cds[self.name] = self.cd
 
     def refresh(self):
-        stack = min(self.stack_max - self.status.stacks[self.name], self.stack_add)
-        if stack:
-            self.status.stacks[self.name] += stack
+        if stack := self.status.stacks.get(self.name, 0):
+            stack = min(self.stack_max - stack, self.stack_add)
+        else:
+            stack = self.stack_add
+            self.status.stacks[self.name] = 0
 
-            for _ in range(stack):
-                self.add()
+        self.status.stacks[self.name] += stack
+
+        for _ in range(stack):
+            self.add()
 
         if self.is_dot:
             if self.name in self.status.intervals:
-                self.status.durations[self.name] = self.status.intervals[self.name] + \
-                                                   sum(self.status.skills[self.name].intervals[1:])
+                duration = self.status.intervals[self.name].duration - self.status.intervals[self.name].interval
+                self.status.durations[self.name] += duration
             else:
-                self.status.durations[self.name] = sum(self.status.skills[self.name].intervals)
+                self.status.durations[self.name] = self.status.skills[self.name].duration
         else:
             self.status.durations[self.name] = min(self.duration_max, self.duration)
 
     def consume(self):
-        stack = self.stack_remove
+        if stack := self.status.stacks.get(self.name, 0):
+            stack = min(stack, self.stack_remove)
 
-        stack = min(stack, self.status.stacks[self.name])
-        self.status.stacks[self.name] -= stack
+            self.status.stacks[self.name] -= stack
 
-        if stack:
             for _ in range(stack):
                 self.remove()
 
             if not self.status.stacks[self.name]:
+                self.status.stacks.pop(self.name)
                 self.status.durations.pop(self.name)
 
     def clear(self):
-        for _ in range(self.status.stacks[self.name]):
-            self.remove()
+        if stack := self.status.stacks.get(self.name, 0):
+            for _ in range(stack):
+                self.remove()
 
-        self.status.stacks[self.name] = 0
+            self.status.stacks.pop(self.name)
 
         if self.name in self.status.durations:
             self.status.durations.pop(self.name)

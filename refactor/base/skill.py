@@ -1,18 +1,27 @@
 import random
 from dataclasses import dataclass
+from functools import cache, cached_property
 
+from base.damage import hit_damage, critical_damage
 from base.status import Status
 
 
 @dataclass
 class Snapshot:
-    attack_power: float = 0
-    critical_strike: float = 0
-    critical_damage: int = 0
+    physical_attack_power: float = 0
+    magical_attack_power: float = 0
+
+    physical_critical_strike: float = 0
+    magical_critical_strike: float = 0
+    physical_critical_power: float = 0
+    magical_critical_power: float = 0
     strain: float = 0
     haste: float = 0
-
     damage_addition: float = 0
+
+    skill_critical_strike: float = 0
+    skill_critical_power: float = 0
+    skill_damage_addition: float = 0
 
 
 @dataclass
@@ -26,7 +35,6 @@ class Skill:
     is_instant: bool = False
     is_snapshot: bool = False
 
-    snapshot: Snapshot = None
     gcd_index: int = 0
 
     probability: float = 0
@@ -39,15 +47,15 @@ class Skill:
 
     pre_cast_effect: list = None
     post_cast_effect: list = None
-    pre_damage_effect: list = None
-    post_damage_effect: list = None
+    critical_hit_effect: list = None
+    pre_hit_effect: list = None
+    post_hit_effect: list = None
 
-    base_damage_base: float = 0
-    rand_damage_base: float = 0
-
-    attack_power_cof_base: float = 0
-    weapon_damage_cof_base: float = 0
-    surplus_cof_base: float = 0
+    base_damage: float = 0
+    rand_damage: float = 0
+    attack_power_cof: float = 0
+    weapon_damage_cof: float = 0
+    surplus_cof: float = 0
 
     base_damage_gain: float = 0
     rand_damage_gain: float = 0
@@ -55,81 +63,61 @@ class Skill:
     weapon_damage_cof_gain: float = 0
     surplus_cof_gain: float = 0
 
-    damage_addition_gain: float = 0
-    shield_ignore_base: float = 0
-    shield_ignore_gain: float = 0
-    critical_strike_gain: float = 0
-    critical_damage_gain: float = 0
+    skill_damage_addition: float = 0
+    skill_pve_addition: float = 0
+    skill_shield_ignore_base: float = 0
+    skill_shield_ignore_gain: float = 0
+    skill_critical_strike: float = 0
+    skill_critical_power: float = 0
+
+    snapshot: [Snapshot, "Skill"] = None
 
     def __post_init__(self):
         self.pre_cast_effect = []
         self.post_cast_effect = []
-        self.pre_damage_effect = []
-        self.post_damage_effect = []
+        self.pre_hit_effect = []
+        self.critical_hit_effect = []
+        self.post_hit_effect = []
+
+        self.snapshot = self
 
     """ attributes """
 
     @property
-    def base_damage(self):
-        return self.base_damage_base + self.base_damage_base * self.base_damage_gain
+    def physical_attack_power(self):
+        return self.status.attribute.physical_attack_power
 
     @property
-    def rand_damage(self):
-        return self.rand_damage_base + self.rand_damage_base * self.rand_damage_gain
+    def magical_attack_power(self):
+        return self.status.attribute.magical_attack_power
 
     @property
-    def attack_power_cof(self):
-        return self.attack_power_cof_base + self.attack_power_cof_base * self.attack_power_cof_gain
+    def physical_critical_strike(self):
+        return self.status.attribute.physical_critical_strike
 
     @property
-    def weapon_damage_cof(self):
-        return self.weapon_damage_cof_base + self.weapon_damage_cof_base * self.weapon_damage_cof_gain
+    def magical_critical_strike(self):
+        return self.status.attribute.magical_critical_strike
 
     @property
-    def surplus_cof(self):
-        return self.surplus_cof_base + self.surplus_cof_base * self.surplus_cof_gain
+    def physical_critical_power(self):
+        return self.status.attribute.physical_critical_power
 
     @property
-    def attack_power(self):
-        if self.snapshot:
-            return self.snapshot.attack_power
-        else:
-            return self.status.attribute.attack_power
-
-    @property
-    def critical_strike(self):
-        if self.snapshot:
-            return self.snapshot.critical_strike
-        else:
-            return self.status.attribute.critical_strike + self.critical_strike_gain
-
-    @property
-    def critical_damage(self):
-        if self.snapshot:
-            return self.snapshot.critical_damage
-        else:
-            return self.status.attribute.critical_damage + self.critical_damage_gain
+    def magical_critical_power(self):
+        return self.status.attribute.physical_critical_power
 
     @property
     def strain(self):
-        if self.snapshot:
-            return self.snapshot.strain
-        else:
-            return self.status.attribute.strain
+        return self.status.attribute.strain
 
     @property
     def haste(self):
-        if self.snapshot:
-            return self.snapshot.haste
-        else:
-            return self.status.attribute.haste
+        return self.status.attribute.haste
 
     @property
     def damage_addition(self):
-        if self.snapshot:
-            return self.snapshot.damage_addition
-        else:
-            return self.status.attribute.damage_addition + self.damage_addition_gain
+        return self.status.attribute.damage_addition
 
     """ skill detail"""
 
@@ -143,7 +131,7 @@ class Skill:
             return False
         if self.status.gcd_group[self.gcd_index]:
             return False
-        if not self.status.energies[self.name]:
+        if self.name not in self.status.energies:
             return False
         if self.status.casting and not self.cast_while_casting:
             return False
@@ -151,7 +139,10 @@ class Skill:
 
     @property
     def interval(self):
-        return self.interval_base // (1 + self.haste)
+        if self.interval_list:
+            return self.interval_list[self.status.counts[self.name]]
+        else:
+            return self.apply_haste(self.interval_base, self.snapshot.haste)
 
     @property
     def count(self):
@@ -161,135 +152,155 @@ class Skill:
             return self.count_base
 
     @property
-    def intervals(self):
+    def duration(self):
         if self.interval_list:
-            return self.interval_list
+            return sum(self.interval_list)
         else:
-            return [self.interval] * self.count_base
+            return self.interval * self.count
 
     @property
     def gcd(self):
-        return self.gcd_base // (1 + self.haste)
+        return self.apply_haste(self.gcd_base, self.snapshot.haste)
 
     @property
     def cd(self):
         return self.cd_base
 
-    def set_gcd(self):
-        self.status.gcd_group[self.gcd_index] = self.gcd
-
     @property
     def roll(self):
         return random.random()
 
+    @staticmethod
+    @cache
+    def apply_haste(value, haste):
+        return value // (1 + haste)
+
     """ action functions """
 
     def ready(self):
+        self.status.cds.pop(self.name)
         self.status.energies[self.name] = self.energy
 
     def pre_cast(self):
-        if self.is_cast:
-            self.set_gcd()
-            self.status.casting = self.intervals[0]
-        if self.cd:
-            if self.name in self.status.cds:
-                self.status.cds[self.name] += self.cd
-            else:
-                self.status.cds[self.name] = self.cd
-
-            self.status.energies[self.name] -= 1
-
-        if self.is_snapshot:
-            self.snapshot = Snapshot(attack_power=self.status.attribute.attack_power,
-                                     critical_strike=self.critical_strike,
-                                     critical_damage=self.critical_damage,
-                                     strain=self.status.attribute.strain,
-                                     haste=self.status.attribute.haste,
-                                     damage_addition=self.damage_addition)
-
-        self.status.counts[self.name] = 1
+        self.status.counts[self.name] = 0
 
         if self.name not in self.status.intervals:
-            self.status.intervals[self.name] = self.intervals[0]
+            self.status.intervals[self.name] = self.interval
+        if self.is_cast:
+            self.status.gcd_group[self.gcd_index] = self.gcd
+            self.status.casting = self.duration
+            self.status.energies[self.name] -= 1
+        if not self.status.energies[self.name]:
+            self.status.energies.pop(self.name)
+        if self.cd:
+            self.status.cds[self.name] = self.cd + self.status.cds.get(self.name, 0)
+        if self.is_snapshot:
+            self.snapshot = Snapshot(
+                physical_attack_power=self.physical_attack_power,
+                magical_attack_power=self.magical_attack_power,
+                physical_critical_strike=self.physical_critical_strike,
+                magical_critical_strike=self.magical_critical_strike,
+                strain=self.strain,
+                haste=self.haste,
+                damage_addition=self.damage_addition,
+                skill_critical_strike=self.skill_critical_strike,
+                skill_critical_power=self.skill_critical_power,
+                skill_damage_addition=self.skill_damage_addition
+            )
 
         for effect in self.pre_cast_effect:
             effect(self)
 
     def cast(self):
-        if not self.probability or self.roll < self.probability:
-            self.pre_cast()
+        if self.probability and self.roll >= self.probability:
+            return
 
-            if not self.base_damage:
-                self.post_cast()
+        self.pre_cast()
 
-            if self.is_instant:
-                self.status.counts[self.name] += 1
-                self.status.intervals[self.name] = 0
+        if not self.base_damage:
+            self.post_cast()
+            return
 
-            while self.name in self.status.intervals and self.status.intervals[self.name] == 0:
-                self.damage()
+        while self.status.intervals.get(self.name) == 0:
+            self.hit()
 
     def post_cast(self):
         for effect in self.post_cast_effect:
             effect(self)
 
-        self.status.counts[self.name] = 0
+        if self.is_cast:
+            self.status.casting = 0
+
+        self.status.counts.pop(self.name)
+
         if self.name in self.status.intervals:
             self.status.intervals.pop(self.name)
-        # if self.is_cast:
-        #     self.status.casting = 0
 
-    def pre_damage(self):
-        for effect in self.pre_damage_effect:
+    def pre_hit(self):
+        for effect in self.pre_hit_effect:
             effect(self)
 
-    def damage(self):
-        self.pre_damage()
-        self.record()
-        self.post_damage()
+    def critical_hit(self):
+        for effect in self.critical_hit_effect:
+            effect()
 
-    def record(self):
-        damage = self.cal_damage()
+    def hit(self):
+        self.pre_hit()
+        if critical := self.roll < self.critical_strike + self.skill_critical_strike:
+            self.critical_hit()
 
-        self.status.record(self.name, "damage", damage)
-        self.status.total_damage += damage
+        self.record(critical)
+        self.post_hit()
 
-    def post_damage(self):
-        for effect in self.post_damage_effect:
+    def record(self, critical):
+        if critical:
+            self.status.record(self.name, "critical", self.critical_damage)
+        else:
+            self.status.record(self.name, "hit", self.hit_damage)
+
+    def post_hit(self):
+        for effect in self.post_hit_effect:
             effect(self)
+
+        self.status.counts[self.name] += 1
 
         if self.status.counts[self.name] == self.count:
             self.post_cast()
         else:
-            self.status.intervals[self.name] = self.intervals[self.status.counts[self.name]]
-            if self.is_cast:
-                self.status.casting = self.status.intervals[self.name]
-            self.status.counts[self.name] += 1
+            self.status.intervals[self.name] = self.interval
 
-    def cal_damage(self):
-        damage = self.base_damage + self.rand_damage / 2
-        damage = damage + self.attack_power_cof * self.attack_power
-        damage = damage + self.weapon_damage_cof * self.status.attribute.weapon_damage
-        damage = damage + self.surplus_cof * self.status.attribute.surplus
+    @property
+    def critical_strike(self):
+        raise NotImplementedError
 
-        damage = damage * (1 + self.damage_addition)
+    @property
+    def hit_damage(self):
+        raise NotImplementedError
 
-        damage = damage * (1 + self.strain)
+    @property
+    def critical_damage(self):
+        raise NotImplementedError
 
-        # if self.roll < self.critical_strike:
-        #     damage += damage * self.critical_damage
 
-        damage = damage * (1 + self.critical_strike * self.critical_damage)
+class PhysicalSkill(Skill):
+    @property
+    def critical_strike(self):
+        return self.physical_critical_strike
 
-        damage = damage * (1 + self.status.attribute.overcome)
+    @property
+    def hit_damage(self):
+        return hit_damage(self.base_damage, self.rand_damage,
+                          self.attack_power_cof, self.weapon_damage_cof, self.surplus_cof,
+                          self.base_damage_gain, self.rand_damage_gain,
+                          self.attack_power_cof_gain, self.weapon_damage_cof_gain, self.surplus_cof_gain,
+                          self.snapshot.physical_attack_power, self.status.attribute.weapon_damage,
+                          self.status.attribute.surplus, self.snapshot.strain, self.status.attribute.physical_overcome,
+                          self.snapshot.damage_addition, self.status.attribute.pve_addition,
+                          self.snapshot.skill_damage_addition, self.skill_pve_addition,
+                          self.status.attribute.target.physical_defense, self.status.attribute.level_reduction,
+                          self.status.attribute.target.physical_vulnerable)
 
-        defense = self.status.attribute.target.defense(
-            self.shield_ignore_base + self.status.attribute.shield_ignore_base,
-            self.shield_ignore_gain + self.status.attribute.shield_ignore_gain
-        )
-
-        damage = damage * (1 - defense)
-        damage = damage * (1 + self.status.attribute.pve_addition)
-        damage = damage * (1 + self.status.attribute.target.vulnerable)
-        damage = damage * (1 - self.status.attribute.level_reduction)
-        return damage
+    @property
+    def critical_damage(self):
+        return critical_damage(self.hit_damage,
+                               self.snapshot.physical_critical_power, self.snapshot.skill_critical_power)

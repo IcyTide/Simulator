@@ -106,7 +106,6 @@ def build_equipment():
     attribute_state = gr.State()
 
     gains_state = gr.State()
-    special_enchants = {}
 
     with gr.Row():
         with gr.Column(scale=7):
@@ -118,7 +117,8 @@ def build_equipment():
                     with gr.Row():
                         with gr.Column(scale=7):
                             with gr.Row():
-                                equipment_dropdown = gr.Dropdown(choices=[""] + list(sub_equipments.index), label="装备",
+                                equipment_dropdown = gr.Dropdown(choices=[""] + list(sub_equipments.index),
+                                                                 label="装备",
                                                                  value="", scale=6)
                                 strength_level = gr.Dropdown(choices=list(range(MAX_STRENGTH_LEVEL + 1)), label="精炼",
                                                              visible=False, scale=4)
@@ -290,7 +290,7 @@ def build_equipment():
                         embed_cof = [EMBED_COF(level) for level in equip_attr["embed_levels"]]
                         embed_texts = []
                         for n, (k, v) in enumerate(equip_attr['embed'].items()):
-                            v = round(v * embed_cof[n])
+                            v = int(v * embed_cof[n])
                             attrs[k] += v
                             embed_texts.append(f"{ATTR_TYPE_TRANSLATE[k]}: {v}")
 
@@ -351,7 +351,7 @@ def build_equipment():
 
     equip_box = gr.Textbox(label="当前配装", scale=7)
 
-    def equips_attr_func(equips_attr):
+    def equips_attr_func(equips_attr, attribute):
         # json.dump(equips_attr, open(EQUIPS_CONFIG_DIR, "w", encoding="utf-8"), ensure_ascii=False)
         attrs = {attr: 0 for attr in ATTR_TYPE_TRANSLATE}
         gains = []
@@ -366,9 +366,11 @@ def build_equipment():
             equip_attr = equips_attr[name]
             equip_text = '\t\t'.join(equip_attr['names'].values())
             equip_texts.append(f"{name}: {equip_text}")
+
             for k, v in equip_attr['attrs'].items():
                 attrs[k] += v
             gains.extend(equip_attr['gains'])
+
             set_id, set_data = equip_attr['set']
             if set_id not in set_count:
                 set_count[set_id] = 0
@@ -387,7 +389,13 @@ def build_equipment():
                     else:
                         continue
 
-        attribute = BeiAoJue(**attrs)
+        equip_attr_texts = []
+        attribute = BeiAoJue()
+        for k, v in attrs.items():
+            setattr(attribute, k, getattr(attribute, k) + v)
+            if v:
+                equip_attr_texts.append(f"{ATTR_TYPE_TRANSLATE[k]}: {v}")
+
         attr_texts = []
         for k, v in ATTRIBUTE_MAP.items():
             if attr := getattr(attribute, k):
@@ -396,10 +404,14 @@ def build_equipment():
                 else:
                     attr_texts.append(f"{v}: {round(attr * 100, 2)}%")
 
-        return "\n".join([f"{ATTR_TYPE_TRANSLATE[k]}: {v}" for k, v in attrs.items() if v]), "\n".join(
-            [GAINS_TRANSLATE[e] for e in gains]), "\n".join(attr_texts), "\n".join(equip_texts), attribute, [
-                   GAINS_MAP[e] for e in gains]
+        gains_texts = []
+        gains_functions = []
+        for gain in gains:
+            gains_texts.append(GAINS_TRANSLATE[gain])
+            gains_functions.append(GAINS_MAP[gain])
+        return "\n".join(equip_attr_texts), "\n".join(gains_texts), "\n".join(attr_texts), "\n".join(
+            equip_texts), attribute, gains_functions
 
-    equipments_json.change(equips_attr_func, equipments_json,
+    equipments_json.change(equips_attr_func, [equipments_json, attribute_state],
                            [equip_attr_box, equip_gain_box, attr_box, equip_box, attribute_state, gains_state])
     return attribute_state, gains_state
