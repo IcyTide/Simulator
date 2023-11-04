@@ -10,7 +10,7 @@ class Status:
     def __init__(self, attribute: Attribute, skills: List, buffs: List, event_seq: List):
         self.attribute = attribute
 
-        self.gcd_group = [0 for _ in range(MAX_GCD_GROUP)]
+        self.gcd_group = {}
         self.casting = 0
 
         self.skills = {}
@@ -21,8 +21,7 @@ class Status:
 
         for skill in skills:
             self.skills[skill.name] = skill
-            if skill.is_cast:
-                self.energies[skill.name] = skill.energy
+            self.energies[skill.name] = skill.energy
 
         self.buffs = {}
         self.durations = {}
@@ -30,16 +29,35 @@ class Status:
 
         for buff in buffs:
             self.buffs[buff.name] = buff
+            self.stacks[buff.name] = 0
 
         self.current_frame = 0
+
         self.event_seq = event_seq
+
+    def init(self):
+        self.current_frame = 0
+
+        self.counts = {}
+        self.intervals = {}
+
+        for skill in self.skills.values():
+            skill.recharge()
+
+        for buff in self.buffs.values():
+            buff.clear()
 
     def timer(self, gap=1):
         self.current_frame += gap
         self.casting = max(0, self.casting - gap)
 
-        for gcd_index, gcd in enumerate(self.gcd_group):
+        refresh_gcd = []
+        for gcd_index, gcd in self.gcd_group.items():
             self.gcd_group[gcd_index] = max(0, gcd - gap)
+            if not self.gcd_group[gcd_index]:
+                refresh_gcd.append(gcd_index)
+        for gcd_index in refresh_gcd:
+            self.gcd_group.pop(gcd_index)
 
         damage_skills = []
         for skill, interval in self.intervals.items():
@@ -55,7 +73,7 @@ class Status:
             if not self.cds[skill]:
                 recharge_skills.append(skill)
         for skill in recharge_skills:
-            self.skills[skill].ready()
+            self.skills[skill].recharge()
 
         expire_buffs = []
         for buff, duration in self.durations.items():

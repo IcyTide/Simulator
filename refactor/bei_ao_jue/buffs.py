@@ -125,14 +125,14 @@ class HanFeng(Buff):
         self.status.attribute.physical_critical_strike_gain += 0.05
         self.status.attribute.physical_critical_power_gain += 0.05
         for skill in self.related_skills:
-            self.status.skills[skill].damage_addition_gain += 0.05
+            self.status.skills[skill].skill_damage_addition += 0.05
 
     def remove(self):
         super(HanFeng, self).remove()
         self.status.attribute.physical_critical_strike_gain -= 0.05
         self.status.attribute.physical_critical_power_gain -= 0.05
         for skill in self.related_skills:
-            self.status.skills[skill].damage_addition_gain -= 0.05
+            self.status.skills[skill].skill_damage_addition -= 0.05
 
 
 class XiangQiCount(Buff):

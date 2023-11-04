@@ -1,8 +1,8 @@
 import random
 from dataclasses import dataclass
-from functools import cache, cached_property
+from functools import cache
 
-from base.damage import hit_damage, critical_damage
+from base.damage import hit_damage, critical_damage, defense
 from base.status import Status
 
 
@@ -69,6 +69,7 @@ class Skill:
     skill_shield_ignore_gain: float = 0
     skill_critical_strike: float = 0
     skill_critical_power: float = 0
+    skill_cd_reduction: float = 0
 
     snapshot: [Snapshot, "Skill"] = None
 
@@ -129,9 +130,9 @@ class Skill:
     def available(self):
         if not self.activate:
             return False
-        if self.status.gcd_group[self.gcd_index]:
+        if self.status.gcd_group.get(self.gcd_index):
             return False
-        if self.name not in self.status.energies:
+        if not self.status.energies[self.name]:
             return False
         if self.status.casting and not self.cast_while_casting:
             return False
@@ -142,7 +143,7 @@ class Skill:
         if self.interval_list:
             return self.interval_list[self.status.counts[self.name]]
         else:
-            return self.apply_haste(self.interval_base, self.snapshot.haste)
+            return self.apply_scale(self.interval_base, self.snapshot.haste)
 
     @property
     def count(self):
@@ -160,11 +161,11 @@ class Skill:
 
     @property
     def gcd(self):
-        return self.apply_haste(self.gcd_base, self.snapshot.haste)
+        return self.apply_scale(self.gcd_base, self.snapshot.haste)
 
     @property
     def cd(self):
-        return self.cd_base
+        return self.apply_scale(self.cd_base, self.skill_cd_reduction)
 
     @property
     def roll(self):
@@ -172,14 +173,16 @@ class Skill:
 
     @staticmethod
     @cache
-    def apply_haste(value, haste):
-        return value // (1 + haste)
+    def apply_scale(value, scale):
+        return int(value / (1 + scale))
 
     """ action functions """
 
-    def ready(self):
-        self.status.cds.pop(self.name)
+    def recharge(self):
         self.status.energies[self.name] = self.energy
+
+        if self.name in self.status.cds:
+            self.status.cds.pop(self.name)
 
     def pre_cast(self):
         self.status.counts[self.name] = 0
@@ -189,11 +192,9 @@ class Skill:
         if self.is_cast:
             self.status.gcd_group[self.gcd_index] = self.gcd
             self.status.casting = self.duration
-            self.status.energies[self.name] -= 1
-        if not self.status.energies[self.name]:
-            self.status.energies.pop(self.name)
         if self.cd:
             self.status.cds[self.name] = self.cd + self.status.cds.get(self.name, 0)
+            self.status.energies[self.name] -= 1
         if self.is_snapshot:
             self.snapshot = Snapshot(
                 physical_attack_power=self.physical_attack_power,
@@ -289,6 +290,15 @@ class PhysicalSkill(Skill):
 
     @property
     def hit_damage(self):
+        defense_reduction = defense(
+                              shield_base=self.status.attribute.target.physical_shield_base,
+                              shield_gain=self.status.attribute.target.physical_shield_gain,
+                              shield_ignore_base=self.status.attribute.physical_shield_ignore_base,
+                              shield_ignore_gain=self.status.attribute.physical_shield_ignore_gain,
+                              skill_shield_ignore_base=self.skill_shield_ignore_base,
+                              skill_shield_ignore_gain=self.skill_shield_ignore_gain,
+                              shield_constant=self.status.attribute.target.shield_constant
+                          )
         return hit_damage(self.base_damage, self.rand_damage,
                           self.attack_power_cof, self.weapon_damage_cof, self.surplus_cof,
                           self.base_damage_gain, self.rand_damage_gain,
@@ -297,7 +307,7 @@ class PhysicalSkill(Skill):
                           self.status.attribute.surplus, self.snapshot.strain, self.status.attribute.physical_overcome,
                           self.snapshot.damage_addition, self.status.attribute.pve_addition,
                           self.snapshot.skill_damage_addition, self.skill_pve_addition,
-                          self.status.attribute.target.physical_defense, self.status.attribute.level_reduction,
+                          defense_reduction, self.status.attribute.level_reduction,
                           self.status.attribute.target.physical_vulnerable)
 
     @property

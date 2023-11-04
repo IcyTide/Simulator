@@ -69,11 +69,7 @@ class Buff:
                 self.status.cds[self.name] = self.cd
 
     def refresh(self):
-        if stack := self.status.stacks.get(self.name, 0):
-            stack = min(self.stack_max - stack, self.stack_add)
-        else:
-            stack = self.stack_add
-            self.status.stacks[self.name] = 0
+        stack = min(self.stack_max - self.status.stacks[self.name], self.stack_add)
 
         self.status.stacks[self.name] += stack
 
@@ -82,32 +78,28 @@ class Buff:
 
         if self.is_dot:
             if self.name in self.status.intervals:
-                duration = self.status.intervals[self.name].duration - self.status.intervals[self.name].interval
-                self.status.durations[self.name] += duration
+                duration = self.status.skills[self.name].duration - self.status.skills[self.name].interval
+                self.status.durations[self.name] = duration
             else:
                 self.status.durations[self.name] = self.status.skills[self.name].duration
         else:
             self.status.durations[self.name] = min(self.duration_max, self.duration)
 
     def consume(self):
-        if stack := self.status.stacks.get(self.name, 0):
-            stack = min(stack, self.stack_remove)
+        stack = min(self.status.stacks[self.name], self.stack_remove)
 
-            self.status.stacks[self.name] -= stack
+        self.status.stacks[self.name] -= stack
 
-            for _ in range(stack):
-                self.remove()
+        for _ in range(stack):
+            self.remove()
 
-            if not self.status.stacks[self.name]:
-                self.status.stacks.pop(self.name)
-                self.status.durations.pop(self.name)
+        if not self.status.stacks[self.name]:
+            self.status.durations.pop(self.name)
 
     def clear(self):
-        if stack := self.status.stacks.get(self.name, 0):
-            for _ in range(stack):
-                self.remove()
+        for _ in range(self.status.stacks[self.name]):
+            self.remove()
 
-            self.status.stacks.pop(self.name)
-
+        self.status.stacks[self.name] = 0
         if self.name in self.status.durations:
             self.status.durations.pop(self.name)

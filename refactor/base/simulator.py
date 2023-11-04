@@ -1,16 +1,20 @@
 import copy
+import math
 import time
+
+import torch
 
 from base.constant import FRAME_PER_SECOND
 from base.status import Status
 
 import random
+
 random.seed(82)
 
 
 class Simulator:
     def __init__(self, attribute, skills, buffs, talents, recipes, gains,
-                 prepare_list=None, priority=None, loop=None, duration=300):
+                 prepare_list=None, priority=None, loop=None, duration=300, gradient=False):
         if prepare_list is None:
             prepare_list = []
         if priority is None:
@@ -24,6 +28,7 @@ class Simulator:
         self.action_seq = []
         self.event_seq = []
         self.status = Status(attribute, skills, buffs, self.event_seq)
+
         for skill in skills:
             skill.status = self.status
 
@@ -38,6 +43,11 @@ class Simulator:
 
         for gain in gains:
             gain(self.status)
+
+        if gradient:
+            for grad_attr in attribute.grad_attrs:
+                setattr(attribute, grad_attr,
+                        torch.tensor(getattr(attribute, grad_attr), dtype=torch.float, requires_grad=True))
 
         self.prepare_list = [
             (self.status.skills[e[0]], e[1]) if isinstance(e, tuple) else (self.status.skills[e], self.empty_condition)
@@ -87,28 +97,29 @@ class Simulator:
     #         self.current_loop = copy.copy(self.loop)
 
     def simulate(self):
+        self.status.init()
         while self.status.current_frame < self.frames_duration:
             self.priority_simulate()
             self.loop_simulate()
-            self.status.timer()
+            gap = min(min(self.status.gcd_group.values(), default=1),
+                      min(self.status.cds.values(), default=1),
+                      min(self.status.intervals.values(), default=1),
+                      min(self.status.durations.values(), default=1))
+            self.status.timer(math.ceil(gap))
 
     def summary(self):
         total = {}
+        total_damage = 0
         for event in self.event_seq:
             if event[1] not in total:
                 total[event[1]] = [0, 0]
             total[event[1]][0] += 1
             total[event[1]][1] += event[-1]
+            total_damage += event[-1]
 
         for k, v in total.items():
-            print(f"{k} - {v[0]} - {v[1]} - {round(float(v[1] / self.status.total_damage) * 100, 2)}")
-
-        self.status.total_damage = self.status.total_damage / self.duration
-        if self.status.attribute.grad_attrs:
-            self.status.total_damage.backward()
-
-            for name in self.status.attribute.grad_attrs:
-                print(f"{name}: {getattr(self.status.attribute, name).grad * self.status.attribute.grad_scale[name]}")
+            print(f"{k} - {v[0]} - {v[1]} - {round(float(v[1] / total_damage) * 100, 2)}")
+        print(total_damage / self.duration)
 
     def __call__(self, *args, **kwargs):
         # print("start simulate")

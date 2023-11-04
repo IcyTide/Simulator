@@ -36,7 +36,7 @@ def shuang_tian(status: Status):
         self.rand_damage_gain += 0.15
         self.attack_power_cof_gain += 0.15
 
-        if self.status.counts[self.name] < 5:
+        if self.status.counts[self.name] < 4:
             self.weapon_damage_cof_gain += 0.15
 
     def shuang_tian_post_cast(self: Skill):
@@ -85,23 +85,23 @@ def chu_ge(status: Status):
     status.skills["破釜沉舟"].pre_cast_effect.append(chu_ge_pre_cast)
 
     def chu_ge_post_hit(self: Skill):
-        self.status.buffs["楚歌-计数"].trigger()
+        self.status.buffs["楚歌·计数"].trigger()
 
-    related_skills = ["霜风刀法", "雷走风切", "上将军印", "破釜沉舟", "坚壁清野-持续",
-                      "坚壁清野", "刀啸风吟", "惊燕式", "逐鹰式", "降麒式-持续"]
+    related_skills = ["霜风刀法", "雷走风切", "上将军印", "破釜沉舟", "坚壁清野·持续",
+                      "坚壁清野", "刀啸风吟", "惊燕式", "逐鹰式", "降麒式·持续"]
     for skill in related_skills:
         status.skills[skill].post_hit_effect.append(chu_ge_post_hit)
 
 
 def jue_qi(status: Status):
-    status.skills["闹须弥-持续"].attack_power_cof_gain += 0.7
+    status.skills["闹须弥·持续"].attack_power_cof_gain += 0.7
 
     def jue_qi_post_hit(self: Skill):
-        if self.status.stacks["闹须弥-持续"]:
+        if self.status.stacks["闹须弥·持续"]:
             self.status.skills["绝期"].cast()
 
-    related_skills = ["霜风刀法", "雷走风切", "上将军印", "破釜沉舟", "坚壁清野-持续",
-                      "坚壁清野", "刀啸风吟", "惊燕式", "逐鹰式", "降麒式-持续"]
+    related_skills = ["霜风刀法", "雷走风切", "上将军印", "破釜沉舟", "坚壁清野·持续",
+                      "坚壁清野", "刀啸风吟", "惊燕式", "逐鹰式", "降麒式·持续"]
     for skill in related_skills:
         status.skills[skill].post_hit_effect.append(jue_qi_post_hit)
 
@@ -131,13 +131,12 @@ def xiang_qi_shi(status: Status):
 
     def qin_long_post_cast(self: Skill):
         self.status.cds["擒龙六斩"] -= 2 * 16
-        self.status.cds[self.name] -= 2 * 16
 
     for skill in related_skills:
         status.skills[skill].post_cast_effect.append(qin_long_post_cast)
 
     def xiang_qi_shi_post_cast(self: Skill):
-        self.status.buffs["降麒式-计数"].trigger()
+        self.status.buffs["降麒式·计数"].trigger()
 
     for skill in related_skills:
         status.skills[skill].post_cast_effect.append(xiang_qi_shi_post_cast)

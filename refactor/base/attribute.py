@@ -15,11 +15,11 @@ class Target:
     }
     level: int = 124
 
-    _physical_shield_base: int = 0
-    _magical_shield_base: int = 0
+    physical_shield_base: int = 0
+    magical_shield_base: int = 0
 
-    _physical_shield_gain: int = 0
-    _magical_shield_gain: int = 0
+    physical_shield_gain: int = 0
+    magical_shield_gain: int = 0
 
     physical_vulnerable: int = 0
     magical_vulnerable: int = 0
@@ -27,63 +27,9 @@ class Target:
     shield_constant: float = 0
 
     def __post_init__(self):
-        self._physical_shield_base = self.SHIELD_BASE_MAP[self.level]
-        self._magical_shield_base = self.SHIELD_BASE_MAP[self.level]
+        self.physical_shield_base = self.SHIELD_BASE_MAP[self.level]
+        self.magical_shield_base = self.SHIELD_BASE_MAP[self.level]
         self.shield_constant = SHIELD_SCALE * (LEVEL_SCALE * self.level - LEVEL_CONSTANT)
-
-    @property
-    def physical_shield_base(self):
-        return self._physical_shield_base
-
-    @physical_shield_base.setter
-    def physical_shield_base(self, physical_shield_base):
-        self._physical_shield_base = physical_shield_base
-        self.physical_defense.cache_clear()
-
-    @property
-    def magical_shield_base(self):
-        return self._magical_shield_base
-
-    @magical_shield_base.setter
-    def magical_shield_base(self, magical_shield_base):
-        self._magical_shield_base = magical_shield_base
-        self.magical_defense.cache_clear()
-
-    @property
-    def physical_shield_gain(self):
-        return self._physical_shield_gain
-
-    @physical_shield_gain.setter
-    def physical_shield_gain(self, physical_shield_gain):
-        self._physical_shield_gain = physical_shield_gain
-        self.physical_defense.cache_clear()
-
-    @property
-    def magical_shield_gain(self):
-        return self._magical_shield_gain
-
-    @magical_shield_gain.setter
-    def magical_shield_gain(self, magical_shield_gain):
-        self._magical_shield_gain = magical_shield_gain
-        self.magical_defense.cache_clear()
-
-    @cache
-    def physical_defense(self, physical_shield_ignore_base, physical_shield_ignore_gain,
-                         skill_shield_ignore_base, skill_shield_ignore_gain):
-        physical_shield = self.physical_shield_base
-        physical_shield -= self.physical_shield_base * (physical_shield_ignore_base + skill_shield_ignore_base)
-        physical_shield += self.physical_shield_gain
-        physical_shield -= physical_shield * (physical_shield_ignore_gain + skill_shield_ignore_gain)
-        return physical_shield / (physical_shield + self.shield_constant)
-
-    @cache
-    def magical_defense(self, magical_shield_ignore_base, magical_shield_ignore_gain,
-                        skill_shield_ignore_base, skill_shield_ignore_gain):
-        magical_shield = self.magical_shield_base
-        magical_shield -= self.magical_shield_base * (magical_shield_ignore_base + skill_shield_ignore_base)
-        magical_shield += self.magical_shield_gain
-        magical_shield -= magical_shield * (magical_shield_ignore_gain + skill_shield_ignore_gain)
-        return magical_shield / (magical_shield + self.shield_constant)
 
 
 @dataclass
@@ -110,7 +56,7 @@ class Attribute:
     _spunk_gain: float = 0
     _spunk: float = 0
 
-    surplus: int = 0
+    _surplus: int = 0
 
     _strain_base: int = 0
     _strain_percent: float = 0
@@ -183,6 +129,8 @@ class Attribute:
     def __post_init__(self):
         if not self.target:
             self.target = Target()
+
+        self.all_major_base += 41
         # self.grad_scale = {
         #     "agility_base": MAJOR_BASE,
         #     "spunk_base": MAJOR_BASE,
@@ -201,7 +149,7 @@ class Attribute:
         #     "magical_overcome_base": MINOR_BASE,
         #     "weapon_damage_base": WEAPON_DAMAGE_BASE
         # }
-        # self.grad_attrs = []
+        self.grad_attrs = []
 
     """ Major Attr Function"""
 
@@ -377,6 +325,13 @@ class Attribute:
         self.base_magical_overcome = self._magical_overcome_base + spunk * SPUNK_TO_OVERCOME
 
     """ Minor Function """
+    @property
+    def surplus(self):
+        return self._surplus
+
+    @surplus.setter
+    def surplus(self, surplus):
+        self._surplus = surplus
 
     @property
     def strain_base(self):

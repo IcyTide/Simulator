@@ -12,7 +12,7 @@ from bei_ao_jue.gains import gains
 
 
 def wait_gcd(status: Status):
-    return not status.gcd_group[0]
+    return not status.gcd_group.get(0)
 
 
 def wait_pofu(status: Status):
@@ -38,19 +38,9 @@ loop = ["上将军印", "破釜沉舟", ("雪絮金屏", wait_gcd), "刀啸风�
         "上将军印", "雪絮金屏", "坚壁清野", "松烟竹雾", "擒龙六斩", ("降麒式", wait_pofu), "秀明尘身", "破釜沉舟",
         ]
 
-
-def call(lst):
-
+if __name__ == '__main__':
     simulator = Simulator(get_attribute(), copy.deepcopy(skills), copy.deepcopy(buffs),
                           copy.deepcopy(talents), copy.deepcopy(recipes), copy.deepcopy(gains),
                           prepare_list=prepare_list, loop=loop, priority=priority, duration=180)
 
     simulator()
-    lst.append(simulator.status.total_damage)
-
-
-if __name__ == '__main__':
-    results = list()
-    for _ in range(1):
-        call(results)
-    print(results)

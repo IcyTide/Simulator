@@ -290,7 +290,7 @@ def build_equipment():
                         embed_cof = [EMBED_COF(level) for level in equip_attr["embed_levels"]]
                         embed_texts = []
                         for n, (k, v) in enumerate(equip_attr['embed'].items()):
-                            v = int(v * embed_cof[n])
+                            v = round(v * embed_cof[n])
                             attrs[k] += v
                             embed_texts.append(f"{ATTR_TYPE_TRANSLATE[k]}: {v}")
 
@@ -364,8 +364,9 @@ def build_equipment():
             if name not in equips_attr:
                 continue
             equip_attr = equips_attr[name]
-            equip_text = '\t\t'.join(equip_attr['names'].values())
-            equip_texts.append(f"{name}: {equip_text}")
+            if equip_attr['names']['equip']:
+                equip_text = '\t\t'.join(equip_attr['names'].values())
+                equip_texts.append(f"{name}: {equip_text}")
 
             for k, v in equip_attr['attrs'].items():
                 attrs[k] += v

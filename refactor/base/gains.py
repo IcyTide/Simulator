@@ -1,4 +1,0 @@
-
-
-def enchant():
-    pass
