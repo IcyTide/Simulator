@@ -192,6 +192,7 @@ class XiangQiShi(Buff):
         self.status.attribute.damage_addition -= 0.2
 
 
-buffs = [ShuoQi(),
-         XiuMingChenShen(), SongYanZhuWu(), XueXuJinPing(), NaoXuMiDot(), JianBiQingYeDot(), ChuGe(), ChuGeCount(),
-         JianChen(), HanFeng(), XiangQiCount(), XiangQiReady(), XiangQiDot(), XiangQiShi()]
+buffs = [
+    ShuoQi,
+    XiuMingChenShen, SongYanZhuWu, XueXuJinPing, NaoXuMiDot, JianBiQingYeDot, ChuGe, ChuGeCount,
+    JianChen, HanFeng, XiangQiCount, XiangQiReady, XiangQiDot, XiangQiShi]

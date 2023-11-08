@@ -131,13 +131,13 @@ def get_stones_list():
 
 
 if __name__ == '__main__':
-    # equip_list = []
-    # enchant_list = []
-    # for position in POSITION_MAP:
-    #     equip_list.extend(get_equips_list(position))
-    #     enchant_list.extend(get_enchants_list(position))
-    # json.dump(equip_list,
-    #           open(EQUIPMENTS_DIR, "w", encoding="utf-8"), ensure_ascii=False)
-    # json.dump(enchant_list,
-    #           open(ENCHANTS_DIR, "w", encoding="utf-8"), ensure_ascii=False)
+    equip_list = []
+    enchant_list = []
+    for position in POSITION_MAP:
+        equip_list.extend(get_equips_list(position))
+        enchant_list.extend(get_enchants_list(position))
+    json.dump(equip_list,
+              open(EQUIPMENTS_DIR, "w", encoding="utf-8"), ensure_ascii=False)
+    json.dump(enchant_list,
+              open(ENCHANTS_DIR, "w", encoding="utf-8"), ensure_ascii=False)
     json.dump(get_stones_list(), open(STONES_DIR, "w", encoding="utf-8"), ensure_ascii=False)

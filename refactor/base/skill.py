@@ -165,7 +165,7 @@ class Skill:
 
     @property
     def cd(self):
-        return self.apply_scale(self.cd_base, self.skill_cd_reduction)
+        return self.cd_base
 
     @property
     def roll(self):
@@ -190,8 +190,9 @@ class Skill:
         if self.name not in self.status.intervals:
             self.status.intervals[self.name] = self.interval
         if self.is_cast:
-            self.status.gcd_group[self.gcd_index] = self.gcd
             self.status.casting = self.duration
+            if self.gcd:
+                self.status.gcd_group[self.gcd_index] = self.gcd
         if self.cd:
             self.status.cds[self.name] = self.cd + self.status.cds.get(self.name, 0)
             self.status.energies[self.name] -= 1

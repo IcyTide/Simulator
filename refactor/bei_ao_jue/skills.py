@@ -360,7 +360,7 @@ class JianChen(PhysicalSkill):
         self.rand_damage = 10 * 1.45 * 0.5
 
         self.attack_power_cof = ATTACK_POWER_COF(60 * 1.45 * 1.1 * 0.7)
-        self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024 * 1.45 * 0.25)
+        # self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024 * 1.45 * 0.25)
 
     def pre_cast(self):
         super(JianChen, self).pre_cast()
@@ -462,8 +462,8 @@ class ShangJiangJunYinDivine(PhysicalSkill):
         self.attack_power_cof = ATTACK_POWER_COF(25)
 
 
-skills = [ShuangFengDaoFa(), XiuMingChenShen(), SongYanZhuWu(), XueXuJinPing(), LeiZouFengQie(),
-          ShangJiangJunYin(), PoFuChenZhou(), PoFuChenZhouSurplus(),
-          NaoXuMiDot(), NaoXuMi(), QinLongLiuZhan(), QinLongLiuZhanSurplus(), JingYanShi(), ZhuYingShi(),
-          JianBiQingYeDot(), JianBiQingYe(), DaoXiaoFengYin(), DaoXiaoFengYinSurplus(),
-          JianChen(), ChuGe(), JueQi(), XiangQiDot(), XiangQiShi()]
+skills = [ShuangFengDaoFa, XiuMingChenShen, SongYanZhuWu, XueXuJinPing, LeiZouFengQie,
+          ShangJiangJunYin, PoFuChenZhou, PoFuChenZhouSurplus,
+          NaoXuMiDot, NaoXuMi, QinLongLiuZhan, QinLongLiuZhanSurplus, JingYanShi, ZhuYingShi,
+          JianBiQingYeDot, JianBiQingYe, DaoXiaoFengYin, DaoXiaoFengYinSurplus,
+          JianChen, ChuGe, JueQi, XiangQiDot, XiangQiShi]

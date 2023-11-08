@@ -20,6 +20,7 @@ class Status:
         self.intervals = {}
 
         for skill in skills:
+            skill.status = self
             self.skills[skill.name] = skill
             self.energies[skill.name] = skill.energy
 
@@ -28,6 +29,7 @@ class Status:
         self.stacks = {}
 
         for buff in buffs:
+            buff.status = self
             self.buffs[buff.name] = buff
             self.stacks[buff.name] = 0
 
