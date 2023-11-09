@@ -32,6 +32,7 @@ class Skill:
 
     is_cast: bool = True
     cast_while_casting: bool = False
+    is_hit: bool = True
     is_instant: bool = False
     is_snapshot: bool = False
 
@@ -248,10 +249,12 @@ class Skill:
 
     def hit(self):
         self.pre_hit()
-        if critical := self.roll < self.critical_strike + self.skill_critical_strike:
-            self.critical_hit()
 
+        critical = self.roll < self.critical_strike + self.skill_critical_strike
         self.record(critical)
+
+        if critical:
+            self.critical_hit()
         self.post_hit()
 
     def record(self, critical):

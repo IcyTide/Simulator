@@ -10,7 +10,7 @@ class BeiAoJue(Attribute):
     STRENGTH_TO_OVERCOME = 369 / INT_SCALE
 
     def __init__(self, *args, **kwargs):
-        super(BeiAoJue, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.physical_attack_power_base += 3725
         self.pve_addition += 0.09
         self.grad_attrs = ['strength_base', 'surplus', 'strain_base', 'physical_attack_power_base',

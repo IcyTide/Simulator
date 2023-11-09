@@ -14,6 +14,7 @@ class Status:
         self.casting = 0
 
         self.skills = {}
+
         self.cds = {}
         self.energies = {}
         self.counts = {}
@@ -21,6 +22,7 @@ class Status:
 
         for skill in skills:
             skill.status = self
+
             self.skills[skill.name] = skill
             self.energies[skill.name] = skill.energy
 

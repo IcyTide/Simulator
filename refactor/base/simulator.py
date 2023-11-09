@@ -32,12 +32,6 @@ class Simulator:
                              [buff() for buff in buffs],
                              self.event_seq)
 
-        for skill in skills:
-            skill.status = self.status
-
-        for buff in buffs:
-            buff.status = self.status
-
         for talent in talents:
             talent(self.status)
 

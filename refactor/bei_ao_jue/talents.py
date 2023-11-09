@@ -53,7 +53,8 @@ def shuang_tian(status: Status):
 
 def jian_chen(status: Status):
     def jian_chen_pre_cast(self: Skill):
-        self.status.skills["见尘"].cast()
+        if self.status.stacks["闹须弥·持续"]:
+            self.status.skills["见尘"].cast()
 
     status.skills["上将军印"].pre_cast_effect.append(jian_chen_pre_cast)
 
@@ -87,10 +88,9 @@ def chu_ge(status: Status):
     def chu_ge_post_hit(self: Skill):
         self.status.buffs["楚歌·计数"].trigger()
 
-    related_skills = ["霜风刀法", "雷走风切", "上将军印", "破釜沉舟", "坚壁清野·持续",
-                      "坚壁清野", "刀啸风吟", "惊燕式", "逐鹰式", "降麒式·持续"]
-    for skill in related_skills:
-        status.skills[skill].post_hit_effect.append(chu_ge_post_hit)
+    for skill in status.skills.values():
+        if skill.is_hit:
+            skill.post_hit_effect.append(chu_ge_post_hit)
 
 
 def jue_qi(status: Status):
@@ -100,10 +100,9 @@ def jue_qi(status: Status):
         if self.status.stacks["闹须弥·持续"]:
             self.status.skills["绝期"].cast()
 
-    related_skills = ["霜风刀法", "雷走风切", "上将军印", "破釜沉舟", "坚壁清野·持续",
-                      "坚壁清野", "刀啸风吟", "惊燕式", "逐鹰式", "降麒式·持续"]
-    for skill in related_skills:
-        status.skills[skill].post_hit_effect.append(jue_qi_post_hit)
+    for skill in status.skills.values():
+        if skill.is_hit:
+            skill.post_hit_effect.append(jue_qi_post_hit)
 
 
 def zhong_yan(status: Status):
