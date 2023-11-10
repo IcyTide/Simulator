@@ -38,15 +38,15 @@ class Attribute:
 
     level: int = 120
     _all_major_base: int = 0
-    _all_major_gain: int = 0
+    _all_major_gain: float = 0
     _agility_base: int = 0
     _base_agility: int = 0
     _agility_gain: float = 0
-    _agility: float = 0
+    _agility: int = 0
     _strength_base: int = 0
     _base_strength: int = 0
     _strength_gain: float = 0
-    _strength: float = 0
+    _strength: int = 0
     # _spirit_base: int = 0
     # _base_spirit: int = 0
     # _spirit_gain: float = 0
@@ -68,9 +68,9 @@ class Attribute:
     _haste: float = 0
 
     _physical_attack_power_base: int = 0
-    _base_physical_attack_power: float = 0
+    _base_physical_attack_power: int = 0
     _physical_attack_power_gain: float = 0
-    _physical_attack_power: float = 0
+    _physical_attack_power: int = 0
     # _magical_attack_power_base: int = 0
     # _base_magical_attack_power: float = 0
     # _magical_attack_power_gain: float = 0
@@ -80,7 +80,7 @@ class Attribute:
     _all_critical_strike_gain: float = 0
 
     _physical_critical_strike_base: int = 0
-    _base_physical_critical_strike: float = 0
+    _base_physical_critical_strike: int = 0
     _physical_critical_strike_percent: float = 0
     _physical_critical_strike_gain: float = 0
     _physical_critical_strike: float = 0
@@ -104,8 +104,8 @@ class Attribute:
     # _magical_critical_power: float = 0
 
     _physical_overcome_base: int = 0
-    _base_physical_overcome: float = 0
-    _final_physical_overcome: float = 0
+    _base_physical_overcome: int = 0
+    _final_physical_overcome: int = 0
     _physical_overcome_gain: float = 0
     _physical_overcome: float = 0
 
@@ -118,7 +118,7 @@ class Attribute:
     weapon_damage_rand: int = 0
     _weapon_damage_base: int = 0
     _weapon_damage_gain: float = 0
-    _weapon_damage: float = 0
+    _weapon_damage: int = 0
 
     physical_shield_ignore_base: float = 0
     # magical_shield_ignore_base: float = 0
@@ -126,6 +126,7 @@ class Attribute:
     # magical_shield_ignore_gain: float = 0
 
     damage_addition: float = 0
+    cd_reduction: float = 0
     pve_addition: float = 0
 
     def __post_init__(self):
@@ -212,6 +213,7 @@ class Attribute:
 
     @agility.setter
     def agility(self, agility):
+        agility = int(agility)
         self._agility = agility
         self.base_physical_critical_strike = (self._physical_critical_strike_base + self._all_critical_strike_base +
                                               agility * AGILITY_TO_CRITICAL_STRIKE)
@@ -249,6 +251,7 @@ class Attribute:
 
     @strength.setter
     def strength(self, strength):
+        strength = int(strength)
         self._strength = strength
         self.base_physical_attack_power = self._physical_attack_power_base + strength * STRENGTH_TO_ATTACK_POWER
         self.base_physical_overcome = self._physical_overcome_base + strength * STRENGTH_TO_OVERCOME
@@ -423,6 +426,7 @@ class Attribute:
 
     @base_physical_attack_power.setter
     def base_physical_attack_power(self, base_physical_attack_power):
+        base_physical_attack_power = round(base_physical_attack_power)
         self._base_physical_attack_power = base_physical_attack_power
         self.physical_attack_power = base_physical_attack_power * (1 + self._physical_attack_power_gain)
 
@@ -441,7 +445,7 @@ class Attribute:
 
     @physical_attack_power.setter
     def physical_attack_power(self, physical_attack_power):
-        self._physical_attack_power = physical_attack_power
+        self._physical_attack_power = int(physical_attack_power)
 
     # @property
     # def magical_attack_power_base(self):
@@ -520,6 +524,7 @@ class Attribute:
 
     @base_physical_critical_strike.setter
     def base_physical_critical_strike(self, base_physical_critical_strike):
+        base_physical_critical_strike = int(base_physical_critical_strike)
         self._base_physical_critical_strike = base_physical_critical_strike
         self.physical_critical_strike_percent = base_physical_critical_strike / CRITICAL_STRIKE_SCALE
 
@@ -703,6 +708,7 @@ class Attribute:
 
     @base_physical_overcome.setter
     def base_physical_overcome(self, base_physical_overcome):
+        base_physical_overcome = int(base_physical_overcome)
         self._base_physical_overcome = base_physical_overcome
         self.final_physical_overcome = base_physical_overcome * (1 + self._physical_overcome_gain)
 
@@ -721,6 +727,7 @@ class Attribute:
 
     @final_physical_overcome.setter
     def final_physical_overcome(self, final_physical_overcome):
+        final_physical_overcome = int(final_physical_overcome)
         self._final_physical_overcome = final_physical_overcome
         self.physical_overcome = final_physical_overcome / OVERCOME_SCALE
 
@@ -785,7 +792,7 @@ class Attribute:
     @weapon_damage_base.setter
     def weapon_damage_base(self, weapon_damage_base):
         self._weapon_damage_base = weapon_damage_base
-        self.weapon_damage = + weapon_damage_base * (1 + self._weapon_damage_gain) + self.weapon_damage_rand / 2
+        self.weapon_damage = weapon_damage_base * (1 + self._weapon_damage_gain) + self.weapon_damage_rand / 2
 
     @property
     def weapon_damage_gain(self):
@@ -794,7 +801,7 @@ class Attribute:
     @weapon_damage_gain.setter
     def weapon_damage_gain(self, weapon_damage_gain):
         self._weapon_damage_gain = weapon_damage_gain
-        self.weapon_damage = + self._weapon_damage_base * (1 + weapon_damage_gain) + self.weapon_damage_rand / 2
+        self.weapon_damage = self._weapon_damage_base * (1 + weapon_damage_gain) + self.weapon_damage_rand / 2
 
     @property
     def weapon_damage(self):
@@ -802,7 +809,7 @@ class Attribute:
 
     @weapon_damage.setter
     def weapon_damage(self, weapon_damage):
-        self._weapon_damage = weapon_damage
+        self._weapon_damage = int(weapon_damage)
 
     @cached_property
     def level_reduction(self):

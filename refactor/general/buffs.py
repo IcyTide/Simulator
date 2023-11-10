@@ -1,6 +1,20 @@
 from base.buff import Buff
 
 
+class BaiDuanCD(Buff):
+    def __init__(self):
+        super().__init__()
+        self.name = "锻造过度"
+        self.duration = 60 * 16
+
+
+class BaiDuanDamageCD(Buff):
+    def __init__(self):
+        super().__init__()
+        self.name = "炽炎·冷却"
+        self.duration = 4
+
+
 class WaterWeapon(Buff):
     def __init__(self):
         super().__init__()

@@ -1,7 +1,7 @@
 from bei_ao_jue.gains import attribute_set_gain, dao_xiao_set_gain, shang_jiang_set_gain, dao_xiao_divine_gain, \
-    water_weapon_gain, xiang_wang_divine_gain, divine_effect, shang_jiang_divine_gain, wind_pendant_gain
+    xiang_wang_divine_gain, divine_effect, shang_jiang_divine_gain
 from general.gains import special_enchant_hat_gain, special_enchant_jacket_gain, special_enchant_belt_gain, \
-    special_enchant_wrist_gain, special_enchant_shoes_gain
+    special_enchant_wrist_gain, special_enchant_shoes_gain, water_weapon_gain, wind_pendant_gain
 
 POSITION_TRANSLATE = {
     "帽子": "hat",

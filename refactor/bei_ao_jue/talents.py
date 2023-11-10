@@ -32,8 +32,7 @@ def yang_guan(status: Status):
 
 def shuang_tian(status: Status):
     def shuang_tian_post_hit(self: Skill):
-        self.base_damage_gain += 0.15
-        self.rand_damage_gain += 0.15
+        self.damage_gain += 0.15
         self.attack_power_cof_gain += 0.15
 
         if self.status.counts[self.name] < 4:
@@ -41,8 +40,7 @@ def shuang_tian(status: Status):
 
     def shuang_tian_post_cast(self: Skill):
         count = self.status.counts[self.name]
-        self.base_damage_gain -= 0.15 * count
-        self.rand_damage_gain -= 0.15 * count
+        self.damage_gain -= 0.15 * count
         self.attack_power_cof_gain -= 0.15 * count
 
         self.weapon_damage_cof_gain -= 0.15 * min(4, count)
@@ -106,20 +104,11 @@ def jue_qi(status: Status):
 
 
 def zhong_yan(status: Status):
-    related_skills = ["秀明尘身", "松烟竹雾", "雪絮金屏", "雷走风切",
-                      "上将军印", "破釜沉舟", "坚壁清野", "闹须弥", "擒龙六斩", "惊燕式", "逐鹰式"]
-
     def zhong_yan_add_effect(self: Buff):
-        for skill in related_skills:
-            if skill in self.status.cds:
-                self.status.cds[skill] /= 1.3
-            self.status.skills[skill].cd_base /= 1.3
+        self.status.attribute.cd_reduction += 0.3
 
     def zhong_yan_remove_effect(self: Buff):
-        for skill in related_skills:
-            if skill in self.status.cds:
-                self.status.cds[skill] *= 1.3
-            self.status.skills[skill].cd_base *= 1.3
+        self.status.attribute.cd_reduction -= 0.3
 
     status.buffs["秀明尘身"].add_effect.append(zhong_yan_add_effect)
     status.buffs["秀明尘身"].remove_effect.append(zhong_yan_remove_effect)
@@ -141,5 +130,7 @@ def xiang_qi_shi(status: Status):
         status.skills[skill].post_cast_effect.append(xiang_qi_shi_post_cast)
 
 
-talents = [long_xi, gui_han, yang_guan, shuang_tian, han_feng, jian_chen, fen_jiang, xing_huo, chu_ge, jue_qi,
+talents = [long_xi, gui_han,
+           # yang_guan,
+           shuang_tian, han_feng, jian_chen, fen_jiang, xing_huo, chu_ge, jue_qi,
            zhong_yan, xiang_qi_shi]

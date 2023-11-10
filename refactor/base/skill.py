@@ -2,19 +2,17 @@ import random
 from dataclasses import dataclass
 from functools import cache
 
-from base.damage import hit_damage, critical_damage, defense
+from base.damage import hit_damage, defense
 from base.status import Status
 
 
 @dataclass
 class Snapshot:
-    physical_attack_power: float = 0
-    magical_attack_power: float = 0
+    attack_power: int = 0
 
-    physical_critical_strike: float = 0
-    magical_critical_strike: float = 0
-    physical_critical_power: float = 0
-    magical_critical_power: float = 0
+    critical_strike: float = 0
+    critical_power: float = 0
+
     strain: float = 0
     haste: float = 0
     damage_addition: float = 0
@@ -52,14 +50,13 @@ class Skill:
     pre_hit_effect: list = None
     post_hit_effect: list = None
 
-    base_damage: float = 0
-    rand_damage: float = 0
+    damage_base: int = 0
+    damage_rand: int = 0
     attack_power_cof: float = 0
     weapon_damage_cof: float = 0
     surplus_cof: float = 0
 
-    base_damage_gain: float = 0
-    rand_damage_gain: float = 0
+    damage_gain: float = 0
     attack_power_cof_gain: float = 0
     weapon_damage_cof_gain: float = 0
     surplus_cof_gain: float = 0
@@ -86,28 +83,16 @@ class Skill:
     """ attributes """
 
     @property
-    def physical_attack_power(self):
-        return self.status.attribute.physical_attack_power
+    def attack_power(self):
+        raise NotImplementedError
 
     @property
-    def magical_attack_power(self):
-        return self.status.attribute.magical_attack_power
+    def critical_strike(self):
+        raise NotImplementedError
 
     @property
-    def physical_critical_strike(self):
-        return self.status.attribute.physical_critical_strike
-
-    @property
-    def magical_critical_strike(self):
-        return self.status.attribute.magical_critical_strike
-
-    @property
-    def physical_critical_power(self):
-        return self.status.attribute.physical_critical_power
-
-    @property
-    def magical_critical_power(self):
-        return self.status.attribute.physical_critical_power
+    def critical_power(self):
+        raise NotImplementedError
 
     @property
     def strain(self):
@@ -162,7 +147,7 @@ class Skill:
 
     @property
     def gcd(self):
-        return self.apply_scale(self.gcd_base, self.snapshot.haste)
+        return self.apply_scale(self.gcd_base, self.haste)
 
     @property
     def cd(self):
@@ -199,10 +184,9 @@ class Skill:
             self.status.energies[self.name] -= 1
         if self.is_snapshot:
             self.snapshot = Snapshot(
-                physical_attack_power=self.physical_attack_power,
-                magical_attack_power=self.magical_attack_power,
-                physical_critical_strike=self.physical_critical_strike,
-                magical_critical_strike=self.magical_critical_strike,
+                attack_power=self.attack_power,
+                critical_strike=self.critical_strike,
+                critical_power=self.critical_power,
                 strain=self.strain,
                 haste=self.haste,
                 damage_addition=self.damage_addition,
@@ -220,7 +204,7 @@ class Skill:
 
         self.pre_cast()
 
-        if not self.base_damage:
+        if not self.damage_base:
             self.post_cast()
             return
 
@@ -250,7 +234,7 @@ class Skill:
     def hit(self):
         self.pre_hit()
 
-        critical = self.roll < self.critical_strike + self.skill_critical_strike
+        critical = self.roll < self.snapshot.critical_strike + self.snapshot.skill_critical_strike
         self.record(critical)
 
         if critical:
@@ -275,10 +259,6 @@ class Skill:
             self.status.intervals[self.name] = self.interval
 
     @property
-    def critical_strike(self):
-        raise NotImplementedError
-
-    @property
     def hit_damage(self):
         raise NotImplementedError
 
@@ -289,32 +269,57 @@ class Skill:
 
 class PhysicalSkill(Skill):
     @property
+    def attack_power(self):
+        return self.status.attribute.physical_attack_power
+
+    @property
     def critical_strike(self):
-        return self.physical_critical_strike
+        return self.status.attribute.physical_critical_strike
+
+    @property
+    def critical_power(self):
+        return self.status.attribute.physical_critical_power
 
     @property
     def hit_damage(self):
         defense_reduction = defense(
-                              shield_base=self.status.attribute.target.physical_shield_base,
-                              shield_gain=self.status.attribute.target.physical_shield_gain,
-                              shield_ignore_base=self.status.attribute.physical_shield_ignore_base,
-                              shield_ignore_gain=self.status.attribute.physical_shield_ignore_gain,
-                              skill_shield_ignore_base=self.skill_shield_ignore_base,
-                              skill_shield_ignore_gain=self.skill_shield_ignore_gain,
-                              shield_constant=self.status.attribute.target.shield_constant
-                          )
-        return hit_damage(self.base_damage, self.rand_damage,
-                          self.attack_power_cof, self.weapon_damage_cof, self.surplus_cof,
-                          self.base_damage_gain, self.rand_damage_gain,
-                          self.attack_power_cof_gain, self.weapon_damage_cof_gain, self.surplus_cof_gain,
-                          self.snapshot.physical_attack_power, self.status.attribute.weapon_damage,
-                          self.status.attribute.surplus, self.snapshot.strain, self.status.attribute.physical_overcome,
-                          self.snapshot.damage_addition, self.status.attribute.pve_addition,
-                          self.snapshot.skill_damage_addition, self.skill_pve_addition,
-                          defense_reduction, self.status.attribute.level_reduction,
-                          self.status.attribute.target.physical_vulnerable)
+            shield_base=self.status.attribute.target.physical_shield_base,
+            shield_gain=self.status.attribute.target.physical_shield_gain,
+            shield_ignore_base=self.status.attribute.physical_shield_ignore_base,
+            shield_ignore_gain=self.status.attribute.physical_shield_ignore_gain,
+            skill_shield_ignore_base=self.skill_shield_ignore_base,
+            skill_shield_ignore_gain=self.skill_shield_ignore_gain,
+            shield_constant=self.status.attribute.target.shield_constant
+        )
+        return hit_damage(
+            self.damage_base, self.damage_rand, self.attack_power_cof, self.weapon_damage_cof, self.surplus_cof,
+            self.damage_gain, self.attack_power_cof_gain, self.weapon_damage_cof_gain, self.surplus_cof_gain,
+            self.snapshot.attack_power, self.status.attribute.weapon_damage, self.status.attribute.surplus,
+            self.snapshot.damage_addition, self.snapshot.skill_damage_addition,
+            self.status.attribute.physical_overcome, defense_reduction,
+            1, 0,
+            self.snapshot.strain, self.status.attribute.level_reduction,
+            self.status.attribute.pve_addition, self.skill_pve_addition,
+            self.status.attribute.target.physical_vulnerable)
 
     @property
     def critical_damage(self):
-        return critical_damage(self.hit_damage,
-                               self.snapshot.physical_critical_power, self.snapshot.skill_critical_power)
+        defense_reduction = defense(
+            shield_base=self.status.attribute.target.physical_shield_base,
+            shield_gain=self.status.attribute.target.physical_shield_gain,
+            shield_ignore_base=self.status.attribute.physical_shield_ignore_base,
+            shield_ignore_gain=self.status.attribute.physical_shield_ignore_gain,
+            skill_shield_ignore_base=self.skill_shield_ignore_base,
+            skill_shield_ignore_gain=self.skill_shield_ignore_gain,
+            shield_constant=self.status.attribute.target.shield_constant
+        )
+        return hit_damage(
+            self.damage_base, self.damage_rand, self.attack_power_cof, self.weapon_damage_cof, self.surplus_cof,
+            self.damage_gain, self.attack_power_cof_gain, self.weapon_damage_cof_gain, self.surplus_cof_gain,
+            self.snapshot.attack_power, self.status.attribute.weapon_damage, self.status.attribute.surplus,
+            self.snapshot.damage_addition, self.snapshot.skill_damage_addition,
+            self.status.attribute.physical_overcome, defense_reduction,
+            self.snapshot.critical_power, self.snapshot.skill_critical_power,
+            self.snapshot.strain, self.status.attribute.level_reduction,
+            self.status.attribute.pve_addition, self.skill_pve_addition,
+            self.status.attribute.target.physical_vulnerable)

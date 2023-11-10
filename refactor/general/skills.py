@@ -2,6 +2,20 @@ from base.constant import ATTACK_POWER_COF
 from base.skill import Skill, PhysicalSkill
 
 
+class ZhuYunHanRui(Skill):
+    def __init__(self):
+        super().__init__()
+        self.name = "逐云寒蕊"
+
+        self.is_cast = False
+        self.is_hit = False
+
+        self.base_damage = 1
+        self.rand_damage = 0
+        self.attack_power_cof = 0
+        self.skill_shield_ignore_gain = 1
+
+
 class BeltEnchant(Skill):
     def __init__(self):
         super().__init__()

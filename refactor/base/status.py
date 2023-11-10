@@ -7,7 +7,7 @@ from base.constant import MAX_GCD_GROUP
 
 
 class Status:
-    def __init__(self, attribute: Attribute, skills: List, buffs: List, event_seq: List):
+    def __init__(self, attribute: Attribute, skills: List, buffs: List, event_seq: List, total_frame: int):
         self.attribute = attribute
 
         self.gcd_group = {}
@@ -36,7 +36,7 @@ class Status:
             self.stacks[buff.name] = 0
 
         self.current_frame = 0
-
+        self.total_frame = total_frame
         self.event_seq = event_seq
 
     def init(self):
@@ -72,8 +72,9 @@ class Status:
             self.skills[skill].hit()
 
         recharge_skills = []
+        reduction_gap = gap * (1 + self.attribute.cd_reduction)
         for skill, cd in self.cds.items():
-            self.cds[skill] = max(0, cd - gap)
+            self.cds[skill] = max(0, cd - reduction_gap)
             if not self.cds[skill]:
                 recharge_skills.append(skill)
         for skill in recharge_skills:

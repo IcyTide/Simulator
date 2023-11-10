@@ -13,7 +13,7 @@ class ShuangFengDaoFa(PhysicalSkill):
 
         self.gcd_index = -1
 
-        self.base_damage = 1
+        self.damage_base = 1
 
         self.attack_power_cof = ATTACK_POWER_COF(16)
         self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
@@ -93,8 +93,8 @@ class LeiZouFengQie(PhysicalSkill):
         self.gcd_index = 1
         self.cd_base = 16 * 16
 
-        self.base_damage = 175
-        self.rand_damage = 15
+        self.damage_base = 175
+        self.damage_rand = 15
         self.attack_power_cof = ATTACK_POWER_COF(224 * 0.8 * 0.7)
 
     @property
@@ -110,8 +110,8 @@ class ShangJiangJunYin(PhysicalSkill):
         self.cd_base = 18 * 16
         self.interval_list = [4, 6, 6, 6, 6]
 
-        self.base_damage = 300
-        self.rand_damage = 15
+        self.damage_base = 300
+        self.damage_rand = 15
         self.attack_power_cof = ATTACK_POWER_COF(160*0.9*1.1*1.05)
         self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
 
@@ -128,8 +128,8 @@ class PoFuChenZhou(PhysicalSkill):
         self.cd_base = 9 * 16
         self.energy = 2
 
-        self.base_damage = 350
-        self.rand_damage = 20
+        self.damage_base = 350
+        self.damage_rand = 20
         self.attack_power_cof = ATTACK_POWER_COF(400 * 0.9 * 0.95 * 1.1 * 1.15)
         self.weapon_damage_cof = WEAPON_DAMAGE_COF(2048)
 
@@ -150,7 +150,7 @@ class PoFuChenZhouSurplus(PhysicalSkill):
         self.is_cast = False
         self.is_hit = False
 
-        self.base_damage = 1
+        self.damage_base = 1
         self.surplus_cof = SURPLUS_COF(1024 * 1024 * (0.875 - 1))
 
 
@@ -167,7 +167,7 @@ class NaoXuMiDot(PhysicalSkill):
         self.count_base = 8
         self.interval_base = 48
 
-        self.base_damage = 1
+        self.damage_base = 1
         self.attack_power_cof = DOT_ATTACK_POWER_COF(280, self.interval_base)
 
     def pre_cast(self):
@@ -224,7 +224,7 @@ class QinLongLiuZhanSurplus(PhysicalSkill):
         self.is_cast = False
         self.is_hit = False
 
-        self.base_damage = 1
+        self.damage_base = 1
         self.surplus_cof = SURPLUS_COF(1024 * 1024 * (0.275 - 1))
 
 
@@ -235,8 +235,8 @@ class JingYanShi(PhysicalSkill):
 
         self.interval_list = [3, 7]
 
-        self.base_damage = 80
-        self.rand_damage = 10
+        self.damage_base = 80
+        self.damage_rand = 10
         self.attack_power_cof = ATTACK_POWER_COF(64 * 1.3 * 1.2)
         self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
 
@@ -260,8 +260,8 @@ class ZhuYingShi(PhysicalSkill):
 
         self.interval_list = [4, 6]
 
-        self.base_damage = 80
-        self.rand_damage = 10
+        self.damage_base = 80
+        self.damage_rand = 10
         self.attack_power_cof = ATTACK_POWER_COF(64 * 1.3 * 1.2)
         self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
 
@@ -294,8 +294,8 @@ class JianBiQingYeDot(PhysicalSkill):
 
         self.interval_list = [16] * 10
 
-        self.base_damage = 250
-        self.rand_damage = 20
+        self.damage_base = 250
+        self.damage_rand = 20
         self.attack_power_cof = ATTACK_POWER_COF(160 * 1.1)
 
     def pre_cast(self):
@@ -310,8 +310,8 @@ class JianBiQingYe(PhysicalSkill):
 
         self.cd_base = 30 * 16
 
-        self.base_damage = 430
-        self.rand_damage = 20
+        self.damage_base = 430
+        self.damage_rand = 20
         self.attack_power_cof = ATTACK_POWER_COF(288 * 1.2 * 0.7 * 1.1)
 
     @property
@@ -331,7 +331,7 @@ class DaoXiaoFengYinSurplus(PhysicalSkill):
         self.is_cast = False
         self.is_hit = False
 
-        self.base_damage = 1
+        self.damage_base = 1
         self.surplus_cof = SURPLUS_COF(1024 * 1024 * (0.1375 - 1))
 
 
@@ -342,8 +342,8 @@ class DaoXiaoFengYin(PhysicalSkill):
 
         self.interval_base = 24
 
-        self.base_damage = 250
-        self.rand_damage = 20
+        self.damage_base = 250
+        self.damage_rand = 20
 
         self.attack_power_cof = ATTACK_POWER_COF(256 * 1.2 * 1.05 * 1.1 * 1.1 * 1.05)
 
@@ -371,8 +371,8 @@ class JianChen(PhysicalSkill):
 
         self.interval_list = [5, 6, 6, 6, 6]
 
-        self.base_damage = 100 * 1.45 * 0.5
-        self.rand_damage = 10 * 1.45 * 0.5
+        self.damage_base = 100 * 1.45 * 0.5
+        self.damage_rand = 10 * 1.45 * 0.5
 
         self.attack_power_cof = ATTACK_POWER_COF(60 * 1.45 * 1.1 * 0.7)
         # self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024 * 1.45 * 0.25)
@@ -390,8 +390,8 @@ class ChuGe(PhysicalSkill):
         self.is_cast = False
         self.is_hit = False
 
-        self.base_damage = 55
-        self.rand_damage = 5
+        self.damage_base = 55
+        self.damage_rand = 5
         self.attack_power_cof = ATTACK_POWER_COF(1200 * 0.8)
 
 
@@ -402,8 +402,8 @@ class ChuGe(PhysicalSkill):
 #
 #         self.is_cast = False
 #
-#         self.base_damage = 150
-#         self.rand_damage = 50 * 0.1
+#         self.damage_base = 150
+#         self.damage_rand = 50 * 0.1
 #         self.attack_power_cof = 40 * 1.1 * 0.8 * 1.1
 
 
@@ -417,8 +417,8 @@ class JueQi(PhysicalSkill):
 
         self.probability = 0.3
 
-        self.base_damage = 250
-        self.rand_damage = 20
+        self.damage_base = 250
+        self.damage_rand = 20
         self.attack_power_cof = ATTACK_POWER_COF(120)
 
     def post_cast(self):
@@ -435,8 +435,8 @@ class XiangQiDot(PhysicalSkill):
 
         self.interval_list = [16] * 15
 
-        self.base_damage = 50
-        self.rand_damage = 5
+        self.damage_base = 50
+        self.damage_rand = 5
 
         self.attack_power_cof = ATTACK_POWER_COF(60 * 2)
         self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
@@ -475,8 +475,8 @@ class ShangJiangJunYinDivine(PhysicalSkill):
 
         self.probability = 0.1
 
-        self.base_damage = 20
-        self.rand_damage = 2
+        self.damage_base = 20
+        self.damage_rand = 2
         self.attack_power_cof = ATTACK_POWER_COF(25)
 
 

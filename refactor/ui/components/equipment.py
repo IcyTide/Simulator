@@ -290,7 +290,7 @@ def build_equipment():
                         embed_cof = [EMBED_COF(level) for level in equip_attr["embed_levels"]]
                         embed_texts = []
                         for n, (k, v) in enumerate(equip_attr['embed'].items()):
-                            v = round(v * embed_cof[n])
+                            v = int(v * embed_cof[n])
                             attrs[k] += v
                             embed_texts.append(f"{ATTR_TYPE_TRANSLATE[k]}: {v}")
 
@@ -351,7 +351,7 @@ def build_equipment():
 
     equip_box = gr.Textbox(label="当前配装", scale=7)
 
-    def equips_attr_func(equips_attr, attribute):
+    def equips_attr_func(equips_attr):
         # json.dump(equips_attr, open(EQUIPS_CONFIG_DIR, "w", encoding="utf-8"), ensure_ascii=False)
         attrs = {attr: 0 for attr in ATTR_TYPE_TRANSLATE}
         gains = []
@@ -390,8 +390,8 @@ def build_equipment():
                     else:
                         continue
 
-        equip_attr_texts = []
         attribute = BeiAoJue()
+        equip_attr_texts = []
         for k, v in attrs.items():
             setattr(attribute, k, getattr(attribute, k) + v)
             if v:
@@ -413,6 +413,6 @@ def build_equipment():
         return "\n".join(equip_attr_texts), "\n".join(gains_texts), "\n".join(attr_texts), "\n".join(
             equip_texts), attribute, gains_functions
 
-    equipments_json.change(equips_attr_func, [equipments_json, attribute_state],
+    equipments_json.change(equips_attr_func, equipments_json,
                            [equip_attr_box, equip_gain_box, attr_box, equip_box, attribute_state, gains_state])
     return attribute_state, gains_state

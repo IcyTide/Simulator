@@ -2,7 +2,7 @@ from functools import cached_property
 
 from base.constant import *
 
-from base.attribute import Attribute, Target
+from base.attribute import Attribute
 
 
 class BeiAoJue(Attribute):
@@ -22,7 +22,7 @@ class BeiAoJue(Attribute):
 
     @physical_attack_power.setter
     def physical_attack_power(self, physical_attack_power):
-        self._physical_attack_power = physical_attack_power + self._strength * self.STRENGTH_TO_ATTACK_POWER
+        self._physical_attack_power = physical_attack_power + int(self._strength * self.STRENGTH_TO_ATTACK_POWER)
 
     @property
     def final_physical_overcome(self):
@@ -30,7 +30,7 @@ class BeiAoJue(Attribute):
 
     @final_physical_overcome.setter
     def final_physical_overcome(self, final_physical_overcome):
-        self._final_physical_overcome = final_physical_overcome + self._strength * self.STRENGTH_TO_OVERCOME
+        self._final_physical_overcome = final_physical_overcome + int(self._strength * self.STRENGTH_TO_OVERCOME)
         self.physical_overcome = self._final_physical_overcome / OVERCOME_SCALE
 
 

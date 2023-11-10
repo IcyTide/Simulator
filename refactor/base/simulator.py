@@ -30,7 +30,7 @@ class Simulator:
         self.status = Status(attribute,
                              [skill() for skill in skills],
                              [buff() for buff in buffs],
-                             self.event_seq)
+                             self.event_seq, self.frames_duration)
 
         for talent in talents:
             talent(self.status)
@@ -98,10 +98,10 @@ class Simulator:
         while self.status.current_frame < self.frames_duration:
             self.priority_simulate()
             self.loop_simulate()
-            gap = min(min(self.status.gcd_group.values(), default=100),
-                      min(self.status.cds.values(), default=100),
-                      min(self.status.intervals.values(), default=100),
-                      min(self.status.durations.values(), default=100))
+            gap = min(min(self.status.gcd_group.values(), default=FRAME_PER_SECOND),
+                      min(self.status.cds.values(), default=FRAME_PER_SECOND),
+                      min(self.status.intervals.values(), default=FRAME_PER_SECOND),
+                      min(self.status.durations.values(), default=FRAME_PER_SECOND))
             self.status.timer(math.ceil(gap))
 
     def summary(self):
