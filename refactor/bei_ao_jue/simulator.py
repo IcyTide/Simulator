@@ -40,8 +40,8 @@ loop = ["上将军印", "破釜沉舟", ("雪絮金屏", wait_gcd), "刀啸风�
         ]
 
 if __name__ == '__main__':
-    simulator = Simulator(get_attribute(), copy.deepcopy(skills), copy.deepcopy(buffs),
-                          copy.deepcopy(talents), copy.deepcopy(recipes), copy.deepcopy(gains),
-                          prepare_list=prepare_list, loop=loop, priority=priority, duration=180)
+    simulator = Simulator(get_attribute(), skills, buffs,
+                          copy.deepcopy(recipes), copy.deepcopy(talents), copy.deepcopy(gains),
+                          prepare_list=prepare_list, loop=loop, priority=priority, duration=600)
 
     simulator()

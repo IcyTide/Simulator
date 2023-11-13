@@ -16,6 +16,18 @@ class ZhuYunHanRui(Skill):
         self.skill_shield_ignore_gain = 1
 
 
+class WindPendant(Skill):
+    def __init__(self):
+        super().__init__()
+        self.name = "风特效"
+
+        self.is_cast = False
+        self.is_hit = False
+
+    def post_cast(self):
+        self.status.buffs["风特效"].trigger()
+
+
 class BeltEnchant(Skill):
     def __init__(self):
         super().__init__()

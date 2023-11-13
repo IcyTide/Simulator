@@ -2,8 +2,6 @@ import copy
 import math
 import time
 
-import torch
-
 from base.constant import FRAME_PER_SECOND
 from base.status import Status
 
@@ -13,7 +11,7 @@ random.seed(82)
 
 
 class Simulator:
-    def __init__(self, attribute, skills, buffs, talents, recipes, gains,
+    def __init__(self, attribute, skills, buffs, recipes, talents, gains,
                  prepare_list=None, priority=None, loop=None, duration=300, gradient=False):
         if prepare_list is None:
             prepare_list = []
@@ -32,19 +30,14 @@ class Simulator:
                              [buff() for buff in buffs],
                              self.event_seq, self.frames_duration)
 
-        for talent in talents:
-            talent(self.status)
-
         for recipe in recipes:
             recipe(self.status)
 
+        for talent in talents:
+            talent(self.status)
+
         for gain in gains:
             gain(self.status)
-
-        if gradient:
-            for grad_attr in attribute.grad_attrs:
-                setattr(attribute, grad_attr,
-                        torch.tensor(getattr(attribute, grad_attr), dtype=torch.float, requires_grad=True))
 
         self.prepare_list = [
             (self.status.skills[e[0]], e[1]) if isinstance(e, tuple) else (self.status.skills[e], self.empty_condition)

@@ -1,7 +1,6 @@
 from bei_ao_jue.gains import attribute_set_gain, dao_xiao_set_gain, shang_jiang_set_gain, dao_xiao_divine_gain, \
     xiang_wang_divine_gain, divine_effect, shang_jiang_divine_gain
-from general.gains import special_enchant_hat_gain, special_enchant_jacket_gain, special_enchant_belt_gain, \
-    special_enchant_wrist_gain, special_enchant_shoes_gain, water_weapon_gain, wind_pendant_gain
+from general.gains import *
 
 POSITION_TRANSLATE = {
     "帽子": "hat",
@@ -129,33 +128,31 @@ SPECIAL_ENCHANT_MAP = {
 }
 
 GAINS_TRANSLATE = {
-    "1925": "朔气4%套装",
-    "4290": "刀啸风吟10%套装",
-    "4291": "上将军印10%套装",
-    "2401": "水特效 67 基础",
-    "2498": "水特效 88 基础",
-    "2540": "水特效 98 基础",
+    "2401": "水特效 67 外攻",
+    "2498": "水特效 88 外攻",
+    "2540": "水特效 98 外攻",
     "15436-9": "大附魔头 822 破防",
     "15436-10": "大附魔头 999 破防",
     "15436-11": "大附魔头 1098 破防",
-    "22151-9": "大附魔衣 371 基础",
-    "22151-10": "大附魔衣 450 基础",
-    "22151-11": "大附魔衣 495 基础",
+    "22151-9": "大附魔衣 371 外攻",
+    "22151-10": "大附魔衣 450 外攻",
+    "22151-11": "大附魔衣 495 外攻",
     "22169": "大附魔腰",
     "22166": "大附魔手",
     "33247": "大附魔脚",
     "6800-102": "风特效 6408 破防",
     "6800-109": "风特效 8330 破防",
     "6800-116": "风特效 9291 破防",
+
+    "1925": "朔气4%套装",
+    "4290": "刀啸风吟10%套装",
+    "4291": "上将军印10%套装",
     "4294": "刀啸风吟5%橙武",
     "4295": "项王击鼎5%橙武",
     "2430": "橙武特效",
     "1942": "上将军印-神兵"
 }
-GAINS_MAP = {
-    "1925": attribute_set_gain,
-    "4290": dao_xiao_set_gain,
-    "4291": shang_jiang_set_gain,
+EQUIP_GAINS = {
     "15436-9": special_enchant_hat_gain(822),
     "15436-10": special_enchant_hat_gain(999),
     "15436-11": special_enchant_hat_gain(1098),
@@ -171,10 +168,61 @@ GAINS_MAP = {
     "6800-102": wind_pendant_gain(6408),
     "6800-109": wind_pendant_gain(8330),
     "6800-116": wind_pendant_gain(9291),
+
+    "1925": attribute_set_gain,
+    "4290": dao_xiao_set_gain,
+    "4291": shang_jiang_set_gain,
     "4294": dao_xiao_divine_gain,
     "4295": xiang_wang_divine_gain,
     "2430": divine_effect,
     "1942": shang_jiang_divine_gain
+}
+
+
+WEAPON_ENCHANTS = {
+    "瀑沙熔锭": physical_attack_power_enchant(597),
+    "瀑沙磨石": physical_attack_power_enchant(298)
+}
+MAJOR_FOODS = {
+    "三鲜粥(347力道)": strength_food(347),
+    "三鲜汤（173力道)": strength_food(173)
+}
+MINOR_FOODS = {
+    "白肉血肠(1545破招)": surplus_food(1545),
+    "红烧扣肉(1545加速)": haste_food(1545),
+    "太后饼(696外攻)": physical_attack_power_food(696),
+    "红烧排骨(1545破防)": all_overcome_food(1545),
+    "酸菜鱼(1545会心)": all_critical_strike_food(1545),
+    "毛血旺(773破招)": surplus_food(773),
+    "栗子烧肉(773加速)": haste_food(773),
+    "煎饼果子(348外攻)": physical_attack_power_food(348),
+    "水煮肉片(773破防)": all_overcome_food(773),
+    "鱼香肉丝(773会心)": all_critical_strike_food(773)
+}
+MAJOR_POTIONS = {
+    "上品大力丸(446力道)": strength_potion(446),
+    "中品大力丸(223力道)": strength_potion(223)
+}
+MINOR_POTIONS = {
+    "上品凝神散(1987破招)": surplus_potion(1987),
+    "上品活气散(1987加速)": haste_potion(1987),
+    "上品亢龙散(895外攻)": physical_attack_power_potion(895),
+    "上品破秽散(1987破防)": all_overcome_potion(1987),
+    "上品玉璃散(1987会心)": all_critical_strike_potion(1987),
+    "中品凝神散(993破招)": surplus_potion(993),
+    "中品活气散(993加速)": haste_potion(993),
+    "中品亢龙散(448外攻)": physical_attack_power_potion(448),
+    "中品破秽散(993破防)": all_overcome_potion(993),
+    "中品玉璃散(993会心)": all_critical_strike_potion(993)
+}
+WINES = {
+
+}
+SNACKS = {
+
+}
+SPREADS = {
+
 }
 
 

@@ -24,7 +24,7 @@ def get_magic_attr(row):
         attr = attr['attr']
         if attr[0] in ATTR_TYPE_MAP:
             attrs[ATTR_TYPE_MAP[attr[0]]] = int(attr[1])
-        elif attr[0] in ["atSetEquipmentRecipe", "atSkillEventHandler"] and attr[1] in GAINS_MAP:
+        elif attr[0] in ["atSetEquipmentRecipe", "atSkillEventHandler"] and attr[1] in EQUIP_GAINS:
             gains.append(attr[1])
         else:
             continue
@@ -385,7 +385,7 @@ def build_equipment():
                 for attr in effects:
                     if attr[0] in ATTR_TYPE_MAP:
                         attrs[ATTR_TYPE_MAP[attr[0]]] = int(attr[1])
-                    elif attr[0] in ["atSetEquipmentRecipe", "atSkillEventHandler"] and attr[1] in GAINS_MAP:
+                    elif attr[0] in ["atSetEquipmentRecipe", "atSkillEventHandler"] and attr[1] in EQUIP_GAINS:
                         gains.append(attr[1])
                     else:
                         continue
@@ -409,7 +409,7 @@ def build_equipment():
         gains_functions = []
         for gain in gains:
             gains_texts.append(GAINS_TRANSLATE[gain])
-            gains_functions.append(GAINS_MAP[gain])
+            gains_functions.append(EQUIP_GAINS[gain])
         return "\n".join(equip_attr_texts), "\n".join(gains_texts), "\n".join(attr_texts), "\n".join(
             equip_texts), attribute, gains_functions
 

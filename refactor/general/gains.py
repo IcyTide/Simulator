@@ -1,12 +1,16 @@
-from base.constant import FRAME_PER_SECOND, TANK_GAIN_BASE
+from base.constant import FRAME_PER_SECOND, TANK_GAIN_BASE, HEALER_GAIN_BASE
 from base.skill import Skill
 from base.status import Status
 
-""" Permanent gain """
+""" Tank/Healer """
 
 
 def han_ru_lei(status: Status):
     status.attribute.physical_attack_power_gain += 0.1
+
+
+def xiu_qi(status: Status):
+    status.attribute.all_major_base += 244
 
 
 def po_feng(status: Status):
@@ -17,8 +21,8 @@ def jing_feng(status: Status):
     status.attribute.target.physical_shield_base -= 1397
 
 
-def xiu_qi(status: Status):
-    status.attribute.all_major_base += 244
+def xu_ruo(status: Status):
+    status.attribute.target.physical_shield_gain -= 0.05
 
 
 def jie_huo(status: Status):
@@ -27,32 +31,6 @@ def jie_huo(status: Status):
 
 def qiu_su(status: Status):
     status.attribute.target.physical_vulnerable += 0.06
-
-
-def jiu_zhong_xian(status: Status):
-    status.attribute.physical_critical_strike_gain += 0.1
-
-
-def sui_xing_chen(status: Status):
-    status.attribute.physical_critical_power_gain += 0.1
-
-
-def zuo_xuan_you_zhuan(stack):
-    value = 54
-
-    def inner(status: Status):
-        status.attribute.surplus += value * stack
-
-    return inner
-
-
-def zhen_fen(stack):
-    value = 60
-
-    def inner(status: Status):
-        status.attribute.physical_overcome_base += value * stack
-
-    return inner
 
 
 def hao_ling_san_jun(stack):
@@ -66,36 +44,14 @@ def hao_ling_san_jun(stack):
     return inner
 
 
-""" Periodic Gains """
-
-
-def ji_lei(num):
-    value = 0.2
-    duration = 6
-    cd = 30
+def she_shen_hong_fa(num, stack):
+    duration = 20
+    cd = 40
+    value = TANK_GAIN_BASE
 
     def inner(status: Status):
         rate = min(1, num * duration / cd)
-        status.attribute.physical_attack_power_gain += value * rate
-        status.attribute.physical_overcome_gain += value * rate
-
-    return inner
-
-
-def jian_feng_bai_duan(rate):
-    def inner(status: Status):
-        status.attribute.weapon_damage_gain += 1 * rate
-
-    return inner
-
-
-def shu_kuang(num, cd=50):
-    duration = 12
-    value = 0.3
-
-    def inner(status: Status):
-        rate = min(1, num * duration / cd)
-        status.attribute.physical_attack_power_gain += value * rate
+        status.attribute.strain_base += value * stack * rate
 
     return inner
 
@@ -122,14 +78,11 @@ def sheng_yu_ming_xin(num, stack, cd=180):
     return inner
 
 
-def she_shen_hong_fa(num, stack):
-    duration = 20
-    cd = 40
-    value = TANK_GAIN_BASE
+def zhen_fen(stack):
+    value = HEALER_GAIN_BASE
 
     def inner(status: Status):
-        rate = min(1, num * duration / cd)
-        status.attribute.strain_base += value * stack * rate
+        status.attribute.physical_overcome_base += value * stack
 
     return inner
 
@@ -146,6 +99,15 @@ def han_xiao_qian_jun(num):
     return inner
 
 
+def zuo_xuan_you_zhuan(stack):
+    value = HEALER_GAIN_BASE * 0.9
+
+    def inner(status: Status):
+        status.attribute.surplus += value * stack
+
+    return inner
+
+
 def xian_wang_gu_ding(num):
     duration = 25
     cd = 120
@@ -157,8 +119,8 @@ def xian_wang_gu_ding(num):
     return inner
 
 
-def mei_hua_san_nong(rate, stack):
-    value = 60
+def zhuang_zhou_meng(rate, stack):
+    value = HEALER_GAIN_BASE
 
     def inner(status: Status):
         status.attribute.strain_base += value * stack * rate
@@ -173,13 +135,6 @@ def piao_huang(rate):
     return inner
 
 
-def shan_you():
-    def inner(status: Status):
-        status.attribute.cd_reduction += 0.08
-
-    return inner
-
-
 def pei_wu(rate):
     value = 0.05
 
@@ -189,18 +144,70 @@ def pei_wu(rate):
     return inner
 
 
+""" DPS Gains """
+
+
+def sui_xing_chen(status: Status):
+    status.attribute.physical_critical_power_gain += 0.1
+
+
+def jiu_zhong_xian(status: Status):
+    status.attribute.physical_critical_strike_gain += 0.1
+
+
+def jian_feng_bai_duan(rate):
+    def inner(status: Status):
+        status.attribute.weapon_damage_gain += 1 * rate
+
+    return inner
+
+
+def shan_you():
+    def inner(status: Status):
+        status.attribute.cd_reduction += 0.08
+
+    return inner
+
+
+def ji_lei(num):
+    value = 0.2
+    duration = 6
+    cd = 30
+
+    def inner(status: Status):
+        rate = min(1, num * duration / cd)
+        status.attribute.physical_attack_power_gain += value * rate
+        status.attribute.physical_overcome_gain += value * rate
+
+    return inner
+
+
+def shu_kuang(num, cd=48):
+    duration = 12
+    value = 0.3
+
+    def inner(status: Status):
+        rate = min(1, num * duration / cd)
+        status.attribute.physical_attack_power_gain += value * rate
+
+    return inner
+
+
 """ Weapon Enchant """
 
 
-def physical_attack_power_enchant(status: Status):
-    status.attribute.physical_attack_power_base += 1
+def physical_attack_power_enchant(value):
+    def inner(status: Status):
+        status.attribute.physical_attack_power_base += value
 
-
-def weapon_damage_enchant(status: Status):
-    status.attribute.weapon_damage_base += 1
+    return inner
 
 
 """ Spread """
+
+
+def major_spread(status: Status):
+    status.attribute.strain_base += 1
 
 
 def physical_spread(status: Status):
@@ -256,16 +263,16 @@ def physical_attack_power_food(value):
     return inner
 
 
-def physical_critical_strike_food(value):
+def all_overcome_food(value):
     def inner(status: Status):
-        status.attribute.physical_critical_strike_base += value
+        status.attribute.physical_overcome_base += value
 
     return inner
 
 
-def physical_overcome_food(value):
+def all_critical_strike_food(value):
     def inner(status: Status):
-        status.attribute.physical_overcome_base += value
+        status.attribute.all_critical_strike_base += value
 
     return inner
 
@@ -304,16 +311,16 @@ def physical_attack_power_potion(value):
     return inner
 
 
-def physical_critical_strike_potion(value):
+def all_overcome_potion(value):
     def inner(status: Status):
-        status.attribute.physical_critical_strike_base += value
+        status.attribute.physical_overcome_base += value
 
     return inner
 
 
-def physical_overcome_potion(value):
+def all_critical_strike_potion(value):
     def inner(status: Status):
-        status.attribute.physical_overcome_base += value
+        status.attribute.all_critical_strike_base += value
 
     return inner
 

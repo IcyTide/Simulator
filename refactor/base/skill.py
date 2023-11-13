@@ -34,9 +34,9 @@ class Skill:
     is_instant: bool = False
     is_snapshot: bool = False
 
-    gcd_index: int = 0
+    gcd_index: any = 0
 
-    probability: float = 0
+    probability: float = 1
     count_base: int = 1
     interval_base: int = 0
     interval_list: list = None
@@ -171,10 +171,6 @@ class Skill:
             self.status.cds.pop(self.name)
 
     def pre_cast(self):
-        self.status.counts[self.name] = 0
-
-        if self.name not in self.status.intervals:
-            self.status.intervals[self.name] = self.interval
         if self.is_cast:
             self.status.casting = self.duration
             if self.gcd:
@@ -199,7 +195,7 @@ class Skill:
             effect(self)
 
     def cast(self):
-        if self.probability and self.roll >= self.probability:
+        if self.roll >= self.probability:
             return
 
         self.pre_cast()
@@ -207,6 +203,10 @@ class Skill:
         if not self.damage_base:
             self.post_cast()
             return
+
+        self.status.counts[self.name] = 0
+        if self.name not in self.status.intervals:
+            self.status.intervals[self.name] = self.interval
 
         while self.status.intervals.get(self.name) == 0:
             self.hit()

@@ -13,7 +13,7 @@ class Buff:
     is_dot: bool = False
 
     cd: int = 0
-    probability: float = 0
+    probability: float = 1
     duration: int = 3600 * 16
     duration_max: int = 3600 * 16
 
@@ -61,12 +61,13 @@ class Buff:
             return
         if not self.condition:
             return
-        if not self.probability or self.roll < self.probability:
+        if self.roll >= self.probability:
+            return
 
-            self.refresh()
-            if self.cd:
-                self.activate = False
-                self.status.cds[self.name] = self.cd
+        self.refresh()
+        if self.cd:
+            self.activate = False
+            self.status.cds[self.name] = self.cd
 
     def refresh(self):
         stack = min(self.stack_max - self.status.stacks[self.name], self.stack_add)

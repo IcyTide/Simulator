@@ -11,7 +11,7 @@ class ShuangFengDaoFa(PhysicalSkill):
         super().__init__()
         self.name = "霜风刀法"
 
-        self.gcd_index = -1
+        self.gcd_index = self.name
 
         self.damage_base = 1
 
@@ -27,7 +27,7 @@ class XiuMingChenShen(Skill):
         self.is_hit = False
 
         self.gcd_base = 0
-        self.gcd_index = -2
+        self.gcd_index = self.name
         self.cd_base = 3 * 16
 
     @property
@@ -49,7 +49,7 @@ class SongYanZhuWu(Skill):
         self.is_hit = False
 
         self.gcd_base = 0
-        self.gcd_index = -2
+        self.gcd_index = self.name
         self.cd_base = 3 * 16
 
     @property
@@ -71,7 +71,7 @@ class XueXuJinPing(Skill):
         self.is_hit = False
 
         self.gcd_base = 0
-        self.gcd_index = -2
+        self.gcd_index = self.name
         self.cd_base = 3 * 16
 
     @property
@@ -90,7 +90,7 @@ class LeiZouFengQie(PhysicalSkill):
         super().__init__()
         self.name = "雷走风切"
 
-        self.gcd_index = 1
+        self.gcd_index = self.name
         self.cd_base = 16 * 16
 
         self.damage_base = 175

@@ -6,7 +6,7 @@ def defense(shield_base, shield_gain, shield_ignore_base, shield_ignore_gain,
             skill_shield_ignore_base, skill_shield_ignore_gain, shield_constant):
     shield = shield_base
     shield -= int(shield_base * (shield_ignore_base + skill_shield_ignore_base))
-    shield += shield_gain
+    shield += shield * shield_gain
     shield -= int(shield * (shield_ignore_gain + skill_shield_ignore_gain))
     return max(0, shield / (shield + shield_constant))
 

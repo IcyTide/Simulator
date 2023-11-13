@@ -131,6 +131,6 @@ def xiang_qi_shi(status: Status):
 
 
 talents = [long_xi, gui_han,
-           # yang_guan,
+           yang_guan,
            shuang_tian, han_feng, jian_chen, fen_jiang, xing_huo, chu_ge, jue_qi,
            zhong_yan, xiang_qi_shi]
