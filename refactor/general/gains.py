@@ -155,11 +155,12 @@ def jiu_zhong_xian(status: Status):
     status.attribute.physical_critical_strike_gain += 0.1
 
 
-def jian_feng_bai_duan(rate):
-    def inner(status: Status):
-        status.attribute.weapon_damage_gain += 1 * rate
+def jian_feng_bai_duan(status: Status):
+    cd = 60
+    duration = 10
+    rate = duration / cd
 
-    return inner
+    status.attribute.weapon_damage_gain += 1 * rate
 
 
 def shan_you():
@@ -182,8 +183,9 @@ def ji_lei(num):
     return inner
 
 
-def shu_kuang(num, cd=48):
+def shu_kuang(num):
     duration = 12
+    cd = 48
     value = 0.3
 
     def inner(status: Status):
