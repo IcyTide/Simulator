@@ -1,6 +1,8 @@
 import bei_ao_jue.gains
 from bei_ao_jue.attribute import BeiAoJue
-from general.gains import *
+from general.gains.equipment import *
+from general.gains.team import *
+from general.gains.consumable import *
 
 CLASSES = ["少林", "万花", "天策", "纯阳", "七秀", ]
 SUPPORT_CLASS = {
@@ -20,37 +22,7 @@ SUPPORT_CLASS = {
             "base_physical_overcome": "基础破防",
             "final_physical_overcome": "最终破防",
             "physical_overcome": "破防"
-        },
-        "equip_gains": {
-            "1925": {
-                "name": "朔气4%套装",
-                "gain": bei_ao_jue.gains.attribute_set_gain
-            },
-            "4290": {
-                "name": "刀啸风吟10%套装",
-                "gain": bei_ao_jue.gains.dao_xiao_set_gain
-            },
-            "4291": {
-                "name": "上将军印10%套装",
-                "gain": bei_ao_jue.gains.shang_jiang_set_gain
-            },
-            "4294": {
-                "name": "刀啸风吟5%橙武",
-                "gain": bei_ao_jue.gains.dao_xiao_divine_gain
-            },
-            "4295": {
-                "name": "项王击鼎5%橙武",
-                "gain": bei_ao_jue.gains.xiang_wang_divine_gain
-            },
-            "2430": {
-                "name": "橙武特效",
-                "gain": bei_ao_jue.gains.divine_effect
-            },
-            "1942": {
-                "name": "上将军印-神兵",
-                "gain": bei_ao_jue.gains.shang_jiang_divine_gain
-            }
-        },
+        }
     }
 }
 
@@ -110,7 +82,7 @@ STONE_ATTR_MAP = {
     "atStrengthBase": "力道",
     "atPhysicsAttackPowerBase": "攻击",
     "atPhysicsCriticalStrike": "会心",
-    "atAllTypeCriticalStrike": "会心",
+    "atAllTypeCriticalStrike": "全会心",
     "atPhysicsCriticalDamagePowerBase": "会效",
     "atPhysicsOvercomeBase": "破防",
     "atMeleeWeaponDamageBase": "武器伤害",
@@ -184,6 +156,14 @@ EQUIP_GAINS_TRANSLATE = {
     "6800-102": "风特效 6408 破防",
     "6800-109": "风特效 8330 破防",
     "6800-116": "风特效 9291 破防",
+
+    "1925": "朔气4%套装",
+    "4290": "刀啸风吟10%套装",
+    "4291": "上将军印10%套装",
+    "4294": "刀啸风吟5%橙武",
+    "4295": "项王击鼎5%橙武",
+    "2430": "橙武特效",
+    "1942": "上将军印-神兵"
 }
 EQUIP_GAINS = {
     "15436-9": special_enchant_hat_gain(822),
@@ -201,6 +181,14 @@ EQUIP_GAINS = {
     "6800-102": wind_pendant_gain(6408),
     "6800-109": wind_pendant_gain(8330),
     "6800-116": wind_pendant_gain(9291),
+
+    "1925": bei_ao_jue.gains.attribute_set_gain,
+    "4290": bei_ao_jue.gains.dao_xiao_set_gain,
+    "4291": bei_ao_jue.gains.shang_jiang_set_gain,
+    "4294": bei_ao_jue.gains.dao_xiao_divine_gain,
+    "4295": bei_ao_jue.gains.xiang_wang_divine_gain,
+    "2430": bei_ao_jue.gains.divine_effect,
+    "1942": bei_ao_jue.gains.shang_jiang_divine_gain
 }
 TEAM_GAINS = {
     "通用": {

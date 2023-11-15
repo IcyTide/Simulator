@@ -4,8 +4,6 @@ from ui.constant import WEAPON_ENCHANTS, MAJOR_FOODS, MINOR_FOODS, MAJOR_POTIONS
 
 
 def build_gain():
-    gains_json = gr.JSON({}, visible=False)
-
     with gr.Row():
         with gr.Column(scale=7):
             with gr.Tab("Consumable"):
@@ -33,73 +31,64 @@ def build_gain():
                         boiled_fish = gr.Dropdown(choices=["", "炼狱水煮鱼", "百炼水煮鱼"], label="水煮鱼")
 
             with gr.Tab("Team Gain"):
-                with gr.Accordion("七秀"):
+                with gr.Tab("七秀"):
                     with gr.Row():
                         xiu_qi = gr.CheckboxGroup(choices=["秀气"], label="秀气")
-                        zuo_xuan_you_zhuan = gr.Number(label="左旋右转层数")
-                with gr.Accordion("天策"):
+                        zuo_xuan_you_zhuan_stack = gr.Number(label="左旋右转层数")
+                with gr.Tab("天策"):
                     with gr.Row():
-                        hao_ling_san_jun = gr.Number(maximum=48, label="号令三军层数")
                         han_ru_lei = gr.CheckboxGroup(choices=["撼如雷"], label="撼如雷")
-                        ji_lei = gr.Number(maximum=100, label="激雷覆盖", visible=False)
-                        po_feng = gr.Dropdown(["", "破风", "劲风"], label="破风", visible=False)
-                with gr.Accordion("少林"):
+                        po_feng = gr.Dropdown(["", "破风", "劲风"], label="破风")
+                        cheng_long_jian = gr.CheckboxGroup(choices=["乘龙箭"], label="乘龙箭")
+                        hao_ling_san_jun_stack = gr.Number(maximum=48, label="号令三军层数")
+                        ji_lei_rate = gr.Number(maximum=100, label="激雷覆盖")
+                with gr.Tab("少林"):
                     with gr.Row():
-                        she_shen_hong_fa = gr.Number(maximum=36, label="舍身弘法层数")
-                        she_shen_hong_fa_num = gr.Number(maximum=100, label="舍身弘法覆盖")
-                with gr.Accordion("万花"):
+                        li_di_cheng_fo_rate = gr.Number(maximum=100, label="立地成佛覆盖")
+                        she_shen_hong_fa_stack = gr.Number(maximum=36, label="舍身弘法层数")
+                        she_shen_hong_fa_rate = gr.Number(maximum=100, label="舍身弘法覆盖")
+                with gr.Tab("万花"):
                     with gr.Row():
                         qiu_su = gr.CheckboxGroup(choices=["秋肃"], label="秋肃")
-                with gr.Accordion("纯阳"):
+                        luo_zi_wu_hui_rate = gr.Number(maximum=100, label="落子无悔覆盖")
+                with gr.Tab("纯阳"):
                     with gr.Row():
                         sui_xing_chen = gr.CheckboxGroup(choices=["碎星辰"], label="碎星辰")
-                with gr.Accordion("藏剑"):
+                        po_cang_qiong = gr.CheckboxGroup(choices=["破苍穹"], label="破苍穹")
+                with gr.Tab("藏剑"):
                     with gr.Row():
-                        jian_feng_bai_duan = gr.CheckboxGroup(choices=["剑锋百锻"], label="剑锋百锻")
-                with gr.Accordion("五毒"):
+                        jian_feng_bai_duan_rate = gr.CheckboxGroup(choices=["剑锋百锻"], label="剑锋百锻")
+                with gr.Tab("五毒"):
                     with gr.Row():
                         shan_you = gr.CheckboxGroup(choices=["善友"], label="善友")
-                        xian_wang_gu_ding = gr.Number(maximum=100, label="仙王蛊鼎覆盖")
-                with gr.Accordion("明教"):
+                        xian_wang_gu_ding_rate = gr.Number(maximum=100, label="仙王蛊鼎覆盖")
+                with gr.Tab("明教"):
                     with gr.Row():
                         jie_huo = gr.CheckboxGroup(choices=["戒火"], label="戒火")
+                        lie_ri = gr.CheckboxGroup(choices=["烈日"], label="烈日")
                         chao_sheng_yan = gr.Dropdown(["", "朝圣言", "圣浴明心"], label="朝圣言")
-                        chao_sheng_yan_stacks = gr.Number(maximum=24, label="朝圣言层数")
+                        chao_sheng_yan_stack = gr.Number(maximum=24, label="朝圣言层数")
                         chao_sheng_yan_rate = gr.Number(maximum=100, label="朝圣言覆盖")
-                with gr.Accordion("丐帮"):
+                with gr.Tab("丐帮"):
                     with gr.Row():
                         jiu_zhong_xian = gr.CheckboxGroup(choices=["酒中仙"], label="酒中仙")
-                with gr.Accordion("苍云"):
+                with gr.Tab("苍云"):
                     with gr.Row():
-                        zhen_fen = gr.Number(label="振奋层数")
-                        han_xiao_qian_jun = gr.Number(maximum=100, label="寒啸千军覆盖")
                         xu_ruo = gr.CheckboxGroup(choices=["虚弱"], label="虚弱")
-                with gr.Accordion("长歌"):
+                        zhen_fen_stack = gr.Number(label="振奋层数")
+                        zhen_fen_rate = gr.Number(maximum=100, label="振奋覆盖")
+                        han_xiao_qian_jun_rate = gr.Number(maximum=100, label="寒啸千军覆盖")
+                with gr.Tab("长歌"):
                     with gr.Row():
-                        zhuang_zhou_meng = gr.Number(label="庄周梦层数")
-                        zhuang_zhou_meng_rate = gr.Number(maximum=100, step=1, label="庄周梦覆盖")
-                with gr.Accordion("霸刀"):
+                        zhuang_zhou_meng_stack = gr.Number(label="庄周梦层数")
+                        zhuang_zhou_meng_rate = gr.Number(maximum=100, label="庄周梦覆盖")
+                with gr.Tab("霸刀"):
                     with gr.Row():
-                        shu_kuang = gr.Number(maximum=100, label="疏狂覆盖")
-                with gr.Accordion("药宗"):
+                        shu_kuang_rate = gr.Number(maximum=100, label="疏狂覆盖")
+                with gr.Tab("药宗"):
                     with gr.Row():
-                        piao_huang = gr.Number(maximum=100, label="飘黄覆盖")
-                        pei_wu = gr.Number(maximum=100, label="配伍覆盖")
+                        piao_huang_rate = gr.Number(maximum=100, label="飘黄覆盖")
+                        pei_wu_rate = gr.Number(maximum=100, label="配伍覆盖")
 
         with gr.Column(scale=3):
             gain_box = gr.Textbox(label="当前增益")
-
-        def consumable_func(name, mapping):
-            def inner(x, gains_dict):
-                if x:
-                    gains_dict[name] = mapping[x]
-                return gains_dict
-            return inner
-        major_food.input(consumable_func("辅助类食品", MAJOR_FOODS), [major_food, gains_json], gains_json)
-        minor_food.input(consumable_func("增强类食品", MAJOR_FOODS), [minor_food, gains_json], gains_json)
-        major_potion.input(consumable_func("辅助类药品", MAJOR_FOODS), [major_potion, gains_json], gains_json)
-        minor_potion.input(consumable_func("增强类药品", MAJOR_FOODS), [minor_potion, gains_json], gains_json)
-        weapon_enchant.input(consumable_func("武器磨石", MAJOR_FOODS), [weapon_enchant, gains_json], gains_json)
-        wine.input(consumable_func("家园酒", WINES), [wine, gains_json], gains_json)
-        snack.input(consumable_func("家园食物", SNACKS), [snack, gains_json], gains_json)
-        wine.input(consumable_func("家园酒", WINES), [wine, gains_json], gains_json)

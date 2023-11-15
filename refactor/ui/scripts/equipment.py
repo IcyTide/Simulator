@@ -6,7 +6,7 @@ from ui.constant import POSITION_TRANSLATE, MAX_EMBED_ATTR, SPECIAL_ENCHANT_MAP,
 
 
 def equipment_script(equipments, enchants, stones, equip_components):
-    for equip in POSITION_TRANSLATE.values():
+    for label, equip in POSITION_TRANSLATE.items():
         equip_component = equip_components[equip]
 
         def update_equip(position):
@@ -175,7 +175,7 @@ def equipment_script(equipments, enchants, stones, equip_components):
 
             return inner
 
-        equip_component['equip_attr'].change(update_attr(equip),
+        equip_component['equip_attr'].change(update_attr(label),
                                              [equip_component['equip_attr'], equip_components['equips_attr']],
                                              [equip_component['base_attrs'], equip_component['magic_attrs'],
                                               equip_component['embed_attrs'], equip_component['enchant_attrs'],
@@ -222,7 +222,7 @@ def equipment_script(equipments, enchants, stones, equip_components):
                         equip_gains.append(EQUIP_GAINS[attr[1]])
                         equip_gain_texts.append(EQUIP_GAINS_TRANSLATE[attr[1]])
 
-        equip_attrs_texts = [f"{ATTR_TYPE_TRANSLATE[k]}: {v}" for k, v in equip_attrs.items()]
+        equip_attrs_texts = [f"{ATTR_TYPE_TRANSLATE[k]}: {v}" for k, v in equip_attrs.items() if v]
         return ("\n".join(equip_texts), "\n".join(equip_attrs_texts), "\n".join(equip_gain_texts),
                 equip_attrs, equip_gains)
 
