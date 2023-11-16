@@ -19,6 +19,20 @@ POSITION_MAP = {
     "primary_weapon": 0
 }
 
+POSITION_TRANSLATE = {
+    'hat': '帽子',
+    'jacket': '上衣',
+    'belt': '腰带',
+    'wrist': '护腕',
+    'bottoms': '下装',
+    'shoes': '鞋子',
+    'necklace': '项链',
+    'pendant': '腰坠',
+    'ring': '戒指2',
+    'tertiary_weapon': '远程武器',
+    'primary_weapon': '近战武器'
+}
+
 SUFFIX_MAP = {
     3: 'armor',
     2: 'armor',
@@ -211,8 +225,8 @@ if __name__ == '__main__':
     equip_list = {}
     enchant_list = {}
     for pos in POSITION_MAP:
-        equip_list[pos] = get_equips_list(pos)
-        enchant_list[pos] = get_enchants_list(pos)
+        equip_list[POSITION_TRANSLATE[pos]] = get_equips_list(pos)
+        enchant_list[POSITION_TRANSLATE[pos]] = get_enchants_list(pos)
     json.dump(equip_list,
               open(EQUIPMENTS_DIR, "w", encoding="utf-8"), ensure_ascii=False)
     json.dump(enchant_list,

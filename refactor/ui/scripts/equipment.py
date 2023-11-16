@@ -1,12 +1,12 @@
 import gradio as gr
 
-from ui.constant import POSITION_TRANSLATE, MAX_EMBED_ATTR, SPECIAL_ENCHANT_MAP, MAX_STONE_LEVEL, MAX_EMBED_LEVEL, \
+from ui.constant import POSITIONS, MAX_EMBED_ATTR, SPECIAL_ENCHANT_MAP, MAX_STONE_LEVEL, MAX_EMBED_LEVEL, \
     ATTR_TYPE_TRANSLATE, STONE_POSITIONS, STRENGTH_COF, EMBED_COF, MAX_STONE_ATTR, ATTR_TYPE_MAP, EQUIP_GAINS, \
     EQUIP_GAINS_TRANSLATE
 
 
 def equipment_script(equipments, enchants, stones, equip_components):
-    for label, equip in POSITION_TRANSLATE.items():
+    for equip in POSITIONS:
         equip_component = equip_components[equip]
 
         def update_equip(position):
@@ -175,58 +175,58 @@ def equipment_script(equipments, enchants, stones, equip_components):
 
             return inner
 
-        equip_component['equip_attr'].change(update_attr(label),
-                                             [equip_component['equip_attr'], equip_components['equips_attr']],
-                                             [equip_component['base_attrs'], equip_component['magic_attrs'],
-                                              equip_component['embed_attrs'], equip_component['enchant_attrs'],
-                                              *equip_component['stone_attrs'], equip_components['equips_attr'],
-                                              equip_component['equip_name'], equip_component['enchant_name'],
-                                              equip_component['stone_name'], equip_component['strength_level'],
-                                              *equip_component['embed_levels'], equip_component['stone_level']])
+        def update_attrs(equips_attr):
+            name_texts = []
+            attrs = {attr: 0 for attr in ATTR_TYPE_TRANSLATE}
+            gains = []
+            gain_texts = []
 
-    def update_attrs(equips_attr):
-        equip_attrs = {attr: 0 for attr in ATTR_TYPE_TRANSLATE}
-        equip_gains = []
-        equip_gain_texts = []
+            set_count = {}
+            set_effect = {}
 
-        equip_texts = []
-        set_count = {}
-        set_effect = {}
+            for position, equip_attr in equips_attr.items():
+                if equip_attr['names']['equip']:
+                    name_text = '\t\t'.join(equip_attr['names'].values())
+                    name_texts.append(f"{position}: {name_text}")
 
-        for position, equip_attr in equips_attr.items():
-            if equip_attr['names']['equip']:
-                equip_text = '\t\t'.join(equip_attr['names'].values())
-                equip_texts.append(f"{position}: {equip_text}")
+                for k, v in equip_attr['attrs'].items():
+                    attrs[k] += v
+                for e in equip_attr['gains']:
+                    gains.append(EQUIP_GAINS[e])
+                    gain_texts.append(EQUIP_GAINS_TRANSLATE[e])
 
-            for k, v in equip_attr['attrs'].items():
-                equip_attrs[k] += v
-            for e in equip_attr['gains']:
-                equip_gains.append(EQUIP_GAINS[e])
-                equip_gain_texts.append(EQUIP_GAINS_TRANSLATE[e])
+                set_id, set_data = equip_attr['set']
+                if set_id not in set_count:
+                    set_count[set_id] = 0
+                    set_effect[set_id] = set_data
+                set_count[set_id] += 1
 
-            set_id, set_data = equip_attr['set']
-            if set_id not in set_count:
-                set_count[set_id] = 0
-                set_effect[set_id] = set_data
-            set_count[set_id] += 1
+            for set_id, set_data in set_effect.items():
+                for count, effects in set_data.items():
+                    if int(count) > set_count[set_id]:
+                        break
+                    for attr in effects:
+                        if attr[0] in ATTR_TYPE_MAP:
+                            attrs[ATTR_TYPE_MAP[attr[0]]] += int(attr[1])
+                        elif (attr[0] in ["atSetEquipmentRecipe", "atSkillEventHandler"] and
+                              attr[1] in EQUIP_GAINS_TRANSLATE):
+                            gains.append(EQUIP_GAINS[attr[1]])
+                            gain_texts.append(EQUIP_GAINS_TRANSLATE[attr[1]])
 
-        for set_id, set_data in set_effect.items():
-            for count, effects in set_data.items():
-                if int(count) > set_count[set_id]:
-                    break
-                for attr in effects:
-                    if attr[0] in ATTR_TYPE_MAP:
-                        equip_attrs[ATTR_TYPE_MAP[attr[0]]] += int(attr[1])
-                    elif (attr[0] in ["atSetEquipmentRecipe", "atSkillEventHandler"] and
-                          attr[1] in EQUIP_GAINS_TRANSLATE):
-                        equip_gains.append(EQUIP_GAINS[attr[1]])
-                        equip_gain_texts.append(EQUIP_GAINS_TRANSLATE[attr[1]])
+            attr_texts = [f"{ATTR_TYPE_TRANSLATE[k]}: {v}" for k, v in attrs.items() if v]
+            return "\n".join(name_texts), "\n".join(attr_texts), "\n".join(gain_texts), attrs, gains
 
-        equip_attrs_texts = [f"{ATTR_TYPE_TRANSLATE[k]}: {v}" for k, v in equip_attrs.items() if v]
-        return ("\n".join(equip_texts), "\n".join(equip_attrs_texts), "\n".join(equip_gain_texts),
-                equip_attrs, equip_gains)
-
-    equip_components['equips_attr'].change(update_attrs, equip_components['equips_attr'],
-                                           [equip_components['equip_names'],
-                                            equip_components["equip_attrs"], equip_components["equip_gains"],
-                                            equip_components['attr_state'], equip_components['gain_state']])
+        equip_component['equip_attr'].change(
+            update_attr(equip),
+            [equip_component['equip_attr'], equip_components['equips_attr']],
+            [equip_component['base_attr'], equip_component['magic_attr'], equip_component['embed_attr'],
+             equip_component['enchant_attr'], *equip_component['stone_attrs'],
+             equip_components['equips_attr'],
+             equip_component['equip_name'], equip_component['enchant_name'], equip_component['stone_name'],
+             equip_component['strength_level'], *equip_component['embed_levels'], equip_component['stone_level']]
+        ).then(
+            update_attrs,
+            equip_components['equips_attr'],
+            [equip_components['names'], equip_components["attrs"], equip_components["gains"],
+             equip_components['attr_state'], equip_components['gain_state']]
+        )

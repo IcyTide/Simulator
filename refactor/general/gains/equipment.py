@@ -1,3 +1,4 @@
+from base.constant import FRAME_PER_SECOND
 from base.skill import Skill
 from base.status import Status
 
@@ -5,22 +6,28 @@ from base.status import Status
 
 
 def water_weapon_gain(value):
+    stacks = 10
+
     def inner(status: Status):
-        status.buffs["水特效"].value = value
-
-        def water_weapon_post_hit(self: Skill):
-            self.status.buffs["水特效"].trigger()
-
-        for skill in status.skills.values():
-            if skill.is_hit:
-                skill.post_hit_effect.append(water_weapon_post_hit)
+        status.attribute.physical_attack_power_base += value * stacks
+        # status.buffs["水特效"].value = value
+        #
+        # def water_weapon_post_hit(self: Skill):
+        #     self.status.buffs["水特效"].trigger()
+        #
+        # for skill in status.skills.values():
+        #     if skill.is_hit:
+        #         skill.post_hit_effect.append(water_weapon_post_hit)
 
     return inner
 
 
 def wind_pendant_gain(value):
+    duration = 15
+
     def inner(status: Status):
-        status.buffs["风特效"].value = value
+        status.attribute.physical_overcome_base += value * duration * FRAME_PER_SECOND / status.total_frame
+        # status.buffs["风特效"].value = value
 
     return inner
 

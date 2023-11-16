@@ -16,8 +16,7 @@ def get_special_enchant(row, position):
 def build_equipment():
     attr_state = gr.State()
     gain_state = gr.State()
-    equips_attr = gr.JSON({}, visible=False)
-
+    equips_attr = gr.State({})
     equipments = {k: pd.DataFrame.from_dict(v, orient='index') for k, v in
                   json.load(open(EQUIPMENTS_DIR, encoding='utf-8')).items()}
     enchants = {
@@ -27,13 +26,13 @@ def build_equipment():
 
     stones = pd.read_json(STONES_DIR, orient='index')
 
-    equip_components = {"equips_attr": equips_attr, "attr_state": attr_state, "gain_state": gain_state}
+    equip_components = {"attr_state": attr_state, "gain_state": gain_state, "equips_attr": equips_attr}
     with gr.Row():
         with gr.Column(scale=7):
-            for label, equip in POSITION_TRANSLATE.items():
+            for equip in POSITIONS:
                 equip_components[equip] = {}
                 equip_sub = equip_components[equip]
-                with gr.Tab(label=label):
+                with gr.Tab(label=equip):
                     equip_attr = gr.JSON({}, visible=False)
                     equip_sub["equip_attr"] = equip_attr
                     with gr.Row():
@@ -81,23 +80,23 @@ def build_equipment():
                             equip_sub["stone_attrs"] = stone_attrs
 
                         with gr.Column(scale=3, min_width=200):
-                            base_attrs = gr.Textbox(label="基本属性", visible=False)
-                            equip_sub["base_attrs"] = base_attrs
-                            magic_attrs = gr.Textbox(label="精炼属性", visible=False)
-                            equip_sub["magic_attrs"] = magic_attrs
-                            embed_attrs = gr.Textbox(label="镶嵌属性", visible=False)
-                            equip_sub["embed_attrs"] = embed_attrs
-                            enchant_attrs = gr.Textbox(label="附魔属性", visible=False)
-                            equip_sub["enchant_attrs"] = enchant_attrs
+                            base_attr = gr.Textbox(label="基本属性", visible=False)
+                            equip_sub["base_attr"] = base_attr
+                            magic_attr = gr.Textbox(label="精炼属性", visible=False)
+                            equip_sub["magic_attr"] = magic_attr
+                            embed_attr = gr.Textbox(label="镶嵌属性", visible=False)
+                            equip_sub["embed_attr"] = embed_attr
+                            enchant_attr = gr.Textbox(label="附魔属性", visible=False)
+                            equip_sub["enchant_attr"] = enchant_attr
 
         with gr.Column(scale=3):
             with gr.Row():
-                equip_gains = gr.Textbox(label="装备效果")
-                equip_components["equip_gains"] = equip_gains
-                equip_attrs = gr.Textbox(label="装备属性")
-                equip_components["equip_attrs"] = equip_attrs
+                attrs = gr.Textbox(label="装备属性")
+                equip_components["attrs"] = attrs
+                gains = gr.Textbox(label="装备效果")
+                equip_components["gains"] = gains
 
-    equip_names = gr.Textbox(label="当前配装", scale=7)
-    equip_components["equip_names"] = equip_names
+    names = gr.Textbox(label="当前配装", scale=7)
+    equip_components["names"] = names
 
     return equipments, enchants, stones, equip_components
