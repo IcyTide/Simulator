@@ -1,14 +1,12 @@
 import gradio as gr
 
-from ui.constant import POSITIONS, MAX_EMBED_ATTR, SPECIAL_ENCHANT_MAP, MAX_STONE_LEVEL, MAX_EMBED_LEVEL, \
+from ui.constant import MAX_EMBED_ATTR, SPECIAL_ENCHANT_MAP, MAX_STONE_LEVEL, MAX_EMBED_LEVEL, \
     ATTR_TYPE_TRANSLATE, STONE_POSITIONS, STRENGTH_COF, EMBED_COF, MAX_STONE_ATTR, ATTR_TYPE_MAP, EQUIP_GAINS, \
-    EQUIP_GAINS_TRANSLATE
+    EQUIP_GAINS_NAME
 
 
 def equipment_script(equipments, enchants, stones, equip_components):
-    for equip in POSITIONS:
-        equip_component = equip_components[equip]
-
+    for equip, equip_component in equip_components['equips'].items():
         def update_equip(position):
             def inner(equip_name, enchant_name, special_enchant, stone_name, equip_attr):
                 if not equip_name:
@@ -193,7 +191,7 @@ def equipment_script(equipments, enchants, stones, equip_components):
                     attrs[k] += v
                 for e in equip_attr['gains']:
                     gains.append(EQUIP_GAINS[e])
-                    gain_texts.append(EQUIP_GAINS_TRANSLATE[e])
+                    gain_texts.append(EQUIP_GAINS_NAME[e])
 
                 set_id, set_data = equip_attr['set']
                 if set_id not in set_count:
@@ -209,9 +207,9 @@ def equipment_script(equipments, enchants, stones, equip_components):
                         if attr[0] in ATTR_TYPE_MAP:
                             attrs[ATTR_TYPE_MAP[attr[0]]] += int(attr[1])
                         elif (attr[0] in ["atSetEquipmentRecipe", "atSkillEventHandler"] and
-                              attr[1] in EQUIP_GAINS_TRANSLATE):
+                              attr[1] in EQUIP_GAINS_NAME):
                             gains.append(EQUIP_GAINS[attr[1]])
-                            gain_texts.append(EQUIP_GAINS_TRANSLATE[attr[1]])
+                            gain_texts.append(EQUIP_GAINS_NAME[attr[1]])
 
             attr_texts = [f"{ATTR_TYPE_TRANSLATE[k]}: {v}" for k, v in attrs.items() if v]
             return "\n".join(name_texts), "\n".join(attr_texts), "\n".join(gain_texts), attrs, gains

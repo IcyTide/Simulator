@@ -6,13 +6,6 @@ import pandas as pd
 from ui.constant import *
 
 
-def get_special_enchant(row, position):
-    for k, v in SPECIAL_ENCHANT_MAP[position].items():
-        if row['level'] > k:
-            return [v]
-    return []
-
-
 def build_equipment():
     attr_state = gr.State()
     gain_state = gr.State()
@@ -26,12 +19,12 @@ def build_equipment():
 
     stones = pd.read_json(STONES_DIR, orient='index')
 
-    equip_components = {"attr_state": attr_state, "gain_state": gain_state, "equips_attr": equips_attr}
+    equip_components = {"attr_state": attr_state, "gain_state": gain_state, "equips_attr": equips_attr, "equips": {}}
     with gr.Row():
         with gr.Column(scale=7):
             for equip in POSITIONS:
-                equip_components[equip] = {}
-                equip_sub = equip_components[equip]
+                equip_components["equips"][equip] = {}
+                equip_sub = equip_components["equips"][equip]
                 with gr.Tab(label=equip):
                     equip_attr = gr.JSON({}, visible=False)
                     equip_sub["equip_attr"] = equip_attr

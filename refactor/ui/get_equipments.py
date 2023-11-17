@@ -1,5 +1,6 @@
 import json
 import os
+from functools import cache
 
 import requests
 
@@ -20,17 +21,18 @@ POSITION_MAP = {
 }
 
 POSITION_TRANSLATE = {
-    'hat': '帽子',
-    'jacket': '上衣',
-    'belt': '腰带',
-    'wrist': '护腕',
-    'bottoms': '下装',
-    'shoes': '鞋子',
-    'necklace': '项链',
-    'pendant': '腰坠',
-    'ring': '戒指2',
-    'tertiary_weapon': '远程武器',
-    'primary_weapon': '近战武器'
+    '帽子': 'hat',
+    '上衣': 'jacket',
+    '腰带': 'belt',
+    '护腕': 'wrist',
+    '下装': 'bottoms',
+    '鞋子': 'shoes',
+    '项链': 'necklace',
+    '腰坠': 'pendant',
+    '戒指1': 'ring',
+    '戒指2': 'ring',
+    '远程武器': 'tertiary_weapon',
+    '近战武器': 'primary_weapon'
 }
 
 SUFFIX_MAP = {
@@ -64,6 +66,7 @@ enchant_params = {
 }
 
 
+@cache
 def get_equips_list(position):
     position_id = POSITION_MAP[position]
     url = f"https://node.jx3box.com/equip/{SUFFIX_MAP[position_id]}"
@@ -142,6 +145,7 @@ def get_equip_detail(row):
     }
 
 
+@cache
 def get_enchants_list(position):
     position_id = POSITION_MAP[position]
     url = f"https://node.jx3box.com/enchant/primary"
@@ -224,9 +228,9 @@ def get_stone_detail(row):
 if __name__ == '__main__':
     equip_list = {}
     enchant_list = {}
-    for pos in POSITION_MAP:
-        equip_list[POSITION_TRANSLATE[pos]] = get_equips_list(pos)
-        enchant_list[POSITION_TRANSLATE[pos]] = get_enchants_list(pos)
+    for label, pos in POSITION_TRANSLATE.items():
+        equip_list[label] = get_equips_list(pos)
+        enchant_list[label] = get_enchants_list(pos)
     json.dump(equip_list,
               open(EQUIPMENTS_DIR, "w", encoding="utf-8"), ensure_ascii=False)
     json.dump(enchant_list,

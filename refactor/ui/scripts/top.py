@@ -34,5 +34,5 @@ def top_script(equipments, detail, top_components, equip_components, gain_compon
     top_components['class_name'].input(
         update_class_name, top_components['class_name'],
         [detail, top_components['class_attr'],
-         *[equip_components[equip]['equip_name'] for equip in equipments],
+         *[equip_component['equip_name'] for equip_component in equip_components['equips'].values()],
          *gain_components['consumables'].values()])

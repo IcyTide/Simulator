@@ -33,7 +33,7 @@ SUPPORT_CLASS = {
     }
 }
 
-POSITIONS = ['帽子', '上衣', '腰带', '护腕', '下装', '鞋子', '项链', '腰坠', '戒指2', '远程武器', '近战武器']
+POSITIONS = ['帽子', '上衣', '腰带', '护腕', '下装', '鞋子', '项链', '腰坠', '戒指1', '戒指2', '远程武器', '近战武器']
 ATTR_TYPE_MAP = {
     "atMeleeWeaponDamageBase": "weapon_damage_base",
     "atMeleeWeaponDamageRand": "weapon_damage_rand",
@@ -136,22 +136,36 @@ SPECIAL_ENCHANT_MAP = {
     },
 }
 
-EQUIP_GAINS_TRANSLATE = {
-    "15436-9": "大附魔帽 822 破防",
-    "15436-10": "大附魔帽 999 破防",
-    "15436-11": "大附魔帽 1098 破防",
-    "22151-9": "大附魔衣 371 外攻",
-    "22151-10": "大附魔衣 450 外攻",
-    "22151-11": "大附魔衣 495 外攻",
+EQUIP_GAINS_NUMBER = {
+    "15436-9": 822,
+    "15436-10": 999,
+    "15436-11": 1098,
+    "22151-9": 371,
+    "22151-10": 450,
+    "22151-11": 495,
+    "2401": 67,
+    "2498": 88,
+    "2540": 98,
+    "6800-102": 6408,
+    "6800-109": 8330,
+    "6800-116": 9291
+}
+EQUIP_GAINS_NAME = {
+    "15436-9": f"大附魔帽 {EQUIP_GAINS_NUMBER['15436-9']} 破防",
+    "15436-10": f"大附魔帽 {EQUIP_GAINS_NUMBER['15436-10']} 破防",
+    "15436-11": f"大附魔帽 {EQUIP_GAINS_NUMBER['15436-11']} 破防",
+    "22151-9": f"大附魔衣 {EQUIP_GAINS_NUMBER['22151-9']} 外攻",
+    "22151-10": f"大附魔衣 {EQUIP_GAINS_NUMBER['22151-10']} 外攻",
+    "22151-11": f"大附魔衣 {EQUIP_GAINS_NUMBER['22151-11']} 外攻",
     "22169": "大附魔腰",
     "22166": "大附魔腕",
     "33247": "大附魔鞋",
-    "2401": "水特效 67 外攻",
-    "2498": "水特效 88 外攻",
-    "2540": "水特效 98 外攻",
-    "6800-102": "风特效 6408 破防",
-    "6800-109": "风特效 8330 破防",
-    "6800-116": "风特效 9291 破防",
+    "2401": f"水特效 {EQUIP_GAINS_NUMBER['2401']} 外攻",
+    "2498": f"水特效 {EQUIP_GAINS_NUMBER['2498']} 外攻",
+    "2540": f"水特效 {EQUIP_GAINS_NUMBER['2540']} 外攻",
+    "6800-102": f"风特效 {EQUIP_GAINS_NUMBER['6800-102']} 破防",
+    "6800-109": f"风特效 {EQUIP_GAINS_NUMBER['6800-109']} 破防",
+    "6800-116": f"风特效 {EQUIP_GAINS_NUMBER['6800-116']} 破防",
 
     "1925": "朔气4%套装",
     "4290": "刀啸风吟10%套装",
@@ -162,21 +176,21 @@ EQUIP_GAINS_TRANSLATE = {
     "1942": "上将军印-神兵"
 }
 EQUIP_GAINS = {
-    "15436-9": special_enchant_hat_gain(822),
-    "15436-10": special_enchant_hat_gain(999),
-    "15436-11": special_enchant_hat_gain(1098),
-    "22151-9": special_enchant_jacket_gain(371),
-    "22151-10": special_enchant_jacket_gain(450),
-    "22151-11": special_enchant_jacket_gain(495),
+    "15436-9": special_enchant_hat_gain(EQUIP_GAINS_NUMBER['15436-9']),
+    "15436-10": special_enchant_hat_gain(EQUIP_GAINS_NUMBER['15436-10']),
+    "15436-11": special_enchant_hat_gain(EQUIP_GAINS_NUMBER['15436-11']),
+    "22151-9": special_enchant_jacket_gain(EQUIP_GAINS_NUMBER['22151-9']),
+    "22151-10": special_enchant_jacket_gain(EQUIP_GAINS_NUMBER['22151-10']),
+    "22151-11": special_enchant_jacket_gain(EQUIP_GAINS_NUMBER['22151-11']),
     "22169": special_enchant_belt_gain,
     "22166": special_enchant_wrist_gain,
     "33247": special_enchant_shoes_gain,
-    "2401": water_weapon_gain(67),
-    "2498": water_weapon_gain(88),
-    "2540": water_weapon_gain(98),
-    "6800-102": wind_pendant_gain(6408),
-    "6800-109": wind_pendant_gain(8330),
-    "6800-116": wind_pendant_gain(9291),
+    "2401": water_weapon_gain(EQUIP_GAINS_NUMBER['2401']),
+    "2498": water_weapon_gain(EQUIP_GAINS_NUMBER['2498']),
+    "2540": water_weapon_gain(EQUIP_GAINS_NUMBER['2540']),
+    "6800-102": wind_pendant_gain(EQUIP_GAINS_NUMBER['6800-102']),
+    "6800-109": wind_pendant_gain(EQUIP_GAINS_NUMBER['6800-109']),
+    "6800-116": wind_pendant_gain(EQUIP_GAINS_NUMBER['6800-116']),
 
     "1925": bei_ao_jue.gains.attribute_set_gain,
     "4290": bei_ao_jue.gains.dao_xiao_set_gain,
@@ -186,67 +200,151 @@ EQUIP_GAINS = {
     "2430": bei_ao_jue.gains.divine_effect,
     "1942": bei_ao_jue.gains.shang_jiang_divine_gain
 }
+CONSUMABLES_NUMBER = {
+    "major_food_max": 347,
+    "major_food_min": 173,
+
+    "physical_food_max": 696,
+    "physical_food_min": 348,
+    "minor_food_max": 1545,
+    "minor_food_min": 773,
+
+    "major_potion_max": 446,
+    "major_potion_min": 223,
+
+    "physical_potion_max": 895,
+    "physical_potion_min": 448,
+    "minor_potion_max": 1987,
+    "minor_potion_min": 993,
+
+    "weapon_enchant_max": 597,
+    "weapon_enchant_min": 298,
+
+    "tong_ze_spread": 234,
+    "streamed_fish_spread": 517,
+    "major_spread": 396,
+    "physical_spread": 398,
+    "minor_spread": 883,
+    "boiled_fish_max": 400,
+    "boiled_fish_min": 100,
+}
+
 CONSUMABLES = {
-    "三鲜粥(347力道)": strength_food(347),
-    "三鲜汤(173力道)": strength_food(173),
+    f"三鲜粥({CONSUMABLES_NUMBER['major_food_max']}力道)":
+        strength_food(CONSUMABLES_NUMBER["major_food_max"]),
+    f"三鲜汤({CONSUMABLES_NUMBER['major_food_min']}力道)":
+        strength_food(CONSUMABLES_NUMBER["major_food_min"]),
 
-    "上品大力丸(446力道)": strength_potion(446),
-    "中品大力丸(223力道)": strength_potion(223),
+    f"太后饼({CONSUMABLES_NUMBER['physical_food_max']}外攻)":
+        physical_attack_power_food(CONSUMABLES_NUMBER["physical_food_max"]),
+    f"煎饼果子({CONSUMABLES_NUMBER['physical_food_min']}外攻)":
+        physical_attack_power_food(CONSUMABLES_NUMBER["physical_food_min"]),
+    f"白肉血肠({CONSUMABLES_NUMBER['minor_food_max']}破招)":
+        surplus_food(CONSUMABLES_NUMBER["minor_food_max"]),
+    f"红烧扣肉({CONSUMABLES_NUMBER['minor_food_max']}加速)":
+        haste_food(CONSUMABLES_NUMBER["minor_food_max"]),
+    f"红烧排骨({CONSUMABLES_NUMBER['minor_food_max']}破防)":
+        all_overcome_food(CONSUMABLES_NUMBER["minor_food_max"]),
+    f"酸菜鱼({CONSUMABLES_NUMBER['minor_food_max']}会心)":
+        all_critical_strike_food(CONSUMABLES_NUMBER["minor_food_max"]),
+    f"毛血旺({CONSUMABLES_NUMBER['minor_food_min']}破招)":
+        surplus_food(CONSUMABLES_NUMBER["minor_food_min"]),
+    f"栗子烧肉({CONSUMABLES_NUMBER['minor_food_min']}加速)":
+        haste_food(CONSUMABLES_NUMBER["minor_food_min"]),
+    f"水煮肉片({CONSUMABLES_NUMBER['minor_food_min']}破防)":
+        all_overcome_food(CONSUMABLES_NUMBER["minor_food_min"]),
+    f"鱼香肉丝({CONSUMABLES_NUMBER['minor_food_min']}会心)":
+        all_critical_strike_food(CONSUMABLES_NUMBER["minor_food_min"]),
 
-    "太后饼(696外攻)": physical_attack_power_food(696),
-    "煎饼果子(348外攻)": physical_attack_power_food(348),
-    "白肉血肠(1545破招)": surplus_food(1545),
-    "红烧扣肉(1545加速)": haste_food(1545),
-    "红烧排骨(1545破防)": all_overcome_food(1545),
-    "酸菜鱼(1545会心)": all_critical_strike_food(1545),
-    "毛血旺(773破招)": surplus_food(773),
-    "栗子烧肉(773加速)": haste_food(773),
-    "水煮肉片(773破防)": all_overcome_food(773),
-    "鱼香肉丝(773会心)": all_critical_strike_food(773),
+    f"上品大力丸({CONSUMABLES_NUMBER['major_potion_max']}力道)":
+        strength_potion(CONSUMABLES_NUMBER["major_potion_max"]),
+    f"中品大力丸({CONSUMABLES_NUMBER['major_potion_min']}力道)":
+        strength_potion(CONSUMABLES_NUMBER["major_potion_min"]),
 
-    "上品亢龙散(895外攻)": physical_attack_power_potion(895),
-    "中品亢龙散(448外攻)": physical_attack_power_potion(448),
-    "上品凝神散(1987破招)": surplus_potion(1987),
-    "上品活气散(1987加速)": haste_potion(1987),
-    "上品破秽散(1987破防)": all_overcome_potion(1987),
-    "上品玉璃散(1987会心)": all_critical_strike_potion(1987),
-    "中品凝神散(993破招)": surplus_potion(993),
-    "中品活气散(993加速)": haste_potion(993),
-    "中品破秽散(993破防)": all_overcome_potion(993),
-    "中品玉璃散(993会心)": all_critical_strike_potion(993),
+    f"上品亢龙散({CONSUMABLES_NUMBER['physical_potion_max']}外攻)":
+        physical_attack_power_potion(CONSUMABLES_NUMBER["physical_potion_max"]),
+    f"中品亢龙散({CONSUMABLES_NUMBER['physical_potion_min']}外攻)":
+        physical_attack_power_potion(CONSUMABLES_NUMBER["physical_potion_min"]),
+    f"上品凝神散({CONSUMABLES_NUMBER['minor_potion_max']}破招)":
+        surplus_potion(CONSUMABLES_NUMBER["minor_potion_max"]),
+    f"上品活气散({CONSUMABLES_NUMBER['minor_potion_max']}加速)":
+        haste_potion(CONSUMABLES_NUMBER["minor_potion_max"]),
+    f"上品破秽散({CONSUMABLES_NUMBER['minor_potion_max']}破防)":
+        all_overcome_potion(CONSUMABLES_NUMBER["minor_potion_max"]),
+    f"上品玉璃散({CONSUMABLES_NUMBER['minor_potion_max']}会心)":
+        all_critical_strike_potion(CONSUMABLES_NUMBER["minor_potion_max"]),
+    f"中品凝神散({CONSUMABLES_NUMBER['minor_potion_min']}破招)":
+        surplus_potion(CONSUMABLES_NUMBER["minor_potion_min"]),
+    f"中品活气散({CONSUMABLES_NUMBER['minor_potion_min']}加速)":
+        haste_potion(CONSUMABLES_NUMBER["minor_potion_min"]),
+    f"中品破秽散({CONSUMABLES_NUMBER['minor_potion_min']}破防)":
+        all_overcome_potion(CONSUMABLES_NUMBER["minor_potion_min"]),
+    f"中品玉璃散({CONSUMABLES_NUMBER['minor_potion_min']}会心)":
+        all_critical_strike_potion(CONSUMABLES_NUMBER["minor_potion_min"]),
 
-    "瀑沙熔锭(597外攻)": physical_attack_power_enchant(597),
-    "瀑沙磨石(298外攻)": physical_attack_power_enchant(298),
+    f"瀑沙熔锭({CONSUMABLES_NUMBER['weapon_enchant_max']}外攻)":
+        physical_attack_power_enchant(CONSUMABLES_NUMBER["weapon_enchant_max"]),
+    f"瀑沙磨石({CONSUMABLES_NUMBER['weapon_enchant_min']}外攻)":
+        physical_attack_power_enchant(CONSUMABLES_NUMBER["weapon_enchant_min"]),
 
-    "水晶芙蓉宴(力道)": strength_spread(396),
-    "玉笛谁家听落梅": physical_spread(398, 883),
-    "同泽宴": tong_ze_spread(234),
-    "蒸鱼菜盘": streamed_fish_spread(517),
-    "炼狱水煮鱼": boiled_fish_spread(100),
-    "百炼水煮鱼": boiled_fish_spread(400)
+    "同泽宴":
+        tong_ze_spread(CONSUMABLES_NUMBER["tong_ze_spread"]),
+    "蒸鱼菜盘":
+        streamed_fish_spread(CONSUMABLES_NUMBER["streamed_fish_spread"]),
+    f"水晶芙蓉宴({CONSUMABLES_NUMBER['major_spread']}力道)":
+        strength_spread(CONSUMABLES_NUMBER["major_spread"]),
+    f"玉笛谁家听落梅({CONSUMABLES_NUMBER['physical_spread']}外攻{CONSUMABLES_NUMBER['minor_spread']}会心/破招)":
+        physical_spread(CONSUMABLES_NUMBER["physical_spread"], CONSUMABLES_NUMBER["minor_spread"]),
+    f"炼狱水煮鱼({CONSUMABLES_NUMBER['boiled_fish_min']}破招/无双)":
+        boiled_fish_spread(CONSUMABLES_NUMBER["boiled_fish_min"]),
+    f"百炼水煮鱼({CONSUMABLES_NUMBER['boiled_fish_min']}破招/无双)":
+        boiled_fish_spread(CONSUMABLES_NUMBER["boiled_fish_max"])
 }
 MAJOR_FOODS = {
-    "力道": ["三鲜粥(347力道)", "三鲜汤(173力道)"]
+    "力道": [
+        f"三鲜粥({CONSUMABLES_NUMBER['major_food_max']}力道)",
+        f"三鲜汤({CONSUMABLES_NUMBER['major_food_min']}力道)"
+    ]
 }
 MINOR_FOODS = {
     "外功": [
-        "太后饼(696外攻)", "煎饼果子(348外攻)",
-        "白肉血肠(1545破招)", "红烧扣肉(1545加速)", "红烧排骨(1545破防)", "酸菜鱼(1545会心)",
-        "毛血旺(773破招)", "栗子烧肉(773加速)", "水煮肉片(773破防)", "鱼香肉丝(773会心)"
+        f"太后饼({CONSUMABLES_NUMBER['physical_food_max']}外攻)",
+        f"煎饼果子({CONSUMABLES_NUMBER['physical_food_min']}外攻)",
+        f"白肉血肠({CONSUMABLES_NUMBER['minor_food_max']}破招)",
+        f"红烧扣肉({CONSUMABLES_NUMBER['minor_food_max']}加速)",
+        f"红烧排骨({CONSUMABLES_NUMBER['minor_food_max']}破防)",
+        f"酸菜鱼({CONSUMABLES_NUMBER['minor_food_max']}会心)",
+        f"毛血旺({CONSUMABLES_NUMBER['minor_food_min']}破招)",
+        f"栗子烧肉({CONSUMABLES_NUMBER['minor_food_min']}加速)",
+        f"水煮肉片({CONSUMABLES_NUMBER['minor_food_min']}破防)",
+        f"鱼香肉丝({CONSUMABLES_NUMBER['minor_food_min']}会心)"
     ]
 }
 MAJOR_POTIONS = {
-    "力道": ["上品大力丸(446力道)", "中品大力丸(223力道)"],
+    "力道": [
+        f"上品大力丸({CONSUMABLES_NUMBER['major_potion_max']}力道)",
+        f"中品大力丸({CONSUMABLES_NUMBER['major_potion_min']}力道)"
+    ],
 }
 MINOR_POTIONS = {
     "外功": [
-        "上品亢龙散(895外攻)", "中品亢龙散(448外攻)",
-        "上品凝神散(1987破招)", "上品活气散(1987加速)", "上品破秽散(1987破防)", "上品玉璃散(1987会心)",
-        "中品凝神散(993破招)", "中品活气散(993加速)", "中品破秽散(993破防)", "中品玉璃散(993会心)"
+        f"上品亢龙散({CONSUMABLES_NUMBER['physical_potion_max']}外攻)",
+        f"中品亢龙散({CONSUMABLES_NUMBER['physical_potion_min']}外攻)",
+        f"上品凝神散({CONSUMABLES_NUMBER['minor_potion_max']}破招)",
+        f"上品活气散({CONSUMABLES_NUMBER['minor_potion_max']}加速)",
+        f"上品破秽散({CONSUMABLES_NUMBER['minor_potion_max']}破防)",
+        f"上品玉璃散({CONSUMABLES_NUMBER['minor_potion_max']}会心)",
+        f"中品凝神散({CONSUMABLES_NUMBER['minor_potion_min']}破招)",
+        f"中品活气散({CONSUMABLES_NUMBER['minor_potion_min']}加速)",
+        f"中品破秽散({CONSUMABLES_NUMBER['minor_potion_min']}破防)",
+        f"中品玉璃散({CONSUMABLES_NUMBER['minor_potion_min']}会心)"
     ]
 }
 WEAPON_ENCHANTS = {
-    "外功": ["瀑沙熔锭(597外攻)", "瀑沙磨石(298外攻)"]
+    "外功": [
+        f"瀑沙熔锭({CONSUMABLES_NUMBER['weapon_enchant_max']}外攻)",
+        f"瀑沙磨石({CONSUMABLES_NUMBER['weapon_enchant_min']}外攻)"
+    ]
 }
 WINES = {
 
@@ -255,49 +353,135 @@ SNACKS = {
 
 }
 SPREADS = {
-    "力道": ["水晶芙蓉宴(力道)", "玉笛谁家听落梅"],
+    "力道": [
+        f"水晶芙蓉宴({CONSUMABLES_NUMBER['major_spread']}力道)",
+        f"玉笛谁家听落梅({CONSUMABLES_NUMBER['physical_spread']}外攻{CONSUMABLES_NUMBER['minor_spread']}会心/破招)"
+    ],
 }
 
+TEAM_GAINS_NUMBER = {
+    "袖气": 244,
+    "左旋右转": 54,
+
+    "撼如雷": 51 / 1024,
+    "破风": 1150,
+    "劲风": 1397,
+    "乘龙箭": 102 / 1024,
+    "号令三军": 470,
+    "激雷": 205 / 1024,
+
+    "立地成佛": 30 * 5 / 1024,
+    "舍身弘法": 470,
+
+    "秋肃": 61 / 1024,
+    "皎素": 51 / 1024,
+
+    "碎星辰": 10 / 1024,
+    "破苍穹": 10 / 1024,
+
+    "剑锋百锻": 1,
+
+    "善友": 0.06,
+    "仙王蛊鼎": 123 / 1024,
+
+    "戒火": 51 / 1024,
+    "烈日": 51 / 1024,
+    "朝圣言": 470,
+    "圣浴明心": 705,
+
+    "酒中仙": 0.1,
+
+    "虚弱": 51 / 1024,
+    "寒啸千军": 204 / 1024,
+    "振奋": 60,
+
+    "庄周梦": 60,
+
+    "疏狂": 307 / 1024,
+
+    "配伍": 10 * 5 / 1024,
+}
+TEAM_GAINS_NAME = {
+    "袖气": f"{TEAM_GAINS_NUMBER['袖气']}全属性",
+    "左旋右转": f"左旋右转({TEAM_GAINS_NUMBER['左旋右转']}破招)",
+
+    "撼如雷": f"{round(TEAM_GAINS_NUMBER['撼如雷'] * 100)}%外攻",
+    "破风": f"破风(-{TEAM_GAINS_NUMBER['破风']}外防)",
+    "劲风": f"劲风(-{TEAM_GAINS_NUMBER['劲风']}外防)",
+    "乘龙箭": f"{-round(TEAM_GAINS_NUMBER['乘龙箭'] * 100)}%外防",
+    "号令三军": f"号令三军({TEAM_GAINS_NUMBER['号令三军']}无双)",
+    "激雷": f"激雷({round(TEAM_GAINS_NUMBER['激雷'] * 100)}%外攻/外破)",
+
+    "立地成佛": f"立地成佛(-{round(TEAM_GAINS_NUMBER['立地成佛'] * 100)}%内防)",
+    "舍身弘法": f"舍身弘法({TEAM_GAINS_NUMBER['舍身弘法']}无双)",
+
+    "秋肃": f"{round(TEAM_GAINS_NUMBER['秋肃'] * 100)}%全易伤",
+    "皎素": f"{round(TEAM_GAINS_NUMBER['皎素'] * 100)}%全会效",
+
+    "碎星辰": f"{round(TEAM_GAINS_NUMBER['碎星辰'] * 100)}%外功会效",
+    "破苍穹": f"{round(TEAM_GAINS_NUMBER['破苍穹'] * 100)}%内功会效",
+
+    "剑锋百锻": f"{round(TEAM_GAINS_NUMBER['剑锋百锻'] * 100)}%武伤",
+
+    "善友": f"{round(TEAM_GAINS_NUMBER['善友'] * 100)}%调息加速",
+    "仙王蛊鼎": f"仙王蛊鼎({round(TEAM_GAINS_NUMBER['仙王蛊鼎'] * 100)}伤害加成)",
+
+    "戒火": f"{round(TEAM_GAINS_NUMBER['戒火'] * 100)}%全易伤",
+    "烈日": f"{round(TEAM_GAINS_NUMBER['烈日'] * 100)}%阴性/阳性易伤",
+    "朝圣言": f"朝圣言({TEAM_GAINS_NUMBER['朝圣言']}无双)",
+    "圣浴明心": f"圣浴明心({TEAM_GAINS_NUMBER['圣浴明心']}无双)",
+
+    "酒中仙": f"{round(TEAM_GAINS_NUMBER['酒中仙'] * 100)}%外会",
+
+    "虚弱": f"{-round(TEAM_GAINS_NUMBER['虚弱'] * 100)}%外防",
+    "寒啸千军": f"寒啸千军({round(TEAM_GAINS_NUMBER['寒啸千军'] * 100)}破防)",
+    "振奋": f"振奋({TEAM_GAINS_NUMBER['振奋']}破防)",
+
+    "庄周梦": f"庄周梦({TEAM_GAINS_NUMBER['庄周梦']}无双)",
+
+    "疏狂": f"疏狂({round(TEAM_GAINS_NUMBER['疏狂'] * 100)}攻击)",
+
+    "飘黄": f"飘黄(额外伤害)",
+    "配伍": f"配伍({round(TEAM_GAINS_NUMBER['配伍'] * 100)}全属性)",
+}
 TEAM_GAINS = {
-    "袖气": xiu_qi(244),
-    "左旋右转": zuo_xuan_you_zhuan(54),
+    "袖气": xiu_qi(TEAM_GAINS_NUMBER["袖气"]),
+    "左旋右转": zuo_xuan_you_zhuan(TEAM_GAINS_NUMBER["左旋右转"]),
 
-    "撼如雷": han_ru_lei,
-    "破风": po_feng(1150),
-    "劲风": po_feng(1397),
-    "乘龙箭": cheng_long_jian,
-    "号令三军": hao_ling_san_jun(470),
-    "激雷": ji_lei,
+    "撼如雷": han_ru_lei(TEAM_GAINS_NUMBER["撼如雷"]),
+    "破风": po_feng(TEAM_GAINS_NUMBER["破风"], TEAM_GAINS_NUMBER["劲风"]),
+    "乘龙箭": cheng_long_jian(TEAM_GAINS_NUMBER["乘龙箭"]),
+    "号令三军": hao_ling_san_jun(TEAM_GAINS_NUMBER["号令三军"]),
+    "激雷": ji_lei(TEAM_GAINS_NUMBER["激雷"]),
 
-    "立地成佛": li_di_cheng_fo,
-    "舍身弘法": she_shen_hong_fa(470),
+    "立地成佛": li_di_cheng_fo(TEAM_GAINS_NUMBER["立地成佛"]),
+    "舍身弘法": she_shen_hong_fa(TEAM_GAINS_NUMBER["舍身弘法"]),
 
-    "秋肃": qiu_su,
-    "落子无悔": luo_zi_wu_hui,
+    "秋肃": qiu_su(TEAM_GAINS_NUMBER["秋肃"]),
+    "皎素": jiao_su(TEAM_GAINS_NUMBER["皎素"]),
 
-    "碎星辰": sui_xing_chen,
-    "破苍穹": po_cang_qiong,
+    "碎星辰": sui_xing_chen(TEAM_GAINS_NUMBER["碎星辰"]),
+    "破苍穹": po_cang_qiong(TEAM_GAINS_NUMBER["破苍穹"]),
 
-    "剑锋百锻": jian_feng_bai_duan,
+    "剑锋百锻": jian_feng_bai_duan(TEAM_GAINS_NUMBER["破苍穹"]),
 
-    "善友": shan_you,
-    "仙王蛊鼎": xian_wang_gu_ding,
+    "善友": shan_you(TEAM_GAINS_NUMBER["善友"]),
+    "仙王蛊鼎": xian_wang_gu_ding(TEAM_GAINS_NUMBER["仙王蛊鼎"]),
 
-    "戒火": jie_huo,
-    "烈日": lie_ri,
-    "朝圣言": chao_sheng_yan(470),
-    "圣浴明心": chao_sheng_yan(705),
+    "戒火": jie_huo(TEAM_GAINS_NUMBER["戒火"]),
+    "烈日": lie_ri(TEAM_GAINS_NUMBER["烈日"]),
+    "朝圣言": chao_sheng_yan(TEAM_GAINS_NUMBER["朝圣言"], TEAM_GAINS_NUMBER["圣浴明心"]),
 
-    "酒中仙": jiu_zhong_xian,
+    "酒中仙": jiu_zhong_xian(TEAM_GAINS_NUMBER["酒中仙"]),
 
-    "虚弱": xu_ruo,
-    "振奋": zhen_fen(60),
-    "寒啸千军": han_xiao_qian_jun,
+    "虚弱": xu_ruo(TEAM_GAINS_NUMBER["虚弱"]),
+    "寒啸千军": han_xiao_qian_jun(TEAM_GAINS_NUMBER["寒啸千军"]),
+    "振奋": zhen_fen(TEAM_GAINS_NUMBER["振奋"]),
 
-    "庄周梦": zhuang_zhou_meng(60),
+    "庄周梦": zhuang_zhou_meng(TEAM_GAINS_NUMBER["庄周梦"]),
 
-    "疏狂": shu_kuang,
+    "疏狂": shu_kuang(TEAM_GAINS_NUMBER["疏狂"]),
 
     "飘黄": piao_huang,
-    "配伍": pei_wu,
+    "配伍": pei_wu(TEAM_GAINS_NUMBER["配伍"]),
 }
