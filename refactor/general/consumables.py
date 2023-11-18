@@ -42,6 +42,10 @@ def strength_food(value):
 """ Minor Food """
 
 
+def physical_attack_power_food(value):
+    return {"physical_attack_power_base": value}
+
+
 def surplus_food(value):
     return {"surplus": value}
 
@@ -58,10 +62,6 @@ def all_critical_strike_food(value):
     return {"all_critical_strike_base": value}
 
 
-def physical_attack_power_food(value):
-    return {"physical_attack_power_base": value}
-
-
 """ Major Potion """
 
 
@@ -70,6 +70,10 @@ def strength_potion(value):
 
 
 """ Minor Potion """
+
+
+def physical_attack_power_potion(value):
+    return {"physical_attack_power_base": value}
 
 
 def surplus_potion(value):
@@ -88,18 +92,31 @@ def all_critical_strike_potion(value):
     return {"all_critical_strike_base": value}
 
 
-def physical_attack_power_potion(value):
-    return {"physical_attack_power_base": value}
-
-
 """ Wine """
 
 
 def strength_wine(value):
-    def inner(status: Status):
-        status.attribute.strength_base += value
+    return {"strength_base": value}
 
-    return inner
+
+def haste_wine(value):
+    return {"haste_base": value}
 
 
 """ Snack """
+
+
+def physical_attack_power_snack(value):
+    return {"physical_attack_power_base": value}
+
+
+def strain_snack(value):
+    return {"strain_base": value}
+
+
+def critical_snack(value):
+    return {"all_critical_strike_base": value}
+
+
+def overcome_snack(value):
+    return {"physical_overcome_base": value}

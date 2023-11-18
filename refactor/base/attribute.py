@@ -18,10 +18,10 @@ class Target:
     physical_shield_base: int = 0
     # magical_shield_base: int = 0
 
-    physical_shield_gain: int = 0
+    physical_shield_gain: float = 0
     # magical_shield_gain: int = 0
 
-    physical_vulnerable: int = 0
+    physical_vulnerable: float = 0
     # magical_vulnerable: int = 0
 
     shield_constant: float = 0

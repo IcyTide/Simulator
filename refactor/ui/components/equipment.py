@@ -7,9 +7,6 @@ from ui.constant import *
 
 
 def build_equipment():
-    attr_state = gr.State()
-    gain_state = gr.State()
-    equips_attr = gr.State({})
     equipments = {k: pd.DataFrame.from_dict(v, orient='index') for k, v in
                   json.load(open(EQUIPMENTS_DIR, encoding='utf-8')).items()}
     enchants = {
@@ -19,10 +16,14 @@ def build_equipment():
 
     stones = pd.read_json(STONES_DIR, orient='index')
 
-    equip_components = {"attr_state": attr_state, "gain_state": gain_state, "equips_attr": equips_attr, "equips": {}}
+    attr_state = gr.State()
+    gain_state = gr.State()
+    equips_attr = {}
+    equip_components = {"attr_state": attr_state, "gain_state": gain_state, "equips": {}}
     with gr.Row():
         with gr.Column(scale=7):
             for equip in POSITIONS:
+                equips_attr[equip] = {}
                 equip_components["equips"][equip] = {}
                 equip_sub = equip_components["equips"][equip]
                 with gr.Tab(label=equip):
@@ -81,7 +82,7 @@ def build_equipment():
                             equip_sub["embed_attr"] = embed_attr
                             enchant_attr = gr.Textbox(label="附魔属性", visible=False)
                             equip_sub["enchant_attr"] = enchant_attr
-
+        equip_components["equips_attr"] = gr.State(equips_attr)
         with gr.Column(scale=3):
             with gr.Row():
                 attrs = gr.Textbox(label="装备属性")

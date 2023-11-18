@@ -1,39 +1,11 @@
 import bei_ao_jue.gains
 from bei_ao_jue.attribute import BeiAoJue
+from bei_ao_jue.talents import *
 from general.gains.equipment import *
 from general.gains.team import *
 from general.consumables import *
 
-CLASSES = ["少林", "万花", "天策", "纯阳", "七秀", ]
-SUPPORT_CLASS = {
-    "北傲诀": {
-        "school": "霸刀",
-        "major": "力道",
-        "kind": "外功",
-        "attribute": BeiAoJue,
-        "display_attrs": {
-            "strength": "力道",
-            "base_physical_attack_power": "基础攻击",
-            "physical_attack_power": "攻击",
-            "base_physical_critical_strike": "会心等级",
-            "physical_critical_strike": "会心",
-            "physical_critical_power_base": "会效等级",
-            "physical_critical_power": "会效",
-            "base_physical_overcome": "基础破防",
-            "final_physical_overcome": "最终破防",
-            "physical_overcome": "破防",
-            "weapon_damage_base": "基础武器伤害",
-            "weapon_damage_rand": "浮动武器伤害",
-            "strain_base": "无双等级",
-            "strain": "无双",
-            "haste_base": "加速等级",
-            "haste": "加速",
-            "surplus": "破招",
-        }
-    }
-}
-
-POSITIONS = ['帽子', '上衣', '腰带', '护腕', '下装', '鞋子', '项链', '腰坠', '戒指1', '戒指2', '远程武器', '近战武器']
+""" Attrs """
 ATTR_TYPE_MAP = {
     "atMeleeWeaponDamageBase": "weapon_damage_base",
     "atMeleeWeaponDamageRand": "weapon_damage_rand",
@@ -62,6 +34,53 @@ ATTR_TYPE_TRANSLATE = {
     "surplus": "破招",
 }
 ATTR_TYPE_TRANSLATE_REVERSE = {v: k for k, v in ATTR_TYPE_TRANSLATE.items()}
+
+""" Top """
+CLASSES = ["少林", "万花", "天策", "纯阳", "七秀", ]
+SUPPORT_CLASS = {
+    "北傲诀": {
+        "school": "霸刀",
+        "major": "力道",
+        "kind": "外功",
+        "attribute": BeiAoJue,
+        "talents": {
+            0: ["龙息"],
+            1: ["归酣"],
+            2: ["阳关"],
+            3: ["霜天"],
+            4: ["含风"],
+            5: ["见尘"],
+            6: ["分疆"],
+            7: ["星火"],
+            8: ["楚歌"],
+            9: ["绝期"],
+            10: ["重烟"],
+            11: ["降麒式"]
+        },
+        "display_attrs": {
+            "strength": "力道",
+            "base_physical_attack_power": "基础攻击",
+            "physical_attack_power": "攻击",
+            "base_physical_critical_strike": "会心等级",
+            "physical_critical_strike": "会心",
+            "physical_critical_power_base": "会效等级",
+            "physical_critical_power": "会效",
+            "base_physical_overcome": "基础破防",
+            "final_physical_overcome": "最终破防",
+            "physical_overcome": "破防",
+            "weapon_damage_base": "基础武器伤害",
+            "weapon_damage_rand": "浮动武器伤害",
+            "strain_base": "无双等级",
+            "strain": "无双",
+            "haste_base": "加速等级",
+            "haste": "加速",
+            "surplus": "破招",
+        }
+    }
+}
+
+""" Equip """
+POSITIONS = ['帽子', '上衣', '腰带', '护腕', '下装', '鞋子', '项链', '腰坠', '戒指1', '戒指2', '远程武器', '近战武器']
 
 EQUIP_ATTR_MAP = {
     "Overcome": "破防",
@@ -112,7 +131,7 @@ STONES_DIR = "ui/assets/stones.json"
 EQUIPS_CONFIG_DIR = "ui/config/equips.json"
 
 STONE_POSITIONS = ["近战武器"]
-WIND_PENDANT_SKILL_ID = "6800"
+WIND_PENDANT_SKILLS = ["6800"]
 
 SPECIAL_ENCHANT_MAP = {
     "帽子": {
@@ -200,6 +219,8 @@ EQUIP_GAINS = {
     "2430": bei_ao_jue.gains.divine_effect,
     "1942": bei_ao_jue.gains.shang_jiang_divine_gain
 }
+
+""" Consumable """
 CONSUMABLES_NUMBER = {
     "major_food_max": 347,
     "major_food_min": 173,
@@ -220,6 +241,13 @@ CONSUMABLES_NUMBER = {
     "weapon_enchant_max": 597,
     "weapon_enchant_min": 298,
 
+    "minor_snack_max": 1934,
+    "minor_snack_min": 858,
+    "physical_snack": 866,
+
+    "major_wine": 256,
+    "haste_wine": 1144,
+
     "tong_ze_spread": 234,
     "streamed_fish_spread": 517,
     "major_spread": 396,
@@ -227,6 +255,7 @@ CONSUMABLES_NUMBER = {
     "minor_spread": 883,
     "boiled_fish_max": 400,
     "boiled_fish_min": 100,
+
 }
 
 CONSUMABLES = {
@@ -239,6 +268,7 @@ CONSUMABLES = {
         physical_attack_power_food(CONSUMABLES_NUMBER["physical_food_max"]),
     f"煎饼果子({CONSUMABLES_NUMBER['physical_food_min']}外攻)":
         physical_attack_power_food(CONSUMABLES_NUMBER["physical_food_min"]),
+
     f"白肉血肠({CONSUMABLES_NUMBER['minor_food_max']}破招)":
         surplus_food(CONSUMABLES_NUMBER["minor_food_max"]),
     f"红烧扣肉({CONSUMABLES_NUMBER['minor_food_max']}加速)":
@@ -265,6 +295,7 @@ CONSUMABLES = {
         physical_attack_power_potion(CONSUMABLES_NUMBER["physical_potion_max"]),
     f"中品亢龙散({CONSUMABLES_NUMBER['physical_potion_min']}外攻)":
         physical_attack_power_potion(CONSUMABLES_NUMBER["physical_potion_min"]),
+
     f"上品凝神散({CONSUMABLES_NUMBER['minor_potion_max']}破招)":
         surplus_potion(CONSUMABLES_NUMBER["minor_potion_max"]),
     f"上品活气散({CONSUMABLES_NUMBER['minor_potion_max']}加速)":
@@ -287,17 +318,35 @@ CONSUMABLES = {
     f"瀑沙磨石({CONSUMABLES_NUMBER['weapon_enchant_min']}外攻)":
         physical_attack_power_enchant(CONSUMABLES_NUMBER["weapon_enchant_min"]),
 
+    f"创意料理({CONSUMABLES_NUMBER['physical_snack']})外攻":
+        physical_attack_power_snack(CONSUMABLES_NUMBER["physical_snack"]),
+    f"创意料理({CONSUMABLES_NUMBER['minor_snack_max']})无双":
+        strain_snack(CONSUMABLES_NUMBER["minor_snack_max"]),
+    f"创意料理({CONSUMABLES_NUMBER['minor_snack_max']})会心":
+        critical_snack(CONSUMABLES_NUMBER["minor_snack_max"]),
+    f"创意料理({CONSUMABLES_NUMBER['minor_snack_max']})破防":
+        overcome_snack(CONSUMABLES_NUMBER["minor_snack_max"]),
+
+    f"汾酒·旬又三({CONSUMABLES_NUMBER['major_wine']}力道)":
+        strength_wine(CONSUMABLES_NUMBER["major_wine"]),
+
+    f"女儿红·旬又三({CONSUMABLES_NUMBER['haste_wine']}加速)":
+        haste_wine(CONSUMABLES_NUMBER["haste_wine"]),
+
     "同泽宴":
         tong_ze_spread(CONSUMABLES_NUMBER["tong_ze_spread"]),
     "蒸鱼菜盘":
         streamed_fish_spread(CONSUMABLES_NUMBER["streamed_fish_spread"]),
+
     f"水晶芙蓉宴({CONSUMABLES_NUMBER['major_spread']}力道)":
         strength_spread(CONSUMABLES_NUMBER["major_spread"]),
+
     f"玉笛谁家听落梅({CONSUMABLES_NUMBER['physical_spread']}外攻{CONSUMABLES_NUMBER['minor_spread']}会心/破招)":
         physical_spread(CONSUMABLES_NUMBER["physical_spread"], CONSUMABLES_NUMBER["minor_spread"]),
+
     f"炼狱水煮鱼({CONSUMABLES_NUMBER['boiled_fish_min']}破招/无双)":
         boiled_fish_spread(CONSUMABLES_NUMBER["boiled_fish_min"]),
-    f"百炼水煮鱼({CONSUMABLES_NUMBER['boiled_fish_min']}破招/无双)":
+    f"百炼水煮鱼({CONSUMABLES_NUMBER['boiled_fish_max']}破招/无双)":
         boiled_fish_spread(CONSUMABLES_NUMBER["boiled_fish_max"])
 }
 MAJOR_FOODS = {
@@ -307,9 +356,7 @@ MAJOR_FOODS = {
     ]
 }
 MINOR_FOODS = {
-    "外功": [
-        f"太后饼({CONSUMABLES_NUMBER['physical_food_max']}外攻)",
-        f"煎饼果子({CONSUMABLES_NUMBER['physical_food_min']}外攻)",
+    "通用": [
         f"白肉血肠({CONSUMABLES_NUMBER['minor_food_max']}破招)",
         f"红烧扣肉({CONSUMABLES_NUMBER['minor_food_max']}加速)",
         f"红烧排骨({CONSUMABLES_NUMBER['minor_food_max']}破防)",
@@ -318,6 +365,10 @@ MINOR_FOODS = {
         f"栗子烧肉({CONSUMABLES_NUMBER['minor_food_min']}加速)",
         f"水煮肉片({CONSUMABLES_NUMBER['minor_food_min']}破防)",
         f"鱼香肉丝({CONSUMABLES_NUMBER['minor_food_min']}会心)"
+    ],
+    "外功": [
+        f"太后饼({CONSUMABLES_NUMBER['physical_food_max']}外攻)",
+        f"煎饼果子({CONSUMABLES_NUMBER['physical_food_min']}外攻)"
     ]
 }
 MAJOR_POTIONS = {
@@ -327,9 +378,7 @@ MAJOR_POTIONS = {
     ],
 }
 MINOR_POTIONS = {
-    "外功": [
-        f"上品亢龙散({CONSUMABLES_NUMBER['physical_potion_max']}外攻)",
-        f"中品亢龙散({CONSUMABLES_NUMBER['physical_potion_min']}外攻)",
+    "通用": [
         f"上品凝神散({CONSUMABLES_NUMBER['minor_potion_max']}破招)",
         f"上品活气散({CONSUMABLES_NUMBER['minor_potion_max']}加速)",
         f"上品破秽散({CONSUMABLES_NUMBER['minor_potion_max']}破防)",
@@ -338,6 +387,10 @@ MINOR_POTIONS = {
         f"中品活气散({CONSUMABLES_NUMBER['minor_potion_min']}加速)",
         f"中品破秽散({CONSUMABLES_NUMBER['minor_potion_min']}破防)",
         f"中品玉璃散({CONSUMABLES_NUMBER['minor_potion_min']}会心)"
+    ],
+    "外功": [
+        f"上品亢龙散({CONSUMABLES_NUMBER['physical_potion_max']}外攻)",
+        f"中品亢龙散({CONSUMABLES_NUMBER['physical_potion_min']}外攻)"
     ]
 }
 WEAPON_ENCHANTS = {
@@ -346,19 +399,31 @@ WEAPON_ENCHANTS = {
         f"瀑沙磨石({CONSUMABLES_NUMBER['weapon_enchant_min']}外攻)"
     ]
 }
-WINES = {
-
-}
 SNACKS = {
+    "通用": [
+        f"创意料理({CONSUMABLES_NUMBER['minor_snack_max']})无双",
+        f"创意料理({CONSUMABLES_NUMBER['minor_snack_max']})会心",
+        f"创意料理({CONSUMABLES_NUMBER['minor_snack_max']})破防",
+    ],
+    "外功": [
+        f"创意料理({CONSUMABLES_NUMBER['physical_snack']})外攻"
+    ]
+}
+WINES = {
+    "通用": [f"女儿红·旬又三({CONSUMABLES_NUMBER['haste_wine']}加速)"],
+    "力道": [f"汾酒·旬又三({CONSUMABLES_NUMBER['major_wine']}力道)"]
 
 }
 SPREADS = {
     "力道": [
-        f"水晶芙蓉宴({CONSUMABLES_NUMBER['major_spread']}力道)",
-        f"玉笛谁家听落梅({CONSUMABLES_NUMBER['physical_spread']}外攻{CONSUMABLES_NUMBER['minor_spread']}会心/破招)"
+        f"水晶芙蓉宴({CONSUMABLES_NUMBER['major_spread']}力道)"
     ],
+    "外功": [
+        f"玉笛谁家听落梅({CONSUMABLES_NUMBER['physical_spread']}外攻{CONSUMABLES_NUMBER['minor_spread']}会心/破招)"
+    ]
 }
 
+""" Team Gain """
 TEAM_GAINS_NUMBER = {
     "袖气": 244,
     "左旋右转": 54,
@@ -376,15 +441,15 @@ TEAM_GAINS_NUMBER = {
     "秋肃": 61 / 1024,
     "皎素": 51 / 1024,
 
-    "碎星辰": 10 / 1024,
-    "破苍穹": 10 / 1024,
+    "碎星辰": 100 / 1024,
+    "破苍穹": 100 / 1024,
 
     "剑锋百锻": 1,
 
     "善友": 0.06,
     "仙王蛊鼎": 123 / 1024,
 
-    "戒火": 51 / 1024,
+    "戒火": 21 / 1024,
     "烈日": 51 / 1024,
     "朝圣言": 470,
     "圣浴明心": 705,
@@ -406,8 +471,9 @@ TEAM_GAINS_NAME = {
     "左旋右转": f"左旋右转({TEAM_GAINS_NUMBER['左旋右转']}破招)",
 
     "撼如雷": f"{round(TEAM_GAINS_NUMBER['撼如雷'] * 100)}%外攻",
-    "破风": f"破风(-{TEAM_GAINS_NUMBER['破风']}外防)",
-    "劲风": f"劲风(-{TEAM_GAINS_NUMBER['劲风']}外防)",
+    "破风": "破风",
+    "破风(基础)": f"破风(-{TEAM_GAINS_NUMBER['破风']}外防)",
+    "破风(劲风)": f"劲风(-{TEAM_GAINS_NUMBER['劲风']}外防)",
     "乘龙箭": f"{-round(TEAM_GAINS_NUMBER['乘龙箭'] * 100)}%外防",
     "号令三军": f"号令三军({TEAM_GAINS_NUMBER['号令三军']}无双)",
     "激雷": f"激雷({round(TEAM_GAINS_NUMBER['激雷'] * 100)}%外攻/外破)",
@@ -416,33 +482,34 @@ TEAM_GAINS_NAME = {
     "舍身弘法": f"舍身弘法({TEAM_GAINS_NUMBER['舍身弘法']}无双)",
 
     "秋肃": f"{round(TEAM_GAINS_NUMBER['秋肃'] * 100)}%全易伤",
-    "皎素": f"{round(TEAM_GAINS_NUMBER['皎素'] * 100)}%全会效",
+    "皎素": f"皎素{round(TEAM_GAINS_NUMBER['皎素'] * 100)}%全会效",
 
     "碎星辰": f"{round(TEAM_GAINS_NUMBER['碎星辰'] * 100)}%外功会效",
     "破苍穹": f"{round(TEAM_GAINS_NUMBER['破苍穹'] * 100)}%内功会效",
 
-    "剑锋百锻": f"{round(TEAM_GAINS_NUMBER['剑锋百锻'] * 100)}%武伤",
+    "剑锋百锻": f"剑锋百锻{round(TEAM_GAINS_NUMBER['剑锋百锻'] * 100)}%武伤",
 
     "善友": f"{round(TEAM_GAINS_NUMBER['善友'] * 100)}%调息加速",
-    "仙王蛊鼎": f"仙王蛊鼎({round(TEAM_GAINS_NUMBER['仙王蛊鼎'] * 100)}伤害加成)",
+    "仙王蛊鼎": f"仙王蛊鼎({round(TEAM_GAINS_NUMBER['仙王蛊鼎'] * 100)}%伤害加成)",
 
     "戒火": f"{round(TEAM_GAINS_NUMBER['戒火'] * 100)}%全易伤",
     "烈日": f"{round(TEAM_GAINS_NUMBER['烈日'] * 100)}%阴性/阳性易伤",
-    "朝圣言": f"朝圣言({TEAM_GAINS_NUMBER['朝圣言']}无双)",
-    "圣浴明心": f"圣浴明心({TEAM_GAINS_NUMBER['圣浴明心']}无双)",
+    "朝圣言": "朝圣言",
+    "朝圣言(基础)": f"朝圣言({TEAM_GAINS_NUMBER['朝圣言']}无双)",
+    "朝圣言(圣浴明心)": f"圣浴明心({TEAM_GAINS_NUMBER['圣浴明心']}无双)",
 
     "酒中仙": f"{round(TEAM_GAINS_NUMBER['酒中仙'] * 100)}%外会",
 
     "虚弱": f"{-round(TEAM_GAINS_NUMBER['虚弱'] * 100)}%外防",
-    "寒啸千军": f"寒啸千军({round(TEAM_GAINS_NUMBER['寒啸千军'] * 100)}破防)",
+    "寒啸千军": f"寒啸千军({round(TEAM_GAINS_NUMBER['寒啸千军'] * 100)}%破防)",
     "振奋": f"振奋({TEAM_GAINS_NUMBER['振奋']}破防)",
 
     "庄周梦": f"庄周梦({TEAM_GAINS_NUMBER['庄周梦']}无双)",
 
-    "疏狂": f"疏狂({round(TEAM_GAINS_NUMBER['疏狂'] * 100)}攻击)",
+    "疏狂": f"疏狂({round(TEAM_GAINS_NUMBER['疏狂'] * 100)}%攻击)",
 
     "飘黄": f"飘黄(额外伤害)",
-    "配伍": f"配伍({round(TEAM_GAINS_NUMBER['配伍'] * 100)}全属性)",
+    "配伍": f"配伍({round(TEAM_GAINS_NUMBER['配伍'] * 100)}%全属性)",
 }
 TEAM_GAINS = {
     "袖气": xiu_qi(TEAM_GAINS_NUMBER["袖气"]),
@@ -484,4 +551,22 @@ TEAM_GAINS = {
 
     "飘黄": piao_huang,
     "配伍": pei_wu(TEAM_GAINS_NUMBER["配伍"]),
+}
+
+""" Talent """
+MAX_TALENTS = 12
+
+TALENT_GAINS = {
+    "龙息": long_xi,
+    "归酣": gui_han,
+    "阳关": yang_guan,
+    "霜天": shuang_tian,
+    "含风": han_feng,
+    "见尘": jian_chen,
+    "分疆": fen_jiang,
+    "星火": xing_huo,
+    "楚歌": chu_ge,
+    "绝期": jue_qi,
+    "重烟": zhong_yan,
+    "降麒式": xiang_qi_shi,
 }

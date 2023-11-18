@@ -119,7 +119,7 @@ def get_equip_detail(row):
             continue
         embed_attrs[ATTR_TYPE_MAP[attr[0]]] = int(attr[1])
 
-    if row["SkillID"] == WIND_PENDANT_SKILL_ID:
+    if row["SkillID"] in WIND_PENDANT_SKILLS:
         gains.append(f"{row['SkillID']}-{row['SkillLevel']}")
 
     if set_attr := row['_SetAttrbs']:

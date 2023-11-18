@@ -183,9 +183,10 @@ def equipment_script(equipments, enchants, stones, equip_components):
             set_effect = {}
 
             for position, equip_attr in equips_attr.items():
-                if equip_attr['names']['equip']:
-                    name_text = '\t\t'.join(equip_attr['names'].values())
-                    name_texts.append(f"{position}: {name_text}")
+                if not equip_attr or not equip_attr['names']['equip']:
+                    continue
+                name_text = '\t\t'.join(equip_attr['names'].values())
+                name_texts.append(f"{position}: {name_text}")
 
                 for k, v in equip_attr['attrs'].items():
                     attrs[k] += v
