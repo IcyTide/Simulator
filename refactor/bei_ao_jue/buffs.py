@@ -1,24 +1,11 @@
 from base.buff import Buff
+from general.buffs import CriticalSet
 
 
-class ShuoQi(Buff):
+class ShuoQi(CriticalSet):
     def __init__(self):
         super().__init__()
         self.name = "朔气"
-
-        self.probability = 0.1
-
-        self.duration = 6 * 16
-
-    def add(self):
-        super().add()
-        self.status.attribute.physical_critical_strike_gain += 0.04
-        self.status.attribute.physical_critical_power_gain += 0.04
-
-    def remove(self):
-        super().remove()
-        self.status.attribute.physical_critical_strike_gain -= 0.04
-        self.status.attribute.physical_critical_power_gain -= 0.04
 
 
 class XiuMingChenShen(Buff):
@@ -186,7 +173,7 @@ class XiangQiShi(Buff):
         self.status.attribute.damage_addition -= 0.2
 
 
-buffs = [
+BUFFS = [
     ShuoQi,
     XiuMingChenShen, SongYanZhuWu, XueXuJinPing, NaoXuMiDot, JianBiQingYeDot, ChuGe, ChuGeCount,
     JianChen, HanFeng, XiangQiCount, XiangQiReady, XiangQiDot, XiangQiShi]

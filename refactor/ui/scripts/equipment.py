@@ -1,7 +1,7 @@
 import gradio as gr
 
-from ui.constant import MAX_EMBED_ATTR, SPECIAL_ENCHANT_MAP, MAX_STONE_LEVEL, MAX_EMBED_LEVEL, \
-    ATTR_TYPE_TRANSLATE, STONE_POSITIONS, STRENGTH_COF, EMBED_COF, MAX_STONE_ATTR, ATTR_TYPE_MAP, EQUIP_GAINS, \
+from ui.constant import MAX_EMBED_ATTR, MAX_STONE_LEVEL, MAX_EMBED_LEVEL, \
+    ATTR_TYPE_TRANSLATE, STONE_POSITIONS, STRENGTH_COF, EMBED_COF, MAX_STONE_ATTR, EQUIP_GAINS, \
     EQUIP_GAINS_NAME
 
 
@@ -30,10 +30,7 @@ def equipment_script(equipments, enchants, stones, equip_components):
                 equip_attr['gains'] = equip_row['gains']
 
                 if special_enchant:
-                    for k, v in SPECIAL_ENCHANT_MAP[position].items():
-                        if equip_row['level'] > k:
-                            equip_attr['gains'].append(v)
-                            break
+                    equip_attr['gains'].append(equip_row['special_enchant'])
 
                 if enchant_name:
                     enchant_row = enchants[position].loc[enchant_name]
@@ -66,7 +63,7 @@ def equipment_script(equipments, enchants, stones, equip_components):
                     equip_attr["embed_levels"] = [MAX_EMBED_LEVEL for _ in range(MAX_EMBED_ATTR)]
 
                 enchant_update = gr.update(visible=not enchants[position].empty)
-                special_enchant_update = gr.update(visible=position in SPECIAL_ENCHANT_MAP)
+                special_enchant_update = gr.update(visible=bool(equip_row['special_enchant']))
 
                 stone_update = gr.update(visible=position in STONE_POSITIONS)
 
@@ -204,13 +201,13 @@ def equipment_script(equipments, enchants, stones, equip_components):
                 for count, effects in set_data.items():
                     if int(count) > set_count[set_id]:
                         break
-                    for attr in effects:
-                        if attr[0] in ATTR_TYPE_MAP:
-                            attrs[ATTR_TYPE_MAP[attr[0]]] += int(attr[1])
-                        elif (attr[0] in ["atSetEquipmentRecipe", "atSkillEventHandler"] and
-                              attr[1] in EQUIP_GAINS_NAME):
-                            gains.append(EQUIP_GAINS[attr[1]])
-                            gain_texts.append(EQUIP_GAINS_NAME[attr[1]])
+                    for effect in effects:
+                        if gain := effect.get("gain"):
+                            gains.append(EQUIP_GAINS[gain])
+                            gain_texts.append(EQUIP_GAINS_NAME[gain])
+                        else:
+                            for attr, value in effect.items():
+                                attrs[attr] += value
 
             attr_texts = [f"{ATTR_TYPE_TRANSLATE[k]}: {v}" for k, v in attrs.items() if v]
             return "\n".join(name_texts), "\n".join(attr_texts), "\n".join(gain_texts), attrs, gains

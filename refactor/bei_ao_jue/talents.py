@@ -27,7 +27,7 @@ def yang_guan(status: Status):
     status.skills["上将军印"].skill_damage_addition += 0.15
     status.skills["见尘"].skill_damage_addition += 0.15
 
-    status.skills["上将军印"].skill_shield_ignore_base += 0.2
+    status.skills["上将军印"].skill_shield_gain -= 0.2
 
 
 def shuang_tian(status: Status):
@@ -130,7 +130,31 @@ def xiang_qi_shi(status: Status):
         status.skills[skill].post_cast_effect.append(xiang_qi_shi_post_cast)
 
 
-talents = [long_xi, gui_han,
-           yang_guan,
-           shuang_tian, han_feng, jian_chen, fen_jiang, xing_huo, chu_ge, jue_qi,
-           zhong_yan, xiang_qi_shi]
+TALENTS = [
+    ["龙息"],
+    ["归酣"],
+    ["阳关"],
+    ["霜天"],
+    ["含风"],
+    ["见尘"],
+    ["分疆"],
+    ["星火"],
+    ["楚歌"],
+    ["绝期"],
+    ["重烟"],
+    ["降麒式"]
+]
+TALENT_GAINS = {
+    "龙息": long_xi,
+    "归酣": gui_han,
+    "阳关": yang_guan,
+    "霜天": shuang_tian,
+    "含风": han_feng,
+    "见尘": jian_chen,
+    "分疆": fen_jiang,
+    "星火": xing_huo,
+    "楚歌": chu_ge,
+    "绝期": jue_qi,
+    "重烟": zhong_yan,
+    "降麒式": xiang_qi_shi,
+}

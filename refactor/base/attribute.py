@@ -1,41 +1,12 @@
 from dataclasses import dataclass
-from functools import cached_property, cache
+from functools import cached_property
 
-from .constant import *
-
-"""
-    TODO: add update func to replace property
-"""
-
-
-@dataclass
-class Target:
-    SHIELD_BASE_MAP = {
-        124: 27550
-    }
-    level: int = 124
-
-    physical_shield_base: int = 0
-    # magical_shield_base: int = 0
-
-    physical_shield_gain: float = 0
-    # magical_shield_gain: int = 0
-
-    physical_vulnerable: float = 0
-    # magical_vulnerable: int = 0
-
-    shield_constant: float = 0
-
-    def __post_init__(self):
-        self.physical_shield_base = self.SHIELD_BASE_MAP[self.level]
-        # self.magical_shield_base = self.SHIELD_BASE_MAP[self.level]
-        self.shield_constant = SHIELD_SCALE * (LEVEL_SCALE * self.level - LEVEL_CONSTANT)
+from base.constant import LEVEL_REDUCTION, AGILITY_TO_CRITICAL_STRIKE, STRENGTH_TO_ATTACK_POWER, STRENGTH_TO_OVERCOME, \
+    STRAIN_SCALE, HASTE_SCALE, CRITICAL_STRIKE_SCALE, CRITICAL_POWER_BASE, CRITICAL_POWER_SCALE, OVERCOME_SCALE
 
 
 @dataclass
 class Attribute:
-    target: Target = None
-
     level: int = 120
     _all_major_base: int = 0
     _all_major_gain: float = 0
@@ -120,19 +91,16 @@ class Attribute:
     _weapon_damage_gain: float = 0
     _weapon_damage: int = 0
 
-    physical_shield_ignore_base: float = 0
-    # magical_shield_ignore_base: float = 0
-    physical_shield_ignore_gain: float = 0
-    # magical_shield_ignore_gain: float = 0
+    _all_shield_ignore: float = 0
+    _physical_shield_ignore_base: float = 0
+    _physical_shield_ignore: float = 0
+    # magical_shield_ignore: float = 0
 
     damage_addition: float = 0
     cd_reduction: float = 0
     pve_addition: float = 0
 
     def __post_init__(self):
-        if not self.target:
-            self.target = Target()
-
         self.all_major_base += 41
         # self.grad_scale = {
         #     "agility_base": MAJOR_BASE,
@@ -811,7 +779,21 @@ class Attribute:
     def weapon_damage(self, weapon_damage):
         self._weapon_damage = int(weapon_damage)
 
-    @cached_property
-    def level_reduction(self):
-        return LEVEL_REDUCTION * (self.target.level - self.level)
+    """ Others """
+    @property
+    def all_shield_ignore(self):
+        return self._all_shield_ignore
 
+    @all_shield_ignore.setter
+    def all_shield_ignore(self, all_shield_ignore):
+        self._all_shield_ignore = all_shield_ignore
+        self.physical_shield_ignore = self._physical_shield_ignore_base + all_shield_ignore
+
+    @property
+    def physical_shield_ignore(self):
+        return self._physical_shield_ignore
+
+    @physical_shield_ignore.setter
+    def physical_shield_ignore(self, physical_shield_ignore_base):
+        self._physical_shield_ignore_base = physical_shield_ignore_base
+        self._physical_shield_ignore = physical_shield_ignore_base + self._all_shield_ignore

@@ -22,7 +22,7 @@ def build_equipment():
     equip_components = {"attr_state": attr_state, "gain_state": gain_state, "equips": {}}
     with gr.Row():
         with gr.Column(scale=7):
-            for equip in POSITIONS:
+            for equip in equipments:
                 equips_attr[equip] = {}
                 equip_components["equips"][equip] = {}
                 equip_sub = equip_components["equips"][equip]
@@ -32,8 +32,7 @@ def build_equipment():
                     with gr.Row():
                         with gr.Column(scale=7):
                             with gr.Row():
-                                equip_name = gr.Dropdown(choices=[""] + list(equipments[equip].index),
-                                                         label="装备", value="", scale=6)
+                                equip_name = gr.Dropdown(choices=[""], label="装备", scale=6)
                                 equip_sub["equip_name"] = equip_name
                                 strength_level = gr.Dropdown(choices=list(range(MAX_STRENGTH_LEVEL + 1)), label="精炼",
                                                              visible=False, scale=4)

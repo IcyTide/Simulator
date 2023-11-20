@@ -1,23 +1,17 @@
-import gradio as gr
-
-from ui.constant import ATTR_TYPE_TRANSLATE, CONSUMABLES
+from general.consumables import CONSUMABLES
+from ui.constant import ATTR_TYPE_TRANSLATE
 
 
 def consumable_script(consumable_components):
-    def consumable_dropdown_update(consumable_type):
+    def update_consumable(consumable_type):
         def inner(consumables_attrs, consumable_name):
             if consumable_name:
-                consumables_attrs[consumable_type] = {"name": consumable_name, "attrs": CONSUMABLES[consumable_name]}
-            else:
-                consumables_attrs[consumable_type] = {}
-            return consumables_attrs
-
-        return inner
-
-    def consumable_checkbox_update(consumable_type):
-        def inner(consumables_attrs, consumable_name):
-            if consumable_name:
-                consumables_attrs[consumable_type] = {"name": consumable_name[0], "attrs": CONSUMABLES[consumable_type]}
+                if isinstance(consumable_name, list):
+                    consumables_attrs[consumable_type] = {"name": consumable_name[0],
+                                                          "attrs": CONSUMABLES[consumable_type]}
+                else:
+                    consumables_attrs[consumable_type] = {"name": consumable_name,
+                                                          "attrs": CONSUMABLES[consumable_name]}
             else:
                 consumables_attrs[consumable_type] = {}
 
@@ -39,25 +33,13 @@ def consumable_script(consumable_components):
         return "\n".join(name_texts), "\n".join(attr_texts), attrs
 
     for consumable, component in consumable_components['consumables'].items():
-        if isinstance(component, gr.Dropdown):
-            component.input(
-                consumable_dropdown_update(consumable),
-                [consumable_components['consumable_attrs'], component],
-                consumable_components['consumable_attrs']
-            ).then(
-                update_attr,
-                consumable_components['consumable_attrs'],
-                [consumable_components['consumable_names'], consumable_components['attrs'],
-                 consumable_components['attr_state']]
-            )
-        elif isinstance(component, gr.CheckboxGroup):
-            component.input(
-                consumable_checkbox_update(consumable),
-                [consumable_components['consumable_attrs'], component],
-                consumable_components['consumable_attrs']
-            ).then(
-                update_attr,
-                consumable_components['consumable_attrs'],
-                [consumable_components['consumable_names'], consumable_components['attrs'],
-                 consumable_components['attr_state']]
-            )
+        component.input(
+            update_consumable(consumable),
+            [consumable_components['consumable_attrs'], component],
+            consumable_components['consumable_attrs']
+        ).then(
+            update_attr,
+            consumable_components['consumable_attrs'],
+            [consumable_components['consumable_names'], consumable_components['attrs'],
+             consumable_components['attr_state']]
+        )

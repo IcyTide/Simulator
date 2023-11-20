@@ -2,7 +2,7 @@ import random
 from dataclasses import dataclass
 from functools import cache
 
-from base.damage import hit_damage, defense
+from base.damage import final_damage
 from base.status import Status
 
 
@@ -63,8 +63,8 @@ class Skill:
 
     skill_damage_addition: float = 0
     skill_pve_addition: float = 0
-    skill_shield_ignore_base: float = 0
-    skill_shield_ignore_gain: float = 0
+    skill_shield_gain: float = 0
+    skill_shield_ignore: float = 0
     skill_critical_strike: float = 0
     skill_critical_power: float = 0
     skill_cd_reduction: float = 0
@@ -282,44 +282,30 @@ class PhysicalSkill(Skill):
 
     @property
     def hit_damage(self):
-        defense_reduction = defense(
-            shield_base=self.status.attribute.target.physical_shield_base,
-            shield_gain=self.status.attribute.target.physical_shield_gain,
-            shield_ignore_base=self.status.attribute.physical_shield_ignore_base,
-            shield_ignore_gain=self.status.attribute.physical_shield_ignore_gain,
-            skill_shield_ignore_base=self.skill_shield_ignore_base,
-            skill_shield_ignore_gain=self.skill_shield_ignore_gain,
-            shield_constant=self.status.attribute.target.shield_constant
-        )
-        return hit_damage(
+        return final_damage(
             self.damage_base, self.damage_rand, self.attack_power_cof, self.weapon_damage_cof, self.surplus_cof,
             self.damage_gain, self.attack_power_cof_gain, self.weapon_damage_cof_gain, self.surplus_cof_gain,
             self.snapshot.attack_power, self.status.attribute.weapon_damage, self.status.attribute.surplus,
             self.snapshot.damage_addition, self.snapshot.skill_damage_addition,
-            self.status.attribute.physical_overcome, defense_reduction,
+            self.status.attribute.physical_overcome, self.status.target.physical_shield_base,
+            self.status.target.physical_shield_gain, self.status.attribute.physical_shield_ignore,
+            self.skill_shield_gain, self.skill_shield_ignore, self.status.target.shield_constant,
             1, 0,
-            self.snapshot.strain, self.status.attribute.level_reduction,
+            self.snapshot.strain, self.status.attribute.level, self.status.target.level,
             self.status.attribute.pve_addition, self.skill_pve_addition,
-            self.status.attribute.target.physical_vulnerable)
+            self.status.target.physical_vulnerable)
 
     @property
     def critical_damage(self):
-        defense_reduction = defense(
-            shield_base=self.status.attribute.target.physical_shield_base,
-            shield_gain=self.status.attribute.target.physical_shield_gain,
-            shield_ignore_base=self.status.attribute.physical_shield_ignore_base,
-            shield_ignore_gain=self.status.attribute.physical_shield_ignore_gain,
-            skill_shield_ignore_base=self.skill_shield_ignore_base,
-            skill_shield_ignore_gain=self.skill_shield_ignore_gain,
-            shield_constant=self.status.attribute.target.shield_constant
-        )
-        return hit_damage(
+        return final_damage(
             self.damage_base, self.damage_rand, self.attack_power_cof, self.weapon_damage_cof, self.surplus_cof,
             self.damage_gain, self.attack_power_cof_gain, self.weapon_damage_cof_gain, self.surplus_cof_gain,
             self.snapshot.attack_power, self.status.attribute.weapon_damage, self.status.attribute.surplus,
             self.snapshot.damage_addition, self.snapshot.skill_damage_addition,
-            self.status.attribute.physical_overcome, defense_reduction,
+            self.status.attribute.physical_overcome, self.status.target.physical_shield_base,
+            self.status.target.physical_shield_gain, self.status.attribute.physical_shield_ignore,
+            self.skill_shield_gain, self.skill_shield_ignore, self.status.target.shield_constant,
             self.snapshot.critical_power, self.snapshot.skill_critical_power,
-            self.snapshot.strain, self.status.attribute.level_reduction,
+            self.snapshot.strain, self.status.attribute.level, self.status.target.level,
             self.status.attribute.pve_addition, self.skill_pve_addition,
-            self.status.attribute.target.physical_vulnerable)
+            self.status.target.physical_vulnerable)

@@ -11,8 +11,8 @@ random.seed(82)
 
 
 class Simulator:
-    def __init__(self, attribute, skills, buffs, recipes, talents, gains,
-                 prepare_list=None, priority=None, loop=None, duration=300, gradient=False):
+    def __init__(self, attribute, skills, buffs, gains, target, duration=300,
+                 prepare_list=None, priority=None, loop=None):
         if prepare_list is None:
             prepare_list = []
         if priority is None:
@@ -25,16 +25,10 @@ class Simulator:
 
         self.action_seq = []
         self.event_seq = []
-        self.status = Status(attribute,
+        self.status = Status(attribute, target,
                              [skill() for skill in skills],
                              [buff() for buff in buffs],
                              self.event_seq, self.frames_duration)
-
-        for recipe in recipes:
-            recipe(self.status)
-
-        for talent in talents:
-            talent(self.status)
 
         for gain in gains:
             gain(self.status)
@@ -52,7 +46,7 @@ class Simulator:
         self.current_loop = copy.copy(self.prepare_list) if self.prepare_list else self.loop
 
     @staticmethod
-    def empty_condition(s):
+    def empty_condition(arg):
         return True
 
     def priority_simulate(self):
@@ -71,20 +65,6 @@ class Simulator:
             if not self.current_loop:
                 self.current_loop = copy.copy(self.loop)
             skill, condition = self.current_loop[0]
-
-    # def loop_simulate(self):
-    #     skill, condition = self.current_loop.pop(0)
-    #
-    #     while not skill.available or not condition(self.status):
-    #         self.status.timer()
-    #         if self.status.current_time >= self.duration:
-    #             return
-    #
-    #     self.action_seq.append((self.status.current_time, skill.name))
-    #     skill.cast()
-    #
-    #     if not self.current_loop:
-    #         self.current_loop = copy.copy(self.loop)
 
     def simulate(self):
         self.status.init()
@@ -112,11 +92,7 @@ class Simulator:
         print(total_damage / self.duration)
 
     def __call__(self, *args, **kwargs):
-        # print("start simulate")
         start_time = time.time()
         self.simulate()
-        print(f"finish with {time.time() - start_time}")
+        print(f"finish simulation with {time.time() - start_time}")
         self.summary()
-
-        # for e in self.event_seq:
-        #     print(round(e[0] / self.scale, 2), e[1], e[3] + 1)

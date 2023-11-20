@@ -1,14 +1,13 @@
-from dataclasses import dataclass
-from typing import List
-
 from base.attribute import Attribute
 
-from base.constant import MAX_GCD_GROUP
+from base.target import Target
 
 
 class Status:
-    def __init__(self, attribute: Attribute, skills: List, buffs: List, event_seq: List, total_frame: int):
+    def __init__(self, attribute: Attribute, target: Target,
+                 skills: list, buffs: list, event_seq: list, total_frame: int):
         self.attribute = attribute
+        self.target = target
 
         self.gcd_group = {}
         self.casting = 0

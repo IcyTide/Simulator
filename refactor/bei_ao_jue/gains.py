@@ -36,4 +36,27 @@ def shang_jiang_divine_gain(status: Status):
     pass
 
 
-gains = [dao_xiao_set_gain, shang_jiang_set_gain, attribute_set_gain]
+def wu_xiang_zhan(status: Status):
+    pass
+
+
+EQUIP_GAINS_NAME = {
+    '22035-1': "五相斩",
+    "1925": "朔气4%套装",
+    "4290": "刀啸风吟10%套装",
+    "4291": "上将军印10%套装",
+    "4294": "刀啸风吟5%橙武",
+    "4295": "项王击鼎5%橙武",
+    "2430": "橙武特效",
+    "1942": "上将军印-神兵"
+}
+EQUIP_GAINS = {
+    '22035-1': wu_xiang_zhan,
+    "1925": attribute_set_gain,
+    "4290": dao_xiao_set_gain,
+    "4291": shang_jiang_set_gain,
+    "4294": dao_xiao_divine_gain,
+    "4295": xiang_wang_divine_gain,
+    "2430": divine_effect,
+    "1942": shang_jiang_divine_gain
+}

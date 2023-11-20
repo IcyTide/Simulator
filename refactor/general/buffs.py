@@ -1,6 +1,24 @@
 from base.buff import Buff
 
 
+class CriticalSet(Buff):
+    def __init__(self):
+        super().__init__()
+        self.probability = 0.1
+
+        self.duration = 6 * 16
+
+    def add(self):
+        super().add()
+        self.status.attribute.physical_critical_strike_gain += 0.04
+        self.status.attribute.physical_critical_power_gain += 41 / 1024
+
+    def remove(self):
+        super().remove()
+        self.status.attribute.physical_critical_strike_gain -= 0.04
+        self.status.attribute.physical_critical_power_gain -= 41 / 1024
+
+
 class BaiDuanCD(Buff):
     def __init__(self):
         super().__init__()

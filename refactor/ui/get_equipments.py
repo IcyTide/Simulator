@@ -1,10 +1,32 @@
 import json
-import os
 from functools import cache
 
 import requests
 
-from ui.constant import *
+from ui.constant import MAX_BASE_ATTR, MAX_MAGIC_ATTR, MAX_EMBED_ATTR, MAX_ENCHANT_ATTR, MAX_STONE_ATTR
+from ui.constant import EQUIPMENTS_DIR, ENCHANTS_DIR, STONES_DIR
+
+ATTR_TYPE_MAP = {
+    "atMeleeWeaponDamageBase": "weapon_damage_base",
+    "atMeleeWeaponDamageRand": "weapon_damage_rand",
+    "atStrengthBase": "strength_base",
+    "atPhysicsAttackPowerBase": "physical_attack_power_base",
+    "atPhysicsOvercomeBase": "physical_overcome_base",
+    "atAllTypeCriticalStrike": "all_critical_strike_base",
+    "atPhysicsCriticalStrike": "physical_critical_strike_base",
+    "atPhysicsCriticalDamagePowerBase": "physical_critical_power_base",
+    "atStrainBase": "strain_base",
+    "atHasteBase": "haste_base",
+    "atSurplusValueBase": "surplus",
+}
+EQUIP_ATTR_MAP = {
+    "Overcome": "破防",
+    "Critical": "会心",
+    "CriticalDamage": "会效",
+    "Haste": "加速",
+    "Surplus": "破招",
+    "Strain": "无双"
+}
 
 POSITION_MAP = {
     "hat": 3,
@@ -48,6 +70,39 @@ SUFFIX_MAP = {
     1: 'weapon',
     0: 'weapon'
 }
+SPECIAL_ENCHANT_MAP = {
+    "3": {
+        12800: "15436-11",
+        11500: "15436-10",
+        10600: "15436-9"
+    },
+    "2": {
+        12800: "22151-11",
+        11500: "22151-10",
+        10600: "22151-9"
+    },
+    "6": {
+        0: "22169"
+    },
+    "10": {
+        0: "22166"
+    },
+    "9": {
+        0: "33247"
+    },
+}
+STONE_ATTR_MAP = {
+    "atStrengthBase": "力道",
+    "atPhysicsAttackPowerBase": "攻击",
+    "atPhysicsCriticalStrike": "会心",
+    "atAllTypeCriticalStrike": "全会心",
+    "atPhysicsCriticalDamagePowerBase": "会效",
+    "atPhysicsOvercomeBase": "破防",
+    "atMeleeWeaponDamageBase": "武器伤害",
+    "atStrainBase": "无双",
+    "atHasteBase": "加速",
+    "atSurplusValueBase": "破招",
+}
 
 equip_params = {
     "client": "std",
@@ -55,7 +110,7 @@ equip_params = {
     "pz": 1,
     "page": 1,
     "per": 300,
-    "min_level": 12000,
+    "min_level": 11000,
     "max_level": 15000
 }
 
@@ -80,7 +135,7 @@ def get_equips_list(position):
         res = requests.get(url, params=params).json()
         equips.extend(res['list'])
 
-    result = {get_equip_name(row): get_equip_detail(row) for row in equips}
+    result = {get_equip_name(row): get_equip_detail(row) for row in reversed(equips)}
 
     return result
 
@@ -95,6 +150,8 @@ def get_equip_name(row):
 def get_equip_detail(row):
     base_attrs, magic_attrs, embed_attrs = {}, {}, {}
     set_id, set_data = "", {}
+    level = int(row['Level'])
+    special_enchant = None
     gains = []
     for i in range(MAX_BASE_ATTR):
         if not (attr_type := row[f'Base{i + 1}Type']):
@@ -108,7 +165,7 @@ def get_equip_detail(row):
         attr = attr['attr']
         if attr[0] in ATTR_TYPE_MAP:
             magic_attrs[ATTR_TYPE_MAP[attr[0]]] = int(attr[1])
-        elif attr[0] in ["atSetEquipmentRecipe", "atSkillEventHandler"] and attr[1] in EQUIP_GAINS:
+        elif attr[0] in ["atSetEquipmentRecipe", "atSkillEventHandler"]:
             gains.append(attr[1])
         else:
             continue
@@ -119,7 +176,12 @@ def get_equip_detail(row):
             continue
         embed_attrs[ATTR_TYPE_MAP[attr[0]]] = int(attr[1])
 
-    if row["SkillID"] in WIND_PENDANT_SKILLS:
+    for k, v in SPECIAL_ENCHANT_MAP.get(row['SubType'], {}).items():
+        if level > k:
+            special_enchant = v
+            break
+
+    if row["SkillID"]:
         gains.append(f"{row['SkillID']}-{row['SkillLevel']}")
 
     if set_attr := row['_SetAttrbs']:
@@ -130,16 +192,23 @@ def get_equip_detail(row):
             count = k.split("_")[0]
             if count not in set_data:
                 set_data[count] = []
-            set_data[count].append(v['attr'])
+            effect = {}
+            attr = v['attr']
+            if attr[0] in ATTR_TYPE_MAP:
+                effect[ATTR_TYPE_MAP[attr[0]]] = int(attr[1])
+            elif attr[0] in ["atSetEquipmentRecipe", "atSkillEventHandler"]:
+                effect['gain'] = attr[1]
+            set_data[count].append(effect)
     return {
         "school": row['BelongSchool'],
         "kind": row['MagicKind'],
-        "level": int(row['Level']),
+        "level": level,
         "max_strength": int(row['MaxStrengthLevel']),
         "base": base_attrs,
         "magic": magic_attrs,
         "embed": embed_attrs,
         "gains": gains,
+        "special_enchant": special_enchant,
         "set_id": set_id,
         "set_data": set_data
     }

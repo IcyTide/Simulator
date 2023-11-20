@@ -13,7 +13,7 @@ class ZhuYunHanRui(Skill):
         self.base_damage = 1
         self.rand_damage = 0
         self.attack_power_cof = 0
-        self.skill_shield_ignore_gain = 1
+        self.skill_shield_gain = 1
 
 
 class WindPendant(Skill):
