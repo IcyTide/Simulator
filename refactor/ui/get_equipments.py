@@ -3,7 +3,7 @@ from functools import cache
 
 import requests
 
-from ui.constant import MAX_BASE_ATTR, MAX_MAGIC_ATTR, MAX_EMBED_ATTR, MAX_ENCHANT_ATTR, MAX_STONE_ATTR
+from ui.constant import MAX_BASE_ATTR, MAX_MAGIC_ATTR, MAX_EMBED_ATTR, MAX_ENCHANT_ATTR, MAX_STONE_ATTR, MAX_STONE_LEVEL
 from ui.constant import EQUIPMENTS_DIR, ENCHANTS_DIR, STONES_DIR
 
 ATTR_TYPE_MAP = {
@@ -251,10 +251,11 @@ def get_enchant_detail(row):
     }
 
 
-def get_stones_list():
+def get_stones_list(level):
     url = "https://node.jx3box.com/enchant/stone"
     params = {
         "client": "std",
+        "level": level,
         "page": 1,
         "per": 100
     }
@@ -297,11 +298,12 @@ def get_stone_detail(row):
 if __name__ == '__main__':
     equip_list = {}
     enchant_list = {}
+    stone_list = {}
     for label, pos in POSITION_TRANSLATE.items():
         equip_list[label] = get_equips_list(pos)
         enchant_list[label] = get_enchants_list(pos)
-    json.dump(equip_list,
-              open(EQUIPMENTS_DIR, "w", encoding="utf-8"), ensure_ascii=False)
-    json.dump(enchant_list,
-              open(ENCHANTS_DIR, "w", encoding="utf-8"), ensure_ascii=False)
-    json.dump(get_stones_list(), open(STONES_DIR, "w", encoding="utf-8"), ensure_ascii=False)
+    for n in range(MAX_STONE_LEVEL):
+        stone_list = {**stone_list, **get_stones_list(MAX_STONE_LEVEL - n)}
+    json.dump(equip_list, open(EQUIPMENTS_DIR, "w", encoding="utf-8"), ensure_ascii=False)
+    json.dump(enchant_list, open(ENCHANTS_DIR, "w", encoding="utf-8"), ensure_ascii=False)
+    json.dump(stone_list, open(STONES_DIR, "w", encoding="utf-8"), ensure_ascii=False)

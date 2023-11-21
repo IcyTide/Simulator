@@ -200,11 +200,12 @@ class Skill:
 
         self.pre_cast()
 
+        self.status.counts[self.name] = 0
+
         if not self.damage_base:
             self.post_cast()
             return
 
-        self.status.counts[self.name] = 0
         if self.name not in self.status.intervals:
             self.status.intervals[self.name] = self.interval
 

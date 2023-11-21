@@ -12,30 +12,29 @@ random.seed(82)
 
 class Simulator:
     def __init__(self, attribute, skills, buffs, gains, target, duration=300,
-                 prepare_list=None, priority=None, loop=None):
-        if prepare_list is None:
-            prepare_list = []
+                 prepare=None, priority=None, loop=None):
+        if prepare is None:
+            prepare = []
         if priority is None:
             priority = []
         if loop is None:
             loop = []
 
         self.duration = duration
-        self.frames_duration = self.duration * FRAME_PER_SECOND
 
         self.action_seq = []
         self.event_seq = []
         self.status = Status(attribute, target,
                              [skill() for skill in skills],
                              [buff() for buff in buffs],
-                             self.event_seq, self.frames_duration)
+                             self.event_seq, self.duration * FRAME_PER_SECOND)
 
         for gain in gains:
             gain(self.status)
 
-        self.prepare_list = [
+        self.prepare = [
             (self.status.skills[e[0]], e[1]) if isinstance(e, tuple) else (self.status.skills[e], self.empty_condition)
-            for e in prepare_list]
+            for e in prepare]
         self.priority = [
             (self.status.skills[e[0]], e[1]) if isinstance(e, tuple) else (self.status.skills[e], self.empty_condition)
             for e in priority]
@@ -43,38 +42,40 @@ class Simulator:
             (self.status.skills[e[0]], e[1]) if isinstance(e, tuple) else (self.status.skills[e], self.empty_condition)
             for e in loop]
 
-        self.current_loop = copy.copy(self.prepare_list) if self.prepare_list else self.loop
+        self.current_loop = copy.copy(self.prepare) if self.prepare else self.loop
 
     @staticmethod
     def empty_condition(arg):
         return True
 
+    def record(self, skill):
+        self.action_seq.append((self.status.current_frame, skill.name))
+        skill.cast()
+
     def priority_simulate(self):
         for skill, condition in self.priority:
             if skill.available and condition(self.status):
-                self.action_seq.append((self.status.current_frame, skill.name))
-                skill.cast()
+                self.record(skill)
 
     def loop_simulate(self):
         skill, condition = self.current_loop[0]
 
         while skill.available and condition(self.status):
-            self.action_seq.append((self.status.current_frame, skill.name))
-            skill.cast()
+            self.record(skill)
             self.current_loop.pop(0)
             if not self.current_loop:
                 self.current_loop = copy.copy(self.loop)
             skill, condition = self.current_loop[0]
 
     def simulate(self):
-        self.status.init()
-        while self.status.current_frame < self.frames_duration:
+        while self.status.total_frame > self.status.current_frame:
             self.priority_simulate()
             self.loop_simulate()
             gap = min(min(self.status.gcd_group.values(), default=FRAME_PER_SECOND),
                       min(self.status.cds.values(), default=FRAME_PER_SECOND),
                       min(self.status.intervals.values(), default=FRAME_PER_SECOND),
-                      min(self.status.durations.values(), default=FRAME_PER_SECOND))
+                      min(self.status.durations.values(), default=FRAME_PER_SECOND),
+                      self.status.total_frame - self.status.current_frame)
             self.status.timer(math.ceil(gap))
 
     def summary(self):
@@ -95,4 +96,5 @@ class Simulator:
         start_time = time.time()
         self.simulate()
         print(f"finish simulation with {time.time() - start_time}")
-        self.summary()
+        return self.action_seq, self.event_seq
+        # self.summary()

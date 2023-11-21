@@ -9,7 +9,11 @@ def top_script(equipments, detail, top_components, combat_components,
                equip_components, consumable_components, gain_components, talent_components, recipe_components):
     def update_class_name(class_name):
         if not class_name:
-            return
+            return [gr.update(visible=False), None, *[None for _ in equip_components['equips']],
+                    *[None for _ in consumable_components['consumables']],
+                    *[None for _ in gain_components['formations']],
+                    *[None for _ in talent_components['talents']],
+                    *[None for _ in recipe_components['recipes']]]
         class_attr = SUPPORT_CLASS[class_name]
         equip_updates = []
         for equip in equipments:

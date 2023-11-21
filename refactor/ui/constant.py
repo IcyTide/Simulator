@@ -1,11 +1,6 @@
 from general.gains import equipment
 
-from bei_ao_jue.attribute import BeiAoJue
-import bei_ao_jue.skills
-import bei_ao_jue.buffs
-import bei_ao_jue.gains
-import bei_ao_jue.talents
-import bei_ao_jue.recipes
+import bei_ao_jue
 
 """ Directory """
 EQUIPMENTS_DIR = "ui/assets/equipments.json"
@@ -34,12 +29,17 @@ SUPPORT_CLASS = {
         "school": "霸刀",
         "major": "力道",
         "kind": "外功",
-        "attribute": BeiAoJue,
+        "attribute": bei_ao_jue.BeiAoJue,
         "formation": "霜岚洗锋阵",
-        "talents": bei_ao_jue.talents.TALENTS,
-        "recipes": bei_ao_jue.recipes.RECIPES,
-        "skills": bei_ao_jue.skills.SKILLS,
-        "buffs": bei_ao_jue.buffs.BUFFS,
+        "talents": bei_ao_jue.TALENTS,
+        "recipes": bei_ao_jue.RECIPES,
+        "skills": bei_ao_jue.SKILLS,
+        "buffs": bei_ao_jue.BUFFS,
+        "simulator": {
+            "prepare":  bei_ao_jue.prepare,
+            "priority": bei_ao_jue.priority,
+            "loop": bei_ao_jue.loop
+        },
         "display_attrs": {
             "strength": "力道",
             "base_physical_attack_power": "基础攻击",
@@ -90,18 +90,18 @@ STONE_POSITIONS = ["近战武器"]
 
 EQUIP_GAINS_NAME = {
     **equipment.EQUIP_GAINS_NAME,
-    **bei_ao_jue.gains.EQUIP_GAINS_NAME
+    **bei_ao_jue.EQUIP_GAINS_NAME
 }
 EQUIP_GAINS = {
     **equipment.EQUIP_GAINS,
-    **bei_ao_jue.gains.EQUIP_GAINS
+    **bei_ao_jue.EQUIP_GAINS
 }
 
 """ Talent """
 MAX_TALENTS = 12
 
 TALENT_GAINS = {
-    **bei_ao_jue.talents.TALENT_GAINS
+    **bei_ao_jue.TALENT_GAINS
 }
 
 """ Recipes """
@@ -109,5 +109,5 @@ MAX_RECIPE_SKILLS = 6
 MAX_RECIPES = 4
 
 RECIPE_GAINS = {
-    **bei_ao_jue.recipes.RECIPE_GAINS
+    **bei_ao_jue.RECIPE_GAINS
 }

@@ -2,7 +2,7 @@ import gradio as gr
 
 
 def build_consumable():
-    attr_state = gr.State()
+    attr_state = gr.State({})
     consumable_attrs = {}
     consumable_components = {"attr_state": attr_state, "consumables": {}}
     with gr.Row():

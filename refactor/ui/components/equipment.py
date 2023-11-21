@@ -16,8 +16,8 @@ def build_equipment():
 
     stones = pd.read_json(STONES_DIR, orient='index')
 
-    attr_state = gr.State()
-    gain_state = gr.State()
+    attr_state = gr.State({})
+    gain_state = gr.State([])
     equips_attr = {}
     equip_components = {"attr_state": attr_state, "gain_state": gain_state, "equips": {}}
     with gr.Row():
@@ -34,30 +34,33 @@ def build_equipment():
                             with gr.Row():
                                 equip_name = gr.Dropdown(choices=[""], label="装备", scale=6)
                                 equip_sub["equip_name"] = equip_name
-                                strength_level = gr.Dropdown(choices=list(range(MAX_STRENGTH_LEVEL + 1)), label="精炼",
-                                                             visible=False, scale=4)
+                                strength_level = gr.Dropdown(
+                                    choices=list(range(MAX_STRENGTH_LEVEL + 1)), label="精炼", visible=False, scale=4)
                                 equip_sub["strength_level"] = strength_level
 
                             with gr.Row():
-                                enchant_name = gr.Dropdown(choices=[""] + list(enchants[equip].index), label="附魔",
-                                                           value="", visible=False, scale=6)
+                                enchant_name = gr.Dropdown(
+                                    choices=[""] + list(enchants[equip].index), value="", label="附魔",
+                                    visible=False, scale=6)
                                 equip_sub["enchant_name"] = enchant_name
-                                special_enchant = gr.CheckboxGroup(choices=["大附魔"], visible=False, label="大附魔",
-                                                                   scale=4)
+                                special_enchant = gr.CheckboxGroup(
+                                    choices=["大附魔"], visible=False, label="大附魔", scale=4)
                                 equip_sub["special_enchant"] = special_enchant
 
                             embed_levels = []
                             with gr.Row():
                                 for i in range(MAX_EMBED_ATTR):
-                                    embed_level = gr.Dropdown(choices=list(range(MAX_EMBED_LEVEL + 1)), visible=False)
+                                    embed_level = gr.Dropdown(
+                                        choices=list(range(MAX_EMBED_LEVEL + 1)), visible=False)
                                     embed_levels.append(embed_level)
 
                             equip_sub["embed_levels"] = embed_levels
 
                             with gr.Group(visible=False) as stone_group:
                                 with gr.Row():
-                                    stone_level = gr.Dropdown(choices=list(range(1, MAX_STONE_LEVEL + 1)),
-                                                              label="五彩石等级", value=MAX_STONE_LEVEL, scale=4)
+                                    stone_level = gr.Dropdown(
+                                        choices=list(range(1, MAX_STONE_LEVEL + 1)), label="五彩石等级",
+                                        value=MAX_STONE_LEVEL, scale=4)
                                     equip_sub['stone_level'] = stone_level
                                     stone_name = gr.Dropdown(
                                         choices=[""] + list(stones[stones['level'] == MAX_STONE_LEVEL].index),

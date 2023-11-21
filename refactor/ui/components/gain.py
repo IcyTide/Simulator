@@ -3,7 +3,7 @@ from general.gains.team import TEAM_GAINS_NAME
 
 
 def build_gain():
-    gain_state = gr.State()
+    gain_state = gr.State([])
     team_gains = {}
     gain_components = {"gain_state": gain_state, "formations": {"core_formation": gr.State()}, "teams": {}}
     with gr.Row():

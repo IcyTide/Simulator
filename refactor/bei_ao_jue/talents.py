@@ -11,6 +11,7 @@ def long_xi(status: Status):
         status.skills[skill].interval_base = 0
 
     status.skills["擒龙六斩"].energy = 6
+    status.energies["擒龙六斩"] = 6
 
 
 def gui_han(status: Status):

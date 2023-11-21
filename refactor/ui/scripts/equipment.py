@@ -159,14 +159,10 @@ def equipment_script(equipments, enchants, stones, equip_components):
                                          "levels": {"strength": equip_attr["strength_level"],
                                                     "embed": equip_attr["embed_levels"],
                                                     "stone": equip_attr["stone_level"]}}
-                updates = [gr.update(value=equip_attr['equip_name']), gr.update(value=equip_attr['enchant_name']),
-                           gr.update(value=equip_attr['stone_name']), gr.update(value=equip_attr['strength_level']),
-                           *[gr.update(value=level) for level in equip_attr['embed_levels']],
-                           gr.update(value=equip_attr['stone_level'])]
                 return gr.update(value="\n".join(base_texts), visible=bool(base_texts)), gr.update(
                     value="\n".join(magic_texts), visible=bool(magic_texts)), gr.update(
                     value="\n".join(embed_texts), visible=bool(embed_texts)), gr.update(
-                    value="\n".join(enchant_texts), visible=bool(enchant_texts)), *stone_updates, equips_attr, *updates
+                    value="\n".join(enchant_texts), visible=bool(enchant_texts)), *stone_updates, equips_attr
 
             return inner
 
@@ -217,9 +213,7 @@ def equipment_script(equipments, enchants, stones, equip_components):
             [equip_component['equip_attr'], equip_components['equips_attr']],
             [equip_component['base_attr'], equip_component['magic_attr'], equip_component['embed_attr'],
              equip_component['enchant_attr'], *equip_component['stone_attrs'],
-             equip_components['equips_attr'],
-             equip_component['equip_name'], equip_component['enchant_name'], equip_component['stone_name'],
-             equip_component['strength_level'], *equip_component['embed_levels'], equip_component['stone_level']]
+             equip_components['equips_attr']]
         ).then(
             update_attrs,
             equip_components['equips_attr'],

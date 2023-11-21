@@ -31,24 +31,13 @@ class Status:
 
         for buff in buffs:
             buff.status = self
+
             self.buffs[buff.name] = buff
             self.stacks[buff.name] = 0
 
-        self.current_frame = 0
         self.total_frame = total_frame
-        self.event_seq = event_seq
-
-    def init(self):
         self.current_frame = 0
-
-        self.counts = {}
-        self.intervals = {}
-
-        for skill in self.skills.values():
-            skill.recharge()
-
-        for buff in self.buffs.values():
-            buff.clear()
+        self.event_seq = event_seq
 
     def timer(self, gap=1):
         self.current_frame += gap

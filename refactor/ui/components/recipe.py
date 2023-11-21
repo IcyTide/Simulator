@@ -4,7 +4,7 @@ from ui.constant import MAX_RECIPE_SKILLS, MAX_RECIPES
 
 
 def build_recipe():
-    gain_state = gr.State()
+    gain_state = gr.State([])
     recipe_gains = []
     recipe_components = {"gain_state": gain_state, "recipes": []}
     for i in range(MAX_RECIPE_SKILLS):

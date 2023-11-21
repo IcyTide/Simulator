@@ -394,7 +394,7 @@ class Attribute:
 
     @base_physical_attack_power.setter
     def base_physical_attack_power(self, base_physical_attack_power):
-        base_physical_attack_power = round(base_physical_attack_power)
+        base_physical_attack_power = int(base_physical_attack_power)
         self._base_physical_attack_power = base_physical_attack_power
         self.physical_attack_power = base_physical_attack_power * (1 + self._physical_attack_power_gain)
 
