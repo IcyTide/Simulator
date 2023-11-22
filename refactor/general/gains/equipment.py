@@ -24,9 +24,10 @@ def water_weapon_gain(value):
 
 def wind_pendant_gain(value):
     duration = 15
+    cd = 180
 
     def inner(status: Status):
-        status.attribute.physical_overcome_base += value * duration * FRAME_PER_SECOND / status.total_frame
+        status.attribute.physical_overcome_base += value * duration / cd
         # status.buffs["风特效"].value = value
 
     return inner
@@ -48,7 +49,7 @@ def special_enchant_jacket_gain(value):
 
 def special_enchant_belt_gain(status: Status):
     def enchant_belt_post_hit(self: Skill):
-        if not self.status.stacks["大附魔腰"]:
+        if not self.status.stacks["大附魔腰·冷却"]:
             self.status.skills["大附魔腰"].cast()
 
     for skill in status.skills.values():
@@ -58,7 +59,7 @@ def special_enchant_belt_gain(status: Status):
 
 def special_enchant_wrist_gain(status: Status):
     def enchant_wrist_post_hit(self: Skill):
-        if not self.status.stacks["大附魔手"]:
+        if not self.status.stacks["大附魔手·冷却"]:
             self.status.skills["昆吾·弦刃"].cast()
 
     for skill in status.skills.values():
@@ -68,7 +69,7 @@ def special_enchant_wrist_gain(status: Status):
 
 def special_enchant_shoes_gain(status: Status):
     def enchant_wrist_critical_hit(self: Skill):
-        if not self.status.stacks["大附魔脚"]:
+        if not self.status.stacks["大附魔脚·冷却"]:
             self.status.skills["刃凌"].cast()
 
     for skill in status.skills.values():

@@ -8,15 +8,18 @@ class CriticalSet(Buff):
 
         self.duration = 6 * 16
 
+        self.value1 = 0.04
+        self.value2 = 41 / 1024
+
     def add(self):
         super().add()
-        self.status.attribute.physical_critical_strike_gain += 0.04
-        self.status.attribute.physical_critical_power_gain += 41 / 1024
+        self.status.attribute.physical_critical_strike_gain += self.value1
+        self.status.attribute.physical_critical_power_gain += self.value2
 
     def remove(self):
         super().remove()
-        self.status.attribute.physical_critical_strike_gain -= 0.04
-        self.status.attribute.physical_critical_power_gain -= 41 / 1024
+        self.status.attribute.physical_critical_strike_gain -= self.value1
+        self.status.attribute.physical_critical_power_gain -= self.value2
 
 
 class BaiDuanCD(Buff):
@@ -77,14 +80,15 @@ class BeltEnchant1(Buff):
         self.name = "大附魔腰·1%"
 
         self.duration = 8 * 16
+        self.value = 10 / 1024
 
     def add(self):
         super().add()
-        self.status.attribute.damage_addition += 0.01
+        self.status.attribute.damage_addition += self.value
 
     def remove(self):
         super().remove()
-        self.status.attribute.damage_addition -= 0.01
+        self.status.attribute.damage_addition -= self.value
 
 
 class BeltEnchant5(Buff):
@@ -93,14 +97,15 @@ class BeltEnchant5(Buff):
         self.name = "大附魔腰·5%"
 
         self.duration = 8 * 16
+        self.value = 51 / 1024
 
     def add(self):
         super().add()
-        self.status.attribute.damage_addition += 0.05
+        self.status.attribute.damage_addition += self.value
 
     def remove(self):
         super().remove()
-        self.status.attribute.damage_addition -= 0.05
+        self.status.attribute.damage_addition -= self.value
 
 
 class BeltEnchantCD(Buff):
@@ -125,3 +130,6 @@ class ShoesEnchantCD(Buff):
         self.name = "大附魔脚·冷却"
 
         self.duration = 10 * 16
+
+
+BUFFS = [BeltEnchant1, BeltEnchant5, BeltEnchantCD, WristEnchantCD, ShoesEnchantCD]

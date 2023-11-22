@@ -230,7 +230,7 @@ class Skill:
 
     def critical_hit(self):
         for effect in self.critical_hit_effect:
-            effect()
+            effect(self)
 
     def hit(self):
         self.pre_hit()
@@ -244,9 +244,9 @@ class Skill:
 
     def record(self, critical):
         if critical:
-            self.status.record(self.name, "critical", self.critical_damage)
+            self.status.record(self.name, "会心", self.critical_damage)
         else:
-            self.status.record(self.name, "hit", self.hit_damage)
+            self.status.record(self.name, "命中", self.hit_damage)
 
     def post_hit(self):
         for effect in self.post_hit_effect:

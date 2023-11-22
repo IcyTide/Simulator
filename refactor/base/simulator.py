@@ -7,12 +7,12 @@ from base.status import Status
 
 import random
 
-random.seed(82)
-
 
 class Simulator:
-    def __init__(self, attribute, skills, buffs, gains, target, duration=300,
-                 prepare=None, priority=None, loop=None):
+    def __init__(self, attribute, skills, buffs, gains, target, duration,
+                 prepare=None, priority=None, loop=None, seed=82):
+
+        random.seed(seed)
         if prepare is None:
             prepare = []
         if priority is None:
@@ -78,23 +78,29 @@ class Simulator:
                       self.status.total_frame - self.status.current_frame)
             self.status.timer(math.ceil(gap))
 
+    @property
     def summary(self):
         total = {}
         total_damage = 0
         for event in self.event_seq:
-            if event[1] not in total:
-                total[event[1]] = [0, 0]
-            total[event[1]][0] += 1
-            total[event[1]][1] += event[-1]
-            total_damage += event[-1]
+            if (skill := event[1]) not in total:
+                total[skill] = [0, 0, 0]
+            total[skill][0] += 1
+            if event[2] == '会心':
+                total[skill][1] += 1
+            total[skill][2] += event[3]
+            total_damage += event[3]
 
-        for k, v in total.items():
-            print(f"{k} - {v[0]} - {v[1]} - {round(float(v[1] / total_damage) * 100, 2)}")
-        print(total_damage / self.duration)
+        details = {}
+        for k in sorted(total, key=lambda x: total[x][2], reverse=True):
+            v = total[k]
+            details[k] = [v[0], v[1], round(v[1] / v[0] * 100, 2), v[2], round(v[2] / total_damage * 100, 2)]
+
+        return round(total_damage / self.duration), details
 
     def __call__(self, *args, **kwargs):
         start_time = time.time()
         self.simulate()
         print(f"finish simulation with {time.time() - start_time}")
-        return self.action_seq, self.event_seq
+        return self.action_seq, self.event_seq, *self.summary
         # self.summary()

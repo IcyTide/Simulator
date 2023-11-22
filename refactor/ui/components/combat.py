@@ -18,19 +18,22 @@ def build_combat():
         with gr.Column(scale=7):
             with gr.Tab("属性"):
                 with gr.Row():
-                    init_attribute = gr.Textbox(label="增益前属性")
+                    init_attribute = gr.Textbox(label="增益前属性", lines=20)
                     combat_components['init_attribute'] = init_attribute
-                    gain_attribute = gr.Textbox(label="增益后属性")
+                    gain_attribute = gr.Textbox(label="增益后属性", lines=20)
                     combat_components['gain_attribute'] = gain_attribute
             with gr.Tab("日志"):
                 with gr.Row():
                     with gr.Column(scale=4):
-                        actions = gr.Textbox(label="动作日志")
+                        actions = gr.Textbox(label="动作日志", autoscroll=False, lines=20)
                         combat_components['actions'] = actions
                     with gr.Column(scale=6):
-                        events = gr.Textbox(label="事件日志")
+                        events = gr.Textbox(label="事件日志", autoscroll=False, lines=20)
                         combat_components['events'] = events
         with gr.Column(scale=3):
-            damage = gr.Textbox()
+            dps = gr.Number(label="DPS")
+            combat_components['dps'] = dps
+            summary = gr.Textbox(label="战斗总结", lines=20)
+            combat_components['summary'] = summary
 
     return combat_components

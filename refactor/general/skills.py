@@ -10,10 +10,10 @@ class ZhuYunHanRui(Skill):
         self.is_cast = False
         self.is_hit = False
 
-        self.base_damage = 1
-        self.rand_damage = 0
+        self.damage_base = 1
+        self.damage_rand = 0
         self.attack_power_cof = 0
-        self.skill_shield_gain = 1
+        self.skill_shield_ignore = 1
 
 
 class WindPendant(Skill):
@@ -39,6 +39,7 @@ class BeltEnchant(Skill):
         self.probability = 0.2
 
     def post_cast(self):
+        super().post_cast()
         if self.roll < 0.3:
             self.status.buffs["大附魔腰·1%"].trigger()
         else:
@@ -56,11 +57,12 @@ class WristEnchant(PhysicalSkill):
 
         self.probability = 0.1
 
-        self.base_damage_base = 40
-        self.rand_damage_base = 17
-        self.attack_power_cof_base = ATTACK_POWER_COF(75)
+        self.damage_base = 40
+        self.damage_rand = 17
+        self.attack_power_cof = ATTACK_POWER_COF(75)
 
     def post_cast(self):
+        super().post_cast()
         self.status.buffs["大附魔手·冷却"].trigger()
 
 
@@ -72,9 +74,13 @@ class ShoesEnchant(PhysicalSkill):
         self.is_cast = False
         self.is_hit = False
 
-        self.base_damage_base = 40
-        self.rand_damage_base = 17
-        self.attack_power_cof_base = ATTACK_POWER_COF(60)
+        self.damage_base = 40
+        self.damage_base = 17
+        self.attack_power_cof = ATTACK_POWER_COF(60)
 
     def post_cast(self):
+        super().post_cast()
         self.status.buffs["大附魔脚·冷却"].trigger()
+
+
+SKILLS = [BeltEnchant, WristEnchant, ShoesEnchant]

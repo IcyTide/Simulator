@@ -15,8 +15,6 @@ def equipment_script(equipments, enchants, stones, equip_components):
                     equip_attr["magic"] = {}
                     equip_attr["embed"] = {}
                     equip_attr["gains"] = []
-                    equip_attr["enchant"] = {}
-                    equip_attr["stone"] = {}
                     equip_attr['set_id'] = ""
                     equip_attr['set_data'] = {}
                     return equip_attr, gr.update(visible=False), gr.update(visible=False), gr.update(
@@ -28,10 +26,13 @@ def equipment_script(equipments, enchants, stones, equip_components):
                 equip_attr["magic"] = equip_row['magic']
                 equip_attr["embed"] = equip_row['embed']
                 equip_attr['gains'] = equip_row['gains']
+                equip_attr['set_id'] = equip_row['set_id']
+                equip_attr['set_data'] = equip_row['set_data']
 
                 if special_enchant:
-                    equip_attr['gains'].append(equip_row['special_enchant'])
-
+                    equip_attr['special_enchant'] = [equip_row['special_enchant']]
+                else:
+                    equip_attr['special_enchant'] = []
                 if enchant_name:
                     enchant_row = enchants[position].loc[enchant_name]
                     equip_attr["enchant"] = enchant_row['attr']
@@ -44,9 +45,6 @@ def equipment_script(equipments, enchants, stones, equip_components):
                 else:
                     equip_attr["stone"] = {}
                     equip_attr["stone_level"] = MAX_STONE_LEVEL
-
-                equip_attr['set_id'] = equip_row['set_id']
-                equip_attr['set_data'] = equip_row['set_data']
 
                 equip_attr['equip_name'] = equip_name
                 equip_attr['enchant_name'] = enchant_name
@@ -152,7 +150,7 @@ def equipment_script(equipments, enchants, stones, equip_components):
                     stone_updates.append(gr.update(visible=False))
 
                 equips_attr[position] = {"attrs": attrs, "set": [equip_attr['set_id'], equip_attr['set_data']],
-                                         "gains": equip_attr['gains'],
+                                         "gains": equip_attr['gains'] + equip_attr['special_enchant'],
                                          "names": {"equip": equip_attr['equip_name'],
                                                    "enchant": equip_attr['enchant_name'],
                                                    "stone": equip_attr['stone_name']},
