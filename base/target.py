@@ -19,6 +19,8 @@ class Target:
     shield_constant: float = 0
 
     def __post_init__(self):
-        self.physical_shield_base = SHIELD_BASE_MAP[self.level]
+        if not self.physical_shield_base:
+            self.physical_shield_base = SHIELD_BASE_MAP[self.level]
         # self.magical_shield_base = self.SHIELD_BASE_MAP[self.level]
-        self.shield_constant = SHIELD_SCALE * (LEVEL_SCALE * self.level - LEVEL_CONSTANT)
+        if not self.shield_constant:
+            self.shield_constant = SHIELD_SCALE * (LEVEL_SCALE * self.level - LEVEL_CONSTANT)

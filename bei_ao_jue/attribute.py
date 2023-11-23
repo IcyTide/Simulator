@@ -1,5 +1,3 @@
-from functools import cached_property
-
 from base.constant import *
 
 from base.attribute import Attribute
@@ -13,8 +11,6 @@ class BeiAoJue(Attribute):
         super().__init__(*args, **kwargs)
         self.physical_attack_power_base += 3725
         self.pve_addition += 0.09
-        self.grad_attrs = ['strength_base', 'surplus', 'strain_base', 'physical_attack_power_base',
-                           'physical_critical_power_base', 'physical_overcome_base', 'weapon_damage_base']
 
     @property
     def physical_attack_power(self):
@@ -36,12 +32,10 @@ class BeiAoJue(Attribute):
 
 def get_attribute():
     attribute = BeiAoJue()
-    attrs = {'weapon_damage_base': 3245, 'weapon_damage_rand': 2163, 'strength_base': 10635,
-             'physical_attack_power_base': 19809, 'physical_critical_strike_base': 20036,
-             'all_critical_strike_base': 1363,
-             'physical_critical_power_base': 2340, 'physical_overcome_base': 28752, 'strain_base': 35426,
-             'haste_base': 883,
-             'surplus': 7785}
+    attrs = {'weapon_damage_base': 3245, 'weapon_damage_rand': 2163, 'strength_base': 10631,
+             'physical_attack_power_base': 19809, 'physical_critical_strike_base': 20032,
+             'all_critical_strike_base': 1363, 'physical_critical_power_base': 2340, 'physical_overcome_base': 28749,
+             'strain_base': 35425, 'haste_base': 883, 'surplus': 7784}
     for k, v in attrs.items():
         setattr(attribute, k, getattr(attribute, k) + v)
     return attribute

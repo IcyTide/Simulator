@@ -5,7 +5,7 @@ from base.target import Target
 
 class Status:
     def __init__(self, attribute: Attribute, target: Target,
-                 skills: list, buffs: list, event_seq: list, total_frame: int):
+                 skills: list, buffs: list, damages: dict, total_frame: int):
         self.attribute = attribute
         self.target = target
 
@@ -37,7 +37,7 @@ class Status:
 
         self.total_frame = total_frame
         self.current_frame = 0
-        self.event_seq = event_seq
+        self.damages = damages
 
     def timer(self, gap=1):
         self.current_frame += gap
@@ -76,5 +76,7 @@ class Status:
         for buff in expire_buffs:
             self.buffs[buff].clear()
 
-    def record(self, name, event, damage):
-        self.event_seq.append((self.current_frame, name, event, damage))
+    def record(self, params):
+        if params not in self.damages:
+            self.damages[params] = 0
+        self.damages[params] += 1

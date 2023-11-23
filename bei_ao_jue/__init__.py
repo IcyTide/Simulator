@@ -1,10 +1,10 @@
 from base.status import Status
-from .attribute import BeiAoJue
-from .gains import EQUIP_GAINS_NAME, EQUIP_GAINS
-from .talents import TALENTS, TALENT_GAINS
-from .recipes import RECIPES, RECIPE_GAINS
-from .skills import SKILLS
-from .buffs import BUFFS
+from bei_ao_jue.attribute import BeiAoJue
+from bei_ao_jue.gains import EQUIP_GAINS_NAME, EQUIP_GAINS
+from bei_ao_jue.talents import TALENTS, TALENT_GAINS
+from bei_ao_jue.recipes import RECIPES, RECIPE_GAINS
+from bei_ao_jue.skills import SKILLS
+from bei_ao_jue.buffs import BUFFS
 
 
 def wait_gcd(status: Status):

@@ -4,14 +4,17 @@ from base.constant import SHIELD_BASE_MAP
 
 
 def build_combat():
-    combat_components = {"class_attr": gr.State(), "simulator": gr.State()}
+    combat_components = {"class_attr": gr.State(), "attribute": gr.State()}
     with gr.Row():
         with gr.Group():
             target_level = gr.Dropdown(choices=list(SHIELD_BASE_MAP), value=list(SHIELD_BASE_MAP)[0], label="目标等级")
             combat_components['target_level'] = target_level
         with gr.Group():
-            duration = gr.Number(minimum=1, value=300, precision=0, label="时长")
+            duration = gr.Number(minimum=1, value=300, precision=0, label="战斗时长")
             combat_components['duration'] = duration
+        with gr.Group():
+            iteration = gr.Number(minimum=1, value=100, precision=0, label="模拟次数")
+            combat_components['iteration'] = iteration
     simulate = gr.Button("开始模拟!")
     combat_components['simulate'] = simulate
     with gr.Row():

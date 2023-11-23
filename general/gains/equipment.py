@@ -1,4 +1,3 @@
-from base.constant import FRAME_PER_SECOND
 from base.skill import Skill
 from base.status import Status
 
