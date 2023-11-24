@@ -1,11 +1,9 @@
-import copy
-from multiprocessing import Pool, cpu_count
-
-from base.constant import FRAME_PER_SECOND
 from base.simulator import Simulator
 from base.target import Target
 from general.buffs import BUFFS
 from general.skills import SKILLS
+from ui.constant import ATTR_TYPE_TRANSLATE
+from utils.simulate import simulate_delta
 
 
 def display_attr(attribute, display_attrs):
@@ -19,16 +17,11 @@ def display_attr(attribute, display_attrs):
     return "\n".join(texts)
 
 
-def simulate(attribute, skills, buffs, gains, target, duration, prepare, priority, loop):
-    simulator = Simulator(attribute, skills, buffs, gains,
-                          target, duration, prepare, priority, loop)
-    return simulator()
-
-
 def combat_script(combat_components,
                   equip_components, consumable_components,
                   gain_components, talent_components, recipe_components):
-    def build_attr(class_attr, equip_attr, consumable_attr):
+    def build_attr(class_attr, equip_attr, consumable_attr, target_level, duration,
+                   equip_gains, team_gains, talent_gains, recipe_gains):
         attribute = class_attr['attribute']()
         display_attrs = class_attr['display_attrs']
         for attr, value in equip_attr.items():
@@ -36,37 +29,36 @@ def combat_script(combat_components,
         for attr, value in consumable_attr.items():
             setattr(attribute, attr, getattr(attribute, attr) + value)
         init_attr_text = display_attr(attribute, display_attrs)
-        gain_attr_text = display_attr(attribute, display_attrs)
-        return init_attr_text, gain_attr_text, attribute
-
-    def build_summary(attribute, class_attr, target_level, duration, iteration,
-                      equip_gains, team_gains, talent_gains, recipe_gains):
         gains = sum([equip_gains, team_gains, talent_gains, recipe_gains], [])
-        result = simulate(
-            attribute, SKILLS + class_attr['skills'], BUFFS + class_attr['buffs'], gains,
-            Target(target_level), duration, *class_attr['simulator'].values()
+        simulator = Simulator(attribute, SKILLS + class_attr['skills'], BUFFS + class_attr['buffs'], gains,
+                              Target(target_level), duration, *class_attr['simulator'].values())
+        gain_attr_text = display_attr(attribute, display_attrs)
+        return init_attr_text, gain_attr_text, simulator
+
+    def build_summary(class_attr, iteration, simulator):
+        dps, details, gradients = simulate_delta(
+            class_attr['damage'], iteration, simulator
         )
-        total_damage = sum(result.values())
-        dps = total_damage / duration
+        total_damage = dps * simulator.duration
         summary_texts = []
-        for skill in sorted(result, key=lambda x: x['damage'], reverse=True):
-            detail = result[skill]
+        for skill, detail in details.items():
             count = detail['hit'] + detail['critical']
-            summary_texts.append(f"{skill}:\t"
+            summary_texts.append(f"{skill}:\t次数{count}\t"
                                  f"\t命中{detail['hit']}/{round(detail['hit'] / count * 100, 2)}%\t"
                                  f"\t会心{detail['critical']}/{round(detail['critical'] / count * 100, 2)}%\t"
                                  f"\t伤害{detail['damage']}/{round(detail['damage'] / total_damage * 100, 2)}%")
-        return dps, "\n".join(summary_texts)
+        gradient_texts = [f"{ATTR_TYPE_TRANSLATE[k]}:\t{round(v[0], 2)}/{round(v[1], 4)}" for k, v in gradients.items()]
+        return dps, "\n".join(summary_texts), "\n".join(gradient_texts)
 
     combat_components['simulate'].click(
         build_attr,
-        [combat_components['class_attr'], equip_components['attr_state'], consumable_components['attr_state']],
+        [combat_components['class_attr'], equip_components['attr_state'], consumable_components['attr_state'],
+         combat_components['target_level'], combat_components['duration'],
+         equip_components['gain_state'], gain_components['gain_state'],
+         talent_components['gain_state'], recipe_components['gain_state']],
         [combat_components['init_attribute'], combat_components['gain_attribute'], combat_components['simulator']]
     ).then(
         build_summary,
-        [combat_components['attribute'], combat_components['class_attr'],
-         combat_components['target_level'], combat_components['duration'], combat_components['iteration'],
-         equip_components['gain_state'], gain_components['gain_state'],
-         talent_components['gain_state'], recipe_components['gain_state']],
-        [combat_components['dps'], combat_components['summary']]
+        [combat_components['class_attr'], combat_components['iteration'], combat_components['simulator']],
+        [combat_components['dps'], combat_components['summary'], combat_components['gradient']]
     )

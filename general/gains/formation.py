@@ -1,123 +1,132 @@
 from base.status import Status
 
 
-def ao_xue_zhan_yi(rate):
-    def inner(status: Status):
+class WeiGongZheChong:
+    def __init__(self, rate):
+        self.rate = rate
+
+    def __call__(self, status: Status):
         status.attribute.physical_attack_power_gain += 50 / 1024
         status.attribute.physical_overcome_gain += 200 / 1024
-        status.attribute.physical_attack_power_gain += rate * 51 / 1024
-
-    return inner
+        status.attribute.physical_attack_power_gain += self.rate * 51 / 1024
 
 
-def tai_xu_jian_yi(rate):
-    stack = 5
+class BeiDouQiXing:
+    def __init__(self, rate):
+        self.stack = 5
+        self.rate = rate
 
-    def inner(status: Status):
+    def __call__(self, status: Status):
         status.attribute.physical_critical_strike_gain += 0.03
         status.attribute.strain_gain += 20 / 1024
         status.attribute.physical_critical_power_gain += 150 / 1024
-        status.attribute.physical_critical_strike_gain += rate * 0.01 * stack
-
-    return inner
+        status.attribute.physical_critical_strike_gain += self.rate * 0.01 * self.stack
 
 
-def wen_shui_jue(rate):
-    def inner(status: Status):
+class YiShanGuanLan:
+    def __init__(self, rate):
+        pass
+
+    def __call__(self, status: Status):
         status.attribute.agility_gain += 30 / 1024
         status.attribute.physical_attack_power_gain += 51 / 1024
         status.attribute.physical_critical_power_gain += 204 / 1024
 
-    return inner
 
+class LiuXingGanYue:
+    def __init__(self, rate):
+        self.rate = rate
 
-def jing_yu_jue(rate):
-    def inner(status: Status):
+    def __call__(self, status: Status):
         status.attribute.strength_gain += 30 / 1024
         status.attribute.strain_gain += 20 / 1024
         status.attribute.physical_overcome_gain += 205 / 1024
-        status.attribute.physical_critical_strike_gain += rate * 0.05
-
-    return inner
+        status.attribute.physical_critical_strike_gain += self.rate * 0.05
 
 
-def tian_luo_gui_dao(rate):
-    def inner(status: Status):
+class QianJiBaiBian:
+    def __init__(self, rate):
+        self.rate = rate
+
+    def __call__(self, status: Status):
         status.attribute.all_shield_ignore += 20 / 1024
         status.attribute.all_critical_power_gain += 150 / 1024
-        status.attribute.all_critical_strike_gain += rate * 0.05
-
-    return inner
+        status.attribute.all_critical_strike_gain += self.rate * 0.05
 
 
-def xiao_chen_jue(rate):
-    stack = 5
+class XiangLongFuHu:
+    def __init__(self, rate):
+        self.stack = 5
+        self.rate = rate
 
-    def inner(status: Status):
+    def __call__(self, status: Status):
         status.attribute.physical_attack_power_gain += 50 / 1024
         status.attribute.physical_overcome_gain += 102 / 1024
-        status.attribute.physical_overcome_base += rate * 770 * stack
-
-    return inner
+        status.attribute.physical_overcome_base += self.rate * 770 * self.stack
 
 
-def fen_shan_jing(rate):
-    stack = 5
+class FengLingHengJue:
+    def __init__(self, rate):
+        self.stack = 5
+        self.rate = rate
 
-    def inner(status: Status):
+    def __call__(self, status: Status):
         status.attribute.physical_critical_strike_gain += 0.03
         status.attribute.strain_gain += 20 / 1024
-        status.attribute.physical_critical_power_gain += rate * 20 / 1024 * stack
-
-    return inner
+        status.attribute.physical_critical_power_gain += self.rate * 20 / 1024 * self.stack
 
 
-def bei_ao_jue(rate):
-    def inner(status: Status):
+class ShuangLanXiFeng:
+    def __init__(self, rate):
+        self.rate = rate
+
+    def __call__(self, status: Status):
         status.attribute.physical_attack_power_gain += 50 / 1024
         status.attribute.strain_gain += 20 / 1024
         status.attribute.physical_overcome_gain += 102 / 1024
-        status.attribute.all_critical_strike_gain += rate * 0.05
-
-    return inner
+        status.attribute.all_critical_strike_gain += self.rate * 0.05
 
 
-def ling_hai_jue(rate):
-    def inner(status: Status):
+class XuHaiYinGui:
+    def __init__(self, rate):
+        pass
+
+    def __call__(self, status: Status):
         status.attribute.physical_critical_strike_gain += 0.03
         status.attribute.physical_attack_power_gain += 102 / 1024
         status.attribute.physical_overcome_gain += 102 / 1024
 
-    return inner
 
+class LongHuangXueFeng:
+    def __init__(self, rate):
+        self.rate = rate
 
-def yin_long_jue(rate):
-    def inner(status: Status):
+    def __call__(self, status: Status):
         status.attribute.physical_critical_strike_gain += 0.03
         status.attribute.physical_attack_power_gain += 50 / 1024
         status.attribute.physical_critical_power_gain += 154 / 1024
-        status.attribute.physical_attack_power_gain += rate * 102 / 1024
-
-    return inner
+        status.attribute.physical_attack_power_gain += self.rate * 102 / 1024
 
 
-def gu_feng_jue(rate):
-    def inner(status: Status):
+class HengYunPoFeng:
+    def __init__(self, rate):
+        pass
+
+    def __call__(self, status: Status):
         status.attribute.physical_attack_power_gain += 50 / 1024
         status.attribute.surplus += 1516
         status.attribute.physical_overcome_gain += 256 / 1024
 
-    return inner
 
+class CangWuYinLing:
+    def __init__(self, rate):
+        self.rate = rate
 
-def shan_hai_xin_jue(rate):
-    def inner(status: Status):
+    def __call__(self, status: Status):
         status.attribute.all_critical_strike_gain += 0.03
         status.attribute.strain_gain += 20 / 1024
         status.attribute.damage_addition += 62 / 1024
-        status.attribute.all_critical_power_gain += rate * 150 / 1024
-
-    return inner
+        status.attribute.all_critical_power_gain += self.rate * 150 / 1024
 
 
 FORMATIONS = {
@@ -144,17 +153,17 @@ FORMATION_GAIN_NAMES = {
 }
 
 FORMATION_GAINS = {
-    "千机百变阵": tian_luo_gui_dao,
-    "苍梧引灵阵": shan_hai_xin_jue,
+    "千机百变阵": QianJiBaiBian,
+    "苍梧引灵阵": CangWuYinLing,
 
-    "卫公折冲阵": ao_xue_zhan_yi,
-    "北斗七星阵": tai_xu_jian_yi,
-    "依山观澜阵": wen_shui_jue,
-    "流星赶月阵": jing_yu_jue,
-    "降龙伏虎阵": xiao_chen_jue,
-    "锋凌横绝阵": fen_shan_jing,
-    "霜岚洗锋阵": bei_ao_jue,
-    "墟海引归阵": ling_hai_jue,
-    "龙皇雪风阵": yin_long_jue,
-    "横云破锋阵": gu_feng_jue
+    "卫公折冲阵": WeiGongZheChong,
+    "北斗七星阵": BeiDouQiXing,
+    "依山观澜阵": YiShanGuanLan,
+    "流星赶月阵": LiuXingGanYue,
+    "降龙伏虎阵": XiangLongFuHu,
+    "锋凌横绝阵": FengLingHengJue,
+    "霜岚洗锋阵": ShuangLanXiFeng,
+    "墟海引归阵": XuHaiYinGui,
+    "龙皇雪风阵": LongHuangXueFeng,
+    "横云破锋阵": HengYunPoFeng
 }

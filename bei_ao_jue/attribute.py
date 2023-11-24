@@ -12,6 +12,20 @@ class BeiAoJue(Attribute):
         self.physical_attack_power_base += 3725
         self.pve_addition += 0.09
 
+        self.fix_grad_attrs = {
+            "strength_base": MAJOR_DELTA,
+            "surplus": MINOR_DELTA,
+            "strain_base": MINOR_DELTA,
+            "physical_attack_power_base": PHYSICAL_DELTA,
+            "physical_critical_power_base": MINOR_DELTA,
+            "physical_overcome_base": MINOR_DELTA,
+            "weapon_damage_base": WEAPON_DELTA
+        }
+        self.float_grad_attrs = {
+            "agility_base": MINOR_DELTA / AGILITY_TO_CRITICAL_STRIKE,
+            "physical_critical_strike_base": MINOR_DELTA
+        }
+
     @property
     def physical_attack_power(self):
         return self._physical_attack_power
@@ -28,14 +42,3 @@ class BeiAoJue(Attribute):
     def final_physical_overcome(self, final_physical_overcome):
         self._final_physical_overcome = int(final_physical_overcome) + int(self._strength * self.STRENGTH_TO_OVERCOME)
         self.physical_overcome = self._final_physical_overcome / OVERCOME_SCALE
-
-
-def get_attribute():
-    attribute = BeiAoJue()
-    attrs = {'weapon_damage_base': 3245, 'weapon_damage_rand': 2163, 'strength_base': 10631,
-             'physical_attack_power_base': 19809, 'physical_critical_strike_base': 20032,
-             'all_critical_strike_base': 1363, 'physical_critical_power_base': 2340, 'physical_overcome_base': 28749,
-             'strain_base': 35425, 'haste_base': 883, 'surplus': 7784}
-    for k, v in attrs.items():
-        setattr(attribute, k, getattr(attribute, k) + v)
-    return attribute

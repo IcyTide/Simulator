@@ -1,17 +1,21 @@
 from base.status import Status
 
 
-def damage_recipe(skills, value):
-    def inner(status: Status):
-        for skill in skills:
-            status.skills[skill].skill_damage_addition += value
+class DamageRecipe:
+    def __init__(self, skills, value):
+        self.skills = skills
+        self.value = value
 
-    return inner
+    def __call__(self, status: Status):
+        for skill in self.skills:
+            status.skills[skill].skill_damage_addition += self.value
 
 
-def critical_recipe(skills, value):
-    def inner(status: Status):
-        for skill in skills:
-            status.skills[skill].skill_critical_strike += value
+class CriticalRecipe:
+    def __init__(self, skills, value):
+        self.skills = skills
+        self.value = value
 
-    return inner
+    def __call__(self, status: Status):
+        for skill in self.skills:
+            status.skills[skill].skill_critical_strike += self.value

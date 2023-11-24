@@ -18,6 +18,8 @@ class PhysicalSnapshot:
     strength_gain: float = 0,
     physical_attack_power_base: int = 0,
     physical_attack_power_gain: float = 0,
+    physical_critical_strike_base: int = 0,
+    physical_critical_strike_gain: float = 0,
     physical_critical_power_base: int = 0,
     physical_critical_power_gain: float = 0,
     strain_base: int = 0,
@@ -145,7 +147,7 @@ class Skill:
         if self.interval_list:
             return len(self.interval_list)
         else:
-            return self.count_base
+            return self.count_base + int(self.is_instant)
 
     @property
     def duration(self):
@@ -182,8 +184,12 @@ class Skill:
         if self.cd:
             self.status.cds[self.name] = self.cd + self.status.cds.get(self.name, 0)
             self.status.energies[self.name] -= 1
+        if self.is_instant:
+            self.status.intervals[self.name] = 0
         if self.is_snapshot:
             self.save_snapshot()
+
+        self.status.counts[self.name] = 0
 
         for effect in self.pre_cast_effect:
             effect(self)
@@ -193,8 +199,6 @@ class Skill:
             return
 
         self.pre_cast()
-
-        self.status.counts[self.name] = 0
 
         if not self.damage_base:
             self.post_cast()
@@ -284,6 +288,14 @@ class PhysicalSkill(Skill):
         return self.status.attribute.physical_attack_power_gain
 
     @property
+    def physical_critical_strike_base(self):
+        return self.status.attribute.physical_critical_strike_base
+
+    @property
+    def physical_critical_strike_gain(self):
+        return self.status.attribute.physical_critical_strike_gain + self.skill_critical_strike
+
+    @property
     def physical_critical_power_base(self):
         return self.status.attribute.physical_critical_power_base
 
@@ -324,19 +336,21 @@ class PhysicalSkill(Skill):
         return (
             (
                 ('agility_base', self.snapshot.agility_base),
+                ('agility_gain', self.snapshot.agility_gain),
                 ('strength_base', self.snapshot.strength_base),
+                ('strength_gain', self.snapshot.strength_gain),
                 ('surplus', self.surplus),
                 ('strain_base', self.snapshot.strain_base),
-                ('physical_attack_power_base', self.snapshot.physical_attack_power_base),
-                ('physical_critical_power_base', self.snapshot.physical_critical_power_base),
-                ('physical_overcome_base', self.status.attribute.physical_overcome_base),
-                ('weapon_damage_base', self.status.attribute.weapon_damage_base),
-                ('agility_gain', self.snapshot.agility_gain),
-                ('strength_gain', self.snapshot.strength_gain),
                 ('strain_gain', self.snapshot.strain_gain),
+                ('physical_attack_power_base', self.snapshot.physical_attack_power_base),
                 ('physical_attack_power_gain', self.snapshot.physical_attack_power_gain),
+                ('physical_critical_strike_base', self.snapshot.physical_critical_strike_base),
+                ('physical_critical_strike_gain', self.snapshot.physical_critical_strike_gain),
+                ('physical_critical_power_base', self.snapshot.physical_critical_power_base),
                 ('physical_critical_power_gain', self.snapshot.physical_critical_power_gain),
+                ('physical_overcome_base', self.status.attribute.physical_overcome_base),
                 ('physical_overcome_gain', self.status.attribute.physical_overcome_gain),
+                ('weapon_damage_base', self.status.attribute.weapon_damage_base),
                 ('weapon_damage_rand', self.status.attribute.weapon_damage_rand),
                 ('weapon_damage_gain', self.status.attribute.weapon_damage_gain)
             ),

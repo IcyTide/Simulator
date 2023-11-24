@@ -5,7 +5,10 @@ from base.target import Target
 
 class Status:
     def __init__(self, attribute: Attribute, target: Target,
-                 skills: list, buffs: list, damages: dict, total_frame: int):
+                 skills: list, buffs: list, damages: dict, events: list, total_frame: int, verbose=False):
+        if verbose:
+            self.record = self.record_verbose
+
         self.attribute = attribute
         self.target = target
 
@@ -38,6 +41,7 @@ class Status:
         self.total_frame = total_frame
         self.current_frame = 0
         self.damages = damages
+        self.events = events
 
     def timer(self, gap=1):
         self.current_frame += gap
@@ -75,6 +79,12 @@ class Status:
                 expire_buffs.append(buff)
         for buff in expire_buffs:
             self.buffs[buff].clear()
+
+    def record_verbose(self, params):
+        if params not in self.damages:
+            self.damages[params] = 0
+        self.damages[params] += 1
+        self.events.append((self.current_frame, params))
 
     def record(self, params):
         if params not in self.damages:
