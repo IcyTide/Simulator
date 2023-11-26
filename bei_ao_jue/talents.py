@@ -8,6 +8,7 @@ class LongXi:
         related_skills = ["惊燕式", "逐鹰式"]
         for skill in related_skills:
             status.skills[skill].interval_list = None
+            status.skills[skill].count_base = 2
             status.skills[skill].interval_base = 0
 
         status.skills["擒龙六斩"].energy = 6

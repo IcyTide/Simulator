@@ -323,6 +323,8 @@ class PhysicalSkill(Skill):
             agility_gain=self.agility_gain,
             physical_attack_power_base=self.physical_attack_power_base,
             physical_attack_power_gain=self.physical_attack_power_gain,
+            physical_critical_strike_base=self.physical_critical_strike_base,
+            physical_critical_strike_gain=self.physical_critical_strike_gain,
             physical_critical_power_base=self.physical_critical_power_base,
             physical_critical_power_gain=self.physical_critical_power_gain,
             strain_base=self.strain_base,

@@ -17,7 +17,7 @@ from ui.scripts.combat import combat_script
 from ui.scripts.top import top_script
 
 if __name__ == '__main__':
-    with gr.Blocks() as app:
+    with gr.Blocks(title="Ango Simulator") as app:
         top_components = build_top()
         with gr.Row(visible=False) as detail:
             with gr.Tab("配装"):

@@ -1,3 +1,5 @@
+import random
+import time
 from multiprocessing import Pool, cpu_count
 
 from base.constant import MINOR_DELTA
@@ -7,13 +9,14 @@ from utils.analyze import analyze_details
 processes = cpu_count()
 
 
-def simulate_single(simulator):
+def simulate_single(simulator, i):
+    random.seed(i)
     return simulator()
 
 
 def simulate_concurrent(iteration, simulator):
     pool = Pool(processes)
-    results = pool.map(simulate_single, [simulator for _ in range(iteration)])
+    results = pool.starmap(simulate_single, [(simulator, i) for i in range(iteration)])
     pool.close()
     pool.join()
 
@@ -27,20 +30,24 @@ def simulate_concurrent(iteration, simulator):
     return total_result
 
 
-def simulate_delta(damage_func, iteration, simulator):
+def simulate_delta(damage_func, attribute_class, iteration, simulator, delta=True):
     attribute = simulator.status.attribute
+    start = time.time()
     origin_result = simulate_concurrent(iteration, simulator)
+    print(time.time() - start)
     attribute.all_critical_strike_base += MINOR_DELTA
+    start = time.time()
     delta_result = simulate_concurrent(iteration, simulator)
+    print(time.time() - start)
+    start = time.time()
     origin_dps, origin_details, fix_gradients = analyze_details(
-        iteration, simulator.duration, attribute, damage_func, attribute.fix_grad_attrs, origin_result)
+        iteration, simulator.duration, damage_func, attribute_class, attribute.fix_grad_attrs, origin_result)
     delta_dps, delta_details, float_gradients = analyze_details(
-        iteration, simulator.duration, attribute, damage_func, attribute.float_grad_attrs, delta_result)
-
+        iteration, simulator.duration, damage_func, attribute_class, attribute.float_grad_attrs, delta_result)
+    print(time.time() - start)
     gradients = {}
     for attr, residual in fix_gradients.items():
         gradients[attr] = (residual, residual / attribute.fix_grad_attrs[attr])
-
     for attr, residual in float_gradients.items():
         residual = residual + delta_dps - origin_dps
         gradients[attr] = (residual, residual / attribute.float_grad_attrs[attr])

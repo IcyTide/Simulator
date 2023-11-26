@@ -1,5 +1,4 @@
 import math
-import time
 
 from base.constant import FRAME_PER_SECOND
 from base.status import Status
@@ -78,7 +77,5 @@ class Simulator:
             self.status.timer(math.ceil(gap))
 
     def __call__(self):
-        start_time = time.time()
         self.simulate()
-        print(f"finish simulation with {time.time() - start_time}")
         return self.damages

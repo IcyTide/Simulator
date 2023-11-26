@@ -37,7 +37,7 @@ def combat_script(combat_components,
 
     def build_summary(class_attr, iteration, simulator):
         dps, details, gradients = simulate_delta(
-            class_attr['damage'], iteration, simulator
+            class_attr['damage'], class_attr['attribute'], iteration, simulator
         )
         total_damage = dps * simulator.duration
         summary_texts = []

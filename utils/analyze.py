@@ -1,7 +1,8 @@
 
 
-def analyze_details(iteration, duration, attribute, damage_func, grad_attrs, counts):
+def analyze_details(iteration, duration, damage_func, attribute_class, grad_attrs, counts):
     scale = iteration * duration
+    attribute = attribute_class()
     result = {}
     total_damage = 0
     grad_results = {attr: 0 for attr in grad_attrs}
