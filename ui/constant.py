@@ -38,7 +38,7 @@ SUPPORT_CLASS = {
         "skills": bei_ao_jue.SKILLS,
         "buffs": bei_ao_jue.BUFFS,
         "damage": physical_damage,
-        "simulator": {
+        "sequences": {
             "prepare":  bei_ao_jue.prepare,
             "priority": bei_ao_jue.priority,
             "loop": bei_ao_jue.loop

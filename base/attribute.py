@@ -67,8 +67,11 @@ class Attribute:
     cd_reduction: float = 0
 
     def __post_init__(self):
-        self.fix_grad_attrs = {}
-        self.float_grad_attrs = {}
+        self.grad_attrs = {}
+        self.delta_attr = ""
+        self.delta_value = 0
+        self.delta_grad_attrs = {}
+
         self.all_major_base += 41
 
     """ Major Attr Function"""

@@ -15,6 +15,9 @@ def build_combat():
         with gr.Group():
             iteration = gr.Number(minimum=1, value=1000, precision=0, label="模拟次数")
             combat_components['iteration'] = iteration
+        with gr.Group():
+            delta_value = gr.Number(value=0, precision=0, label="残差会心(如果会心影响技能数)")
+            combat_components['delta_value'] = delta_value
     simulate = gr.Button("开始模拟!")
     combat_components['simulate'] = simulate
     with gr.Row():
@@ -28,10 +31,17 @@ def build_combat():
             with gr.Tab("统计"):
                 summary = gr.Textbox(label="总结", lines=20)
                 combat_components['summary'] = summary
+                delta_summary = gr.Textbox(label="残差总结", lines=20, visible=False)
+                combat_components['delta_summary'] = delta_summary
         with gr.Column(scale=3):
-            dps = gr.Number(label="DPS")
-            combat_components['dps'] = dps
-            gradient = gr.Textbox(label="属性收益", lines=20)
+            with gr.Row():
+                dps = gr.Number(label="DPS")
+                combat_components['dps'] = dps
+                delta_dps = gr.Number(label="残差DPS", visible=False)
+                combat_components['delta_dps'] = delta_dps
+            gradient = gr.Textbox(label="属性收益", lines=10)
             combat_components['gradient'] = gradient
+            delta_gradient = gr.Textbox(label="残差收益", lines=10, visible=False)
+            combat_components['delta_gradient'] = delta_gradient
 
     return combat_components

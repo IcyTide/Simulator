@@ -67,8 +67,9 @@ def overcome_result(damage, overcome, shield_base, shield_gain, shield_ignore, s
 
 
 @cache
-def critical_result(damage, critical_power):
-    return int(damage * critical_power)
+def critical_result(damage, critical_strike, critical_power):
+    # return int(damage * critical_power)       # actucal critical damage
+    return int(damage * (1 - critical_strike + critical_strike * critical_power))       # expected damage
 
 
 @cache
@@ -104,8 +105,9 @@ def physical_damage(attribute, params):
     damage = overcome_result(damage, attribute.physical_overcome,
                              params['shield_base'], params['shield_gain'], params['shield_ignore'],
                              params['shield_constant'])
-    if params['critical']:
-        damage = critical_result(damage, attribute.physical_critical_power)
+    # if params['critical']:
+    #     damage = critical_result(damage, attribute.physical_critical_power)
+    damage = critical_result(damage, attribute.physical_critical_strike, attribute.physical_critical_power)
     damage = level_reduction_result(damage, params['level'], params['target_level'])
     damage = strain_result(damage, attribute.strain)
     damage = pve_addition_result(damage, params['pve_addition'])

@@ -1,9 +1,6 @@
 import random
-import time
 from multiprocessing import Pool, cpu_count
 
-from base.constant import MINOR_DELTA
-from base.simulator import Simulator
 from utils.analyze import analyze_details
 
 processes = cpu_count()
@@ -30,35 +27,25 @@ def simulate_concurrent(iteration, simulator):
     return total_result
 
 
-def simulate_delta(damage_func, attribute_class, iteration, simulator, delta=True):
+def simulate_delta(damage_func, attribute_class, iteration, simulator, delta_value):
     attribute = simulator.status.attribute
-    start = time.time()
     origin_result = simulate_concurrent(iteration, simulator)
-    print(time.time() - start)
-    attribute.all_critical_strike_base += MINOR_DELTA
-    start = time.time()
-    delta_result = simulate_concurrent(iteration, simulator)
-    print(time.time() - start)
-    start = time.time()
-    origin_dps, origin_details, fix_gradients = analyze_details(
-        iteration, simulator.duration, damage_func, attribute_class, attribute.fix_grad_attrs, origin_result)
-    delta_dps, delta_details, float_gradients = analyze_details(
-        iteration, simulator.duration, damage_func, attribute_class, attribute.float_grad_attrs, delta_result)
-    print(time.time() - start)
-    gradients = {}
-    for attr, residual in fix_gradients.items():
-        gradients[attr] = (residual, residual / attribute.fix_grad_attrs[attr])
-    for attr, residual in float_gradients.items():
-        residual = residual + delta_dps - origin_dps
-        gradients[attr] = (residual, residual / attribute.float_grad_attrs[attr])
+    origin_dps, origin_details, origin_gradients = analyze_details(
+        iteration, simulator.duration, damage_func, attribute_class, attribute.grad_attrs, origin_result)
 
-    return origin_dps, origin_details, gradients
+    for attr, residual in origin_gradients.items():
+        origin_gradients[attr] = (residual, residual / attribute.grad_attrs[attr])
 
+    if delta_value:
+        setattr(attribute, attribute.delta_attr, getattr(attribute, attribute.delta_attr) + delta_value)
+        delta_result = simulate_concurrent(iteration, simulator)
+        delta_dps, delta_details, delta_gradients = analyze_details(
+            iteration, simulator.duration, damage_func, attribute_class, attribute.delta_grad_attrs, delta_result,
+            delta_value)
+        residual_dps = delta_dps - origin_dps
+        for attr, residual in delta_gradients.items():
+            residual = (residual + residual_dps) / delta_value * attribute.delta_grad_attrs[attr]
+            delta_gradients[attr] = (residual * attribute.grad_attrs[attr], residual)
 
-def simulate_verbose(damage_func, attribute, skills, buffs, gains, target, duration, prepare, priority, loop):
-    simulator = Simulator(attribute, skills, buffs, gains,
-                          target, duration, prepare, priority, loop, verbose=True)
-
-    dps, details, _ = analyze_details(1, duration, attribute, damage_func, {}, simulator())
-
-    return dps, details, simulator.actions, simulator.events
+        return origin_dps, origin_details, origin_gradients, delta_dps, delta_details, delta_gradients
+    return origin_dps, origin_details, origin_gradients, 0, {}, {}

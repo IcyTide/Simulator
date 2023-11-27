@@ -12,18 +12,21 @@ class BeiAoJue(Attribute):
         self.physical_attack_power_base += 3725
         self.pve_addition += 0.09
 
-        self.fix_grad_attrs = {
+        self.grad_attrs = {
+            "agility_base": MAJOR_DELTA,
             "strength_base": MAJOR_DELTA,
             "surplus": MINOR_DELTA,
             "strain_base": MINOR_DELTA,
             "physical_attack_power_base": PHYSICAL_DELTA,
+            "physical_critical_strike_base": MINOR_DELTA,
             "physical_critical_power_base": MINOR_DELTA,
             "physical_overcome_base": MINOR_DELTA,
             "weapon_damage_base": WEAPON_DELTA
         }
-        self.float_grad_attrs = {
-            "agility_base": MINOR_DELTA / AGILITY_TO_CRITICAL_STRIKE,
-            "physical_critical_strike_base": MINOR_DELTA
+        self.delta_attr = "physical_critical_strike_base"
+        self.delta_grad_attrs = {
+            "agility_base": AGILITY_TO_CRITICAL_STRIKE,   # must bring same quantity of delta_attr
+            "physical_critical_strike_base": 1
         }
 
     @property

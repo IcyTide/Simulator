@@ -5,6 +5,8 @@ from general.skills import SKILLS
 from ui.constant import ATTR_TYPE_TRANSLATE
 from utils.simulate import simulate_delta
 
+import gradio as gr
+
 
 def display_attr(attribute, display_attrs):
     texts = []
@@ -31,24 +33,42 @@ def combat_script(combat_components,
         init_attr_text = display_attr(attribute, display_attrs)
         gains = sum([equip_gains, team_gains, talent_gains, recipe_gains], [])
         simulator = Simulator(attribute, SKILLS + class_attr['skills'], BUFFS + class_attr['buffs'], gains,
-                              Target(target_level), duration, *class_attr['simulator'].values())
+                              Target(target_level), duration, *class_attr['sequences'].values())
         gain_attr_text = display_attr(attribute, display_attrs)
         return init_attr_text, gain_attr_text, simulator
 
-    def build_summary(class_attr, iteration, simulator):
-        dps, details, gradients = simulate_delta(
-            class_attr['damage'], class_attr['attribute'], iteration, simulator
+    def build_summary(class_attr, iteration, simulator, delta_value):
+        dps, details, gradients, delta_dps, delta_details, delta_gradients = simulate_delta(
+            class_attr['damage'], class_attr['attribute'], iteration, simulator, delta_value
         )
         total_damage = dps * simulator.duration
         summary_texts = []
         for skill, detail in details.items():
-            count = detail['hit'] + detail['critical']
-            summary_texts.append(f"{skill}:\t次数{count}\t"
-                                 f"\t命中{detail['hit']}/{round(detail['hit'] / count * 100, 2)}%\t"
-                                 f"\t会心{detail['critical']}/{round(detail['critical'] / count * 100, 2)}%\t"
-                                 f"\t伤害{detail['damage']}/{round(detail['damage'] / total_damage * 100, 2)}%")
+            count = round(detail['hit'] + detail['critical'], 2)
+            summary_texts.append(
+                f"{skill}:\t次数{count}\t"
+                f"\t命中{detail['hit']}/{round(detail['hit'] / count * 100, 2)}%\t"
+                f"\t会心{detail['critical']}/{round(detail['critical'] / count * 100, 2)}%\t"
+                f"\t伤害{detail['damage']}/{round(detail['damage'] / total_damage * 100, 2)}%")
         gradient_texts = [f"{ATTR_TYPE_TRANSLATE[k]}:\t{round(v[0], 2)}/{round(v[1], 4)}" for k, v in gradients.items()]
-        return dps, "\n".join(summary_texts), "\n".join(gradient_texts)
+        if delta_dps:
+            total_damage = delta_dps * simulator.duration
+            delta_summary_texts = []
+            for skill, detail in delta_details.items():
+                count = round(detail['hit'] + detail['critical'], 2)
+                delta_summary_texts.append(
+                    f"{skill}:\t次数{count}\t"
+                    f"\t命中{detail['hit']}/{round(detail['hit'] / count * 100, 2)}%\t"
+                    f"\t会心{detail['critical']}/{round(detail['critical'] / count * 100, 2)}%\t"
+                    f"\t伤害{detail['damage']}/{round(detail['damage'] / total_damage * 100, 2)}%")
+            delta_gradient_texts = [
+                f"{ATTR_TYPE_TRANSLATE[k]}:\t{round(v[0], 2)}/{round(v[1], 4)}" for k, v in delta_gradients.items()]
+            return (round(dps), "\n".join(summary_texts), "\n".join(gradient_texts),
+                    gr.update(visible=True, value=round(delta_dps)),
+                    gr.update(visible=True, value="\n".join(delta_summary_texts)),
+                    gr.update(visible=True, value="\n".join(delta_gradient_texts)))
+        return round(dps), "\n".join(summary_texts), "\n".join(gradient_texts), gr.update(visible=False), gr.update(
+            visible=False), gr.update(visible=False)
 
     combat_components['simulate'].click(
         build_attr,
@@ -59,6 +79,8 @@ def combat_script(combat_components,
         [combat_components['init_attribute'], combat_components['gain_attribute'], combat_components['simulator']]
     ).then(
         build_summary,
-        [combat_components['class_attr'], combat_components['iteration'], combat_components['simulator']],
-        [combat_components['dps'], combat_components['summary'], combat_components['gradient']]
+        [combat_components['class_attr'], combat_components['iteration'],
+         combat_components['simulator'], combat_components['delta_value']],
+        [combat_components['dps'], combat_components['summary'], combat_components['gradient'],
+         combat_components['delta_dps'], combat_components['delta_summary'], combat_components['delta_gradient']]
     )

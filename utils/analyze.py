@@ -1,6 +1,8 @@
+import math
 
 
-def analyze_details(iteration, duration, damage_func, attribute_class, grad_attrs, counts):
+def analyze_details(
+        iteration, duration, damage_func, attribute_class, grad_attrs, counts, delta_value=None):
     scale = iteration * duration
     attribute = attribute_class()
     result = {}
@@ -13,9 +15,16 @@ def analyze_details(iteration, duration, damage_func, attribute_class, grad_attr
         attribute_params = dict(attribute_params)
         damage_params = dict(damage_params)
         for attr, value in grad_attrs.items():
-            setattr(attribute, attr, value + attribute_params[attr])
-            grad_results[attr] += damage_func(attribute, damage_params)[-1] * count
-            setattr(attribute, attr, attribute_params[attr])
+            if delta_value:
+                setattr(attribute, attr, attribute_params[attr] + delta_value / value)
+                setattr(attribute, attribute.delta_attr, getattr(attribute, attribute.delta_attr) - delta_value)
+                grad_results[attr] += damage_func(attribute, damage_params)[-1] * count
+                setattr(attribute, attr, attribute_params[attr])
+                setattr(attribute, attribute.delta_attr, attribute_params[attribute.delta_attr])
+            else:
+                setattr(attribute, attr, value + attribute_params[attr])
+                grad_results[attr] += damage_func(attribute, damage_params)[-1] * count
+                setattr(attribute, attr, attribute_params[attr])
 
         skill, critical, damage = damage_func(attribute, damage_params)
 
@@ -34,7 +43,7 @@ def analyze_details(iteration, duration, damage_func, attribute_class, grad_attr
 
     details = {}
     for skill in sorted(result, key=lambda x: result[x]['damage'], reverse=True):
-        details[skill] = {k: round(v / iteration) for k, v in result[skill].items()}
+        details[skill] = {k: round(v / iteration, 2) for k, v in result[skill].items()}
 
     gradients = {attr: grad_results[attr] / scale - dps for attr, grad_result in grad_results.items()}
     return dps, details, gradients
