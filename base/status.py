@@ -1,5 +1,4 @@
 from base.attribute import Attribute
-
 from base.target import Target
 
 
@@ -17,14 +16,13 @@ class Status:
 
         self.skills = {}
 
+        self.intervals = {}
+        self.counts = {}
         self.cds = {}
         self.energies = {}
-        self.counts = {}
-        self.intervals = {}
 
         for skill in skills:
             skill.status = self
-
             self.skills[skill.name] = skill
             self.energies[skill.name] = skill.energy
 
@@ -34,7 +32,6 @@ class Status:
 
         for buff in buffs:
             buff.status = self
-
             self.buffs[buff.name] = buff
             self.stacks[buff.name] = 0
 
@@ -49,16 +46,16 @@ class Status:
 
         refresh_gcd = []
         for gcd_index, gcd in self.gcd_group.items():
-            self.gcd_group[gcd_index] = max(0, gcd - gap)
-            if not self.gcd_group[gcd_index]:
+            gcd = self.gcd_group[gcd_index] = gcd - gap
+            if gcd <= 0:
                 refresh_gcd.append(gcd_index)
         for gcd_index in refresh_gcd:
             self.gcd_group.pop(gcd_index)
 
         damage_skills = []
         for skill, interval in self.intervals.items():
-            self.intervals[skill] = max(0, interval - gap)
-            if not self.intervals[skill]:
+            interval = self.intervals[skill] = interval - gap
+            if interval <= 0:
                 damage_skills.append(skill)
         for skill in damage_skills:
             self.skills[skill].hit()
@@ -66,27 +63,23 @@ class Status:
         recharge_skills = []
         reduction_gap = gap * (1 + self.attribute.cd_reduction)
         for skill, cd in self.cds.items():
-            self.cds[skill] = max(0, cd - reduction_gap)
-            if not self.cds[skill]:
+            cd = self.cds[skill] = cd - reduction_gap
+            if cd <= 0:
                 recharge_skills.append(skill)
         for skill in recharge_skills:
             self.skills[skill].recharge()
 
         expire_buffs = []
         for buff, duration in self.durations.items():
-            self.durations[buff] = max(0, duration - gap)
-            if not self.durations[buff]:
+            duration = self.durations[buff] = duration - gap
+            if duration <= 0:
                 expire_buffs.append(buff)
         for buff in expire_buffs:
             self.buffs[buff].clear()
 
     def record_verbose(self, params):
-        if params not in self.damages:
-            self.damages[params] = 0
         self.damages[params] += 1
         self.events.append((self.current_frame, params))
 
     def record(self, params):
-        if params not in self.damages:
-            self.damages[params] = 0
         self.damages[params] += 1

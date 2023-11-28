@@ -4,13 +4,13 @@ from base.status import Status
 
 class DaoXiaoFengYinSetGain:
     def __call__(self, status: Status):
-        status.skills["刀啸风吟"].skill_damage_addition += 0.1
+        status.skills["刀啸风吟"].skill_damage_addition += 102 / 1024
 
 
 class ShangJiangJunYinSetGain:
     def __call__(self, status: Status):
-        status.skills["上将军印"].skill_damage_addition += 0.1
-        status.skills["见尘"].skill_damage_addition += 0.1
+        status.skills["上将军印"].skill_damage_addition += 102 / 1024
+        status.skills["见尘"].skill_damage_addition += 102 / 1024
 
 
 class CriticalSetGain:
@@ -20,13 +20,13 @@ class CriticalSetGain:
 
     def __call__(self, status: Status):
         for skill in status.skills.values():
-            if skill.is_hit:
+            if skill.is_cast:
                 skill.post_hit_effect.append(self.critical_set_post_cast)
 
 
 class DaoXiaoFengYinDivineGain:
     def __call__(self, status: Status):
-        status.skills["刀啸风吟"].skill_damage_addition += 0.05
+        status.skills["刀啸风吟"].skill_damage_addition += 51 / 1024
 
 
 class XiangWangJiDingDivineGain:

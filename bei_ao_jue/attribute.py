@@ -10,7 +10,7 @@ class BeiAoJue(Attribute):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.physical_attack_power_base += 3725
-        self.pve_addition += 0.09
+        self.pve_addition += 92 / 1024
 
         self.grad_attrs = {
             "agility_base": MAJOR_DELTA,

@@ -12,6 +12,7 @@ class LongXi:
             status.skills[skill].interval_base = 0
 
         status.skills["擒龙六斩"].energy = 6
+        status.skills["擒龙六斩"].is_overdraw = 6
         status.energies["擒龙六斩"] = 6
 
 
@@ -22,10 +23,10 @@ class GuiHan:
 
 class YangGuan:
     def __call__(self, status: Status):
-        status.skills["上将军印"].skill_damage_addition += 0.15
-        status.skills["见尘"].skill_damage_addition += 0.15
+        status.skills["上将军印"].skill_damage_addition += 154 / 1024
+        status.skills["见尘"].skill_damage_addition += 154 / 1024
 
-        status.skills["上将军印"].skill_shield_gain -= 0.2
+        status.skills["上将军印"].skill_shield_gain -= 205 / 1024
 
 
 class ShuangTian:
@@ -63,7 +64,7 @@ class JianChen:
 class HanFeng:
     @staticmethod
     def han_feng_post_hit(self: Skill):
-        self.status.buffs["含风"].refresh()
+        self.status.buffs["含风"].trigger()
 
     def __call__(self, status: Status):
         status.skills["刀啸风吟"].post_hit_effect.append(self.han_feng_post_hit)
@@ -77,7 +78,7 @@ class FenJiang:
 
 class XingHuo:
     def __call__(self, status: Status):
-        status.attribute.strength_gain += 0.1
+        status.attribute.strength_gain += 102 / 1024
 
 
 class ChuGe:
@@ -92,7 +93,7 @@ class ChuGe:
     def __call__(self, status: Status):
         status.skills["破釜沉舟"].cd_base -= 3 * 16
         status.skills["破釜沉舟"].skill_critical_strike += 0.1
-        status.skills["破釜沉舟"].skill_critical_power += 0.2
+        status.skills["破釜沉舟"].skill_critical_power += 205 / 1024
         status.skills["破釜沉舟"].pre_cast_effect.append(self.chu_ge_pre_cast)
         for skill in status.skills.values():
             if skill.is_hit:
@@ -116,11 +117,11 @@ class JueQi:
 class ZhongYan:
     @staticmethod
     def zhong_yan_add_effect(self: Buff):
-        self.status.attribute.cd_reduction += 0.3
+        self.status.attribute.cd_reduction += 307 / 1024
 
     @staticmethod
     def zhong_yan_remove_effect(self: Buff):
-        self.status.attribute.cd_reduction -= 0.3
+        self.status.attribute.cd_reduction -= 307 / 1024
 
     def __call__(self, status: Status):
         status.buffs["秀明尘身"].add_effect.append(self.zhong_yan_add_effect)

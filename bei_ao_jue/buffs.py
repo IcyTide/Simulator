@@ -102,20 +102,22 @@ class HanFeng(Buff):
         self.duration = 24 * 16
 
         self.stack_max = 2
+        self.value1 = 0.05
+        self.value2 = 51 / 1024
 
     def add(self):
         super().add()
-        self.status.attribute.physical_critical_strike_gain += 0.05
-        self.status.attribute.physical_critical_power_gain += 0.05
+        self.status.attribute.physical_critical_strike_gain += self.value1
+        self.status.attribute.physical_critical_power_gain += self.value2
         for skill in self.related_skills:
-            self.status.skills[skill].skill_damage_addition += 0.05
+            self.status.skills[skill].skill_damage_addition += self.value2
 
     def remove(self):
         super().remove()
-        self.status.attribute.physical_critical_strike_gain -= 0.05
-        self.status.attribute.physical_critical_power_gain -= 0.05
+        self.status.attribute.physical_critical_strike_gain -= self.value1
+        self.status.attribute.physical_critical_power_gain -= self.value2
         for skill in self.related_skills:
-            self.status.skills[skill].skill_damage_addition -= 0.05
+            self.status.skills[skill].skill_damage_addition -= self.value2
 
 
 class XiangQiCount(Buff):
@@ -163,14 +165,16 @@ class XiangQiShi(Buff):
 
         self.duration = 15 * 16
 
+        self.value = 205 / 1024
+
     def add(self):
         super().add()
         self.status.buffs["降麒式·计数"].clear()
         self.status.buffs["降麒式·就绪"].clear()
-        self.status.attribute.damage_addition += 0.2
+        self.status.attribute.damage_addition += self.value
 
     def remove(self):
-        self.status.attribute.damage_addition -= 0.2
+        self.status.attribute.damage_addition -= self.value
 
 
 BUFFS = [

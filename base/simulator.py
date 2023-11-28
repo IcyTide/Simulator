@@ -1,24 +1,22 @@
 import math
+from collections import Counter
 
 from base.constant import FRAME_PER_SECOND
 from base.status import Status
 
-import random
-
 
 class Simulator:
     def __init__(self, attribute, skills, buffs, gains, target, duration,
-                 prepare=None, priority=None, loop=None, seed=82, verbose=False):
+                 prepare=None, priority=None, loop=None, verbose=False):
 
         if verbose:
-            random.seed(seed)
             self.record = self.record_verbose
 
         self.duration = duration
 
         self.actions = []
         self.events = []
-        self.damages = {}
+        self.damages = Counter()
         self.status = Status(attribute, target, [skill() for skill in skills], [buff() for buff in buffs],
                              self.damages, self.events, self.duration * FRAME_PER_SECOND, verbose)
 

@@ -1,4 +1,4 @@
-from base.constant import ATTACK_POWER_COF
+from base.constant import PHYSICAL_ATTACK_POWER_COF
 from base.skill import Skill, PhysicalSkill
 
 
@@ -59,7 +59,7 @@ class WristEnchant(PhysicalSkill):
 
         self.damage_base = 40
         self.damage_rand = 17
-        self.attack_power_cof = ATTACK_POWER_COF(75)
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(75)
 
     def post_cast(self):
         super().post_cast()
@@ -76,7 +76,7 @@ class ShoesEnchant(PhysicalSkill):
 
         self.damage_base = 40
         self.damage_base = 17
-        self.attack_power_cof = ATTACK_POWER_COF(60)
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(60)
 
     def post_cast(self):
         super().post_cast()

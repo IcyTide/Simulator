@@ -12,7 +12,6 @@ class Buff:
 
     is_dot: bool = False
 
-    cd: int = 0
     probability: float = 1
     duration: int = 3600 * 16
     duration_max: int = 3600 * 16
@@ -27,15 +26,6 @@ class Buff:
     def __post_init__(self):
         self.add_effect = []
         self.remove_effect = []
-    # def extend(self, stack=None, duration=None):
-    #     if stack is None:
-    #         stack = self.stack_add
-    #     if duration is None:
-    #         duration = self.duration
-    #     self.status.stacks[self] = min(self.stack_max, self.status.stacks[self] + stack)
-    #     for _ in range(stack):
-    #         self.add_effect()
-    #     self.status.durations[self] = min(self.duration_max, self.status.durations[self] + duration)
 
     @property
     def condition(self):
@@ -44,9 +34,6 @@ class Buff:
     @property
     def roll(self):
         return random.random()
-
-    def ready(self):
-        self.activate = True
 
     def add(self):
         for effect in self.add_effect:
@@ -65,9 +52,6 @@ class Buff:
             return
 
         self.refresh()
-        if self.cd:
-            self.activate = False
-            self.status.cds[self.name] = self.cd
 
     def refresh(self):
         stack = min(self.stack_max - self.status.stacks[self.name], self.stack_add)
@@ -79,7 +63,8 @@ class Buff:
 
         if self.is_dot:
             if self.name in self.status.intervals:
-                duration = self.status.skills[self.name].duration - self.status.skills[self.name].interval
+                skill = self.status.skills[self.name]
+                duration = skill.duration - skill.interval
                 self.status.durations[self.name] = duration
             else:
                 self.status.durations[self.name] = self.status.skills[self.name].duration

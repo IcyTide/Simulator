@@ -5,11 +5,6 @@ from functools import cache
 from base.status import Status
 
 
-@cache
-def apply_haste(value, scale):
-    return int(value / (1 + scale))
-
-
 @dataclass
 class PhysicalSnapshot:
     agility_base: int = 0,
@@ -31,6 +26,26 @@ class PhysicalSnapshot:
 
 
 @dataclass
+class MagicalSnapshot:
+    spirit_base: int = 0,
+    spirit_gain: float = 0,
+    spunk_base: int = 0,
+    spunk_gain: float = 0,
+    magical_attack_power_base: int = 0,
+    magical_attack_power_gain: float = 0,
+    magical_critical_strike_base: int = 0,
+    magical_critical_strike_gain: float = 0,
+    magical_critical_power_base: int = 0,
+    magical_critical_power_gain: float = 0,
+    strain_base: int = 0,
+    strain_gain: float = 0,
+    damage_addition: float = 0,
+
+    critical_strike: float = 0,
+    haste: float = 0
+    
+    
+@dataclass
 class Skill:
     name: str = None
     status: Status = None
@@ -40,6 +55,7 @@ class Skill:
     cast_while_casting: bool = False
     is_hit: bool = True
     is_instant: bool = False
+    is_overdraw: bool = False
     is_snapshot: bool = False
 
     gcd_index: any = 0
@@ -55,7 +71,6 @@ class Skill:
     pre_cast_effect: list = None
     post_cast_effect: list = None
     critical_hit_effect: list = None
-    pre_hit_effect: list = None
     post_hit_effect: list = None
 
     damage_base: int = 0
@@ -81,17 +96,12 @@ class Skill:
     def __post_init__(self):
         self.pre_cast_effect = []
         self.post_cast_effect = []
-        self.pre_hit_effect = []
         self.critical_hit_effect = []
         self.post_hit_effect = []
 
         self.snapshot = self
 
     """ attributes """
-
-    @property
-    def surplus(self):
-        return self.status.attribute.surplus
 
     @property
     def strain_base(self):
@@ -129,18 +139,23 @@ class Skill:
             return False
         if self.status.gcd_group.get(self.gcd_index):
             return False
-        if not self.status.energies[self.name]:
+        if self.status.energies[self.name] == 0:
             return False
         if self.status.casting and not self.cast_while_casting:
             return False
         return self.condition
+
+    @staticmethod
+    @cache
+    def apply_haste(value, scale):
+        return int(value / (1 + scale))
 
     @property
     def interval(self):
         if self.interval_list:
             return self.interval_list[self.status.counts[self.name]]
         else:
-            return apply_haste(self.interval_base, self.snapshot.haste)
+            return self.apply_haste(self.interval_base, self.snapshot.haste)
 
     @property
     def count(self):
@@ -158,7 +173,7 @@ class Skill:
 
     @property
     def gcd(self):
-        return apply_haste(self.gcd_base, self.haste)
+        return self.apply_haste(self.gcd_base, self.haste)
 
     @property
     def cd(self):
@@ -171,18 +186,30 @@ class Skill:
     """ action functions """
 
     def recharge(self):
-        self.status.energies[self.name] = self.energy
-
-        if self.name in self.status.cds:
+        if self.is_overdraw:
+            self.status.energies[self.name] = self.energy
             self.status.cds.pop(self.name)
+        else:
+            self.status.energies[self.name] += 1
+            if self.status.energies[self.name] < self.energy:
+                self.set_cd()
+            else:
+                self.status.cds.pop(self.name)
+
+    def set_cd(self):
+        cd = self.status.cds.get(self.name, 0)
+        if self.is_overdraw:
+            self.status.cds[self.name] = self.cd + cd
+        else:
+            self.status.cds[self.name] = cd if cd else self.cd
 
     def pre_cast(self):
         if self.is_cast:
             self.status.casting = self.duration
-            if self.gcd:
+            if self.gcd_base:
                 self.status.gcd_group[self.gcd_index] = self.gcd
-        if self.cd:
-            self.status.cds[self.name] = self.cd + self.status.cds.get(self.name, 0)
+        if self.cd_base:
+            self.set_cd()
             self.status.energies[self.name] -= 1
         if self.is_instant:
             self.status.intervals[self.name] = 0
@@ -222,17 +249,11 @@ class Skill:
         if self.name in self.status.intervals:
             self.status.intervals.pop(self.name)
 
-    def pre_hit(self):
-        for effect in self.pre_hit_effect:
-            effect(self)
-
     def critical_hit(self):
         for effect in self.critical_hit_effect:
             effect(self)
 
     def hit(self):
-        self.pre_hit()
-
         critical = self.roll < self.snapshot.critical_strike
         self.record(critical)
 
@@ -304,14 +325,6 @@ class PhysicalSkill(Skill):
         return self.status.attribute.physical_critical_power_gain + self.skill_critical_power
 
     @property
-    def physical_shield_ignore(self):
-        return self.status.attribute.physical_shield_ignore + self.skill_shield_ignore
-
-    @property
-    def physical_shield_gain(self):
-        return self.status.target.physical_shield_gain + self.skill_shield_gain
-
-    @property
     def critical_strike(self):
         return self.status.attribute.physical_critical_strike + self.skill_critical_strike
 
@@ -335,38 +348,157 @@ class PhysicalSkill(Skill):
         )
 
     def record_damage(self, critical: bool):
+        snapshot = self.snapshot
+        attribute = self.status.attribute
+        target = self.status.target
         return (
             (
-                ('agility_base', self.snapshot.agility_base),
-                ('agility_gain', self.snapshot.agility_gain),
-                ('strength_base', self.snapshot.strength_base),
-                ('strength_gain', self.snapshot.strength_gain),
-                ('surplus', self.surplus),
-                ('strain_base', self.snapshot.strain_base),
-                ('strain_gain', self.snapshot.strain_gain),
-                ('physical_attack_power_base', self.snapshot.physical_attack_power_base),
-                ('physical_attack_power_gain', self.snapshot.physical_attack_power_gain),
-                ('physical_critical_strike_base', self.snapshot.physical_critical_strike_base),
-                ('physical_critical_strike_gain', self.snapshot.physical_critical_strike_gain),
-                ('physical_critical_power_base', self.snapshot.physical_critical_power_base),
-                ('physical_critical_power_gain', self.snapshot.physical_critical_power_gain),
-                ('physical_overcome_base', self.status.attribute.physical_overcome_base),
-                ('physical_overcome_gain', self.status.attribute.physical_overcome_gain),
-                ('weapon_damage_base', self.status.attribute.weapon_damage_base),
-                ('weapon_damage_rand', self.status.attribute.weapon_damage_rand),
-                ('weapon_damage_gain', self.status.attribute.weapon_damage_gain)
+                ('agility_base', snapshot.agility_base),
+                ('agility_gain', snapshot.agility_gain),
+                ('strength_base', snapshot.strength_base),
+                ('strength_gain', snapshot.strength_gain),
+                ('surplus', attribute.surplus),
+                ('strain_base', snapshot.strain_base),
+                ('strain_gain', snapshot.strain_gain),
+                ('physical_attack_power_base', snapshot.physical_attack_power_base),
+                ('physical_attack_power_gain', snapshot.physical_attack_power_gain),
+                ('physical_critical_strike_base', snapshot.physical_critical_strike_base),
+                ('physical_critical_strike_gain', snapshot.physical_critical_strike_gain),
+                ('physical_critical_power_base', snapshot.physical_critical_power_base),
+                ('physical_critical_power_gain', snapshot.physical_critical_power_gain),
+                ('physical_overcome_base', attribute.physical_overcome_base),
+                ('physical_overcome_gain', attribute.physical_overcome_gain),
+                ('weapon_damage_base', attribute.weapon_damage_base),
+                ('weapon_damage_rand', attribute.weapon_damage_rand),
+                ('weapon_damage_gain', attribute.weapon_damage_gain)
             ),
             (
-                ('level', self.status.attribute.level),
+                ('level', attribute.level),
                 ('damage_addition', self.damage_addition),
                 ('pve_addition', self.pve_addition),
-                ('shield_ignore', self.physical_shield_ignore),
+                ('shield_ignore', attribute.physical_shield_ignore + self.skill_shield_ignore),
 
-                ('target_level', self.status.target.level),
-                ('shield_base', self.status.target.physical_shield_base),
-                ('shield_gain', self.physical_shield_gain),
-                ('vulnerable', self.status.target.physical_vulnerable),
-                ('shield_constant', self.status.target.shield_constant),
+                ('target_level', target.level),
+                ('shield_base', target.physical_shield_base),
+                ('shield_gain', target.physical_shield_gain + self.skill_shield_gain),
+                ('vulnerable', target.physical_vulnerable),
+                ('shield_constant', target.shield_constant),
+
+                ('skill', self.name),
+                ('critical', critical),
+                ('damage_base', self.damage_base),
+                ('damage_rand', self.damage_rand),
+                ('damage_gain', self.damage_gain),
+                ('attack_power_cof', self.attack_power_cof),
+                ('weapon_damage_cof', self.weapon_damage_cof),
+                ('surplus_cof', self.surplus_cof),
+                ('attack_power_cof_gain', self.attack_power_cof_gain),
+                ('weapon_damage_cof_gain', self.weapon_damage_cof_gain),
+                ('surplus_cof_gain', self.surplus_cof_gain)
+            )
+        )
+
+
+class MagicalSkill(Skill):
+    @property
+    def spirit_base(self):
+        return self.status.attribute.spirit_base
+
+    @property
+    def spirit_gain(self):
+        return self.status.attribute.spirit_gain
+
+    @property
+    def spunk_base(self):
+        return self.status.attribute.spunk_base
+
+    @property
+    def spunk_gain(self):
+        return self.status.attribute.spunk_gain
+
+    @property
+    def magical_attack_power_base(self):
+        return self.status.attribute.magical_attack_power_base
+
+    @property
+    def magical_attack_power_gain(self):
+        return self.status.attribute.magical_attack_power_gain
+
+    @property
+    def magical_critical_strike_base(self):
+        return self.status.attribute.magical_critical_strike_base
+
+    @property
+    def magical_critical_strike_gain(self):
+        return self.status.attribute.magical_critical_strike_gain + self.skill_critical_strike
+
+    @property
+    def magical_critical_power_base(self):
+        return self.status.attribute.magical_critical_power_base
+
+    @property
+    def magical_critical_power_gain(self):
+        return self.status.attribute.magical_critical_power_gain + self.skill_critical_power
+
+    @property
+    def critical_strike(self):
+        return self.status.attribute.magical_critical_strike + self.skill_critical_strike
+
+    def save_snapshot(self):
+        self.snapshot = MagicalSnapshot(
+            spunk_base=self.spunk_base,
+            spunk_gain=self.spunk_gain,
+            spirit_base=self.spirit_base,
+            spirit_gain=self.spirit_gain,
+            magical_attack_power_base=self.magical_attack_power_base,
+            magical_attack_power_gain=self.magical_attack_power_gain,
+            magical_critical_strike_base=self.magical_critical_strike_base,
+            magical_critical_strike_gain=self.magical_critical_strike_gain,
+            magical_critical_power_base=self.magical_critical_power_base,
+            magical_critical_power_gain=self.magical_critical_power_gain,
+            strain_base=self.strain_base,
+            strain_gain=self.strain_gain,
+            damage_addition=self.damage_addition + self.skill_damage_addition,
+            critical_strike=self.critical_strike,
+            haste=self.haste
+        )
+
+    def record_damage(self, critical: bool):
+        snapshot = self.snapshot
+        attribute = self.status.attribute
+        target = self.status.target
+        return (
+            (
+                ('spirit_base', snapshot.spirit_base),
+                ('spirit_gain', snapshot.spirit_gain),
+                ('spunk_base', snapshot.spunk_base),
+                ('spunk_gain', snapshot.spunk_gain),
+                ('surplus', attribute.surplus),
+                ('strain_base', snapshot.strain_base),
+                ('strain_gain', snapshot.strain_gain),
+                ('magical_attack_power_base', snapshot.magical_attack_power_base),
+                ('magical_attack_power_gain', snapshot.magical_attack_power_gain),
+                ('magical_critical_strike_base', snapshot.magical_critical_strike_base),
+                ('magical_critical_strike_gain', snapshot.magical_critical_strike_gain),
+                ('magical_critical_power_base', snapshot.magical_critical_power_base),
+                ('magical_critical_power_gain', snapshot.magical_critical_power_gain),
+                ('magical_overcome_base', attribute.magical_overcome_base),
+                ('magical_overcome_gain', attribute.magical_overcome_gain),
+                ('weapon_damage_base', attribute.weapon_damage_base),
+                ('weapon_damage_rand', attribute.weapon_damage_rand),
+                ('weapon_damage_gain', attribute.weapon_damage_gain)
+            ),
+            (
+                ('level', attribute.level),
+                ('damage_addition', self.damage_addition),
+                ('pve_addition', self.pve_addition),
+                ('shield_ignore', attribute.magical_shield_ignore + self.skill_shield_ignore),
+
+                ('target_level', target.level),
+                ('shield_base', target.magical_shield_base),
+                ('shield_gain', target.magical_shield_gain + self.skill_shield_gain),
+                ('vulnerable', target.magical_vulnerable),
+                ('shield_constant', target.shield_constant),
 
                 ('skill', self.name),
                 ('critical', critical),

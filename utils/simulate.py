@@ -1,4 +1,6 @@
+import copy
 import random
+from collections import Counter
 from multiprocessing import Pool, cpu_count
 
 from utils.analyze import analyze_details
@@ -17,19 +19,23 @@ def simulate_concurrent(iteration, simulator):
     pool.close()
     pool.join()
 
-    total_result = {}
-    for result in results:
-        for k, v in result.items():
-            if k not in total_result:
-                total_result[k] = 0
-            total_result[k] += v
+    total_result = sum(results, Counter())
 
+    return total_result
+
+
+def simulate_serial(iteration, simulator):
+    total_result = Counter()
+    for i in range(iteration):
+        random.seed(i)
+        total_result += copy.deepcopy(simulator)()
     return total_result
 
 
 def simulate_delta(damage_func, attribute_class, iteration, simulator, delta_value):
     attribute = simulator.status.attribute
-    origin_result = simulate_concurrent(iteration, simulator)
+    simulate_func = simulate_serial if iteration < 100 else simulate_concurrent
+    origin_result = simulate_func(iteration, simulator)
     origin_dps, origin_details, origin_gradients = analyze_details(
         iteration, simulator.duration, damage_func, attribute_class, attribute.grad_attrs, origin_result)
 
@@ -38,7 +44,7 @@ def simulate_delta(damage_func, attribute_class, iteration, simulator, delta_val
 
     if delta_value:
         setattr(attribute, attribute.delta_attr, getattr(attribute, attribute.delta_attr) + delta_value)
-        delta_result = simulate_concurrent(iteration, simulator)
+        delta_result = simulate_func(iteration, simulator)
         delta_dps, delta_details, delta_gradients = analyze_details(
             iteration, simulator.duration, damage_func, attribute_class, attribute.delta_grad_attrs, delta_result,
             delta_value)

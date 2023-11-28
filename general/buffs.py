@@ -4,7 +4,7 @@ from base.buff import Buff
 class CriticalSet(Buff):
     def __init__(self):
         super().__init__()
-        self.probability = 0.1
+        self.probability = 102 / 1024
 
         self.duration = 6 * 16
 
