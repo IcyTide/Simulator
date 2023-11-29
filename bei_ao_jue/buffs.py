@@ -1,8 +1,8 @@
 from base.buff import Buff
-from general.buffs import CriticalSet
+from general.buffs import PhysicalCriticalSet
 
 
-class ShuoQi(CriticalSet):
+class ShuoQi(PhysicalCriticalSet):
     def __init__(self):
         super().__init__()
         self.name = "朔气"
@@ -174,6 +174,7 @@ class XiangQiShi(Buff):
         self.status.attribute.damage_addition += self.value
 
     def remove(self):
+        super().remove()
         self.status.attribute.damage_addition -= self.value
 
 

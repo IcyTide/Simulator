@@ -112,5 +112,6 @@ def physical_damage(attribute, params):
     damage = strain_result(damage, attribute.strain)
     damage = pve_addition_result(damage, params['pve_addition'])
     damage = vulnerable_result(damage, params['vulnerable'])
+    damage = params['stack'] * damage
 
     return params['skill'], params['critical'], damage

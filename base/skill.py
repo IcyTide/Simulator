@@ -54,6 +54,7 @@ class Skill:
     is_cast: bool = True
     cast_while_casting: bool = False
     is_hit: bool = True
+    is_dot: bool = True
     is_instant: bool = False
     is_overdraw: bool = False
     is_snapshot: bool = False
@@ -149,6 +150,13 @@ class Skill:
     @cache
     def apply_haste(value, scale):
         return int(value / (1 + scale))
+
+    @property
+    def stack(self):
+        if self.is_dot:
+            return self.status.buffs[self.name]
+        else:
+            return 1
 
     @property
     def interval(self):
@@ -386,6 +394,7 @@ class PhysicalSkill(Skill):
 
                 ('skill', self.name),
                 ('critical', critical),
+                ('stack', self.stack),
                 ('damage_base', self.damage_base),
                 ('damage_rand', self.damage_rand),
                 ('damage_gain', self.damage_gain),

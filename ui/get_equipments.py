@@ -10,6 +10,7 @@ ATTR_TYPE_MAP = {
     "atMeleeWeaponDamageBase": "weapon_damage_base",
     "atMeleeWeaponDamageRand": "weapon_damage_rand",
     "atStrengthBase": "strength_base",
+    "atSpiritBase": "spirit_base",
     "atPhysicsAttackPowerBase": "physical_attack_power_base",
     "atPhysicsOvercomeBase": "physical_overcome_base",
     "atAllTypeCriticalStrike": "all_critical_strike_base",
@@ -92,6 +93,7 @@ SPECIAL_ENCHANT_MAP = {
     },
 }
 STONE_ATTR_MAP = {
+    "atSpiritBase": "根骨",
     "atStrengthBase": "力道",
     "atPhysicsAttackPowerBase": "攻击",
     "atPhysicsCriticalStrike": "会心",

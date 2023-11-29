@@ -1,7 +1,7 @@
 from base.buff import Buff
 
 
-class CriticalSet(Buff):
+class PhysicalCriticalSet(Buff):
     def __init__(self):
         super().__init__()
         self.probability = 102 / 1024
