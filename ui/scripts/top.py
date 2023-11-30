@@ -15,12 +15,14 @@ def top_script(equipments, detail, top_components, combat_components,
                     *[None for _ in talent_components['talents']],
                     *[None for _ in recipe_components['recipes']]]
         class_attr = SUPPORT_CLASS[class_name]
+
         equip_updates = []
         for equip in equipments:
             equipment = equipments[equip]
             choices = list(equipment[(equipment['kind'].isin([class_attr['kind'], class_attr['major']])) & (
                 equipment['school'].isin(["精简", "通用", class_attr['school']]))].index)
             equip_updates.append(gr.update(choices=[""] + choices, value="", visible=True))
+
         consumable_updates = [
             gr.update(choices=[""] + FOODS[class_attr['major']], value=""),
             gr.update(choices=[""] + FOODS[class_attr['kind']] + FOODS["通用"], value=""),

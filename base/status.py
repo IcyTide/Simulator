@@ -1,3 +1,5 @@
+from collections import Counter
+
 from base.attribute import Attribute
 from base.target import Target
 
@@ -28,7 +30,7 @@ class Status:
 
         self.buffs = {}
         self.durations = {}
-        self.stacks = {}
+        self.stacks = Counter()
 
         for buff in buffs:
             buff.status = self
@@ -79,7 +81,7 @@ class Status:
 
     def record_verbose(self, params):
         self.damages[params] += 1
-        self.events.append((self.current_frame, params))
+        self.events.append((self.current_frame, params[1][0], params[1][1], +self.stacks))
 
     def record(self, params):
         self.damages[params] += 1

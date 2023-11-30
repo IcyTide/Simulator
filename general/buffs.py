@@ -22,6 +22,27 @@ class PhysicalCriticalSet(Buff):
         self.status.attribute.physical_critical_power_gain -= self.value2
 
 
+class MagicalCriticalSet(Buff):
+    def __init__(self):
+        super().__init__()
+        self.probability = 102 / 1024
+
+        self.duration = 6 * 16
+
+        self.value1 = 0.04
+        self.value2 = 41 / 1024
+
+    def add(self):
+        super().add()
+        self.status.attribute.magical_critical_strike_gain += self.value1
+        self.status.attribute.magical_critical_power_gain += self.value2
+
+    def remove(self):
+        super().remove()
+        self.status.attribute.magical_critical_strike_gain -= self.value1
+        self.status.attribute.magical_critical_power_gain -= self.value2
+
+
 class BaiDuanCD(Buff):
     def __init__(self):
         super().__init__()
@@ -36,7 +57,7 @@ class BaiDuanDamageCD(Buff):
         self.duration = 4
 
 
-class WaterWeapon(Buff):
+class PhysicalWaterWeapon(Buff):
     def __init__(self):
         super().__init__()
         self.name = "水特效"
@@ -56,7 +77,7 @@ class WaterWeapon(Buff):
         self.status.attribute.physical_attack_power_base -= self.value
 
 
-class WindPendant(Buff):
+class PhysicalWindPendant(Buff):
     def __init__(self):
         super().__init__()
         self.name = "风特效"

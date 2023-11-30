@@ -50,14 +50,13 @@ class Simulator:
     def priority_simulate(self):
         for skill, condition in self.priority:
             if skill.available and condition(self.status):
-                skill.cast()
+                self.record(skill)
 
     def loop_simulate(self):
         skill, condition = self.current_loop[0]
 
         while skill.available and condition(self.status):
-            skill.cast()
-            self.actions.append((self.status.current_frame, skill.name))
+            self.record(skill)
             self.current_loop.pop(0)
             if not self.current_loop:
                 self.current_loop = self.loop.copy()

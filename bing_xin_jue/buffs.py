@@ -1,11 +1,11 @@
 from base.buff import Buff
-from general.buffs import PhysicalCriticalSet
+from general.buffs import MagicalCriticalSet
 
 
-class ShuoQi(PhysicalCriticalSet):
+class ChenNu(MagicalCriticalSet):
     def __init__(self):
         super().__init__()
-        self.name = "朔气"
+        self.name = "嗔怒"
 
 
 class JianWu(Buff):
@@ -25,6 +25,31 @@ class JianWu(Buff):
     def remove(self):
         super().remove()
         self.status.attribute.magical_attack_power_gain -= self.value
+
+
+class ManTang(Buff):
+    def __init__(self):
+        super().__init__()
+        self.name = "满堂"
+
+        self.stack_add = 5
+        self.stack_max = 5
+
+        self.duration = 15 * 16
+        self.duration_max = 15 * 16
+
+        self.value1 = 0.08
+        self.value2 = 21 / 1024
+
+    def add(self):
+        super().add()
+        self.status.attribute.magical_critical_strike_gain += self.value1
+        self.status.attribute.magical_critical_power_gain += self.value2
+
+    def remove(self):
+        super().remove()
+        self.status.attribute.magical_critical_strike_gain -= self.value1
+        self.status.attribute.magical_critical_power_gain -= self.value2
 
 
 class JiQuDot(Buff):
@@ -64,6 +89,7 @@ class ZhenShang(Buff):
         self.duration = 16 * 15
         self.duration_max = 16 * 15
         self.stack_max = 5
+
         self.value = 10 / 1024
 
     def add(self):
@@ -130,6 +156,14 @@ class LiuYu(Buff):
     def remove(self):
         super().remove()
         self.status.skills["玳弦急曲"].skill_damage_addition -= self.value
+
+
+class LiuYuDot(Buff):
+    def __init__(self):
+        super().__init__()
+        self.name = "流玉·持续"
+
+        self.is_dot = True
 
 
 class ChaiYanCount(Buff):
@@ -243,8 +277,8 @@ class HuaBingCount(Buff):
         super().__init__()
         self.name = "化冰·计数"
 
-        self.duration = 16
-        self.duration_max = 16
+        self.duration = 22
+        self.duration_max = 22
         self.stack_max = 3
 
     def add(self):
@@ -299,6 +333,9 @@ class NingHua(Buff):
         self.stack_add = 3
         self.stack_max = 9
 
+        self.duration = 20 * 16
+        self.duration_max = 20 * 16
+
 
 class ShuangJiang15(Buff):
     def __init__(self):
@@ -348,4 +385,43 @@ class ShuangJiang45(Buff):
         self.status.skills["玳弦急曲"].skill_damage_addition -= self.value
 
 
-BUFFS = []
+class Divine(Buff):
+    def __init__(self):
+        super().__init__()
+        self.name = "飞霜绛露"
+
+        self.probability = 25 / 1024
+
+    @property
+    def condition(self):
+        return not self.status.stacks["飞霜绛露·冷却"]
+
+    def add(self):
+        super().add()
+        self.status.skills["剑气长江"].recharge()
+        self.status.buffs["飞霜绛露·冷却"].trigger()
+
+
+class DivineCD(Buff):
+    def __init__(self):
+        super().__init__()
+        self.name = "飞霜绛露·冷却"
+
+        self.duration = 30 * 16
+        self.duration_max = 30 * 16
+
+
+class QiTunChangJiangDot(Buff):
+    def __init__(self):
+        super().__init__()
+        self.name = "气吞长江·持续"
+
+        self.is_dot = True
+
+        self.stack_max = 3
+
+
+BUFFS = [ChenNu, JianWu, ManTang, JiQuDot, FanYinJiJie, ZhenShang, GuangLingYue, GuangLingYueCritical, LiuYu, LiuYuDot,
+         ChaiYanCount, JiangHaiNingGuangChaiYan, DaiXianJiQuChaiYan, JianPoXuKongChaiYan, JianQiChangJiangChaiYan,
+         JianYingLiuHenChaiYan, YingXiu, HuaBing, HuaBingCount, YeTian, JianShenWuWo, QiongXiaoCD, NingHua,
+         ShuangJiang15, ShuangJiang30, ShuangJiang45, Divine, DivineCD, QiTunChangJiangDot]

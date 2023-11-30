@@ -142,6 +142,9 @@ class PoFuChenZhou(PhysicalSkill):
     def post_cast(self):
         super().post_cast()
         self.status.skills["破釜沉舟·破招"].cast()
+        if self.status.stacks["沉夜重雪"]:
+            self.recharge()
+            self.status.skills["背水沉舟·持续"].cast()
 
 
 class PoFuChenZhouSurplus(PhysicalSkill):
@@ -475,11 +478,33 @@ class ShangJiangJunYinDivine(PhysicalSkill):
         self.is_cast = False
         self.is_hit = False
 
-        self.probability = 0.1
+        self.probability = 102 / 1024
 
         self.damage_base = 20
         self.damage_rand = 2
         self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(25)
+
+
+class BeiShuiChenZhouDot(PhysicalSkill):
+    def __init__(self):
+        super().__init__()
+        self.name = "背水沉舟·持续"
+
+        self.is_cast = False
+        self.is_hit = False
+
+        self.is_dot = True
+        self.is_snapshot = True
+
+        self.interval_base = 3 * 16
+        self.count_base = 6
+
+        self.damage_base = 1
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(380)
+
+    def pre_cast(self):
+        super().pre_cast()
+        self.status.buffs["背水沉舟·持续"].trigger()
 
 
 SKILLS = [ShuangFengDaoFa, XiuMingChenShen, SongYanZhuWu, XueXuJinPing, LeiZouFengQie,

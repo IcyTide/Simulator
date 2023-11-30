@@ -57,6 +57,7 @@ class Attribute:
     _magical_critical_strike_gain: float = 0
     _magical_critical_strike: float = 0
 
+    _all_critical_power_base: float = 0
     _all_critical_power_gain: float = 0
 
     _physical_critical_power_base: int = 0
@@ -85,7 +86,7 @@ class Attribute:
     _weapon_damage: int = 0
 
     _all_shield_ignore: float = 0
-    
+
     _physical_shield_ignore: float = 0
     _magical_shield_ignore: float = 0
 
@@ -242,7 +243,7 @@ class Attribute:
         self._spunk = spunk
         self.base_magical_attack_power = self._magical_attack_power_base + spunk * SPUNK_TO_ATTACK_POWER
         self.base_magical_overcome = self._magical_overcome_base + spunk * SPUNK_TO_OVERCOME
-        
+
     """ Minor Function """
 
     @property
@@ -388,6 +389,7 @@ class Attribute:
     @magical_attack_power.setter
     def magical_attack_power(self, magical_attack_power):
         self._magical_attack_power = int(magical_attack_power)
+
     """ Critical Strike Function"""
 
     @property
@@ -505,6 +507,17 @@ class Attribute:
     """ Critical Power Function"""
 
     @property
+    def all_critical_power_base(self):
+        return self._all_critical_power_base
+
+    @all_critical_power_base.setter
+    def all_critical_power_base(self, all_critical_power_base):
+        residual = all_critical_power_base - self._all_critical_power_base
+        self.physical_critical_power_base += residual
+        self.magical_critical_power_base += residual
+        self._all_critical_power_base = all_critical_power_base
+
+    @property
     def all_critical_power_gain(self):
         return self._all_critical_power_gain
 
@@ -584,6 +597,7 @@ class Attribute:
     @magical_critical_power.setter
     def magical_critical_power(self, magical_critical_power):
         self._magical_critical_power = magical_critical_power
+
     """ Overcome Function"""
 
     @property
@@ -677,6 +691,7 @@ class Attribute:
     @magical_overcome.setter
     def magical_overcome(self, magical_overcome):
         self._magical_overcome = magical_overcome
+
     """ Weapon Damage Function """
 
     @property

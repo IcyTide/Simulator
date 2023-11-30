@@ -178,6 +178,47 @@ class XiangQiShi(Buff):
         self.status.attribute.damage_addition -= self.value
 
 
+class Divine(Buff):
+    def __init__(self):
+        super().__init__()
+        self.name = "沉夜重雪"
+
+        self.probability = 31 / 1024
+
+    @property
+    def condition(self):
+        return not self.status.stacks["沉夜重雪·冷却"]
+
+    def add(self):
+        super().add()
+        self.status.skills["破釜沉舟"].recharge()
+        self.status.skills["刀啸风吟"].interval_base = 0
+        self.status.buffs["沉夜重雪·冷却"].trigger()
+
+    def remove(self):
+        super().remove()
+        self.status.skills["刀啸风吟"].interval_base = 24
+
+
+class DivineCD(Buff):
+    def __init__(self):
+        super().__init__()
+        self.name = "沉夜重雪·冷却"
+
+        self.duration = 30 * 16
+        self.duration_max = 30 * 16
+
+
+class BeiShuiChenZhouDot(Buff):
+    def __init__(self):
+        super().__init__()
+        self.name = "背水沉舟·持续"
+
+        self.is_dot = True
+
+        self.stack_max = 3
+
+
 BUFFS = [
     ShuoQi,
     XiuMingChenShen, SongYanZhuWu, XueXuJinPing, NaoXuMiDot, JianBiQingYeDot, ChuGe, ChuGeCount,

@@ -32,8 +32,9 @@ class XinZhuang:
         self.status.skills["玳弦急曲·新妆"].cast()
 
     def __call__(self, status: Status):
-        status.skills["玳弦急曲·急曲"].probability = 0
+        status.skills["玳弦急曲"].ji_qu = False
         status.skills["玳弦急曲"].interval_base = 13
+        status.skills["玳弦急曲"].post_hit_effect.append(self.xin_zhuang_post_hit)
 
 
 class QingMei:
@@ -66,19 +67,25 @@ class GuangLingYue:
     def __call__(self, status: Status):
         status.skills["广陵月"].activate = True
         for skill in status.skills.values():
-            if skill.is_hit:
+            if skill.is_hit and skill.name != "广陵月·伤害":
                 skill.post_hit_effect.append(self.guang_ling_yue_post_hit)
 
 
 class LiuYu:
     @staticmethod
-    def liu_yu_post_cast(self: Skill):
-        self.status.buffs["流玉"].clear()
-        self.status.skills["流玉·持续"].cast()
+    def jian_ying_liu_hen_post_cast(self: Skill):
+        self.status.buffs["流玉"].trigger()
+
+    @staticmethod
+    def dai_xian_ji_qu_post_cast(self: Skill):
+        if self.status.stacks["流玉"]:
+            self.status.buffs["流玉"].clear()
+            self.status.skills["流玉·持续"].cast()
 
     def __call__(self, status: Status):
         status.skills["剑影留痕"].cd_base = 15 * 16
-        status.skills["玳弦急曲"].post_cast_effect.append(self.liu_yu_post_cast)
+        status.skills["剑影留痕"].post_cast_effect.append(self.jian_ying_liu_hen_post_cast)
+        status.skills["玳弦急曲"].post_cast_effect.append(self.dai_xian_ji_qu_post_cast)
 
 
 class ChaiYan:
@@ -113,7 +120,8 @@ class YingXiu:
 
     @staticmethod
     def ying_xiu_post_hit(self: Skill):
-        self.status.skills["盈袖"].cast()
+        if self.status.stacks["盈袖"]:
+            self.status.skills["盈袖"].cast()
 
     def __call__(self, status: Status):
         status.skills["繁音急节"].post_cast_effect.append(self.ying_xiu_post_cast)
@@ -131,6 +139,7 @@ class HuaBing:
             self.status.buffs["化冰·计数"].trigger()
 
     def __call__(self, status: Status):
+        status.skills["心鼓弦"].cd_base = 120 * 16
         status.skills["心鼓弦"].post_cast_effect.append(self.hua_bing_post_cast)
         status.skills["玳弦急曲"].post_hit_effect.append(self.hua_bing_post_hit)
 
@@ -162,9 +171,10 @@ class NingHua:
     def jian_qi_chang_jiang_post_cast(self: Skill):
         for _ in range(self.status.stacks["凝华"]):
             self.status.skills["凝华"].cast()
+        self.status.buffs["凝华"].clear()
 
     def __call__(self, status: Status):
-        status.skills["江海凝光"].cd_base += 4
+        status.skills["江海凝光"].cd_base += 4 * 16
         status.skills["江海凝光"].post_cast_effect.append(self.jiang_hai_ning_guang_post_cast)
         status.skills["剑气长江"].post_cast_effect.append(self.jian_qi_chang_jiang_post_cast)
 
@@ -190,6 +200,18 @@ class ShuangJiang:
 
 
 TALENTS = [
+    ["伤春", "青梅嗅"],
+    ["千里冰封", "惊寒"],
+    ["新妆"],
+    ["青梅"],
+    ["枕上"],
+    ["广陵月", "生莲"],
+    ["流玉"],
+    ["钗燕", "元君"],
+    ["盈袖", "霜风"],
+    ["化冰"],
+    ["夜天", "琼霄"],
+    ["凝华", "霜降"]
 ]
 TALENT_GAINS = {
     "伤春": ShangChun(),

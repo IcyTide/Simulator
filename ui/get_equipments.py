@@ -3,23 +3,11 @@ from functools import cache
 
 import requests
 
-from ui.constant import MAX_BASE_ATTR, MAX_MAGIC_ATTR, MAX_EMBED_ATTR, MAX_ENCHANT_ATTR, MAX_STONE_ATTR, MAX_STONE_LEVEL
+from ui.constant import MAX_BASE_ATTR, MAX_MAGIC_ATTR, MAX_EMBED_ATTR, MAX_ENCHANT_ATTR, MAX_STONE_ATTR, \
+    MAX_STONE_LEVEL, ATTR_TYPE_MAP, ATTR_TYPE_TRANSLATE, STONE_ATTR
 from ui.constant import EQUIPMENTS_DIR, ENCHANTS_DIR, STONES_DIR
 
-ATTR_TYPE_MAP = {
-    "atMeleeWeaponDamageBase": "weapon_damage_base",
-    "atMeleeWeaponDamageRand": "weapon_damage_rand",
-    "atStrengthBase": "strength_base",
-    "atSpiritBase": "spirit_base",
-    "atPhysicsAttackPowerBase": "physical_attack_power_base",
-    "atPhysicsOvercomeBase": "physical_overcome_base",
-    "atAllTypeCriticalStrike": "all_critical_strike_base",
-    "atPhysicsCriticalStrike": "physical_critical_strike_base",
-    "atPhysicsCriticalDamagePowerBase": "physical_critical_power_base",
-    "atStrainBase": "strain_base",
-    "atHasteBase": "haste_base",
-    "atSurplusValueBase": "surplus",
-}
+
 EQUIP_ATTR_MAP = {
     "Overcome": "破防",
     "Critical": "会心",
@@ -91,19 +79,6 @@ SPECIAL_ENCHANT_MAP = {
     "9": {
         0: "33247"
     },
-}
-STONE_ATTR_MAP = {
-    "atSpiritBase": "根骨",
-    "atStrengthBase": "力道",
-    "atPhysicsAttackPowerBase": "攻击",
-    "atPhysicsCriticalStrike": "会心",
-    "atAllTypeCriticalStrike": "全会心",
-    "atPhysicsCriticalDamagePowerBase": "会效",
-    "atPhysicsOvercomeBase": "破防",
-    "atMeleeWeaponDamageBase": "武器伤害",
-    "atStrainBase": "无双",
-    "atHasteBase": "加速",
-    "atSurplusValueBase": "破招",
 }
 
 equip_params = {
@@ -268,17 +243,18 @@ def get_stones_list(level):
         params['page'] += 1
         res = requests.get(url, params=params).json()
         stones.extend(res['list'])
-    stones = [e for e in stones if e['Attribute1ID'] in ATTR_TYPE_MAP and e['Attribute2ID'] in ATTR_TYPE_MAP and e[
-        'Attribute3ID'] in ATTR_TYPE_MAP]
 
-    result = {get_stone_name(row): get_stone_detail(row) for row in stones}
+    result = {}
+    for row in stones:
+        if detail := get_stone_detail(row):
+            result[get_stone_name(row)] = detail
 
     return result
 
 
 def get_stone_name(row):
     name = row['Name']
-    attrs = " ".join([STONE_ATTR_MAP[attr] for attr in row['_Attrs'] if attr in STONE_ATTR_MAP])
+    attrs = " ".join([ATTR_TYPE_TRANSLATE[ATTR_TYPE_MAP[attr]] for attr in row['_Attrs'] if attr in ATTR_TYPE_MAP])
     return f"{name} ({attrs})"
 
 
@@ -287,8 +263,8 @@ def get_stone_detail(row):
     for i in range(MAX_STONE_ATTR):
         if not (attr_type := row[f'Attribute{i + 1}ID']):
             break
-        if attr_type not in ATTR_TYPE_MAP:
-            continue
+        if attr_type not in STONE_ATTR:
+            return
         attrs[ATTR_TYPE_MAP[attr_type]] = int(row[f'Attribute{i + 1}Value1'])
 
     return {

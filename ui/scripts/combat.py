@@ -32,8 +32,8 @@ def combat_script(combat_components,
             setattr(attribute, attr, getattr(attribute, attr) + value)
         init_attr_text = display_attr(attribute, display_attrs)
         gains = sum([equip_gains, team_gains, talent_gains, recipe_gains], [])
-        simulator = Simulator(attribute, SKILLS + class_attr['skills'], BUFFS + class_attr['buffs'], gains,
-                              Target(target_level), duration, *class_attr['sequences'].values())
+        simulator = Simulator(attribute, SKILLS[class_attr['kind']] + class_attr['skills'], BUFFS + class_attr['buffs'],
+                              gains, Target(target_level), duration, *class_attr['sequences'].values(), verbose=True)
         gain_attr_text = display_attr(attribute, display_attrs)
         return init_attr_text, gain_attr_text, simulator
 

@@ -43,8 +43,8 @@ class MagicalSnapshot:
 
     critical_strike: float = 0,
     haste: float = 0
-    
-    
+
+
 @dataclass
 class Skill:
     name: str = None
@@ -54,7 +54,7 @@ class Skill:
     is_cast: bool = True
     cast_while_casting: bool = False
     is_hit: bool = True
-    is_dot: bool = True
+    is_stack: bool = False
     is_instant: bool = False
     is_overdraw: bool = False
     is_snapshot: bool = False
@@ -153,8 +153,8 @@ class Skill:
 
     @property
     def stack(self):
-        if self.is_dot:
-            return self.status.buffs[self.name]
+        if self.is_stack:
+            return self.status.stacks[self.name]
         else:
             return 1
 
@@ -381,17 +381,6 @@ class PhysicalSkill(Skill):
                 ('weapon_damage_gain', attribute.weapon_damage_gain)
             ),
             (
-                ('level', attribute.level),
-                ('damage_addition', self.damage_addition),
-                ('pve_addition', self.pve_addition),
-                ('shield_ignore', attribute.physical_shield_ignore + self.skill_shield_ignore),
-
-                ('target_level', target.level),
-                ('shield_base', target.physical_shield_base),
-                ('shield_gain', target.physical_shield_gain + self.skill_shield_gain),
-                ('vulnerable', target.physical_vulnerable),
-                ('shield_constant', target.shield_constant),
-
                 ('skill', self.name),
                 ('critical', critical),
                 ('stack', self.stack),
@@ -403,7 +392,19 @@ class PhysicalSkill(Skill):
                 ('surplus_cof', self.surplus_cof),
                 ('attack_power_cof_gain', self.attack_power_cof_gain),
                 ('weapon_damage_cof_gain', self.weapon_damage_cof_gain),
-                ('surplus_cof_gain', self.surplus_cof_gain)
+                ('surplus_cof_gain', self.surplus_cof_gain),
+
+                ('level', attribute.level),
+                ('damage_addition', self.damage_addition),
+                ('pve_addition', self.pve_addition),
+                ('shield_ignore', attribute.physical_shield_ignore + self.skill_shield_ignore),
+
+                ('target_level', target.level),
+                ('shield_base', target.physical_shield_base),
+                ('shield_gain', target.physical_shield_gain + self.skill_shield_gain),
+                ('vulnerable', target.physical_vulnerable),
+                ('shield_constant', target.shield_constant),
+
             )
         )
 
@@ -498,6 +499,19 @@ class MagicalSkill(Skill):
                 ('weapon_damage_gain', attribute.weapon_damage_gain)
             ),
             (
+                ('skill', self.name),
+                ('critical', critical),
+                ('stack', self.stack),
+                ('damage_base', self.damage_base),
+                ('damage_rand', self.damage_rand),
+                ('damage_gain', self.damage_gain),
+                ('attack_power_cof', self.attack_power_cof),
+                ('weapon_damage_cof', self.weapon_damage_cof),
+                ('surplus_cof', self.surplus_cof),
+                ('attack_power_cof_gain', self.attack_power_cof_gain),
+                ('weapon_damage_cof_gain', self.weapon_damage_cof_gain),
+                ('surplus_cof_gain', self.surplus_cof_gain),
+
                 ('level', attribute.level),
                 ('damage_addition', self.damage_addition),
                 ('pve_addition', self.pve_addition),
@@ -508,17 +522,5 @@ class MagicalSkill(Skill):
                 ('shield_gain', target.magical_shield_gain + self.skill_shield_gain),
                 ('vulnerable', target.magical_vulnerable),
                 ('shield_constant', target.shield_constant),
-
-                ('skill', self.name),
-                ('critical', critical),
-                ('damage_base', self.damage_base),
-                ('damage_rand', self.damage_rand),
-                ('damage_gain', self.damage_gain),
-                ('attack_power_cof', self.attack_power_cof),
-                ('weapon_damage_cof', self.weapon_damage_cof),
-                ('surplus_cof', self.surplus_cof),
-                ('attack_power_cof_gain', self.attack_power_cof_gain),
-                ('weapon_damage_cof_gain', self.weapon_damage_cof_gain),
-                ('surplus_cof_gain', self.surplus_cof_gain)
             )
         )

@@ -4,7 +4,7 @@ from base.status import Status
 """ Equipment Gains """
 
 
-class WaterWeaponGain:
+class PhysicalWaterWeaponGain:
     def __init__(self, value):
         self.stacks = 10
         self.value = value
@@ -13,7 +13,16 @@ class WaterWeaponGain:
         status.attribute.physical_attack_power_base += self.value * self.stacks
 
 
-class WindPendantGain:
+class MagicalWaterWeaponGain:
+    def __init__(self, value):
+        self.stacks = 10
+        self.value = value
+
+    def __call__(self, status: Status):
+        status.attribute.magical_attack_power_base += self.value * self.stacks
+
+
+class PhysicalWindPendantGain:
     def __init__(self, value):
         self.duration = 15
         self.cd = 180
@@ -23,20 +32,33 @@ class WindPendantGain:
         status.attribute.physical_overcome_base += self.value * self.duration / self.cd
 
 
+class MagicalWindPendantGain:
+    def __init__(self, value):
+        self.duration = 15
+        self.cd = 180
+        self.value = value
+
+    def __call__(self, status: Status):
+        status.attribute.magical_overcome_base += self.value * self.duration / self.cd
+
+
 class SpecialEnchantHatGain:
     def __init__(self, value):
         self.value = value
 
     def __call__(self, status: Status):
         status.attribute.physical_overcome_base += self.value
+        status.attribute.magical_overcome_base += self.value
 
 
 class SpecialEnchantJacketGain:
-    def __init__(self, value):
-        self.value = value
+    def __init__(self, value1, value2):
+        self.value1 = value1
+        self.value2 = value2
 
     def __call__(self, status: Status):
-        status.attribute.physical_attack_power_base += self.value
+        status.attribute.physical_attack_power_base += self.value1
+        status.attribute.magical_attack_power_base += self.value2
 
 
 class SpecialEnchantBeltGain:
@@ -79,47 +101,65 @@ EQUIP_GAINS_NUMBER = {
     "15436-9": 822,
     "15436-10": 999,
     "15436-11": 1098,
-    "22151-9": 371,
-    "22151-10": 450,
-    "22151-11": 495,
+    "22151-9": (371, 442),
+    "22151-10": (450, 538),
+    "22151-11": (495, 591),
+    "2400": 81,
     "2401": 67,
+    "2497": 105,
     "2498": 88,
+    "2539": 117,
     "2540": 98,
+    "6800-101": 6408,
     "6800-102": 6408,
+    "6800-108": 8330,
     "6800-109": 8330,
+    "6800-115": 9291,
     "6800-116": 9291
 }
 EQUIP_GAINS_NAME = {
     "15436-9": f"大附魔帽 {EQUIP_GAINS_NUMBER['15436-9']} 破防",
     "15436-10": f"大附魔帽 {EQUIP_GAINS_NUMBER['15436-10']} 破防",
     "15436-11": f"大附魔帽 {EQUIP_GAINS_NUMBER['15436-11']} 破防",
-    "22151-9": f"大附魔衣 {EQUIP_GAINS_NUMBER['22151-9']} 外攻",
-    "22151-10": f"大附魔衣 {EQUIP_GAINS_NUMBER['22151-10']} 外攻",
-    "22151-11": f"大附魔衣 {EQUIP_GAINS_NUMBER['22151-11']} 外攻",
+    "22151-9": f"大附魔衣 {EQUIP_GAINS_NUMBER['22151-9'][0]}/{EQUIP_GAINS_NUMBER['22151-9'][1]} 外/内攻",
+    "22151-10": f"大附魔衣 {EQUIP_GAINS_NUMBER['22151-9'][0]}/{EQUIP_GAINS_NUMBER['22151-9'][1]} 外/内攻",
+    "22151-11": f"大附魔衣 {EQUIP_GAINS_NUMBER['22151-9'][0]}/{EQUIP_GAINS_NUMBER['22151-9'][1]} 外/内攻",
     "22169": "大附魔腰",
     "22166": "大附魔腕",
     "33247": "大附魔鞋",
+    "2400": f"水特效 {EQUIP_GAINS_NUMBER['2400']} 内攻",
     "2401": f"水特效 {EQUIP_GAINS_NUMBER['2401']} 外攻",
+    "2497": f"水特效 {EQUIP_GAINS_NUMBER['2497']} 内攻",
     "2498": f"水特效 {EQUIP_GAINS_NUMBER['2498']} 外攻",
+    "2539": f"水特效 {EQUIP_GAINS_NUMBER['2539']} 内攻",
     "2540": f"水特效 {EQUIP_GAINS_NUMBER['2540']} 外攻",
-    "6800-102": f"风特效 {EQUIP_GAINS_NUMBER['6800-102']} 破防",
-    "6800-109": f"风特效 {EQUIP_GAINS_NUMBER['6800-109']} 破防",
-    "6800-116": f"风特效 {EQUIP_GAINS_NUMBER['6800-116']} 破防",
+    "6800-101": f"风特效 {EQUIP_GAINS_NUMBER['6800-101']} 内破",
+    "6800-102": f"风特效 {EQUIP_GAINS_NUMBER['6800-102']} 外破",
+    "6800-108": f"风特效 {EQUIP_GAINS_NUMBER['6800-108']} 内破",
+    "6800-109": f"风特效 {EQUIP_GAINS_NUMBER['6800-109']} 外破",
+    "6800-115": f"风特效 {EQUIP_GAINS_NUMBER['6800-115']} 内破",
+    "6800-116": f"风特效 {EQUIP_GAINS_NUMBER['6800-116']} 外破",
 }
 EQUIP_GAINS = {
     "15436-9": SpecialEnchantHatGain(EQUIP_GAINS_NUMBER['15436-9']),
     "15436-10": SpecialEnchantHatGain(EQUIP_GAINS_NUMBER['15436-10']),
     "15436-11": SpecialEnchantHatGain(EQUIP_GAINS_NUMBER['15436-11']),
-    "22151-9": SpecialEnchantJacketGain(EQUIP_GAINS_NUMBER['22151-9']),
-    "22151-10": SpecialEnchantJacketGain(EQUIP_GAINS_NUMBER['22151-10']),
-    "22151-11": SpecialEnchantJacketGain(EQUIP_GAINS_NUMBER['22151-11']),
+    "22151-9": SpecialEnchantJacketGain(*EQUIP_GAINS_NUMBER['22151-9']),
+    "22151-10": SpecialEnchantJacketGain(*EQUIP_GAINS_NUMBER['22151-10']),
+    "22151-11": SpecialEnchantJacketGain(*EQUIP_GAINS_NUMBER['22151-11']),
     "22169": SpecialEnchantBeltGain(),
     "22166": SpecialEnchantWristGain(),
     "33247": SpecialEnchantShoesGain(),
-    "2401": WaterWeaponGain(EQUIP_GAINS_NUMBER['2401']),
-    "2498": WaterWeaponGain(EQUIP_GAINS_NUMBER['2498']),
-    "2540": WaterWeaponGain(EQUIP_GAINS_NUMBER['2540']),
-    "6800-102": WindPendantGain(EQUIP_GAINS_NUMBER['6800-102']),
-    "6800-109": WindPendantGain(EQUIP_GAINS_NUMBER['6800-109']),
-    "6800-116": WindPendantGain(EQUIP_GAINS_NUMBER['6800-116']),
+    "2400": MagicalWaterWeaponGain(EQUIP_GAINS_NUMBER['2400']),
+    "2401": PhysicalWaterWeaponGain(EQUIP_GAINS_NUMBER['2401']),
+    "2497": MagicalWaterWeaponGain(EQUIP_GAINS_NUMBER['2497']),
+    "2498": PhysicalWaterWeaponGain(EQUIP_GAINS_NUMBER['2498']),
+    "2539": MagicalWaterWeaponGain(EQUIP_GAINS_NUMBER['2539']),
+    "2540": PhysicalWaterWeaponGain(EQUIP_GAINS_NUMBER['2540']),
+    "6800-101": MagicalWindPendantGain(EQUIP_GAINS_NUMBER['6800-101']),
+    "6800-102": PhysicalWindPendantGain(EQUIP_GAINS_NUMBER['6800-102']),
+    "6800-108": MagicalWindPendantGain(EQUIP_GAINS_NUMBER['6800-108']),
+    "6800-109": PhysicalWindPendantGain(EQUIP_GAINS_NUMBER['6800-109']),
+    "6800-115": MagicalWindPendantGain(EQUIP_GAINS_NUMBER['6800-115']),
+    "6800-116": PhysicalWindPendantGain(EQUIP_GAINS_NUMBER['6800-116']),
 }

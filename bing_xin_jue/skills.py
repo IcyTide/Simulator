@@ -30,7 +30,15 @@ class MingDongSiFang(Skill):
 
         self.cd_base = 16
 
+    @property
+    def condition(self):
+        return self.status.stacks["剑舞"] < 10
+
     def post_cast(self):
+        super().post_cast()
+        if self.status.current_frame == 0:
+            for _ in range(10):
+                self.status.buffs["剑舞"].trigger()
         self.status.buffs["剑舞"].trigger()
 
 
@@ -84,20 +92,7 @@ class DaiXianJiQu(MagicalSkill):
         super().post_cast()
         if self.ji_qu:
             self.status.skills["急曲·持续"].cast()
-
-
-class DaiXianJiQuXinZhuang(MagicalSkill):
-    def __init__(self):
-        super().__init__()
-        self.name = "玳弦急曲·新妆"
-
-        self.is_cast = False
-        self.is_hit = False
-
-        self.damage_base = int(252 * 0.15)
-        self.damage_rand = int(202 * 0.1 * 0.15)
-
-        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(85 * 0.45 * 0.9 * 1.25 * 1.05)
+        self.status.skills["玳弦急曲·破招"].cast()
 
 
 class DaiXianJiQuSurplus(MagicalSkill):
@@ -129,8 +124,9 @@ class JianPoXuKong(MagicalSkill):
     def post_cast(self):
         super().post_cast()
         if self.jian_wu:
-            self.status.buffs["剑舞"].consume(4)  # TODO: 确认顺序
+            self.status.buffs["剑舞"].consume(4)
         self.status.skills["急曲·持续"].cast()
+        self.status.skills["剑破虚空·破招"].cast()
 
 
 class JianPoXuKongSurplus(MagicalSkill):
@@ -162,6 +158,8 @@ class JianYingLiuHen(MagicalSkill):
         super().__init__()
         self.name = "剑影留痕"
 
+        self.is_hit = False
+
         self.gcd_base = 0
         self.cd_base = 10 * 16
 
@@ -170,6 +168,8 @@ class FanYinJiJie(Skill):
     def __init__(self):
         super().__init__()
         self.name = "繁音急节"
+
+        self.is_hit = False
 
         self.gcd_base = 0
         self.cd_base = 60 * 16
@@ -181,14 +181,20 @@ class FanYinJiJie(Skill):
 
 class XinGuXian(Skill):
     def __init__(self):
+        super().__init__()
         self.name = "心鼓弦"
+
+        self.is_hit = False
 
         self.cd_base = 1200 * 16
 
 
 class PoLuoMen(Skill):
     def __init__(self):
+        super().__init__()
         self.name = "婆罗门"
+
+        self.is_hit = False
 
         self.cd_base = 20 * 16
 
@@ -196,6 +202,20 @@ class PoLuoMen(Skill):
 """
     Talent Skills
 """
+
+
+class DaiXianJiQuXinZhuang(MagicalSkill):
+    def __init__(self):
+        super().__init__()
+        self.name = "玳弦急曲·新妆"
+
+        self.is_cast = False
+        self.is_hit = False
+
+        self.damage_base = int(252 * 0.15)
+        self.damage_rand = int(202 * 0.1 * 0.15)
+
+        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(85 * 0.45 * 0.9 * 1.25 * 1.05)
 
 
 class GuangLingYue(Skill):
@@ -376,7 +396,7 @@ class NingHua(MagicalSkill):
 
         self.damage_base = 115
         self.damage_rand = 5
-        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(30 * 10 * 0.7)
+        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(30 * 0.7)
 
     def post_cast(self):
         super().post_cast()
@@ -392,7 +412,48 @@ class NingHuaMing(MagicalSkill):
 
         self.damage_base = 115
         self.damage_rand = 5
-        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(370 * 10 * 0.5 * 1.7 * 0.7 / 3)
+        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(370 * 0.5 * 1.7 * 0.7)
 
 
-SKILLS = []
+class JianPoXuKongDivine(MagicalSkill):
+    def __init__(self):
+        super().__init__()
+        self.name = "剑破虚空·神兵"
+
+        self.is_cast = False
+        self.is_hit = False
+
+        self.probability = 307 / 1024
+
+        self.damage_base = 20
+        self.damage_rand = 2
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(65)
+
+
+class QiTunChangJiangDot(MagicalSkill):
+    def __init__(self):
+        super().__init__()
+        self.name = "气吞长江·持续"
+
+        self.is_cast = False
+        self.is_hit = False
+
+        self.is_dot = True
+        self.is_snapshot = True
+
+        self.interval_base = 3 * 16
+        self.count_base = 10
+
+        self.damage_base = 1
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(400 * 1.4)
+
+    def pre_cast(self):
+        super().pre_cast()
+        self.status.buffs["气吞长江·持续"].trigger()
+
+
+SKILLS = [LianHuanShuangDao, MingDongSiFang, JiQuDot, JiangHaiNingGuang, DaiXianJiQu,
+          DaiXianJiQuSurplus, JianPoXuKong, JianPoXuKongSurplus, JianQiChangJiang, JianYingLiuHen, FanYinJiJie,
+          XinGuXian, PoLuoMen, DaiXianJiQuXinZhuang, GuangLingYue, GuangLingYueDamage, LiuYuDot, LiuYuSurplus,
+          ChaiYai, ChaiYaiMing, YingXiu, HuaBing, QiongXiaoDot, QiongXiao, NingHua, NingHuaMing, JianPoXuKongDivine,
+          QiTunChangJiangDot]

@@ -30,7 +30,7 @@ class BingXinJue(Attribute):
 
     @property
     def magical_attack_power(self):
-        return self._physical_attack_power
+        return self._magical_attack_power
 
     @magical_attack_power.setter
     def magical_attack_power(self, magical_attack_power):

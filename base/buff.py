@@ -72,11 +72,13 @@ class Buff:
             self.status.durations[self.name] = min(self.duration_max, self.duration)
 
     def consume(self, stack=None):
+        if not (current_stack := self.status.stacks[self.name]):
+            return
+
         if not stack:
             stack = self.stack_remove
 
-        if not (stack := min(self.status.stacks[self.name], stack)):
-            return
+        stack = min(current_stack, stack)
 
         for _ in range(stack):
             self.remove()
@@ -86,10 +88,7 @@ class Buff:
             self.status.durations.pop(self.name)
 
     def clear(self):
-        if not (stack := self.status.stacks[self.name]):
-            return
-
-        for _ in range(stack):
+        for _ in range(self.status.stacks[self.name]):
             self.remove()
 
         self.status.stacks[self.name] = 0

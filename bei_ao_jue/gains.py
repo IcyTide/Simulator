@@ -35,13 +35,23 @@ class XiangWangJiDingDivineGain:
 
 
 class DivineEffect:
+    @staticmethod
+    def divine_post_cast(self: Skill):
+        self.status.buffs["沉夜重雪"].trigger()
+
     def __call__(self, status: Status):
-        pass
+        for skill in status.skills.values():
+            if skill.is_cast:
+                skill.post_cast_effect.append(self.divine_post_cast)
 
 
 class ShangJiangJunYinDivineEffect:
+    @staticmethod
+    def divine_post_cast(self: Skill):
+        self.status.skills["上将军印·神兵"].cast()
+
     def __call__(self, status: Status):
-        pass
+        status.skills["上将军印"].post_cast_effect.append(self.divine_post_cast)
 
 
 class WuXiangZhan:
