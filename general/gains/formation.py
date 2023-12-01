@@ -2,8 +2,9 @@ from base.status import Status
 
 
 class WeiGongZheChong:
-    def __init__(self, rate):
+    def __init__(self, rate, core_rate):
         self.rate = rate
+        self.core_rate = core_rate
 
     def __call__(self, status: Status):
         status.attribute.physical_attack_power_gain += 50 / 1024
@@ -15,6 +16,7 @@ class BeiDouQiXing:
     def __init__(self, rate):
         self.stack = 5
         self.rate = rate
+        self.core_rate = core_rate
 
     def __call__(self, status: Status):
         status.attribute.physical_critical_strike_gain += 0.03
@@ -34,8 +36,9 @@ class YiShanGuanLan:
 
 
 class LiuXingGanYue:
-    def __init__(self, rate):
+    def __init__(self, rate, core_rate):
         self.rate = rate
+        self.core_rate = core_rate
 
     def __call__(self, status: Status):
         status.attribute.strength_gain += 30 / 1024
@@ -45,8 +48,9 @@ class LiuXingGanYue:
 
 
 class QianJiBaiBian:
-    def __init__(self, rate):
+    def __init__(self, rate, core_rate):
         self.rate = rate
+        self.core_rate = core_rate
 
     def __call__(self, status: Status):
         status.attribute.all_shield_ignore += 20 / 1024
@@ -58,6 +62,7 @@ class XiangLongFuHu:
     def __init__(self, rate):
         self.stack = 5
         self.rate = rate
+        self.core_rate = core_rate
 
     def __call__(self, status: Status):
         status.attribute.physical_attack_power_gain += 50 / 1024
@@ -69,6 +74,7 @@ class FengLingHengJue:
     def __init__(self, rate):
         self.stack = 5
         self.rate = rate
+        self.core_rate = core_rate
 
     def __call__(self, status: Status):
         status.attribute.physical_critical_strike_gain += 0.03
@@ -77,8 +83,9 @@ class FengLingHengJue:
 
 
 class ShuangLanXiFeng:
-    def __init__(self, rate):
+    def __init__(self, rate, core_rate):
         self.rate = rate
+        self.core_rate = core_rate
 
     def __call__(self, status: Status):
         status.attribute.physical_attack_power_gain += 50 / 1024
@@ -98,8 +105,9 @@ class XuHaiYinGui:
 
 
 class LongHuangXueFeng:
-    def __init__(self, rate):
+    def __init__(self, rate, core_rate):
         self.rate = rate
+        self.core_rate = core_rate
 
     def __call__(self, status: Status):
         status.attribute.physical_critical_strike_gain += 0.03
@@ -119,8 +127,9 @@ class HengYunPoFeng:
 
 
 class CangWuYinLing:
-    def __init__(self, rate):
+    def __init__(self, rate, core_rate):
         self.rate = rate
+        self.core_rate = core_rate
 
     def __call__(self, status: Status):
         status.attribute.all_critical_strike_gain += 0.03

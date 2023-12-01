@@ -34,19 +34,19 @@ def gain_script(gain_components):
             params = f"五重覆盖{formation_rate}\t阵眼覆盖{core_rate}" if core_rate else f"五重覆盖{formation_rate}"
             team_gains["阵法"] = {
                 "name": f"{FORMATION_GAIN_NAMES[formation]}: {params}",
-                "gain": FORMATION_GAINS[formation](formation_rate)
+                "gain": FORMATION_GAINS[formation](formation_rate, core_rate)
             }
         else:
             team_gains["阵法"] = {}
 
-        return team_gains, gr.update(visible=core_formation == formation)
+        return team_gains, gr.update(visible=core_formation == formation, value=0)
 
     def update_formation_rate(team_gains, core_formation, formation, formation_rate, core_rate):
         if formation:
             params = f"五重覆盖{formation_rate}\t阵眼覆盖{core_rate}" if core_rate else f"五重覆盖{formation_rate}"
             team_gains["阵法"] = {
                 "name": f"{FORMATION_GAIN_NAMES[formation]}: {params}",
-                "gain": FORMATION_GAINS[formation](formation_rate)
+                "gain": FORMATION_GAINS[formation](formation_rate, core_rate)
             }
         else:
             team_gains["阵法"] = {}

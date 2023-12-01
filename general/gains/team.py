@@ -115,7 +115,7 @@ class LiDiChengFo:
             self.rate = rate
 
         def __call__(self, status: Status):
-            pass
+            status.target.magical_shield_gain -= self.value * self.rate
 
     def __init__(self, value):
         self.value = value
@@ -149,7 +149,7 @@ class QiuSu:
         self.value = value
 
     def __call__(self, status: Status):
-        status.target.physical_vulnerable = self.value
+        status.target.all_vulnerable = self.value
 
 
 class JiaoSu:
@@ -159,7 +159,7 @@ class JiaoSu:
             self.rate = rate
 
         def __call__(self, status: Status):
-            status.attribute.physical_critical_power_gain += self.value * self.rate
+            status.attribute.all_critical_power_gain += self.value * self.rate
 
     def __init__(self, value):
         self.value = value
@@ -176,7 +176,7 @@ class SuiXingChen:
         self.value = value
 
     def __call__(self, status: Status):
-        status.target.physical_critical_power_gain = self.value
+        status.attribute.physical_critical_power_gain += self.value
 
 
 class PoCangQiong:
@@ -184,7 +184,7 @@ class PoCangQiong:
         self.value = value
 
     def __call__(self, status: Status):
-        pass
+        status.attribute.magical_critical_power_gain += self.value
 
 
 """ 藏剑 """
@@ -242,7 +242,7 @@ class JieHuo:
 
     def __call__(self, status: Status):
         if not status.target.physical_vulnerable:
-            status.target.physical_vulnerable = self.value
+            status.target.all_vulnerable = self.value
 
 
 class LieRi:
@@ -251,7 +251,7 @@ class LieRi:
         self.value = value
 
     def __call__(self, status: Status):
-        pass
+        status.target.magical_vulnerable += self.value
 
 
 class ChaoShengYan:
@@ -272,7 +272,7 @@ class ChaoShengYan:
         if name.startswith("朝圣言"):
             return self.Inner(self.value1, stack, rate)
         elif name.startswith("圣浴明心"):
-            return self.Inner(self.value1, stack, rate)
+            return self.Inner(self.value2, stack, rate)
         else:
             raise ValueError
 
@@ -308,6 +308,7 @@ class ZhenFen:
 
         def __call__(self, status: Status):
             status.attribute.physical_overcome_base += self.value * self.stack * self.rate
+            status.attribute.magical_overcome_base += self.value * self.stack * self.rate
 
     def __init__(self, value):
         self.value = value
@@ -324,6 +325,7 @@ class HanXiaoQianJun:
 
         def __call__(self, status: Status):
             status.attribute.physical_overcome_gain += self.value * self.rate
+            status.attribute.magical_overcome_gain += self.value * self.rate
 
     def __init__(self, value):
         self.value = value
@@ -363,6 +365,7 @@ class ShuKuang:
 
         def __call__(self, status: Status):
             status.attribute.physical_attack_power_gain += self.value * self.rate
+            status.attribute.magical_attack_power_gain += self.value * self.rate
 
     def __init__(self, value):
         self.value = value

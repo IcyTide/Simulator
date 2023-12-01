@@ -3,8 +3,8 @@ from base.skill import Skill, PhysicalSkill, MagicalSkill
 
 
 class ZhuYunHanRui(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "逐云寒蕊"
 
         self.is_cast = False
@@ -17,8 +17,8 @@ class ZhuYunHanRui(MagicalSkill):
 
 
 class WindPendant(Skill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "风特效"
 
         self.is_cast = False
@@ -29,8 +29,8 @@ class WindPendant(Skill):
 
 
 class BeltEnchant(Skill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "大附魔腰"
 
         self.is_cast = False
@@ -48,8 +48,8 @@ class BeltEnchant(Skill):
 
 
 class PhysicalWristEnchant(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "昆吾·弦刃"
 
         self.is_cast = False
@@ -67,8 +67,8 @@ class PhysicalWristEnchant(PhysicalSkill):
 
 
 class MagicalWristEnchant(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "昆吾·弦刃"
 
         self.is_cast = False
@@ -86,8 +86,8 @@ class MagicalWristEnchant(MagicalSkill):
 
 
 class PhysicalShoesEnchant(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "刃凌"
 
         self.is_cast = False
@@ -103,8 +103,8 @@ class PhysicalShoesEnchant(PhysicalSkill):
 
 
 class MagicalShoesEnchant(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "刃凌"
 
         self.is_cast = False

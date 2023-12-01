@@ -67,7 +67,7 @@ class GuangLingYue:
     def __call__(self, status: Status):
         status.skills["广陵月"].activate = True
         for skill in status.skills.values():
-            if skill.is_hit and skill.name != "广陵月·伤害":
+            if skill.is_hit and skill.is_cast:
                 skill.post_hit_effect.append(self.guang_ling_yue_post_hit)
 
 

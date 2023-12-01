@@ -30,18 +30,14 @@ class BeiAoJue(Attribute):
         }
 
     @property
-    def physical_attack_power(self):
-        return self._physical_attack_power
+    def strength(self):
+        return self._strength
 
-    @physical_attack_power.setter
-    def physical_attack_power(self, physical_attack_power):
-        self._physical_attack_power = int(physical_attack_power) + int(self._strength * self.STRENGTH_TO_ATTACK_POWER)
-
-    @property
-    def final_physical_overcome(self):
-        return self._final_physical_overcome
-
-    @final_physical_overcome.setter
-    def final_physical_overcome(self, final_physical_overcome):
-        self._final_physical_overcome = int(final_physical_overcome) + int(self._strength * self.STRENGTH_TO_OVERCOME)
-        self.physical_overcome = self._final_physical_overcome / OVERCOME_SCALE
+    @strength.setter
+    def strength(self, strength):
+        strength = int(strength)
+        self._strength = strength
+        self._extra_physical_attack_power = int(strength * self.STRENGTH_TO_ATTACK_POWER)
+        self.base_physical_attack_power = self._physical_attack_power_base + strength * STRENGTH_TO_ATTACK_POWER
+        self._extra_physical_overcome = int(strength * self.STRENGTH_TO_OVERCOME)
+        self.base_physical_overcome = self._physical_overcome_base + strength * STRENGTH_TO_OVERCOME

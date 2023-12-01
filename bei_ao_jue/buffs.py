@@ -3,22 +3,22 @@ from general.buffs import PhysicalCriticalSet
 
 
 class ShuoQi(PhysicalCriticalSet):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "朔气"
 
 
 class XiuMingChenShen(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "秀明尘身"
 
 
 class SongYanZhuWu(Buff):
     related_skills = ["逐鹰式"]
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "松烟竹雾"
 
     def remove(self):
@@ -28,30 +28,30 @@ class SongYanZhuWu(Buff):
 
 
 class XueXuJinPing(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "雪絮金屏"
 
 
 class NaoXuMiDot(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "闹须弥·持续"
 
         self.is_dot = True
 
 
 class JianBiQingYeDot(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "坚壁清野·持续"
 
         self.is_dot = True
 
 
 class ChuGe(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "楚歌"
 
         self.duration = 6 * 16
@@ -64,8 +64,8 @@ class ChuGe(Buff):
 
 
 class ChuGeCount(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "楚歌·计数"
 
         self.duration = 6 * 16
@@ -85,8 +85,8 @@ class ChuGeCount(Buff):
 
 
 class JianChen(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "见尘"
 
         self.is_dot = True
@@ -95,8 +95,8 @@ class JianChen(Buff):
 class HanFeng(Buff):
     related_skills = ["刀啸风吟", "坚壁清野"]
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "含风"
 
         self.duration = 24 * 16
@@ -121,8 +121,8 @@ class HanFeng(Buff):
 
 
 class XiangQiCount(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "降麒式·计数"
 
         self.stack_max = 6
@@ -135,8 +135,8 @@ class XiangQiCount(Buff):
 
 
 class XiangQiReady(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "降麒式·就绪"
 
         self.duration = 15 * 16
@@ -151,16 +151,16 @@ class XiangQiReady(Buff):
 
 
 class XiangQiDot(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "降麒式·持续"
 
         self.is_dot = True
 
 
 class XiangQiShi(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "降麒式"
 
         self.duration = 15 * 16
@@ -179,8 +179,8 @@ class XiangQiShi(Buff):
 
 
 class Divine(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "沉夜重雪"
 
         self.probability = 31 / 1024
@@ -201,8 +201,8 @@ class Divine(Buff):
 
 
 class DivineCD(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "沉夜重雪·冷却"
 
         self.duration = 30 * 16
@@ -210,8 +210,8 @@ class DivineCD(Buff):
 
 
 class BeiShuiChenZhouDot(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "背水沉舟·持续"
 
         self.is_dot = True

@@ -17,7 +17,7 @@ class Simulator:
         self.actions = []
         self.events = []
         self.damages = Counter()
-        self.status = Status(attribute, target, [skill() for skill in skills], [buff() for buff in buffs],
+        self.status = Status(attribute, target, skills, buffs,
                              self.damages, self.events, self.duration * FRAME_PER_SECOND, verbose)
 
         for gain in gains:

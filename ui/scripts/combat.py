@@ -57,7 +57,7 @@ def combat_script(combat_components,
             for skill, detail in delta_details.items():
                 count = round(detail['hit'] + detail['critical'], 2)
                 delta_summary_texts.append(
-                    f"{skill}:\t次数{count}\t"
+                    f"{skill}:\t次数{count}\t平均伤害\t{round(detail['damage'] / count, 2)}\t"
                     f"\t命中{detail['hit']}/{round(detail['hit'] / count * 100, 2)}%\t"
                     f"\t会心{detail['critical']}/{round(detail['critical'] / count * 100, 2)}%\t"
                     f"\t伤害{detail['damage']}/{round(detail['damage'] / total_damage * 100, 2)}%")

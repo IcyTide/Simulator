@@ -3,14 +3,14 @@ from general.buffs import MagicalCriticalSet
 
 
 class ChenNu(MagicalCriticalSet):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "嗔怒"
 
 
 class JianWu(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "剑舞"
 
         self.stack_add = 2
@@ -28,8 +28,8 @@ class JianWu(Buff):
 
 
 class ManTang(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "满堂"
 
         self.stack_add = 5
@@ -53,8 +53,8 @@ class ManTang(Buff):
 
 
 class JiQuDot(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "急曲·持续"
 
         self.is_dot = True
@@ -63,8 +63,8 @@ class JiQuDot(Buff):
 
 
 class FanYinJiJie(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "繁音急节"
 
         self.duration = 20 * 16
@@ -82,8 +82,8 @@ class FanYinJiJie(Buff):
 
 
 class ZhenShang(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "枕上"
 
         self.duration = 16 * 15
@@ -102,8 +102,8 @@ class ZhenShang(Buff):
 
 
 class GuangLingYue(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "广陵月"
 
         self.duration = 16 * 6
@@ -120,8 +120,8 @@ class GuangLingYue(Buff):
 
 
 class GuangLingYueCritical(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "广陵月·会效"
 
         self.duration = 16 * 6
@@ -140,8 +140,8 @@ class GuangLingYueCritical(Buff):
 
 
 class LiuYu(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "流玉"
 
         self.duration = 16 * 5
@@ -159,16 +159,16 @@ class LiuYu(Buff):
 
 
 class LiuYuDot(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "流玉·持续"
 
         self.is_dot = True
 
 
 class ChaiYanCount(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "钗燕·计数"
 
         self.stack_max = 3
@@ -185,8 +185,8 @@ class ChaiYanCount(Buff):
 
 
 class JiangHaiNingGuangChaiYan(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "江海凝光·钗燕"
 
     def add(self):
@@ -195,8 +195,8 @@ class JiangHaiNingGuangChaiYan(Buff):
 
 
 class DaiXianJiQuChaiYan(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "玳弦急曲·钗燕"
 
     def add(self):
@@ -205,8 +205,8 @@ class DaiXianJiQuChaiYan(Buff):
 
 
 class JianPoXuKongChaiYan(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "剑破虚空·钗燕"
 
     def add(self):
@@ -215,8 +215,8 @@ class JianPoXuKongChaiYan(Buff):
 
 
 class JianQiChangJiangChaiYan(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "剑气长江·钗燕"
 
     def add(self):
@@ -225,8 +225,8 @@ class JianQiChangJiangChaiYan(Buff):
 
 
 class JianYingLiuHenChaiYan(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "剑影留痕·钗燕"
 
     def add(self):
@@ -235,8 +235,8 @@ class JianYingLiuHenChaiYan(Buff):
 
 
 class YingXiu(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "盈袖"
 
         self.duration = 20 * 16
@@ -254,8 +254,8 @@ class YingXiu(Buff):
 
 
 class HuaBing(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "化冰"
 
         self.duration = 180 * 16
@@ -273,12 +273,12 @@ class HuaBing(Buff):
 
 
 class HuaBingCount(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "化冰·计数"
 
-        self.duration = 22
-        self.duration_max = 22
+        self.duration = 24
+        self.duration_max = 24
         self.stack_max = 3
 
     def add(self):
@@ -289,8 +289,8 @@ class HuaBingCount(Buff):
 
 
 class YeTian(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "夜天"
 
         self.duration = 2 * 16
@@ -308,8 +308,8 @@ class YeTian(Buff):
 
 
 class JianShenWuWo(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "剑神无我"
 
         self.duration = 20 * 16
@@ -317,8 +317,8 @@ class JianShenWuWo(Buff):
 
 
 class QiongXiaoCD(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "琼霄·冷却"
 
         self.duration = 20 * 16
@@ -326,8 +326,8 @@ class QiongXiaoCD(Buff):
 
 
 class NingHua(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "凝华"
 
         self.stack_add = 3
@@ -338,8 +338,8 @@ class NingHua(Buff):
 
 
 class ShuangJiang15(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "霜降·15%"
 
         self.value = 154 / 1024
@@ -354,8 +354,8 @@ class ShuangJiang15(Buff):
 
 
 class ShuangJiang30(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "霜降·30%"
 
         self.value = 307 / 1024
@@ -370,8 +370,8 @@ class ShuangJiang30(Buff):
 
 
 class ShuangJiang45(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "霜降·45%"
 
         self.value = 461 / 1024
@@ -386,8 +386,8 @@ class ShuangJiang45(Buff):
 
 
 class Divine(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "飞霜绛露"
 
         self.probability = 25 / 1024
@@ -403,8 +403,8 @@ class Divine(Buff):
 
 
 class DivineCD(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "飞霜绛露·冷却"
 
         self.duration = 30 * 16
@@ -412,8 +412,8 @@ class DivineCD(Buff):
 
 
 class QiTunChangJiangDot(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "气吞长江·持续"
 
         self.is_dot = True

@@ -37,10 +37,12 @@ class Attribute:
     _physical_attack_power_base: int = 0
     _base_physical_attack_power: int = 0
     _physical_attack_power_gain: float = 0
+    _extra_physical_attack_power: int = 0
     _physical_attack_power: int = 0
     _magical_attack_power_base: int = 0
     _base_magical_attack_power: int = 0
     _magical_attack_power_gain: float = 0
+    _extra_magical_attack_power: int = 0
     _magical_attack_power: int = 0
 
     _all_critical_strike_base: int = 0
@@ -48,11 +50,13 @@ class Attribute:
 
     _physical_critical_strike_base: int = 0
     _base_physical_critical_strike: int = 0
+    _extra_physical_critical_strike: int = 0
     _physical_critical_strike_percent: float = 0
     _physical_critical_strike_gain: float = 0
     _physical_critical_strike: float = 0
     _magical_critical_strike_base: int = 0
     _base_magical_critical_strike: int = 0
+    _extra_magical_critical_strike: int = 0
     _magical_critical_strike_percent: float = 0
     _magical_critical_strike_gain: float = 0
     _magical_critical_strike: float = 0
@@ -73,11 +77,13 @@ class Attribute:
     _base_physical_overcome: int = 0
     _final_physical_overcome: int = 0
     _physical_overcome_gain: float = 0
+    _extra_physical_overcome: int = 0
     _physical_overcome: float = 0
     _magical_overcome_base: int = 0
     _base_magical_overcome: int = 0
     _final_magical_overcome: int = 0
     _magical_overcome_gain: float = 0
+    _extra_magical_overcome: int = 0
     _magical_overcome: float = 0
 
     weapon_damage_rand: int = 0
@@ -156,7 +162,8 @@ class Attribute:
     def agility(self, agility):
         agility = int(agility)
         self._agility = agility
-        self.base_physical_critical_strike = self._physical_critical_strike_base + agility * AGILITY_TO_CRITICAL_STRIKE
+        self.base_physical_critical_strike = (self._physical_critical_strike_base + self._extra_physical_critical_strike
+                                              + agility * AGILITY_TO_CRITICAL_STRIKE)
 
     @property
     def strength_base(self):
@@ -213,7 +220,8 @@ class Attribute:
     def spirit(self, spirit):
         spirit = int(spirit)
         self._spirit = spirit
-        self.base_magical_critical_strike = self._magical_critical_strike_base + spirit * SPIRIT_TO_CRITICAL_STRIKE
+        self.base_magical_critical_strike = (self._magical_critical_strike_base + self._extra_magical_critical_strike
+                                             + spirit * SPIRIT_TO_CRITICAL_STRIKE)
 
     @property
     def spunk_base(self):
@@ -335,7 +343,8 @@ class Attribute:
     def base_physical_attack_power(self, base_physical_attack_power):
         base_physical_attack_power = int(base_physical_attack_power)
         self._base_physical_attack_power = base_physical_attack_power
-        self.physical_attack_power = base_physical_attack_power * (1 + self._physical_attack_power_gain)
+        self.physical_attack_power = (base_physical_attack_power * (1 + self._physical_attack_power_gain)
+                                      + self._extra_physical_attack_power)
 
     @property
     def physical_attack_power_gain(self):
@@ -344,7 +353,19 @@ class Attribute:
     @physical_attack_power_gain.setter
     def physical_attack_power_gain(self, physical_attack_power_gain):
         self._physical_attack_power_gain = physical_attack_power_gain
-        self.physical_attack_power = self._base_physical_attack_power * (1 + physical_attack_power_gain)
+        self.physical_attack_power = (self._base_physical_attack_power * (1 + physical_attack_power_gain)
+                                      + self._extra_physical_attack_power)
+
+    @property
+    def extra_physical_attack_power(self):
+        return self._extra_physical_attack_power
+
+    @extra_physical_attack_power.setter
+    def extra_physical_attack_power(self, extra_physical_attack_power):
+        extra_physical_attack_power = int(extra_physical_attack_power)
+        self._extra_physical_attack_power = extra_physical_attack_power
+        self.physical_attack_power = (self._base_physical_attack_power * (1 + self._physical_attack_power_gain)
+                                      + extra_physical_attack_power)
 
     @property
     def physical_attack_power(self):
@@ -371,7 +392,8 @@ class Attribute:
     def base_magical_attack_power(self, base_magical_attack_power):
         base_magical_attack_power = int(base_magical_attack_power)
         self._base_magical_attack_power = base_magical_attack_power
-        self.magical_attack_power = base_magical_attack_power * (1 + self._magical_attack_power_gain)
+        self.magical_attack_power = (base_magical_attack_power * (1 + self._magical_attack_power_gain)
+                                     + self._extra_magical_attack_power)
 
     @property
     def magical_attack_power_gain(self):
@@ -380,7 +402,19 @@ class Attribute:
     @magical_attack_power_gain.setter
     def magical_attack_power_gain(self, magical_attack_power_gain):
         self._magical_attack_power_gain = magical_attack_power_gain
-        self.magical_attack_power = self._base_magical_attack_power * (1 + magical_attack_power_gain)
+        self.magical_attack_power = (self._base_magical_attack_power * (1 + magical_attack_power_gain)
+                                     + self._extra_magical_attack_power)
+
+    @property
+    def extra_magical_attack_power(self):
+        return self._extra_magical_attack_power
+
+    @extra_magical_attack_power.setter
+    def extra_magical_attack_power(self, extra_magical_attack_power):
+        extra_magical_attack_power = int(extra_magical_attack_power)
+        self._extra_magical_attack_power = extra_magical_attack_power
+        self.magical_attack_power = (self._base_magical_attack_power * (1 + self._magical_attack_power_gain)
+                                     + extra_magical_attack_power)
 
     @property
     def magical_attack_power(self):
@@ -421,7 +455,19 @@ class Attribute:
     @physical_critical_strike_base.setter
     def physical_critical_strike_base(self, physical_critical_strike_base):
         self._physical_critical_strike_base = physical_critical_strike_base
-        self.base_physical_critical_strike = physical_critical_strike_base + self._agility * AGILITY_TO_CRITICAL_STRIKE
+        self.base_physical_critical_strike = (physical_critical_strike_base + self._extra_physical_critical_strike
+                                              + self._agility * AGILITY_TO_CRITICAL_STRIKE)
+
+    @property
+    def extra_physical_critical_strike(self):
+        return self._extra_physical_critical_strike
+
+    @extra_physical_critical_strike.setter
+    def extra_physical_critical_strike(self, extra_physical_critical_strike):
+        extra_physical_critical_strike = int(extra_physical_critical_strike)
+        self._extra_physical_critical_strike = extra_physical_critical_strike
+        self.base_physical_critical_strike = (self._physical_critical_strike_base + extra_physical_critical_strike
+                                              + self._agility * AGILITY_TO_CRITICAL_STRIKE)
 
     @property
     def base_physical_critical_strike(self):
@@ -466,7 +512,19 @@ class Attribute:
     @magical_critical_strike_base.setter
     def magical_critical_strike_base(self, magical_critical_strike_base):
         self._magical_critical_strike_base = magical_critical_strike_base
-        self.base_magical_critical_strike = magical_critical_strike_base + self._spirit * SPIRIT_TO_CRITICAL_STRIKE
+        self.base_magical_critical_strike = (magical_critical_strike_base + self._extra_magical_critical_strike
+                                             + self._spirit * SPIRIT_TO_CRITICAL_STRIKE)
+
+    @property
+    def extra_magical_critical_strike(self):
+        return self._extra_magical_critical_strike
+
+    @extra_magical_critical_strike.setter
+    def extra_magical_critical_strike(self, extra_magical_critical_strike):
+        extra_magical_critical_strike = int(extra_magical_critical_strike)
+        self._extra_magical_critical_strike = extra_magical_critical_strike
+        self.base_magical_critical_strike = (self._magical_critical_strike_base + extra_magical_critical_strike
+                                             + self._spirit * SPIRIT_TO_CRITICAL_STRIKE)
 
     @property
     def base_magical_critical_strike(self):
@@ -617,7 +675,8 @@ class Attribute:
     def base_physical_overcome(self, base_physical_overcome):
         base_physical_overcome = int(base_physical_overcome)
         self._base_physical_overcome = base_physical_overcome
-        self.final_physical_overcome = base_physical_overcome * (1 + self._physical_overcome_gain)
+        self.final_physical_overcome = (base_physical_overcome * (1 + self._physical_overcome_gain)
+                                        + self._extra_physical_overcome)
 
     @property
     def physical_overcome_gain(self):
@@ -626,7 +685,19 @@ class Attribute:
     @physical_overcome_gain.setter
     def physical_overcome_gain(self, physical_overcome_gain):
         self._physical_overcome_gain = physical_overcome_gain
-        self.final_physical_overcome = self._base_physical_overcome * (1 + physical_overcome_gain)
+        self.final_physical_overcome = (self._base_physical_overcome * (1 + physical_overcome_gain)
+                                        + self._extra_physical_overcome)
+
+    @property
+    def extra_physical_overcome(self):
+        return self._extra_physical_overcome
+
+    @extra_physical_overcome.setter
+    def extra_physical_overcome(self, extra_physical_overcome):
+        extra_physical_overcome = int(extra_physical_overcome)
+        self._extra_physical_overcome = extra_physical_overcome
+        self.final_physical_overcome = (self._base_physical_overcome * (1 + self._physical_overcome_gain)
+                                        + extra_physical_overcome)
 
     @property
     def final_physical_overcome(self):
@@ -663,7 +734,8 @@ class Attribute:
     def base_magical_overcome(self, base_magical_overcome):
         base_magical_overcome = int(base_magical_overcome)
         self._base_magical_overcome = base_magical_overcome
-        self.final_magical_overcome = base_magical_overcome * (1 + self._magical_overcome_gain)
+        self.final_magical_overcome = (base_magical_overcome * (1 + self._magical_overcome_gain)
+                                       + self._extra_magical_overcome)
 
     @property
     def magical_overcome_gain(self):
@@ -672,7 +744,19 @@ class Attribute:
     @magical_overcome_gain.setter
     def magical_overcome_gain(self, magical_overcome_gain):
         self._magical_overcome_gain = magical_overcome_gain
-        self.final_magical_overcome = self._base_magical_overcome * (1 + magical_overcome_gain)
+        self.final_magical_overcome = (self._base_magical_overcome * (1 + magical_overcome_gain)
+                                       + self._extra_magical_overcome)
+
+    @property
+    def extra_magical_overcome(self):
+        return self._extra_magical_overcome
+
+    @extra_magical_overcome.setter
+    def extra_magical_overcome(self, extra_magical_overcome):
+        extra_magical_overcome = int(extra_magical_overcome)
+        self._extra_magical_overcome = extra_magical_overcome
+        self.final_magical_overcome = (self._base_magical_overcome * (1 + self._magical_overcome_gain)
+                                       + extra_magical_overcome)
 
     @property
     def final_magical_overcome(self):

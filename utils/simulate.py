@@ -6,6 +6,7 @@ from multiprocessing import Pool, cpu_count
 from utils.analyze import analyze_details
 
 processes = cpu_count()
+min_iteration = processes * 100
 
 
 def simulate_single(simulator, i):
@@ -27,14 +28,13 @@ def simulate_concurrent(iteration, simulator):
 def simulate_serial(iteration, simulator):
     total_result = Counter()
     for i in range(iteration):
-        random.seed(i)
-        total_result += copy.deepcopy(simulator)()
+        total_result += simulate_single(copy.deepcopy(simulator), i)
     return total_result
 
 
 def simulate_delta(damage_func, attribute_class, iteration, simulator, delta_value):
     attribute = simulator.status.attribute
-    simulate_func = simulate_serial if iteration < 100 else simulate_concurrent
+    simulate_func = simulate_serial if iteration < min_iteration else simulate_concurrent
     origin_result = simulate_func(iteration, simulator)
     origin_dps, origin_details, origin_gradients = analyze_details(
         iteration, simulator.duration, damage_func, attribute_class, attribute.grad_attrs, origin_result)

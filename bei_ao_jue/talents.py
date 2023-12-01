@@ -12,7 +12,7 @@ class LongXi:
             status.skills[skill].interval_base = 0
 
         status.skills["擒龙六斩"].energy = 6
-        status.skills["擒龙六斩"].is_overdraw = 6
+        status.skills["擒龙六斩"].is_overdraw = True
         status.energies["擒龙六斩"] = 6
 
 

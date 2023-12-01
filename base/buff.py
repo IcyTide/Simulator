@@ -6,8 +6,8 @@ from base.status import Status
 
 @dataclass
 class Buff:
+    status: Status
     name: str = None
-    status: Status = None
     activate: bool = True
 
     is_dot: bool = False
@@ -19,9 +19,6 @@ class Buff:
     stack_add: int = 1
     stack_remove: int = 1
     stack_max: int = 1
-
-    add_effect: list = None
-    remove_effect: list = None
 
     def __post_init__(self):
         self.add_effect = []

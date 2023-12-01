@@ -15,13 +15,13 @@ class ShangJiangJunYinSetGain:
 
 class CriticalSetGain:
     @staticmethod
-    def critical_set_post_cast(self: Skill):
+    def critical_set_post_hit(self: Skill):
         self.status.buffs["朔气"].trigger()
 
     def __call__(self, status: Status):
         for skill in status.skills.values():
-            if skill.is_cast:
-                skill.post_hit_effect.append(self.critical_set_post_cast)
+            if skill.is_cast and skill.is_hit:
+                skill.post_hit_effect.append(self.critical_set_post_hit)
 
 
 class DaoXiaoFengYinDivineGain:

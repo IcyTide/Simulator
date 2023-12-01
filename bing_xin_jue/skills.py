@@ -8,8 +8,8 @@ from base.skill import PhysicalSkill, MagicalSkill, Skill
 
 
 class LianHuanShuangDao(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "连环双刀"
 
         self.gcd_index = self.name
@@ -21,8 +21,8 @@ class LianHuanShuangDao(PhysicalSkill):
 
 
 class MingDongSiFang(Skill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "名动四方"
 
         self.is_cast = False
@@ -43,15 +43,15 @@ class MingDongSiFang(Skill):
 
 
 class JiQuDot(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "急曲·持续"
 
         self.is_cast = False
         self.is_hit = False
 
         self.is_snapshot = True
-        self.is_dot = True
+        self.is_stack = True
 
         self.count_base = 6
         self.interval_base = 48
@@ -65,8 +65,8 @@ class JiQuDot(MagicalSkill):
 
 
 class JiangHaiNingGuang(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "江海凝光"
 
         self.damage_base = int(215 * 0.95 / 2.5)
@@ -75,8 +75,8 @@ class JiangHaiNingGuang(MagicalSkill):
 
 
 class DaiXianJiQu(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "玳弦急曲"
 
         self.count_base = 3
@@ -96,8 +96,8 @@ class DaiXianJiQu(MagicalSkill):
 
 
 class DaiXianJiQuSurplus(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "玳弦急曲·破招"
 
         self.is_cast = False
@@ -108,8 +108,8 @@ class DaiXianJiQuSurplus(MagicalSkill):
 
 
 class JianPoXuKong(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "剑破虚空"
 
         self.cd_base = 10 * 16
@@ -130,8 +130,8 @@ class JianPoXuKong(MagicalSkill):
 
 
 class JianPoXuKongSurplus(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "剑破虚空·破招"
 
         self.is_cast = False
@@ -142,8 +142,8 @@ class JianPoXuKongSurplus(MagicalSkill):
 
 
 class JianQiChangJiang(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "剑气长江"
 
         self.cd_base = 6 * 16
@@ -154,8 +154,8 @@ class JianQiChangJiang(MagicalSkill):
 
 
 class JianYingLiuHen(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "剑影留痕"
 
         self.is_hit = False
@@ -165,8 +165,8 @@ class JianYingLiuHen(MagicalSkill):
 
 
 class FanYinJiJie(Skill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "繁音急节"
 
         self.is_hit = False
@@ -180,8 +180,8 @@ class FanYinJiJie(Skill):
 
 
 class XinGuXian(Skill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "心鼓弦"
 
         self.is_hit = False
@@ -190,8 +190,8 @@ class XinGuXian(Skill):
 
 
 class PoLuoMen(Skill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "婆罗门"
 
         self.is_hit = False
@@ -205,8 +205,8 @@ class PoLuoMen(Skill):
 
 
 class DaiXianJiQuXinZhuang(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "玳弦急曲·新妆"
 
         self.is_cast = False
@@ -219,8 +219,8 @@ class DaiXianJiQuXinZhuang(MagicalSkill):
 
 
 class GuangLingYue(Skill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "广陵月"
 
         self.activate = False
@@ -234,8 +234,8 @@ class GuangLingYue(Skill):
 
 
 class GuangLingYueDamage(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "广陵月·伤害"
 
         self.is_cast = False
@@ -250,8 +250,8 @@ class GuangLingYueDamage(MagicalSkill):
 
 
 class LiuYuDot(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "流玉·持续"
 
         self.is_cast = False
@@ -278,8 +278,8 @@ class LiuYuDot(MagicalSkill):
 
 
 class LiuYuSurplus(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "流玉·破招"
 
         self.is_cast = False
@@ -290,8 +290,8 @@ class LiuYuSurplus(MagicalSkill):
 
 
 class ChaiYai(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "钗燕"
 
         self.is_cast = False
@@ -308,8 +308,8 @@ class ChaiYai(MagicalSkill):
 
 
 class ChaiYaiMing(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "钗燕·明"
 
         self.is_cast = False
@@ -321,8 +321,8 @@ class ChaiYaiMing(MagicalSkill):
 
 
 class YingXiu(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "盈袖"
 
         self.is_cast = False
@@ -333,8 +333,8 @@ class YingXiu(MagicalSkill):
 
 
 class HuaBing(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "化冰"
 
         self.is_cast = False
@@ -346,8 +346,8 @@ class HuaBing(MagicalSkill):
 
 
 class QiongXiaoDot(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "琼霄·持续"
 
         self.is_cast = False
@@ -372,8 +372,8 @@ class QiongXiaoDot(MagicalSkill):
 
 
 class QiongXiao(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "琼霄·急曲"
 
         self.is_cast = False
@@ -388,8 +388,8 @@ class QiongXiao(MagicalSkill):
 
 
 class NingHua(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "凝华"
 
         self.is_cast = False
@@ -404,8 +404,8 @@ class NingHua(MagicalSkill):
 
 
 class NingHuaMing(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "凝华·明"
 
         self.is_cast = False
@@ -416,8 +416,8 @@ class NingHuaMing(MagicalSkill):
 
 
 class JianPoXuKongDivine(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "剑破虚空·神兵"
 
         self.is_cast = False
@@ -431,14 +431,14 @@ class JianPoXuKongDivine(MagicalSkill):
 
 
 class QiTunChangJiangDot(MagicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "气吞长江·持续"
 
         self.is_cast = False
         self.is_hit = False
 
-        self.is_dot = True
+        self.is_stack = True
         self.is_snapshot = True
 
         self.interval_base = 3 * 16

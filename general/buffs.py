@@ -2,8 +2,8 @@ from base.buff import Buff
 
 
 class PhysicalCriticalSet(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.probability = 102 / 1024
 
         self.duration = 6 * 16
@@ -23,8 +23,8 @@ class PhysicalCriticalSet(Buff):
 
 
 class MagicalCriticalSet(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.probability = 102 / 1024
 
         self.duration = 6 * 16
@@ -44,22 +44,22 @@ class MagicalCriticalSet(Buff):
 
 
 class BaiDuanCD(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "锻造过度"
         self.duration = 60 * 16
 
 
 class BaiDuanDamageCD(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "炽炎·冷却"
         self.duration = 4
 
 
 class PhysicalWaterWeapon(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "水特效"
 
         self.duration = 6 * 16
@@ -78,8 +78,8 @@ class PhysicalWaterWeapon(Buff):
 
 
 class PhysicalWindPendant(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "风特效"
 
         self.duration = 15 * 16
@@ -96,8 +96,8 @@ class PhysicalWindPendant(Buff):
 
 
 class BeltEnchant1(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "大附魔腰·1%"
 
         self.duration = 8 * 16
@@ -113,8 +113,8 @@ class BeltEnchant1(Buff):
 
 
 class BeltEnchant5(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "大附魔腰·5%"
 
         self.duration = 8 * 16
@@ -130,24 +130,24 @@ class BeltEnchant5(Buff):
 
 
 class BeltEnchantCD(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "大附魔腰·冷却"
 
         self.duration = 30 * 16
 
 
 class WristEnchantCD(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "大附魔手·冷却"
 
         self.duration = 10 * 16
 
 
 class ShoesEnchantCD(Buff):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "大附魔脚·冷却"
 
         self.duration = 10 * 16

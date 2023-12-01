@@ -7,8 +7,8 @@ from base.skill import PhysicalSkill, Skill
 
 
 class ShuangFengDaoFa(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "霜风刀法"
 
         self.gcd_index = self.name
@@ -20,8 +20,8 @@ class ShuangFengDaoFa(PhysicalSkill):
 
 
 class XiuMingChenShen(Skill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "秀明尘身"
 
         self.is_hit = False
@@ -42,8 +42,8 @@ class XiuMingChenShen(Skill):
 
 
 class SongYanZhuWu(Skill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "松烟竹雾"
 
         self.is_hit = False
@@ -64,8 +64,8 @@ class SongYanZhuWu(Skill):
 
 
 class XueXuJinPing(Skill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "雪絮金屏"
 
         self.is_hit = False
@@ -86,8 +86,8 @@ class XueXuJinPing(Skill):
 
 
 class LeiZouFengQie(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "雷走风切"
 
         self.gcd_index = self.name
@@ -103,8 +103,8 @@ class LeiZouFengQie(PhysicalSkill):
 
 
 class ShangJiangJunYin(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "上将军印"
 
         self.cd_base = 18 * 16
@@ -121,8 +121,8 @@ class ShangJiangJunYin(PhysicalSkill):
 
 
 class PoFuChenZhou(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "破釜沉舟"
 
         self.is_overdraw = True
@@ -148,8 +148,8 @@ class PoFuChenZhou(PhysicalSkill):
 
 
 class PoFuChenZhouSurplus(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "破釜沉舟·破招"
 
         self.is_cast = False
@@ -160,8 +160,8 @@ class PoFuChenZhouSurplus(PhysicalSkill):
 
 
 class NaoXuMiDot(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "闹须弥·持续"
 
         self.is_cast = False
@@ -181,8 +181,8 @@ class NaoXuMiDot(PhysicalSkill):
 
 
 class NaoXuMi(Skill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "闹须弥"
 
         self.is_hit = False
@@ -201,8 +201,8 @@ class NaoXuMi(Skill):
 class QinLongLiuZhan(Skill):
     related_skills = ["逐鹰式"]
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "擒龙六斩"
 
         self.cd_base = 10 * 16
@@ -222,8 +222,8 @@ class QinLongLiuZhan(Skill):
 
 
 class QinLongLiuZhanSurplus(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "擒龙六斩·破招"
 
         self.is_cast = False
@@ -234,8 +234,8 @@ class QinLongLiuZhanSurplus(PhysicalSkill):
 
 
 class JingYanShi(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "惊燕式"
 
         self.interval_list = [3, 7]
@@ -257,8 +257,8 @@ class JingYanShi(PhysicalSkill):
 
 
 class ZhuYingShi(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "逐鹰式"
 
         self.activate = False
@@ -291,8 +291,8 @@ class ZhuYingShi(PhysicalSkill):
 
 
 class JianBiQingYeDot(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "坚壁清野·持续"
 
         self.is_cast = False
@@ -309,8 +309,8 @@ class JianBiQingYeDot(PhysicalSkill):
 
 
 class JianBiQingYe(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "坚壁清野"
 
         self.cd_base = 30 * 16
@@ -329,8 +329,8 @@ class JianBiQingYe(PhysicalSkill):
 
 
 class DaoXiaoFengYinSurplus(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "刀啸风吟·破招"
 
         self.is_cast = False
@@ -341,8 +341,8 @@ class DaoXiaoFengYinSurplus(PhysicalSkill):
 
 
 class DaoXiaoFengYin(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "刀啸风吟"
 
         self.interval_base = 24
@@ -367,8 +367,8 @@ class DaoXiaoFengYin(PhysicalSkill):
 
 
 class JianChen(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "见尘"
 
         self.is_cast = False
@@ -388,8 +388,8 @@ class JianChen(PhysicalSkill):
 
 
 class ChuGe(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "楚歌"
 
         self.is_cast = False
@@ -413,8 +413,8 @@ class ChuGe(PhysicalSkill):
 
 
 class JueQi(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "绝期"
 
         self.is_cast = False
@@ -432,8 +432,8 @@ class JueQi(PhysicalSkill):
 
 
 class XiangQiDot(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "降麒式·持续"
 
         self.is_cast = False
@@ -452,8 +452,8 @@ class XiangQiDot(PhysicalSkill):
 
 
 class XiangQiShi(Skill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "降麒式"
 
         self.activate = False
@@ -471,8 +471,8 @@ class XiangQiShi(Skill):
 
 
 class ShangJiangJunYinDivine(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "上将军印·神兵"
 
         self.is_cast = False
@@ -486,14 +486,14 @@ class ShangJiangJunYinDivine(PhysicalSkill):
 
 
 class BeiShuiChenZhouDot(PhysicalSkill):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, status):
+        super().__init__(status)
         self.name = "背水沉舟·持续"
 
         self.is_cast = False
         self.is_hit = False
 
-        self.is_dot = True
+        self.is_stack = True
         self.is_snapshot = True
 
         self.interval_base = 3 * 16

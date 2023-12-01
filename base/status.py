@@ -16,15 +16,15 @@ class Status:
         self.gcd_group = {}
         self.casting = 0
 
-        self.skills = {}
-
         self.intervals = {}
         self.counts = {}
+
+        self.skills = {}
         self.cds = {}
-        self.energies = {}
+        self.energies = Counter()
 
         for skill in skills:
-            skill.status = self
+            skill = skill(self)
             self.skills[skill.name] = skill
             self.energies[skill.name] = skill.energy
 
@@ -33,7 +33,7 @@ class Status:
         self.stacks = Counter()
 
         for buff in buffs:
-            buff.status = self
+            buff = buff(self)
             self.buffs[buff.name] = buff
             self.stacks[buff.name] = 0
 
@@ -54,6 +54,14 @@ class Status:
         for gcd_index in refresh_gcd:
             self.gcd_group.pop(gcd_index)
 
+        expire_buffs = []
+        for buff, duration in self.durations.items():
+            duration = self.durations[buff] = duration - gap
+            if duration <= 0:
+                expire_buffs.append(buff)
+        for buff in expire_buffs:
+            self.buffs[buff].clear()
+
         damage_skills = []
         for skill, interval in self.intervals.items():
             interval = self.intervals[skill] = interval - gap
@@ -70,14 +78,6 @@ class Status:
                 recharge_skills.append(skill)
         for skill in recharge_skills:
             self.skills[skill].recharge()
-
-        expire_buffs = []
-        for buff, duration in self.durations.items():
-            duration = self.durations[buff] = duration - gap
-            if duration <= 0:
-                expire_buffs.append(buff)
-        for buff in expire_buffs:
-            self.buffs[buff].clear()
 
     def record_verbose(self, params):
         self.damages[params] += 1

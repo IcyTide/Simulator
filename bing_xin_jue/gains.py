@@ -15,7 +15,7 @@ class CriticalSetGain:
     def __call__(self, status: Status):
         for skill in status.skills.values():
             if skill.is_cast:
-                skill.post_hit_effect.append(self.critical_set_post_cast)
+                skill.post_cast_effect.append(self.critical_set_post_cast)
 
 
 class DaiXianJiQuDivineGain:
