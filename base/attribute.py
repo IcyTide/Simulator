@@ -485,7 +485,7 @@ class Attribute:
 
     @physical_critical_strike_percent.setter
     def physical_critical_strike_percent(self, physical_critical_strike_percent):
-        self._physical_critical_strike_percent = physical_critical_strike_percent
+        self._physical_critical_strike_percent = round(physical_critical_strike_percent, 4)
         self.physical_critical_strike = physical_critical_strike_percent + self._physical_critical_strike_gain
 
     @property
@@ -494,7 +494,7 @@ class Attribute:
 
     @physical_critical_strike_gain.setter
     def physical_critical_strike_gain(self, physical_critical_strike_gain):
-        self._physical_critical_strike_gain = physical_critical_strike_gain
+        self._physical_critical_strike_gain = round(physical_critical_strike_gain, 4)
         self.physical_critical_strike = self._physical_critical_strike_percent + physical_critical_strike_gain
 
     @property

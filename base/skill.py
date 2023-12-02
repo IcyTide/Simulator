@@ -88,6 +88,8 @@ class Skill:
     skill_critical_strike: float = 0
     skill_critical_power: float = 0
 
+    level_params: dict = None
+
     def __post_init__(self):
         self.pre_cast_effect = []
         self.post_cast_effect = []
@@ -225,9 +227,13 @@ class Skill:
         for effect in self.pre_cast_effect:
             effect(self)
 
-    def cast(self):
+    def cast(self, level=None):
         if self.roll >= self.probability:
             return
+
+        if level:
+            for attr, values in self.level_params.items():
+                setattr(self, attr, values[level - 1])
 
         self.pre_cast()
 

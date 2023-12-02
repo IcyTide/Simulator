@@ -67,20 +67,20 @@ class GuangLingYue:
     def __call__(self, status: Status):
         status.skills["广陵月"].activate = True
         for skill in status.skills.values():
-            if skill.is_hit and skill.is_cast:
+            if skill.is_hit:
                 skill.post_hit_effect.append(self.guang_ling_yue_post_hit)
 
 
 class LiuYu:
     @staticmethod
     def jian_ying_liu_hen_post_cast(self: Skill):
+        self.status.skills["流玉·持续"].cast()
         self.status.buffs["流玉"].trigger()
 
     @staticmethod
     def dai_xian_ji_qu_post_cast(self: Skill):
         if self.status.stacks["流玉"]:
             self.status.buffs["流玉"].clear()
-            self.status.skills["流玉·持续"].cast()
 
     def __call__(self, status: Status):
         status.skills["剑影留痕"].cd_base = 15 * 16
@@ -135,8 +135,7 @@ class HuaBing:
 
     @staticmethod
     def hua_bing_post_hit(self: Skill):
-        if self.status.stacks["化冰"]:
-            self.status.buffs["化冰·计数"].trigger()
+        self.status.buffs["化冰·计数"].trigger()
 
     def __call__(self, status: Status):
         status.skills["心鼓弦"].cd_base = 120 * 16
@@ -169,9 +168,11 @@ class NingHua:
 
     @staticmethod
     def jian_qi_chang_jiang_post_cast(self: Skill):
-        for _ in range(self.status.stacks["凝华"]):
-            self.status.skills["凝华"].cast()
-        self.status.buffs["凝华"].clear()
+        if stack := self.status.stacks["凝华"]:
+            self.status.skills["凝华"].cast(stack)
+            for _ in range(3):
+                self.status.skills["凝华·明"].cast(stack)
+            self.status.buffs["凝华"].clear()
 
     def __call__(self, status: Status):
         status.skills["江海凝光"].cd_base += 4 * 16
@@ -182,17 +183,12 @@ class NingHua:
 class ShuangJiang:
     @staticmethod
     def shuang_jiang_add(self: Buff):
-        for i, buff in enumerate(["霜降·15%", "霜降·30%", "霜降·45%"]):
-            if i + 1 == self.status.stacks[self.name]:
-                self.status.buffs[buff].trigger()
-            else:
-                self.status.buffs[buff].clear()
+        self.status.buffs["霜降"].clear()
+        self.status.buffs["霜降"].trigger(self.status.stacks[self.name])
 
     @staticmethod
     def shuang_jiang_remove(self: Buff):
-        self.status.buffs["霜降·15%"].clear()
-        self.status.buffs["霜降·30%"].clear()
-        self.status.buffs["霜降·45%"].clear()
+        self.status.buffs["霜降"].clear()
 
     def __call__(self, status: Status):
         status.buffs["急曲·持续"].add_effect.append(self.shuang_jiang_add)

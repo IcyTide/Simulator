@@ -5,6 +5,7 @@ from base.status import Status
 class DaiXianJiQuSetGain:
     def __call__(self, status: Status):
         status.skills["玳弦急曲"].skill_damage_addition += 102 / 1024
+        status.skills["玳弦急曲·新妆"].skill_damage_addition += 102 / 1024
 
 
 class CriticalSetGain:

@@ -27,7 +27,7 @@ class FanYinJiJie:
     def __call__(self, status: Status):
         status.skills["繁音急节"].post_cast_effect.append(self.fan_yin_ji_jie_post_cast)
         for skill in status.skills.values():
-            if skill.is_cast and skill.is_hit:
+            if skill.is_hit:
                 skill.post_hit_effect.append(self.man_tang_post_hit)
 
 
@@ -48,9 +48,9 @@ RECIPES = {
 }
 
 RECIPE_GAINS = {
-    "玳弦急曲(5%伤害)": DamageRecipe(["玳弦急曲"], 51 / 1024),
-    "玳弦急曲(4%伤害)": DamageRecipe(["玳弦急曲"], 41 / 1024),
-    "玳弦急曲(3%伤害)": DamageRecipe(["玳弦急曲"], 31 / 1024),
+    "玳弦急曲(5%伤害)": DamageRecipe(["玳弦急曲", "玳弦急曲·新妆"], 51 / 1024),
+    "玳弦急曲(4%伤害)": DamageRecipe(["玳弦急曲", "玳弦急曲·新妆"], 41 / 1024),
+    "玳弦急曲(3%伤害)": DamageRecipe(["玳弦急曲", "玳弦急曲·新妆"], 31 / 1024),
 
     "剑气长江(6%伤害)": DamageRecipe(["剑气长江"], 61 / 1024),
     "剑气长江(4%伤害)": DamageRecipe(["剑气长江"], 31 / 1024),

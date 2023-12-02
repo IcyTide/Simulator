@@ -152,10 +152,12 @@ class LiuYu(Buff):
     def add(self):
         super().add()
         self.status.skills["玳弦急曲"].skill_damage_addition += self.value
+        self.status.skills["玳弦急曲·新妆"].skill_damage_addition += self.value
 
     def remove(self):
         super().remove()
         self.status.skills["玳弦急曲"].skill_damage_addition -= self.value
+        self.status.skills["玳弦急曲·新妆"].skill_damage_addition -= self.value
 
 
 class LiuYuDot(Buff):
@@ -178,10 +180,11 @@ class ChaiYanCount(Buff):
     def add(self):
         super().add()
         if self.status.stacks[self.name] == 3:
+            self.status.skills["钗燕"].cast()
+            self.status.skills["急曲·持续"].cast()
             self.clear()
             for buff in self.count_list:
                 self.status.buffs[buff].clear()
-            self.status.skills["钗燕"].cast()
 
 
 class JiangHaiNingGuangChaiYan(Buff):
@@ -281,11 +284,15 @@ class HuaBingCount(Buff):
         self.duration_max = 24
         self.stack_max = 3
 
+    @property
+    def condition(self):
+        return self.status.stacks["化冰"]
+
     def add(self):
         super().add()
         if self.status.stacks[self.name] == 3:
-            self.clear()
             self.status.skills["化冰"].cast()
+            self.clear()
 
 
 class YeTian(Buff):
@@ -337,44 +344,15 @@ class NingHua(Buff):
         self.duration_max = 20 * 16
 
 
-class ShuangJiang15(Buff):
+class ShuangJiang(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "霜降·15%"
+        self.name = "霜降"
 
-        self.value = 154 / 1024
-
-    def add(self):
-        super().add()
-        self.status.skills["玳弦急曲"].skill_damage_addition += self.value
-
-    def remove(self):
-        super().remove()
-        self.status.skills["玳弦急曲"].skill_damage_addition -= self.value
-
-
-class ShuangJiang30(Buff):
-    def __init__(self, status):
-        super().__init__(status)
-        self.name = "霜降·30%"
-
-        self.value = 307 / 1024
-
-    def add(self):
-        super().add()
-        self.status.skills["玳弦急曲"].skill_damage_addition += self.value
-
-    def remove(self):
-        super().remove()
-        self.status.skills["玳弦急曲"].skill_damage_addition -= self.value
-
-
-class ShuangJiang45(Buff):
-    def __init__(self, status):
-        super().__init__(status)
-        self.name = "霜降·45%"
-
-        self.value = 461 / 1024
+        self.value = 0
+        self.level_params = {
+            "value": [154 / 1024, 307 / 1024, 461 / 1024]
+        }
 
     def add(self):
         super().add()
@@ -424,4 +402,4 @@ class QiTunChangJiangDot(Buff):
 BUFFS = [ChenNu, JianWu, ManTang, JiQuDot, FanYinJiJie, ZhenShang, GuangLingYue, GuangLingYueCritical, LiuYu, LiuYuDot,
          ChaiYanCount, JiangHaiNingGuangChaiYan, DaiXianJiQuChaiYan, JianPoXuKongChaiYan, JianQiChangJiangChaiYan,
          JianYingLiuHenChaiYan, YingXiu, HuaBing, HuaBingCount, YeTian, JianShenWuWo, QiongXiaoCD, NingHua,
-         ShuangJiang15, ShuangJiang30, ShuangJiang45, Divine, DivineCD, QiTunChangJiangDot]
+         ShuangJiang, Divine, DivineCD, QiTunChangJiangDot]

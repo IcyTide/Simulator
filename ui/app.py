@@ -43,4 +43,4 @@ if __name__ == '__main__':
         combat_script(combat_components,
                       equip_components, consumable_components, gain_components, talent_components, recipe_components)
     app.queue()
-    app.launch()
+    app.launch(inbrowser=True)

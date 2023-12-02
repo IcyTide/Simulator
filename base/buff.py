@@ -20,6 +20,8 @@ class Buff:
     stack_remove: int = 1
     stack_max: int = 1
 
+    level_params: dict = None
+
     def __post_init__(self):
         self.add_effect = []
         self.remove_effect = []
@@ -33,14 +35,19 @@ class Buff:
         return random.random()
 
     def add(self):
+        self.status.stacks[self.name] += 1
         for effect in self.add_effect:
             effect(self)
 
     def remove(self):
+        self.status.stacks[self.name] -= 1
         for effect in self.remove_effect:
             effect(self)
 
-    def trigger(self):
+        if not self.status.stacks[self.name]:
+            self.status.durations.pop(self.name)
+
+    def trigger(self, level=None):
         if not self.activate:
             return
         if not self.condition:
@@ -48,46 +55,36 @@ class Buff:
         if self.roll >= self.probability:
             return
 
+        if level:
+            for attr, values in self.level_params.items():
+                setattr(self, attr, values[level - 1])
+
         self.refresh()
 
     def refresh(self):
         stack = min(self.stack_max - self.status.stacks[self.name], self.stack_add)
 
-        self.status.stacks[self.name] += stack
-
-        for _ in range(stack):
-            self.add()
-
         if self.is_dot:
             if self.name in self.status.intervals:
                 skill = self.status.skills[self.name]
-                duration = skill.duration - skill.interval
-                self.status.durations[self.name] = duration
+                self.status.durations[self.name] += skill.duration - skill.interval
             else:
                 self.status.durations[self.name] = self.status.skills[self.name].duration
         else:
             self.status.durations[self.name] = min(self.duration_max, self.duration)
 
-    def consume(self, stack=None):
-        if not (current_stack := self.status.stacks[self.name]):
-            return
+        for _ in range(stack):
+            self.add()
 
+    def consume(self, stack=None):
         if not stack:
             stack = self.stack_remove
 
-        stack = min(current_stack, stack)
+        stack = min(stack, self.status.stacks[self.name])
 
         for _ in range(stack):
             self.remove()
 
-        self.status.stacks[self.name] -= stack
-        if not self.status.stacks[self.name]:
-            self.status.durations.pop(self.name)
-
     def clear(self):
         for _ in range(self.status.stacks[self.name]):
             self.remove()
-
-        self.status.stacks[self.name] = 0
-        if self.name in self.status.durations:
-            self.status.durations.pop(self.name)

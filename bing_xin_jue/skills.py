@@ -88,11 +88,14 @@ class DaiXianJiQu(MagicalSkill):
 
         self.ji_qu = True
 
+    def post_hit(self):
+        super().post_hit()
+        self.status.skills["玳弦急曲·破招"].cast()
+
     def post_cast(self):
         super().post_cast()
         if self.ji_qu:
             self.status.skills["急曲·持续"].cast()
-        self.status.skills["玳弦急曲·破招"].cast()
 
 
 class DaiXianJiQuSurplus(MagicalSkill):
@@ -120,6 +123,10 @@ class JianPoXuKong(MagicalSkill):
         self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(220 * 1.1 * 1.1 * 1.1)
 
         self.jian_wu = True
+
+    @property
+    def condition(self):
+        return self.status.stacks["剑舞"] > 4
 
     def post_cast(self):
         super().post_cast()
@@ -196,8 +203,6 @@ class PoLuoMen(Skill):
 
         self.is_hit = False
 
-        self.cd_base = 20 * 16
-
 
 """
     Talent Skills
@@ -210,7 +215,6 @@ class DaiXianJiQuXinZhuang(MagicalSkill):
         self.name = "玳弦急曲·新妆"
 
         self.is_cast = False
-        self.is_hit = False
 
         self.damage_base = int(252 * 0.15)
         self.damage_rand = int(202 * 0.1 * 0.15)
@@ -239,6 +243,7 @@ class GuangLingYueDamage(MagicalSkill):
         self.name = "广陵月·伤害"
 
         self.is_cast = False
+        self.is_hit = False
 
         self.damage_base = 20
         self.damage_rand = 17
@@ -255,7 +260,6 @@ class LiuYuDot(MagicalSkill):
         self.name = "流玉·持续"
 
         self.is_cast = False
-        self.is_hit = False
 
         self.is_snapshot = True
 
@@ -295,6 +299,7 @@ class ChaiYai(MagicalSkill):
         self.name = "钗燕"
 
         self.is_cast = False
+        self.is_hit = False
 
         self.damage_base = 133
         self.damage_rand = 10
@@ -303,7 +308,6 @@ class ChaiYai(MagicalSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.skills["急曲·持续"].cast()
         self.status.skills["钗燕·明"].cast()
 
 
@@ -313,6 +317,7 @@ class ChaiYaiMing(MagicalSkill):
         self.name = "钗燕·明"
 
         self.is_cast = False
+        self.is_hit = False
 
         self.damage_base = 70
         self.damage_rand = 5
@@ -351,6 +356,7 @@ class QiongXiaoDot(MagicalSkill):
         self.name = "琼霄·持续"
 
         self.is_cast = False
+        self.is_hit = False
 
         self.interval_list = [16] * 20
 
@@ -377,6 +383,7 @@ class QiongXiao(MagicalSkill):
         self.name = "琼霄·急曲"
 
         self.is_cast = False
+        self.is_hit = False
 
         self.damage_base = 70
         self.damage_rand = 5
@@ -393,14 +400,19 @@ class NingHua(MagicalSkill):
         self.name = "凝华"
 
         self.is_cast = False
+        self.is_hit = False
 
-        self.damage_base = 115
+        self.damage_base = 70
         self.damage_rand = 5
         self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(30 * 0.7)
 
+        self.level_params = {
+            "damage_base": [70 + 5 * i for i in range(10)],
+            "attack_power_cof": [MAGICAL_ATTACK_POWER_COF(30 * (i + 1) * 0.7) for i in range(10)]
+        }
+
     def post_cast(self):
         super().post_cast()
-        self.status.skills["凝华·明"].cast()
 
 
 class NingHuaMing(MagicalSkill):
@@ -409,10 +421,16 @@ class NingHuaMing(MagicalSkill):
         self.name = "凝华·明"
 
         self.is_cast = False
+        self.is_hit = False
 
-        self.damage_base = 115
+        self.damage_base = 70
         self.damage_rand = 5
-        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(370 * 0.5 * 1.7 * 0.7)
+        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(370 * 0.5 * 1.7 * 0.7 / 3)
+
+        self.level_params = {
+            "damage_base": [70 + 5 * i for i in range(10)],
+            "attack_power_cof": [MAGICAL_ATTACK_POWER_COF(370 * (i + 1) * 0.5 * 1.7 * 0.7 / 3) for i in range(10)]
+        }
 
 
 class JianPoXuKongDivine(MagicalSkill):
