@@ -64,6 +64,30 @@ class JiQuDot(MagicalSkill):
         self.status.buffs["急曲·持续"].trigger()
 
 
+class JiQuConsume(MagicalSkill):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "急曲·吞噬"
+
+        self.is_cast = False
+        self.is_hit = False
+
+    def pre_cast(self):
+        super().pre_cast()
+        skill = self.status.skills["急曲·持续"]
+        count = skill.count - self.status.counts["急曲·持续"]
+        stack = self.status.stacks["急曲·持续"]
+        self.damage_base = skill.damage_base * count * stack
+        self.damage_rand = skill.damage_rand * count * stack
+        self.attack_power_cof = skill.attack_power_cof * count * stack
+        self.snapshot = skill.snapshot
+
+    def post_cast(self):
+        super().post_cast()
+        self.status.buffs["急曲·持续"].clear()
+        self.status.skills["急曲·持续"].post_cast()
+
+
 class JiangHaiNingGuang(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
@@ -72,6 +96,11 @@ class JiangHaiNingGuang(MagicalSkill):
         self.damage_base = int(215 * 0.95 / 2.5)
         self.damage_rand = int(215 * 0.1 / 2.5)
         self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(64 * 1.3 * 1.1)
+
+    def post_cast(self):
+        super().post_cast()
+        if self.status.stacks["急曲·持续"]:
+            self.status.skills["急曲·吞噬"].cast()
 
 
 class DaiXianJiQu(MagicalSkill):
@@ -470,7 +499,7 @@ class QiTunChangJiangDot(MagicalSkill):
         self.status.buffs["气吞长江·持续"].trigger()
 
 
-SKILLS = [LianHuanShuangDao, MingDongSiFang, JiQuDot, JiangHaiNingGuang, DaiXianJiQu,
+SKILLS = [LianHuanShuangDao, MingDongSiFang, JiQuDot, JiQuConsume, JiangHaiNingGuang, DaiXianJiQu,
           DaiXianJiQuSurplus, JianPoXuKong, JianPoXuKongSurplus, JianQiChangJiang, JianYingLiuHen, FanYinJiJie,
           XinGuXian, PoLuoMen, DaiXianJiQuXinZhuang, GuangLingYue, GuangLingYueDamage, LiuYuDot, LiuYuSurplus,
           ChaiYai, ChaiYaiMing, YingXiu, HuaBing, QiongXiaoDot, QiongXiao, NingHua, NingHuaMing, JianPoXuKongDivine,

@@ -89,6 +89,7 @@ class Skill:
     skill_critical_power: float = 0
 
     level_params: dict = None
+    snapshot = None
 
     def __post_init__(self):
         self.pre_cast_effect = []
@@ -294,6 +295,7 @@ class Skill:
 
 
 class PhysicalSkill(Skill):
+
     @property
     def agility_base(self):
         return self.attribute.agility_base
