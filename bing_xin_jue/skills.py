@@ -56,7 +56,7 @@ class JiQuDot(MagicalSkill):
         self.count_base = 6
         self.interval_base = 48
 
-        self.damage_base = 1
+        self.damage_base = 100
         self.attack_power_cof = MAGICAL_DOT_ATTACK_POWER_COF(114 * 1.1 * 0.9 * 1.1, self.interval_base)
 
     def pre_cast(self):
@@ -278,8 +278,8 @@ class GuangLingYueDamage(MagicalSkill):
         self.damage_rand = 17
         self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(16 * 1.1)
 
-    def post_cast(self):
-        super().post_cast()
+    def pre_cast(self):
+        super().pre_cast()
         self.status.buffs["广陵月·会效"].trigger()
 
 
@@ -492,7 +492,7 @@ class QiTunChangJiangDot(MagicalSkill):
         self.count_base = 10
 
         self.damage_base = 1
-        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(400 * 1.4)
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(400 * 1.4)    # TODO: make sure
 
     def pre_cast(self):
         super().pre_cast()

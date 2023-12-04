@@ -500,7 +500,7 @@ class BeiShuiChenZhouDot(PhysicalSkill):
         self.count_base = 6
 
         self.damage_base = 1
-        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(380)
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(380)  # TODO: make sure
 
     def pre_cast(self):
         super().pre_cast()
