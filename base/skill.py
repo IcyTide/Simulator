@@ -53,12 +53,14 @@ class Skill:
     activate: bool = True
 
     is_cast: bool = True
-    cast_while_casting: bool = False
     is_hit: bool = True
     is_stack: bool = False
     is_instant: bool = False
     is_overdraw: bool = False
     is_snapshot: bool = False
+
+    cast_while_casting: bool = False
+    cd_with_haste: bool = False
 
     gcd_index: any = 0
 
@@ -154,29 +156,25 @@ class Skill:
     def stack(self):
         if self.is_stack:
             return self.status.stacks[self.name]
-        else:
-            return 1
-
-    @property
-    def interval(self):
-        if self.interval_list:
-            return self.interval_list[self.status.counts[self.name]]
-        else:
-            return self.apply_haste(self.interval_base, self.snapshot.haste)
+        return 1
 
     @property
     def count(self):
         if self.interval_list:
             return len(self.interval_list)
-        else:
-            return self.count_base + int(self.is_instant)
+        return self.count_base + int(self.is_instant)
+
+    @property
+    def interval(self):
+        if self.interval_list:
+            return self.interval_list[self.status.counts[self.name]]
+        return self.apply_haste(self.interval_base, self.snapshot.haste)
 
     @property
     def duration(self):
         if self.interval_list:
             return sum(self.interval_list)
-        else:
-            return self.interval * self.count
+        return self.interval * self.count
 
     @property
     def gcd(self):
@@ -184,6 +182,8 @@ class Skill:
 
     @property
     def cd(self):
+        if self.cd_with_haste:
+            return self.apply_haste(self.cd_base, self.haste)
         return self.cd_base
 
     @property

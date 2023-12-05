@@ -249,11 +249,11 @@ class YingXiu(Buff):
 
     def add(self):
         super().add()
-        self.status.attribute.haste_gain += self.value
+        self.status.attribute.extra_haste += self.value
 
     def remove(self):
         super().remove()
-        self.status.attribute.haste_gain -= self.value
+        self.status.attribute.extra_haste -= self.value
 
 
 class HuaBing(Buff):

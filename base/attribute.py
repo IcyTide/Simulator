@@ -32,6 +32,7 @@ class Attribute:
     _haste_base: int = 0
     _haste_percent: float = 0
     _haste_gain: float = 0
+    _extra_haste: float = 0
     _haste: float = 0
 
     _physical_attack_power_base: int = 0
@@ -305,7 +306,7 @@ class Attribute:
     @haste_percent.setter
     def haste_percent(self, haste_percent):
         self._haste_percent = haste_percent
-        self.haste = haste_percent + self._haste_gain
+        self.haste = min(haste_percent + self._haste_gain, 0.25) + self._extra_haste
 
     @property
     def haste_gain(self):
@@ -314,7 +315,16 @@ class Attribute:
     @haste_gain.setter
     def haste_gain(self, haste_gain):
         self._haste_gain = haste_gain
-        self.haste = self._haste_percent + haste_gain
+        self.haste = min(self._haste_percent + haste_gain, 0.25) + self._extra_haste
+
+    @property
+    def extra_haste(self):
+        return self._extra_haste
+
+    @extra_haste.setter
+    def extra_haste(self, extra_haste):
+        self._extra_haste = extra_haste
+        self.haste = min(self._haste_percent + self._haste_gain, 0.25) + extra_haste
 
     @property
     def haste(self):
