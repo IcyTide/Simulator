@@ -2,13 +2,13 @@ from base.skill import Skill
 from base.status import Status
 
 
-class DaiXianJiQuSetGain:
+class 玳弦急曲套装:
     def __call__(self, status: Status):
         status.skills["玳弦急曲"].skill_damage_addition += 102 / 1024
-        status.skills["玳弦急曲·新妆"].skill_damage_addition += 102 / 1024
+        status.skills["玳弦急曲-新妆"].skill_damage_addition += 102 / 1024
 
 
-class CriticalSetGain:
+class 嗔怒套装:
     @staticmethod
     def critical_set_post_cast(self: Skill):
         self.status.buffs["嗔怒"].trigger()
@@ -19,17 +19,17 @@ class CriticalSetGain:
                 skill.post_cast_effect.append(self.critical_set_post_cast)
 
 
-class DaiXianJiQuDivineGain:
+class 玳弦急曲大橙武:
     def __call__(self, status: Status):
         status.skills["玳弦急曲"].skill_damage_addition += 51 / 1024
 
 
-class JiangHaiNingGuangDivineGain:
+class 江海凝光大橙武:
     def __call__(self, status: Status):
         status.skills["江海凝光"].skill_damage_addition += 51 / 1024
 
 
-class DivineEffect:
+class 橙武特效:
     @staticmethod
     def divine_post_cast(self: Skill):
         self.status.buffs["飞霜绛露"].trigger()
@@ -40,7 +40,7 @@ class DivineEffect:
                 skill.post_cast_effect.append(self.divine_post_cast)
 
 
-class JianPoXuKongDivineEffect:
+class 剑破虚空神兵:
     @staticmethod
     def divine_post_cast(self: Skill):
         self.status.skills["剑破虚空·神兵"].cast()
@@ -58,10 +58,10 @@ EQUIP_GAINS_NAME = {
     "1930": "剑破虚空·神兵"
 }
 EQUIP_GAINS = {
-    "1916": CriticalSetGain(),
-    "1547": DaiXianJiQuSetGain(),
-    "1524": DaiXianJiQuDivineGain,
-    "1525": JiangHaiNingGuangDivineGain,
-    "2416": DivineEffect(),
-    "1930": JianPoXuKongDivineEffect()
+    "1916": 嗔怒套装(),
+    "1547": 玳弦急曲套装(),
+    "1524": 玳弦急曲大橙武(),
+    "1525": 江海凝光大橙武,
+    "2416": 橙武特效(),
+    "1930": 剑破虚空神兵()
 }

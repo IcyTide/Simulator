@@ -2,18 +2,18 @@ from base.skill import Skill
 from base.status import Status
 
 
-class DaoXiaoFengYinSetGain:
+class 刀啸风吟套装:
     def __call__(self, status: Status):
         status.skills["刀啸风吟"].skill_damage_addition += 102 / 1024
 
 
-class ShangJiangJunYinSetGain:
+class 上将军印套装:
     def __call__(self, status: Status):
         status.skills["上将军印"].skill_damage_addition += 102 / 1024
         status.skills["见尘"].skill_damage_addition += 102 / 1024
 
 
-class CriticalSetGain:
+class 朔气套装:
     @staticmethod
     def critical_set_post_hit(self: Skill):
         self.status.buffs["朔气"].trigger()
@@ -24,17 +24,17 @@ class CriticalSetGain:
                 skill.post_hit_effect.append(self.critical_set_post_hit)
 
 
-class DaoXiaoFengYinDivineGain:
+class 刀啸风吟大橙武:
     def __call__(self, status: Status):
         status.skills["刀啸风吟"].skill_damage_addition += 51 / 1024
 
 
-class XiangWangJiDingDivineGain:
+class 项王击鼎大橙武:
     def __call__(self, status: Status):
         pass
 
 
-class DivineEffect:
+class 橙武特效:
     @staticmethod
     def divine_post_cast(self: Skill):
         self.status.buffs["沉夜重雪"].trigger()
@@ -45,7 +45,7 @@ class DivineEffect:
                 skill.post_cast_effect.append(self.divine_post_cast)
 
 
-class ShangJiangJunYinDivineEffect:
+class 上将军印神兵:
     @staticmethod
     def divine_post_cast(self: Skill):
         self.status.skills["上将军印·神兵"].cast()
@@ -54,7 +54,7 @@ class ShangJiangJunYinDivineEffect:
         status.skills["上将军印"].post_cast_effect.append(self.divine_post_cast)
 
 
-class WuXiangZhan:
+class 五相斩:
     def __call__(self, status: Status):
         pass
 
@@ -70,12 +70,12 @@ EQUIP_GAINS_NAME = {
     "1942": "上将军印·神兵"
 }
 EQUIP_GAINS = {
-    '22035-1': WuXiangZhan(),
-    "1925": CriticalSetGain(),
-    "4290": DaoXiaoFengYinSetGain(),
-    "4291": ShangJiangJunYinSetGain(),
-    "4294": DaoXiaoFengYinDivineGain(),
-    "4295": XiangWangJiDingDivineGain(),
-    "2430": DivineEffect(),
-    "1942": ShangJiangJunYinDivineEffect()
+    '22035-1': 五相斩(),
+    "1925": 朔气套装(),
+    "4290": 刀啸风吟套装(),
+    "4291": 上将军印套装(),
+    "4294": 刀啸风吟大橙武(),
+    "4295": 项王击鼎大橙武(),
+    "2430": 橙武特效(),
+    "1942": 上将军印神兵()
 }

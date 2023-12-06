@@ -2,13 +2,13 @@ from base.buff import Buff
 from general.buffs import MagicalCriticalSet
 
 
-class ChenNu(MagicalCriticalSet):
+class 嗔怒(MagicalCriticalSet):
     def __init__(self, status):
         super().__init__(status)
         self.name = "嗔怒"
 
 
-class JianWu(Buff):
+class 剑舞(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "剑舞"
@@ -27,7 +27,7 @@ class JianWu(Buff):
         self.status.attribute.magical_attack_power_gain -= self.value
 
 
-class ManTang(Buff):
+class 满堂(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "满堂"
@@ -52,17 +52,17 @@ class ManTang(Buff):
         self.status.attribute.magical_critical_power_gain -= self.value2
 
 
-class JiQuDot(Buff):
+class 急曲_持续(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "急曲·持续"
+        self.name = "急曲-持续"
 
         self.is_dot = True
 
         self.stack_max = 3
 
 
-class FanYinJiJie(Buff):
+class 繁音急节(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "繁音急节"
@@ -81,7 +81,7 @@ class FanYinJiJie(Buff):
         self.status.attribute.magical_attack_power_gain -= self.value
 
 
-class ZhenShang(Buff):
+class 枕上(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "枕上"
@@ -101,7 +101,7 @@ class ZhenShang(Buff):
         self.status.attribute.haste_gain -= self.value
 
 
-class GuangLingYue(Buff):
+class 广陵月(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "广陵月"
@@ -116,13 +116,13 @@ class GuangLingYue(Buff):
     def remove(self):
         super().remove()
         self.status.skills["剑破虚空"].jian_wu = True
-        self.status.buffs["广陵月·会效"].clear()
+        self.status.buffs["广陵月-会效"].clear()
 
 
-class GuangLingYueCritical(Buff):
+class 广陵月_会效(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "广陵月·会效"
+        self.name = "广陵月-会效"
 
         self.duration = 16 * 6
         self.duration_max = 16 * 6
@@ -139,7 +139,7 @@ class GuangLingYueCritical(Buff):
         self.status.attribute.magical_critical_power_gain -= self.value
 
 
-class LiuYu(Buff):
+class 流玉(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "流玉"
@@ -152,92 +152,95 @@ class LiuYu(Buff):
     def add(self):
         super().add()
         self.status.skills["玳弦急曲"].skill_damage_addition += self.value
-        self.status.skills["玳弦急曲·新妆"].skill_damage_addition += self.value
+        self.status.skills["玳弦急曲-新妆"].skill_damage_addition += self.value
 
     def remove(self):
         super().remove()
         self.status.skills["玳弦急曲"].skill_damage_addition -= self.value
-        self.status.skills["玳弦急曲·新妆"].skill_damage_addition -= self.value
+        self.status.skills["玳弦急曲-新妆"].skill_damage_addition -= self.value
 
 
-class LiuYuDot(Buff):
+class 流玉_持续(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "流玉·持续"
+        self.name = "流玉-持续"
 
         self.is_dot = True
 
 
-class ChaiYanCount(Buff):
+class 钗燕_计数(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "钗燕·计数"
+        self.name = "钗燕-计数"
 
         self.stack_max = 3
+        self.duration = 6 * 16
+        self.duration_max = 6 * 16
 
-        self.count_list = ["江海凝光·钗燕", "玳弦急曲·钗燕", "剑破虚空·钗燕", "剑气长江·钗燕", "剑影留痕·钗燕"]
+        self.count_list = []
 
     def add(self):
         super().add()
         if self.status.stacks[self.name] == 3:
             self.status.skills["钗燕"].cast()
-            self.status.skills["急曲·持续"].cast()
+            self.status.skills["急曲-持续"].cast()
             self.clear()
-            for buff in self.count_list:
-                self.status.buffs[buff].clear()
 
+    def clear(self):
+        super().clear()
+        self.count_list = []
 
-class JiangHaiNingGuangChaiYan(Buff):
+class 江海凝光_钗燕(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "江海凝光·钗燕"
+        self.name = "江海凝光-钗燕"
 
     def add(self):
         super().add()
-        self.status.buffs["钗燕·计数"].trigger()
+        self.status.buffs["钗燕-计数"].trigger()
 
 
-class DaiXianJiQuChaiYan(Buff):
+class 玳弦急曲_钗燕(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "玳弦急曲·钗燕"
+        self.name = "玳弦急曲-钗燕"
 
     def add(self):
         super().add()
-        self.status.buffs["钗燕·计数"].trigger()
+        self.status.buffs["钗燕-计数"].trigger()
 
 
-class JianPoXuKongChaiYan(Buff):
+class 剑破虚空_钗燕(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "剑破虚空·钗燕"
+        self.name = "剑破虚空-钗燕"
 
     def add(self):
         super().add()
-        self.status.buffs["钗燕·计数"].trigger()
+        self.status.buffs["钗燕-计数"].trigger()
 
 
-class JianQiChangJiangChaiYan(Buff):
+class 剑气长江_钗燕(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "剑气长江·钗燕"
+        self.name = "剑气长江-钗燕"
 
     def add(self):
         super().add()
-        self.status.buffs["钗燕·计数"].trigger()
+        self.status.buffs["钗燕-计数"].trigger()
 
 
-class JianYingLiuHenChaiYan(Buff):
+class 剑影留痕_钗燕(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "剑影留痕·钗燕"
+        self.name = "剑影留痕-钗燕"
 
     def add(self):
         super().add()
-        self.status.buffs["钗燕·计数"].trigger()
+        self.status.buffs["钗燕-计数"].trigger()
 
 
-class YingXiu(Buff):
+class 盈袖(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "盈袖"
@@ -256,7 +259,7 @@ class YingXiu(Buff):
         self.status.attribute.extra_haste -= self.value
 
 
-class HuaBing(Buff):
+class 化冰(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "化冰"
@@ -275,10 +278,10 @@ class HuaBing(Buff):
         self.status.attribute.pve_addition -= self.value
 
 
-class HuaBingCount(Buff):
+class 化冰_计数(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "化冰·计数"
+        self.name = "化冰-计数"
 
         self.duration = 24
         self.duration_max = 24
@@ -295,7 +298,7 @@ class HuaBingCount(Buff):
             self.clear()
 
 
-class YeTian(Buff):
+class 夜天(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "夜天"
@@ -314,7 +317,7 @@ class YeTian(Buff):
         self.status.attribute.damage_addition -= self.value
 
 
-class JianShenWuWo(Buff):
+class 剑神无我(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "剑神无我"
@@ -323,16 +326,16 @@ class JianShenWuWo(Buff):
         self.duration_max = 20 * 16
 
 
-class QiongXiaoCD(Buff):
+class 琼霄_冷却(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "琼霄·冷却"
+        self.name = "琼霄-冷却"
 
         self.duration = 20 * 16
         self.duration_max = 20 * 16
 
 
-class NingHua(Buff):
+class 凝华(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "凝华"
@@ -344,7 +347,7 @@ class NingHua(Buff):
         self.duration_max = 20 * 16
 
 
-class ShuangJiang(Buff):
+class 霜降(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "霜降"
@@ -363,7 +366,7 @@ class ShuangJiang(Buff):
         self.status.skills["玳弦急曲"].skill_damage_addition -= self.value
 
 
-class Divine(Buff):
+class 飞霜绛露(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "飞霜绛露"
@@ -372,34 +375,34 @@ class Divine(Buff):
 
     @property
     def condition(self):
-        return not self.status.stacks["飞霜绛露·冷却"]
+        return not self.status.stacks["飞霜绛露-冷却"]
 
     def add(self):
         super().add()
         self.status.skills["剑气长江"].recharge()
-        self.status.buffs["飞霜绛露·冷却"].trigger()
+        self.status.buffs["飞霜绛露-冷却"].trigger()
 
 
-class DivineCD(Buff):
+class 飞霜绛露_冷却(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "飞霜绛露·冷却"
+        self.name = "飞霜绛露-冷却"
 
         self.duration = 30 * 16
         self.duration_max = 30 * 16
 
 
-class QiTunChangJiangDot(Buff):
+class 气吞长江_持续(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "气吞长江·持续"
+        self.name = "气吞长江-持续"
 
         self.is_dot = True
 
         self.stack_max = 3
 
 
-BUFFS = [ChenNu, JianWu, ManTang, JiQuDot, FanYinJiJie, ZhenShang, GuangLingYue, GuangLingYueCritical, LiuYu, LiuYuDot,
-         ChaiYanCount, JiangHaiNingGuangChaiYan, DaiXianJiQuChaiYan, JianPoXuKongChaiYan, JianQiChangJiangChaiYan,
-         JianYingLiuHenChaiYan, YingXiu, HuaBing, HuaBingCount, YeTian, JianShenWuWo, QiongXiaoCD, NingHua,
-         ShuangJiang, Divine, DivineCD, QiTunChangJiangDot]
+BUFFS = [嗔怒, 剑舞, 满堂, 急曲_持续, 繁音急节, 枕上, 广陵月, 广陵月_会效, 流玉, 流玉_持续,
+         钗燕_计数, 江海凝光_钗燕, 玳弦急曲_钗燕, 剑破虚空_钗燕, 剑气长江_钗燕,
+         剑影留痕_钗燕, 盈袖, 化冰, 化冰_计数, 夜天, 剑神无我, 琼霄_冷却, 凝华,
+         霜降, 飞霜绛露, 飞霜绛露_冷却, 气吞长江_持续]

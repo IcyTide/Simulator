@@ -2,19 +2,19 @@ from base.buff import Buff
 from general.buffs import PhysicalCriticalSet
 
 
-class ShuoQi(PhysicalCriticalSet):
+class 朔气(PhysicalCriticalSet):
     def __init__(self, status):
         super().__init__(status)
         self.name = "朔气"
 
 
-class XiuMingChenShen(Buff):
+class 秀明尘身(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "秀明尘身"
 
 
-class SongYanZhuWu(Buff):
+class 松烟竹雾(Buff):
     related_skills = ["逐鹰式"]
 
     def __init__(self, status):
@@ -27,29 +27,29 @@ class SongYanZhuWu(Buff):
             self.status.skills[skill].activate = False
 
 
-class XueXuJinPing(Buff):
+class 雪絮金屏(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "雪絮金屏"
 
 
-class NaoXuMiDot(Buff):
+class 闹须弥_持续(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "闹须弥·持续"
+        self.name = "闹须弥-持续"
 
         self.is_dot = True
 
 
-class JianBiQingYeDot(Buff):
+class 坚壁清野_持续(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "坚壁清野·持续"
+        self.name = "坚壁清野-持续"
 
         self.is_dot = True
 
 
-class ChuGe(Buff):
+class 楚歌(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "楚歌"
@@ -60,13 +60,13 @@ class ChuGe(Buff):
 
     def remove(self):
         super().remove()
-        self.status.buffs["楚歌·计数"].clear()
+        self.status.buffs["楚歌-计数"].clear()
 
 
-class ChuGeCount(Buff):
+class 楚歌_计数(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "楚歌·计数"
+        self.name = "楚歌-计数"
 
         self.duration = 6 * 16
 
@@ -84,7 +84,7 @@ class ChuGeCount(Buff):
             self.status.buffs["楚歌"].clear()
 
 
-class JianChen(Buff):
+class 见尘(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "见尘"
@@ -92,7 +92,7 @@ class JianChen(Buff):
         self.is_dot = True
 
 
-class HanFeng(Buff):
+class 含风(Buff):
     related_skills = ["刀啸风吟", "坚壁清野"]
 
     def __init__(self, status):
@@ -120,10 +120,10 @@ class HanFeng(Buff):
             self.status.skills[skill].skill_damage_addition -= self.value2
 
 
-class XiangQiCount(Buff):
+class 降麒式_计数(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "降麒式·计数"
+        self.name = "降麒式-计数"
 
         self.stack_max = 6
 
@@ -131,13 +131,13 @@ class XiangQiCount(Buff):
         super().add()
         if self.status.stacks[self.name] == 6:
             self.clear()
-            self.status.buffs["降麒式·就绪"].trigger()
+            self.status.buffs["降麒式-就绪"].trigger()
 
 
-class XiangQiReady(Buff):
+class 降麒式_就绪(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "降麒式·就绪"
+        self.name = "降麒式-就绪"
 
         self.duration = 15 * 16
 
@@ -150,15 +150,15 @@ class XiangQiReady(Buff):
         self.status.skills["降麒式"].activate = False
 
 
-class XiangQiDot(Buff):
+class 降麒式_持续(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "降麒式·持续"
+        self.name = "降麒式-持续"
 
         self.is_dot = True
 
 
-class XiangQiShi(Buff):
+class 降麒式(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "降麒式"
@@ -169,8 +169,6 @@ class XiangQiShi(Buff):
 
     def add(self):
         super().add()
-        self.status.buffs["降麒式·计数"].clear()
-        self.status.buffs["降麒式·就绪"].clear()
         self.status.attribute.damage_addition += self.value
 
     def remove(self):
@@ -178,7 +176,7 @@ class XiangQiShi(Buff):
         self.status.attribute.damage_addition -= self.value
 
 
-class Divine(Buff):
+class 沉夜重雪(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "沉夜重雪"
@@ -187,32 +185,32 @@ class Divine(Buff):
 
     @property
     def condition(self):
-        return not self.status.stacks["沉夜重雪·冷却"]
+        return not self.status.stacks["沉夜重雪-冷却"]
 
     def add(self):
         super().add()
         self.status.skills["破釜沉舟"].recharge()
         self.status.skills["刀啸风吟"].interval_base = 0
-        self.status.buffs["沉夜重雪·冷却"].trigger()
+        self.status.buffs["沉夜重雪-冷却"].trigger()
 
     def remove(self):
         super().remove()
         self.status.skills["刀啸风吟"].interval_base = 24
 
 
-class DivineCD(Buff):
+class 沉夜重雪_冷却(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "沉夜重雪·冷却"
+        self.name = "沉夜重雪-冷却"
 
         self.duration = 30 * 16
         self.duration_max = 30 * 16
 
 
-class BeiShuiChenZhouDot(Buff):
+class 背水沉舟_持续(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "背水沉舟·持续"
+        self.name = "背水沉舟-持续"
 
         self.is_dot = True
 
@@ -220,6 +218,6 @@ class BeiShuiChenZhouDot(Buff):
 
 
 BUFFS = [
-    ShuoQi,
-    XiuMingChenShen, SongYanZhuWu, XueXuJinPing, NaoXuMiDot, JianBiQingYeDot, ChuGe, ChuGeCount,
-    JianChen, HanFeng, XiangQiCount, XiangQiReady, XiangQiDot, XiangQiShi]
+    朔气, 秀明尘身, 松烟竹雾, 雪絮金屏, 闹须弥_持续, 坚壁清野_持续,
+    楚歌, 楚歌_计数, 见尘, 含风, 降麒式_计数, 降麒式_就绪, 降麒式_持续, 降麒式
+]

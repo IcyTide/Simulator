@@ -7,7 +7,7 @@ from base.skill import PhysicalSkill, MagicalSkill, Skill
 """
 
 
-class LianHuanShuangDao(PhysicalSkill):
+class 连环双刀(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "连环双刀"
@@ -20,7 +20,7 @@ class LianHuanShuangDao(PhysicalSkill):
         self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
 
 
-class MingDongSiFang(Skill):
+class 名动四方(Skill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "名动四方"
@@ -42,10 +42,10 @@ class MingDongSiFang(Skill):
         self.status.buffs["剑舞"].trigger()
 
 
-class JiQuDot(MagicalSkill):
+class 急曲_持续(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "急曲·持续"
+        self.name = "急曲-持续"
 
         self.is_cast = False
         self.is_hit = False
@@ -61,34 +61,10 @@ class JiQuDot(MagicalSkill):
 
     def pre_cast(self):
         super().pre_cast()
-        self.status.buffs["急曲·持续"].trigger()
+        self.status.buffs["急曲-持续"].trigger()
 
 
-class JiQuConsume(MagicalSkill):
-    def __init__(self, status):
-        super().__init__(status)
-        self.name = "急曲·吞噬"
-
-        self.is_cast = False
-        self.is_hit = False
-
-    def pre_cast(self):
-        super().pre_cast()
-        skill = self.status.skills["急曲·持续"]
-        count = skill.count - self.status.counts["急曲·持续"]
-        stack = self.status.stacks["急曲·持续"]
-        self.damage_base = skill.damage_base * count * stack
-        self.damage_rand = skill.damage_rand * count * stack
-        self.attack_power_cof = skill.attack_power_cof * count * stack
-        self.snapshot = skill.snapshot
-
-    def post_cast(self):
-        super().post_cast()
-        self.status.buffs["急曲·持续"].clear()
-        self.status.skills["急曲·持续"].post_cast()
-
-
-class JiangHaiNingGuang(MagicalSkill):
+class 江海凝光(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "江海凝光"
@@ -99,11 +75,11 @@ class JiangHaiNingGuang(MagicalSkill):
 
     def post_cast(self):
         super().post_cast()
-        if self.status.stacks["急曲·持续"]:
-            self.status.skills["急曲·吞噬"].cast()
+        if self.status.stacks["急曲-持续"]:
+            self.status.skills["急曲-持续"].consume()
 
 
-class DaiXianJiQu(MagicalSkill):
+class 玳弦急曲(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "玳弦急曲"
@@ -119,18 +95,18 @@ class DaiXianJiQu(MagicalSkill):
 
     def post_hit(self):
         super().post_hit()
-        self.status.skills["玳弦急曲·破招"].cast()
+        self.status.skills["破"].cast()
 
     def post_cast(self):
         super().post_cast()
         if self.ji_qu:
-            self.status.skills["急曲·持续"].cast()
+            self.status.skills["急曲-持续"].cast()
 
 
-class DaiXianJiQuSurplus(MagicalSkill):
+class 破(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "玳弦急曲·破招"
+        self.name = "破"
 
         self.is_cast = False
         self.is_hit = False
@@ -139,7 +115,7 @@ class DaiXianJiQuSurplus(MagicalSkill):
         self.surplus_cof = SURPLUS_COF(1024 * 1024 * (1.2 * 0.33 * 0.33 - 1))
 
 
-class JianPoXuKong(MagicalSkill):
+class 剑破虚空(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "剑破虚空"
@@ -161,14 +137,14 @@ class JianPoXuKong(MagicalSkill):
         super().post_cast()
         if self.jian_wu:
             self.status.buffs["剑舞"].consume(4)
-        self.status.skills["急曲·持续"].cast()
-        self.status.skills["剑破虚空·破招"].cast()
+        self.status.skills["急曲-持续"].cast()
+        self.status.skills["破·虚空"].cast()
 
 
-class JianPoXuKongSurplus(MagicalSkill):
+class 破_虚空(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "剑破虚空·破招"
+        self.name = "破·虚空"
 
         self.is_cast = False
         self.is_hit = False
@@ -177,7 +153,7 @@ class JianPoXuKongSurplus(MagicalSkill):
         self.surplus_cof = SURPLUS_COF(1024 * 1024 * (0.55 * 0.7 - 1))
 
 
-class JianQiChangJiang(MagicalSkill):
+class 剑气长江(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "剑气长江"
@@ -189,7 +165,7 @@ class JianQiChangJiang(MagicalSkill):
         self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(152 * 1.1 * 1.2 * 1.1 * 1.1 * 1.1 * 1.1 * 1.1)
 
 
-class JianYingLiuHen(MagicalSkill):
+class 剑影留痕(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "剑影留痕"
@@ -200,7 +176,7 @@ class JianYingLiuHen(MagicalSkill):
         self.cd_base = 10 * 16
 
 
-class FanYinJiJie(Skill):
+class 繁音急节(Skill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "繁音急节"
@@ -215,7 +191,7 @@ class FanYinJiJie(Skill):
         self.status.buffs["繁音急节"].trigger()
 
 
-class XinGuXian(Skill):
+class 心鼓弦(Skill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "心鼓弦"
@@ -225,7 +201,7 @@ class XinGuXian(Skill):
         self.cd_base = 1200 * 16
 
 
-class PoLuoMen(Skill):
+class 婆罗门(Skill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "婆罗门"
@@ -238,10 +214,10 @@ class PoLuoMen(Skill):
 """
 
 
-class DaiXianJiQuXinZhuang(MagicalSkill):
+class 玳弦急曲_新妆(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "玳弦急曲·新妆"
+        self.name = "玳弦急曲-新妆"
 
         self.is_cast = False
 
@@ -251,7 +227,7 @@ class DaiXianJiQuXinZhuang(MagicalSkill):
         self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(85 * 0.45 * 0.9 * 1.25 * 1.05)
 
 
-class GuangLingYue(Skill):
+class 广陵月(Skill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "广陵月"
@@ -266,10 +242,10 @@ class GuangLingYue(Skill):
         self.status.buffs["广陵月"].trigger()
 
 
-class GuangLingYueDamage(MagicalSkill):
+class 广陵月_伤害(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "广陵月·伤害"
+        self.name = "广陵月-伤害"
 
         self.is_cast = False
         self.is_hit = False
@@ -280,13 +256,13 @@ class GuangLingYueDamage(MagicalSkill):
 
     def pre_cast(self):
         super().pre_cast()
-        self.status.buffs["广陵月·会效"].trigger()
+        self.status.buffs["广陵月-会效"].trigger()
 
 
-class LiuYuDot(MagicalSkill):
+class 流玉_持续(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "流玉·持续"
+        self.name = "流玉-持续"
 
         self.is_cast = False
 
@@ -303,17 +279,17 @@ class LiuYuDot(MagicalSkill):
 
     def pre_cast(self):
         super().pre_cast()
-        self.status.buffs["流玉·持续"].trigger()
+        self.status.buffs["流玉-持续"].trigger()
 
     def post_cast(self):
         super().post_cast()
-        self.status.skills["流玉·破招"].cast()
+        self.status.skills["破·流玉"].cast()
 
 
-class LiuYuSurplus(MagicalSkill):
+class 破_流玉(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "流玉·破招"
+        self.name = "破·流玉"
 
         self.is_cast = False
         self.is_hit = False
@@ -322,7 +298,7 @@ class LiuYuSurplus(MagicalSkill):
         self.surplus_cof = SURPLUS_COF(1024 * 1024 * (1.2 - 1))
 
 
-class ChaiYai(MagicalSkill):
+class 钗燕(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "钗燕"
@@ -340,7 +316,7 @@ class ChaiYai(MagicalSkill):
         self.status.skills["钗燕·明"].cast()
 
 
-class ChaiYaiMing(MagicalSkill):
+class 钗燕_明(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "钗燕·明"
@@ -354,7 +330,7 @@ class ChaiYaiMing(MagicalSkill):
         self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(300 * 1.6 * 1.8 * 0.7 * 0.95)
 
 
-class YingXiu(MagicalSkill):
+class 盈袖(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "盈袖"
@@ -366,7 +342,7 @@ class YingXiu(MagicalSkill):
         self.attack_power_cof = MAGICAL_ATTACK_POWER_COF((400 + 250) * 0.25 * 0.5)
 
 
-class HuaBing(MagicalSkill):
+class 化冰(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "化冰"
@@ -379,10 +355,10 @@ class HuaBing(MagicalSkill):
         self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(300 * 1.05 * 1.2)
 
 
-class QiongXiaoDot(MagicalSkill):
+class 琼霄_持续(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "琼霄·持续"
+        self.name = "琼霄-持续"
 
         self.is_cast = False
         self.is_hit = False
@@ -401,15 +377,15 @@ class QiongXiaoDot(MagicalSkill):
     def post_hit(self):
         super().post_hit()
         if self.status.counts[self.name] == 1:
-            self.status.skills["急曲·持续"].cast()
-        if not self.status.stacks["琼霄·冷却"] and self.status.stacks["急曲·持续"] == 3:
-            self.status.stacks["琼霄·急曲"].cast()
+            self.status.skills["急曲-持续"].cast()
+        if not self.status.stacks["琼霄-冷却"] and self.status.stacks["急曲-持续"] == 3:
+            self.status.stacks["琼霄-急曲"].cast()
 
 
-class QiongXiao(MagicalSkill):
+class 琼霄_急曲(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "琼霄·急曲"
+        self.name = "琼霄-急曲"
 
         self.is_cast = False
         self.is_hit = False
@@ -420,10 +396,10 @@ class QiongXiao(MagicalSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["琼霄·冷却"].trigger()
+        self.status.buffs["琼霄-冷却"].trigger()
 
 
-class NingHua(MagicalSkill):
+class 凝华(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "凝华"
@@ -444,7 +420,7 @@ class NingHua(MagicalSkill):
         super().post_cast()
 
 
-class NingHuaMing(MagicalSkill):
+class 凝华_明(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "凝华·明"
@@ -462,7 +438,7 @@ class NingHuaMing(MagicalSkill):
         }
 
 
-class JianPoXuKongDivine(MagicalSkill):
+class 剑破虚空_神兵(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "剑破虚空·神兵"
@@ -477,10 +453,10 @@ class JianPoXuKongDivine(MagicalSkill):
         self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(65)
 
 
-class QiTunChangJiangDot(MagicalSkill):
+class 气吞长江_持续(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "气吞长江·持续"
+        self.name = "气吞长江-持续"
 
         self.is_cast = False
         self.is_hit = False
@@ -492,15 +468,18 @@ class QiTunChangJiangDot(MagicalSkill):
         self.count_base = 10
 
         self.damage_base = 1
-        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(400 * 1.4)    # TODO: make sure
+        self.attack_power_cof = MAGICAL_DOT_ATTACK_POWER_COF(400 * 1.4, self.interval_base)
 
     def pre_cast(self):
         super().pre_cast()
-        self.status.buffs["气吞长江·持续"].trigger()
+        self.status.buffs["气吞长江-持续"].trigger()
 
 
-SKILLS = [LianHuanShuangDao, MingDongSiFang, JiQuDot, JiQuConsume, JiangHaiNingGuang, DaiXianJiQu,
-          DaiXianJiQuSurplus, JianPoXuKong, JianPoXuKongSurplus, JianQiChangJiang, JianYingLiuHen, FanYinJiJie,
-          XinGuXian, PoLuoMen, DaiXianJiQuXinZhuang, GuangLingYue, GuangLingYueDamage, LiuYuDot, LiuYuSurplus,
-          ChaiYai, ChaiYaiMing, YingXiu, HuaBing, QiongXiaoDot, QiongXiao, NingHua, NingHuaMing, JianPoXuKongDivine,
-          QiTunChangJiangDot]
+SKILLS_MAP = {
+    "通用": [连环双刀, ],
+    "猿公剑法": [急曲_持续, 玳弦急曲, 破, 剑破虚空, 破_虚空, 剑气长江, 剑影留痕],
+    "西河剑器": [名动四方, 江海凝光],
+    "剑器浑脱": [繁音急节, 心鼓弦, 婆罗门],
+    "奇穴": [玳弦急曲_新妆, 广陵月, 广陵月_伤害, 流玉_持续, 破_流玉, 钗燕, 钗燕_明, 盈袖, 化冰, 琼霄_持续, 琼霄_急曲, 凝华, 凝华_明]
+}
+SKILLS = sum(SKILLS_MAP.values(), [])

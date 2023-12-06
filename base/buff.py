@@ -71,6 +71,7 @@ class Buff:
             else:
                 self.status.durations[self.name] = self.status.skills[self.name].duration
         else:
+            # self.status.durations[self.name] = min(self.duration_max, self.status.durations[self.name] + self.duration)
             self.status.durations[self.name] = min(self.duration_max, self.duration)
 
         for _ in range(stack):

@@ -12,7 +12,7 @@ def hua_bing(status: Status):
 
 
 def fan_yin_ji_jie(status: Status):
-    return status.stacks["钗燕·计数"] == 2 or status.stacks["凝华"] == 6
+    return status.stacks["钗燕-计数"] == 2 or status.stacks["凝华"] == 6
 
 
 def guang_ling_yue(status: Status):
@@ -23,7 +23,7 @@ prepare = [
     "江海凝光", "玳弦急曲", "玳弦急曲"
 ]
 priority = [
-    "名动四方", ("心鼓弦", hua_bing), ("繁音急节", fan_yin_ji_jie), ("广陵月", guang_ling_yue), "剑影留痕"
+    "名动四方", "连环双刀", ("心鼓弦", hua_bing), ("繁音急节", fan_yin_ji_jie), ("广陵月", guang_ling_yue), "剑影留痕"
 ]
 loop = [
     "江海凝光", "剑破虚空", "玳弦急曲",

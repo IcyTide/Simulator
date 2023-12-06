@@ -210,6 +210,14 @@ class Skill:
         else:
             self.status.cds[self.name] = cd if cd else self.cd
 
+    def consume(self):
+        critical = self.roll < self.snapshot.critical_strike
+        count = self.count - self.status.counts[self.name]
+        self.record(critical, count)
+
+        self.status.buffs[self.name].clear()
+        self.post_cast()
+
     def pre_cast(self):
         if self.is_cast:
             self.status.casting = self.duration
@@ -261,8 +269,8 @@ class Skill:
 
         self.post_hit()
 
-    def record(self, critical):
-        self.status.record(self.record_damage(critical))
+    def record(self, critical, count=1):
+        self.status.record(self.record_damage(critical, count))
 
     def post_hit(self):
         for effect in self.post_hit_effect:
@@ -287,7 +295,7 @@ class Skill:
         if self.name in self.status.intervals:
             self.status.intervals.pop(self.name)
 
-    def record_damage(self, critical):
+    def record_damage(self, critical, count):
         raise NotImplementedError
 
     def save_snapshot(self):
@@ -359,7 +367,7 @@ class PhysicalSkill(Skill):
             haste=self.haste
         )
 
-    def record_damage(self, critical: bool):
+    def record_damage(self, critical: bool, count: int):
         return (
             (
                 ('agility_base', self.snapshot.agility_base),
@@ -384,7 +392,7 @@ class PhysicalSkill(Skill):
             (
                 ('skill', self.name),
                 ('critical', critical),
-                ('stack', self.stack),
+                ('stack', self.stack * count),
                 ('damage_base', self.damage_base),
                 ('damage_rand', self.damage_rand),
                 ('damage_gain', self.damage_gain),
@@ -474,7 +482,7 @@ class MagicalSkill(Skill):
             haste=self.haste
         )
 
-    def record_damage(self, critical: bool):
+    def record_damage(self, critical: bool, count: int):
         return (
             (
                 ('spirit_base', self.snapshot.spirit_base),
@@ -499,7 +507,7 @@ class MagicalSkill(Skill):
             (
                 ('skill', self.name),
                 ('critical', critical),
-                ('stack', self.stack),
+                ('stack', self.stack * count),
                 ('damage_base', self.damage_base),
                 ('damage_rand', self.damage_rand),
                 ('damage_gain', self.damage_gain),

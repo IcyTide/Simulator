@@ -6,7 +6,7 @@ from base.skill import PhysicalSkill, Skill
 """
 
 
-class ShuangFengDaoFa(PhysicalSkill):
+class 霜风刀法(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "霜风刀法"
@@ -19,7 +19,7 @@ class ShuangFengDaoFa(PhysicalSkill):
         self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
 
 
-class XiuMingChenShen(Skill):
+class 秀明尘身(Skill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "秀明尘身"
@@ -41,7 +41,7 @@ class XiuMingChenShen(Skill):
         self.status.buffs["雪絮金屏"].clear()
 
 
-class SongYanZhuWu(Skill):
+class 松烟竹雾(Skill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "松烟竹雾"
@@ -63,7 +63,7 @@ class SongYanZhuWu(Skill):
         self.status.buffs["雪絮金屏"].clear()
 
 
-class XueXuJinPing(Skill):
+class 雪絮金屏(Skill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "雪絮金屏"
@@ -85,7 +85,18 @@ class XueXuJinPing(Skill):
         self.status.buffs["雪絮金屏"].trigger()
 
 
-class LeiZouFengQie(PhysicalSkill):
+class 破(PhysicalSkill):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "破"
+
+        self.damage_base = 1
+        self.level_params = {
+            "surplus_cof": [SURPLUS_COF(1024 * 1024 * (n - 1)) for n in (0.1375, 0.275, 0.875)]
+        }
+
+
+class 雷走风切(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "雷走风切"
@@ -102,7 +113,7 @@ class LeiZouFengQie(PhysicalSkill):
         return not self.status.stacks["雪絮金屏"]
 
 
-class ShangJiangJunYin(PhysicalSkill):
+class 上将军印(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "上将军印"
@@ -120,7 +131,7 @@ class ShangJiangJunYin(PhysicalSkill):
         return self.status.stacks["秀明尘身"]
 
 
-class PoFuChenZhou(PhysicalSkill):
+class 破釜沉舟(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "破釜沉舟"
@@ -141,28 +152,16 @@ class PoFuChenZhou(PhysicalSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.skills["破釜沉舟·破招"].cast()
+        self.status.skills["破"].cast(3)
         if self.status.stacks["沉夜重雪"]:
             self.recharge()
-            self.status.skills["背水沉舟·持续"].cast()
+            self.status.skills["背水沉舟-持续"].cast()
 
 
-class PoFuChenZhouSurplus(PhysicalSkill):
+class 闹须弥_持续(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "破釜沉舟·破招"
-
-        self.is_cast = False
-        self.is_hit = False
-
-        self.damage_base = 1
-        self.surplus_cof = SURPLUS_COF(1024 * 1024 * (0.875 - 1))
-
-
-class NaoXuMiDot(PhysicalSkill):
-    def __init__(self, status):
-        super().__init__(status)
-        self.name = "闹须弥·持续"
+        self.name = "闹须弥-持续"
 
         self.is_cast = False
         self.is_hit = False
@@ -177,10 +176,10 @@ class NaoXuMiDot(PhysicalSkill):
 
     def pre_cast(self):
         super().pre_cast()
-        self.status.buffs["闹须弥·持续"].trigger()
+        self.status.buffs["闹须弥-持续"].trigger()
 
 
-class NaoXuMi(Skill):
+class 闹须弥(Skill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "闹须弥"
@@ -195,10 +194,10 @@ class NaoXuMi(Skill):
 
     def pre_cast(self):
         super().pre_cast()
-        self.status.skills["闹须弥·持续"].cast()
+        self.status.skills["闹须弥-持续"].cast()
 
 
-class QinLongLiuZhan(Skill):
+class 擒龙六斩(Skill):
     related_skills = ["逐鹰式"]
 
     def __init__(self, status):
@@ -221,19 +220,7 @@ class QinLongLiuZhan(Skill):
         self.status.skills["惊燕式"].cast()
 
 
-class QinLongLiuZhanSurplus(PhysicalSkill):
-    def __init__(self, status):
-        super().__init__(status)
-        self.name = "擒龙六斩·破招"
-
-        self.is_cast = False
-        self.is_hit = False
-
-        self.damage_base = 1
-        self.surplus_cof = SURPLUS_COF(1024 * 1024 * (0.275 - 1))
-
-
-class JingYanShi(PhysicalSkill):
+class 惊燕式(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "惊燕式"
@@ -252,11 +239,11 @@ class JingYanShi(PhysicalSkill):
     def post_cast(self):
         super().post_cast()
         self.attack_power_cof_gain -= 0.25 * self.count
-        self.status.skills["擒龙六斩·破招"].cast()
+        self.status.skills["破"].cast(2)
         self.status.skills["逐鹰式"].activate = True
 
 
-class ZhuYingShi(PhysicalSkill):
+class 逐鹰式(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "逐鹰式"
@@ -284,16 +271,16 @@ class ZhuYingShi(PhysicalSkill):
         super().post_hit()
 
     def post_cast(self):
-        self.activate = False
-        self.attack_power_cof_gain -= 0.5 * self.count
         super().post_cast()
-        self.status.skills["擒龙六斩·破招"].cast()
+        self.attack_power_cof_gain -= 0.5 * self.count
+        self.status.skills["破"].cast(2)
+        self.activate = False
 
 
-class JianBiQingYeDot(PhysicalSkill):
+class 坚壁清野_持续(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "坚壁清野·持续"
+        self.name = "坚壁清野-持续"
 
         self.is_cast = False
 
@@ -305,10 +292,10 @@ class JianBiQingYeDot(PhysicalSkill):
 
     def pre_cast(self):
         super().pre_cast()
-        self.status.buffs["坚壁清野·持续"].trigger()
+        self.status.buffs["坚壁清野-持续"].trigger()
 
 
-class JianBiQingYe(PhysicalSkill):
+class 坚壁清野(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "坚壁清野"
@@ -325,22 +312,10 @@ class JianBiQingYe(PhysicalSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.skills["坚壁清野·持续"].cast()
+        self.status.skills["坚壁清野-持续"].cast()
 
 
-class DaoXiaoFengYinSurplus(PhysicalSkill):
-    def __init__(self, status):
-        super().__init__(status)
-        self.name = "刀啸风吟·破招"
-
-        self.is_cast = False
-        self.is_hit = False
-
-        self.damage_base = 1
-        self.surplus_cof = SURPLUS_COF(1024 * 1024 * (0.1375 - 1))
-
-
-class DaoXiaoFengYin(PhysicalSkill):
+class 刀啸风吟(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "刀啸风吟"
@@ -358,7 +333,7 @@ class DaoXiaoFengYin(PhysicalSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.skills["刀啸风吟·破招"].cast()
+        self.status.skills["破"].cast(1)
 
 
 """
@@ -366,7 +341,7 @@ class DaoXiaoFengYin(PhysicalSkill):
 """
 
 
-class JianChen(PhysicalSkill):
+class 见尘(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "见尘"
@@ -387,7 +362,7 @@ class JianChen(PhysicalSkill):
         self.status.buffs["见尘"].trigger()
 
 
-class ChuGe(PhysicalSkill):
+class 楚歌(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "楚歌"
@@ -400,19 +375,7 @@ class ChuGe(PhysicalSkill):
         self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(1200 * 0.8)
 
 
-# class LinJiang(Skill):
-#     def __init__(self):
-#         super().__init__()
-#         self.name = "临江"
-#
-#         self.is_cast = False
-#
-#         self.damage_base = 150
-#         self.damage_rand = 50 * 0.1
-#         self.attack_power_cof = 40 * 1.1 * 0.8 * 1.1
-
-
-class JueQi(PhysicalSkill):
+class 绝期(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "绝期"
@@ -428,30 +391,10 @@ class JueQi(PhysicalSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.skills["闹须弥·持续"].cast()
+        self.status.skills["闹须弥-持续"].cast()
 
 
-class XiangQiDot(PhysicalSkill):
-    def __init__(self, status):
-        super().__init__(status)
-        self.name = "降麒式·持续"
-
-        self.is_cast = False
-
-        self.interval_list = [16] * 15
-
-        self.damage_base = 50
-        self.damage_rand = 5
-
-        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(60 * 2)
-        self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
-
-    def pre_cast(self):
-        super().pre_cast()
-        self.status.buffs["降麒式·持续"].trigger()
-
-
-class XiangQiShi(Skill):
+class 降麒式(Skill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "降麒式"
@@ -466,11 +409,33 @@ class XiangQiShi(Skill):
 
     def post_cast(self):
         super().post_cast()
+        self.status.buffs["降麒式-计数"].clear()
+        self.status.buffs["降麒式-就绪"].clear()
         self.status.buffs["降麒式"].trigger()
-        self.status.skills["降麒式·持续"].cast()
+        self.status.skills["降麒式-持续"].cast()
 
 
-class ShangJiangJunYinDivine(PhysicalSkill):
+class 降麒式_持续(PhysicalSkill):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "降麒式-持续"
+
+        self.is_cast = False
+
+        self.interval_list = [16] * 15
+
+        self.damage_base = 50
+        self.damage_rand = 5
+
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(60 * 2)
+        self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
+
+    def pre_cast(self):
+        super().pre_cast()
+        self.status.buffs["降麒式-持续"].trigger()
+
+
+class 上将军印_神兵(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "上将军印·神兵"
@@ -485,10 +450,10 @@ class ShangJiangJunYinDivine(PhysicalSkill):
         self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(25)
 
 
-class BeiShuiChenZhouDot(PhysicalSkill):
+class 背水沉舟_持续(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "背水沉舟·持续"
+        self.name = "背水沉舟-持续"
 
         self.is_cast = False
         self.is_hit = False
@@ -500,15 +465,19 @@ class BeiShuiChenZhouDot(PhysicalSkill):
         self.count_base = 6
 
         self.damage_base = 1
-        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(380)  # TODO: make sure
+        self.attack_power_cof = PHYSICAL_DOT_ATTACK_POWER_COF(380, self.interval_base)
 
     def pre_cast(self):
         super().pre_cast()
-        self.status.buffs["背水沉舟·持续"].trigger()
+        self.status.buffs["背水沉舟-持续"].trigger()
 
 
-SKILLS = [ShuangFengDaoFa, XiuMingChenShen, SongYanZhuWu, XueXuJinPing, LeiZouFengQie,
-          ShangJiangJunYin, PoFuChenZhou, PoFuChenZhouSurplus,
-          NaoXuMiDot, NaoXuMi, QinLongLiuZhan, QinLongLiuZhanSurplus, JingYanShi, ZhuYingShi,
-          JianBiQingYeDot, JianBiQingYe, DaoXiaoFengYin, DaoXiaoFengYinSurplus,
-          JianChen, ChuGe, JueQi, XiangQiDot, XiangQiShi]
+SKILLS_MAP = {
+    "通用": [霜风刀法, 破],
+    "殷雷腿": [雷走风切],
+    "秀明尘身": [秀明尘身, 上将军印, 破釜沉舟],
+    "松烟竹雾": [松烟竹雾, 闹须弥, 闹须弥_持续, 擒龙六斩, 惊燕式, 逐鹰式],
+    "雪絮金屏": [雪絮金屏, 刀啸风吟, 坚壁清野_持续, 坚壁清野],
+    "奇穴": [见尘, 楚歌, 绝期, 降麒式, 降麒式_持续],
+}
+SKILLS = sum(SKILLS_MAP.values(), [])
