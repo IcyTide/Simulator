@@ -4,7 +4,7 @@ from base.status import Status
 """ 七秀 """
 
 
-class XiuQi:
+class 袖气:
     def __init__(self, value):
         self.value = value
 
@@ -12,7 +12,7 @@ class XiuQi:
         status.attribute.all_major_base += self.value
 
 
-class ZuoXuanYouZhuan:
+class 左旋右转:
     class Inner:
         def __init__(self, value, stack):
             self.value = value
@@ -31,7 +31,7 @@ class ZuoXuanYouZhuan:
 """ 天策 """
 
 
-class HanRuLei:
+class 撼如雷:
     def __init__(self, value):
         self.value = value
 
@@ -39,7 +39,7 @@ class HanRuLei:
         status.attribute.physical_attack_power_gain += self.value
 
 
-class PoFeng:
+class 破风:
     class Inner:
         def __init__(self, value):
             self.value = value
@@ -60,7 +60,7 @@ class PoFeng:
             raise ValueError
 
 
-class ChengLongJian:
+class 乘龙箭:
     def __init__(self, value):
         self.value = value
 
@@ -68,7 +68,7 @@ class ChengLongJian:
         status.target.physical_shield_gain -= self.value
 
 
-class HaoLingSanJun:
+class 号令三军:
     class Inner:
         def __init__(self, duration, value, stack):
             self.duration = duration
@@ -88,7 +88,7 @@ class HaoLingSanJun:
         return self.Inner(self.duration, self.value, stack)
 
 
-class JiLei:
+class 激雷:
     class Inner:
         def __init__(self, value, rate):
             self.value = value
@@ -108,7 +108,7 @@ class JiLei:
 """ 少林 """
 
 
-class LiDiChengFo:
+class 立地成佛:
     class Inner:
         def __init__(self, value, rate):
             self.value = value
@@ -124,7 +124,7 @@ class LiDiChengFo:
         return self.Inner(self.value, rate)
 
 
-class SheShenHongFa:
+class 舍身弘法:
     class Inner:
         def __init__(self, value, stack, rate):
             self.value = value
@@ -144,7 +144,7 @@ class SheShenHongFa:
 """ 万花 """
 
 
-class QiuSu:
+class 秋肃:
     def __init__(self, value):
         self.value = value
 
@@ -152,7 +152,7 @@ class QiuSu:
         status.target.all_vulnerable = self.value
 
 
-class JiaoSu:
+class 皎素:
     class Inner:
         def __init__(self, value, rate):
             self.value = value
@@ -171,7 +171,7 @@ class JiaoSu:
 """ 纯阳 """
 
 
-class SuiXingChen:
+class 碎星辰:
     def __init__(self, value):
         self.value = value
 
@@ -179,7 +179,7 @@ class SuiXingChen:
         status.attribute.physical_critical_power_gain += self.value
 
 
-class PoCangQiong:
+class 破苍穹:
     def __init__(self, value):
         self.value = value
 
@@ -190,7 +190,7 @@ class PoCangQiong:
 """ 藏剑 """
 
 
-class JianFengBaiDuan:
+class 剑锋百锻:
     class Inner:
         def __init__(self, value, rate):
             self.value = value
@@ -209,7 +209,7 @@ class JianFengBaiDuan:
 """ 五毒 """
 
 
-class ShanYou:
+class 善友:
     def __init__(self, value):
         self.value = value
 
@@ -217,7 +217,7 @@ class ShanYou:
         status.attribute.cd_reduction += self.value
 
 
-class XianWangGuDing:
+class 仙王蛊鼎:
     class Inner:
         def __init__(self, value, rate):
             self.value = value
@@ -236,7 +236,7 @@ class XianWangGuDing:
 """ 明教 """
 
 
-class JieHuo:
+class 戒火:
     def __init__(self, value):
         self.value = value
 
@@ -245,7 +245,7 @@ class JieHuo:
             status.target.all_vulnerable = self.value
 
 
-class LieRi:
+class 烈日:
 
     def __init__(self, value):
         self.value = value
@@ -254,7 +254,7 @@ class LieRi:
         status.target.magical_vulnerable += self.value
 
 
-class ChaoShengYan:
+class 朝圣言:
     class Inner:
         def __init__(self, value, stack, rate):
             self.value = value
@@ -280,7 +280,7 @@ class ChaoShengYan:
 """ 丐帮 """
 
 
-class JiuZhongXian:
+class 酒中仙:
     def __init__(self, value):
         self.value = value
 
@@ -291,7 +291,7 @@ class JiuZhongXian:
 """ 苍云 """
 
 
-class XuRuo:
+class 虚弱:
     def __init__(self, value):
         self.value = value
 
@@ -299,7 +299,7 @@ class XuRuo:
         status.target.physical_shield_gain -= self.value
 
 
-class ZhenFen:
+class 振奋:
     class Inner:
         def __init__(self, value, stack, rate):
             self.value = value
@@ -317,7 +317,7 @@ class ZhenFen:
         return self.Inner(self.value, stack, rate)
 
 
-class HanXiaoQianJun:
+class 寒啸千军:
     class Inner:
         def __init__(self, value, rate):
             self.value = value
@@ -337,7 +337,7 @@ class HanXiaoQianJun:
 """ 长歌 """
 
 
-class ZhuangZhouMeng:
+class 庄周梦:
     class Inner:
         def __init__(self, value, stack, rate):
             self.value = value
@@ -357,7 +357,7 @@ class ZhuangZhouMeng:
 """ 霸刀 """
 
 
-class ShuKuang:
+class 疏狂:
     class Inner:
         def __init__(self, value, rate):
             self.value = value
@@ -377,7 +377,7 @@ class ShuKuang:
 """ 药宗 """
 
 
-class PiaoHuang:
+class 飘黄:
     class Inner:
         def __init__(self, rate):
             self.rate = rate
@@ -389,7 +389,7 @@ class PiaoHuang:
         return self.Inner(rate)
 
 
-class PeiWu:
+class 配伍:
     class Inner:
         def __init__(self, value, rate):
             self.value = value
@@ -493,43 +493,43 @@ TEAM_GAINS_NAME = {
     "配伍": f"配伍({round(TEAM_GAINS_NUMBER['配伍'] * 100)}%全属性)",
 }
 TEAM_GAINS = {
-    "袖气": XiuQi(TEAM_GAINS_NUMBER["袖气"]),
-    "左旋右转": ZuoXuanYouZhuan(TEAM_GAINS_NUMBER["左旋右转"]),
+    "袖气": 袖气(TEAM_GAINS_NUMBER["袖气"]),
+    "左旋右转": 左旋右转(TEAM_GAINS_NUMBER["左旋右转"]),
 
-    "撼如雷": HanRuLei(TEAM_GAINS_NUMBER["撼如雷"]),
-    "破风": PoFeng(TEAM_GAINS_NUMBER["破风"], TEAM_GAINS_NUMBER["劲风"]),
-    "乘龙箭": ChengLongJian(TEAM_GAINS_NUMBER["乘龙箭"]),
-    "号令三军": HaoLingSanJun(TEAM_GAINS_NUMBER["号令三军"]),
-    "激雷": JiLei(TEAM_GAINS_NUMBER["激雷"]),
+    "撼如雷": 撼如雷(TEAM_GAINS_NUMBER["撼如雷"]),
+    "破风": 破风(TEAM_GAINS_NUMBER["破风"], TEAM_GAINS_NUMBER["劲风"]),
+    "乘龙箭": 乘龙箭(TEAM_GAINS_NUMBER["乘龙箭"]),
+    "号令三军": 号令三军(TEAM_GAINS_NUMBER["号令三军"]),
+    "激雷": 激雷(TEAM_GAINS_NUMBER["激雷"]),
 
-    "立地成佛": LiDiChengFo(TEAM_GAINS_NUMBER["立地成佛"]),
-    "舍身弘法": SheShenHongFa(TEAM_GAINS_NUMBER["舍身弘法"]),
+    "立地成佛": 立地成佛(TEAM_GAINS_NUMBER["立地成佛"]),
+    "舍身弘法": 舍身弘法(TEAM_GAINS_NUMBER["舍身弘法"]),
 
-    "秋肃": QiuSu(TEAM_GAINS_NUMBER["秋肃"]),
-    "皎素": JiaoSu(TEAM_GAINS_NUMBER["皎素"]),
+    "秋肃": 秋肃(TEAM_GAINS_NUMBER["秋肃"]),
+    "皎素": 皎素(TEAM_GAINS_NUMBER["皎素"]),
 
-    "碎星辰": SuiXingChen(TEAM_GAINS_NUMBER["碎星辰"]),
-    "破苍穹": PoCangQiong(TEAM_GAINS_NUMBER["破苍穹"]),
+    "碎星辰": 碎星辰(TEAM_GAINS_NUMBER["碎星辰"]),
+    "破苍穹": 破苍穹(TEAM_GAINS_NUMBER["破苍穹"]),
 
-    "剑锋百锻": JianFengBaiDuan(TEAM_GAINS_NUMBER["破苍穹"]),
+    "剑锋百锻": 剑锋百锻(TEAM_GAINS_NUMBER["破苍穹"]),
 
-    "善友": ShanYou(TEAM_GAINS_NUMBER["善友"]),
-    "仙王蛊鼎": XianWangGuDing(TEAM_GAINS_NUMBER["仙王蛊鼎"]),
+    "善友": 善友(TEAM_GAINS_NUMBER["善友"]),
+    "仙王蛊鼎": 仙王蛊鼎(TEAM_GAINS_NUMBER["仙王蛊鼎"]),
 
-    "戒火": JieHuo(TEAM_GAINS_NUMBER["戒火"]),
-    "烈日": LieRi(TEAM_GAINS_NUMBER["烈日"]),
-    "朝圣言": ChaoShengYan(TEAM_GAINS_NUMBER["朝圣言"], TEAM_GAINS_NUMBER["圣浴明心"]),
+    "戒火": 戒火(TEAM_GAINS_NUMBER["戒火"]),
+    "烈日": 烈日(TEAM_GAINS_NUMBER["烈日"]),
+    "朝圣言": 朝圣言(TEAM_GAINS_NUMBER["朝圣言"], TEAM_GAINS_NUMBER["圣浴明心"]),
 
-    "酒中仙": JiuZhongXian(TEAM_GAINS_NUMBER["酒中仙"]),
+    "酒中仙": 酒中仙(TEAM_GAINS_NUMBER["酒中仙"]),
 
-    "虚弱": XuRuo(TEAM_GAINS_NUMBER["虚弱"]),
-    "寒啸千军": HanXiaoQianJun(TEAM_GAINS_NUMBER["寒啸千军"]),
-    "振奋": ZhenFen(TEAM_GAINS_NUMBER["振奋"]),
+    "虚弱": 虚弱(TEAM_GAINS_NUMBER["虚弱"]),
+    "振奋": 振奋(TEAM_GAINS_NUMBER["振奋"]),
+    "寒啸千军": 寒啸千军(TEAM_GAINS_NUMBER["寒啸千军"]),
 
-    "庄周梦": ZhuangZhouMeng(TEAM_GAINS_NUMBER["庄周梦"]),
+    "庄周梦": 庄周梦(TEAM_GAINS_NUMBER["庄周梦"]),
 
-    "疏狂": ShuKuang(TEAM_GAINS_NUMBER["疏狂"]),
+    "疏狂": 疏狂(TEAM_GAINS_NUMBER["疏狂"]),
 
-    "飘黄": PiaoHuang(),
-    "配伍": PeiWu(TEAM_GAINS_NUMBER["配伍"]),
+    "飘黄": 飘黄(),
+    "配伍": 配伍(TEAM_GAINS_NUMBER["配伍"]),
 }

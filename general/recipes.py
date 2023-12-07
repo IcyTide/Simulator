@@ -1,6 +1,11 @@
 from base.status import Status
 
 
+class EmptyRecipe:
+    def __call__(self, status: Status):
+        pass
+
+
 class DamageRecipe:
     def __init__(self, skills, value):
         self.skills = skills

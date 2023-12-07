@@ -90,6 +90,9 @@ class 破(PhysicalSkill):
         super().__init__(status)
         self.name = "破"
 
+        self.is_cast = False
+        self.is_hit = False
+
         self.damage_base = 1
         self.level_params = {
             "surplus_cof": [SURPLUS_COF(1024 * 1024 * (n - 1)) for n in (0.1375, 0.275, 0.875)]

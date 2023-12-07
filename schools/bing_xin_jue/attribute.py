@@ -23,7 +23,7 @@ class BingXinJue(Attribute):
         }
         self.delta_attr = "magical_critical_strike_base"
         self.delta_grad_attrs = {
-            "spirit_base": SPIRIT_TO_CRITICAL_STRIKE,  # must bring same quantity of delta_attr
+            "spirit_base": SPIRIT_TO_CRITICAL_STRIKE + self.SPIRIT_TO_CRITICAL_STRIKE,
             "magical_critical_strike_base": 1
         }
 

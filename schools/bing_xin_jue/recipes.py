@@ -14,7 +14,7 @@ class 剑气长江概率急曲:
         status.skills["剑气长江"].post_cast_effect.append(self.post_cast_effect)
 
 
-class 满堂:
+class 繁音急节满堂:
     @staticmethod
     def post_cast_effect(self: Skill):
         self.status.buffs["满堂"].trigger()
@@ -63,7 +63,7 @@ RECIPE_GAINS = {
     "繁音急节(-3冷却)": CDReductionRecipe(["繁音急节"], 48),
     "繁音急节(-2冷却)": CDReductionRecipe(["繁音急节"], 32),
     "繁音急节(-1冷却)": CDReductionRecipe(["繁音急节"], 16),
-    "繁音急节(满堂)": 满堂(),
+    "繁音急节(满堂)": 繁音急节满堂(),
 
     "江海凝光(15%伤害)·1": DamageRecipe(["江海凝光"], 154 / 1024),
     "江海凝光(15%伤害)·2": DamageRecipe(["江海凝光"], 154 / 1024),

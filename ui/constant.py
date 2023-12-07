@@ -1,8 +1,8 @@
 from utils.damage import physical_damage, magical_damage
 from general.gains import equipment
 
-import bei_ao_jue
-import bing_xin_jue
+from schools import bei_ao_jue
+from schools import bing_xin_jue
 
 """ Directory """
 EQUIPMENTS_DIR = "ui/assets/equipments.json"

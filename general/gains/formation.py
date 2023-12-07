@@ -1,7 +1,7 @@
 from base.status import Status
 
 
-class WeiGongZheChong:
+class 卫公折冲阵:
     def __init__(self, rate, core_rate):
         self.rate = rate
         self.core_rate = core_rate
@@ -12,8 +12,8 @@ class WeiGongZheChong:
         status.attribute.physical_attack_power_gain += self.rate * 51 / 1024
 
 
-class BeiDouQiXing:
-    def __init__(self, rate):
+class 北斗七星阵:
+    def __init__(self, rate, core_rate):
         self.stack = 5
         self.rate = rate
         self.core_rate = core_rate
@@ -25,8 +25,8 @@ class BeiDouQiXing:
         status.attribute.physical_critical_strike_gain += self.rate * 0.01 * self.stack
 
 
-class YiShanGuanLan:
-    def __init__(self, rate):
+class 依山观澜阵:
+    def __init__(self, rate, core_rate):
         pass
 
     def __call__(self, status: Status):
@@ -35,7 +35,7 @@ class YiShanGuanLan:
         status.attribute.physical_critical_power_gain += 204 / 1024
 
 
-class LiuXingGanYue:
+class 流星赶月阵:
     def __init__(self, rate, core_rate):
         self.rate = rate
         self.core_rate = core_rate
@@ -47,7 +47,7 @@ class LiuXingGanYue:
         status.attribute.physical_critical_strike_gain += self.rate * 0.05
 
 
-class QianJiBaiBian:
+class 千机百变阵:
     def __init__(self, rate, core_rate):
         self.rate = rate
         self.core_rate = core_rate
@@ -58,8 +58,8 @@ class QianJiBaiBian:
         status.attribute.all_critical_strike_gain += self.rate * 0.05
 
 
-class XiangLongFuHu:
-    def __init__(self, rate):
+class 降龙伏虎阵:
+    def __init__(self, rate, core_rate):
         self.stack = 5
         self.rate = rate
         self.core_rate = core_rate
@@ -70,8 +70,8 @@ class XiangLongFuHu:
         status.attribute.physical_overcome_base += self.rate * 770 * self.stack
 
 
-class FengLingHengJue:
-    def __init__(self, rate):
+class 锋凌横绝阵:
+    def __init__(self, rate, core_rate):
         self.stack = 5
         self.rate = rate
         self.core_rate = core_rate
@@ -82,7 +82,7 @@ class FengLingHengJue:
         status.attribute.physical_critical_power_gain += self.rate * 20 / 1024 * self.stack
 
 
-class ShuangLanXiFeng:
+class 霜岚洗锋阵:
     def __init__(self, rate, core_rate):
         self.rate = rate
         self.core_rate = core_rate
@@ -94,8 +94,8 @@ class ShuangLanXiFeng:
         status.attribute.all_critical_strike_gain += self.rate * 0.05
 
 
-class XuHaiYinGui:
-    def __init__(self, rate):
+class 墟海引归阵:
+    def __init__(self, rate, core_rate):
         pass
 
     def __call__(self, status: Status):
@@ -104,7 +104,7 @@ class XuHaiYinGui:
         status.attribute.physical_overcome_gain += 102 / 1024
 
 
-class LongHuangXueFeng:
+class 龙皇雪风阵:
     def __init__(self, rate, core_rate):
         self.rate = rate
         self.core_rate = core_rate
@@ -116,8 +116,8 @@ class LongHuangXueFeng:
         status.attribute.physical_attack_power_gain += self.rate * 102 / 1024
 
 
-class HengYunPoFeng:
-    def __init__(self, rate):
+class 横云破锋阵:
+    def __init__(self, rate, core_rate):
         pass
 
     def __call__(self, status: Status):
@@ -126,7 +126,7 @@ class HengYunPoFeng:
         status.attribute.physical_overcome_gain += 256 / 1024
 
 
-class CangWuYinLing:
+class 苍梧引灵阵:
     def __init__(self, rate, core_rate):
         self.rate = rate
         self.core_rate = core_rate
@@ -163,17 +163,17 @@ FORMATION_GAIN_NAMES = {
 }
 
 FORMATION_GAINS = {
-    "千机百变阵": QianJiBaiBian,
-    "苍梧引灵阵": CangWuYinLing,
+    "千机百变阵": 千机百变阵,
+    "苍梧引灵阵": 苍梧引灵阵,
 
-    "卫公折冲阵": WeiGongZheChong,
-    "北斗七星阵": BeiDouQiXing,
-    "依山观澜阵": YiShanGuanLan,
-    "流星赶月阵": LiuXingGanYue,
-    "降龙伏虎阵": XiangLongFuHu,
-    "锋凌横绝阵": FengLingHengJue,
-    "霜岚洗锋阵": ShuangLanXiFeng,
-    "墟海引归阵": XuHaiYinGui,
-    "龙皇雪风阵": LongHuangXueFeng,
-    "横云破锋阵": HengYunPoFeng
+    "卫公折冲阵": 卫公折冲阵,
+    "北斗七星阵": 北斗七星阵,
+    "依山观澜阵": 依山观澜阵,
+    "流星赶月阵": 流星赶月阵,
+    "降龙伏虎阵": 降龙伏虎阵,
+    "锋凌横绝阵": 锋凌横绝阵,
+    "霜岚洗锋阵": 霜岚洗锋阵,
+    "墟海引归阵": 墟海引归阵,
+    "龙皇雪风阵": 龙皇雪风阵,
+    "横云破锋阵": 横云破锋阵
 }
