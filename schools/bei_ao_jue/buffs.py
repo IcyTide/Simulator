@@ -1,8 +1,8 @@
 from base.buff import Buff
-from general.buffs import PhysicalCriticalSet
+from general.buffs import 外功双会套装
 
 
-class 朔气(PhysicalCriticalSet):
+class 朔气(外功双会套装):
     def __init__(self, status):
         super().__init__(status)
         self.name = "朔气"

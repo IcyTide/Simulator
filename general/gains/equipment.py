@@ -4,7 +4,7 @@ from base.status import Status
 """ Equipment Gains """
 
 
-class PhysicalWaterWeaponGain:
+class 外功水特效:
     def __init__(self, value):
         self.stacks = 10
         self.value = value
@@ -13,7 +13,7 @@ class PhysicalWaterWeaponGain:
         status.attribute.physical_attack_power_base += self.value * self.stacks
 
 
-class MagicalWaterWeaponGain:
+class 内功水特效:
     def __init__(self, value):
         self.stacks = 10
         self.value = value
@@ -22,7 +22,7 @@ class MagicalWaterWeaponGain:
         status.attribute.magical_attack_power_base += self.value * self.stacks
 
 
-class PhysicalWindPendantGain:
+class 外功风特效:
     def __init__(self, value):
         self.duration = 15
         self.cd = 180
@@ -32,7 +32,7 @@ class PhysicalWindPendantGain:
         status.attribute.physical_overcome_base += self.value * self.duration / self.cd
 
 
-class MagicalWindPendantGain:
+class 内功风特效:
     def __init__(self, value):
         self.duration = 15
         self.cd = 180
@@ -42,7 +42,7 @@ class MagicalWindPendantGain:
         status.attribute.magical_overcome_base += self.value * self.duration / self.cd
 
 
-class SpecialEnchantHatGain:
+class 大附魔帽:
     def __init__(self, value):
         self.value = value
 
@@ -51,7 +51,7 @@ class SpecialEnchantHatGain:
         status.attribute.magical_overcome_base += self.value
 
 
-class SpecialEnchantJacketGain:
+class 大附魔衣:
     def __init__(self, value1, value2):
         self.value1 = value1
         self.value2 = value2
@@ -61,10 +61,10 @@ class SpecialEnchantJacketGain:
         status.attribute.magical_attack_power_base += self.value2
 
 
-class SpecialEnchantBeltGain:
+class 大附魔腰:
     @staticmethod
     def enchant_belt_post_hit(self: Skill):
-        if not self.status.stacks["大附魔腰·冷却"]:
+        if not self.status.stacks["大附魔腰-冷却"]:
             self.status.skills["大附魔腰"].cast()
 
     def __call__(self, status: Status):
@@ -73,10 +73,10 @@ class SpecialEnchantBeltGain:
                 skill.post_hit_effect.append(self.enchant_belt_post_hit)
 
 
-class SpecialEnchantWristGain:
+class 大附魔腕:
     @staticmethod
     def enchant_wrist_post_hit(self: Skill):
-        if not self.status.stacks["大附魔手·冷却"]:
+        if not self.status.stacks["大附魔手-冷却"]:
             self.status.skills["昆吾·弦刃"].cast()
 
     def __call__(self, status: Status):
@@ -85,10 +85,10 @@ class SpecialEnchantWristGain:
                 skill.post_hit_effect.append(self.enchant_wrist_post_hit)
 
 
-class SpecialEnchantShoesGain:
+class 大附魔鞋:
     @staticmethod
     def enchant_shoes_critical_hit(self: Skill):
-        if not self.status.stacks["大附魔脚·冷却"]:
+        if not self.status.stacks["大附魔脚-冷却"]:
             self.status.skills["刃凌"].cast()
 
     def __call__(self, status: Status):
@@ -141,25 +141,25 @@ EQUIP_GAINS_NAME = {
     "6800-116": f"风特效 {EQUIP_GAINS_NUMBER['6800-116']} 外破",
 }
 EQUIP_GAINS = {
-    "15436-9": SpecialEnchantHatGain(EQUIP_GAINS_NUMBER['15436-9']),
-    "15436-10": SpecialEnchantHatGain(EQUIP_GAINS_NUMBER['15436-10']),
-    "15436-11": SpecialEnchantHatGain(EQUIP_GAINS_NUMBER['15436-11']),
-    "22151-9": SpecialEnchantJacketGain(*EQUIP_GAINS_NUMBER['22151-9']),
-    "22151-10": SpecialEnchantJacketGain(*EQUIP_GAINS_NUMBER['22151-10']),
-    "22151-11": SpecialEnchantJacketGain(*EQUIP_GAINS_NUMBER['22151-11']),
-    "22169": SpecialEnchantBeltGain(),
-    "22166": SpecialEnchantWristGain(),
-    "33247": SpecialEnchantShoesGain(),
-    "2400": MagicalWaterWeaponGain(EQUIP_GAINS_NUMBER['2400']),
-    "2401": PhysicalWaterWeaponGain(EQUIP_GAINS_NUMBER['2401']),
-    "2497": MagicalWaterWeaponGain(EQUIP_GAINS_NUMBER['2497']),
-    "2498": PhysicalWaterWeaponGain(EQUIP_GAINS_NUMBER['2498']),
-    "2539": MagicalWaterWeaponGain(EQUIP_GAINS_NUMBER['2539']),
-    "2540": PhysicalWaterWeaponGain(EQUIP_GAINS_NUMBER['2540']),
-    "6800-101": MagicalWindPendantGain(EQUIP_GAINS_NUMBER['6800-101']),
-    "6800-102": PhysicalWindPendantGain(EQUIP_GAINS_NUMBER['6800-102']),
-    "6800-108": MagicalWindPendantGain(EQUIP_GAINS_NUMBER['6800-108']),
-    "6800-109": PhysicalWindPendantGain(EQUIP_GAINS_NUMBER['6800-109']),
-    "6800-115": MagicalWindPendantGain(EQUIP_GAINS_NUMBER['6800-115']),
-    "6800-116": PhysicalWindPendantGain(EQUIP_GAINS_NUMBER['6800-116']),
+    "15436-9": 大附魔帽(EQUIP_GAINS_NUMBER['15436-9']),
+    "15436-10": 大附魔帽(EQUIP_GAINS_NUMBER['15436-10']),
+    "15436-11": 大附魔帽(EQUIP_GAINS_NUMBER['15436-11']),
+    "22151-9": 大附魔衣(*EQUIP_GAINS_NUMBER['22151-9']),
+    "22151-10": 大附魔衣(*EQUIP_GAINS_NUMBER['22151-10']),
+    "22151-11": 大附魔衣(*EQUIP_GAINS_NUMBER['22151-11']),
+    "22169": 大附魔腰(),
+    "22166": 大附魔腕(),
+    "33247": 大附魔鞋(),
+    "2400": 内功水特效(EQUIP_GAINS_NUMBER['2400']),
+    "2401": 外功水特效(EQUIP_GAINS_NUMBER['2401']),
+    "2497": 内功水特效(EQUIP_GAINS_NUMBER['2497']),
+    "2498": 外功水特效(EQUIP_GAINS_NUMBER['2498']),
+    "2539": 内功水特效(EQUIP_GAINS_NUMBER['2539']),
+    "2540": 外功水特效(EQUIP_GAINS_NUMBER['2540']),
+    "6800-101": 内功风特效(EQUIP_GAINS_NUMBER['6800-101']),
+    "6800-102": 外功风特效(EQUIP_GAINS_NUMBER['6800-102']),
+    "6800-108": 内功风特效(EQUIP_GAINS_NUMBER['6800-108']),
+    "6800-109": 外功风特效(EQUIP_GAINS_NUMBER['6800-109']),
+    "6800-115": 内功风特效(EQUIP_GAINS_NUMBER['6800-115']),
+    "6800-116": 外功风特效(EQUIP_GAINS_NUMBER['6800-116']),
 }

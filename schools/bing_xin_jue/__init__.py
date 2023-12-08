@@ -1,7 +1,10 @@
 from base.status import Status
 from schools.bing_xin_jue.attribute import BingXinJue
+from schools.bing_xin_jue.gains import EQUIP_GAINS_NAME, EQUIP_GAINS
 from schools.bing_xin_jue.skills import SKILLS
 from schools.bing_xin_jue.buffs import BUFFS
+from schools.bing_xin_jue.talents import TALENTS, TALENT_GAINS
+from schools.bing_xin_jue.recipes import RECIPES, RECIPE_GAINS
 
 
 def hua_bing(status: Status):

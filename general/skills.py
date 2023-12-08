@@ -2,33 +2,7 @@ from base.constant import PHYSICAL_ATTACK_POWER_COF, MAGICAL_ATTACK_POWER_COF
 from base.skill import Skill, PhysicalSkill, MagicalSkill
 
 
-class ZhuYunHanRui(MagicalSkill):
-    def __init__(self, status):
-        super().__init__(status)
-        self.name = "逐云寒蕊"
-
-        self.is_cast = False
-        self.is_hit = False
-
-        self.damage_base = 1
-        self.damage_rand = 0
-        self.attack_power_cof = 0
-        self.skill_shield_ignore = 1
-
-
-class WindPendant(Skill):
-    def __init__(self, status):
-        super().__init__(status)
-        self.name = "风特效"
-
-        self.is_cast = False
-        self.is_hit = False
-
-    def post_cast(self):
-        self.status.buffs["风特效"].trigger()
-
-
-class BeltEnchant(Skill):
+class 大附魔腰(Skill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "大附魔腰"
@@ -41,13 +15,13 @@ class BeltEnchant(Skill):
     def post_cast(self):
         super().post_cast()
         if self.roll < 0.3:
-            self.status.buffs["大附魔腰·1%"].trigger()
+            self.status.buffs["大附魔腰"].trigger(1)
         else:
-            self.status.buffs["大附魔腰·5%"].trigger()
-        self.status.buffs["大附魔腰·冷却"].trigger()
+            self.status.buffs["大附魔腰"].trigger(2)
+        self.status.buffs["大附魔腰-冷却"].trigger()
 
 
-class PhysicalWristEnchant(PhysicalSkill):
+class 外功_昆吾_弦刃(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "昆吾·弦刃"
@@ -63,10 +37,10 @@ class PhysicalWristEnchant(PhysicalSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["大附魔手·冷却"].trigger()
+        self.status.buffs["大附魔手-冷却"].trigger()
 
 
-class MagicalWristEnchant(MagicalSkill):
+class 内功_昆吾_弦刃(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "昆吾·弦刃"
@@ -82,10 +56,10 @@ class MagicalWristEnchant(MagicalSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["大附魔手·冷却"].trigger()
+        self.status.buffs["大附魔手-冷却"].trigger()
 
 
-class PhysicalShoesEnchant(PhysicalSkill):
+class 外功_刃凌(PhysicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "刃凌"
@@ -99,10 +73,10 @@ class PhysicalShoesEnchant(PhysicalSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["大附魔脚·冷却"].trigger()
+        self.status.buffs["大附魔脚-冷却"].trigger()
 
 
-class MagicalShoesEnchant(MagicalSkill):
+class 内功_刃凌(MagicalSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "刃凌"
@@ -116,10 +90,10 @@ class MagicalShoesEnchant(MagicalSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["大附魔脚·冷却"].trigger()
+        self.status.buffs["大附魔脚-冷却"].trigger()
 
 
 SKILLS = {
-    "外功": [BeltEnchant, PhysicalWristEnchant, PhysicalShoesEnchant],
-    "内功": [BeltEnchant, MagicalWristEnchant, MagicalShoesEnchant]
+    "外功": [大附魔腰, 外功_昆吾_弦刃, 外功_刃凌],
+    "内功": [大附魔腰, 内功_昆吾_弦刃, 内功_刃凌]
 }

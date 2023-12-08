@@ -1,8 +1,8 @@
 from base.buff import Buff
-from general.buffs import MagicalCriticalSet
+from general.buffs import 内功双会套装
 
 
-class 嗔怒(MagicalCriticalSet):
+class 嗔怒(内功双会套装):
     def __init__(self, status):
         super().__init__(status)
         self.name = "嗔怒"
@@ -189,6 +189,7 @@ class 钗燕_计数(Buff):
     def clear(self):
         super().clear()
         self.count_list = []
+
 
 class 江海凝光_钗燕(Buff):
     def __init__(self, status):
