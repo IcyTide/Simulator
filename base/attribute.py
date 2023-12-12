@@ -353,8 +353,9 @@ class Attribute:
     def base_physical_attack_power(self, base_physical_attack_power):
         base_physical_attack_power = int(base_physical_attack_power)
         self._base_physical_attack_power = base_physical_attack_power
-        self.physical_attack_power = (base_physical_attack_power * (1 + self._physical_attack_power_gain)
-                                      + self._extra_physical_attack_power)
+        self.physical_attack_power = (base_physical_attack_power +
+                                      base_physical_attack_power * self._physical_attack_power_gain +
+                                      self._extra_physical_attack_power)
 
     @property
     def physical_attack_power_gain(self):
@@ -363,8 +364,9 @@ class Attribute:
     @physical_attack_power_gain.setter
     def physical_attack_power_gain(self, physical_attack_power_gain):
         self._physical_attack_power_gain = physical_attack_power_gain
-        self.physical_attack_power = (self._base_physical_attack_power * (1 + physical_attack_power_gain)
-                                      + self._extra_physical_attack_power)
+        self.physical_attack_power = (self._base_physical_attack_power +
+                                      self._base_physical_attack_power * physical_attack_power_gain +
+                                      self._extra_physical_attack_power)
 
     @property
     def extra_physical_attack_power(self):
@@ -374,8 +376,9 @@ class Attribute:
     def extra_physical_attack_power(self, extra_physical_attack_power):
         extra_physical_attack_power = int(extra_physical_attack_power)
         self._extra_physical_attack_power = extra_physical_attack_power
-        self.physical_attack_power = (self._base_physical_attack_power * (1 + self._physical_attack_power_gain)
-                                      + extra_physical_attack_power)
+        self.physical_attack_power = (self._base_physical_attack_power +
+                                      self._base_physical_attack_power * self._physical_attack_power_gain +
+                                      extra_physical_attack_power)
 
     @property
     def physical_attack_power(self):
@@ -402,7 +405,8 @@ class Attribute:
     def base_magical_attack_power(self, base_magical_attack_power):
         base_magical_attack_power = int(base_magical_attack_power)
         self._base_magical_attack_power = base_magical_attack_power
-        self.magical_attack_power = (base_magical_attack_power * (1 + self._magical_attack_power_gain)
+        self.magical_attack_power = (base_magical_attack_power +
+                                     base_magical_attack_power * self._magical_attack_power_gain +
                                      + self._extra_magical_attack_power)
 
     @property
@@ -412,8 +416,9 @@ class Attribute:
     @magical_attack_power_gain.setter
     def magical_attack_power_gain(self, magical_attack_power_gain):
         self._magical_attack_power_gain = magical_attack_power_gain
-        self.magical_attack_power = (self._base_magical_attack_power * (1 + magical_attack_power_gain)
-                                     + self._extra_magical_attack_power)
+        self.magical_attack_power = (self._base_magical_attack_power +
+                                     self._base_magical_attack_power * magical_attack_power_gain +
+                                     self._extra_magical_attack_power)
 
     @property
     def extra_magical_attack_power(self):
@@ -423,8 +428,9 @@ class Attribute:
     def extra_magical_attack_power(self, extra_magical_attack_power):
         extra_magical_attack_power = int(extra_magical_attack_power)
         self._extra_magical_attack_power = extra_magical_attack_power
-        self.magical_attack_power = (self._base_magical_attack_power * (1 + self._magical_attack_power_gain)
-                                     + extra_magical_attack_power)
+        self.magical_attack_power = (self._base_magical_attack_power +
+                                     self._base_magical_attack_power * self._magical_attack_power_gain +
+                                     extra_magical_attack_power)
 
     @property
     def magical_attack_power(self):

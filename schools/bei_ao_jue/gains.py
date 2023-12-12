@@ -15,13 +15,15 @@ class 上将军印套装:
 
 class 朔气套装:
     @staticmethod
-    def critical_set_post_hit(self: Skill):
+    def critical_set_post_cast(self: Skill):
         self.status.buffs["朔气"].trigger()
 
     def __call__(self, status: Status):
         for skill in status.skills.values():
-            if skill.is_cast and skill.is_hit:
-                skill.post_hit_effect.append(self.critical_set_post_hit)
+            if skill.hit_with_cast:
+                skill.post_hit_effect.append(self.critical_set_post_cast)
+            elif skill.is_cast:
+                skill.post_cast_effect.append(self.critical_set_post_cast)
 
 
 class 刀啸风吟大橙武:
@@ -41,9 +43,10 @@ class 橙武特效:
 
     def __call__(self, status: Status):
         for skill in status.skills.values():
-            if skill.is_cast:
+            if skill.hit_with_cast:
+                skill.post_hit_effect.append(self.divine_post_cast)
+            elif skill.is_cast:
                 skill.post_cast_effect.append(self.divine_post_cast)
-
 
 class 上将军印神兵:
     @staticmethod

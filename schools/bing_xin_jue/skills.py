@@ -450,7 +450,7 @@ class 剑破虚空_神兵(MagicalSkill):
 
         self.damage_base = 20
         self.damage_rand = 2
-        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(65)
+        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(65)
 
 
 class 气吞长江_持续(MagicalSkill):

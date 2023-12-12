@@ -15,7 +15,9 @@ class 嗔怒套装:
 
     def __call__(self, status: Status):
         for skill in status.skills.values():
-            if skill.is_cast:
+            if skill.hit_with_cast:
+                skill.post_hit_effect.append(self.critical_set_post_cast)
+            elif skill.is_cast:
                 skill.post_cast_effect.append(self.critical_set_post_cast)
 
 
@@ -36,7 +38,9 @@ class 橙武特效:
 
     def __call__(self, status: Status):
         for skill in status.skills.values():
-            if skill.is_cast:
+            if skill.hit_with_cast:
+                skill.post_hit_effect.append(self.divine_post_cast)
+            elif skill.is_cast:
                 skill.post_cast_effect.append(self.divine_post_cast)
 
 

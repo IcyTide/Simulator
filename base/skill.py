@@ -61,6 +61,7 @@ class Skill:
 
     cast_while_casting: bool = False
     cd_with_haste: bool = False
+    hit_with_cast: bool = False
 
     gcd_index: any = 0
 

@@ -121,6 +121,8 @@ class 上将军印(PhysicalSkill):
         super().__init__(status)
         self.name = "上将军印"
 
+        self.hit_with_cast = True
+
         self.cd_base = 18 * 16
         self.interval_list = [4, 6, 6, 6, 6]
 
@@ -286,6 +288,7 @@ class 坚壁清野_持续(PhysicalSkill):
         self.name = "坚壁清野-持续"
 
         self.is_cast = False
+        self.hit_with_cast = True
 
         self.interval_list = [16] * 10
 
@@ -424,6 +427,7 @@ class 降麒式_持续(PhysicalSkill):
         self.name = "降麒式-持续"
 
         self.is_cast = False
+        self.hit_with_cast = True
 
         self.interval_list = [16] * 15
 
