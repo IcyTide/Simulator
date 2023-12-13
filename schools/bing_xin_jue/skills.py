@@ -84,6 +84,8 @@ class 玳弦急曲(MagicalSkill):
         super().__init__(status)
         self.name = "玳弦急曲"
 
+        self.is_channel = True
+
         self.count_base = 3
         self.interval_base = 16
         self.damage_base = 252

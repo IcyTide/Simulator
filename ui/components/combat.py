@@ -33,6 +33,14 @@ def build_combat():
                 combat_components['summary'] = summary
                 delta_summary = gr.Textbox(label="残差总结", lines=20, visible=False)
                 combat_components['delta_summary'] = delta_summary
+            with gr.Tab("序列"):
+                combat_components['sequences'] = {}
+                prepare = gr.Textbox(label="预备序列")
+                combat_components['sequences']['prepare'] = prepare
+                priority = gr.Textbox(label="优先级序列")
+                combat_components['sequences']['priority'] = priority
+                loop = gr.Textbox(label="循环序列", lines=20)
+                combat_components['sequences']['loop'] = loop
         with gr.Column(scale=3):
             with gr.Row():
                 dps = gr.Number(label="DPS")

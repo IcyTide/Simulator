@@ -121,6 +121,7 @@ class 上将军印(PhysicalSkill):
         super().__init__(status)
         self.name = "上将军印"
 
+        self.is_channel = True
         self.hit_with_cast = True
 
         self.cd_base = 18 * 16

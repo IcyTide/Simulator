@@ -52,12 +52,12 @@ def top_script(equipments, detail, top_components, combat_components,
         for _ in range(MAX_RECIPE_SKILLS - len(recipe_updates)):
             recipe_updates.append(gr.update(visible=False))
 
-        return (gr.update(visible=True), class_attr,
+        return (gr.update(visible=True), class_attr, *class_attr['sequences'].values(),
                 *equip_updates, *consumable_updates, *gain_updates, *talent_updates, *recipe_updates)
 
     top_components['class_name'].input(
         update_class_name, top_components['class_name'],
-        [detail, combat_components['class_attr'],
+        [detail, combat_components['class_attr'], *combat_components['sequences'].values(),
          *[equip_component['equip_name'] for equip_component in equip_components['equips'].values()],
          *consumable_components['consumables'].values(), *gain_components['formations'].values(),
          *talent_components['talents'], *recipe_components['recipes']])

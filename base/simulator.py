@@ -1,6 +1,8 @@
 import math
 from collections import Counter
 
+from utils.regex import parse_expression
+
 from base.constant import FRAME_PER_SECOND
 from base.status import Status
 
@@ -23,21 +25,11 @@ class Simulator:
         for gain in gains:
             gain(self.status)
 
-        self.prepare = [
-            (self.status.skills[e[0]], e[1]) if isinstance(e, tuple) else (self.status.skills[e], self.empty_condition)
-            for e in prepare]
-        self.priority = [
-            (self.status.skills[e[0]], e[1]) if isinstance(e, tuple) else (self.status.skills[e], self.empty_condition)
-            for e in priority]
-        self.loop = [
-            (self.status.skills[e[0]], e[1]) if isinstance(e, tuple) else (self.status.skills[e], self.empty_condition)
-            for e in loop]
+        self.prepare = parse_expression(self.status, prepare)
+        self.priority = parse_expression(self.status, priority)
+        self.loop = parse_expression(self.status, loop)
 
         self.current_loop = self.prepare if self.prepare else self.loop
-
-    @staticmethod
-    def empty_condition(arg):
-        return True
 
     @staticmethod
     def record(skill):

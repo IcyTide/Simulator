@@ -22,7 +22,7 @@ def display_attr(attribute, display_attrs):
 def combat_script(combat_components,
                   equip_components, consumable_components,
                   gain_components, talent_components, recipe_components):
-    def build_attr(class_attr, equip_attr, consumable_attr, target_level, duration,
+    def build_attr(class_attr, equip_attr, consumable_attr, target_level, duration, prepare, priority, loop,
                    equip_gains, team_gains, talent_gains, recipe_gains):
         attribute = class_attr['attribute']()
         display_attrs = class_attr['display_attrs']
@@ -33,7 +33,7 @@ def combat_script(combat_components,
         init_attr_text = display_attr(attribute, display_attrs)
         gains = sum([equip_gains, team_gains, talent_gains, recipe_gains], [])
         simulator = Simulator(attribute, SKILLS[class_attr['kind']] + class_attr['skills'], BUFFS + class_attr['buffs'],
-                              gains, Target(target_level), duration, *class_attr['sequences'].values(), verbose=True)
+                              gains, Target(target_level), duration, prepare, priority, loop, verbose=True)
         gain_attr_text = display_attr(attribute, display_attrs)
         return init_attr_text, gain_attr_text, simulator
 
@@ -73,7 +73,7 @@ def combat_script(combat_components,
     combat_components['simulate'].click(
         build_attr,
         [combat_components['class_attr'], equip_components['attr_state'], consumable_components['attr_state'],
-         combat_components['target_level'], combat_components['duration'],
+         combat_components['target_level'], combat_components['duration'], *combat_components['sequences'].values(),
          equip_components['gain_state'], gain_components['gain_state'],
          talent_components['gain_state'], recipe_components['gain_state']],
         [combat_components['init_attribute'], combat_components['gain_attribute'], combat_components['simulator']]

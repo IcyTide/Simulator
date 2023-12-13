@@ -53,6 +53,7 @@ class Skill:
     activate: bool = True
 
     is_cast: bool = True
+    is_channel: bool = False
     is_hit: bool = True
     is_stack: bool = False
     is_instant: bool = False
@@ -224,7 +225,7 @@ class Skill:
             self.status.casting = self.duration
             if self.gcd_base:
                 self.status.gcd_group[self.gcd_index] = self.gcd
-        if self.cd_base:
+        if self.cd_base and self.is_channel:
             self.set_cd()
             self.status.energies[self.name] -= 1
         if self.is_instant:
@@ -285,11 +286,14 @@ class Skill:
             self.status.intervals[self.name] = self.interval
 
     def post_cast(self):
-        for effect in self.post_cast_effect:
-            effect(self)
-
         if self.is_cast:
             self.status.casting = 0
+        if self.cd_base and not self.is_channel:
+            self.set_cd()
+            self.status.energies[self.name] -= 1
+
+        for effect in self.post_cast_effect:
+            effect(self)
 
         self.status.counts.pop(self.name)
 

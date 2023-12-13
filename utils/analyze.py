@@ -15,21 +15,20 @@ def analyze_details(
         attribute_params = dict(attribute_params)
         damage_params = dict(damage_params)
 
-        skill, critical, damage = damage_func(attribute, damage_params)
-
         for attr, value in grad_attrs.items():
             origin_value = attribute_params.get(attr, 0)
             if delta_value:
-                origin_delta = attribute_params.get(attribute.delta_attr, 0)
                 setattr(attribute, attr, origin_value + delta_value / value)
-                setattr(attribute, attribute.delta_attr, max(origin_delta - delta_value, 0))
+                setattr(attribute, attribute.delta_attr, getattr(attribute, attribute.delta_attr) - delta_value)
                 grad_results[attr] += damage_func(attribute, damage_params)[-1] * count
                 setattr(attribute, attr, origin_value)
-                setattr(attribute, attribute.delta_attr, origin_delta)
+                setattr(attribute, attribute.delta_attr, attribute_params.get(attribute.delta_attr, 0))
             else:
                 setattr(attribute, attr, origin_value + value)
                 grad_results[attr] += damage_func(attribute, damage_params)[-1] * count
                 setattr(attribute, attr, origin_value)
+
+        skill, critical, damage = damage_func(attribute, damage_params)
 
         if skill not in result:
             result[skill] = {"hit": 0, "critical": 0, "damage": 0}
