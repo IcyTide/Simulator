@@ -4,7 +4,7 @@ from base.constant import SHIELD_BASE_MAP
 
 
 def build_combat():
-    combat_components = {"class_attr": gr.State(), "attribute": gr.State(), "simulator": gr.State()}
+    combat_components = {"school_attr": gr.State(), "attribute": gr.State(), "simulator": gr.State()}
     with gr.Row():
         with gr.Group():
             target_level = gr.Dropdown(choices=list(SHIELD_BASE_MAP), value=list(SHIELD_BASE_MAP)[0], label="目标等级")

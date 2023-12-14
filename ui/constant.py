@@ -1,3 +1,5 @@
+import os
+
 from utils.damage import physical_damage, magical_damage
 from general.gains import equipment
 
@@ -5,9 +7,10 @@ from schools import bei_ao_jue
 from schools import bing_xin_jue
 
 """ Directory """
-EQUIPMENTS_DIR = "ui/assets/equipments.json"
-ENCHANTS_DIR = "ui/assets/enchants.json"
-STONES_DIR = "ui/assets/stones.json"
+ASSETS_DIR = "ui/assets"
+EQUIPMENTS_DIR = os.path.join(ASSETS_DIR, "equipments.json")
+ENCHANTS_DIR = os.path.join(ASSETS_DIR, "enchants.json")
+STONES_DIR = os.path.join(ASSETS_DIR, "stones.json")
 
 """ Attrs """
 ATTR_TYPE_MAP = {
@@ -80,7 +83,7 @@ STONE_ATTR_MAP = {
     ],
 }
 """ Top """
-SUPPORT_CLASS = {
+SUPPORT_SCHOOL = {
     "北傲诀": {
         "school": "霸刀",
         "major": "力道",

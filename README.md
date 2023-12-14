@@ -19,7 +19,7 @@ So, please make sure run in python>=3.9
   pip install -r requirements.txt
 
   // start application
-  python ui/app.py
+  python -m ui.app
 ```
 
 After above steps, your default browser will pop out to show the ui

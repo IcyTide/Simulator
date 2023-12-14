@@ -149,4 +149,4 @@ def parse_condition(status, text):
 
 
 def parse_expression(status, text):
-    return [parse_condition(status, sub) for sub in re.split(r"\s*,\s*", text)]
+    return [parse_condition(status, sub) for sub in re.split(r"\s*,\s*", text.strip())]
