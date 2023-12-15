@@ -7,14 +7,14 @@ from general.gains.formation import FORMATIONS
 
 def top_script(equipments, detail, top_components, combat_components,
                equip_components, consumable_components, gain_components, talent_components, recipe_components):
-    def update_class_name(class_name):
-        if not class_name:
+    def update_school_name(school_name):
+        if not school_name:
             return [gr.update(visible=False), None, *[None for _ in equip_components['equips']],
                     *[None for _ in consumable_components['consumables']],
                     *[None for _ in gain_components['formations']],
                     *[None for _ in talent_components['talents']],
                     *[None for _ in recipe_components['recipes']]]
-        school_attr = SUPPORT_SCHOOL[class_name]
+        school_attr = SUPPORT_SCHOOL[school_name]
 
         equip_updates = []
         for equip in equipments:
@@ -55,8 +55,8 @@ def top_script(equipments, detail, top_components, combat_components,
         return (gr.update(visible=True), school_attr, *school_attr['sequences'].values(),
                 *equip_updates, *consumable_updates, *gain_updates, *talent_updates, *recipe_updates)
 
-    top_components['class_name'].input(
-        update_class_name, top_components['class_name'],
+    top_components['school_name'].input(
+        update_school_name, top_components['school_name'],
         [detail, combat_components['school_attr'], *combat_components['sequences'].values(),
          *[equip_component['equip_name'] for equip_component in equip_components['equips'].values()],
          *consumable_components['consumables'].values(), *gain_components['formations'].values(),
