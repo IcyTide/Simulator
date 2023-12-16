@@ -32,14 +32,15 @@ def combat_script(combat_components,
             setattr(attribute, attr, getattr(attribute, attr) + value)
         init_attr_text = display_attr(attribute, display_attrs)
         gains = sum([equip_gains, team_gains, talent_gains, recipe_gains], [])
-        simulator = Simulator(attribute, SKILLS[school_attr['kind']] + school_attr['skills'], BUFFS + school_attr['buffs'],
+        simulator = Simulator(attribute, SKILLS[school_attr['kind']] + school_attr['skills'],
+                              BUFFS + school_attr['buffs'],
                               gains, Target(target_level), duration, prepare, priority, loop, verbose=False)
         gain_attr_text = display_attr(attribute, display_attrs)
         return init_attr_text, gain_attr_text, simulator
 
     def build_summary(school_attr, iteration, simulator, delta_value):
         dps, details, gradients, delta_dps, delta_details, delta_gradients = simulate_delta(
-            school_attr['damage'], school_attr['attribute'], iteration, simulator, delta_value
+            school_attr['attribute'], iteration, simulator, delta_value
         )
         total_damage = dps * simulator.duration
         summary_texts = []

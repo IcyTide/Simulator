@@ -32,12 +32,12 @@ def simulate_serial(iteration, simulator):
     return total_result
 
 
-def simulate_delta(damage_func, attribute_class, iteration, simulator, delta_value):
+def simulate_delta(attribute_class, iteration, simulator, delta_value):
     attribute = simulator.status.attribute
     simulate_func = simulate_serial if iteration < min_iteration else simulate_concurrent
     origin_result = simulate_func(iteration, simulator)
     origin_dps, origin_details, origin_gradients = analyze_details(
-        iteration, simulator.duration, damage_func, attribute_class, attribute.grad_attrs, origin_result)
+        iteration, simulator.duration, attribute_class, attribute.grad_attrs, origin_result)
 
     for attr, residual in origin_gradients.items():
         origin_gradients[attr] = (residual, residual / attribute.grad_attrs[attr])
@@ -46,7 +46,7 @@ def simulate_delta(damage_func, attribute_class, iteration, simulator, delta_val
         setattr(attribute, attribute.delta_attr, getattr(attribute, attribute.delta_attr) + delta_value)
         delta_result = simulate_func(iteration, simulator)
         delta_dps, delta_details, delta_gradients = analyze_details(
-            iteration, simulator.duration, damage_func, attribute_class, attribute.delta_grad_attrs, delta_result,
+            iteration, simulator.duration, attribute_class, attribute.delta_grad_attrs, delta_result,
             delta_value)
         residual_dps = delta_dps - origin_dps
         for attr, residual in delta_gradients.items():

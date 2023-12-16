@@ -374,6 +374,7 @@ class PhysicalSkill(Skill):
 
     def record_damage(self, critical: bool, count: int):
         return (
+            "physical",
             (
                 ('agility_base', self.snapshot.agility_base),
                 ('agility_gain', self.snapshot.agility_gain),
@@ -489,6 +490,7 @@ class MagicalSkill(Skill):
 
     def record_damage(self, critical: bool, count: int):
         return (
+            "magical",
             (
                 ('spirit_base', self.snapshot.spirit_base),
                 ('spirit_gain', self.snapshot.spirit_gain),

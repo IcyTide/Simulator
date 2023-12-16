@@ -1,14 +1,13 @@
-import math
+from utils.damage import DAMAGES
 
 
-def analyze_details(
-        iteration, duration, damage_func, attribute_class, grad_attrs, counts, delta_value=None):
+def analyze_details(iteration, duration, attribute_class, grad_attrs, counts, delta_value=None):
     scale = iteration * duration
     attribute = attribute_class()
     result = {}
     total_damage = 0
     grad_results = {attr: 0 for attr in grad_attrs}
-    for (attribute_params, damage_params), count in counts.items():
+    for (damage_type, attribute_params, damage_params), count in counts.items():
         for attr, value in attribute_params:
             setattr(attribute, attr, value)
 
@@ -20,15 +19,15 @@ def analyze_details(
             if delta_value:
                 setattr(attribute, attr, origin_value + delta_value / value)
                 setattr(attribute, attribute.delta_attr, getattr(attribute, attribute.delta_attr) - delta_value)
-                grad_results[attr] += damage_func(attribute, damage_params)[-1] * count
+                grad_results[attr] += DAMAGES[damage_type](attribute, damage_params)[-1] * count
                 setattr(attribute, attr, origin_value)
                 setattr(attribute, attribute.delta_attr, attribute_params.get(attribute.delta_attr, 0))
             else:
                 setattr(attribute, attr, origin_value + value)
-                grad_results[attr] += damage_func(attribute, damage_params)[-1] * count
+                grad_results[attr] += DAMAGES[damage_type](attribute, damage_params)[-1] * count
                 setattr(attribute, attr, origin_value)
 
-        skill, critical, damage = damage_func(attribute, damage_params)
+        skill, critical, damage = DAMAGES[damage_type](attribute, damage_params)
 
         if skill not in result:
             result[skill] = {"hit": 0, "critical": 0, "damage": 0}
