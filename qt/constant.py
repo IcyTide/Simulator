@@ -1,12 +1,12 @@
 import os
 
-from utils.damage import physical_damage, magical_damage
 from general.gains import equipment
 
 from schools import bei_ao_jue
 from schools import bing_xin_jue
 
 """ Directory """
+# ASSETS_DIR = os.path.join(os.getcwd(), "qt/assets")
 ASSETS_DIR = "qt/assets"
 EQUIPMENTS_DIR = os.path.join(ASSETS_DIR, "equipments")
 ENCHANTS_DIR = os.path.join(ASSETS_DIR, "enchants")

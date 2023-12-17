@@ -12,17 +12,18 @@ from qt.scripts.talents import Talents
 from utils.simulate import simulate_delta
 
 
-def detail_text(details):
+def detail_content(details):
     total_damage = sum([detail['damage'] for detail in details.values()])
-    detail_texts = []
+    content = []
     for skill, detail in details.items():
         count = round(detail['hit'] + detail['critical'], 2)
-        detail_texts.append(
-            f"{skill}:   次数{count}"
-            f"    命中{detail['hit']}/{round(detail['hit'] / count * 100, 2)}%"
-            f"    会心{detail['critical']}/{round(detail['critical'] / count * 100, 2)}%"
-            f"    伤害{detail['damage']}/{round(detail['damage'] / total_damage * 100, 2)}%")
-    return "\n".join(detail_texts)
+        content.append([
+            skill, str(count),
+            f"{detail['hit']}/{round(detail['hit'] / count * 100, 2)}%",
+            f"{detail['critical']}/{round(detail['critical'] / count * 100, 2)}%",
+            f"{detail['damage']}/{round(detail['damage'] / total_damage * 100, 2)}%"
+        ])
+    return content
 
 
 def gradients_text(gradients):
@@ -58,13 +59,13 @@ def combat_script(school: School, equipments: Equipments, talents: Talents, reci
             school.attribute, iteration, simulator, delta
         )
         combat_widget.origin_dps.text.setText(str(int(dps)))
-        combat_widget.origin_detail.text_browser.setText(detail_text(details))
+        combat_widget.origin_detail.set_content(detail_content(details))
         combat_widget.origin_gradients.text_browser.setText(gradients_text(gradients))
         if delta_dps:
             combat_widget.delta_dps.show()
             combat_widget.delta_dps.text.setText(str(int(delta_dps)))
             combat_widget.delta_detail.show()
-            combat_widget.delta_detail.text_browser.setText(detail_text(delta_details))
+            combat_widget.delta_detail.set_content(detail_content(details))
             combat_widget.delta_gradients.show()
             combat_widget.delta_gradients.text_browser.setText(gradients_text(delta_gradients))
 

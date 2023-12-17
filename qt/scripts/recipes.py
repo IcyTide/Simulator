@@ -25,7 +25,7 @@ def recipes_script(recipes_widget: RecipesWidget):
         widget = recipes_widget[i]
 
         def inner():
-            if selected_items := widget.list_widget.selectedItems():
+            if selected_items := widget.list.selectedItems():
                 while len(selected_items) > MAX_RECIPES:
                     selected_items.pop().setSelected(False)
             recipes[i] = [item.text() for item in selected_items]
@@ -33,6 +33,6 @@ def recipes_script(recipes_widget: RecipesWidget):
         return inner
 
     for n, recipe_widget in enumerate(recipes_widget.values()):
-        recipe_widget.list_widget.itemSelectionChanged.connect(recipe_update(n))
+        recipe_widget.list.itemSelectionChanged.connect(recipe_update(n))
 
     return recipes

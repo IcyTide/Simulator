@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QTabWidget
 
-from qt.components import ComboWithLabel, SpinWithLabel, TextWithLabel, LabelWithLabel
+from qt.components import ComboWithLabel, SpinWithLabel, TextWithLabel, LabelWithLabel, TableWithLabel
 from base.constant import SHIELD_BASE_MAP
 
 
@@ -19,7 +19,7 @@ class CombatWidget(QWidget):
         top_layout.addWidget(self.target_level)
         self.duration = SpinWithLabel("Duration", minimum=1, maximum=3600, value=180)
         top_layout.addWidget(self.duration)
-        self.iteration = SpinWithLabel("Iteration", minimum=1, maximum=1000000, value=100)
+        self.iteration = SpinWithLabel("Iteration", minimum=1, maximum=1000000, value=1000)
         top_layout.addWidget(self.iteration)
         self.delta = SpinWithLabel("Delta Critical", maximum=10000)
         top_layout.addWidget(self.delta)
@@ -54,9 +54,9 @@ class CombatWidget(QWidget):
         self.detail.setLayout(detail_layout)
         self.tab.addTab(self.detail, "Detail")
 
-        self.origin_detail = TextWithLabel("Origin Detail")
+        self.origin_detail = TableWithLabel("Origin Detail", headers=["skill", "count", "hit", "critical", "damage"])
         detail_layout.addWidget(self.origin_detail)
-        self.delta_detail = TextWithLabel("Delta Detail")
+        self.delta_detail = TableWithLabel("Delta Detail", headers=["skill", "count", "hit", "critical", "damage"])
         detail_layout.addWidget(self.delta_detail)
         self.delta_detail.hide()
 

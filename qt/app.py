@@ -1,3 +1,4 @@
+import os
 import sys
 
 from qt.components.top import TopWidget
@@ -12,6 +13,7 @@ from qt.components.combat import CombatWidget
 from qt.scripts.combat import combat_script
 
 from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QTabWidget
+from PySide6.QtGui import QIcon
 
 
 class MainWindow(QMainWindow):
@@ -19,6 +21,7 @@ class MainWindow(QMainWindow):
         super().__init__()
 
         self.setWindowTitle("Simulator")
+        self.setWindowIcon(QIcon("qt/assets/icon.ico"))
         self.central_widget = QWidget(self)
         self.setCentralWidget(self.central_widget)
 

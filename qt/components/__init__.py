@@ -1,5 +1,33 @@
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QComboBox, QAbstractItemView, QListWidget, \
-    QRadioButton, QTextBrowser, QSpinBox
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QAbstractItemView, QTableWidgetItem
+from PySide6.QtWidgets import QComboBox, QRadioButton, QTextBrowser, QSpinBox, QListWidget, QTableWidget
+
+
+class TableWithLabel(QWidget):
+    def __init__(self, label, row_count: int = 0, column_count: int = 0, headers: list = None):
+        super().__init__()
+        layout = QVBoxLayout()
+        self.setLayout(layout)
+
+        self.label = QLabel(label)
+        self.table = QTableWidget()
+
+        if row_count:
+            self.table.setRowCount(row_count)
+        if column_count:
+            self.table.setColumnCount(column_count)
+        if headers:
+            self.table.setColumnCount(len(headers))
+            self.table.setHorizontalHeaderLabels(headers)
+        layout.addWidget(self.label)
+        layout.addWidget(self.table)
+
+    def set_content(self, content):
+        self.table.setRowCount(len(content))
+
+        for i, row in enumerate(content):
+            for j, e in enumerate(row):
+                self.table.setItem(i, j, QTableWidgetItem(e))
+        self.table.resizeColumnsToContents()
 
 
 class ListWithLabel(QWidget):
@@ -9,13 +37,13 @@ class ListWithLabel(QWidget):
         self.setLayout(layout)
 
         self.label = QLabel(label)
-        self.list_widget = QListWidget()
-        self.list_widget.setSelectionMode(QAbstractItemView.SelectionMode.MultiSelection)
+        self.list = QListWidget()
+        self.list.setSelectionMode(QAbstractItemView.SelectionMode.MultiSelection)
 
         if items:
-            self.list_widget.addItems(items)
+            self.list.addItems(items)
         layout.addWidget(self.label)
-        layout.addWidget(self.list_widget)
+        layout.addWidget(self.list)
 
 
 class ComboWithLabel(QWidget):

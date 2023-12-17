@@ -1,12 +1,13 @@
 import copy
 import random
+import time
 from collections import Counter
 from multiprocessing import Pool, cpu_count
 
 from utils.analyze import analyze_details
 
 processes = cpu_count()
-min_iteration = processes * 100
+min_iteration = processes * 4
 
 
 def simulate_single(simulator, i):
@@ -35,7 +36,9 @@ def simulate_serial(iteration, simulator):
 def simulate_delta(attribute_class, iteration, simulator, delta_value):
     attribute = simulator.status.attribute
     simulate_func = simulate_serial if iteration < min_iteration else simulate_concurrent
+    # start = time.time()
     origin_result = simulate_func(iteration, simulator)
+    # print(f"finish {iteration} simulation with {time.time() - start}")
     origin_dps, origin_details, origin_gradients = analyze_details(
         iteration, simulator.duration, attribute_class, attribute.grad_attrs, origin_result)
 

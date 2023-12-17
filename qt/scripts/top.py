@@ -29,9 +29,9 @@ class School:
         for attr, name in self.display_attrs.items():
             value = getattr(attribute, attr)
             if isinstance(value, int):
-                texts.append(f"{name}: {value}")
+                texts.append(f"{name}:\t{value}")
             else:
-                texts.append(f"{name}: {round(value * 100, 2)}%")
+                texts.append(f"{name}:\t{round(value * 100, 2)}%")
         return "\n".join(texts)
 
 
@@ -61,12 +61,12 @@ def top_script(top_widget: TopWidget, tab_widget: QTabWidget,
             talent_widget.combo_box.addItems(school.talents[i])
 
         for recipe_widget in recipes_widget.values():
-            recipe_widget.list_widget.clear()
+            recipe_widget.list.clear()
             recipe_widget.hide()
 
         for i, (skill, recipes) in enumerate(school.recipes.items()):
             recipes_widget[i].label.setText(skill)
-            recipes_widget[i].list_widget.addItems(recipes)
+            recipes_widget[i].list.addItems(recipes)
             recipes_widget[i].show()
 
         combat_widget.prepare.text_browser.setText(school.prepare)

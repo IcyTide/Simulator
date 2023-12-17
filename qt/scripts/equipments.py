@@ -80,20 +80,20 @@ class Equipment:
 
     @property
     def base_attr_text(self):
-        return "\n".join([f"{ATTR_TYPE_TRANSLATE[k]}: {v}" for k, v in self.base_attr.items()])
+        return "\n".join([f"{ATTR_TYPE_TRANSLATE[k]}:\t{v}" for k, v in self.base_attr.items()])
 
     @property
     def magic_attr_text(self):
         if strength_attr := self.strength_attr:
             return "\n".join([
-                f"{ATTR_TYPE_TRANSLATE[k]}: {v}+({strength_attr[k]})" for k, v in self.magic_attr.items()
+                f"{ATTR_TYPE_TRANSLATE[k]}:\t{v}+({strength_attr[k]})" for k, v in self.magic_attr.items()
             ])
         else:
-            return "\n".join([f"{ATTR_TYPE_TRANSLATE[k]}: {v}" for k, v in self.magic_attr.items()])
+            return "\n".join([f"{ATTR_TYPE_TRANSLATE[k]}:\t{v}" for k, v in self.magic_attr.items()])
 
     @property
     def embed_attr_text(self):
-        return "\n".join([f"{ATTR_TYPE_TRANSLATE[k]}: {v}" for k, v in self.embed_attr.items()])
+        return "\n".join([f"{ATTR_TYPE_TRANSLATE[k]}:\t{v}" for k, v in self.embed_attr.items()])
 
 
 class Equipments:
