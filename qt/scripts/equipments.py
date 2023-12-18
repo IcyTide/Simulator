@@ -1,5 +1,6 @@
 from qt.components.equipments import EquipmentsWidget
-from qt.constant import POSITION_MAP, STONES_POSITIONS, EMBED_POSITIONS, ATTR_TYPE_TRANSLATE, EQUIP_GAINS
+from qt.constant import POSITION_MAP, STONES_POSITIONS, EMBED_POSITIONS, ATTR_TYPE_TRANSLATE, EQUIP_GAINS, \
+    ATTR_TYPE_TRANSLATE_REVERSE
 from qt.constant import STRENGTH_COF, EMBED_COF, MAX_STRENGTH_LEVEL, MAX_EMBED_LEVEL
 
 
@@ -264,13 +265,13 @@ def equipments_script(equipments_widget: EquipmentsWidget):
 
             current = widget.stones_json
             for i in range(len(widget.stone_attrs)):
-                attr = widget.stone_attrs[i].combo_box.currentText()
+                attr = ATTR_TYPE_TRANSLATE_REVERSE.get(widget.stone_attrs[i].combo_box.currentText())
                 if attr in current:
                     current = current[attr]
                 else:
                     widget.stone_attrs[i].combo_box.blockSignals(True)
                     widget.stone_attrs[i].combo_box.clear()
-                    widget.stone_attrs[i].combo_box.addItems([""] + list(current))
+                    widget.stone_attrs[i].combo_box.addItems([""] + [ATTR_TYPE_TRANSLATE[k] for k in current])
                     widget.stone_attrs[i].combo_box.blockSignals(False)
 
             if level in current:

@@ -4,14 +4,6 @@ from base.attribute import Attribute
 from base.target import Target
 
 
-class Monitor(dict):
-    def __missing__(self, key):
-        return None
-
-    def __delitem__(self, elem):
-        if elem in self:
-            super().__delitem__(elem)
-
 class Status:
     def __init__(self, attribute: Attribute, target: Target,
                  skills: list, buffs: list, damages: dict, events: list, total_frame: int, verbose=False):
@@ -21,14 +13,14 @@ class Status:
         self.attribute = attribute
         self.target = target
 
-        self.gcd_group = Counter()
+        self.gcd_group = {}
         self.casting = False
 
-        self.intervals = Counter()
-        self.counts = Counter()
+        self.intervals = {}
+        self.counts = {}
 
         self.skills = {}
-        self.cds = Counter()
+        self.cds = {}
         self.energies = Counter()
 
         for skill in skills:
@@ -37,7 +29,7 @@ class Status:
             self.energies[skill.name] = skill.energy
 
         self.buffs = {}
-        self.durations = Counter()
+        self.durations = {}
         self.stacks = Counter()
 
         for buff in buffs:
@@ -53,24 +45,38 @@ class Status:
     def timer(self, gap=1):
         self.current_frame += gap
 
+        refresh_gcd = []
         for gcd_index, gcd in self.gcd_group.items():
-            self.gcd_group[gcd_index] = gcd - gap
+            gcd = self.gcd_group[gcd_index] = gcd - gap
+            if gcd <= 0:
+                refresh_gcd.append(gcd_index)
+        for gcd_index in refresh_gcd:
+            self.gcd_group.pop(gcd_index)
 
+        expire_buffs = []
         for buff, duration in self.durations.items():
             duration = self.durations[buff] = duration - gap
             if duration <= 0:
-                self.buffs[buff].clear()
+                expire_buffs.append(buff)
+        for buff in expire_buffs:
+            self.buffs[buff].clear()
 
+        damage_skills = []
         for skill, interval in self.intervals.items():
             interval = self.intervals[skill] = interval - gap
             if interval <= 0:
-                self.skills[skill].hit()
+                damage_skills.append(skill)
+        for skill in damage_skills:
+            self.skills[skill].hit()
 
+        recharge_skills = []
         reduction_gap = gap * (1 + self.attribute.cd_reduction)
         for skill, cd in self.cds.items():
             cd = self.cds[skill] = cd - reduction_gap
             if cd <= 0:
-                self.skills[skill].recharge()
+                recharge_skills.append(skill)
+        for skill in recharge_skills:
+            self.skills[skill].recharge()
 
     def record_verbose(self, params):
         self.damages[params] += 1

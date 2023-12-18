@@ -87,6 +87,8 @@ ATTR_TYPE_TRANSLATE = {
     "strain_base": "无双",
     "haste_base": "加速",
 }
+ATTR_TYPE_TRANSLATE_REVERSE = {v: k for k, v in ATTR_TYPE_TRANSLATE.items()}
+
 STONE_ATTR = [
     "atMeleeWeaponDamageBase", "atSurplusValueBase", "atStrainBase", "atHasteBase",
     "atAllTypeCriticalStrike", "atAllTypeCriticalDamagePowerBase",
