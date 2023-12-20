@@ -1,6 +1,5 @@
 import os
 
-from utils.damage import physical_damage, magical_damage
 from general.gains import equipment
 
 from schools import bei_ao_jue
@@ -94,7 +93,6 @@ SUPPORT_SCHOOL = {
         "recipes": bei_ao_jue.RECIPES,
         "skills": bei_ao_jue.SKILLS,
         "buffs": bei_ao_jue.BUFFS,
-        "damage": physical_damage,
         "sequences": {
             "prepare": bei_ao_jue.prepare,
             "priority": bei_ao_jue.priority,
@@ -125,12 +123,11 @@ SUPPORT_SCHOOL = {
         "major": "根骨",
         "kind": "内功",
         "attribute": bing_xin_jue.BingXinJue,
-        "formation": "霜岚洗锋阵",
+        "formation": "九音惊弦阵",
         "talents": bing_xin_jue.TALENTS,
         "recipes": bing_xin_jue.RECIPES,
         "skills": bing_xin_jue.SKILLS,
         "buffs": bing_xin_jue.BUFFS,
-        "damage": magical_damage,
         "sequences": {
             "prepare": bing_xin_jue.prepare,
             "priority": bing_xin_jue.priority,

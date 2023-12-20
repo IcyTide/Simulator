@@ -337,7 +337,7 @@ FOODS = {
         f"咸骨粥({CONSUMABLES_NUMBER['major_food_max']}根骨)",
         f"老火骨汤({CONSUMABLES_NUMBER['major_food_min']}根骨)"
     ],
-    "通用": [
+    "": [
         f"白肉血肠({CONSUMABLES_NUMBER['minor_food_max']}破招)",
         f"红烧扣肉({CONSUMABLES_NUMBER['minor_food_max']}加速)",
         f"红烧排骨({CONSUMABLES_NUMBER['minor_food_max']}破防)",
@@ -365,7 +365,7 @@ POTIONS = {
         f"上品静心丸({CONSUMABLES_NUMBER['major_potion_max']}根骨)",
         f"中品静心丸({CONSUMABLES_NUMBER['major_potion_min']}根骨)"
     ],
-    "通用": [
+    "": [
         f"上品凝神散({CONSUMABLES_NUMBER['minor_potion_max']}破招)",
         f"上品活气散({CONSUMABLES_NUMBER['minor_potion_max']}加速)",
         f"上品破秽散({CONSUMABLES_NUMBER['minor_potion_max']}破防)",
@@ -395,7 +395,7 @@ WEAPON_ENCHANTS = {
     ]
 }
 SNACKS = {
-    "通用": [
+    "": [
         f"创意料理({CONSUMABLES_NUMBER['minor_snack_max']})无双",
         f"创意料理({CONSUMABLES_NUMBER['minor_snack_max']})会心",
         f"创意料理({CONSUMABLES_NUMBER['minor_snack_max']})破防",
@@ -408,7 +408,7 @@ SNACKS = {
     ]
 }
 WINES = {
-    "通用": [f"女儿红·旬又三({CONSUMABLES_NUMBER['haste_wine']}加速)"],
+    "": [f"女儿红·旬又三({CONSUMABLES_NUMBER['haste_wine']}加速)"],
     "力道": [f"汾酒·旬又三({CONSUMABLES_NUMBER['major_wine']}力道)"],
     "根骨": [f"高粱酒·旬又三({CONSUMABLES_NUMBER['major_wine']}根骨)"]
 

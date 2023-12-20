@@ -10,28 +10,28 @@ class RecipesWidget(QWidget):
         layout = QHBoxLayout()
         self.setLayout(layout)
 
-        self.recipes_row1 = QWidget()
-        row1_layout = QVBoxLayout()
-        self.recipes_row1.setLayout(row1_layout)
-        layout.addWidget(self.recipes_row1)
+        column1 = QWidget()
+        column1_layout = QVBoxLayout()
+        column1.setLayout(column1_layout)
+        layout.addWidget(column1)
 
-        self.recipes_row2 = QWidget()
-        row2_layout = QVBoxLayout()
-        self.recipes_row2.setLayout(row2_layout)
-        layout.addWidget(self.recipes_row2)
+        column2 = QWidget()
+        column2_layout = QVBoxLayout()
+        column2.setLayout(column2_layout)
+        layout.addWidget(column2)
 
         self.recipes = []
         for i in range(MAX_RECIPE_SKILLS // 2):
             recipe = ListWithLabel(f"recipe {i + 1}")
             self.recipes.append(recipe)
-            row1_layout.addWidget(recipe)
-        row1_layout.addStretch()
+            column1_layout.addWidget(recipe)
+        column1_layout.addStretch()
 
         for i in range(MAX_RECIPE_SKILLS // 2, MAX_RECIPE_SKILLS):
             recipe = ListWithLabel(f"recipe {i + 1}")
             self.recipes.append(recipe)
-            row2_layout.addWidget(recipe)
-        row2_layout.addStretch()
+            column2_layout.addWidget(recipe)
+        column2_layout.addStretch()
         
     def __getitem__(self, item) -> ListWithLabel:
         return self.recipes[item]

@@ -25,12 +25,12 @@ def top_script(equipments, detail, top_components, combat_components,
 
         consumable_updates = [
             gr.update(choices=[""] + FOODS[school_attr['major']], value=""),
-            gr.update(choices=[""] + FOODS[school_attr['kind']] + FOODS["通用"], value=""),
+            gr.update(choices=[""] + FOODS[school_attr['kind']] + FOODS[""], value=""),
             gr.update(choices=[""] + POTIONS[school_attr['major']], value=""),
-            gr.update(choices=[""] + POTIONS[school_attr['kind']] + POTIONS["通用"], value=""),
+            gr.update(choices=[""] + POTIONS[school_attr['kind']] + POTIONS[""], value=""),
             gr.update(choices=[""] + WEAPON_ENCHANTS[school_attr['kind']], value=""),
-            gr.update(choices=[""] + SNACKS[school_attr['kind']] + SNACKS["通用"], value=""),
-            gr.update(choices=[""] + WINES[school_attr['major']] + WINES["通用"], value=""),
+            gr.update(choices=[""] + SNACKS[school_attr['kind']] + SNACKS[""], value=""),
+            gr.update(choices=[""] + WINES[school_attr['major']] + WINES[""], value=""),
             None,
             None,
             gr.update(choices=[""] + SPREADS[school_attr['major']] + SPREADS[school_attr['kind']], value=""),
@@ -38,7 +38,7 @@ def top_script(equipments, detail, top_components, combat_components,
         ]
         gain_updates = [
             school_attr['formation'],
-            gr.update(choices=[""] + FORMATIONS[school_attr['kind']] + FORMATIONS["通用"], value=""),
+            gr.update(choices=[""] + FORMATIONS[school_attr['kind']] + FORMATIONS[""], value=""),
             None,
             None
         ]

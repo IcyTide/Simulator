@@ -15,15 +15,15 @@ class 上将军印套装:
 
 class 朔气套装:
     @staticmethod
-    def critical_set_post_cast(self: Skill):
-        self.status.buffs["朔气"].trigger()
+    def post_cast_effect(self: Skill):
+        self.status.buffs["朔气"].cast()
 
     def __call__(self, status: Status):
         for skill in status.skills.values():
             if skill.hit_with_cast:
-                skill.post_hit_effect.append(self.critical_set_post_cast)
+                skill.post_hit_effect.append(self.post_cast_effect)
             elif skill.is_cast:
-                skill.post_cast_effect.append(self.critical_set_post_cast)
+                skill.post_cast_effect.append(self.post_cast_effect)
 
 
 class 刀啸风吟大橙武:
@@ -38,23 +38,25 @@ class 项王击鼎大橙武:
 
 class 橙武特效:
     @staticmethod
-    def divine_post_cast(self: Skill):
-        self.status.buffs["沉夜重雪"].trigger()
+    def post_cast_effect(self: Skill):
+        if not self.status.stacks["沉夜重雪-冷却"]:
+            self.status.buffs["沉夜重雪"].cast()
 
     def __call__(self, status: Status):
         for skill in status.skills.values():
             if skill.hit_with_cast:
-                skill.post_hit_effect.append(self.divine_post_cast)
+                skill.post_hit_effect.append(self.post_cast_effect)
             elif skill.is_cast:
-                skill.post_cast_effect.append(self.divine_post_cast)
+                skill.post_cast_effect.append(self.post_cast_effect)
+
 
 class 上将军印神兵:
     @staticmethod
-    def divine_post_cast(self: Skill):
+    def post_cast_effect(self: Skill):
         self.status.skills["上将军印·神兵"].cast()
 
     def __call__(self, status: Status):
-        status.skills["上将军印"].post_cast_effect.append(self.divine_post_cast)
+        status.skills["上将军印"].post_cast_effect.append(self.post_cast_effect)
 
 
 class 五相斩:

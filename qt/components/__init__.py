@@ -1,14 +1,23 @@
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QAbstractItemView, QTableWidgetItem
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QAbstractItemView, QTableWidgetItem, \
+    QHeaderView
 from PySide6.QtWidgets import QComboBox, QRadioButton, QTextBrowser, QSpinBox, QListWidget, QTableWidget
 
 
-class TableWithLabel(QWidget):
-    def __init__(self, label, row_count: int = 0, column_count: int = 0, headers: list = None):
+class LabelWidget(QWidget):
+    def __init__(self, label):
         super().__init__()
+        self.label = QLabel(label)
+
+    def set_label(self, label):
+        self.label.setText(label)
+
+
+class TableWithLabel(LabelWidget):
+    def __init__(self, label, row_count: int = 0, column_count: int = 0, headers: list = None):
+        super().__init__(label)
         layout = QVBoxLayout()
         self.setLayout(layout)
 
-        self.label = QLabel(label)
         self.table = QTableWidget()
 
         if row_count:
@@ -18,6 +27,9 @@ class TableWithLabel(QWidget):
         if headers:
             self.table.setColumnCount(len(headers))
             self.table.setHorizontalHeaderLabels(headers)
+        self.table.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
+
+        self.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.ResizeToContents)
         layout.addWidget(self.label)
         layout.addWidget(self.table)
 
@@ -30,13 +42,12 @@ class TableWithLabel(QWidget):
         self.table.resizeColumnsToContents()
 
 
-class ListWithLabel(QWidget):
+class ListWithLabel(LabelWidget):
     def __init__(self, label, items: list = None):
-        super().__init__()
+        super().__init__(label)
         layout = QVBoxLayout()
         self.setLayout(layout)
 
-        self.label = QLabel(label)
         self.list = QListWidget()
         self.list.setSelectionMode(QAbstractItemView.SelectionMode.MultiSelection)
 
@@ -45,43 +56,51 @@ class ListWithLabel(QWidget):
         layout.addWidget(self.label)
         layout.addWidget(self.list)
 
+    def set_items(self, items):
+        self.list.clear()
+        self.list.addItems(items)
 
-class ComboWithLabel(QWidget):
+
+class ComboWithLabel(LabelWidget):
     def __init__(self, label, items: list = None, index=None):
-        super().__init__()
+        super().__init__(label)
         layout = QVBoxLayout()
         self.setLayout(layout)
 
-        self.label = QLabel(label)
         self.combo_box = QComboBox()
         if items:
             self.combo_box.addItems(items)
         if index:
             self.combo_box.setCurrentIndex(index)
+
         layout.addWidget(self.label)
         layout.addWidget(self.combo_box)
 
+    def set_items(self, items):
+        self.combo_box.clear()
+        self.combo_box.addItems(items)
 
-class RadioWithLabel(QWidget):
-    def __init__(self, label):
-        super().__init__()
+
+class RadioWithLabel(LabelWidget):
+    def __init__(self, label, text: str = None):
+        super().__init__(label)
         layout = QVBoxLayout()
         self.setLayout(layout)
 
-        self.label = QLabel(label)
         self.radio_button = QRadioButton()
+        if text:
+            self.radio_button.setText(text)
 
         layout.addWidget(self.label)
         layout.addWidget(self.radio_button)
 
 
-class SpinWithLabel(QWidget):
+class SpinWithLabel(LabelWidget):
     def __init__(self, label, minimum=None, maximum=None, value=None):
-        super().__init__()
+        super().__init__(label)
         layout = QVBoxLayout()
         self.setLayout(layout)
 
-        self.label = QLabel(label)
         self.spin_box = QSpinBox()
         if minimum:
             self.spin_box.setMinimum(minimum)
@@ -94,21 +113,20 @@ class SpinWithLabel(QWidget):
         layout.addWidget(self.spin_box)
 
 
-class TextWithLabel(QWidget):
+class TextWithLabel(LabelWidget):
     def __init__(self, label):
-        super().__init__()
+        super().__init__(label)
         layout = QVBoxLayout()
         self.setLayout(layout)
 
-        self.label = QLabel(label)
         self.text_browser = QTextBrowser()
         # self.text_browser.textChanged.connect(self.resize_height)
 
         layout.addWidget(self.label)
         layout.addWidget(self.text_browser)
 
-    def resize_height(self):
-        self.text_browser.setFixedHeight(self.text_browser.document().size().height())
+    def set_text(self, text):
+        self.text_browser.setText(text)
 
 
 class LabelWithLabel(QWidget):

@@ -14,10 +14,10 @@ class EquipmentWidget(QWidget):
         layout = QHBoxLayout()
         self.setLayout(layout)
 
-        self.input_widget = QWidget()
+        input_widget = QWidget()
         input_layout = QVBoxLayout()
-        self.input_widget.setLayout(input_layout)
-        layout.addWidget(self.input_widget, 6)
+        input_widget.setLayout(input_layout)
+        layout.addWidget(input_widget, 6)
         self.output_widget = QWidget()
         output_layout = QVBoxLayout()
         self.output_widget.setLayout(output_layout)
@@ -34,9 +34,9 @@ class EquipmentWidget(QWidget):
         input_layout.addWidget(self.detail_widget)
         input_layout.addStretch()
 
-        self.enchant_widget = QWidget()
+        enchant_widget = QWidget()
         enchant_layout = QHBoxLayout()
-        self.enchant_widget.setLayout(enchant_layout)
+        enchant_widget.setLayout(enchant_layout)
         if not self.enchant_json:
             self.enchant = None
         else:
@@ -49,33 +49,33 @@ class EquipmentWidget(QWidget):
         else:
             self.special_enchant = RadioWithLabel("Special Enchant")
             enchant_layout.addWidget(self.special_enchant)
-        detail_layout.addWidget(self.enchant_widget)
+        detail_layout.addWidget(enchant_widget)
 
-        self.strength_widget = QWidget()
+        strength_widget = QWidget()
         strength_layout = QVBoxLayout()
-        self.strength_widget.setLayout(strength_layout)
+        strength_widget.setLayout(strength_layout)
         self.strength_level = ComboWithLabel("Strength Level")
         self.strength_level.combo_box.setCurrentIndex(MAX_STRENGTH_LEVEL)
         strength_layout.addWidget(self.strength_level)
-        detail_layout.addWidget(self.strength_widget)
+        detail_layout.addWidget(strength_widget)
 
-        self.embed_widget = QWidget()
+        embed_widget = QWidget()
         embed_layout = QHBoxLayout()
-        self.embed_widget.setLayout(embed_layout)
+        embed_widget.setLayout(embed_layout)
         self.embed_levels = []
         for i in range(EMBED_POSITIONS[self.position]):
             embed_level = ComboWithLabel(f"Embed Level-{i + 1}", [str(i) for i in range(MAX_EMBED_LEVEL + 1)])
             embed_level.combo_box.setCurrentIndex(MAX_EMBED_LEVEL)
             self.embed_levels.append(embed_level)
             embed_layout.addWidget(embed_level)
-        detail_layout.addWidget(self.embed_widget)
+        detail_layout.addWidget(embed_widget)
 
-        self.stone_level_widget = QWidget()
+        stone_level_widget = QWidget()
         stone_level_layout = QVBoxLayout()
-        self.stone_level_widget.setLayout(stone_level_layout)
-        self.stone_widget = QWidget()
+        stone_level_widget.setLayout(stone_level_layout)
+        stone_widget = QWidget()
         stone_layout = QHBoxLayout()
-        self.stone_widget.setLayout(stone_layout)
+        stone_widget.setLayout(stone_layout)
         if self.position not in STONES_POSITIONS:
             self.stones_json = None
             self.stone_level = None
@@ -91,8 +91,8 @@ class EquipmentWidget(QWidget):
                 self.stone_attrs.append(stone_attr)
                 stone_layout.addWidget(stone_attr)
 
-        detail_layout.addWidget(self.stone_level_widget)
-        detail_layout.addWidget(self.stone_widget)
+        detail_layout.addWidget(stone_level_widget)
+        detail_layout.addWidget(stone_widget)
 
         detail_layout.addStretch()
 

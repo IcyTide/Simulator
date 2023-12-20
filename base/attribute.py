@@ -2,7 +2,8 @@ from dataclasses import dataclass
 
 from base.constant import AGILITY_TO_CRITICAL_STRIKE, STRENGTH_TO_ATTACK_POWER, STRENGTH_TO_OVERCOME, \
     SPIRIT_TO_CRITICAL_STRIKE, SPUNK_TO_ATTACK_POWER, SPUNK_TO_OVERCOME, \
-    STRAIN_SCALE, HASTE_SCALE, CRITICAL_STRIKE_SCALE, CRITICAL_POWER_BASE, CRITICAL_POWER_SCALE, OVERCOME_SCALE
+    STRAIN_SCALE, HASTE_SCALE, CRITICAL_STRIKE_SCALE, CRITICAL_POWER_SCALE, OVERCOME_SCALE, \
+    MAJOR_BASE, CRITICAL_POWER_BASE
 
 
 @dataclass
@@ -62,7 +63,7 @@ class Attribute:
     _magical_critical_strike_gain: float = 0
     _magical_critical_strike: float = 0
 
-    _all_critical_power_base: float = 0
+    _all_critical_power_base: int = 0
     _all_critical_power_gain: float = 0
 
     _physical_critical_power_base: int = 0
@@ -107,7 +108,8 @@ class Attribute:
         self.delta_value = 0
         self.delta_grad_attrs = {}
 
-        self.all_major_base += 41
+        self.all_major_base += MAJOR_BASE
+        self.all_critical_power_base += 0
 
     """ Major Attr Function"""
 
@@ -501,7 +503,7 @@ class Attribute:
 
     @physical_critical_strike_percent.setter
     def physical_critical_strike_percent(self, physical_critical_strike_percent):
-        self._physical_critical_strike_percent = round(physical_critical_strike_percent, 4)
+        self._physical_critical_strike_percent = physical_critical_strike_percent
         self.physical_critical_strike = physical_critical_strike_percent + self._physical_critical_strike_gain
 
     @property
@@ -510,7 +512,7 @@ class Attribute:
 
     @physical_critical_strike_gain.setter
     def physical_critical_strike_gain(self, physical_critical_strike_gain):
-        self._physical_critical_strike_gain = round(physical_critical_strike_gain, 4)
+        self._physical_critical_strike_gain = physical_critical_strike_gain
         self.physical_critical_strike = self._physical_critical_strike_percent + physical_critical_strike_gain
 
     @property
@@ -519,7 +521,7 @@ class Attribute:
 
     @physical_critical_strike.setter
     def physical_critical_strike(self, physical_critical_strike):
-        self._physical_critical_strike = physical_critical_strike
+        self._physical_critical_strike = round(physical_critical_strike, 4)
 
     @property
     def magical_critical_strike_base(self):
@@ -576,7 +578,7 @@ class Attribute:
 
     @magical_critical_strike.setter
     def magical_critical_strike(self, magical_critical_strike):
-        self._magical_critical_strike = magical_critical_strike
+        self._magical_critical_strike = round(magical_critical_strike, 4)
 
     """ Critical Power Function"""
 

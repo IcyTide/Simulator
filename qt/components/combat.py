@@ -10,10 +10,10 @@ class CombatWidget(QWidget):
         layout = QVBoxLayout()
         self.setLayout(layout)
 
-        self.top = QWidget()
+        top = QWidget()
         top_layout = QHBoxLayout()
-        self.top.setLayout(top_layout)
-        layout.addWidget(self.top)
+        top.setLayout(top_layout)
+        layout.addWidget(top)
 
         self.target_level = ComboWithLabel("Target Level", [str(level) for level in SHIELD_BASE_MAP])
         top_layout.addWidget(self.target_level)
@@ -27,32 +27,32 @@ class CombatWidget(QWidget):
         self.button = QPushButton(text="Start Simulation!")
         layout.addWidget(self.button)
 
-        self.bottom = QWidget()
+        bottom = QWidget()
         bottom_layout = QHBoxLayout()
-        self.bottom.setLayout(bottom_layout)
-        layout.addWidget(self.bottom)
+        bottom.setLayout(bottom_layout)
+        layout.addWidget(bottom)
 
-        self.tab = QTabWidget()
-        bottom_layout.addWidget(self.tab, 7)
-        self.result = QWidget()
+        tab = QTabWidget()
+        bottom_layout.addWidget(tab, 7)
+        result = QWidget()
         result_layout = QVBoxLayout()
-        self.result.setLayout(result_layout)
-        bottom_layout.addWidget(self.result, 3)
+        result.setLayout(result_layout)
+        bottom_layout.addWidget(result, 3)
 
-        self.attribute = QWidget()
+        attribute = QWidget()
         attribute_layout = QHBoxLayout()
-        self.attribute.setLayout(attribute_layout)
-        self.tab.addTab(self.attribute, "Attribute")
+        attribute.setLayout(attribute_layout)
+        tab.addTab(attribute, "Attribute")
 
         self.init_attribute = TextWithLabel("Init Attribute")
         attribute_layout.addWidget(self.init_attribute)
         self.final_attribute = TextWithLabel("Final Attribute")
         attribute_layout.addWidget(self.final_attribute)
 
-        self.detail = QWidget()
+        detail = QWidget()
         detail_layout = QVBoxLayout()
-        self.detail.setLayout(detail_layout)
-        self.tab.addTab(self.detail, "Detail")
+        detail.setLayout(detail_layout)
+        tab.addTab(detail, "Detail")
 
         self.origin_detail = TableWithLabel("Origin Detail", headers=["skill", "count", "hit", "critical", "damage"])
         detail_layout.addWidget(self.origin_detail)
@@ -62,10 +62,10 @@ class CombatWidget(QWidget):
 
         detail_layout.addStretch()
 
-        self.sequences = QWidget()
+        sequences = QWidget()
         sequences_layout = QVBoxLayout()
-        self.sequences.setLayout(sequences_layout)
-        self.tab.addTab(self.sequences, "Sequences")
+        sequences.setLayout(sequences_layout)
+        tab.addTab(sequences, "Sequences")
 
         self.prepare = TextWithLabel("Prepare Sequences")
         sequences_layout.addWidget(self.prepare)
@@ -81,10 +81,11 @@ class CombatWidget(QWidget):
         self.delta_dps = LabelWithLabel("Delta DPS")
         result_layout.addWidget(self.delta_dps)
         self.delta_dps.hide()
+
         self.origin_gradients = TextWithLabel("Origin Gradients")
-        result_layout.addWidget(self.origin_gradients)
+        result_layout.addWidget(self.origin_gradients, 7)
         self.delta_gradients = TextWithLabel("Delta Gradients")
-        result_layout.addWidget(self.delta_gradients)
+        result_layout.addWidget(self.delta_gradients, 3)
         self.delta_gradients.hide()
 
         result_layout.addStretch()

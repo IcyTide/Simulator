@@ -1,8 +1,8 @@
 from base.constant import PHYSICAL_ATTACK_POWER_COF, MAGICAL_ATTACK_POWER_COF
-from base.skill import Skill, PhysicalSkill, MagicalSkill
+from base.skill import TriggerSkill, PhysicalDamage, MagicalDamage
 
 
-class 大附魔腰(Skill):
+class 大附魔腰(TriggerSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "大附魔腰"
@@ -15,13 +15,13 @@ class 大附魔腰(Skill):
     def post_cast(self):
         super().post_cast()
         if self.roll < 0.3:
-            self.status.buffs["大附魔腰"].trigger(1)
+            self.status.buffs["大附魔腰"].cast(1)
         else:
-            self.status.buffs["大附魔腰"].trigger(2)
-        self.status.buffs["大附魔腰-冷却"].trigger()
+            self.status.buffs["大附魔腰"].cast(2)
+        self.status.buffs["大附魔腰-冷却"].cast()
 
 
-class 外功_昆吾_弦刃(PhysicalSkill):
+class 外功_昆吾_弦刃(TriggerSkill, PhysicalDamage):
     def __init__(self, status):
         super().__init__(status)
         self.name = "昆吾·弦刃"
@@ -37,10 +37,10 @@ class 外功_昆吾_弦刃(PhysicalSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["大附魔手-冷却"].trigger()
+        self.status.buffs["大附魔手-冷却"].cast()
 
 
-class 内功_昆吾_弦刃(MagicalSkill):
+class 内功_昆吾_弦刃(TriggerSkill, MagicalDamage):
     def __init__(self, status):
         super().__init__(status)
         self.name = "昆吾·弦刃"
@@ -56,10 +56,10 @@ class 内功_昆吾_弦刃(MagicalSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["大附魔手-冷却"].trigger()
+        self.status.buffs["大附魔手-冷却"].cast()
 
 
-class 外功_刃凌(PhysicalSkill):
+class 外功_刃凌(TriggerSkill, PhysicalDamage):
     def __init__(self, status):
         super().__init__(status)
         self.name = "刃凌"
@@ -73,10 +73,10 @@ class 外功_刃凌(PhysicalSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["大附魔脚-冷却"].trigger()
+        self.status.buffs["大附魔脚-冷却"].cast()
 
 
-class 内功_刃凌(MagicalSkill):
+class 内功_刃凌(TriggerSkill, MagicalDamage):
     def __init__(self, status):
         super().__init__(status)
         self.name = "刃凌"
@@ -90,7 +90,7 @@ class 内功_刃凌(MagicalSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["大附魔脚-冷却"].trigger()
+        self.status.buffs["大附魔脚-冷却"].cast()
 
 
 SKILLS = {

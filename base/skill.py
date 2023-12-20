@@ -1,49 +1,24 @@
 import random
 
 from dataclasses import dataclass
-from functools import cache
+from functools import cache, partial
 
 from base.status import Status
+from utils.damage import init_result, damage_addition_result, overcome_result, critical_result, level_reduction_result, \
+    strain_result, pve_addition_result, vulnerable_result
+
+
+@cache
+def apply_haste(haste, value):
+    return int(value / (1 + haste))
 
 
 @dataclass
-class PhysicalSnapshot:
-    agility_base: int = 0,
-    agility_gain: float = 0,
-    strength_base: int = 0,
-    strength_gain: float = 0,
-    physical_attack_power_base: int = 0,
-    physical_attack_power_gain: float = 0,
-    physical_critical_strike_base: int = 0,
-    physical_critical_strike_gain: float = 0,
-    physical_critical_power_base: int = 0,
-    physical_critical_power_gain: float = 0,
-    strain_base: int = 0,
-    strain_gain: float = 0,
-    damage_addition: float = 0,
-
-    critical_strike: float = 0,
+class Snapshot:
+    level: int = 1
+    critical_strike: float = 0
     haste: float = 0
-
-
-@dataclass
-class MagicalSnapshot:
-    spirit_base: int = 0,
-    spirit_gain: float = 0,
-    spunk_base: int = 0,
-    spunk_gain: float = 0,
-    magical_attack_power_base: int = 0,
-    magical_attack_power_gain: float = 0,
-    magical_critical_strike_base: int = 0,
-    magical_critical_strike_gain: float = 0,
-    magical_critical_power_base: int = 0,
-    magical_critical_power_gain: float = 0,
-    strain_base: int = 0,
-    strain_gain: float = 0,
-    damage_addition: float = 0,
-
-    critical_strike: float = 0,
-    haste: float = 0
+    gains: dict = None
 
 
 @dataclass
@@ -53,32 +28,156 @@ class Skill:
     activate: bool = True
 
     is_cast: bool = True
-    is_channel: bool = False
     is_hit: bool = True
-    is_stack: bool = False
-    is_instant: bool = False
-    is_overdraw: bool = False
-    is_snapshot: bool = False
-
-    cast_while_casting: bool = False
-    cd_with_haste: bool = False
     hit_with_cast: bool = False
 
     gcd_index: any = 0
-
-    probability: float = 1
-    count_base: int = 1
-    interval_base: int = 0
-    interval_list: list = None
     gcd_base: int = 24
+
+    tick_base: int = 1
+    interval_base: int = 0
+
     cd_base: int = 0
     energy: int = 1
 
-    damage_base: int = 0
-    damage_rand: int = 0
-    attack_power_cof: float = 0
-    weapon_damage_cof: float = 0
-    surplus_cof: float = 0
+    level: int = 1
+    snapshot: [Snapshot] = None
+
+    def __post_init__(self):
+        self.pre_cast_effect = []
+        self.post_cast_effect = []
+        self.critical_hit_effect = []
+        self.post_hit_effect = []
+
+        self.attribute = self.status.attribute
+        self.target = self.status.target
+        self.snapshot = self
+
+    @property
+    def critical_strike(self):
+        raise NotImplementedError
+
+    @property
+    def haste(self):
+        return self.attribute.haste
+
+    """ base property """
+
+    @property
+    def gcd(self):
+        return apply_haste(self.haste, self.gcd_base)
+
+    @property
+    def cd(self):
+        return self.cd_base
+
+    @property
+    def tick(self):
+        return self.tick_base
+
+    @property
+    def interval(self):
+        return apply_haste(self.snapshot.haste, self.interval_base)
+
+    @property
+    def duration(self):
+        return self.interval * self.tick
+
+    @property
+    def roll(self):
+        return random.random()
+
+    """ action functions """
+
+    @property
+    def condition(self):
+        return True
+
+    @property
+    def available(self):
+        if not self.activate:
+            return False
+        if self.status.gcd_group[self.gcd_index]:
+            return False
+        if not self.status.energies[self.name]:
+            return False
+        if self.status.casting:
+            return False
+        return self.condition
+
+    def reset(self):
+        self.status.energies[self.name] = self.energy
+        self.status.cds.pop(self.name)
+
+    def recharge(self):
+        self.reset()
+
+    def set_gcd(self):
+        if self.gcd_base:
+            self.status.gcd_group[self.gcd_index] = self.gcd
+
+    def set_cd(self):
+        if self.cd_base:
+            self.status.cds[self.name] = self.cd
+            self.status.energies[self.name] -= 1
+
+    def pre_cast(self):
+        self.status.ticks[self.name] = 0
+        self.status.intervals[self.name] = self.interval
+
+        for effect in self.pre_cast_effect:
+            effect(self)
+
+    def cast(self, level=1):
+        self.level = level
+
+        self.pre_cast()
+        if not self.interval:
+            for _ in range(self.tick):
+                self.hit()
+
+    def post_cast(self):
+        self.status.ticks.pop(self.name)
+        self.status.intervals.pop(self.name)
+
+        for effect in self.post_cast_effect:
+            effect(self)
+
+    def hit(self):
+        self.post_hit()
+
+    def post_hit(self):
+        for effect in self.post_hit_effect:
+            effect(self)
+
+        self.status.ticks[self.name] += 1
+
+        if self.status.ticks[self.name] == self.tick:
+            self.post_cast()
+        else:
+            self.status.intervals[self.name] = self.interval
+
+    def record(self, critical, level, times=1):
+        gains = tuple((buff, level, stack) for buff, (level, stack) in self.status.gains.items())
+        self.status.record((self.name, critical, level, times, gains))
+
+    @staticmethod
+    def to_overdraw(skill):
+        skill.set_cd = partial(OverdrawSkill.set_cd, skill)
+        skill.recharge = partial(OverdrawSkill.recharge, skill)
+
+    @staticmethod
+    def to_charging(skill):
+        skill.set_cd = partial(ChargingSkill.set_cd, skill)
+        skill.recharge = partial(ChargingSkill.recharge, skill)
+
+
+class DamageSkill(Skill):
+    _damage_base: [int, list] = 0
+    _damage_rand: [int, list] = 0
+    _attack_power_cof: [float, list] = 0.0
+    _weapon_damage_cof: [float, list] = 0.0
+    _surplus_cof: [float, list] = 0.0
 
     damage_gain: float = 0
     attack_power_cof_gain: float = 0
@@ -92,171 +191,60 @@ class Skill:
     skill_critical_strike: float = 0
     skill_critical_power: float = 0
 
-    level_params: dict = None
-    snapshot = None
-
-    def __post_init__(self):
-        self.pre_cast_effect = []
-        self.post_cast_effect = []
-        self.critical_hit_effect = []
-        self.post_hit_effect = []
-
-        self.snapshot = self
-        self.attribute = self.status.attribute
-        self.target = self.status.target
-
-    """ attributes """
-
     @property
-    def strain_base(self):
-        return self.attribute.strain_base
-
-    @property
-    def strain_gain(self):
-        return self.attribute.strain_gain
-
-    @property
-    def damage_addition(self):
-        return self.attribute.damage_addition + self.skill_damage_addition
-
-    @property
-    def pve_addition(self):
-        return self.attribute.pve_addition + self.skill_pve_addition
-
-    @property
-    def critical_strike(self):
-        raise NotImplementedError
-
-    @property
-    def haste(self):
-        return self.attribute.haste
-
-    """ skill detail """
-
-    @property
-    def condition(self):
-        return True
-
-    @property
-    def available(self):
-        if not self.activate:
-            return False
-        if self.status.gcd_group.get(self.gcd_index):
-            return False
-        if self.status.energies[self.name] == 0:
-            return False
-        if self.status.casting and not self.cast_while_casting:
-            return False
-        return self.condition
-
-    @staticmethod
-    @cache
-    def apply_haste(value, scale):
-        return int(value / (1 + scale))
-
-    @property
-    def stack(self):
-        if self.is_stack:
-            return self.status.stacks[self.name]
-        return 1
-
-    @property
-    def count(self):
-        if self.interval_list:
-            return len(self.interval_list)
-        return self.count_base + int(self.is_instant)
-
-    @property
-    def interval(self):
-        if self.interval_list:
-            return self.interval_list[self.status.counts[self.name]]
-        return self.apply_haste(self.interval_base, self.snapshot.haste)
-
-    @property
-    def duration(self):
-        if self.interval_list:
-            return sum(self.interval_list)
-        return self.interval * self.count
-
-    @property
-    def gcd(self):
-        return self.apply_haste(self.gcd_base, self.haste)
-
-    @property
-    def cd(self):
-        if self.cd_with_haste:
-            return self.apply_haste(self.cd_base, self.haste)
-        return self.cd_base
-
-    @property
-    def roll(self):
-        return random.random()
-
-    """ action functions """
-
-    def recharge(self):
-        if self.is_overdraw:
-            self.status.energies[self.name] = self.energy
-            self.status.cds.pop(self.name)
+    def damage_base(self):
+        if isinstance(self._damage_base, int):
+            return self._damage_base
         else:
-            self.status.energies[self.name] += 1
-            if self.status.energies[self.name] < self.energy:
-                self.set_cd()
-            else:
-                self.status.cds.pop(self.name)
+            return self._damage_base[self.level - 1]
 
-    def set_cd(self):
-        cd = self.status.cds.get(self.name, 0)
-        if self.is_overdraw:
-            self.status.cds[self.name] = self.cd + cd
+    @damage_base.setter
+    def damage_base(self, damage_base):
+        self._damage_base = damage_base
+
+    @property
+    def damage_rand(self):
+        if isinstance(self._damage_rand, int):
+            return self._damage_rand
         else:
-            self.status.cds[self.name] = cd if cd else self.cd
+            return self._damage_rand[self.level - 1]
 
-    def consume(self):
-        critical = self.roll < self.snapshot.critical_strike
-        count = self.count - self.status.counts[self.name]
-        self.record(critical, count)
+    @damage_rand.setter
+    def damage_rand(self, damage_rand):
+        self._damage_rand = damage_rand
 
-        self.status.buffs[self.name].clear()
-        self.post_cast()
+    @property
+    def attack_power_cof(self):
+        if isinstance(self._attack_power_cof, float):
+            return self._attack_power_cof
+        else:
+            return self._attack_power_cof[self.level - 1]
 
-    def pre_cast(self):
-        if self.is_cast:
-            self.status.casting = self.duration
-            if self.gcd_base:
-                self.status.gcd_group[self.gcd_index] = self.gcd
-        if self.cd_base and self.is_channel:
-            self.set_cd()
-            self.status.energies[self.name] -= 1
-        if self.is_instant:
-            self.status.intervals[self.name] = 0
-        if self.is_snapshot:
-            self.save_snapshot()
+    @attack_power_cof.setter
+    def attack_power_cof(self, attack_power_cof):
+        self._attack_power_cof = attack_power_cof
 
-        self.status.counts[self.name] = 0
+    @property
+    def weapon_damage_cof(self):
+        if isinstance(self._weapon_damage_cof, float):
+            return self._weapon_damage_cof
+        else:
+            return self._weapon_damage_cof[self.level - 1]
+    
+    @weapon_damage_cof.setter
+    def weapon_damage_cof(self, weapon_damage_cof):
+        self._weapon_damage_cof = weapon_damage_cof
 
-        for effect in self.pre_cast_effect:
-            effect(self)
+    @property
+    def surplus_cof(self):
+        if isinstance(self._surplus_cof, float):
+            return self._surplus_cof
+        else:
+            return self._surplus_cof[self.level - 1]
 
-    def cast(self, level=None):
-        if self.roll >= self.probability:
-            return
-
-        if level:
-            for attr, values in self.level_params.items():
-                setattr(self, attr, values[level - 1])
-
-        self.pre_cast()
-
-        if not self.damage_base:
-            self.post_cast()
-            return
-
-        if self.name not in self.status.intervals:
-            self.status.intervals[self.name] = self.interval
-
-        while self.status.intervals.get(self.name) == 0:
-            self.hit()
+    @surplus_cof.setter
+    def surplus_cof(self, surplus_cof):
+        self._surplus_cof = surplus_cof
 
     def critical_hit(self):
         for effect in self.critical_hit_effect:
@@ -264,276 +252,237 @@ class Skill:
 
     def hit(self):
         critical = self.roll < self.snapshot.critical_strike
-        self.record(critical)
+
+        self.record(critical, self.snapshot.level)
 
         if critical:
             self.critical_hit()
 
         self.post_hit()
 
-    def record(self, critical, count=1):
-        self.status.record(self.record_damage(critical, count))
 
-    def post_hit(self):
-        for effect in self.post_hit_effect:
-            effect(self)
+class TriggerSkill(Skill):
+    probability: float = 1
 
-        self.status.counts[self.name] += 1
+    def cast(self, level=1):
+        if self.roll < self.probability:
+            super().cast()
 
-        if self.status.counts[self.name] == self.count:
-            self.post_cast()
-        else:
-            self.status.intervals[self.name] = self.interval
+
+""""""
+
+
+class CastingSkill(Skill):
+    def pre_cast(self):
+        super().pre_cast()
+        self.set_gcd()
+        self.status.casting = True
 
     def post_cast(self):
-        if self.is_cast:
-            self.status.casting = 0
-        if self.cd_base and not self.is_channel:
-            self.set_cd()
-            self.status.energies[self.name] -= 1
+        super().post_cast()
+        self.status.casting = False
+        self.set_cd()
 
-        for effect in self.post_cast_effect:
+
+class ChannelSkill(Skill):
+    _instant: bool = False
+
+    @property
+    def instant(self):
+        return self._instant
+
+    @instant.setter
+    def instant(self, instant):
+        if instant:
+            self.tick_base += 1
+        else:
+            self.tick_base -= 1
+
+    def pre_cast(self):
+        super().pre_cast()
+        self.status.casting = True
+        self.set_gcd()
+        self.set_cd()
+        if self.instant:
+            self.hit()
+
+    def post_cast(self):
+        super().post_cast()
+        self.status.casting = False
+
+
+class PeriodicalSkill(Skill):
+    def record(self, critical, level, times=1):
+        gains = tuple((buff, level, stack) for buff, (level, stack) in self.snapshot.gains.items())
+        self.status.record((self.name, critical, level, times, gains))
+
+    def consume(self):
+        if stack := self.status.stacks[self.name]:
+            critical = self.roll < self.critical_strike
+            ticks = self.tick - self.status.ticks[self.name]
+            self.record(critical, self.snapshot.level, ticks * stack)
+
+            self.status.buffs[self.name].post_cast()
+            self.post_cast()
+
+    def pre_cast(self):
+        for effect in self.pre_cast_effect:
             effect(self)
 
-        self.status.counts.pop(self.name)
+        self.snapshot = Snapshot(self.level, self.critical_strike, self.haste, self.status.gains.copy())
+        self.status.ticks[self.name] = 0
+        if not self.status.intervals[self.name]:
+            self.status.intervals[self.name] = self.interval
 
-        if self.name in self.status.intervals:
-            self.status.intervals.pop(self.name)
+        self.status.buffs[self.name].cast()
 
-    def record_damage(self, critical, count):
-        raise NotImplementedError
-
-    def save_snapshot(self):
-        raise NotImplementedError
+    def post_cast(self):
+        super().post_cast()
+        self.status.buffs[self.name].post_cast()
 
 
-class PhysicalSkill(Skill):
+""""""
 
-    @property
-    def agility_base(self):
-        return self.attribute.agility_base
 
-    @property
-    def agility_gain(self):
-        return self.attribute.agility_gain
+class FixedInterval(Skill):
+    _interval_list: list = None
+    _duration: int = 0
 
     @property
-    def strength_base(self):
-        return self.attribute.strength_base
+    def interval_list(self):
+        return self._interval_list
+
+    @interval_list.setter
+    def interval_list(self, interval_list):
+        self._interval_list = interval_list
+        self._duration = sum(interval_list)
 
     @property
-    def strength_gain(self):
-        return self.attribute.strength_gain
+    def interval(self):
+        return self._interval_list[self.status.ticks[self.name]]
 
     @property
-    def physical_attack_power_base(self):
-        return self.attribute.physical_attack_power_base
+    def tick(self):
+        return len(self._interval_list)
 
     @property
-    def physical_attack_power_gain(self):
-        return self.attribute.physical_attack_power_gain
+    def duration(self):
+        return self._duration
 
+
+""""""
+
+
+class HastedCD(Skill):
     @property
-    def physical_critical_strike_base(self):
-        return self.attribute.physical_critical_strike_base
+    def cd(self):
+        return apply_haste(self.haste, self.cd)
 
-    @property
-    def physical_critical_strike_gain(self):
-        return self.attribute.physical_critical_strike_gain + self.skill_critical_strike
 
-    @property
-    def physical_critical_power_base(self):
-        return self.attribute.physical_critical_power_base
+""""""
 
-    @property
-    def physical_critical_power_gain(self):
-        return self.attribute.physical_critical_power_gain + self.skill_critical_power
 
+class OverdrawSkill(Skill):
+    def set_cd(self):
+        self.status.cds[self.name] += self.cd
+
+
+class ChargingSkill(Skill):
+    def recharge(self):
+        if self.status.energies[self.name] < self.energy:
+            self.status.energies[self.name] += 1
+
+        if self.status.energies[self.name] == self.energy:
+            self.status.cds.pop(self.name)
+        else:
+            self.set_cd()
+
+    def set_cd(self):
+        if not self.status.cds[self.name]:
+            self.status.cds[self.name] = self.cd
+
+
+""""""
+
+
+class PhysicalDamage(DamageSkill):
     @property
     def critical_strike(self):
         return self.attribute.physical_critical_strike + self.skill_critical_strike
 
-    def save_snapshot(self):
-        self.snapshot = PhysicalSnapshot(
-            strength_base=self.strength_base,
-            strength_gain=self.strength_gain,
-            agility_base=self.agility_base,
-            agility_gain=self.agility_gain,
-            physical_attack_power_base=self.physical_attack_power_base,
-            physical_attack_power_gain=self.physical_attack_power_gain,
-            physical_critical_strike_base=self.physical_critical_strike_base,
-            physical_critical_strike_gain=self.physical_critical_strike_gain,
-            physical_critical_power_base=self.physical_critical_power_base,
-            physical_critical_power_gain=self.physical_critical_power_gain,
-            strain_base=self.strain_base,
-            strain_gain=self.strain_gain,
-            damage_addition=self.damage_addition + self.skill_damage_addition,
-            critical_strike=self.critical_strike,
-            haste=self.haste
+    def calculate(self, level, times):
+        self.level = level
+        damage = init_result(
+            self.damage_base, self.damage_rand, self.damage_gain,
+            self.attack_power_cof, self.attack_power_cof_gain, self.attribute.physical_attack_power,
+            self.weapon_damage_cof, self.weapon_damage_cof_gain, self.attribute.weapon_damage,
+            self.surplus_cof, self.surplus_cof_gain, self.attribute.surplus
         )
 
-    def record_damage(self, critical: bool, count: int):
-        return (
-            "physical",
-            (
-                ('agility_base', self.snapshot.agility_base),
-                ('agility_gain', self.snapshot.agility_gain),
-                ('strength_base', self.snapshot.strength_base),
-                ('strength_gain', self.snapshot.strength_gain),
-                ('surplus', self.attribute.surplus),
-                ('strain_base', self.snapshot.strain_base),
-                ('strain_gain', self.snapshot.strain_gain),
-                ('physical_attack_power_base', self.snapshot.physical_attack_power_base),
-                ('physical_attack_power_gain', self.snapshot.physical_attack_power_gain),
-                ('physical_critical_strike_base', self.snapshot.physical_critical_strike_base),
-                ('physical_critical_strike_gain', self.snapshot.physical_critical_strike_gain),
-                ('physical_critical_power_base', self.snapshot.physical_critical_power_base),
-                ('physical_critical_power_gain', self.snapshot.physical_critical_power_gain),
-                ('physical_overcome_base', self.attribute.physical_overcome_base),
-                ('physical_overcome_gain', self.attribute.physical_overcome_gain),
-                ('weapon_damage_base', self.attribute.weapon_damage_base),
-                ('weapon_damage_rand', self.attribute.weapon_damage_rand),
-                ('weapon_damage_gain', self.attribute.weapon_damage_gain)
-            ),
-            (
-                ('skill', self.name),
-                ('critical', critical),
-                ('stack', self.stack * count),
-                ('damage_base', self.damage_base),
-                ('damage_rand', self.damage_rand),
-                ('damage_gain', self.damage_gain),
-                ('attack_power_cof', self.attack_power_cof),
-                ('weapon_damage_cof', self.weapon_damage_cof),
-                ('surplus_cof', self.surplus_cof),
-                ('attack_power_cof_gain', self.attack_power_cof_gain),
-                ('weapon_damage_cof_gain', self.weapon_damage_cof_gain),
-                ('surplus_cof_gain', self.surplus_cof_gain),
+        damage = damage_addition_result(damage, self.attribute.damage_addition + self.skill_damage_addition)
+        damage = overcome_result(damage, self.attribute.physical_overcome,
+                                 self.target.physical_shield_base,
+                                 self.target.physical_shield_gain + self.skill_shield_gain,
+                                 self.attribute.physical_shield_ignore + self.skill_shield_ignore,
+                                 self.target.shield_constant)
+        # if critical:
+        #     damage = critical_result(damage, attribute.physical_critical_power)
+        damage = critical_result(damage,
+                                 self.attribute.physical_critical_strike + self.skill_critical_strike,
+                                 self.attribute.physical_critical_power + self.skill_critical_power)
+        damage = level_reduction_result(damage, self.attribute.level, self.target.level)
+        damage = strain_result(damage, self.attribute.strain)
+        damage = pve_addition_result(damage, self.attribute.pve_addition + self.skill_pve_addition)
+        damage = vulnerable_result(damage, self.target.physical_vulnerable)
+        damage = times * damage
 
-                ('level', self.attribute.level),
-                ('damage_addition', self.damage_addition),
-                ('pve_addition', self.pve_addition),
-                ('shield_ignore', self.attribute.physical_shield_ignore + self.skill_shield_ignore),
-
-                ('target_level', self.target.level),
-                ('shield_base', self.target.physical_shield_base),
-                ('shield_gain', self.target.physical_shield_gain + self.skill_shield_gain),
-                ('vulnerable', self.target.physical_vulnerable),
-                ('shield_constant', self.target.shield_constant),
-
-            )
-        )
+        return damage
 
 
-class MagicalSkill(Skill):
-    @property
-    def spirit_base(self):
-        return self.attribute.spirit_base
-
-    @property
-    def spirit_gain(self):
-        return self.attribute.spirit_gain
-
-    @property
-    def spunk_base(self):
-        return self.attribute.spunk_base
-
-    @property
-    def spunk_gain(self):
-        return self.attribute.spunk_gain
-
-    @property
-    def magical_attack_power_base(self):
-        return self.attribute.magical_attack_power_base
-
-    @property
-    def magical_attack_power_gain(self):
-        return self.attribute.magical_attack_power_gain
-
-    @property
-    def magical_critical_strike_base(self):
-        return self.attribute.magical_critical_strike_base
-
-    @property
-    def magical_critical_strike_gain(self):
-        return self.attribute.magical_critical_strike_gain + self.skill_critical_strike
-
-    @property
-    def magical_critical_power_base(self):
-        return self.attribute.magical_critical_power_base
-
-    @property
-    def magical_critical_power_gain(self):
-        return self.attribute.magical_critical_power_gain + self.skill_critical_power
-
+class MagicalDamage(DamageSkill):
     @property
     def critical_strike(self):
         return self.attribute.magical_critical_strike + self.skill_critical_strike
 
-    def save_snapshot(self):
-        self.snapshot = MagicalSnapshot(
-            spunk_base=self.spunk_base,
-            spunk_gain=self.spunk_gain,
-            spirit_base=self.spirit_base,
-            spirit_gain=self.spirit_gain,
-            magical_attack_power_base=self.magical_attack_power_base,
-            magical_attack_power_gain=self.magical_attack_power_gain,
-            magical_critical_strike_base=self.magical_critical_strike_base,
-            magical_critical_strike_gain=self.magical_critical_strike_gain,
-            magical_critical_power_base=self.magical_critical_power_base,
-            magical_critical_power_gain=self.magical_critical_power_gain,
-            strain_base=self.strain_base,
-            strain_gain=self.strain_gain,
-            damage_addition=self.damage_addition + self.skill_damage_addition,
-            critical_strike=self.critical_strike,
-            haste=self.haste
+    def calculate(self, level, times):
+        self.level = level
+        damage = init_result(
+            self.damage_base, self.damage_rand, self.damage_gain,
+            self.attack_power_cof, self.attack_power_cof_gain, self.attribute.magical_attack_power,
+            self.weapon_damage_cof, self.weapon_damage_cof_gain, self.attribute.weapon_damage,
+            self.surplus_cof, self.surplus_cof_gain, self.attribute.surplus
         )
 
-    def record_damage(self, critical: bool, count: int):
-        return (
-            "magical",
-            (
-                ('spirit_base', self.snapshot.spirit_base),
-                ('spirit_gain', self.snapshot.spirit_gain),
-                ('spunk_base', self.snapshot.spunk_base),
-                ('spunk_gain', self.snapshot.spunk_gain),
-                ('surplus', self.attribute.surplus),
-                ('strain_base', self.snapshot.strain_base),
-                ('strain_gain', self.snapshot.strain_gain),
-                ('magical_attack_power_base', self.snapshot.magical_attack_power_base),
-                ('magical_attack_power_gain', self.snapshot.magical_attack_power_gain),
-                ('magical_critical_strike_base', self.snapshot.magical_critical_strike_base),
-                ('magical_critical_strike_gain', self.snapshot.magical_critical_strike_gain),
-                ('magical_critical_power_base', self.snapshot.magical_critical_power_base),
-                ('magical_critical_power_gain', self.snapshot.magical_critical_power_gain),
-                ('magical_overcome_base', self.attribute.magical_overcome_base),
-                ('magical_overcome_gain', self.attribute.magical_overcome_gain),
-                ('weapon_damage_base', self.attribute.weapon_damage_base),
-                ('weapon_damage_rand', self.attribute.weapon_damage_rand),
-                ('weapon_damage_gain', self.attribute.weapon_damage_gain)
-            ),
-            (
-                ('skill', self.name),
-                ('critical', critical),
-                ('stack', self.stack * count),
-                ('damage_base', self.damage_base),
-                ('damage_rand', self.damage_rand),
-                ('damage_gain', self.damage_gain),
-                ('attack_power_cof', self.attack_power_cof),
-                ('weapon_damage_cof', self.weapon_damage_cof),
-                ('surplus_cof', self.surplus_cof),
-                ('attack_power_cof_gain', self.attack_power_cof_gain),
-                ('weapon_damage_cof_gain', self.weapon_damage_cof_gain),
-                ('surplus_cof_gain', self.surplus_cof_gain),
+        damage = damage_addition_result(damage, self.attribute.damage_addition + self.skill_damage_addition)
+        damage = overcome_result(damage, self.attribute.magical_overcome,
+                                 self.target.magical_shield_base,
+                                 self.target.magical_shield_gain + self.skill_shield_gain,
+                                 self.attribute.magical_shield_ignore + self.skill_shield_ignore,
+                                 self.target.shield_constant)
+        # if critical:
+        #     damage = critical_result(damage, attribute.physical_critical_power)
+        damage = critical_result(damage,
+                                 self.attribute.magical_critical_strike + self.skill_critical_strike,
+                                 self.attribute.magical_critical_power + self.skill_critical_power)
+        damage = level_reduction_result(damage, self.attribute.level, self.target.level)
+        damage = strain_result(damage, self.attribute.strain)
+        damage = pve_addition_result(damage, self.attribute.pve_addition + self.skill_pve_addition)
+        damage = vulnerable_result(damage, self.target.magical_vulnerable)
+        damage = times * damage
 
-                ('level', self.attribute.level),
-                ('damage_addition', self.damage_addition),
-                ('pve_addition', self.pve_addition),
-                ('shield_ignore', self.attribute.magical_shield_ignore + self.skill_shield_ignore),
+        return damage
 
-                ('target_level', self.target.level),
-                ('shield_base', self.target.magical_shield_base),
-                ('shield_gain', self.target.magical_shield_gain + self.skill_shield_gain),
-                ('vulnerable', self.target.magical_vulnerable),
-                ('shield_constant', self.target.shield_constant),
-            )
-        )
+
+""""""
+
+
+class ActionSkill(ChannelSkill, FixedInterval):
+    pass
+
+
+class DotSkill(PeriodicalSkill):
+    pass
+
+
+class PlacementSkill(PeriodicalSkill, FixedInterval):
+    pass

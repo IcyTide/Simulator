@@ -7,12 +7,10 @@ class 龙息:
     def __call__(self, status: Status):
         related_skills = ["惊燕式", "逐鹰式"]
         for skill in related_skills:
-            status.skills[skill].interval_list = None
-            status.skills[skill].count_base = 2
-            status.skills[skill].interval_base = 0
+            status.skills[skill].interval_list = [0, 0]
 
+        Skill.to_overdraw(status.skills["擒龙六斩"])
         status.skills["擒龙六斩"].energy = 6
-        status.skills["擒龙六斩"].is_overdraw = True
         status.energies["擒龙六斩"] = 6
 
 
@@ -32,18 +30,13 @@ class 阳关:
 class 霜天:
     @staticmethod
     def post_hit_effect(self: Skill):
-        self.damage_gain += 0.15
-        self.attack_power_cof_gain += 0.15
-        self.weapon_damage_cof_gain += 0.15
+        self.status.buffs["霜天"].cast()
         # if self.status.counts[self.name] < 4:
         #     self.weapon_damage_cof_gain += 0.15
 
     @staticmethod
     def post_cast_effect(self: Skill):
-        count = self.status.counts[self.name]
-        self.damage_gain -= 0.15 * count
-        self.attack_power_cof_gain -= 0.15 * count
-        self.weapon_damage_cof_gain -= 0.15 * count
+        self.status.buffs["霜天"].post_cast()
         # self.weapon_damage_cof_gain -= 0.15 * min(4, count)
 
     def __call__(self, status: Status):
@@ -64,7 +57,7 @@ class 见尘:
 class 含风:
     @staticmethod
     def post_hit_effect(self: Skill):
-        self.status.buffs["含风"].trigger()
+        self.status.buffs["含风"].cast()
 
     def __call__(self, status: Status):
         status.skills["刀啸风吟"].post_hit_effect.append(self.post_hit_effect)
@@ -84,11 +77,12 @@ class 星火:
 class 楚歌:
     @staticmethod
     def pre_cast_effect(self: Skill):
-        self.status.buffs["楚歌"].trigger()
+        self.status.buffs["楚歌"].cast()
 
     @staticmethod
     def post_hit_effect(self: Skill):
-        self.status.buffs["楚歌-计数"].trigger()
+        if self.status.stacks["楚歌"]:
+            self.status.buffs["楚歌-计数"].cast()
 
     def __call__(self, status: Status):
         status.skills["破釜沉舟"].cd_base -= 3 * 16
@@ -132,7 +126,7 @@ class 降麒式:
     @staticmethod
     def post_cast_effect(self: Skill):
         self.status.cds["擒龙六斩"] -= 2 * 16
-        self.status.buffs["降麒式-计数"].trigger()
+        self.status.buffs["降麒式-计数"].cast()
 
     def __call__(self, status: Status):
         related_skills = ["惊燕式", "逐鹰式"]

@@ -10,15 +10,15 @@ class TalentsWidget(QWidget):
         layout = QVBoxLayout()
         self.setLayout(layout)
 
-        self.talents_row1 = QWidget()
+        row1 = QWidget()
         row1_layout = QHBoxLayout()
-        self.talents_row1.setLayout(row1_layout)
-        layout.addWidget(self.talents_row1)
+        row1.setLayout(row1_layout)
+        layout.addWidget(row1)
 
-        self.talents_row2 = QWidget()
+        row2 = QWidget()
         row2_layout = QHBoxLayout()
-        self.talents_row2.setLayout(row2_layout)
-        layout.addWidget(self.talents_row2)
+        row2.setLayout(row2_layout)
+        layout.addWidget(row2)
 
         layout.addStretch()
 

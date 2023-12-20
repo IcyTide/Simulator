@@ -1,10 +1,13 @@
 import os
 import sys
 
+from PySide6 import QtWidgets
+
 from qt.components.top import TopWidget
 from qt.scripts.top import top_script
 from qt.components.equipments import EquipmentsWidget
 from qt.scripts.equipments import equipments_script
+from qt.components.consumables import ConsumablesWidget
 from qt.components.talents import TalentsWidget
 from qt.scripts.talents import talents_script
 from qt.components.recipes import RecipesWidget
@@ -40,11 +43,14 @@ class MainWindow(QMainWindow):
         self.tab_widget.addTab(self.talents_widget, "Talents")
         self.recipes_widget = RecipesWidget()
         self.tab_widget.addTab(self.recipes_widget, "Recipes")
+        self.consumables_widget = ConsumablesWidget()
+        self.tab_widget.addTab(self.consumables_widget, "Consumables")
         self.combat_widget = CombatWidget()
         self.tab_widget.addTab(self.combat_widget, "Combat")
 
         school = top_script(self.top_widget, self.tab_widget,
                             self.equipments_widget, self.talents_widget, self.recipes_widget,
+                            self.consumables_widget,
                             self.combat_widget)
         equipments = equipments_script(self.equipments_widget)
         talents = talents_script(self.talents_widget)
@@ -56,6 +62,7 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    app.setStyle(QtWidgets.QStyleFactory.create('Fusion'))
     window = MainWindow()
     window.show()
     sys.exit(app.exec())

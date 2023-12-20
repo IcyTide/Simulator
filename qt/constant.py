@@ -154,7 +154,7 @@ SUPPORT_SCHOOL = {
         "major": "根骨",
         "kind": "内功",
         "attribute": bing_xin_jue.BingXinJue,
-        "formation": "霜岚洗锋阵",
+        "formation": "九音惊弦阵",
         "talents": bing_xin_jue.TALENTS,
         "recipes": bing_xin_jue.RECIPES,
         "skills": bing_xin_jue.SKILLS,

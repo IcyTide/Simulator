@@ -1,11 +1,13 @@
 from PySide6.QtWidgets import QTabWidget
 
-from base.attribute import Attribute
 from qt.components.equipments import EquipmentsWidget
 from qt.components.talents import TalentsWidget
 from qt.components.recipes import RecipesWidget
+from qt.components.consumables import ConsumablesWidget
 from qt.components.combat import CombatWidget
 from qt.components.top import TopWidget
+
+from general.consumables import FOODS, POTIONS, WEAPON_ENCHANTS, SPREADS, SNACKS, WINES
 from qt.constant import SUPPORT_SCHOOL
 
 
@@ -37,6 +39,7 @@ class School:
 
 def top_script(top_widget: TopWidget, tab_widget: QTabWidget,
                equipments_widget: EquipmentsWidget, talents_widget: TalentsWidget, recipes_widget: RecipesWidget,
+               consumables_widget: ConsumablesWidget,
                combat_widget: CombatWidget):
     school = School()
 
@@ -54,24 +57,31 @@ def top_script(top_widget: TopWidget, tab_widget: QTabWidget,
                     continue
                 choices.append(name)
 
-            equipment_widget.equipment.combo_box.clear()
-            equipment_widget.equipment.combo_box.addItems(choices)
+            equipment_widget.equipment.set_items(choices)
         for i, talent_widget in enumerate(talents_widget.values()):
-            talent_widget.combo_box.clear()
-            talent_widget.combo_box.addItems(school.talents[i])
+            talent_widget.set_items(school.talents[i])
 
         for recipe_widget in recipes_widget.values():
             recipe_widget.list.clear()
             recipe_widget.hide()
 
         for i, (skill, recipes) in enumerate(school.recipes.items()):
-            recipes_widget[i].label.setText(skill)
-            recipes_widget[i].list.addItems(recipes)
+            recipes_widget[i].set_label(skill)
+            recipes_widget[i].set_items(recipes)
             recipes_widget[i].show()
 
-        combat_widget.prepare.text_browser.setText(school.prepare)
-        combat_widget.priority.text_browser.setText(school.priority)
-        combat_widget.loop.text_browser.setText(school.loop)
+        consumables_widget.major_food.set_items([""] + FOODS[school.major])
+        consumables_widget.minor_food.set_items([""] + FOODS[school.kind] + FOODS[""])
+        consumables_widget.major_potion.set_items([""] + POTIONS[school.major])
+        consumables_widget.minor_potion.set_items([""] + POTIONS[school.kind] + POTIONS[""])
+        consumables_widget.weapon_enchant.set_items([""] + WEAPON_ENCHANTS[school.kind])
+        consumables_widget.home_snack.set_items([""] + SNACKS[school.kind] + SNACKS[""])
+        consumables_widget.home_wine.set_items([""] + WINES[school.major] + WINES[""])
+        consumables_widget.spread.set_items([""] + SPREADS[school.major] + SPREADS[school.kind])
+        
+        combat_widget.prepare.set_text(school.prepare)
+        combat_widget.priority.set_text(school.priority)
+        combat_widget.loop.set_text(school.loop)
         if index >= 0:
             tab_widget.show()
 

@@ -10,15 +10,15 @@ class 玳弦急曲套装:
 
 class 嗔怒套装:
     @staticmethod
-    def critical_set_post_cast(self: Skill):
-        self.status.buffs["嗔怒"].trigger()
+    def post_cast_effect(self: Skill):
+        self.status.buffs["嗔怒"].cast()
 
     def __call__(self, status: Status):
         for skill in status.skills.values():
             if skill.hit_with_cast:
-                skill.post_hit_effect.append(self.critical_set_post_cast)
+                skill.post_hit_effect.append(self.post_cast_effect)
             elif skill.is_cast:
-                skill.post_cast_effect.append(self.critical_set_post_cast)
+                skill.post_cast_effect.append(self.post_cast_effect)
 
 
 class 玳弦急曲大橙武:
@@ -33,24 +33,25 @@ class 江海凝光大橙武:
 
 class 橙武特效:
     @staticmethod
-    def divine_post_cast(self: Skill):
-        self.status.buffs["飞霜绛露"].trigger()
+    def post_cast_effect(self: Skill):
+        if not self.status.stacks["飞霜绛露-冷却"]:
+            self.status.buffs["飞霜绛露"].cast()
 
     def __call__(self, status: Status):
         for skill in status.skills.values():
             if skill.hit_with_cast:
-                skill.post_hit_effect.append(self.divine_post_cast)
+                skill.post_hit_effect.append(self.post_cast_effect)
             elif skill.is_cast:
-                skill.post_cast_effect.append(self.divine_post_cast)
+                skill.post_cast_effect.append(self.post_cast_effect)
 
 
 class 剑破虚空神兵:
     @staticmethod
-    def divine_post_cast(self: Skill):
+    def post_cast_effect(self: Skill):
         self.status.skills["剑破虚空·神兵"].cast()
 
     def __call__(self, status: Status):
-        status.skills["剑破虚空"].post_cast_effect.append(self.divine_post_cast)
+        status.skills["剑破虚空"].post_cast_effect.append(self.post_cast_effect)
 
 
 EQUIP_GAINS_NAME = {

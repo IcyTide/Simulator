@@ -38,9 +38,9 @@ def combat_script(combat_components,
         gain_attr_text = display_attr(attribute, display_attrs)
         return init_attr_text, gain_attr_text, simulator
 
-    def build_summary(school_attr, iteration, simulator, delta_value):
+    def build_summary(iteration, simulator, delta):
         dps, details, gradients, delta_dps, delta_details, delta_gradients = simulate_delta(
-            school_attr['attribute'], iteration, simulator, delta_value
+            iteration, simulator, delta
         )
         total_damage = dps * simulator.duration
         summary_texts = []
@@ -80,8 +80,7 @@ def combat_script(combat_components,
         [combat_components['init_attribute'], combat_components['gain_attribute'], combat_components['simulator']]
     ).then(
         build_summary,
-        [combat_components['school_attr'], combat_components['iteration'],
-         combat_components['simulator'], combat_components['delta_value']],
+        [combat_components['iteration'], combat_components['simulator'], combat_components['delta_value']],
         [combat_components['dps'], combat_components['summary'], combat_components['gradient'],
          combat_components['delta_dps'], combat_components['delta_summary'], combat_components['delta_gradient']]
     )

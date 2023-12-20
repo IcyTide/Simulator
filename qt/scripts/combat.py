@@ -55,9 +55,7 @@ def combat_script(school: School, equipments: Equipments, talents: Talents, reci
         iteration = combat_widget.iteration.spin_box.value()
         delta = combat_widget.delta.spin_box.value()
 
-        dps, details, gradients, delta_dps, delta_details, delta_gradients = simulate_delta(
-            school.attribute, iteration, simulator, delta
-        )
+        dps, details, gradients, delta_dps, delta_details, delta_gradients = simulate_delta(iteration, simulator, delta)
         combat_widget.origin_dps.text.setText(str(int(dps)))
         combat_widget.origin_detail.set_content(detail_content(details))
         combat_widget.origin_gradients.text_browser.setText(gradients_text(gradients))
@@ -65,7 +63,7 @@ def combat_script(school: School, equipments: Equipments, talents: Talents, reci
             combat_widget.delta_dps.show()
             combat_widget.delta_dps.text.setText(str(int(delta_dps)))
             combat_widget.delta_detail.show()
-            combat_widget.delta_detail.set_content(detail_content(details))
+            combat_widget.delta_detail.set_content(detail_content(delta_details))
             combat_widget.delta_gradients.show()
             combat_widget.delta_gradients.text_browser.setText(gradients_text(delta_gradients))
 
