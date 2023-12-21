@@ -9,6 +9,6 @@ class TopWidget(QWidget):
         layout = QVBoxLayout()
         self.setLayout(layout)
 
-        self.school = ComboWithLabel("School", list(SUPPORT_SCHOOL), -1)
+        self.school = ComboWithLabel("心法", items=list(SUPPORT_SCHOOL), index=-1)
 
         layout.addWidget(self.school)

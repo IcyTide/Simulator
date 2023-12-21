@@ -65,13 +65,11 @@ class 大附魔腰(GainBuff):
         self.duration = 8 * 16
         self.value = [10 / 1024, 51 / 1024]
 
-    def _add(self):
-        super()._add()
-        self.status.attribute.damage_addition += self.value
+    def add(self, level, stack):
+        self.status.attribute.damage_addition += self.value[level - 1]
 
-    def _remove(self):
-        super()._remove()
-        self.status.attribute.damage_addition -= self.value
+    def remove(self, level, stack):
+        self.status.attribute.damage_addition -= self.value[level - 1]
 
 
 class 大附魔腰_冷却(CDBuff):

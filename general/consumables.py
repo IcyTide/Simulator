@@ -32,7 +32,7 @@ def magical_spread(value1, value2):
             "surplus": value2}
 
 
-def tong_ze_spread(value):
+def guild_spread(value):
     return {"surplus": value, "strain_base": value}
 
 
@@ -40,7 +40,7 @@ def boiled_fish_spread(value):
     return {"surplus": value, "strain_base": value}
 
 
-def streamed_fish_spread(value):
+def guild_food(value):
     return {"strain_base": value}
 
 
@@ -194,8 +194,8 @@ CONSUMABLES_NUMBER = {
     "major_wine": 256,
     "haste_wine": 1144,
 
-    "tong_ze_spread": 234,
-    "streamed_fish_spread": 517,
+    "guild_spread": 234,
+    "guild_food": 517,
     "major_spread": 396,
     "physical_spread": 398,
     "magical_spread": 475,
@@ -308,10 +308,10 @@ CONSUMABLES = {
     f"女儿红·旬又三({CONSUMABLES_NUMBER['haste_wine']}加速)":
         haste_wine(CONSUMABLES_NUMBER["haste_wine"]),
 
-    "同泽宴":
-        tong_ze_spread(CONSUMABLES_NUMBER["tong_ze_spread"]),
-    "蒸鱼菜盘":
-        streamed_fish_spread(CONSUMABLES_NUMBER["streamed_fish_spread"]),
+    "guild_spread":
+        guild_spread(CONSUMABLES_NUMBER["guild_spread"]),
+    "guild_food":
+        guild_food(CONSUMABLES_NUMBER["guild_food"]),
 
     f"水晶芙蓉宴({CONSUMABLES_NUMBER['major_spread']}力道)":
         strength_spread(CONSUMABLES_NUMBER["major_spread"]),
@@ -328,6 +328,11 @@ CONSUMABLES = {
     f"百炼水煮鱼({CONSUMABLES_NUMBER['boiled_fish_max']}破招/无双)":
         boiled_fish_spread(CONSUMABLES_NUMBER["boiled_fish_max"])
 }
+
+BOILED_FISH = [
+    f"炼狱水煮鱼({CONSUMABLES_NUMBER['boiled_fish_min']}破招/无双)",
+    f"百炼水煮鱼({CONSUMABLES_NUMBER['boiled_fish_max']}破招/无双)"
+]
 FOODS = {
     "力道": [
         f"三鲜粥({CONSUMABLES_NUMBER['major_food_max']}力道)",

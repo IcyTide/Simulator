@@ -25,7 +25,7 @@ class EquipmentWidget(QWidget):
 
         self.equipment_json = json.load(open(os.path.join(EQUIPMENTS_DIR, self.position), encoding="utf-8"))
         self.enchant_json = json.load(open(os.path.join(ENCHANTS_DIR, self.position), encoding="utf-8"))
-        self.equipment = ComboWithLabel("Equipment")
+        self.equipment = ComboWithLabel("装备")
 
         self.detail_widget = QWidget()
         detail_layout = QVBoxLayout()
@@ -40,21 +40,21 @@ class EquipmentWidget(QWidget):
         if not self.enchant_json:
             self.enchant = None
         else:
-            self.enchant = ComboWithLabel("Enchant")
+            self.enchant = ComboWithLabel("附魔")
             self.enchant.combo_box.addItems([""] + list(self.enchant_json))
             enchant_layout.addWidget(self.enchant)
 
         if self.position not in SPECIAL_ENCHANT_POSITIONS:
             self.special_enchant = None
         else:
-            self.special_enchant = RadioWithLabel("Special Enchant")
+            self.special_enchant = RadioWithLabel("大附魔")
             enchant_layout.addWidget(self.special_enchant)
         detail_layout.addWidget(enchant_widget)
 
         strength_widget = QWidget()
         strength_layout = QVBoxLayout()
         strength_widget.setLayout(strength_layout)
-        self.strength_level = ComboWithLabel("Strength Level")
+        self.strength_level = ComboWithLabel("精炼等级")
         self.strength_level.combo_box.setCurrentIndex(MAX_STRENGTH_LEVEL)
         strength_layout.addWidget(self.strength_level)
         detail_layout.addWidget(strength_widget)
@@ -64,7 +64,7 @@ class EquipmentWidget(QWidget):
         embed_widget.setLayout(embed_layout)
         self.embed_levels = []
         for i in range(EMBED_POSITIONS[self.position]):
-            embed_level = ComboWithLabel(f"Embed Level-{i + 1}", [str(i) for i in range(MAX_EMBED_LEVEL + 1)])
+            embed_level = ComboWithLabel(f"镶嵌等级-{i + 1}", items=[str(i) for i in range(MAX_EMBED_LEVEL + 1)])
             embed_level.combo_box.setCurrentIndex(MAX_EMBED_LEVEL)
             self.embed_levels.append(embed_level)
             embed_layout.addWidget(embed_level)
@@ -83,11 +83,11 @@ class EquipmentWidget(QWidget):
         else:
             self.stones_json = json.load(open(STONES_DIR, encoding="utf-8"))
 
-            self.stone_level = ComboWithLabel("Stone Level", [str(i) for i in range(MAX_STONE_LEVEL + 1)])
+            self.stone_level = ComboWithLabel("五彩石等级", items=[str(i) for i in range(MAX_STONE_LEVEL + 1)])
             self.stone_attrs = []
             stone_level_layout.addWidget(self.stone_level)
             for i in range(MAX_STONE_ATTR):
-                stone_attr = ComboWithLabel(f"Stone Attr-{i + 1}")
+                stone_attr = ComboWithLabel(f"五彩石属性-{i + 1}")
                 self.stone_attrs.append(stone_attr)
                 stone_layout.addWidget(stone_attr)
 
@@ -96,11 +96,11 @@ class EquipmentWidget(QWidget):
 
         detail_layout.addStretch()
 
-        self.base_attr = TextWithLabel("Base Attr")
+        self.base_attr = TextWithLabel("基本属性")
         output_layout.addWidget(self.base_attr)
-        self.magic_attr = TextWithLabel("Magic Attr")
+        self.magic_attr = TextWithLabel("精炼属性")
         output_layout.addWidget(self.magic_attr)
-        self.embed_attr = TextWithLabel("Embed Attr")
+        self.embed_attr = TextWithLabel("镶嵌属性")
         output_layout.addWidget(self.embed_attr)
         output_layout.addStretch()
 
@@ -111,13 +111,13 @@ class EquipmentsWidget(QWidget):
         layout = QVBoxLayout()
         self.setLayout(layout)
 
-        self.tab = QTabWidget()
+        tab = QTabWidget()
         self.equipments = {}
         for label in POSITION_MAP:
             self.equipments[label] = EquipmentWidget(label)
-            self.tab.addTab(self.equipments[label], label)
+            tab.addTab(self.equipments[label], label)
 
-        layout.addWidget(self.tab)
+        layout.addWidget(tab)
 
     def __getitem__(self, item) -> EquipmentWidget:
         return self.equipments[item]

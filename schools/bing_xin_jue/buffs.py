@@ -19,11 +19,9 @@ class 剑舞(GainBuff):
         self.value = 31 / 1024
 
     def add(self, level, stack):
-        self.level = level
         self.status.attribute.magical_attack_power_gain += self.value * stack
 
     def remove(self, level, stack):
-        self.level = level
         self.status.attribute.magical_attack_power_gain -= self.value * stack
 
 
@@ -49,12 +47,10 @@ class 满堂(GainBuff):
         self.status.attribute.magical_critical_strike_gain -= self.values[0]
 
     def add(self, level, stack):
-        self.level = level
         self.status.attribute.magical_critical_strike_gain += self.values[0]
         self.status.attribute.magical_critical_power_gain += self.values[1]
 
     def remove(self, level, stack):
-        self.level = level
         self.status.attribute.magical_critical_strike_gain -= self.values[0]
         self.status.attribute.magical_critical_power_gain -= self.values[1]
 
@@ -78,12 +74,10 @@ class 繁音急节(GainBuff):
         self.value = 461 / 1024
 
     def add(self, level, stack):
-        self.level = level
-        self.status.attribute.magical_attack_power_gain += self.value * stack
+        self.status.attribute.magical_attack_power_gain += self.value
 
     def remove(self, level, stack):
-        self.level = level
-        self.status.attribute.magical_attack_power_gain -= self.value * stack
+        self.status.attribute.magical_attack_power_gain -= self.value
 
 
 class 枕上(Buff):
@@ -136,7 +130,6 @@ class 广陵月_会效(GainBuff):
         self.value = 20 / 1024
 
     def add(self, level, stack):
-        self.level = level
         self.status.attribute.magical_critical_power_gain += self.value * stack
 
     def remove(self, level, stack):
@@ -155,14 +148,12 @@ class 流玉(GainBuff):
         self.value = 512 / 1024
 
     def add(self, level, stack):
-        self.level = level
-        self.status.skills["玳弦急曲"].skill_damage_addition += self.value * stack
-        self.status.skills["玳弦急曲-新妆"].skill_damage_addition += self.value * stack
+        self.status.skills["玳弦急曲"].skill_damage_addition += self.value
+        self.status.skills["玳弦急曲-新妆"].skill_damage_addition += self.value
 
     def remove(self, level, stack):
-        self.level = level
-        self.status.skills["玳弦急曲"].skill_damage_addition -= self.value * stack
-        self.status.skills["玳弦急曲-新妆"].skill_damage_addition -= self.value * stack
+        self.status.skills["玳弦急曲"].skill_damage_addition -= self.value
+        self.status.skills["玳弦急曲-新妆"].skill_damage_addition -= self.value
 
 
 class 流玉_持续(DotBuff):
@@ -223,21 +214,12 @@ class 化冰(GainBuff):
 
         self.value = 164 / 1024
 
-    def _add(self):
-        super()._add()
-        self.status.attribute.pve_addition += self.value
-
-    def _remove(self):
-        super()._remove()
-        self.status.attribute.pve_addition -= self.value
-
     def add(self, level, stack):
-        self.level = level
-        self.status.attribute.pve_addition += self.value * stack
+        self.status.attribute.pve_addition += self.value
 
     def remove(self, level, stack):
         self.level = level
-        self.status.attribute.pve_addition -= self.value * stack
+        self.status.attribute.pve_addition -= self.value
 
 
 class 化冰_计数(CountBuff):
@@ -266,20 +248,10 @@ class 夜天(GainBuff):
 
         self.value = 102 / 1024
 
-    def _add(self):
-        super()._add()
-        self.status.attribute.damage_addition += self.value
-
-    def _remove(self):
-        super()._remove()
-        self.status.attribute.damage_addition -= self.value
-
     def add(self, level, stack):
-        self.level = level
         self.status.attribute.damage_addition += self.value
 
     def remove(self, level, stack):
-        self.level = level
         self.status.attribute.damage_addition -= self.value
 
 

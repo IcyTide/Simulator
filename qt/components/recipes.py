@@ -22,13 +22,13 @@ class RecipesWidget(QWidget):
 
         self.recipes = []
         for i in range(MAX_RECIPE_SKILLS // 2):
-            recipe = ListWithLabel(f"recipe {i + 1}")
+            recipe = ListWithLabel(f"技能 {i + 1}")
             self.recipes.append(recipe)
             column1_layout.addWidget(recipe)
         column1_layout.addStretch()
 
         for i in range(MAX_RECIPE_SKILLS // 2, MAX_RECIPE_SKILLS):
-            recipe = ListWithLabel(f"recipe {i + 1}")
+            recipe = ListWithLabel(f"技能 {i + 1}")
             self.recipes.append(recipe)
             column2_layout.addWidget(recipe)
         column2_layout.addStretch()

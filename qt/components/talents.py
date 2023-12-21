@@ -24,11 +24,11 @@ class TalentsWidget(QWidget):
 
         self.talents = []
         for i in range(MAX_TALENTS // 2):
-            talent = ComboWithLabel(f"Talent {i + 1}")
+            talent = ComboWithLabel(f"奇穴第{i + 1}层")
             self.talents.append(talent)
             row1_layout.addWidget(talent)
         for i in range(MAX_TALENTS // 2, MAX_TALENTS):
-            talent = ComboWithLabel(f"Talent {i + 1}")
+            talent = ComboWithLabel(f"奇穴第{i + 1}层")
             self.talents.append(talent)
             row2_layout.addWidget(talent)
 

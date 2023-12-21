@@ -7,6 +7,8 @@ from qt.components.combat import CombatWidget
 from qt.constant import ATTR_TYPE_TRANSLATE
 from qt.scripts.top import School
 from qt.scripts.equipments import Equipments
+from qt.scripts.consumables import Consumables
+from qt.scripts.bonuses import Bonuses
 from qt.scripts.recipes import Recipes
 from qt.scripts.talents import Talents
 from utils.simulate import simulate_delta
@@ -32,6 +34,7 @@ def gradients_text(gradients):
 
 
 def combat_script(school: School, equipments: Equipments, talents: Talents, recipes: Recipes,
+                  consumables: Consumables, bonuses: Bonuses,
                   combat_widget: CombatWidget):
 
     def simulate():
@@ -44,9 +47,11 @@ def combat_script(school: School, equipments: Equipments, talents: Talents, reci
         attribute = school.attribute()
         for attr, value in equipments.attrs.items():
             setattr(attribute, attr, getattr(attribute, attr) + value)
+        for attr, value in consumables.attrs.items():
+            setattr(attribute, attr, getattr(attribute, attr) + value)
 
         combat_widget.init_attribute.text_browser.setText(school.attr_text(attribute))
-        gains = sum([equipments.gains, talents.gains, recipes.gains], [])
+        gains = sum([equipments.gains, talents.gains, recipes.gains, bonuses.gains], [])
         simulator = Simulator(attribute, SKILLS[school.kind] + school.skills, BUFFS + school.buffs,
                               gains, Target(target_level), duration, prepare, priority, loop,
                               verbose=False)

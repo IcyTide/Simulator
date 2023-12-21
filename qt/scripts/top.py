@@ -4,10 +4,12 @@ from qt.components.equipments import EquipmentsWidget
 from qt.components.talents import TalentsWidget
 from qt.components.recipes import RecipesWidget
 from qt.components.consumables import ConsumablesWidget
+from qt.components.bonuses import BonusesWidget
 from qt.components.combat import CombatWidget
 from qt.components.top import TopWidget
 
 from general.consumables import FOODS, POTIONS, WEAPON_ENCHANTS, SPREADS, SNACKS, WINES
+from general.gains.formation import FORMATIONS
 from qt.constant import SUPPORT_SCHOOL
 
 
@@ -39,7 +41,7 @@ class School:
 
 def top_script(top_widget: TopWidget, tab_widget: QTabWidget,
                equipments_widget: EquipmentsWidget, talents_widget: TalentsWidget, recipes_widget: RecipesWidget,
-               consumables_widget: ConsumablesWidget,
+               consumables_widget: ConsumablesWidget, bonuses_widget: BonusesWidget,
                combat_widget: CombatWidget):
     school = School()
 
@@ -78,7 +80,8 @@ def top_script(top_widget: TopWidget, tab_widget: QTabWidget,
         consumables_widget.home_snack.set_items([""] + SNACKS[school.kind] + SNACKS[""])
         consumables_widget.home_wine.set_items([""] + WINES[school.major] + WINES[""])
         consumables_widget.spread.set_items([""] + SPREADS[school.major] + SPREADS[school.kind])
-        
+
+        bonuses_widget.formation.formation.set_items([""] + FORMATIONS[school.kind] + FORMATIONS[""])
         combat_widget.prepare.set_text(school.prepare)
         combat_widget.priority.set_text(school.priority)
         combat_widget.loop.set_text(school.loop)

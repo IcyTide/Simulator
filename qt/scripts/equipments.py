@@ -1,3 +1,4 @@
+from general.gains.equipment import EQUIP_GAINS_NAME
 from qt.components.equipments import EquipmentsWidget
 from qt.constant import POSITION_MAP, STONES_POSITIONS, EMBED_POSITIONS, ATTR_TYPE_TRANSLATE, EQUIP_GAINS, \
     ATTR_TYPE_TRANSLATE_REVERSE
@@ -170,7 +171,7 @@ def equipments_script(equipments_widget: EquipmentsWidget):
             equipment.set_data = equipment_detail['set_data']
 
             if equipment.base:
-                widget.base_attr.text_browser.setText(equipment.base_attr_text)
+                widget.base_attr.set_text(equipment.base_attr_text)
                 widget.base_attr.show()
             else:
                 widget.base_attr.hide()
@@ -178,21 +179,24 @@ def equipments_script(equipments_widget: EquipmentsWidget):
             max_strength = equipment_detail['max_strength']
             if widget.strength_level == 1:
                 pass
-            strength_level = min(max_strength, equipment.strength_level)
 
-            widget.strength_level.combo_box.clear()
-            widget.strength_level.combo_box.addItems([str(i) for i in range(max_strength + 1)])
+            strength_level = max_strength
+
+            widget.strength_level.set_items([str(i) for i in range(max_strength + 1)])
             widget.strength_level.combo_box.setCurrentIndex(strength_level)
 
             embed = equipment_detail['embed']
             equipment.embed = embed
             if embed:
                 for i, (attr, value) in enumerate(embed.items()):
-                    widget.embed_levels[i].label.setText(f"Embed Level-{ATTR_TYPE_TRANSLATE[attr]}")
-                widget.embed_attr.text_browser.setText(equipment.embed_attr_text)
-                widget.embed_attr.text_browser.show()
+                    widget.embed_levels[i].set_label(f"镶嵌等级-{ATTR_TYPE_TRANSLATE[attr]}")
+                widget.embed_attr.set_text(equipment.embed_attr_text)
+                widget.embed_attr.show()
             else:
-                widget.embed_attr.text_browser.hide()
+                widget.embed_attr.hide()
+
+            if special_enchant := equipment_detail["special_enchant"]:
+                widget.special_enchant.set_text(EQUIP_GAINS_NAME[special_enchant])
 
             widget.detail_widget.show()
             widget.output_widget.show()

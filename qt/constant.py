@@ -14,18 +14,18 @@ STONES_DIR = os.path.join(ASSETS_DIR, "stones.json")
 
 """ Equipments """
 POSITION_MAP = {
-    "hat": "hat",
-    "jacket": "jacket",
-    "belt": "belt",
-    "wrist": "wrist",
-    "bottoms": "bottoms",
-    "shoes": "shoes",
-    "necklace": "necklace",
-    "pendant": "pendant",
-    "ring_1": "ring",
-    "ring_2": "ring",
-    "tertiary_weapon": "tertiary_weapon",
-    "primary_weapon": "primary_weapon"
+    '帽子': 'hat',
+    '上衣': 'jacket',
+    '腰带': 'belt',
+    '护腕': 'wrist',
+    '下装': 'bottoms',
+    '鞋子': 'shoes',
+    '项链': 'necklace',
+    '腰坠': 'pendant',
+    '戒指1': 'ring',
+    '戒指2': 'ring',
+    '远程武器': 'tertiary_weapon',
+    '近战武器': 'primary_weapon'
 }
 STONES_POSITIONS = ["primary_weapon"]
 EMBED_POSITIONS = {
@@ -89,31 +89,7 @@ ATTR_TYPE_TRANSLATE = {
 }
 ATTR_TYPE_TRANSLATE_REVERSE = {v: k for k, v in ATTR_TYPE_TRANSLATE.items()}
 
-STONE_ATTR = [
-    "atMeleeWeaponDamageBase", "atSurplusValueBase", "atStrainBase", "atHasteBase",
-    "atAllTypeCriticalStrike", "atAllTypeCriticalDamagePowerBase",
-    "atStrengthBase", "atSpiritBase",
-    "atPhysicsAttackPowerBase", "atPhysicsCriticalStrike",
-    "atPhysicsCriticalDamagePowerBase", "atPhysicsOvercomeBase",
-    "atMagicAttackPowerBase", "atMagicCriticalStrike",
-    "atMagicCriticalDamagePowerBase", "atMagicOvercome"
-]
-STONE_ATTR_MAP = {
-    "通用": [
-        "weapon_damage_base", "surplus", "strain_base", "haste_base",
-        "all_critical_strike_base", "all_critical_power_base"
-    ],
-    "力道": ["strength_base"],
-    "根骨": ["spirit_base"],
-    "外功": [
-        "physical_attack_power_base", "physical_critical_strike_base",
-        "physical_critical_power_base", "physical_overcome_base"
-    ],
-    "内功": [
-        "magical_attack_power_base", "magical_critical_strike_base",
-        "magical_critical_power_base", "magical_overcome_base"
-    ],
-}
+
 """ Top """
 SUPPORT_SCHOOL = {
     "北傲诀": {
@@ -207,8 +183,6 @@ def EMBED_COF(level):
 def STRENGTH_COF(level):
     return level * (0.7 + 0.3 * level) / 200
 
-
-STONE_POSITIONS = ["近战武器"]
 
 EQUIP_GAINS_NAME = {
     **equipment.EQUIP_GAINS_NAME,

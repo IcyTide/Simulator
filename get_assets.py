@@ -4,7 +4,7 @@ from functools import cache
 import requests
 
 from ui.constant import MAX_BASE_ATTR, MAX_MAGIC_ATTR, MAX_EMBED_ATTR, MAX_ENCHANT_ATTR, MAX_STONE_ATTR, \
-    MAX_STONE_LEVEL, ATTR_TYPE_MAP, ATTR_TYPE_TRANSLATE, STONE_ATTR
+    MAX_STONE_LEVEL, ATTR_TYPE_MAP, ATTR_TYPE_TRANSLATE
 from ui.constant import EQUIPMENTS_DIR, ENCHANTS_DIR, STONES_DIR
 
 
@@ -45,6 +45,16 @@ POSITION_TRANSLATE = {
     '远程武器': 'tertiary_weapon',
     '近战武器': 'primary_weapon'
 }
+
+STONE_ATTR = [
+    "atMeleeWeaponDamageBase", "atSurplusValueBase", "atStrainBase", "atHasteBase",
+    "atAllTypeCriticalStrike", "atAllTypeCriticalDamagePowerBase",
+    "atStrengthBase", "atSpiritBase",
+    "atPhysicsAttackPowerBase", "atPhysicsCriticalStrike",
+    "atPhysicsCriticalDamagePowerBase", "atPhysicsOvercomeBase",
+    "atMagicAttackPowerBase", "atMagicCriticalStrike",
+    "atMagicCriticalDamagePowerBase", "atMagicOvercome"
+]
 
 SUFFIX_MAP = {
     3: 'armor',

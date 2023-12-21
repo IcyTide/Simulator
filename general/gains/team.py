@@ -51,10 +51,10 @@ class 破风:
         self.value1 = value1
         self.value2 = value2
 
-    def __call__(self, name):
-        if name.startswith("破风"):
+    def __call__(self, variety):
+        if variety.startswith("破风"):
             return self.Inner(self.value1)
-        elif name.startswith("劲风"):
+        elif variety.startswith("劲风"):
             return self.Inner(self.value2)
         else:
             raise ValueError
@@ -268,10 +268,10 @@ class 朝圣言:
         self.value1 = value1
         self.value2 = value2
 
-    def __call__(self, name, stack, rate):
-        if name.startswith("朝圣言"):
+    def __call__(self, variety, stack, rate):
+        if variety.startswith("朝圣言"):
             return self.Inner(self.value1, stack, rate)
-        elif name.startswith("圣浴明心"):
+        elif variety.startswith("圣浴明心"):
             return self.Inner(self.value2, stack, rate)
         else:
             raise ValueError
@@ -452,10 +452,10 @@ TEAM_GAINS_NAME = {
     "左旋右转": f"左旋右转({TEAM_GAINS_NUMBER['左旋右转']}破招)",
 
     "撼如雷": f"{round(TEAM_GAINS_NUMBER['撼如雷'] * 100)}%外攻",
-    "破风": "破风",
-    "破风(基础)": f"破风(-{TEAM_GAINS_NUMBER['破风']}外防)",
-    "破风(劲风)": f"劲风(-{TEAM_GAINS_NUMBER['劲风']}外防)",
-    "乘龙箭": f"{-round(TEAM_GAINS_NUMBER['乘龙箭'] * 100)}%外防",
+
+    "破风": f"破风(-{TEAM_GAINS_NUMBER['破风']}外防)",
+    "劲风": f"劲风(-{TEAM_GAINS_NUMBER['劲风']}外防)",
+    "乘龙箭": f"乘龙箭(-{round(TEAM_GAINS_NUMBER['乘龙箭'] * 100)}%外防)",
     "号令三军": f"号令三军({TEAM_GAINS_NUMBER['号令三军']}无双)",
     "激雷": f"激雷({round(TEAM_GAINS_NUMBER['激雷'] * 100)}%外攻/外破)",
 
@@ -463,21 +463,20 @@ TEAM_GAINS_NAME = {
     "舍身弘法": f"舍身弘法({TEAM_GAINS_NUMBER['舍身弘法']}无双)",
 
     "秋肃": f"{round(TEAM_GAINS_NUMBER['秋肃'] * 100)}%全易伤",
-    "皎素": f"皎素{round(TEAM_GAINS_NUMBER['皎素'] * 100)}%全会效",
+    "皎素": f"皎素({round(TEAM_GAINS_NUMBER['皎素'] * 100)}%全会效)",
 
     "碎星辰": f"{round(TEAM_GAINS_NUMBER['碎星辰'] * 100)}%外功会效",
     "破苍穹": f"{round(TEAM_GAINS_NUMBER['破苍穹'] * 100)}%内功会效",
 
-    "剑锋百锻": f"剑锋百锻{round(TEAM_GAINS_NUMBER['剑锋百锻'] * 100)}%武伤",
+    "剑锋百锻": f"剑锋百锻({round(TEAM_GAINS_NUMBER['剑锋百锻'] * 100)}%武伤)",
 
     "善友": f"{round(TEAM_GAINS_NUMBER['善友'] * 100)}%调息加速",
     "仙王蛊鼎": f"仙王蛊鼎({round(TEAM_GAINS_NUMBER['仙王蛊鼎'] * 100)}%伤害加成)",
 
     "戒火": f"{round(TEAM_GAINS_NUMBER['戒火'] * 100)}%全易伤",
     "烈日": f"{round(TEAM_GAINS_NUMBER['烈日'] * 100)}%阴性/阳性易伤",
-    "朝圣言": "朝圣言",
-    "朝圣言(基础)": f"朝圣言({TEAM_GAINS_NUMBER['朝圣言']}无双)",
-    "朝圣言(圣浴明心)": f"圣浴明心({TEAM_GAINS_NUMBER['圣浴明心']}无双)",
+    "朝圣言": f"朝圣言({TEAM_GAINS_NUMBER['朝圣言']}无双)",
+    "圣浴明心": f"圣浴明心({TEAM_GAINS_NUMBER['圣浴明心']}无双)",
 
     "酒中仙": f"{round(TEAM_GAINS_NUMBER['酒中仙'] * 100)}%外会",
 
