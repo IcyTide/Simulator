@@ -98,17 +98,17 @@ def empty_condition(*args, **kwargs):
 
 def parse_condition(status, text):
     full_pattern = r"([\u4e00-\u9fa5·0-9a-zA-Z]+)\(?(.*)\)?"
-    condition_pattern = r"([\u4e00-\u9fa50-9a-zA-Z·-]+):?(\w+)([<>=!]+)(\d+)"
+    condition_pattern = r"([\u4e00-\u9fa50-9a-zA-Z·-]+):?(\w+)([<>=!]+)(\d+(?:\.\d+)?)"
     logic_pattern = r"[&|]"
     operators = [">", "<", "=", "!=", ">=", "<="]
 
     full_matches = re.match(full_pattern, text)
     if not full_matches:
-        raise SyntaxError
+        raise SyntaxError(f"{text}: Not Match The Rule")
 
     skill, conditions = full_matches.group(1), full_matches.group(2)
     if skill not in status.skills:
-        raise SyntaxError
+        raise SyntaxError(f"Skill: {skill} Not Existed")
 
     final_condition = None
     if conditions:
@@ -118,22 +118,22 @@ def parse_condition(status, text):
 
             comparison_operator = condition_matches.group(3)
             if comparison_operator not in operators:
-                raise SyntaxError
+                raise SyntaxError(f"Comparison: {comparison_operator} Not Existed")
 
             number = float(condition_matches.group(4))
             if number < 0:
-                raise SyntaxError
+                raise SyntaxError(f"Comparison Not Support Negative Number: {number}")
 
             entity = condition_matches.group(1)
             target = condition_matches.group(2)
             if target in ["cd", "energy"]:
                 if entity not in status.skills:
-                    raise SyntaxError
+                    raise SyntaxError(f"Skill: {entity} Not Existed")
             elif target in ["duration", "stack"]:
                 if entity not in status.buffs:
-                    raise SyntaxError
+                    raise SyntaxError(f"Buff: {entity} Not Existed")
             else:
-                raise SyntaxError
+                raise SyntaxError(f"Condition: {target} Not Existed")
 
             if final_condition:
                 final_condition = Aggregation(

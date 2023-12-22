@@ -11,8 +11,7 @@ class CombatWidget(QWidget):
         self.setLayout(layout)
 
         top = QWidget()
-        top_layout = QHBoxLayout()
-        top.setLayout(top_layout)
+        top_layout = QHBoxLayout(top)
         layout.addWidget(top)
 
         self.target_level = ComboWithLabel("目标等级", items=[str(level) for level in SHIELD_BASE_MAP])
@@ -33,20 +32,19 @@ class CombatWidget(QWidget):
         layout.addWidget(bottom)
 
         tab = QTabWidget()
-        bottom_layout.addWidget(tab, 7)
+        bottom_layout.addWidget(tab, 2)
         result = QWidget()
         result_layout = QVBoxLayout()
         result.setLayout(result_layout)
-        bottom_layout.addWidget(result, 3)
+        bottom_layout.addWidget(result, 1)
 
         attribute = QWidget()
-        attribute_layout = QHBoxLayout()
-        attribute.setLayout(attribute_layout)
+        attribute_layout = QHBoxLayout(attribute)
         tab.addTab(attribute, "属性")
 
-        self.init_attribute = TextWithLabel("增益前属性")
+        self.init_attribute = TextWithLabel("增益前属性", stretch=False)
         attribute_layout.addWidget(self.init_attribute)
-        self.final_attribute = TextWithLabel("增益后属性")
+        self.final_attribute = TextWithLabel("增益后属性", stretch=False)
         attribute_layout.addWidget(self.final_attribute)
 
         detail = QWidget()
@@ -67,25 +65,23 @@ class CombatWidget(QWidget):
         sequences.setLayout(sequences_layout)
         tab.addTab(sequences, "序列设置")
 
-        self.prepare = TextWithLabel("预备序列")
-        sequences_layout.addWidget(self.prepare)
-        self.priority = TextWithLabel("优先序列")
-        sequences_layout.addWidget(self.priority)
-        self.loop = TextWithLabel("循环序列")
-        sequences_layout.addWidget(self.loop)
+        self.prepare = TextWithLabel("预备序列", editable=True)
+        sequences_layout.addWidget(self.prepare, 2)
+        self.priority = TextWithLabel("优先序列", editable=True)
+        sequences_layout.addWidget(self.priority, 4)
+        self.loop = TextWithLabel("循环序列", editable=True)
+        sequences_layout.addWidget(self.loop, 4)
 
-        sequences_layout.addStretch()
-
-        self.origin_dps = LabelWithLabel("DPS")
+        self.origin_dps = LabelWithLabel("每秒伤害")
         result_layout.addWidget(self.origin_dps)
-        self.delta_dps = LabelWithLabel("残差DPS")
+        self.delta_dps = LabelWithLabel("残差每秒伤害")
         result_layout.addWidget(self.delta_dps)
         self.delta_dps.hide()
 
         self.origin_gradients = TextWithLabel("属性收益")
         result_layout.addWidget(self.origin_gradients, 7)
         self.delta_gradients = TextWithLabel("残差属性收益")
-        result_layout.addWidget(self.delta_gradients, 3)
+        result_layout.addWidget(self.delta_gradients, 1)
         self.delta_gradients.hide()
 
         result_layout.addStretch()

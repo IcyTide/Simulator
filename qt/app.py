@@ -1,7 +1,7 @@
-import os
 import sys
 
 from PySide6 import QtWidgets
+from PySide6.QtGui import QIcon
 
 from qt.components.top import TopWidget
 from qt.scripts.top import top_script
@@ -19,7 +19,6 @@ from qt.components.combat import CombatWidget
 from qt.scripts.combat import combat_script
 
 from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QTabWidget
-from PySide6.QtGui import QIcon
 
 
 class MainWindow(QMainWindow):
@@ -27,11 +26,13 @@ class MainWindow(QMainWindow):
         super().__init__()
 
         self.setWindowTitle("Simulator")
-        self.setWindowIcon(QIcon("qt/assets/icon.ico"))
+
+        icon = QIcon("qt/assets/icon.ico")
+        self.setWindowIcon(icon)
         self.central_widget = QWidget(self)
         self.setCentralWidget(self.central_widget)
 
-        self.resize(960, 640)
+        self.resize(800, 600)
         layout = QVBoxLayout(self.central_widget)
 
         self.top_widget = TopWidget()

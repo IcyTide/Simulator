@@ -1,5 +1,5 @@
 from qt.components import ComboWithLabel
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout
+from PySide6.QtWidgets import QWidget, QGridLayout
 
 from qt.constant import MAX_TALENTS
 
@@ -7,30 +7,19 @@ from qt.constant import MAX_TALENTS
 class TalentsWidget(QWidget):
     def __init__(self):
         super().__init__()
-        layout = QVBoxLayout()
+        layout = QGridLayout()
         self.setLayout(layout)
 
-        row1 = QWidget()
-        row1_layout = QHBoxLayout()
-        row1.setLayout(row1_layout)
-        layout.addWidget(row1)
-
-        row2 = QWidget()
-        row2_layout = QHBoxLayout()
-        row2.setLayout(row2_layout)
-        layout.addWidget(row2)
-
-        layout.addStretch()
-
         self.talents = []
-        for i in range(MAX_TALENTS // 2):
-            talent = ComboWithLabel(f"奇穴第{i + 1}层")
-            self.talents.append(talent)
-            row1_layout.addWidget(talent)
-        for i in range(MAX_TALENTS // 2, MAX_TALENTS):
-            talent = ComboWithLabel(f"奇穴第{i + 1}层")
-            self.talents.append(talent)
-            row2_layout.addWidget(talent)
+
+        rows = 2
+        columns = MAX_TALENTS // rows
+
+        for i in range(rows):
+            for j in range(columns):
+                talent = ComboWithLabel(f"奇穴第{i * columns + j + 1}层")
+                self.talents.append(talent)
+                layout.addWidget(talent, i, j)
 
     def __getitem__(self, item) -> ComboWithLabel:
         return self.talents[item]

@@ -55,12 +55,15 @@ def combat_script(school: School, equipments: Equipments, talents: Talents, reci
         simulator = Simulator(attribute, SKILLS[school.kind] + school.skills, BUFFS + school.buffs,
                               gains, Target(target_level), duration, prepare, priority, loop,
                               verbose=False)
+
         combat_widget.final_attribute.text_browser.setText(school.attr_text(attribute))
 
         iteration = combat_widget.iteration.spin_box.value()
         delta = combat_widget.delta.spin_box.value()
 
-        dps, details, gradients, delta_dps, delta_details, delta_gradients = simulate_delta(iteration, simulator, delta)
+        cost, dps, details, gradients, delta_dps, delta_details, delta_gradients = simulate_delta(
+            iteration, simulator, delta
+        )
         combat_widget.origin_dps.text.setText(str(int(dps)))
         combat_widget.origin_detail.set_content(detail_content(details))
         combat_widget.origin_gradients.text_browser.setText(gradients_text(gradients))

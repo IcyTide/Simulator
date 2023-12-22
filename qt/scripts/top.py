@@ -10,7 +10,7 @@ from qt.components.top import TopWidget
 
 from general.consumables import FOODS, POTIONS, WEAPON_ENCHANTS, SPREADS, SNACKS, WINES
 from general.gains.formation import FORMATIONS
-from qt.constant import SUPPORT_SCHOOL
+from qt.constant import SUPPORT_SCHOOL, MAX_RECIPES
 
 
 class School:
@@ -70,6 +70,8 @@ def top_script(top_widget: TopWidget, tab_widget: QTabWidget,
         for i, (skill, recipes) in enumerate(school.recipes.items()):
             recipes_widget[i].set_label(skill)
             recipes_widget[i].set_items(recipes)
+            for n in range(MAX_RECIPES):
+                recipes_widget[i].list.item(n).setSelected(True)
             recipes_widget[i].show()
 
         consumables_widget.major_food.set_items([""] + FOODS[school.major])

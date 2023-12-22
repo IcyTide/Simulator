@@ -88,7 +88,7 @@ class Equipment:
     def magic_attr_text(self):
         if strength_attr := self.strength_attr:
             return "\n".join([
-                f"{ATTR_TYPE_TRANSLATE[k]}:\t{v}+({strength_attr[k]})" for k, v in self.magic_attr.items()
+                f"{ATTR_TYPE_TRANSLATE[k]}:\t{v}(+{strength_attr[k]})" for k, v in self.magic_attr.items()
             ])
         else:
             return "\n".join([f"{ATTR_TYPE_TRANSLATE[k]}:\t{v}" for k, v in self.magic_attr.items()])
