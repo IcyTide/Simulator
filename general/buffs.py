@@ -10,20 +10,20 @@ class 外功双会套装(GainBuff, TriggerBuff):
 
         self.values = [0.04, 41 / 1024]
 
-    def _add(self):
-        super()._add()
+    def add(self):
+        super().add()
         self.status.attribute.physical_critical_strike_gain += self.values[0]
 
-    def _remove(self):
-        super()._remove()
+    def remove(self):
+        super().remove()
         self.status.attribute.physical_critical_strike_gain -= self.values[0]
 
-    def add(self, level, stack):
+    def gain(self, level, stack):
         self.level = level
         self.status.attribute.physical_critical_strike_gain += self.values[0] * stack
         self.status.attribute.physical_critical_power_gain += self.values[1] * stack
 
-    def remove(self, level, stack):
+    def revoke(self, level, stack):
         self.level = level
         self.status.attribute.physical_critical_strike_gain -= self.values[0] * stack
         self.status.attribute.physical_critical_power_gain -= self.values[1] * stack
@@ -38,20 +38,20 @@ class 内功双会套装(GainBuff, TriggerBuff):
 
         self.values = [0.04, 41 / 1024]
 
-    def _add(self):
-        super()._add()
+    def add(self):
+        super().add()
         self.status.attribute.magical_critical_strike_gain += self.values[0]
 
-    def _remove(self):
-        super()._remove()
+    def remove(self):
+        super().remove()
         self.status.attribute.magical_critical_strike_gain -= self.values[0]
 
-    def add(self, level, stack):
+    def gain(self, level, stack):
         self.level = level
         self.status.attribute.magical_critical_strike_gain += self.values[0] * stack
         self.status.attribute.magical_critical_power_gain += self.values[1] * stack
 
-    def remove(self, level, stack):
+    def revoke(self, level, stack):
         self.level = level
         self.status.attribute.magical_critical_strike_gain += self.values[0] * stack
         self.status.attribute.magical_critical_power_gain += self.values[1] * stack
@@ -65,10 +65,10 @@ class 大附魔腰(GainBuff):
         self.duration = 8 * 16
         self.value = [10 / 1024, 51 / 1024]
 
-    def add(self, level, stack):
+    def gain(self, level, stack):
         self.status.attribute.damage_addition += self.value[level - 1]
 
-    def remove(self, level, stack):
+    def revoke(self, level, stack):
         self.status.attribute.damage_addition -= self.value[level - 1]
 
 

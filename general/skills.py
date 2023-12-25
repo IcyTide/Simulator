@@ -15,10 +15,10 @@ class 大附魔腰(TriggerSkill):
     def post_cast(self):
         super().post_cast()
         if self.roll < 0.3:
-            self.status.buffs["大附魔腰"].cast(1)
+            self.status.buffs["大附魔腰"].trigger(1)
         else:
-            self.status.buffs["大附魔腰"].cast(2)
-        self.status.buffs["大附魔腰-冷却"].cast()
+            self.status.buffs["大附魔腰"].trigger(2)
+        self.status.buffs["大附魔腰-冷却"].trigger()
 
 
 class 外功_昆吾_弦刃(TriggerSkill, PhysicalDamage):
@@ -37,7 +37,7 @@ class 外功_昆吾_弦刃(TriggerSkill, PhysicalDamage):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["大附魔手-冷却"].cast()
+        self.status.buffs["大附魔手-冷却"].trigger()
 
 
 class 内功_昆吾_弦刃(TriggerSkill, MagicalDamage):
@@ -56,7 +56,7 @@ class 内功_昆吾_弦刃(TriggerSkill, MagicalDamage):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["大附魔手-冷却"].cast()
+        self.status.buffs["大附魔手-冷却"].trigger()
 
 
 class 外功_刃凌(TriggerSkill, PhysicalDamage):
@@ -73,7 +73,7 @@ class 外功_刃凌(TriggerSkill, PhysicalDamage):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["大附魔脚-冷却"].cast()
+        self.status.buffs["大附魔脚-冷却"].trigger()
 
 
 class 内功_刃凌(TriggerSkill, MagicalDamage):
@@ -90,7 +90,7 @@ class 内功_刃凌(TriggerSkill, MagicalDamage):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["大附魔脚-冷却"].cast()
+        self.status.buffs["大附魔脚-冷却"].trigger()
 
 
 SKILLS = {

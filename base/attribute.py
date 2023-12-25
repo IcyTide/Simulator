@@ -9,6 +9,7 @@ from base.constant import AGILITY_TO_CRITICAL_STRIKE, STRENGTH_TO_ATTACK_POWER, 
 @dataclass
 class Attribute:
     level: int = 120
+
     _all_major_base: int = 0
     _all_major_gain: float = 0
     _agility_base: int = 0
@@ -88,6 +89,7 @@ class Attribute:
     _extra_magical_overcome: int = 0
     _magical_overcome: float = 0
 
+    weapon_attack_speed: int = 24
     weapon_damage_rand: int = 0
     _weapon_damage_base: int = 0
     _weapon_damage_gain: float = 0
@@ -102,7 +104,13 @@ class Attribute:
     pve_addition: float = 0
     cd_reduction: float = 0
 
+    primary_weapon_attribute: dict = None
+    secondary_weapon_attribute: dict = None
+
     def __post_init__(self):
+        self.primary_weapon_attribute = {}
+        self.secondary_weapon_attribute = {}
+
         self.grad_attrs = {}
         self.delta_attr = ""
         self.delta_value = 0

@@ -25,11 +25,11 @@ def analyze_delta(skill, skill_level, times, count, status, grad_results, delta)
 def refresh_status(gains, existed_gains, status):
     for gain in [gain for gain in existed_gains if gain not in gains]:
         existed_gains.remove(gain)
-        status.buffs[gain[0]].remove(gain[1], gain[2])
+        status.buffs[gain[0]].revoke(gain[1], gain[2])
 
     for gain in [gain for gain in gains if gain not in existed_gains]:
         existed_gains.append(gain)
-        status.buffs[gain[0]].add(gain[1], gain[2])
+        status.buffs[gain[0]].gain(gain[1], gain[2])
 
 
 def analyze_details(iteration, simulator, counts, delta=None):

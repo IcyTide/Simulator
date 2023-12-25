@@ -29,12 +29,16 @@ class Buff:
     def roll(self):
         return random.random()
 
-    def _add(self):
+    def set_duration(self):
+        # self.status.durations[self.name] = min(self.duration_max, self.status.durations[self.name] + self.duration)
+        self.status.durations[self.name] = self.duration_max
+
+    def add(self):
         self.status.stacks[self.name] += 1
         for effect in self.add_effect:
             effect(self)
 
-    def _remove(self):
+    def remove(self):
         self.status.stacks[self.name] -= 1
         for effect in self.remove_effect:
             effect(self)
@@ -42,19 +46,18 @@ class Buff:
         if not self.status.stacks[self.name]:
             self.status.durations.pop(self.name)
 
-    def cast(self, level=1):
+    def trigger(self, level=1, stack=None):
         self.level = level
 
-        self.pre_cast()
+        if stack is None:
+            stack = self.stack_add
 
-    def pre_cast(self):
-        stack = min(self.stack_max - self.status.stacks[self.name], self.stack_add)
+        self.set_duration()
 
-        # self.status.durations[self.name] = min(self.duration_max, self.status.durations[self.name] + self.duration)
-        self.status.durations[self.name] = min(self.duration_max, self.duration)
+        stack = min(stack, self.stack_max - self.status.stacks[self.name])
 
         for _ in range(stack):
-            self._add()
+            self.add()
 
     def consume(self, stack=None):
         if stack is None:
@@ -63,63 +66,69 @@ class Buff:
         stack = min(stack, self.status.stacks[self.name])
 
         for _ in range(stack):
-            self._remove()
+            self.remove()
 
-    def post_cast(self):
+    def clear(self):
         for _ in range(self.status.stacks[self.name]):
-            self._remove()
+            self.remove()
 
 
 class TriggerBuff(Buff):
     probability: float = 1
 
-    def cast(self, level=1):
+    def trigger(self, level=1, stack=None):
         if self.roll < self.probability:
-            super().cast()
+            super().trigger(level, stack)
 
 
 class DotBuff(Buff):
-    def pre_cast(self):
-        stack = min(self.stack_max - self.status.stacks[self.name], self.stack_add)
-
-        # self.status.durations[self.name] = min(self.duration_max, self.status.durations[self.name] + self.duration)
+    def set_duration(self):
         skill = self.status.skills[self.name]
         if interval := self.status.intervals[self.name]:
             self.status.durations[self.name] = interval - skill.interval + skill.duration
         else:
             self.status.durations[self.name] = skill.duration
 
-        for _ in range(stack):
-            self._add()
-
 
 class PlacementBuff(Buff):
-    def pre_cast(self):
-        stack = min(self.stack_max - self.status.stacks[self.name], self.stack_add)
-
+    def set_duration(self):
         self.status.durations[self.name] = self.status.skills[self.name].duration
-
-        for _ in range(stack):
-            self._add()
 
 
 class GainBuff(Buff):
-    def _add(self):
-        super()._add()
+    gain_add_effect: list = []
+    gain_remove_effect: list = []
+
+    def add(self):
+        super().add()
         self.status.gains[self.name] = (self.level, self.status.stacks[self.name])
 
-    def _remove(self):
-        super()._remove()
+    def remove(self):
+        super().remove()
         if stack := self.status.stacks[self.name]:
             self.status.gains[self.name] = (self.level, stack)
         else:
             self.status.gains.pop(self.name)
 
-    def add(self, level, stack):
+    def gain(self, level, stack):
         pass
 
-    def remove(self, level, stack):
+    def revoke(self, level, stack):
         pass
+
+
+class Energy(Buff):
+    def increase(self, stack):
+        self.set_duration()
+        self.status.stacks[self.name] = min(self.status.stacks[self.name] + stack, self.stack_max)
+        for effect in self.add_effect:
+            effect(self)
+
+    def decrease(self, stack):
+        self.set_duration()
+        self.status.stacks[self.name] = max(self.status.stacks[self.name] - stack, 0)
+        for effect in self.remove_effect:
+            effect(self)
 
 
 class CDBuff(Buff):

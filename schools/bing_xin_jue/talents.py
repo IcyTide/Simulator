@@ -45,7 +45,7 @@ class 青梅:
 class 枕上:
     @staticmethod
     def critical_hit_effect(self: Skill):
-        self.status.buffs["枕上"].cast()
+        self.status.buffs["枕上"].trigger()
 
     def __call__(self, status: Status):
         related_skills = ["剑破虚空", "剑气长江", "玳弦急曲", "剑影留痕"]
@@ -75,11 +75,11 @@ class 流玉:
     @staticmethod
     def post_cast_effect_trigger(self: Skill):
         self.status.skills["流玉-持续"].cast()
-        self.status.buffs["流玉"].cast()
+        self.status.buffs["流玉"].trigger()
 
     @staticmethod
     def post_cast_effect_consume(self: Skill):
-        self.status.buffs["流玉"].post_cast()
+        self.status.buffs["流玉"].clear()
 
     def __call__(self, status: Status):
         status.skills["剑影留痕"].cd_base = 15 * 16
@@ -92,10 +92,10 @@ class 钗燕:
     def post_cast_effect(self: Skill):
         buff = self.status.buffs["钗燕-计数"]
         if self.name in buff.count_list:
-            buff.post_cast()
+            buff.clear()
         else:
             buff.count_list.append(self.name)
-            buff.cast()
+            buff.trigger()
 
     def __call__(self, status: Status):
         status.skills["剑影留痕"].cd_base = 15 * 16
@@ -118,7 +118,7 @@ class 霜风:
 class 盈袖:
     @staticmethod
     def post_cast_effect(self: Skill):
-        self.status.buffs["盈袖"].cast()
+        self.status.buffs["盈袖"].trigger()
 
     @staticmethod
     def post_hit_effect(self: Skill):
@@ -133,12 +133,12 @@ class 盈袖:
 class 化冰:
     @staticmethod
     def post_cast_effect(self: Skill):
-        self.status.buffs["化冰"].cast()
+        self.status.buffs["化冰"].trigger()
 
     @staticmethod
     def post_hit_effect(self: Skill):
         if self.status.buffs["化冰"]:
-            self.status.buffs["化冰-计数"].cast()
+            self.status.buffs["化冰-计数"].trigger()
 
     def __call__(self, status: Status):
         status.skills["心鼓弦"].cd_base = 120 * 16
@@ -149,7 +149,7 @@ class 化冰:
 class 夜天:
     @staticmethod
     def critical_hit_effect(self: Skill):
-        self.status.buffs["夜天"].cast()
+        self.status.buffs["夜天"].trigger()
 
     def __call__(self, status: Status):
         status.skills["剑气长江"].critical_hit_effect.append(self.critical_hit_effect)
@@ -158,7 +158,7 @@ class 夜天:
 class 琼霄:
     @staticmethod
     def post_cast_effect(self: Skill):
-        self.status.buffs["剑神无我"].cast()
+        self.status.buffs["剑神无我"].trigger()
 
     def __call__(self, status: Status):
         status.skills["婆罗门"].post_cast_effect.append(self.post_cast_effect)
@@ -167,13 +167,13 @@ class 琼霄:
 class 凝华:
     @staticmethod
     def post_cast_effect_trigger(self: Skill):
-        self.status.buffs["凝华"].cast()
+        self.status.buffs["凝华"].trigger()
 
     @staticmethod
     def post_cast_effect_consume(self: Skill):
         if stack := self.status.stacks["凝华"]:
             self.status.skills["凝华"].cast(stack)
-            self.status.buffs["凝华"].post_cast()
+            self.status.buffs["凝华"].clear()
 
     def __call__(self, status: Status):
         status.skills["江海凝光"].cd_base += 4 * 16
@@ -184,12 +184,12 @@ class 凝华:
 class 霜降:
     @staticmethod
     def add_effect(self: Buff):
-        self.status.buffs["霜降"].post_cast()
-        self.status.buffs["霜降"].cast(self.status.stacks[self.name])
+        self.status.buffs["霜降"].clear()
+        self.status.buffs["霜降"].trigger(self.status.stacks[self.name])
 
     @staticmethod
     def remove_effect(self: Buff):
-        self.status.buffs["霜降"].post_cast()
+        self.status.buffs["霜降"].clear()
 
     def __call__(self, status: Status):
         status.buffs["急曲-持续"].add_effect.append(self.add_effect)

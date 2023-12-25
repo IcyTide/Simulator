@@ -1,11 +1,11 @@
 import random
 
 from dataclasses import dataclass
-from functools import cache, partial
+from functools import partial
 
+from base.constant import PHYSICAL_ATTACK_POWER_COF, WEAPON_DAMAGE_COF
 from base.status import Status
-from utils.damage import init_result, damage_addition_result, overcome_result, critical_result, level_reduction_result, \
-    strain_result, pve_addition_result, vulnerable_result
+from utils.damage import *
 
 
 @cache
@@ -230,7 +230,7 @@ class DamageSkill(Skill):
             return self._weapon_damage_cof
         else:
             return self._weapon_damage_cof[self.level - 1]
-    
+
     @weapon_damage_cof.setter
     def weapon_damage_cof(self, weapon_damage_cof):
         self._weapon_damage_cof = weapon_damage_cof
@@ -322,7 +322,7 @@ class PeriodicalSkill(Skill):
             ticks = self.tick - self.status.ticks[self.name]
             self.record(critical, self.snapshot.level, ticks * stack)
 
-            self.status.buffs[self.name].post_cast()
+            self.status.buffs[self.name].clear()
             self.post_cast()
 
     def pre_cast(self):
@@ -334,11 +334,11 @@ class PeriodicalSkill(Skill):
         if not self.status.intervals[self.name]:
             self.status.intervals[self.name] = self.interval
 
-        self.status.buffs[self.name].cast()
+        self.status.buffs[self.name].trigger()
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs[self.name].post_cast()
+        self.status.buffs[self.name].clear()
 
 
 """"""
@@ -437,6 +437,20 @@ class PhysicalDamage(DamageSkill):
         damage = times * damage
 
         return damage
+
+
+class Melee(CastingSkill, PhysicalDamage):
+    def __init__(self, status):
+        super().__init__(status)
+
+        self.gcd_index = self.name
+
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(16)
+        self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
+
+    @property
+    def gcd(self):
+        return apply_haste(self.haste, self.attribute.weapon_attack_speed)
 
 
 class MagicalDamage(DamageSkill):

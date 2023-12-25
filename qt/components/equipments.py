@@ -94,6 +94,7 @@ class EquipmentsWidget(QWidget):
         for label in POSITION_MAP:
             self.equipments[label] = EquipmentWidget(label)
             tab.addTab(self.equipments[label], label)
+
         layout.addWidget(tab)
 
         layout.addStretch()

@@ -9,7 +9,6 @@ from qt.constant import MAX_BASE_ATTR, MAX_MAGIC_ATTR, MAX_EMBED_ATTR, MAX_ENCHA
     MAX_STONE_LEVEL, ATTR_TYPE_MAP, ATTR_TYPE_TRANSLATE, STONE_ATTR
 from qt.constant import EQUIPMENTS_DIR, ENCHANTS_DIR, STONES_DIR
 
-
 EQUIP_ATTR_MAP = {
     "Overcome": "破防",
     "Critical": "会心",
@@ -114,6 +113,25 @@ def get_equips_list(position):
         res = requests.get(url, params=params).json()
         equips.extend(res['list'])
 
+    result = {get_equip_name(row): get_equip_detail(row) for row in reversed(equips) if row['DetailType'] != "9"}
+
+    return result
+
+
+def get_secondary_weapons():
+    params = equip_params.copy()
+    params['position'] = 0
+    params['DetailType'] = 9
+
+    url = f"https://node.jx3box.com/equip/weapon"
+    equips = []
+    res = requests.get(url, params=params).json()
+    equips.extend(res['list'])
+    while res['pages'] > params['page']:
+        params['page'] += 1
+        res = requests.get(url, params=params).json()
+        equips.extend(res['list'])
+
     result = {get_equip_name(row): get_equip_detail(row) for row in reversed(equips)}
 
     return result
@@ -208,6 +226,10 @@ def get_enchants_list(position):
     return result
 
 
+def get_weapon_enchants():
+    return get_enchants_list("primary_weapon")
+
+
 def get_enchant_name(row):
     if not row:
         return ""
@@ -234,7 +256,7 @@ def get_stones_list():
     url = "https://node.jx3box.com/enchant/stone"
 
     result = {}
-    for level in range(MAX_STONE_LEVEL):
+    for level in tqdm(range(MAX_STONE_LEVEL)):
         level = level + 1
         stones = []
         params = {
@@ -289,14 +311,19 @@ if __name__ == '__main__':
     if not os.path.exists(ENCHANTS_DIR):
         os.makedirs(ENCHANTS_DIR)
 
-    # for pos in tqdm(POSITION_MAP):
-    #     json.dump(
-    #         get_equips_list(pos),
-    #         open(os.path.join(EQUIPMENTS_DIR, pos), "w", encoding="utf-8"), ensure_ascii=False
-    #     )
-    #     json.dump(
-    #         get_enchants_list(pos),
-    #         open(os.path.join(ENCHANTS_DIR, pos), "w", encoding="utf-8"), ensure_ascii=False
-    #     )
-    json.dump(get_stones_list(), open(STONES_DIR, "w", encoding="utf-8"), ensure_ascii=False)
-
+    for pos in tqdm(POSITION_MAP):
+        json.dump(
+            get_equips_list(pos),
+            open(os.path.join(EQUIPMENTS_DIR, pos), "w", encoding="utf-8"), ensure_ascii=False
+        )
+        # json.dump(
+        #     get_enchants_list(pos),
+        #     open(os.path.join(ENCHANTS_DIR, pos), "w", encoding="utf-8"), ensure_ascii=False
+        # )
+    json.dump(
+        get_secondary_weapons(), open(os.path.join(EQUIPMENTS_DIR, "secondary_weapon"), "w", encoding="utf-8"),
+        ensure_ascii=False)
+    json.dump(
+        get_weapon_enchants(), open(os.path.join(ENCHANTS_DIR, "secondary_weapon"), "w", encoding="utf-8")
+    )
+    # json.dump(get_stones_list(), open(STONES_DIR, "w", encoding="utf-8"), ensure_ascii=False)

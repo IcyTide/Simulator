@@ -16,7 +16,7 @@ class 上将军印套装:
 class 朔气套装:
     @staticmethod
     def post_cast_effect(self: Skill):
-        self.status.buffs["朔气"].cast()
+        self.status.buffs["朔气"].trigger()
 
     def __call__(self, status: Status):
         for skill in status.skills.values():
@@ -40,7 +40,7 @@ class 橙武特效:
     @staticmethod
     def post_cast_effect(self: Skill):
         if not self.status.stacks["沉夜重雪-冷却"]:
-            self.status.buffs["沉夜重雪"].cast()
+            self.status.buffs["沉夜重雪"].trigger()
 
     def __call__(self, status: Status):
         for skill in status.skills.values():

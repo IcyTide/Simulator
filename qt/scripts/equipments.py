@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 from general.gains.equipment import EQUIP_GAINS_NAME
 from qt.components.equipments import EquipmentsWidget
 from qt.constant import POSITION_MAP, STONES_POSITIONS, EMBED_POSITIONS, ATTR_TYPE_TRANSLATE, EQUIP_GAINS, \
@@ -106,35 +108,65 @@ class Equipments:
         return self.equipments[item]
 
     @property
+    def primary_weapon_attrs(self):
+        equipment = self.equipments['近战武器']
+        if not equipment.name:
+            return {}
+        
+        primary_weapon_attrs = defaultdict(int)
+        for attr, value in equipment.base_attr.items():
+            primary_weapon_attrs[attr] += value
+        for attr, value in equipment.magic_attr.items():
+            primary_weapon_attrs[attr] += value
+        for attr, value in equipment.strength_attr.items():
+            primary_weapon_attrs[attr] += value
+        for attr, value in equipment.embed_attr.items():
+            primary_weapon_attrs[attr] += value
+        for attr, value in equipment.enchant.attr.items():
+            primary_weapon_attrs[attr] += value
+        for attr, value in equipment.stone.attr.items():
+            primary_weapon_attrs[attr] += value
+        return primary_weapon_attrs
+    
+    @property
+    def secondary_weapon_attrs(self):
+        equipment = self.equipments['额外武器']
+        if not equipment.name:
+            return {}
+
+        secondary_weapon_attrs = defaultdict(int)
+        for attr, value in equipment.base_attr.items():
+            secondary_weapon_attrs[attr] += value
+        for attr, value in equipment.magic_attr.items():
+            secondary_weapon_attrs[attr] += value
+        for attr, value in equipment.strength_attr.items():
+            secondary_weapon_attrs[attr] += value
+        for attr, value in equipment.embed_attr.items():
+            secondary_weapon_attrs[attr] += value
+        for attr, value in equipment.enchant.attr.items():
+            secondary_weapon_attrs[attr] += value
+        for attr, value in equipment.stone.attr.items():
+            secondary_weapon_attrs[attr] += value
+        return secondary_weapon_attrs
+    
+    @property
     def attrs(self):
-        final_attrs = {}
+        final_attrs = defaultdict(int)
         for equipment in self.equipments.values():
-            if not equipment.name:
+            if not equipment.name or equipment.position == "secondary_weapon":
                 continue
             for attr, value in equipment.base_attr.items():
-                if attr not in final_attrs:
-                    final_attrs[attr] = 0
                 final_attrs[attr] += value
             for attr, value in equipment.magic_attr.items():
-                if attr not in final_attrs:
-                    final_attrs[attr] = 0
                 final_attrs[attr] += value
             for attr, value in equipment.strength_attr.items():
-                if attr not in final_attrs:
-                    final_attrs[attr] = 0
                 final_attrs[attr] += value
             for attr, value in equipment.embed_attr.items():
-                if attr not in final_attrs:
-                    final_attrs[attr] = 0
                 final_attrs[attr] += value
             for attr, value in equipment.enchant.attr.items():
-                if attr not in final_attrs:
-                    final_attrs[attr] = 0
                 final_attrs[attr] += value
             if equipment.stone:
                 for attr, value in equipment.stone.attr.items():
-                    if attr not in final_attrs:
-                        final_attrs[attr] = 0
                     final_attrs[attr] += value
         return final_attrs
 

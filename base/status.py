@@ -49,7 +49,7 @@ class Status:
             self.gcd_group.pop(gcd_index)
 
         for buff in self.durations - gap:
-            self.buffs[buff].post_cast()
+            self.buffs[buff].clear()
 
         for skill in self.intervals - gap:
             self.skills[skill].hit()

@@ -21,8 +21,8 @@ class 松烟竹雾(Buff):
         super().__init__(status)
         self.name = "松烟竹雾"
 
-    def _remove(self):
-        super()._remove()
+    def remove(self):
+        super().remove()
         for skill in self.related_skills:
             self.status.skills[skill].activate = False
 
@@ -55,12 +55,12 @@ class 霜天(GainBuff):
         self.stack_max = 7
         self.value = 0.15
 
-    def add(self, level, stack):
+    def gain(self, level, stack):
         self.status.skills["上将军印"].damage_gain += self.value * stack
         self.status.skills["上将军印"].attack_power_cof_gain += self.value * stack
         self.status.skills["上将军印"].weapon_damage_cof_gain += self.value * stack
 
-    def remove(self, level, stack):
+    def revoke(self, level, stack):
         self.status.skills["上将军印"].damage_gain -= self.value * stack
         self.status.skills["上将军印"].attack_power_cof_gain -= self.value * stack
         self.status.skills["上将军印"].weapon_damage_cof_gain -= self.value * stack
@@ -75,9 +75,9 @@ class 楚歌(Buff):
 
         self.stack_max = 3
 
-    def _remove(self):
-        super()._remove()
-        self.status.buffs["楚歌-计数"].post_cast()
+    def remove(self):
+        super().remove()
+        self.status.buffs["楚歌-计数"].clear()
 
 
 class 楚歌_计数(CountBuff):
@@ -89,12 +89,12 @@ class 楚歌_计数(CountBuff):
 
         self.stack_max = 5
 
-    def _add(self):
-        super()._add()
+    def add(self):
+        super().add()
         if self.status.stacks[self.name] == self.stack_max:
             for _ in range(self.status.stacks["楚歌"]):
                 self.status.skills["楚歌"].cast()
-            self.status.buffs["楚歌"].post_cast()
+            self.status.buffs["楚歌"].clear()
 
 
 class 见尘(DotBuff):
@@ -115,23 +115,21 @@ class 含风(GainBuff):
         self.stack_max = 2
         self.values = [0.05, 51 / 1024, 51 / 1024]
 
-    def _add(self):
-        super()._add()
+    def add(self):
+        super().add()
         self.status.attribute.physical_critical_strike_gain += self.values[0]
 
-    def _remove(self):
-        super()._remove()
+    def remove(self):
+        super().remove()
         self.status.attribute.physical_critical_strike_gain -= self.values[0]
 
-    def add(self, level, stack):
-        self.level = level
+    def gain(self, level, stack):
         self.status.attribute.physical_critical_strike_gain += self.values[0] * stack
         self.status.attribute.physical_critical_power_gain += self.values[1] * stack
         for skill in self.related_skills:
             self.status.skills[skill].skill_damage_addition += self.values[2] * stack
 
-    def remove(self, level, stack):
-        self.level = level
+    def revoke(self, level, stack):
         self.status.attribute.physical_critical_strike_gain -= self.values[0] * stack
         self.status.attribute.physical_critical_power_gain -= self.values[1] * stack
         for skill in self.related_skills:
@@ -145,11 +143,11 @@ class 降麒式_计数(CountBuff):
 
         self.stack_max = 6
 
-    def _add(self):
-        super()._add()
+    def add(self):
+        super().add()
         if self.status.stacks[self.name] == 6:
-            self.post_cast()
-            self.status.buffs["降麒式-就绪"].cast()
+            self.clear()
+            self.status.buffs["降麒式-就绪"].trigger()
 
 
 class 降麒式_就绪(Buff):
@@ -159,12 +157,12 @@ class 降麒式_就绪(Buff):
 
         self.duration = 15 * 16
 
-    def _add(self):
-        super()._add()
+    def add(self):
+        super().add()
         self.status.skills["降麒式"].activate = True
 
-    def _remove(self):
-        super()._remove()
+    def remove(self):
+        super().remove()
         self.status.skills["降麒式"].activate = False
 
 
@@ -183,13 +181,11 @@ class 降麒式(GainBuff):
 
         self.value = 205 / 1024
 
-    def add(self, level, stack):
-        self.level = level
-        self.status.attribute.damage_addition += self.value * stack
+    def gain(self, level, stack):
+        self.status.attribute.damage_addition += self.value
 
-    def remove(self, level, stack):
-        self.level = level
-        self.status.attribute.damage_addition -= self.value * stack
+    def revoke(self, level, stack):
+        self.status.attribute.damage_addition -= self.value
 
 
 class 沉夜重雪(TriggerBuff):
@@ -203,14 +199,14 @@ class 沉夜重雪(TriggerBuff):
     def condition(self):
         return not self.status.stacks["沉夜重雪-冷却"]
 
-    def _add(self):
-        super()._add()
+    def add(self):
+        super().add()
         self.status.skills["破釜沉舟"].reset()
         self.status.skills["刀啸风吟"].interval_base = 0
-        self.status.buffs["沉夜重雪-冷却"].cast()
+        self.status.buffs["沉夜重雪-冷却"].trigger()
 
-    def _remove(self):
-        super()._remove()
+    def remove(self):
+        super().remove()
         self.status.skills["刀啸风吟"].interval_base = 24
 
 

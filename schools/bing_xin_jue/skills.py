@@ -7,17 +7,10 @@ from base.skill import *
 """
 
 
-class 连环双刀(CastingSkill, PhysicalDamage):
+class 连环双刀(Melee):
     def __init__(self, status):
         super().__init__(status)
         self.name = "连环双刀"
-
-        self.gcd_index = self.name
-
-        self.damage_base = 1
-
-        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(16)
-        self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
 
 
 class 名动四方(CastingSkill):
@@ -40,8 +33,8 @@ class 名动四方(CastingSkill):
         super().post_cast()
         if self.status.current_frame == 0:
             for _ in range(5):
-                self.status.buffs["剑舞"].cast()
-        self.status.buffs["剑舞"].cast()
+                self.status.buffs["剑舞"].trigger()
+        self.status.buffs["剑舞"].trigger()
 
 
 class 急曲_持续(DotSkill, MagicalDamage):
@@ -185,7 +178,7 @@ class 繁音急节(CastingSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["繁音急节"].cast()
+        self.status.buffs["繁音急节"].trigger()
 
 
 class 心鼓弦(CastingSkill):
@@ -239,7 +232,7 @@ class 广陵月(CastingSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["广陵月"].cast()
+        self.status.buffs["广陵月"].trigger()
 
 
 class 广陵月_伤害(MagicalDamage):
@@ -256,7 +249,7 @@ class 广陵月_伤害(MagicalDamage):
 
     def pre_cast(self):
         super().pre_cast()
-        self.status.buffs["广陵月-会效"].cast()
+        self.status.buffs["广陵月-会效"].trigger()
 
 
 class 流玉_持续(DotSkill, MagicalDamage):
@@ -368,7 +361,7 @@ class 琼霄_持续(PlacementSkill, MagicalDamage):
             self.status.skills["急曲-持续"].cast()
         super().post_hit()
         if not self.status.stacks["琼霄-冷却"] and self.status.stacks["急曲-持续"] == 3:
-            self.status.stacks["琼霄-急曲"].cast()
+            self.status.skills["琼霄-急曲"].cast()
 
 
 class 琼霄_急曲(MagicalDamage):
@@ -385,7 +378,7 @@ class 琼霄_急曲(MagicalDamage):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["琼霄-冷却"].cast()
+        self.status.buffs["琼霄-冷却"].trigger()
 
 
 class 凝华(MagicalDamage):

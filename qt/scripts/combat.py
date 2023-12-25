@@ -52,6 +52,8 @@ def combat_script(message_box: QMessageBox, school: School,
             setattr(attribute, attr, getattr(attribute, attr) + value)
         for attr, value in consumables.attrs.items():
             setattr(attribute, attr, getattr(attribute, attr) + value)
+        setattr(attribute, "primary_weapon_attribute", equipments.primary_weapon_attrs)
+        setattr(attribute, "secondary_weapon_attribute", equipments.secondary_weapon_attrs)
 
         combat_widget.init_attribute.set_text(school.attr_text(attribute))
         gains = sum([equipments.gains, talents.gains, recipes.gains, bonuses.gains], [])

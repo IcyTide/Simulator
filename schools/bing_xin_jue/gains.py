@@ -11,7 +11,7 @@ class 玳弦急曲套装:
 class 嗔怒套装:
     @staticmethod
     def post_cast_effect(self: Skill):
-        self.status.buffs["嗔怒"].cast()
+        self.status.buffs["嗔怒"].trigger()
 
     def __call__(self, status: Status):
         for skill in status.skills.values():
@@ -35,7 +35,7 @@ class 橙武特效:
     @staticmethod
     def post_cast_effect(self: Skill):
         if not self.status.stacks["飞霜绛露-冷却"]:
-            self.status.buffs["飞霜绛露"].cast()
+            self.status.buffs["飞霜绛露"].trigger()
 
     def __call__(self, status: Status):
         for skill in status.skills.values():

@@ -17,7 +17,7 @@ class 剑气长江概率急曲:
 class 繁音急节满堂:
     @staticmethod
     def post_cast_effect(self: Skill):
-        self.status.buffs["满堂"].cast()
+        self.status.buffs["满堂"].trigger()
 
     @staticmethod
     def post_hit_effect(self: Skill):

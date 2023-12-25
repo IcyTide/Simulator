@@ -12,6 +12,10 @@ def magical_attack_power_enchant(value):
 """ Spread """
 
 
+def agility_spread(value):
+    return {"agility_base": value}
+
+
 def strength_spread(value):
     return {"strength_base": value}
 
@@ -45,6 +49,10 @@ def guild_food(value):
 
 
 """ Major Food """
+
+
+def agility_food(value):
+    return {"agility_base": value}
 
 
 def strength_food(value):
@@ -85,6 +93,10 @@ def all_critical_strike_food(value):
 """ Major Potion """
 
 
+def agility_potion(value):
+    return {"agility_base": value}
+
+
 def strength_potion(value):
     return {"strength_base": value}
 
@@ -121,6 +133,10 @@ def all_critical_strike_potion(value):
 
 
 """ Wine """
+
+
+def agility_wine(value):
+    return {"agility_base": value}
 
 
 def strength_wine(value):
@@ -206,6 +222,11 @@ CONSUMABLES_NUMBER = {
 }
 
 CONSUMABLES = {
+    f"杂锦鱼球粥({CONSUMABLES_NUMBER['major_food_max']}身法)":
+        agility_food(CONSUMABLES_NUMBER["major_food_max"]),
+    f"杂碎汤({CONSUMABLES_NUMBER['major_food_min']}身法)":
+        agility_food(CONSUMABLES_NUMBER["major_food_min"]),
+
     f"三鲜粥({CONSUMABLES_NUMBER['major_food_max']}力道)":
         strength_food(CONSUMABLES_NUMBER["major_food_max"]),
     f"三鲜汤({CONSUMABLES_NUMBER['major_food_min']}力道)":
@@ -242,6 +263,11 @@ CONSUMABLES = {
         all_overcome_food(CONSUMABLES_NUMBER["minor_food_min"]),
     f"鱼香肉丝({CONSUMABLES_NUMBER['minor_food_min']}会心)":
         all_critical_strike_food(CONSUMABLES_NUMBER["minor_food_min"]),
+
+    f"上品轻身丹({CONSUMABLES_NUMBER['major_potion_max']}身法)":
+        agility_potion(CONSUMABLES_NUMBER["major_potion_max"]),
+    f"中品轻身丹({CONSUMABLES_NUMBER['major_potion_min']}身法)":
+        agility_potion(CONSUMABLES_NUMBER["major_potion_min"]),
 
     f"上品大力丸({CONSUMABLES_NUMBER['major_potion_max']}力道)":
         strength_potion(CONSUMABLES_NUMBER["major_potion_max"]),
@@ -300,6 +326,8 @@ CONSUMABLES = {
     f"创意料理({CONSUMABLES_NUMBER['minor_snack_max']})破防":
         overcome_snack(CONSUMABLES_NUMBER["minor_snack_max"]),
 
+    f"关外白酒·旬又三({CONSUMABLES_NUMBER['major_wine']}身法)":
+        agility_wine(CONSUMABLES_NUMBER["major_wine"]),
     f"汾酒·旬又三({CONSUMABLES_NUMBER['major_wine']}力道)":
         strength_wine(CONSUMABLES_NUMBER["major_wine"]),
     f"高粱酒·旬又三({CONSUMABLES_NUMBER['major_wine']}根骨)":
@@ -313,6 +341,8 @@ CONSUMABLES = {
     "guild_food":
         guild_food(CONSUMABLES_NUMBER["guild_food"]),
 
+    f"水晶芙蓉宴({CONSUMABLES_NUMBER['major_spread']}身法)":
+        agility_spread(CONSUMABLES_NUMBER["major_spread"]),
     f"水晶芙蓉宴({CONSUMABLES_NUMBER['major_spread']}力道)":
         strength_spread(CONSUMABLES_NUMBER["major_spread"]),
     f"水晶芙蓉宴({CONSUMABLES_NUMBER['major_spread']}根骨)":
@@ -334,6 +364,10 @@ BOILED_FISH = [
     f"百炼水煮鱼({CONSUMABLES_NUMBER['boiled_fish_max']}破招/无双)"
 ]
 FOODS = {
+    "身法": [
+        f"杂锦鱼球粥({CONSUMABLES_NUMBER['major_food_max']}身法)",
+        f"杂碎汤({CONSUMABLES_NUMBER['major_food_min']}身法)",
+    ],
     "力道": [
         f"三鲜粥({CONSUMABLES_NUMBER['major_food_max']}力道)",
         f"三鲜汤({CONSUMABLES_NUMBER['major_food_min']}力道)"
@@ -362,6 +396,10 @@ FOODS = {
     ]
 }
 POTIONS = {
+    "身法": [
+        f"上品轻身丹({CONSUMABLES_NUMBER['major_potion_max']}身法)",
+        f"中品轻身丹({CONSUMABLES_NUMBER['major_potion_min']}身法)",
+    ],
     "力道": [
         f"上品大力丸({CONSUMABLES_NUMBER['major_potion_max']}力道)",
         f"中品大力丸({CONSUMABLES_NUMBER['major_potion_min']}力道)"
@@ -414,11 +452,15 @@ SNACKS = {
 }
 WINES = {
     "": [f"女儿红·旬又三({CONSUMABLES_NUMBER['haste_wine']}加速)"],
+    "身法": [f"关外白酒·旬又三({CONSUMABLES_NUMBER['major_wine']}身法)"],
     "力道": [f"汾酒·旬又三({CONSUMABLES_NUMBER['major_wine']}力道)"],
     "根骨": [f"高粱酒·旬又三({CONSUMABLES_NUMBER['major_wine']}根骨)"]
 
 }
 SPREADS = {
+    "身法": [
+        f"水晶芙蓉宴({CONSUMABLES_NUMBER['major_spread']}身法)"
+    ],
     "力道": [
         f"水晶芙蓉宴({CONSUMABLES_NUMBER['major_spread']}力道)"
     ],

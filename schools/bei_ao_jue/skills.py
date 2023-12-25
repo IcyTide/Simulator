@@ -6,17 +6,10 @@ from base.skill import *
 """
 
 
-class 霜风刀法(CastingSkill, PhysicalDamage):
+class 霜风刀法(Melee):
     def __init__(self, status):
         super().__init__(status)
         self.name = "霜风刀法"
-
-        self.gcd_index = self.name
-
-        self.damage_base = 1
-
-        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(16)
-        self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
 
 
 class 秀明尘身(CastingSkill):
@@ -36,9 +29,9 @@ class 秀明尘身(CastingSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["秀明尘身"].cast()
-        self.status.buffs["松烟竹雾"].post_cast()
-        self.status.buffs["雪絮金屏"].post_cast()
+        self.status.buffs["秀明尘身"].trigger()
+        self.status.buffs["松烟竹雾"].clear()
+        self.status.buffs["雪絮金屏"].clear()
 
 
 class 松烟竹雾(CastingSkill):
@@ -58,9 +51,9 @@ class 松烟竹雾(CastingSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["秀明尘身"].post_cast()
-        self.status.buffs["松烟竹雾"].cast()
-        self.status.buffs["雪絮金屏"].post_cast()
+        self.status.buffs["秀明尘身"].clear()
+        self.status.buffs["松烟竹雾"].trigger()
+        self.status.buffs["雪絮金屏"].clear()
 
 
 class 雪絮金屏(CastingSkill):
@@ -80,9 +73,9 @@ class 雪絮金屏(CastingSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["秀明尘身"].post_cast()
-        self.status.buffs["松烟竹雾"].post_cast()
-        self.status.buffs["雪絮金屏"].cast()
+        self.status.buffs["秀明尘身"].clear()
+        self.status.buffs["松烟竹雾"].clear()
+        self.status.buffs["雪絮金屏"].trigger()
 
 
 class 破(PhysicalDamage):
@@ -400,9 +393,9 @@ class 降麒式(CastingSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["降麒式-计数"].post_cast()
-        self.status.buffs["降麒式-就绪"].post_cast()
-        self.status.buffs["降麒式"].cast()
+        self.status.buffs["降麒式-计数"].clear()
+        self.status.buffs["降麒式-就绪"].clear()
+        self.status.buffs["降麒式"].trigger()
         self.status.skills["降麒式-持续"].cast()
 
 

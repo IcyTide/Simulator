@@ -2,8 +2,7 @@ import os
 
 from general.gains import equipment
 
-from schools import bei_ao_jue
-from schools import bing_xin_jue
+from schools import wen_shui_jue, bei_ao_jue, bing_xin_jue
 
 """ Directory """
 # ASSETS_DIR = os.path.join(os.getcwd(), "qt/assets")
@@ -25,9 +24,10 @@ POSITION_MAP = {
     '戒指1': 'ring',
     '戒指2': 'ring',
     '远程武器': 'tertiary_weapon',
-    '近战武器': 'primary_weapon'
+    '近战武器': 'primary_weapon',
+    '额外武器': 'secondary_weapon'
 }
-STONES_POSITIONS = ["primary_weapon"]
+STONES_POSITIONS = ["primary_weapon", 'secondary_weapon']
 EMBED_POSITIONS = {
     "hat": 2,
     "jacket": 2,
@@ -39,13 +39,17 @@ EMBED_POSITIONS = {
     "pendant": 1,
     "ring": 0,
     "tertiary_weapon": 1,
-    "primary_weapon": 3
+    "primary_weapon": 3,
+    "secondary_weapon": 3
 }
 SPECIAL_ENCHANT_POSITIONS = ["hat", "jacket", "belt", "wrist", "shoes"]
 """ Attrs """
 ATTR_TYPE_MAP = {
     "atMeleeWeaponDamageBase": "weapon_damage_base",
     "atMeleeWeaponDamageRand": "weapon_damage_rand",
+    "atMeleeWeaponAttackSpeedBase": "weapon_attack_speed",
+    "atBasePotentialAdd": "all_major_base",
+    "atAgilityBase": "agility_base",
     "atStrengthBase": "strength_base",
     "atSpiritBase": "spirit_base",
     "atPhysicsAttackPowerBase": "physical_attack_power_base",
@@ -69,6 +73,8 @@ ATTR_TYPE_MAP = {
 ATTR_TYPE_TRANSLATE = {
     "weapon_damage_base": "基础武器伤害",
     "weapon_damage_rand": "浮动武器伤害",
+    "weapon_attack_speed": "武器攻击速度",
+    "all_major_base": "全属性",
     "agility_base": "身法",
     "strength_base": "力道",
     "spirit_base": "根骨",
@@ -88,10 +94,51 @@ ATTR_TYPE_TRANSLATE = {
     "haste_base": "加速",
 }
 ATTR_TYPE_TRANSLATE_REVERSE = {v: k for k, v in ATTR_TYPE_TRANSLATE.items()}
-
+STONE_ATTR = [
+    "atMeleeWeaponDamageBase", "atSurplusValueBase", "atStrainBase", "atHasteBase",
+    "atAllTypeCriticalStrike", "atAllTypeCriticalDamagePowerBase",
+    "atAgilityBase", "atStrengthBase", "atSpiritBase",
+    "atPhysicsAttackPowerBase", "atPhysicsCriticalStrike",
+    "atPhysicsCriticalDamagePowerBase", "atPhysicsOvercomeBase",
+    "atMagicAttackPowerBase", "atMagicCriticalStrike",
+    "atMagicCriticalDamagePowerBase", "atMagicOvercome"
+]
 
 """ Top """
 SUPPORT_SCHOOL = {
+    "问水诀": {
+        "school": "藏剑",
+        "major": "身法",
+        "kind": "外功",
+        "attribute": wen_shui_jue.WenShuiJue,
+        "formation": "依山观澜阵",
+        "talents": bei_ao_jue.TALENTS,
+        "recipes": bei_ao_jue.RECIPES,
+        "skills": bei_ao_jue.SKILLS,
+        "buffs": bei_ao_jue.BUFFS,
+        "prepare": bei_ao_jue.prepare,
+        "priority": bei_ao_jue.priority,
+        "loop": bei_ao_jue.loop,
+        "display_attrs": {
+            "agility": "身法",
+            "base_physical_attack_power": "基础攻击",
+            "physical_attack_power": "攻击",
+            "base_physical_critical_strike": "会心等级",
+            "physical_critical_strike": "会心",
+            "physical_critical_power_base": "会效等级",
+            "physical_critical_power": "会效",
+            "base_physical_overcome": "基础破防",
+            "final_physical_overcome": "最终破防",
+            "physical_overcome": "破防",
+            "weapon_damage_base": "基础武器伤害",
+            "weapon_damage_rand": "浮动武器伤害",
+            "strain_base": "无双等级",
+            "strain": "无双",
+            "haste_base": "加速等级",
+            "haste": "加速",
+            "surplus": "破招",
+        }
+    },
     "北傲诀": {
         "school": "霸刀",
         "major": "力道",
@@ -204,7 +251,7 @@ TALENT_GAINS = {
 }
 
 """ Recipes """
-MAX_RECIPE_SKILLS = 6
+MAX_RECIPE_SKILLS = 8
 MAX_RECIPES = 4
 
 RECIPE_GAINS = {
