@@ -7,7 +7,7 @@ from multiprocessing import Pool, cpu_count
 from utils.analyze import analyze_details
 
 processes = cpu_count()
-min_iteration = processes * 4
+min_iteration = 100
 
 
 def simulate_single(simulator, i):
@@ -40,7 +40,7 @@ def simulate_delta(iteration, simulator, delta):
     origin_result = simulate_func(iteration, simulator)
     cost = time.time() - start
 
-    origin_dps, origin_details, origin_gradients = analyze_details(
+    origin_dps, origin_details, summary, origin_gradients = analyze_details(
         iteration, simulator, origin_result)
 
     for attr, residual in origin_gradients.items():
@@ -49,12 +49,13 @@ def simulate_delta(iteration, simulator, delta):
     if delta:
         setattr(attribute, attribute.delta_attr, getattr(attribute, attribute.delta_attr) + delta)
         delta_result = simulate_func(iteration, simulator)
-        delta_dps, delta_details, delta_gradients = analyze_details(
+        delta_dps, delta_details, _, delta_gradients = analyze_details(
             iteration, simulator, delta_result, delta)
         residual_dps = delta_dps - origin_dps
         for attr, residual in delta_gradients.items():
             residual = (residual + residual_dps) / delta * attribute.delta_grad_attrs[attr]
             delta_gradients[attr] = (residual * attribute.grad_attrs[attr], residual)
 
-        return cost, origin_dps, origin_details, origin_gradients, delta_dps, delta_details, delta_gradients
-    return cost, origin_dps, origin_details, origin_gradients, 0, {}, {}
+        return (cost, summary, origin_dps, origin_details, origin_gradients,
+                delta_dps, delta_details, delta_gradients)
+    return cost, summary, origin_dps, origin_details, origin_gradients, origin_dps, origin_details, origin_gradients

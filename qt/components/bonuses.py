@@ -11,9 +11,9 @@ class FormationWidget(QWidget):
 
         self.formation = ComboWithLabel("阵法")
         layout.addWidget(self.formation)
-        self.core_rate = SpinWithLabel("四重覆盖率")
+        self.core_rate = SpinWithLabel("四重覆盖率", maximum=100)
         layout.addWidget(self.core_rate)
-        self.formation_rate = SpinWithLabel("五重覆盖率")
+        self.formation_rate = SpinWithLabel("五重覆盖率", maximum=100)
         layout.addWidget(self.formation_rate)
 
 

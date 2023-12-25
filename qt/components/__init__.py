@@ -1,6 +1,7 @@
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QAbstractItemView, QTableWidgetItem, \
     QHeaderView, QSizePolicy
 from PySide6.QtWidgets import QComboBox, QRadioButton, QTextBrowser, QTextEdit, QSpinBox, QListWidget, QTableWidget
+from PySide6.QtCore import Qt
 
 
 class LabelWidget(QWidget):
@@ -150,8 +151,15 @@ class TextWithLabel(LabelWidget):
         layout.addWidget(self.label)
         layout.addWidget(self.text_browser)
 
+        self.text_browser.document().documentLayout().documentSizeChanged.connect(self.adjust_height)
+        self.text_browser.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+
         if stretch:
             layout.addStretch()
+
+    def adjust_height(self):
+        doc_height = self.text_browser.document().size().toSize().height()
+        self.text_browser.setFixedHeight(doc_height)
 
     def set_text(self, text):
         self.text_browser.setText(text)

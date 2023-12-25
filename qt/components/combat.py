@@ -27,15 +27,13 @@ class CombatWidget(QWidget):
         layout.addWidget(self.button)
 
         bottom = QWidget()
-        bottom_layout = QHBoxLayout()
-        bottom.setLayout(bottom_layout)
+        bottom_layout = QHBoxLayout(bottom)
         layout.addWidget(bottom)
 
         tab = QTabWidget()
         bottom_layout.addWidget(tab, 2)
         result = QWidget()
-        result_layout = QVBoxLayout()
-        result.setLayout(result_layout)
+        result_layout = QVBoxLayout(result)
         bottom_layout.addWidget(result, 1)
 
         attribute = QWidget()
@@ -50,39 +48,46 @@ class CombatWidget(QWidget):
         detail = QWidget()
         detail_layout = QVBoxLayout()
         detail.setLayout(detail_layout)
-        tab.addTab(detail, "战斗总结")
+        tab.addTab(detail, "战斗详情")
 
+        detail_tab = QTabWidget()
+        detail_layout.addWidget(detail_tab)
         self.origin_detail = TableWithLabel("伤害详情", headers=["技能", "次数", "命中/%", "会心/%", "伤害/%"])
-        detail_layout.addWidget(self.origin_detail)
+        detail_tab.addTab(self.origin_detail, "伤害详情")
         self.delta_detail = TableWithLabel("残差伤害详情", headers=["技能", "次数", "命中/%", "会心/%", "伤害/%"])
-        detail_layout.addWidget(self.delta_detail)
-        self.delta_detail.hide()
+        detail_tab.addTab(self.delta_detail, "残差伤害详情")
 
         detail_layout.addStretch()
 
+        self.summary = TableWithLabel("技能统计", headers=["技能", "等级", "次数", "增益"])
+
+        tab.addTab(self.summary, "技能总结")
+
         sequences = QWidget()
-        sequences_layout = QVBoxLayout()
-        sequences.setLayout(sequences_layout)
+        sequences_layout = QVBoxLayout(sequences)
         tab.addTab(sequences, "序列设置")
 
+        sequences_tab = QTabWidget()
+        sequences_layout.addWidget(sequences_tab)
         self.prepare = TextWithLabel("预备序列", editable=True)
-        sequences_layout.addWidget(self.prepare, 2)
+        sequences_tab.addTab(self.prepare, "预备序列")
         self.priority = TextWithLabel("优先序列", editable=True)
-        sequences_layout.addWidget(self.priority, 4)
+        sequences_tab.addTab(self.priority, "优先序列")
         self.loop = TextWithLabel("循环序列", editable=True)
-        sequences_layout.addWidget(self.loop, 4)
+        sequences_tab.addTab(self.loop, "循环序列")
 
         self.origin_dps = LabelWithLabel("每秒伤害")
         result_layout.addWidget(self.origin_dps)
         self.delta_dps = LabelWithLabel("残差每秒伤害")
         result_layout.addWidget(self.delta_dps)
-        self.delta_dps.hide()
 
+        gradients_tab = QTabWidget()
         self.origin_gradients = TextWithLabel("属性收益")
-        result_layout.addWidget(self.origin_gradients, 7)
+        gradients_tab.addTab(self.origin_gradients, "属性收益")
         self.delta_gradients = TextWithLabel("残差属性收益")
-        result_layout.addWidget(self.delta_gradients, 1)
-        self.delta_gradients.hide()
+        gradients_tab.addTab(self.delta_gradients, "残差属性收益")
+
+        result_layout.addWidget(gradients_tab)
 
         result_layout.addStretch()
 

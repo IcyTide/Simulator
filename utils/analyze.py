@@ -40,9 +40,12 @@ def analyze_details(iteration, simulator, counts, delta=None):
     total_damage = 0
     grad_results = defaultdict(int)
 
+    summary = defaultdict(int)
     existed_gains = []
     for (skill, critical, skill_level, times, gains), count in counts.items():
         refresh_status(gains, existed_gains, status)
+
+        summary[(skill, skill_level, gains)] += times * count
 
         if delta:
             analyze_delta(skill, skill_level, times, count, status, grad_results, delta)
@@ -67,5 +70,9 @@ def analyze_details(iteration, simulator, counts, delta=None):
     for skill in sorted(result, key=lambda x: result[x]['damage'], reverse=True):
         details[skill] = {k: round(v / iteration, 2) for k, v in result[skill].items()}
 
+    summary = [
+        [skill, str(skill_level), str(count), ";".join([",".join(map(str, gain)) for gain in gains])]
+        for (skill, skill_level, gains), count in summary.items()
+    ]
     gradients = {attr: grad_results[attr] / scale - dps for attr, grad_result in grad_results.items()}
-    return dps, details, gradients
+    return dps, details, summary, gradients

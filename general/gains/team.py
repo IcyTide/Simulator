@@ -61,11 +61,19 @@ class 破风:
 
 
 class 乘龙箭:
+    class Inner:
+        def __init__(self, value, rate):
+            self.value = value
+            self.rate = rate / 100 / 100
+
+        def __call__(self, status: Status):
+            status.target.physical_shield_gain -= self.value * self.rate
+
     def __init__(self, value):
         self.value = value
 
-    def __call__(self, status: Status):
-        status.target.physical_shield_gain -= self.value
+    def __call__(self, rate):
+        return self.Inner(self.value, rate)
 
 
 class 号令三军:
@@ -92,7 +100,7 @@ class 激雷:
     class Inner:
         def __init__(self, value, rate):
             self.value = value
-            self.rate = rate
+            self.rate = rate / 100
 
         def __call__(self, status: Status):
             status.attribute.physical_attack_power_gain += self.value * self.rate
@@ -112,7 +120,7 @@ class 立地成佛:
     class Inner:
         def __init__(self, value, rate):
             self.value = value
-            self.rate = rate
+            self.rate = rate / 100
 
         def __call__(self, status: Status):
             status.target.magical_shield_gain -= self.value * self.rate
@@ -129,7 +137,7 @@ class 舍身弘法:
         def __init__(self, value, stack, rate):
             self.value = value
             self.stack = stack
-            self.rate = rate
+            self.rate = rate / 100
 
         def __call__(self, status: Status):
             status.attribute.strain_base += self.value * self.stack * self.rate
@@ -156,7 +164,7 @@ class 皎素:
     class Inner:
         def __init__(self, value, rate):
             self.value = value
-            self.rate = rate
+            self.rate = rate / 100
 
         def __call__(self, status: Status):
             status.attribute.all_critical_power_gain += self.value * self.rate
@@ -194,7 +202,7 @@ class 剑锋百锻:
     class Inner:
         def __init__(self, value, rate):
             self.value = value
-            self.rate = rate
+            self.rate = rate / 100
 
         def __call__(self, status: Status):
             status.attribute.weapon_damage_gain += self.value * self.rate
@@ -221,7 +229,7 @@ class 仙王蛊鼎:
     class Inner:
         def __init__(self, value, rate):
             self.value = value
-            self.rate = rate
+            self.rate = rate / 100
 
         def __call__(self, status: Status):
             status.attribute.damage_addition += self.value * self.rate
@@ -259,7 +267,7 @@ class 朝圣言:
         def __init__(self, value, stack, rate):
             self.value = value
             self.stack = stack
-            self.rate = rate
+            self.rate = rate / 100
 
         def __call__(self, status: Status):
             status.attribute.strain_base += self.value * self.stack * self.rate
@@ -304,7 +312,7 @@ class 振奋:
         def __init__(self, value, stack, rate):
             self.value = value
             self.stack = stack
-            self.rate = rate
+            self.rate = rate / 100
 
         def __call__(self, status: Status):
             status.attribute.physical_overcome_base += self.value * self.stack * self.rate
@@ -321,7 +329,7 @@ class 寒啸千军:
     class Inner:
         def __init__(self, value, rate):
             self.value = value
-            self.rate = rate
+            self.rate = rate / 100
 
         def __call__(self, status: Status):
             status.attribute.physical_overcome_gain += self.value * self.rate
@@ -342,7 +350,7 @@ class 庄周梦:
         def __init__(self, value, stack, rate):
             self.value = value
             self.stack = stack
-            self.rate = rate
+            self.rate = rate / 100
 
         def __call__(self, status: Status):
             status.attribute.strain_base += self.value * self.stack * self.rate
@@ -361,7 +369,7 @@ class 疏狂:
     class Inner:
         def __init__(self, value, rate):
             self.value = value
-            self.rate = rate
+            self.rate = rate / 100
 
         def __call__(self, status: Status):
             status.attribute.physical_attack_power_gain += self.value * self.rate
@@ -380,7 +388,7 @@ class 疏狂:
 class 飘黄:
     class Inner:
         def __init__(self, rate):
-            self.rate = rate
+            self.rate = rate / 100
 
         def __call__(self, status: Status):
             pass
@@ -393,7 +401,7 @@ class 配伍:
     class Inner:
         def __init__(self, value, rate):
             self.value = value
-            self.rate = rate
+            self.rate = rate / 100
 
         def __call__(self, status: Status):
             status.attribute.all_major_gain += self.value * self.rate

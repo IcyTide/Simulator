@@ -3,8 +3,8 @@ from base.status import Status
 
 class 九音惊弦阵:
     def __init__(self, rate, core_rate):
-        self.rate = rate
-        self.core_rate = core_rate
+        self.rate = rate / 100
+        self.core_rate = core_rate / 100
 
     def __call__(self, status: Status):
         status.attribute.magical_attack_power_gain += 50 / 1024
@@ -26,8 +26,8 @@ class 七绝逍遥阵:
 class 卫公折冲阵:
     def __init__(self, rate, core_rate):
         self.stack = 5
-        self.rate = rate
-        self.core_rate = core_rate
+        self.rate = rate / 100
+        self.core_rate = core_rate / 100
 
     def __call__(self, status: Status):
         status.attribute.physical_attack_power_gain += 50 / 1024
@@ -39,8 +39,8 @@ class 卫公折冲阵:
 class 天鼓雷音阵:
     def __init__(self, rate, core_rate):
         self.stack = 5
-        self.rate = rate
-        self.core_rate = core_rate
+        self.rate = rate / 100
+        self.core_rate = core_rate / 100
 
     def __call__(self, status: Status):
         status.attribute.magical_attack_power_gain += 51 / 1024
@@ -52,8 +52,8 @@ class 天鼓雷音阵:
 class 北斗七星阵:
     def __init__(self, rate, core_rate):
         self.stack = 5
-        self.rate = rate
-        self.core_rate = core_rate
+        self.rate = rate / 100
+        self.core_rate = core_rate / 100
 
     def __call__(self, status: Status):
         status.attribute.physical_critical_strike_gain += 0.03
@@ -65,8 +65,8 @@ class 北斗七星阵:
 class 九宫八卦阵:
     def __init__(self, rate, core_rate):
         self.stack = 5
-        self.rate = rate
-        self.core_rate = core_rate
+        self.rate = rate / 100
+        self.core_rate = core_rate / 100
 
     def __call__(self, status: Status):
         status.attribute.magical_critical_strike_gain += 0.03
@@ -87,8 +87,8 @@ class 依山观澜阵:
 
 class 万蛊噬心阵:
     def __init__(self, rate, core_rate):
-        self.rate = rate
-        self.core_rate = core_rate
+        self.rate = rate / 100
+        self.core_rate = core_rate / 100
 
     def __call__(self, status: Status):
         status.attribute.magical_attack_power_gain += 51 / 1024
@@ -100,8 +100,8 @@ class 万蛊噬心阵:
 
 class 流星赶月阵:
     def __init__(self, rate, core_rate):
-        self.rate = rate
-        self.core_rate = core_rate
+        self.rate = rate / 100
+        self.core_rate = core_rate / 100
 
     def __call__(self, status: Status):
         status.attribute.strength_gain += 30 / 1024
@@ -112,8 +112,8 @@ class 流星赶月阵:
 
 class 千机百变阵:
     def __init__(self, rate, core_rate):
-        self.rate = rate
-        self.core_rate = core_rate
+        self.rate = rate / 100
+        self.core_rate = core_rate / 100
 
     def __call__(self, status: Status):
         status.attribute.all_shield_ignore += 20 / 1024
@@ -123,8 +123,8 @@ class 千机百变阵:
 
 class 炎威破魔阵:
     def __init__(self, rate, core_rate):
-        self.rate = rate
-        self.core_rate = core_rate
+        self.rate = rate / 100
+        self.core_rate = core_rate / 100
 
     def __call__(self, status: Status):
         status.attribute.magical_attack_power_gain += 51 / 1024
@@ -136,8 +136,8 @@ class 炎威破魔阵:
 class 降龙伏虎阵:
     def __init__(self, rate, core_rate):
         self.stack = 5
-        self.rate = rate
-        self.core_rate = core_rate
+        self.rate = rate / 100
+        self.core_rate = core_rate / 100
 
     def __call__(self, status: Status):
         status.attribute.physical_attack_power_gain += 50 / 1024
@@ -149,8 +149,8 @@ class 降龙伏虎阵:
 class 锋凌横绝阵:
     def __init__(self, rate, core_rate):
         self.stack = 5
-        self.rate = rate
-        self.core_rate = core_rate
+        self.rate = rate / 100
+        self.core_rate = core_rate / 100
 
     def __call__(self, status: Status):
         status.attribute.physical_critical_strike_gain += 0.03
@@ -161,8 +161,8 @@ class 锋凌横绝阵:
 
 class 万籁金弦阵:
     def __init__(self, rate, core_rate):
-        self.rate = rate
-        self.core_rate = core_rate
+        self.rate = rate / 100
+        self.core_rate = core_rate / 100
 
     def __call__(self, status: Status):
         status.attribute.magical_critical_strike_gain += 0.03
@@ -174,8 +174,8 @@ class 万籁金弦阵:
 
 class 霜岚洗锋阵:
     def __init__(self, rate, core_rate):
-        self.rate = rate
-        self.core_rate = core_rate
+        self.rate = rate / 100
+        self.core_rate = core_rate / 100
 
     def __call__(self, status: Status):
         status.attribute.physical_attack_power_gain += 50 / 1024
@@ -197,8 +197,8 @@ class 墟海引归阵:
 
 class 龙皇雪风阵:
     def __init__(self, rate, core_rate):
-        self.rate = rate
-        self.core_rate = core_rate
+        self.rate = rate / 100
+        self.core_rate = core_rate / 100
 
     def __call__(self, status: Status):
         status.attribute.physical_critical_strike_gain += 0.03
@@ -209,8 +209,8 @@ class 龙皇雪风阵:
 
 class 九星游年阵:
     def __init__(self, rate, core_rate):
-        self.rate = rate
-        self.core_rate = core_rate
+        self.rate = rate / 100
+        self.core_rate = core_rate / 100
 
         self.values = [102, 92, 82, 71, 61, 51, 41, 31, 20, 10]
 
@@ -244,8 +244,8 @@ class 横云破锋阵:
 
 class 苍梧引灵阵:
     def __init__(self, rate, core_rate):
-        self.rate = rate
-        self.core_rate = core_rate
+        self.rate = rate / 100
+        self.core_rate = core_rate / 100
 
     def __call__(self, status: Status):
         status.attribute.all_critical_strike_gain += 0.03

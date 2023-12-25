@@ -104,11 +104,11 @@ def parse_condition(status, text):
 
     full_matches = re.match(full_pattern, text)
     if not full_matches:
-        raise SyntaxError(f"{text}: Not Match The Rule")
+        raise SyntaxError(f"{text}: 语法不匹配")
 
     skill, conditions = full_matches.group(1), full_matches.group(2)
     if skill not in status.skills:
-        raise SyntaxError(f"Skill: {skill} Not Existed")
+        raise SyntaxError(f"技能: {skill} 不存在")
 
     final_condition = None
     if conditions:
@@ -118,22 +118,22 @@ def parse_condition(status, text):
 
             comparison_operator = condition_matches.group(3)
             if comparison_operator not in operators:
-                raise SyntaxError(f"Comparison: {comparison_operator} Not Existed")
+                raise SyntaxError(f"比较符: {comparison_operator} 不存在")
 
             number = float(condition_matches.group(4))
             if number < 0:
-                raise SyntaxError(f"Comparison Not Support Negative Number: {number}")
+                raise SyntaxError(f"比较不支持负数: {number}")
 
             entity = condition_matches.group(1)
             target = condition_matches.group(2)
             if target in ["cd", "energy"]:
                 if entity not in status.skills:
-                    raise SyntaxError(f"Skill: {entity} Not Existed")
+                    raise SyntaxError(f"条件技能: {entity} 不存在")
             elif target in ["duration", "stack"]:
                 if entity not in status.buffs:
-                    raise SyntaxError(f"Buff: {entity} Not Existed")
+                    raise SyntaxError(f"条件Buff: {entity} 不存在")
             else:
-                raise SyntaxError(f"Condition: {target} Not Existed")
+                raise SyntaxError(f"条件类型: {target} 不存在")
 
             if final_condition:
                 final_condition = Aggregation(

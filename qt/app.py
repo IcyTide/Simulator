@@ -1,6 +1,6 @@
 import sys
 
-from PySide6 import QtWidgets
+
 from PySide6.QtGui import QIcon
 
 from qt.components.top import TopWidget
@@ -18,7 +18,7 @@ from qt.scripts.bonuses import bonuses_script
 from qt.components.combat import CombatWidget
 from qt.scripts.combat import combat_script
 
-from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QTabWidget
+from PySide6.QtWidgets import QApplication, QMainWindow, QStyleFactory, QMessageBox, QVBoxLayout, QWidget, QTabWidget
 
 
 class MainWindow(QMainWindow):
@@ -29,6 +29,10 @@ class MainWindow(QMainWindow):
 
         icon = QIcon("qt/assets/icon.ico")
         self.setWindowIcon(icon)
+        self.message_box = QMessageBox()
+
+        self.message_box.setWindowIcon(icon)
+
         self.central_widget = QWidget(self)
         self.setCentralWidget(self.central_widget)
 
@@ -68,14 +72,14 @@ class MainWindow(QMainWindow):
         recipes = recipes_script(self.recipes_widget)
         consumables = consumables_script(self.consumables_widget)
         bonuses = bonuses_script(school, self.bonuses_widget)
-        combat_script(school, equipments, talents, recipes, consumables, bonuses, self.combat_widget)
+        combat_script(self.message_box, school, equipments, talents, recipes, consumables, bonuses, self.combat_widget)
 
         self.tab_widget.hide()
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    app.setStyle(QtWidgets.QStyleFactory.create('Fusion'))
+    app.setStyle(QStyleFactory.create('Fusion'))
     window = MainWindow()
     window.show()
     sys.exit(app.exec())

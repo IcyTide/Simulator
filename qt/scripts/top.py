@@ -10,7 +10,7 @@ from qt.components.top import TopWidget
 
 from general.consumables import FOODS, POTIONS, WEAPON_ENCHANTS, SPREADS, SNACKS, WINES
 from general.gains.formation import FORMATIONS
-from qt.constant import SUPPORT_SCHOOL, MAX_RECIPES
+from qt.constant import SUPPORT_SCHOOL, MAX_RECIPES, MAX_STONE_LEVEL
 
 
 class School:
@@ -60,6 +60,10 @@ def top_script(top_widget: TopWidget, tab_widget: QTabWidget,
                 choices.append(name)
 
             equipment_widget.equipment.set_items(choices)
+
+            if equipment_widget.stones_json:
+                equipment_widget.stone_level.combo_box.setCurrentIndex(MAX_STONE_LEVEL)
+
         for i, talent_widget in enumerate(talents_widget.values()):
             talent_widget.set_items(school.talents[i])
 

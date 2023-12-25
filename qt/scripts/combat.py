@@ -1,3 +1,5 @@
+from PySide6.QtWidgets import QMessageBox
+
 from base.simulator import Simulator
 from base.target import Target
 from general.buffs import BUFFS
@@ -33,7 +35,8 @@ def gradients_text(gradients):
     return "\n".join(gradients_texts)
 
 
-def combat_script(school: School, equipments: Equipments, talents: Talents, recipes: Recipes,
+def combat_script(message_box: QMessageBox, school: School,
+                  equipments: Equipments, talents: Talents, recipes: Recipes,
                   consumables: Consumables, bonuses: Bonuses,
                   combat_widget: CombatWidget):
 
@@ -50,29 +53,37 @@ def combat_script(school: School, equipments: Equipments, talents: Talents, reci
         for attr, value in consumables.attrs.items():
             setattr(attribute, attr, getattr(attribute, attr) + value)
 
-        combat_widget.init_attribute.text_browser.setText(school.attr_text(attribute))
+        combat_widget.init_attribute.set_text(school.attr_text(attribute))
         gains = sum([equipments.gains, talents.gains, recipes.gains, bonuses.gains], [])
-        simulator = Simulator(attribute, SKILLS[school.kind] + school.skills, BUFFS + school.buffs,
-                              gains, Target(target_level), duration, prepare, priority, loop,
-                              verbose=False)
+        try:
+            simulator = Simulator(attribute, SKILLS[school.kind] + school.skills, BUFFS + school.buffs,
+                                  gains, Target(target_level), duration, prepare, priority, loop,
+                                  verbose=False)
+        except SyntaxError as e:
+            message_box.setText("序列语法错误")
+            message_box.setText(e.msg)
+            message_box.exec()
+            return
 
-        combat_widget.final_attribute.text_browser.setText(school.attr_text(attribute))
+        combat_widget.final_attribute.set_text(school.attr_text(attribute))
 
         iteration = combat_widget.iteration.spin_box.value()
         delta = combat_widget.delta.spin_box.value()
 
-        cost, dps, details, gradients, delta_dps, delta_details, delta_gradients = simulate_delta(
+        cost, summary, dps, details, gradients, delta_dps, delta_details, delta_gradients = simulate_delta(
             iteration, simulator, delta
         )
+        message_box.setWindowTitle("模拟完成")
+        message_box.setText(f"完成{iteration}次模拟消耗{cost}秒")
+        message_box.exec()
+
+        combat_widget.summary.set_content(summary)
         combat_widget.origin_dps.text.setText(str(int(dps)))
         combat_widget.origin_detail.set_content(detail_content(details))
         combat_widget.origin_gradients.text_browser.setText(gradients_text(gradients))
-        if delta_dps:
-            combat_widget.delta_dps.show()
-            combat_widget.delta_dps.text.setText(str(int(delta_dps)))
-            combat_widget.delta_detail.show()
-            combat_widget.delta_detail.set_content(detail_content(delta_details))
-            combat_widget.delta_gradients.show()
-            combat_widget.delta_gradients.text_browser.setText(gradients_text(delta_gradients))
+
+        combat_widget.delta_dps.text.setText(str(int(delta_dps)))
+        combat_widget.delta_detail.set_content(detail_content(delta_details))
+        combat_widget.delta_gradients.text_browser.setText(gradients_text(delta_gradients))
 
     combat_widget.button.clicked.connect(simulate)
