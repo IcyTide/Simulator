@@ -19,9 +19,11 @@ class 剑舞(GainBuff, Energy):
         self.value = 31 / 1024
 
     def gain(self, level, stack):
+        super().gain(level, stack)
         self.status.attribute.magical_attack_power_gain += self.value * stack
 
     def revoke(self, level, stack):
+        super().revoke(level, stack)
         self.status.attribute.magical_attack_power_gain -= self.value * stack
 
 
@@ -47,10 +49,12 @@ class 满堂(GainBuff):
         self.status.attribute.magical_critical_strike_gain -= self.values[0]
 
     def gain(self, level, stack):
+        super().gain(level, stack)
         self.status.attribute.magical_critical_strike_gain += self.values[0]
         self.status.attribute.magical_critical_power_gain += self.values[1]
 
     def revoke(self, level, stack):
+        super().revoke(level, stack)
         self.status.attribute.magical_critical_strike_gain -= self.values[0]
         self.status.attribute.magical_critical_power_gain -= self.values[1]
 
@@ -74,9 +78,11 @@ class 繁音急节(GainBuff):
         self.value = 461 / 1024
 
     def gain(self, level, stack):
+        super().gain(level, stack)
         self.status.attribute.magical_attack_power_gain += self.value
 
     def revoke(self, level, stack):
+        super().revoke(level, stack)
         self.status.attribute.magical_attack_power_gain -= self.value
 
 
@@ -130,9 +136,11 @@ class 广陵月_会效(GainBuff):
         self.value = 20 / 1024
 
     def gain(self, level, stack):
+        super().gain(level, stack)
         self.status.attribute.magical_critical_power_gain += self.value * stack
 
     def revoke(self, level, stack):
+        super().revoke(level, stack)
         self.status.attribute.magical_critical_power_gain -= self.value * stack
 
 
@@ -147,10 +155,12 @@ class 流玉(GainBuff):
         self.value = 512 / 1024
 
     def gain(self, level, stack):
+        super().gain(level, stack)
         self.status.skills["玳弦急曲"].skill_damage_addition += self.value
         self.status.skills["玳弦急曲-新妆"].skill_damage_addition += self.value
 
     def revoke(self, level, stack):
+        super().revoke(level, stack)
         self.status.skills["玳弦急曲"].skill_damage_addition -= self.value
         self.status.skills["玳弦急曲-新妆"].skill_damage_addition -= self.value
 
@@ -214,9 +224,11 @@ class 化冰(GainBuff):
         self.value = 164 / 1024
 
     def gain(self, level, stack):
+        super().gain(level, stack)
         self.status.attribute.pve_addition += self.value
 
     def revoke(self, level, stack):
+        super().revoke(level, stack)
         self.level = level
         self.status.attribute.pve_addition -= self.value
 
@@ -248,9 +260,11 @@ class 夜天(GainBuff):
         self.value = 102 / 1024
 
     def gain(self, level, stack):
+        super().gain(level, stack)
         self.status.attribute.damage_addition += self.value
 
     def revoke(self, level, stack):
+        super().revoke(level, stack)
         self.status.attribute.damage_addition -= self.value
 
 
@@ -289,9 +303,11 @@ class 霜降(GainBuff):
         self.values = [154 / 1024, 307 / 1024, 461 / 1024]
 
     def gain(self, level, stack):
+        super().gain(level, stack)
         self.status.skills["玳弦急曲"].skill_damage_addition += self.values[level - 1]
 
     def revoke(self, level, stack):
+        super().revoke(level, stack)
         self.status.skills["玳弦急曲"].skill_damage_addition -= self.values[level - 1]
 
 

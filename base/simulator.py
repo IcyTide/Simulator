@@ -9,7 +9,7 @@ from base.status import Status
 
 class Simulator:
     def __init__(self, attribute, skills, buffs, gains, target, duration,
-                 prepare=None, priority=None, loop=None, verbose=False):
+                 prepare=None, priority=None, loop=None, initiation=None, verbose=False):
 
         if verbose:
             self.record = self.record_verbose
@@ -24,6 +24,9 @@ class Simulator:
 
         for gain in gains:
             gain(self.status)
+
+        if initiation:
+            initiation(self.status)
 
         self.prepare = parse_expression(self.status, prepare)
         self.priority = parse_expression(self.status, priority)

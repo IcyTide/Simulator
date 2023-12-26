@@ -56,11 +56,13 @@ class 霜天(GainBuff):
         self.value = 0.15
 
     def gain(self, level, stack):
+        super().gain(level, stack)
         self.status.skills["上将军印"].damage_gain += self.value * stack
         self.status.skills["上将军印"].attack_power_cof_gain += self.value * stack
         self.status.skills["上将军印"].weapon_damage_cof_gain += self.value * stack
 
     def revoke(self, level, stack):
+        super().revoke(level, stack)
         self.status.skills["上将军印"].damage_gain -= self.value * stack
         self.status.skills["上将军印"].attack_power_cof_gain -= self.value * stack
         self.status.skills["上将军印"].weapon_damage_cof_gain -= self.value * stack
@@ -124,12 +126,14 @@ class 含风(GainBuff):
         self.status.attribute.physical_critical_strike_gain -= self.values[0]
 
     def gain(self, level, stack):
+        super().gain(level, stack)
         self.status.attribute.physical_critical_strike_gain += self.values[0] * stack
         self.status.attribute.physical_critical_power_gain += self.values[1] * stack
         for skill in self.related_skills:
             self.status.skills[skill].skill_damage_addition += self.values[2] * stack
 
     def revoke(self, level, stack):
+        super().revoke(level, stack)
         self.status.attribute.physical_critical_strike_gain -= self.values[0] * stack
         self.status.attribute.physical_critical_power_gain -= self.values[1] * stack
         for skill in self.related_skills:
@@ -182,9 +186,11 @@ class 降麒式(GainBuff):
         self.value = 205 / 1024
 
     def gain(self, level, stack):
+        super().gain(level, stack)
         self.status.attribute.damage_addition += self.value
 
     def revoke(self, level, stack):
+        super().revoke(level, stack)
         self.status.attribute.damage_addition -= self.value
 
 
@@ -202,12 +208,12 @@ class 沉夜重雪(TriggerBuff):
     def add(self):
         super().add()
         self.status.skills["破釜沉舟"].reset()
-        self.status.skills["刀啸风吟"].interval_base = 0
+        self.status.skills["刀啸风吟"].direct = True
         self.status.buffs["沉夜重雪-冷却"].trigger()
 
     def remove(self):
         super().remove()
-        self.status.skills["刀啸风吟"].interval_base = 24
+        self.status.skills["刀啸风吟"].direct = False
 
 
 class 沉夜重雪_冷却(CDBuff):

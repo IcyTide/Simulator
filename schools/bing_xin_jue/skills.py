@@ -13,7 +13,7 @@ class 连环双刀(Melee):
         self.name = "连环双刀"
 
 
-class 名动四方(CastingSkill):
+class 名动四方(LoopSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "名动四方"
@@ -21,19 +21,14 @@ class 名动四方(CastingSkill):
         self.is_cast = False
         self.is_hit = False
 
-        self.gcd_index = self.name
-        self.gcd_base = 0
-        self.cd_base = 16
+        self.interval_base = 16
 
-    @property
-    def condition(self):
-        return self.status.stacks["剑舞"] < 10
+    def pre_cast(self):
+        super().pre_cast()
+        self.status.buffs["剑舞"].trigger(stack=10)
 
-    def post_cast(self):
-        super().post_cast()
-        if self.status.current_frame == 0:
-            for _ in range(5):
-                self.status.buffs["剑舞"].trigger()
+    def post_hit(self):
+        super().post_hit()
         self.status.buffs["剑舞"].trigger()
 
 
@@ -187,6 +182,8 @@ class 心鼓弦(CastingSkill):
         self.name = "心鼓弦"
 
         self.is_hit = False
+
+        self.interval_base = 24
 
         self.cd_base = 1200 * 16
 

@@ -34,3 +34,13 @@ class CDReductionRecipe:
     def __call__(self, status: Status):
         for skill in self.skills:
             status.skills[skill].cd_base -= self.value
+
+
+class IntervalReductionRecipe:
+    def __init__(self, skills, value):
+        self.skills = skills
+        self.value = value
+
+    def __call__(self, status: Status):
+        for skill in self.skills:
+            status.skills[skill].interval_base -= self.value

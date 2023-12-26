@@ -19,14 +19,14 @@ class 外功双会套装(GainBuff, TriggerBuff):
         self.status.attribute.physical_critical_strike_gain -= self.values[0]
 
     def gain(self, level, stack):
-        self.level = level
-        self.status.attribute.physical_critical_strike_gain += self.values[0] * stack
-        self.status.attribute.physical_critical_power_gain += self.values[1] * stack
+        super().gain(level, stack)
+        self.status.attribute.physical_critical_strike_gain += self.values[0]
+        self.status.attribute.physical_critical_power_gain += self.values[1]
 
     def revoke(self, level, stack):
-        self.level = level
-        self.status.attribute.physical_critical_strike_gain -= self.values[0] * stack
-        self.status.attribute.physical_critical_power_gain -= self.values[1] * stack
+        super().revoke(level, stack)
+        self.status.attribute.physical_critical_strike_gain -= self.values[0]
+        self.status.attribute.physical_critical_power_gain -= self.values[1]
 
 
 class 内功双会套装(GainBuff, TriggerBuff):
@@ -47,14 +47,14 @@ class 内功双会套装(GainBuff, TriggerBuff):
         self.status.attribute.magical_critical_strike_gain -= self.values[0]
 
     def gain(self, level, stack):
-        self.level = level
-        self.status.attribute.magical_critical_strike_gain += self.values[0] * stack
-        self.status.attribute.magical_critical_power_gain += self.values[1] * stack
+        super().gain(level, stack)
+        self.status.attribute.magical_critical_strike_gain += self.values[0]
+        self.status.attribute.magical_critical_power_gain += self.values[1]
 
     def revoke(self, level, stack):
-        self.level = level
-        self.status.attribute.magical_critical_strike_gain += self.values[0] * stack
-        self.status.attribute.magical_critical_power_gain += self.values[1] * stack
+        super().revoke(level, stack)
+        self.status.attribute.magical_critical_strike_gain += self.values[0]
+        self.status.attribute.magical_critical_power_gain += self.values[1]
 
 
 class 大附魔腰(GainBuff):
@@ -66,9 +66,11 @@ class 大附魔腰(GainBuff):
         self.value = [10 / 1024, 51 / 1024]
 
     def gain(self, level, stack):
+        super().gain(level, stack)
         self.status.attribute.damage_addition += self.value[level - 1]
 
     def revoke(self, level, stack):
+        super().revoke(level, stack)
         self.status.attribute.damage_addition -= self.value[level - 1]
 
 

@@ -17,7 +17,6 @@ def apply_haste(haste, value):
 class Snapshot:
     level: int = 1
     critical_strike: float = 0
-    haste: float = 0
     gains: dict = None
 
 
@@ -42,10 +41,12 @@ class Skill:
 
     level: int = 1
     snapshot: [Snapshot] = None
+    haste: float = 1
 
     def __post_init__(self):
         self.pre_cast_effect = []
         self.post_cast_effect = []
+        self.pre_hit_effect = []
         self.critical_hit_effect = []
         self.post_hit_effect = []
 
@@ -56,10 +57,6 @@ class Skill:
     @property
     def critical_strike(self):
         raise NotImplementedError
-
-    @property
-    def haste(self):
-        return self.attribute.haste
 
     """ base property """
 
@@ -77,7 +74,7 @@ class Skill:
 
     @property
     def interval(self):
-        return apply_haste(self.snapshot.haste, self.interval_base)
+        return apply_haste(self.haste, self.interval_base)
 
     @property
     def duration(self):
@@ -123,6 +120,7 @@ class Skill:
 
     def pre_cast(self):
         self.status.ticks[self.name] = 0
+        self.haste = self.status.attribute.haste
         self.status.intervals[self.name] = self.interval
 
         for effect in self.pre_cast_effect:
@@ -143,14 +141,19 @@ class Skill:
         for effect in self.post_cast_effect:
             effect(self)
 
+    def pre_hit(self):
+        for effect in self.pre_hit_effect:
+            effect(self)
+
     def hit(self):
+        self.pre_hit()
         self.post_hit()
 
     def post_hit(self):
+        self.status.ticks[self.name] += 1
+
         for effect in self.post_hit_effect:
             effect(self)
-
-        self.status.ticks[self.name] += 1
 
         if self.status.ticks[self.name] == self.tick:
             self.post_cast()
@@ -251,6 +254,7 @@ class DamageSkill(Skill):
             effect(self)
 
     def hit(self):
+        self.pre_hit()
         critical = self.roll < self.snapshot.critical_strike
 
         self.record(critical, self.snapshot.level)
@@ -273,10 +277,14 @@ class TriggerSkill(Skill):
 
 
 class CastingSkill(Skill):
+    direct: bool = False
+
     def pre_cast(self):
         super().pre_cast()
         self.set_gcd()
         self.status.casting = True
+        if self.direct:
+            self.hit()
 
     def post_cast(self):
         super().post_cast()
@@ -312,24 +320,10 @@ class ChannelSkill(Skill):
 
 
 class PeriodicalSkill(Skill):
-    def record(self, critical, level, times=1):
-        gains = tuple((buff, level, stack) for buff, (level, stack) in self.snapshot.gains.items())
-        self.status.record((self.name, critical, level, times, gains))
-
-    def consume(self):
-        if stack := self.status.stacks[self.name]:
-            critical = self.roll < self.critical_strike
-            ticks = self.tick - self.status.ticks[self.name]
-            self.record(critical, self.snapshot.level, ticks * stack)
-
-            self.status.buffs[self.name].clear()
-            self.post_cast()
-
     def pre_cast(self):
         for effect in self.pre_cast_effect:
             effect(self)
 
-        self.snapshot = Snapshot(self.level, self.critical_strike, self.haste, self.status.gains.copy())
         self.status.ticks[self.name] = 0
         if not self.status.intervals[self.name]:
             self.status.intervals[self.name] = self.interval
@@ -339,6 +333,20 @@ class PeriodicalSkill(Skill):
     def post_cast(self):
         super().post_cast()
         self.status.buffs[self.name].clear()
+
+
+class LoopSkill(Skill):
+    @property
+    def available(self):
+        return True
+
+    @property
+    def interval(self):
+        return self.interval_base
+
+    @property
+    def tick(self):
+        return -1
 
 
 """"""
@@ -443,8 +451,6 @@ class Melee(CastingSkill, PhysicalDamage):
     def __init__(self, status):
         super().__init__(status)
 
-        self.gcd_index = self.name
-
         self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(16)
         self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
 
@@ -495,7 +501,23 @@ class ActionSkill(ChannelSkill, FixedInterval):
 
 
 class DotSkill(PeriodicalSkill):
-    pass
+
+    def consume(self):
+        if stack := self.status.stacks[self.name]:
+            critical = self.roll < self.critical_strike
+            ticks = self.tick - self.status.ticks[self.name]
+            self.record(critical, self.snapshot.level, ticks * stack)
+
+            self.status.buffs[self.name].clear()
+            self.post_cast()
+
+    def pre_cast(self):
+        super().pre_cast()
+        self.snapshot = Snapshot(self.level, self.critical_strike, self.status.gains.copy())
+
+    def record(self, critical, level, times=1):
+        gains = tuple((buff, level, stack) for buff, (level, stack) in self.snapshot.gains.items())
+        self.status.record((self.name, critical, level, times, gains))
 
 
 class PlacementSkill(PeriodicalSkill, FixedInterval):
