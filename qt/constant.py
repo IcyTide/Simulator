@@ -112,13 +112,14 @@ SUPPORT_SCHOOL = {
         "kind": "外功",
         "attribute": wen_shui_jue.WenShuiJue,
         "formation": "依山观澜阵",
-        "talents": bei_ao_jue.TALENTS,
-        "recipes": bei_ao_jue.RECIPES,
-        "skills": bei_ao_jue.SKILLS,
-        "buffs": bei_ao_jue.BUFFS,
-        "prepare": bei_ao_jue.prepare,
-        "priority": bei_ao_jue.priority,
-        "loop": bei_ao_jue.loop,
+        "talents": wen_shui_jue.TALENTS,
+        "recipes": wen_shui_jue.RECIPES,
+        "skills": wen_shui_jue.SKILLS,
+        "buffs": wen_shui_jue.BUFFS,
+        "initiation": wen_shui_jue.initiation,
+        "prepare": wen_shui_jue.prepare,
+        "priority": wen_shui_jue.priority,
+        "loop": wen_shui_jue.loop,
         "display_attrs": {
             "agility": "身法",
             "base_physical_attack_power": "基础攻击",
@@ -149,6 +150,7 @@ SUPPORT_SCHOOL = {
         "recipes": bei_ao_jue.RECIPES,
         "skills": bei_ao_jue.SKILLS,
         "buffs": bei_ao_jue.BUFFS,
+        "initiation": bei_ao_jue.initiation,
         "prepare": bei_ao_jue.prepare,
         "priority": bei_ao_jue.priority,
         "loop": bei_ao_jue.loop,
@@ -182,6 +184,7 @@ SUPPORT_SCHOOL = {
         "recipes": bing_xin_jue.RECIPES,
         "skills": bing_xin_jue.SKILLS,
         "buffs": bing_xin_jue.BUFFS,
+        "initiation": bing_xin_jue.initiation,
         "prepare": bing_xin_jue.prepare,
         "priority": bing_xin_jue.priority,
         "loop": bing_xin_jue.loop,
@@ -233,11 +236,13 @@ def STRENGTH_COF(level):
 
 EQUIP_GAINS_NAME = {
     **equipment.EQUIP_GAINS_NAME,
+    **wen_shui_jue.EQUIP_GAINS_NAME,
     **bei_ao_jue.EQUIP_GAINS_NAME,
     **bing_xin_jue.EQUIP_GAINS_NAME,
 }
 EQUIP_GAINS = {
     **equipment.EQUIP_GAINS,
+    **wen_shui_jue.EQUIP_GAINS,
     **bei_ao_jue.EQUIP_GAINS,
     **bing_xin_jue.EQUIP_GAINS,
 }
@@ -246,6 +251,7 @@ EQUIP_GAINS = {
 MAX_TALENTS = 12
 
 TALENT_GAINS = {
+    **wen_shui_jue.TALENT_GAINS,
     **bei_ao_jue.TALENT_GAINS,
     **bing_xin_jue.TALENT_GAINS,
 }
@@ -255,6 +261,7 @@ MAX_RECIPE_SKILLS = 8
 MAX_RECIPES = 4
 
 RECIPE_GAINS = {
+    **wen_shui_jue.RECIPE_GAINS,
     **bei_ao_jue.RECIPE_GAINS,
     **bing_xin_jue.RECIPE_GAINS,
 }

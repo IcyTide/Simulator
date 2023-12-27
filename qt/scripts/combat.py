@@ -59,10 +59,10 @@ def combat_script(message_box: QMessageBox, school: School,
         gains = sum([equipments.gains, talents.gains, recipes.gains, bonuses.gains], [])
         try:
             simulator = Simulator(attribute, SKILLS[school.kind] + school.skills, BUFFS + school.buffs,
-                                  gains, Target(target_level), duration, prepare, priority, loop,
+                                  gains, Target(target_level), duration, prepare, priority, loop, school.initiation,
                                   verbose=False)
         except SyntaxError as e:
-            message_box.setText("序列语法错误")
+            message_box.setWindowTitle("序列语法错误")
             message_box.setText(e.msg)
             message_box.exec()
             return

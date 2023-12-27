@@ -23,6 +23,7 @@ class School:
     formation: str = ""
     skills: list = None,
     buffs: list = None,
+    initiation = None,
     prepare: str = "",
     priority: str = "",
     loop: str = "",

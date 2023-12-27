@@ -1,9 +1,14 @@
+from base.status import Status
 from schools.bei_ao_jue.attribute import BeiAoJue
 from schools.bei_ao_jue.gains import EQUIP_GAINS_NAME, EQUIP_GAINS
 from schools.bei_ao_jue.skills import SKILLS
 from schools.bei_ao_jue.buffs import BUFFS
 from schools.bei_ao_jue.talents import TALENTS, TALENT_GAINS
 from schools.bei_ao_jue.recipes import RECIPES, RECIPE_GAINS
+
+
+def initiation(status: Status):
+    pass
 
 
 prepare = '雪絮金屏,刀啸风吟,坚壁清野,松烟竹雾,闹须弥,秀明尘身,破釜沉舟'

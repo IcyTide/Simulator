@@ -27,6 +27,14 @@ class 山居剑意(GainBuff):
         super().__init__(status)
         self.name = "山居剑意"
 
+    def add(self):
+        super().add()
+        self.status.skills["断潮"].probability = 1
+
+    def remove(self):
+        super().remove()
+        self.status.skills["断潮"].probability = 0.5
+
     def gain(self, level, stack):
         super().gain(level, stack)
         for attr, value in self.status.attribute.primary_weapon_attribute.items():
@@ -70,6 +78,12 @@ class 莺鸣(GainBuff):
     def revoke(self, level, stack):
         super().revoke(level, stack)
         self.status.attribute.physical_critical_strike_gain -= self.value
+
+
+class 云栖松剑气回复(PlacementBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "云栖松剑气回复"
 
 
 class 岱宗(GainBuff):
@@ -224,6 +238,7 @@ class 惊雷(Buff):
         self.name = "惊雷"
 
         self.duration = 10 * 16
+        self.duration_max = 10 * 16
 
 
 class 雾锁(GainBuff):
@@ -368,7 +383,9 @@ class 螭尘(TriggerBuff):
 
     def remove(self):
         super().remove()
-        self.status.skills["刀啸风吟"].direct = False
+
+        self.status.skills["夕照雷峰"].direct = False
+        self.status.skills["云飞玉皇"].direct = False
 
 
 class 螭尘_冷却(CDBuff):
@@ -381,6 +398,6 @@ class 螭尘_冷却(CDBuff):
 
 
 BUFFS = [
-    朔气, 剑气, 问水诀, 山居剑意, 莺鸣,
+    朔气, 剑气, 问水诀, 山居剑意, 莺鸣, 云栖松剑气回复,
     岱宗, 夜雨, 九溪弥烟_持续, 凤鸣, 造化, 层云, 风来吴山_持续, 惊雷, 雾锁, 碧归, 碧归_计数, 如风, 飞来, 闻踪,
 ]

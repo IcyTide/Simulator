@@ -19,7 +19,7 @@ class 剑气回复:
 class 云栖松剑气回复:
     @staticmethod
     def post_cast_effect(self: Skill):
-        self.status.buffs["云栖松剑气回复"].cast()
+        self.status.skills["云栖松剑气回复"].cast()
 
     def __call__(self, status: Status):
         status.skills["云栖松"].post_cast_effect.append(self.post_cast_effect)

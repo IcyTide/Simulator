@@ -11,6 +11,8 @@ class 霜风刀法(Melee):
         super().__init__(status)
         self.name = "霜风刀法"
 
+        self.gcd_index = self.name
+
 
 class 秀明尘身(CastingSkill):
     def __init__(self, status):

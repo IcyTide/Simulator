@@ -59,11 +59,11 @@ class 景行:
 class 映波锁澜:
     @staticmethod
     def gain_effect(self: Buff, level, stack):
-        self.status.skills["听雷"].damage_addition += 102 / 1024
+        self.status.skills["听雷"].skill_damage_addition += 102 / 1024
 
     @staticmethod
     def revoke_effect(self: Buff, level, stack):
-        self.status.skills["听雷"].damage_addition -= 102 / 1024
+        self.status.skills["听雷"].skill_damage_addition -= 102 / 1024
 
     @staticmethod
     def post_hit_effect_trigger(self: Skill):
@@ -218,9 +218,9 @@ class 飞来闻踪:
 TALENTS = [
     ["淘尽"],
     ["清风"],
-    ["岱宗"],
+    ["岱宗", "夜雨"],
     ["景行"],
-    ["映波锁澜", "造化"],
+    ["造化", "映波锁澜"],
     ["怜光"],
     ["层云"],
     ["撼岳"],
@@ -233,6 +233,7 @@ TALENT_GAINS = {
     "淘尽": 淘尽(),
     "清风": 清风(),
     "岱宗": 岱宗(),
+    "夜雨": 夜雨(),
     "景行": 景行(),
     "映波锁澜": 映波锁澜(),
     "造化": 造化(),

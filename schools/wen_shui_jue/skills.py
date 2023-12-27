@@ -158,7 +158,7 @@ class 夕照雷峰(CastingSkill, PhysicalDamage):
 
     def pre_cast(self):
         super().pre_cast()
-        self.status.intervals["剑气衰减"] = 16 * 2
+        self.status.intervals["剑气衰减"] = 32
 
     def post_hit(self):
         super().post_hit()
@@ -191,7 +191,7 @@ class 云飞玉皇(CastingSkill, PhysicalDamage):
 
     def pre_cast(self):
         super().pre_cast()
-        self.status.intervals["剑气衰减"] = 16 * 2
+        self.status.intervals["剑气衰减"] = 32
 
     def post_hit(self):
         super().post_hit()
@@ -321,6 +321,10 @@ class 莺鸣柳(CastingSkill):
         self.energy = 3
         self.cd_base = 90 * 16
 
+    def post_cast(self):
+        super().post_cast()
+        self.status.buffs["莺鸣"].trigger()
+
 
 class 云栖松(CastingSkill):
     def __init__(self, status):
@@ -388,6 +392,7 @@ class 风来吴山_持续(PlacementSkill, PhysicalDamage):
 
     def post_hit(self):
         super().post_hit()
+        self.status.buffs["剑气"].increase(5)
         if self.status.intervals[self.name]:
             self.status.buffs["层云"].clear()
             self.status.buffs["层云"].trigger(min(self.status.ticks[self.name], 5))
@@ -439,13 +444,17 @@ class 飞来闻踪(CastingSkill):
     def condition(self):
         return self.status.stacks["山居剑意"]
 
+    def post_cast(self):
+        super().post_cast()
+        self.status.skills["飞来"].cast()
+
 
 SKILLS_MAP = {
     "通用": [三柴剑法, 四季剑法, 断潮, 破, 剑气衰减],
     "君子风": [啸日, 听雷],
     "秀水剑法": [九溪弥烟, 玉虹贯日, 黄龙吐翠],
     "灵峰剑式": [夕照雷峰, 云飞玉皇, 云飞玉皇_额外, 风来吴山, 风来吴山_引导],
-    "西子情": [莺鸣柳, 云栖松],
+    "西子情": [莺鸣柳, 云栖松, 云栖松剑气回复],
     "奇穴": [云飞玉皇_岱宗, 九溪弥烟_持续, 风来吴山_持续, 惊雷, 飞来, 飞来闻踪],
 }
 SKILLS = sum(SKILLS_MAP.values(), [])

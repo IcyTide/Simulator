@@ -12,6 +12,8 @@ class 连环双刀(Melee):
         super().__init__(status)
         self.name = "连环双刀"
 
+        self.gcd_index = self.name
+
 
 class 名动四方(LoopSkill):
     def __init__(self, status):

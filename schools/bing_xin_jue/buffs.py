@@ -221,7 +221,7 @@ class 化冰(GainBuff):
         self.duration = 180 * 16
         self.duration_max = 180 * 16
 
-        self.value = 164 / 1024
+        self.value = 184 / 1024
 
     def gain(self, level, stack):
         super().gain(level, stack)
