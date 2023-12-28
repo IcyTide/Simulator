@@ -1,6 +1,6 @@
 import gradio as gr
 
-from ui.constant import MAX_RECIPE_SKILLS, MAX_RECIPES
+from gradio.constant import MAX_RECIPE_SKILLS, MAX_RECIPES
 
 
 def build_recipe():

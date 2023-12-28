@@ -3,7 +3,7 @@ import json
 import gradio as gr
 import pandas as pd
 
-from ui.constant import *
+from gradio.constant import *
 
 
 def build_equipment():

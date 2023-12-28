@@ -1,5 +1,6 @@
 from base.constant import PHYSICAL_ATTACK_POWER_COF, WEAPON_DAMAGE_COF, PHYSICAL_DOT_ATTACK_POWER_COF, SURPLUS_COF
-from base.skill import Melee, CastingSkill, PhysicalDamage, ActionSkill, PlacementSkill, TriggerSkill, LoopSkill
+from base.skill import Melee, CastingSkill, PhysicalDamage, ActionSkill, PlacementSkill, TriggerSkill, LoopSkill, \
+    ChargingSkill, apply_haste
 
 """
     Base Skills
@@ -12,6 +13,7 @@ class 三柴剑法(Melee):
         self.name = "三柴剑法"
 
         self.gcd_index = self.name
+        self.gcd_base = 24
 
         self.skill_damage_addition = 205 / 1024
 
@@ -25,15 +27,18 @@ class 三柴剑法(Melee):
 
 
 class 四季剑法(Melee):
+    @property
+    def attack_power_cof(self):
+        return self._attack_power_cof * apply_haste(self.haste, 32) / 32
+
     def __init__(self, status):
         super().__init__(status)
         self.name = "四季剑法"
 
         self.gcd_index = self.name
+        self.cd_base = 2 * 16
 
         self.skill_damage_addition = 205 / 1024
-
-        self.cd_base = 2 * 16
 
     def post_hit(self):
         super().post_hit()
@@ -307,7 +312,7 @@ class 黄龙吐翠(CastingSkill, PhysicalDamage):
         self.status.buffs["剑气"].increase(25)
 
 
-class 莺鸣柳(CastingSkill):
+class 莺鸣柳(CastingSkill, ChargingSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "莺鸣柳"
@@ -420,11 +425,11 @@ class 飞来(PlacementSkill):
         super().__init__(status)
         self.name = "飞来"
 
-        self.interval_list = [16] * 8
+        self.interval_list = [16] * 10
 
     def post_hit(self):
         super().post_hit()
-        self.status.buffs["剑气"].increase(10)
+        self.status.buffs["剑气"].increase(2 * 5)
         self.status.buffs["闻踪"].trigger()
 
 

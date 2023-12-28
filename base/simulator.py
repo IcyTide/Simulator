@@ -25,8 +25,7 @@ class Simulator:
         for gain in gains:
             gain(self.status)
 
-        if initiation:
-            initiation(self.status)
+        self.initiation = initiation
 
         self.prepare = parse_expression(self.status, prepare)
         self.priority = parse_expression(self.status, priority)
@@ -68,6 +67,8 @@ class Simulator:
                       self.status.total_frame - self.status.current_frame)
             self.status.timer(math.ceil(gap))
 
-    def __call__(self):
+    def __call__(self, seed=82):
+        self.status.set_dice(seed)
+        self.initiation(self.status)
         self.simulate()
         return self.damages

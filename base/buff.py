@@ -106,8 +106,11 @@ class PlacementBuff(Buff):
 
 
 class GainBuff(Buff):
-    gain_effect: list = []
-    revoke_effect: list = []
+
+    def __post_init__(self):
+        super().__post_init__()
+        self.gain_effect: list = []
+        self.revoke_effect: list = []
 
     def add(self):
         super().add()
@@ -130,8 +133,10 @@ class GainBuff(Buff):
 
 
 class Energy(Buff):
-    increase_effect: list = []
-    decrease_effect: list = []
+    def __post_init__(self):
+        super().__post_init__()
+        self.increase_effect = []
+        self.decrease_effect = []
 
     def increase(self, stack):
         self.set_duration()

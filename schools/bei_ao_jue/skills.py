@@ -12,6 +12,7 @@ class 霜风刀法(Melee):
         self.name = "霜风刀法"
 
         self.gcd_index = self.name
+        self.gcd_base = 24
 
 
 class 秀明尘身(CastingSkill):

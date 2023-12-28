@@ -1,6 +1,6 @@
 import gradio as gr
 
-from ui.constant import SUPPORT_SCHOOL, MAX_RECIPE_SKILLS
+from gradio.constant import SUPPORT_SCHOOL, MAX_RECIPE_SKILLS
 from general.consumables import FOODS, POTIONS, WEAPON_ENCHANTS, SPREADS, SNACKS, WINES
 from general.gains.formation import FORMATIONS
 

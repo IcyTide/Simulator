@@ -33,13 +33,13 @@ class WenShuiJue(Attribute):
 
     @property
     def agility(self):
-        return self._spirit
+        return self._agility
 
     @agility.setter
     def agility(self, agility):
         agility = int(agility)
         self._agility = agility
-        self.extra_physical_critical_strike = agility * self.AGILITY_TO_TO_ATTACK_POWER
-        self._extra_physical_overcome = int(agility * self.AGILITY_TO_OVERCOME)
+        self.extra_physical_attack_power = agility * self.AGILITY_TO_TO_ATTACK_POWER
+        self.extra_physical_overcome = int(agility * self.AGILITY_TO_OVERCOME)
         self.base_physical_critical_strike = (self._physical_critical_strike_base + self._extra_physical_critical_strike
                                               + agility * AGILITY_TO_CRITICAL_STRIKE)

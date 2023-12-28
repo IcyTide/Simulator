@@ -89,8 +89,7 @@ class Attribute:
     _extra_magical_overcome: int = 0
     _magical_overcome: float = 0
 
-    weapon_attack_speed: int = 24
-    weapon_damage_rand: int = 0
+    _weapon_damage_rand: int = 0
     _weapon_damage_base: int = 0
     _weapon_damage_gain: float = 0
     _weapon_damage: int = 0
@@ -805,13 +804,22 @@ class Attribute:
     """ Weapon Damage Function """
 
     @property
+    def weapon_damage_rand(self):
+        return self._weapon_damage_rand
+
+    @weapon_damage_rand.setter
+    def weapon_damage_rand(self, weapon_damage_rand):
+        self._weapon_damage_rand = weapon_damage_rand
+        self.weapon_damage = self._weapon_damage_base * (1 + self._weapon_damage_gain) + weapon_damage_rand / 2
+
+    @property
     def weapon_damage_base(self):
         return self._weapon_damage_base
 
     @weapon_damage_base.setter
     def weapon_damage_base(self, weapon_damage_base):
         self._weapon_damage_base = weapon_damage_base
-        self.weapon_damage = weapon_damage_base * (1 + self._weapon_damage_gain) + self.weapon_damage_rand / 2
+        self.weapon_damage = weapon_damage_base * (1 + self._weapon_damage_gain) + self._weapon_damage_rand / 2
 
     @property
     def weapon_damage_gain(self):
@@ -820,7 +828,7 @@ class Attribute:
     @weapon_damage_gain.setter
     def weapon_damage_gain(self, weapon_damage_gain):
         self._weapon_damage_gain = weapon_damage_gain
-        self.weapon_damage = self._weapon_damage_base * (1 + weapon_damage_gain) + self.weapon_damage_rand / 2
+        self.weapon_damage = self._weapon_damage_base * (1 + weapon_damage_gain) + self._weapon_damage_rand / 2
 
     @property
     def weapon_damage(self):

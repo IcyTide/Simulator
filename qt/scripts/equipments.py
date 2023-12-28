@@ -174,8 +174,10 @@ class Equipments:
     def gains(self):
         final_gains = []
         for equipment in self.equipments.values():
+            if not equipment.name or equipment.position == "secondary_weapon":
+                continue
             final_gains += [EQUIP_GAINS[gain] for gain in equipment.gains + equipment.special_enchant]
-        return final_gains
+        return list(set(final_gains))
 
 
 def equipments_script(equipments_widget: EquipmentsWidget):

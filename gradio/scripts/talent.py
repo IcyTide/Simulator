@@ -1,4 +1,4 @@
-from ui.constant import TALENT_GAINS
+from gradio.constant import TALENT_GAINS
 
 
 def talent_script(talent_components):

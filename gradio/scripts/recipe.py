@@ -1,4 +1,4 @@
-from ui.constant import RECIPE_GAINS
+from gradio.constant import RECIPE_GAINS
 
 
 def recipe_script(recipe_components):

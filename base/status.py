@@ -58,6 +58,10 @@ class Status:
         for skill in self.cds - reduction_gap:
             self.skills[skill].recharge()
 
+    def set_dice(self, seed):
+        for skill in self.skills.values():
+            skill.dice.seed(seed)
+
     def record_verbose(self, params):
         self.damages[params] += 1
         self.events.append((self.current_frame, params))

@@ -13,6 +13,9 @@ class 连环双刀(Melee):
         self.name = "连环双刀"
 
         self.gcd_index = self.name
+        self.gcd_base = 24
+
+        self.skill_damage_addition = 205 / 1024
 
 
 class 名动四方(LoopSkill):

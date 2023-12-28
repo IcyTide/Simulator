@@ -3,9 +3,9 @@ from functools import cache
 
 import requests
 
-from ui.constant import MAX_BASE_ATTR, MAX_MAGIC_ATTR, MAX_EMBED_ATTR, MAX_ENCHANT_ATTR, MAX_STONE_ATTR, \
+from gradio.constant import MAX_BASE_ATTR, MAX_MAGIC_ATTR, MAX_EMBED_ATTR, MAX_ENCHANT_ATTR, MAX_STONE_ATTR, \
     MAX_STONE_LEVEL, ATTR_TYPE_MAP, ATTR_TYPE_TRANSLATE
-from ui.constant import EQUIPMENTS_DIR, ENCHANTS_DIR, STONES_DIR
+from gradio.constant import EQUIPMENTS_DIR, ENCHANTS_DIR, STONES_DIR
 
 
 EQUIP_ATTR_MAP = {

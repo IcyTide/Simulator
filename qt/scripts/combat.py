@@ -57,6 +57,7 @@ def combat_script(message_box: QMessageBox, school: School,
 
         combat_widget.init_attribute.set_text(school.attr_text(attribute))
         gains = sum([equipments.gains, talents.gains, recipes.gains, bonuses.gains], [])
+
         try:
             simulator = Simulator(attribute, SKILLS[school.kind] + school.skills, BUFFS + school.buffs,
                                   gains, Target(target_level), duration, prepare, priority, loop, school.initiation,

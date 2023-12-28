@@ -30,10 +30,18 @@ class 山居剑意(GainBuff):
     def add(self):
         super().add()
         self.status.skills["断潮"].probability = 1
+        for attr, value in self.status.attribute.primary_weapon_attribute.items():
+            setattr(self.status.attribute, attr, getattr(self.status.attribute, attr) - value)
+        for attr, value in self.status.attribute.secondary_weapon_attribute.items():
+            setattr(self.status.attribute, attr, getattr(self.status.attribute, attr) + value)
 
     def remove(self):
         super().remove()
-        self.status.skills["断潮"].probability = 0.5
+        self.status.skills["断潮"].probability = 717 / 1024
+        for attr, value in self.status.attribute.secondary_weapon_attribute.items():
+            setattr(self.status.attribute, attr, getattr(self.status.attribute, attr) - value)
+        for attr, value in self.status.attribute.primary_weapon_attribute.items():
+            setattr(self.status.attribute, attr, getattr(self.status.attribute, attr) + value)
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -44,10 +52,10 @@ class 山居剑意(GainBuff):
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        for attr, value in self.status.attribute.primary_weapon_attribute.items():
-            setattr(self.status.attribute, attr, getattr(self.status.attribute, attr) + value)
         for attr, value in self.status.attribute.secondary_weapon_attribute.items():
             setattr(self.status.attribute, attr, getattr(self.status.attribute, attr) - value)
+        for attr, value in self.status.attribute.primary_weapon_attribute.items():
+            setattr(self.status.attribute, attr, getattr(self.status.attribute, attr) + value)
 
 
 class 莺鸣(GainBuff):

@@ -11,8 +11,7 @@ min_iteration = 100
 
 
 def simulate_single(simulator, i):
-    random.seed(i)
-    return simulator()
+    return simulator(i)
 
 
 def simulate_concurrent(iteration, simulator):

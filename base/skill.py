@@ -42,6 +42,7 @@ class Skill:
     level: int = 1
     snapshot: [Snapshot] = None
     haste: float = 1
+    dice: random.Random = None
 
     def __post_init__(self):
         self.pre_cast_effect = []
@@ -49,6 +50,8 @@ class Skill:
         self.pre_hit_effect = []
         self.critical_hit_effect = []
         self.post_hit_effect = []
+
+        self.dice = random.Random(82)
 
         self.attribute = self.status.attribute
         self.target = self.status.target
@@ -82,7 +85,7 @@ class Skill:
 
     @property
     def roll(self):
-        return random.random()
+        return self.dice.random()
 
     """ action functions """
 
@@ -453,10 +456,6 @@ class Melee(CastingSkill, PhysicalDamage):
 
         self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(16)
         self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
-
-    @property
-    def gcd(self):
-        return apply_haste(self.haste, self.attribute.weapon_attack_speed)
 
 
 class MagicalDamage(DamageSkill):

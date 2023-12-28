@@ -45,7 +45,7 @@ def analyze_details(iteration, simulator, counts, delta=None):
     for (skill, critical, skill_level, times, gains), count in counts.items():
         refresh_status(gains, existed_gains, status)
 
-        summary[(skill, skill_level, gains)] += times * count
+        summary[(skill, skill_level, times, gains)] += count
 
         if delta:
             analyze_delta(skill, skill_level, times, count, status, grad_results, delta)
@@ -71,8 +71,8 @@ def analyze_details(iteration, simulator, counts, delta=None):
         details[skill] = {k: round(v / iteration, 2) for k, v in result[skill].items()}
 
     summary = [
-        [skill, str(skill_level), str(count), ";".join([",".join(map(str, gain)) for gain in gains])]
-        for (skill, skill_level, gains), count in summary.items()
+        [skill, str(skill_level), str(count), str(times), ";".join([",".join(map(str, gain)) for gain in gains])]
+        for (skill, skill_level, times, gains), count in summary.items()
     ]
     gradients = {attr: grad_results[attr] / scale - dps for attr, grad_result in grad_results.items()}
     return dps, details, summary, gradients

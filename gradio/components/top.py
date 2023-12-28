@@ -1,5 +1,5 @@
 import gradio as gr
-from ui.constant import SUPPORT_SCHOOL
+from gradio.constant import SUPPORT_SCHOOL
 
 
 def build_top():
