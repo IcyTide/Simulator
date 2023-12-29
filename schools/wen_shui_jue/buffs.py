@@ -2,10 +2,10 @@ from base.buff import Buff, GainBuff, ExtendBuff, DotBuff, CountBuff, CDBuff, Pl
 from general.buffs import 外功双会套装
 
 
-class 朔气(外功双会套装):
+class 器攻(外功双会套装):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "朔气"
+        self.name = "器攻"
 
 
 class 剑气(Energy):
@@ -406,6 +406,6 @@ class 螭尘_冷却(CDBuff):
 
 
 BUFFS = [
-    朔气, 剑气, 问水诀, 山居剑意, 莺鸣, 云栖松剑气回复,
+    器攻, 剑气, 问水诀, 山居剑意, 莺鸣, 云栖松剑气回复,
     岱宗, 夜雨, 九溪弥烟_持续, 凤鸣, 造化, 层云, 风来吴山_持续, 惊雷, 雾锁, 碧归, 碧归_计数, 如风, 飞来, 闻踪,
 ]

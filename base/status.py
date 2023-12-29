@@ -61,6 +61,8 @@ class Status:
     def set_dice(self, seed):
         for skill in self.skills.values():
             skill.dice.seed(seed)
+        for buff in self.buffs.values():
+            buff.dice.seed(seed)
 
     def record_verbose(self, params):
         self.damages[params] += 1

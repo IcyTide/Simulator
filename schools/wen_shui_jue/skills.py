@@ -49,7 +49,7 @@ class 四季剑法(Melee):
         return self.status.stacks["山居剑意"]
 
 
-class 啸日(CastingSkill):
+class 啸日(CastingSkill, ChargingSkill):
     def __init__(self, status):
         super().__init__(status)
         self.name = "啸日"
@@ -62,9 +62,6 @@ class 啸日(CastingSkill):
 
         self.cd_base = 12 * 16
         self.energy = 2
-
-    def pre_cast(self):
-        super().pre_cast()
 
     def post_cast(self):
         super().post_cast()

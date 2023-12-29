@@ -10,8 +10,6 @@ class Buff:
     name: str = None
     activate: bool = True
 
-    is_dot: bool = False
-
     level: int = 1
 
     duration: int = 3600 * 16
@@ -22,9 +20,13 @@ class Buff:
     stack_remove: int = 1
     stack_max: int = 1
 
+    dice: random.Random = None
+
     def __post_init__(self):
         self.add_effect = []
         self.remove_effect = []
+
+        self.dice = random.Random(82)
 
     @property
     def roll(self):
@@ -49,7 +51,7 @@ class Buff:
 
     def extend(self):
         if duration := self.status.durations[self.name]:
-            self.status.durations[self.name] = max(self.duration_max, duration + self.duration_add)
+            self.status.durations[self.name] = min(self.duration_max, duration + self.duration_add)
 
     def trigger(self, level=1, stack=None):
         self.level = level
