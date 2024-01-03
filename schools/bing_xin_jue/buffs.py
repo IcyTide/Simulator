@@ -36,7 +36,6 @@ class 满堂(GainBuff):
         self.stack_max = 5
 
         self.duration = 15 * 16
-        self.duration_max = 15 * 16
 
         self.values = [0.08, 21 / 1024]
 
@@ -73,7 +72,6 @@ class 繁音急节(GainBuff):
         self.name = "繁音急节"
 
         self.duration = 20 * 16
-        self.duration_max = 20 * 16
 
         self.value = 461 / 1024
 
@@ -92,7 +90,7 @@ class 枕上(Buff):
         self.name = "枕上"
 
         self.duration = 16 * 15
-        self.duration_max = 16 * 15
+
         self.stack_max = 5
 
         self.value = 10 / 1024
@@ -112,7 +110,6 @@ class 广陵月(Buff):
         self.name = "广陵月"
 
         self.duration = 16 * 6
-        self.duration_max = 16 * 6
 
     def add(self):
         super().add()
@@ -130,7 +127,7 @@ class 广陵月_会效(GainBuff):
         self.name = "广陵月-会效"
 
         self.duration = 16 * 6
-        self.duration_max = 16 * 6
+
         self.stack_max = 10
 
         self.value = 20 / 1024
@@ -150,7 +147,6 @@ class 流玉(GainBuff):
         self.name = "流玉"
 
         self.duration = 16 * 5
-        self.duration_max = 16 * 5
 
         self.value = 512 / 1024
 
@@ -178,7 +174,6 @@ class 钗燕_计数(CountBuff):
 
         self.stack_max = 3
         self.duration = 6 * 16
-        self.duration_max = 6 * 16
 
         self.count_list = []
 
@@ -200,7 +195,6 @@ class 盈袖(Buff):
         self.name = "盈袖"
 
         self.duration = 20 * 16
-        self.duration_max = 20 * 16
 
         self.value = 204 / 1024
 
@@ -219,7 +213,6 @@ class 化冰(GainBuff):
         self.name = "化冰"
 
         self.duration = 180 * 16
-        self.duration_max = 180 * 16
 
         self.value = 184 / 1024
 
@@ -239,7 +232,7 @@ class 化冰_计数(CountBuff):
         self.name = "化冰-计数"
 
         self.duration = 24
-        self.duration_max = 24
+
         self.stack_max = 3
 
     def add(self):
@@ -255,7 +248,6 @@ class 夜天(GainBuff):
         self.name = "夜天"
 
         self.duration = 2 * 16
-        self.duration_max = 2 * 16
 
         self.value = 102 / 1024
 
@@ -280,7 +272,6 @@ class 琼霄_冷却(CDBuff):
         self.name = "琼霄-冷却"
 
         self.duration = 20 * 16
-        self.duration_max = 20 * 16
 
 
 class 凝华(CountBuff):
@@ -292,7 +283,6 @@ class 凝华(CountBuff):
         self.stack_max = 9
 
         self.duration = 20 * 16
-        self.duration_max = 20 * 16
 
 
 class 霜降(GainBuff):
@@ -330,8 +320,6 @@ class 飞霜绛露_冷却(CDBuff):
         self.name = "飞霜绛露-冷却"
 
         self.duration = 30 * 16
-        self.duration_max = 30 * 16
-
 
 class 气吞长江_持续(DotBuff):
     def __init__(self, status):

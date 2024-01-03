@@ -42,7 +42,7 @@ def build_gain():
                             team_gains["破风"] = {}
                             gain_components['teams']['破风'] = {}
                             po_feng = gr.Dropdown(
-                                ["", TEAM_GAINS_NAME["破风(基础)"], TEAM_GAINS_NAME["破风(劲风)"]],
+                                ["", TEAM_GAINS_NAME["破风"], TEAM_GAINS_NAME["劲风"]],
                                 label="破风", info="")
                             gain_components['teams']['破风'][''] = po_feng
                         with gr.Group():

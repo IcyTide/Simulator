@@ -1,5 +1,5 @@
 from general.consumables import CONSUMABLES
-from gradio.constant import ATTR_TYPE_TRANSLATE
+from gr.constant import ATTR_TYPE_TRANSLATE
 
 
 def consumable_script(consumable_components):

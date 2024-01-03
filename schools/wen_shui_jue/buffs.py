@@ -64,7 +64,6 @@ class 莺鸣(GainBuff):
         self.name = "莺鸣"
 
         self.duration = 16 * 8
-        self.duration_max = 16 * 8
 
         self.value = 0.2
 
@@ -100,7 +99,6 @@ class 岱宗(GainBuff):
         self.name = "岱宗"
 
         self.duration = 16 * 15
-        self.duration_max = 16 * 15
 
         self.stack_max = 3
 
@@ -121,7 +119,6 @@ class 夜雨(Buff):
         self.name = "夜雨"
 
         self.duration = 16 * 5
-        self.duration_max = 16 * 5
 
     def add(self):
         super().add()
@@ -149,7 +146,6 @@ class 凤鸣(GainBuff):
         self.stack_max = 2
 
         self.duration = 16 * 10
-        self.duration_max = 16 * 10
 
         self.values = [0.15, 154 / 1024]
 
@@ -188,7 +184,6 @@ class 造化(GainBuff):
         self.name = "造化"
 
         self.duration = 16 * 10
-        self.duration_max = 16 * 10
 
         self.values = [102 / 1024, 154 / 1024]
 
@@ -221,7 +216,6 @@ class 层云(GainBuff):
         self.name = "层云"
 
         self.duration = 128
-        self.duration_max = 128
 
         self.values = [72 / 1024, 143 / 1024, 215 / 1024, 287 / 1024, 358 / 1024]
 
@@ -246,7 +240,6 @@ class 惊雷(Buff):
         self.name = "惊雷"
 
         self.duration = 10 * 16
-        self.duration_max = 10 * 16
 
 
 class 雾锁(GainBuff):
@@ -255,7 +248,6 @@ class 雾锁(GainBuff):
         self.name = "雾锁"
 
         self.duration = 80
-        self.duration_max = 80
 
         self.value = 614 / 1024
 
@@ -276,7 +268,6 @@ class 碧归(GainBuff):
         self.stack_max = 4
 
         self.duration = 16 * 9
-        self.duration_max = 16 * 9
 
         self.value = 307 / 1024
 
@@ -299,7 +290,7 @@ class 碧归_计数(CountBuff):
         self.name = "碧归-计数"
 
         self.duration = 24
-        self.duration_max = 24
+
         self.stack_max = 2
 
     def add(self):
@@ -309,7 +300,7 @@ class 碧归_计数(CountBuff):
             self.clear()
 
 
-class 如风(Buff):
+class 如风(ExtendBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "如风"
@@ -402,7 +393,6 @@ class 螭尘_冷却(CDBuff):
         self.name = "螭尘-冷却"
 
         self.duration = 30 * 16
-        self.duration_max = 30 * 16
 
 
 BUFFS = [

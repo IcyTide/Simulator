@@ -222,7 +222,6 @@ class 沉夜重雪_冷却(CDBuff):
         self.name = "沉夜重雪-冷却"
 
         self.duration = 30 * 16
-        self.duration_max = 30 * 16
 
 
 class 背水沉舟_持续(Buff):

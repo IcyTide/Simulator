@@ -1,20 +1,20 @@
 import gradio as gr
 
-from gradio.components.equipment import build_equipment
-from gradio.components.consumable import build_consumable
-from gradio.components.gain import build_gain
-from gradio.components.talent import build_talent
-from gradio.components.recipe import build_recipe
-from gradio.components.combat import build_combat
-from gradio.components.top import build_top
+from gr.components.equipment import build_equipment
+from gr.components.consumable import build_consumable
+from gr.components.gain import build_gain
+from gr.components.talent import build_talent
+from gr.components.recipe import build_recipe
+from gr.components.combat import build_combat
+from gr.components.top import build_top
 
-from gradio.scripts.equipment import equipment_script
-from gradio.scripts.consumable import consumable_script
-from gradio.scripts.gain import gain_script
-from gradio.scripts.talent import talent_script
-from gradio.scripts.recipe import recipe_script
-from gradio.scripts.combat import combat_script
-from gradio.scripts.top import top_script
+from gr.scripts.equipment import equipment_script
+from gr.scripts.consumable import consumable_script
+from gr.scripts.gain import gain_script
+from gr.scripts.talent import talent_script
+from gr.scripts.recipe import recipe_script
+from gr.scripts.combat import combat_script
+from gr.scripts.top import top_script
 
 if __name__ == '__main__':
     with gr.Blocks(title="Ango Simulator") as app:

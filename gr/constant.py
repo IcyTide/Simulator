@@ -6,7 +6,7 @@ from schools import bei_ao_jue
 from schools import bing_xin_jue
 
 """ Directory """
-ASSETS_DIR = "gradio/assets"
+ASSETS_DIR = "gr/assets"
 EQUIPMENTS_DIR = os.path.join(ASSETS_DIR, "equipments.json")
 ENCHANTS_DIR = os.path.join(ASSETS_DIR, "enchants.json")
 STONES_DIR = os.path.join(ASSETS_DIR, "stones.json")

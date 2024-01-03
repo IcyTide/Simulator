@@ -59,7 +59,7 @@ class CombatWidget(QWidget):
 
         detail_layout.addStretch()
 
-        self.summary = TableWithLabel("技能统计", headers=["技能", "等级", "次数", "增益"])
+        self.summary = TableWithLabel("技能统计", headers=["技能", "等级", "倍数", "次数", "增益"])
 
         tab.addTab(self.summary, "技能总结")
 

@@ -2,7 +2,7 @@ from base.simulator import Simulator
 from base.target import Target
 from general.buffs import BUFFS
 from general.skills import SKILLS
-from gradio.constant import ATTR_TYPE_TRANSLATE
+from gr.constant import ATTR_TYPE_TRANSLATE
 from utils.simulate import simulate_delta
 
 import gradio as gr

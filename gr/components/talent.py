@@ -1,6 +1,6 @@
 import gradio as gr
 
-from gradio.constant import MAX_TALENTS
+from gr.constant import MAX_TALENTS
 
 
 def build_talent():

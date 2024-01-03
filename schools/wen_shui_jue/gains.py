@@ -13,10 +13,10 @@ class 听雷套装:
         status.skills["听雷"].skill_damage_addition += 102 / 1024
 
 
-class 朔气套装:
+class 器攻套装:
     @staticmethod
     def post_cast_effect(self: Skill):
-        self.status.buffs["朔气"].trigger()
+        self.status.buffs["器攻"].trigger()
 
     def __call__(self, status: Status):
         for skill in status.skills.values():
@@ -66,7 +66,7 @@ class 五相斩:
 
 EQUIP_GAINS_NAME = {
     '22035-1': "五相斩",
-    "1920": "朔气4%双会套装",
+    "1920": "器攻4%双会套装",
     "818": "云飞玉皇10%套装",
     "4347": "听雷10%套装",
     "1536": "听雷5%橙武",
@@ -78,7 +78,7 @@ EQUIP_GAINS_NAME = {
 }
 EQUIP_GAINS = {
     '22035-1': 五相斩(),
-    "1920": 朔气套装(),
+    "1920": 器攻套装(),
     "818": 云飞玉皇套装(),
     "4347": 听雷套装(),
     "1536": EmptyRecipe(),

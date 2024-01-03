@@ -47,7 +47,6 @@ SPECIAL_ENCHANT_POSITIONS = ["hat", "jacket", "belt", "wrist", "shoes"]
 ATTR_TYPE_MAP = {
     "atMeleeWeaponDamageBase": "weapon_damage_base",
     "atMeleeWeaponDamageRand": "weapon_damage_rand",
-    "atMeleeWeaponAttackSpeedBase": "weapon_attack_speed",
     "atBasePotentialAdd": "all_major_base",
     "atAgilityBase": "agility_base",
     "atStrengthBase": "strength_base",
@@ -73,7 +72,6 @@ ATTR_TYPE_MAP = {
 ATTR_TYPE_TRANSLATE = {
     "weapon_damage_base": "基础武器伤害",
     "weapon_damage_rand": "浮动武器伤害",
-    "weapon_attack_speed": "武器攻击速度",
     "all_major_base": "全属性",
     "agility_base": "身法",
     "strength_base": "力道",

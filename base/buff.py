@@ -13,8 +13,6 @@ class Buff:
     level: int = 1
 
     duration: int = 3600 * 16
-    duration_add: int = 0
-    duration_max: int = 3600 * 16
 
     stack_add: int = 1
     stack_remove: int = 1
@@ -34,7 +32,7 @@ class Buff:
 
     def set_duration(self):
         # self.status.durations[self.name] = min(self.duration_max, self.status.durations[self.name] + self.duration)
-        self.status.durations[self.name] = self.duration_max
+        self.status.durations[self.name] = self.duration
 
     def add(self):
         self.status.stacks[self.name] += 1
@@ -48,10 +46,6 @@ class Buff:
 
         if not self.status.stacks[self.name]:
             self.status.durations.pop(self.name)
-
-    def extend(self):
-        if duration := self.status.durations[self.name]:
-            self.status.durations[self.name] = min(self.duration_max, duration + self.duration_add)
 
     def trigger(self, level=1, stack=None):
         self.level = level
@@ -89,8 +83,12 @@ class TriggerBuff(Buff):
 
 
 class ExtendBuff(Buff):
-    def set_duration(self):
-        self.status.durations[self.name] += self.duration_add
+    duration_add: int = 0
+    duration_max: int = 3600 * 16
+
+    def extend(self):
+        if duration := self.status.durations[self.name]:
+            self.status.durations[self.name] = min(self.duration_max, duration + self.duration_add)
 
 
 class DotBuff(Buff):

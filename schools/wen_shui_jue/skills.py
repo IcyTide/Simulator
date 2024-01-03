@@ -31,6 +31,10 @@ class 四季剑法(Melee):
     def attack_power_cof(self):
         return self._attack_power_cof * apply_haste(self.haste, 32) / 32
 
+    @attack_power_cof.setter
+    def attack_power_cof(self, attack_power_cof):
+        self._attack_power_cof = attack_power_cof
+
     def __init__(self, status):
         super().__init__(status)
         self.name = "四季剑法"
