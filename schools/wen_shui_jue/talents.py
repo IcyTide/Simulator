@@ -85,11 +85,11 @@ class 造化:
     @staticmethod
     def increase_effect(self: Buff):
         if self.status.stacks[self.name] > 75:
-            if not self.status.stacks["造化"] or self.level != 2:
+            if not self.status.stacks["造化"] or self.status.buffs["造化"].level != 2:
                 self.status.buffs["造化"].clear()
                 self.status.buffs["造化"].trigger(2)
         elif self.status.stacks[self.name] > 50:
-            if not self.status.stacks["造化"] or self.level != 1:
+            if not self.status.stacks["造化"] or self.status.buffs["造化"].level != 1:
                 self.status.buffs["造化"].clear()
                 self.status.buffs["造化"].trigger(1)
         else:
