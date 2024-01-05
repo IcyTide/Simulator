@@ -10,7 +10,10 @@ So if you want to make contributions, please make sure your version of python is
 
 ## How to Startup
 ### Windows Application
-**Waiting For Conduction**
+Find exe file in directory : **output/app.dist/app.exe**
+
+
+Open it directly.
 
 ### Web Browser with Gradio
 (**Wasted, waiting for reorganize**)

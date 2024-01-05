@@ -1,4 +1,4 @@
-from base.buff import Buff, GainBuff, DotBuff, CountBuff, CDBuff, PlacementBuff, TriggerBuff
+from base.buff import Buff, GainBuff, SnapshotBuff, DotBuff, CountBuff, CDBuff, PlacementBuff, TriggerBuff
 from general.buffs import 外功双会套装
 
 
@@ -55,6 +55,8 @@ class 霜天(GainBuff):
         self.stack_max = 7
         self.value = 0.15
 
+        self.gain_group = ["上将军印"]
+
     def gain(self, level, stack):
         super().gain(level, stack)
         self.status.skills["上将军印"].damage_gain += self.value * stack
@@ -105,9 +107,7 @@ class 见尘(DotBuff):
         self.name = "见尘"
 
 
-class 含风(GainBuff):
-    related_skills = ["刀啸风吟", "坚壁清野"]
-
+class 含风(SnapshotBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "含风"
@@ -129,15 +129,15 @@ class 含风(GainBuff):
         super().gain(level, stack)
         self.status.attribute.physical_critical_strike_gain += self.values[0] * stack
         self.status.attribute.physical_critical_power_gain += self.values[1] * stack
-        for skill in self.related_skills:
-            self.status.skills[skill].skill_damage_addition += self.values[2] * stack
+        self.status.skills["刀啸风吟"].skill_damage_addition += self.values[2] * stack
+        self.status.skills["坚壁清野"].skill_damage_addition += self.values[2] * stack
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
         self.status.attribute.physical_critical_strike_gain -= self.values[0] * stack
         self.status.attribute.physical_critical_power_gain -= self.values[1] * stack
-        for skill in self.related_skills:
-            self.status.skills[skill].skill_damage_addition -= self.values[2] * stack
+        self.status.skills["刀啸风吟"].skill_damage_addition -= self.values[2] * stack
+        self.status.skills["坚壁清野"].skill_damage_addition -= self.values[2] * stack
 
 
 class 降麒式_计数(CountBuff):
@@ -176,7 +176,7 @@ class 降麒式_持续(PlacementBuff):
         self.name = "降麒式-持续"
 
 
-class 降麒式(GainBuff):
+class 降麒式(SnapshotBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "降麒式"

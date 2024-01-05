@@ -1,7 +1,7 @@
-from base.buff import GainBuff, TriggerBuff, CDBuff
+from base.buff import SnapshotBuff, TriggerBuff, CDBuff
 
 
-class 外功双会套装(GainBuff, TriggerBuff):
+class 外功双会套装(SnapshotBuff, TriggerBuff):
     def __init__(self, status):
         super().__init__(status)
         self.probability = 102 / 1024
@@ -29,7 +29,7 @@ class 外功双会套装(GainBuff, TriggerBuff):
         self.status.attribute.physical_critical_power_gain -= self.values[1]
 
 
-class 内功双会套装(GainBuff, TriggerBuff):
+class 内功双会套装(SnapshotBuff, TriggerBuff):
     def __init__(self, status):
         super().__init__(status)
         self.probability = 102 / 1024
@@ -57,7 +57,7 @@ class 内功双会套装(GainBuff, TriggerBuff):
         self.status.attribute.magical_critical_power_gain += self.values[1]
 
 
-class 大附魔腰(GainBuff):
+class 大附魔腰(SnapshotBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "大附魔腰"

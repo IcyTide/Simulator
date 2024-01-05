@@ -1,4 +1,4 @@
-from base.buff import Buff, GainBuff, DotBuff, CountBuff, CDBuff, TriggerBuff, PlacementBuff, Energy
+from base.buff import Buff, GainBuff, SnapshotBuff, DotBuff, CountBuff, CDBuff, TriggerBuff, PlacementBuff, Energy
 from general.buffs import 内功双会套装
 
 
@@ -8,7 +8,7 @@ class 嗔怒(内功双会套装):
         self.name = "嗔怒"
 
 
-class 剑舞(GainBuff, Energy):
+class 剑舞(SnapshotBuff, Energy):
     def __init__(self, status):
         super().__init__(status)
         self.name = "剑舞"
@@ -27,7 +27,7 @@ class 剑舞(GainBuff, Energy):
         self.status.attribute.magical_attack_power_gain -= self.value * stack
 
 
-class 满堂(GainBuff):
+class 满堂(SnapshotBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "满堂"
@@ -66,7 +66,7 @@ class 急曲_持续(DotBuff):
         self.stack_max = 3
 
 
-class 繁音急节(GainBuff):
+class 繁音急节(SnapshotBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "繁音急节"
@@ -121,7 +121,7 @@ class 广陵月(Buff):
         self.status.buffs["广陵月-会效"].clear()
 
 
-class 广陵月_会效(GainBuff):
+class 广陵月_会效(SnapshotBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "广陵月-会效"
@@ -141,7 +141,7 @@ class 广陵月_会效(GainBuff):
         self.status.attribute.magical_critical_power_gain -= self.value * stack
 
 
-class 流玉(GainBuff):
+class 流玉(SnapshotBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "流玉"
@@ -149,6 +149,8 @@ class 流玉(GainBuff):
         self.duration = 16 * 5
 
         self.value = 512 / 1024
+
+        self.gain_group = ["玳弦急曲", "玳弦急曲-新妆"]
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -207,7 +209,7 @@ class 盈袖(Buff):
         self.status.attribute.extra_haste -= self.value
 
 
-class 化冰(GainBuff):
+class 化冰(SnapshotBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "化冰"
@@ -242,7 +244,7 @@ class 化冰_计数(CountBuff):
             self.clear()
 
 
-class 夜天(GainBuff):
+class 夜天(SnapshotBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "夜天"
@@ -285,20 +287,23 @@ class 凝华(CountBuff):
         self.duration = 20 * 16
 
 
-class 霜降(GainBuff):
+class 霜降(SnapshotBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "霜降"
 
         self.values = [154 / 1024, 307 / 1024, 461 / 1024]
+        self.gain_group = ["玳弦急曲", "玳弦急曲-新妆"]
 
     def gain(self, level, stack):
         super().gain(level, stack)
         self.status.skills["玳弦急曲"].skill_damage_addition += self.values[level - 1]
+        self.status.skills["玳弦急曲-新妆"].skill_damage_addition += self.values[level - 1]
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
         self.status.skills["玳弦急曲"].skill_damage_addition -= self.values[level - 1]
+        self.status.skills["玳弦急曲-新妆"].skill_damage_addition -= self.values[level - 1]
 
 
 class 飞霜绛露(TriggerBuff):
@@ -320,6 +325,7 @@ class 飞霜绛露_冷却(CDBuff):
         self.name = "飞霜绛露-冷却"
 
         self.duration = 30 * 16
+
 
 class 气吞长江_持续(DotBuff):
     def __init__(self, status):

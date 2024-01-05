@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 from base import Monitor
 from base.attribute import Attribute
 from base.target import Target
@@ -12,14 +14,14 @@ class Status:
         self.attribute = attribute
         self.target = target
 
-        self.gcd_group = Monitor()
+        self.gcd_group = Monitor(0)
         self.casting = False
 
-        self.intervals = Monitor()
+        self.intervals = Monitor(0)
         self.ticks = {}
 
         self.skills = {}
-        self.cds = Monitor()
+        self.cds = Monitor(0)
         self.energies = {}
 
         for skill in skills:
@@ -28,9 +30,10 @@ class Status:
             self.energies[skill.name] = skill.energy
 
         self.buffs = {}
-        self.durations = Monitor()
+        self.durations = Monitor(0)
         self.stacks = {}
-        self.gains = Monitor()
+        self.gains = defaultdict(lambda: Monitor((0, 0)))
+        self.snapshots = defaultdict(lambda: Monitor((0, 0)))
 
         for buff in buffs:
             buff = buff(self)

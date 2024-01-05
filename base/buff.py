@@ -111,17 +111,21 @@ class GainBuff(Buff):
         super().__post_init__()
         self.gain_effect: list = []
         self.revoke_effect: list = []
+        self.gain_group = [""]
 
     def add(self):
         super().add()
-        self.status.gains[self.name] = (self.level, self.status.stacks[self.name])
+        for gain_index in self.gain_group:
+            self.status.gains[gain_index][self.name] = (self.level, self.status.stacks[self.name])
 
     def remove(self):
         super().remove()
         if stack := self.status.stacks[self.name]:
-            self.status.gains[self.name] = (self.level, stack)
+            for gain_index in self.gain_group:
+                self.status.gains[gain_index][self.name] = (self.level, stack)
         else:
-            self.status.gains.pop(self.name)
+            for gain_index in self.gain_group:
+                self.status.gains[gain_index].pop(self.name)
 
     def gain(self, level, stack):
         for effect in self.gain_effect:
@@ -130,6 +134,22 @@ class GainBuff(Buff):
     def revoke(self, level, stack):
         for effect in self.revoke_effect:
             effect(self, level, stack)
+
+
+class SnapshotBuff(GainBuff):
+    def add(self):
+        super().add()
+        for gain_index in self.gain_group:
+            self.status.snapshots[gain_index][self.name] = (self.level, self.status.stacks[self.name])
+
+    def remove(self):
+        super().remove()
+        if stack := self.status.stacks[self.name]:
+            for gain_index in self.gain_group:
+                self.status.snapshots[gain_index][self.name] = (self.level, stack)
+        else:
+            for gain_index in self.gain_group:
+                self.status.snapshots[gain_index].pop(self.name)
 
 
 class Energy(Buff):

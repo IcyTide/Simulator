@@ -6,7 +6,7 @@ def analyze_origin(skill, skill_level, times, count, status, grad_results):
     for attr, value in attribute.grad_attrs.items():
         origin_value = getattr(attribute, attr)
         setattr(attribute, attr, origin_value + value)
-        grad_results[attr] += status.skills[skill].calculate(skill_level, times) * count
+        grad_results[attr] += status.skills[skill].calculate(skill_level) * times * count
         setattr(attribute, attr, origin_value)
 
 
@@ -17,7 +17,7 @@ def analyze_delta(skill, skill_level, times, count, status, grad_results, delta)
         origin_delta = getattr(attribute, attribute.delta_attr)
         setattr(attribute, attr, origin_value + delta / value)
         setattr(attribute, attribute.delta_attr, getattr(attribute, attribute.delta_attr) - delta)
-        grad_results[attr] += status.skills[skill].calculate(skill_level, times) * count
+        grad_results[attr] += status.skills[skill].calculate(skill_level) * times * count
         setattr(attribute, attr, origin_value)
         setattr(attribute, attribute.delta_attr, origin_delta)
 
@@ -41,6 +41,7 @@ def analyze_details(iteration, simulator, counts, delta=None):
     grad_results = defaultdict(int)
 
     summary = defaultdict(int)
+
     existed_gains = []
     for (skill, critical, skill_level, times, gains), count in counts.items():
         refresh_status(gains, existed_gains, status)
@@ -52,15 +53,15 @@ def analyze_details(iteration, simulator, counts, delta=None):
         else:
             analyze_origin(skill, skill_level, times, count, status, grad_results)
 
-        damage = status.skills[skill].calculate(skill_level, times)
-
         if critical:
             result[skill]["critical"] += count
         else:
             result[skill]["hit"] += count
 
-        result[skill]["damage"] += damage * count
-        total_damage += damage * count
+        damage = status.skills[skill].calculate(skill_level) * times * count
+
+        result[skill]["damage"] += damage
+        total_damage += damage
 
     refresh_status([], existed_gains, status)
 

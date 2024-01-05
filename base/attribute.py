@@ -528,7 +528,7 @@ class Attribute:
 
     @physical_critical_strike.setter
     def physical_critical_strike(self, physical_critical_strike):
-        self._physical_critical_strike = round(physical_critical_strike, 4)
+        self._physical_critical_strike = physical_critical_strike
 
     @property
     def magical_critical_strike_base(self):
@@ -585,7 +585,7 @@ class Attribute:
 
     @magical_critical_strike.setter
     def magical_critical_strike(self, magical_critical_strike):
-        self._magical_critical_strike = round(magical_critical_strike, 4)
+        self._magical_critical_strike = magical_critical_strike
 
     """ Critical Power Function"""
 

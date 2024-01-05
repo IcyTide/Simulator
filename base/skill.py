@@ -1,11 +1,17 @@
 import random
+from collections import namedtuple
 
 from dataclasses import dataclass
 from functools import partial
+from itertools import chain
 
 from base.constant import PHYSICAL_ATTACK_POWER_COF, WEAPON_DAMAGE_COF
 from base.status import Status
 from utils.damage import *
+
+
+Gains = namedtuple("Gains", ["buff", "level", "stack"])
+Damage = namedtuple("Damage", ["skill", "critical", "level", "times", "gains"])
 
 
 @cache
@@ -164,8 +170,10 @@ class Skill:
             self.status.intervals[self.name] = self.interval
 
     def record(self, critical, level, times=1):
-        gains = tuple((buff, level, stack) for buff, (level, stack) in self.status.gains.items())
-        self.status.record((self.name, critical, level, times, gains))
+        gains = tuple(
+            Gains(buff, level, stack) for buff, (level, stack) in self.status.gains[""] + self.status.gains[self.name]
+        )
+        self.status.record(Damage(self.name, critical, level, times, gains))
 
     @staticmethod
     def to_overdraw(skill):
@@ -421,7 +429,7 @@ class PhysicalDamage(DamageSkill):
     def critical_strike(self):
         return self.attribute.physical_critical_strike + self.skill_critical_strike
 
-    def calculate(self, level, times):
+    def calculate(self, level):
         self.level = level
         damage = init_result(
             self.damage_base, self.damage_rand, self.damage_gain,
@@ -445,7 +453,7 @@ class PhysicalDamage(DamageSkill):
         damage = strain_result(damage, self.attribute.strain)
         damage = pve_addition_result(damage, self.attribute.pve_addition + self.skill_pve_addition)
         damage = vulnerable_result(damage, self.target.physical_vulnerable)
-        damage = times * damage
+        damage = damage
 
         return damage
 
@@ -463,7 +471,7 @@ class MagicalDamage(DamageSkill):
     def critical_strike(self):
         return self.attribute.magical_critical_strike + self.skill_critical_strike
 
-    def calculate(self, level, times):
+    def calculate(self, level):
         self.level = level
         damage = init_result(
             self.damage_base, self.damage_rand, self.damage_gain,
@@ -487,7 +495,7 @@ class MagicalDamage(DamageSkill):
         damage = strain_result(damage, self.attribute.strain)
         damage = pve_addition_result(damage, self.attribute.pve_addition + self.skill_pve_addition)
         damage = vulnerable_result(damage, self.target.magical_vulnerable)
-        damage = times * damage
+        damage = damage
 
         return damage
 
@@ -512,11 +520,17 @@ class DotSkill(PeriodicalSkill):
 
     def pre_cast(self):
         super().pre_cast()
-        self.snapshot = Snapshot(self.level, self.critical_strike, self.status.gains.copy())
+        self.snapshot = Snapshot(
+            self.level, self.critical_strike, self.status.snapshots[""] + self.status.snapshots[self.name]
+        )
 
     def record(self, critical, level, times=1):
-        gains = tuple((buff, level, stack) for buff, (level, stack) in self.snapshot.gains.items())
-        self.status.record((self.name, critical, level, times, gains))
+        gains = tuple(
+            Gains(buff, level, stack)
+            for buff, (level, stack) in
+            dict(chain(self.status.gains[""] + self.status.gains[self.name], self.snapshot.gains)).items()
+        )
+        self.status.record(Damage(self.name, critical, level, times, gains))
 
 
 class PlacementSkill(PeriodicalSkill, FixedInterval):
