@@ -76,7 +76,7 @@ class 大附魔腰:
 class 大附魔腕:
     @staticmethod
     def enchant_wrist_post_hit(self: Skill):
-        if not self.status.stacks["大附魔手-冷却"]:
+        if not self.status.stacks["大附魔腕-冷却"]:
             self.status.skills["昆吾·弦刃"].cast()
 
     def __call__(self, status: Status):

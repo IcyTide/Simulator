@@ -32,21 +32,6 @@ POSITION_MAP = {
     "primary_weapon": 0
 }
 
-POSITION_TRANSLATE = {
-    '帽子': 'hat',
-    '上衣': 'jacket',
-    '腰带': 'belt',
-    '护腕': 'wrist',
-    '下装': 'bottoms',
-    '鞋子': 'shoes',
-    '项链': 'necklace',
-    '腰坠': 'pendant',
-    '戒指1': 'ring',
-    '戒指2': 'ring',
-    '远程武器': 'tertiary_weapon',
-    '近战武器': 'primary_weapon'
-}
-
 SUFFIX_MAP = {
     3: 'armor',
     2: 'armor',

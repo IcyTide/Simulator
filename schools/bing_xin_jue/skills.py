@@ -28,13 +28,9 @@ class 名动四方(LoopSkill):
 
         self.interval_base = 16
 
-    def pre_cast(self):
-        super().pre_cast()
-        self.status.buffs["剑舞"].trigger(stack=10)
-
     def post_hit(self):
         super().post_hit()
-        self.status.buffs["剑舞"].trigger()
+        self.status.buffs["剑舞"].increase(2)
 
 
 class 急曲_持续(DotSkill, MagicalDamage):
@@ -268,7 +264,7 @@ class 流玉_持续(DotSkill, MagicalDamage):
         self.damage_rand = int(384 * 0.1)
         self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(250)
 
-        self.skill_shield_gain -= 819 / 1024
+        self.skill_shield_gain = -819 / 1024
 
     def post_cast(self):
         super().post_cast()
@@ -444,8 +440,8 @@ class 气吞长江_持续(DotSkill, MagicalDamage):
 
 
 SKILLS_MAP = {
-    "通用": [连环双刀, 剑破虚空_神兵, 气吞长江_持续],
-    "猿公剑法": [急曲_持续, 玳弦急曲, 破, 剑破虚空, 破_虚空, 剑气长江, 剑影留痕],
+    "通用": [连环双刀, 破, 剑破虚空_神兵, 气吞长江_持续],
+    "猿公剑法": [急曲_持续, 玳弦急曲, 剑破虚空, 破_虚空, 剑气长江, 剑影留痕],
     "西河剑器": [名动四方, 江海凝光],
     "剑器浑脱": [繁音急节, 心鼓弦, 婆罗门],
     "奇穴": [玳弦急曲_新妆, 广陵月, 广陵月_伤害, 流玉_持续, 破_流玉, 钗燕, 钗燕_明, 盈袖, 化冰, 琼霄_持续, 琼霄_急曲, 凝华, 凝华_明]

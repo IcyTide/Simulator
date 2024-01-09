@@ -1,5 +1,5 @@
 class Monitor(dict):
-    def __init__(self, default):
+    def __init__(self, default=None):
         super().__init__()
         self.default = default
 
@@ -26,3 +26,10 @@ class Monitor(dict):
     def pop(self, __key):
         if __key in self:
             super().pop(__key)
+
+
+def monitor():
+    return Monitor()
+
+
+from heapq import heapify

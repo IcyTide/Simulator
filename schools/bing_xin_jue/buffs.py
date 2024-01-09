@@ -13,7 +13,6 @@ class 剑舞(SnapshotBuff, Energy):
         super().__init__(status)
         self.name = "剑舞"
 
-        self.stack_add = 2
         self.stack_max = 10
 
         self.value = 31 / 1024
@@ -181,7 +180,7 @@ class 钗燕_计数(CountBuff):
 
     def add(self):
         super().add()
-        if self.status.stacks[self.name] == 3:
+        if self.status.stacks[self.name] == self.stack_max:
             self.status.skills["钗燕"].cast()
             self.status.skills["急曲-持续"].cast()
             self.clear()
@@ -292,18 +291,20 @@ class 霜降(SnapshotBuff):
         super().__init__(status)
         self.name = "霜降"
 
+        self.stack_max = 3
+
         self.values = [154 / 1024, 307 / 1024, 461 / 1024]
         self.gain_group = ["玳弦急曲", "玳弦急曲-新妆"]
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        self.status.skills["玳弦急曲"].skill_damage_addition += self.values[level - 1]
-        self.status.skills["玳弦急曲-新妆"].skill_damage_addition += self.values[level - 1]
+        self.status.skills["玳弦急曲"].skill_damage_addition += self.values[stack - 1]
+        self.status.skills["玳弦急曲-新妆"].skill_damage_addition += self.values[stack - 1]
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        self.status.skills["玳弦急曲"].skill_damage_addition -= self.values[level - 1]
-        self.status.skills["玳弦急曲-新妆"].skill_damage_addition -= self.values[level - 1]
+        self.status.skills["玳弦急曲"].skill_damage_addition -= self.values[stack - 1]
+        self.status.skills["玳弦急曲-新妆"].skill_damage_addition -= self.values[stack - 1]
 
 
 class 飞霜绛露(TriggerBuff):

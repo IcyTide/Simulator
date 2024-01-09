@@ -184,8 +184,7 @@ class 凝华:
 class 霜降:
     @staticmethod
     def add_effect(self: Buff):
-        self.status.buffs["霜降"].clear()
-        self.status.buffs["霜降"].trigger(self.status.stacks[self.name])
+        self.status.buffs["霜降"].trigger()
 
     @staticmethod
     def remove_effect(self: Buff):

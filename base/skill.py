@@ -509,14 +509,19 @@ class ActionSkill(ChannelSkill, FixedInterval):
 
 class DotSkill(PeriodicalSkill):
 
-    def consume(self):
+    def consume(self, tick=0):
+        if not tick:
+            tick = self.tick
+
         if stack := self.status.stacks[self.name]:
             critical = self.roll < self.critical_strike
-            ticks = self.tick - self.status.ticks[self.name]
-            self.record(critical, self.snapshot.level, ticks * stack)
+            res_tick = self.tick - self.status.ticks[self.name]
+            tick = min(res_tick, tick)
+            self.record(critical, self.snapshot.level, tick * stack)
 
-            self.status.buffs[self.name].clear()
-            self.post_cast()
+            if tick == res_tick:
+                self.status.buffs[self.name].clear()
+                self.post_cast()
 
     def pre_cast(self):
         super().pre_cast()

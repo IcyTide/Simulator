@@ -38,6 +38,10 @@ class TeamGainsWidget(QWidget):
             "stack": SpinWithLabel(TEAM_GAINS_NAME["左旋右转"], "层数", maximum=100)
         }
         tab_layout.addWidget(self.team_gains["左旋右转"]["stack"], 1, 0)
+        self.team_gains["泠风解怀"] = {
+            "rate": SpinWithLabel(TEAM_GAINS_NAME["泠风解怀"], "覆盖", maximum=100)
+        }
+        tab_layout.addWidget(self.team_gains["泠风解怀"]["rate"], 2, 0)
 
         tab = QWidget()
         tab_layout = QGridLayout(tab)

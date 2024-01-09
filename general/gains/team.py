@@ -28,6 +28,22 @@ class 左旋右转:
         return self.Inner(self.value, stack)
 
 
+class 泠风解怀:
+    class Inner:
+        def __init__(self, value, rate):
+            self.value = value
+            self.rate = rate / 100
+
+        def __call__(self, status: Status):
+            status.attribute.damage_addition += self.value * self.rate
+
+    def __init__(self, value):
+        self.value = value
+
+    def __call__(self, rate):
+        return self.Inner(self.value, rate)
+
+
 """ 天策 """
 
 
@@ -416,6 +432,7 @@ class 配伍:
 TEAM_GAINS_NUMBER = {
     "袖气": 244,
     "左旋右转": 54,
+    "泠风解怀": 154 / 1024,
 
     "撼如雷": 51 / 1024,
     "破风": 1150,
@@ -458,6 +475,7 @@ TEAM_GAINS_NUMBER = {
 TEAM_GAINS_NAME = {
     "袖气": f"{TEAM_GAINS_NUMBER['袖气']}全属性",
     "左旋右转": f"左旋右转({TEAM_GAINS_NUMBER['左旋右转']}破招)",
+    "泠风解怀": f"泠风解怀({round(TEAM_GAINS_NUMBER['泠风解怀'] * 100)}%增伤)",
 
     "撼如雷": f"{round(TEAM_GAINS_NUMBER['撼如雷'] * 100)}%外攻",
 
@@ -479,7 +497,7 @@ TEAM_GAINS_NAME = {
     "剑锋百锻": f"剑锋百锻({round(TEAM_GAINS_NUMBER['剑锋百锻'] * 100)}%武伤)",
 
     "善友": f"{round(TEAM_GAINS_NUMBER['善友'] * 100)}%调息加速",
-    "仙王蛊鼎": f"仙王蛊鼎({round(TEAM_GAINS_NUMBER['仙王蛊鼎'] * 100)}%伤害加成)",
+    "仙王蛊鼎": f"仙王蛊鼎({round(TEAM_GAINS_NUMBER['仙王蛊鼎'] * 100)}%增伤)",
 
     "戒火": f"{round(TEAM_GAINS_NUMBER['戒火'] * 100)}%全易伤",
     "烈日": f"{round(TEAM_GAINS_NUMBER['烈日'] * 100)}%阴性/阳性易伤",
@@ -502,6 +520,7 @@ TEAM_GAINS_NAME = {
 TEAM_GAINS = {
     "袖气": 袖气(TEAM_GAINS_NUMBER["袖气"]),
     "左旋右转": 左旋右转(TEAM_GAINS_NUMBER["左旋右转"]),
+    "泠风解怀": 泠风解怀(TEAM_GAINS_NUMBER["泠风解怀"]),
 
     "撼如雷": 撼如雷(TEAM_GAINS_NUMBER["撼如雷"]),
     "破风": 破风(TEAM_GAINS_NUMBER["破风"], TEAM_GAINS_NUMBER["劲风"]),

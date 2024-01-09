@@ -95,7 +95,7 @@ ATTR_TYPE_TRANSLATE_REVERSE = {v: k for k, v in ATTR_TYPE_TRANSLATE.items()}
 STONE_ATTR = [
     "atMeleeWeaponDamageBase", "atSurplusValueBase", "atStrainBase", "atHasteBase",
     "atAllTypeCriticalStrike", "atAllTypeCriticalDamagePowerBase",
-    "atAgilityBase", "atStrengthBase", "atSpiritBase",
+    "atAgilityBase", "atStrengthBase", "atSpiritBase", "atSpunkBase",
     "atPhysicsAttackPowerBase", "atPhysicsCriticalStrike",
     "atPhysicsCriticalDamagePowerBase", "atPhysicsOvercomeBase",
     "atMagicAttackPowerBase", "atMagicCriticalStrike",
@@ -205,7 +205,7 @@ SUPPORT_SCHOOL = {
             "haste": "加速",
             "surplus": "破招",
         }
-    }
+    },
 }
 
 """ Equip """

@@ -82,10 +82,10 @@ class 大附魔腰_冷却(CDBuff):
         self.duration = 30 * 16
 
 
-class 大附魔手_冷却(CDBuff):
+class 大附魔腕_冷却(CDBuff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "大附魔手-冷却"
+        self.name = "大附魔腕-冷却"
 
         self.duration = 10 * 16
 
@@ -98,4 +98,4 @@ class 大附魔脚_冷却(CDBuff):
         self.duration = 10 * 16
 
 
-BUFFS = [大附魔腰, 大附魔腰_冷却, 大附魔手_冷却, 大附魔脚_冷却]
+BUFFS = [大附魔腰, 大附魔腰_冷却, 大附魔腕_冷却, 大附魔脚_冷却]
