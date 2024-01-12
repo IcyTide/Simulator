@@ -12,7 +12,6 @@ def main():
     attribute.spirit_base += 10000
     attribute.surplus += 10000
     attribute.strain_base += 30000
-    attribute.haste_base += 5200
     attribute.magical_attack_power_base += 20000
     attribute.magical_critical_strike_base += 10000
     attribute.magical_overcome_base += 25000

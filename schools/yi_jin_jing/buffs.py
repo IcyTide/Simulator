@@ -59,7 +59,7 @@ class 普渡(GainBuff):
         self.stack_max = 2
 
         self.gain_group = [
-            "普渡四方", "普渡四方_外功", "韦陀献杵", "韦陀献杵_外功", "横扫六合", "横扫六合_外功", "捕风式", "拿云式",
+            "普渡四方", "普渡四方-外功", "韦陀献杵", "韦陀献杵-外功", "横扫六合", "横扫六合-外功", "捕风式", "拿云式",
             "守缺式"
         ]
 
@@ -138,10 +138,12 @@ class 擒龙(GainBuff, PlacementBuff):
         self.status.attribute.magical_attack_power_gain -= self.value
 
 
-class 拿云(Buff):
+class 拿云(TriggerBuff, Energy):
     def __init__(self, status):
         super().__init__(status)
         self.name = "拿云"
+
+        self.probability = 307 / 1024
 
         self.stack_max = 3
 
@@ -229,12 +231,14 @@ class 千斤坠_无舍(Buff):
         self.status.skills["千斤坠·无舍"].activate = False
 
 
-class 缩地(Buff):
+class 缩地(TriggerBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "缩地"
 
         self.duration = 960
+
+        self.probability = 0.5
 
 
 class 金刚怒目(SnapshotBuff):
@@ -275,7 +279,7 @@ class 众嗔(GainBuff):
 
         self.name = "众嗔"
 
-        self.gain_group = ["韦陀献杵", "韦陀献杵_外功", "守缺式", "拿云式"]
+        self.gain_group = ["韦陀献杵", "韦陀献杵-外功", "守缺式", "拿云式"]
 
         self.value = 205 / 1024
 
@@ -394,5 +398,7 @@ class 桑莲妙境_冷却(CDBuff):
 
         self.duration = 30 * 16
 
+
 BUFFS = [佛吼, 贪破, 贪破_计数, 禅那, 普渡, 横扫六合_持续, 罗汉金身, 袈裟, 伏魔, 擒龙,
-         拿云, 秉心, 身意, 千斤坠_无取, 千斤坠_无舍, 缩地, 金刚怒目, 三生, 众嗔, 缴械, 佛果_冷却, 金刚日轮, 金刚日轮_计数, 六合棍意]
+         拿云, 秉心, 身意, 千斤坠_无取, 千斤坠_无舍, 缩地, 金刚怒目, 三生, 众嗔, 缴械, 佛果_冷却, 金刚日轮,
+         金刚日轮_计数, 六合棍意]

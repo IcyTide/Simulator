@@ -1,5 +1,5 @@
 from base.buff import Buff
-from base.skill import Skill
+from base.skill import Skill, MagicalDamage
 from base.status import Status
 
 
@@ -79,8 +79,8 @@ class 缩地:
 
     @staticmethod
     def post_hit_effect(self: Skill):
-        self.status.buffs["缩地"].clear()
-        self.status.skills["缩地"].cast()
+        if self.status.stacks["缩地"]:
+            self.status.skills["缩地"].cast()
 
     def __call__(self, status: Status):
         for skill in ("韦陀献杵", "拿云式", "罗汉金身"):
@@ -132,7 +132,7 @@ class 净果:
 
     def __call__(self, status: Status):
         for skill in status.skills.values():
-            if skill.is_hit:
+            if skill.is_hit and isinstance(skill, MagicalDamage):
                 skill.post_hit_effect.append(self.post_hit_effect)
 
 
@@ -248,12 +248,13 @@ class 金刚日轮:
 class 无诤:
     @staticmethod
     def post_cast_effect_trigger(self: Skill):
-        self.status.skills["无诤"].cast()
+        self.status.skills["守缺式"].reset()
+        self.status.skills["六合棍意"].cast()
 
     @staticmethod
     def post_cast_effect(self: Skill):
-        if self.status.stacks["无诤"]:
-            self.status.buffs["拿云"].trigger()
+        if self.status.stacks["六合棍意"]:
+            self.status.buffs["拿云"].increase(1)
 
     def __call__(self, status: Status):
         status.skills["横扫六合"].cd_base = 20 * 16

@@ -47,7 +47,7 @@ class Skill:
 
     level: int = 1
     snapshot: [Snapshot] = None
-    haste: float = 1
+    haste: float = 0
     dice: random.Random = None
 
     def __post_init__(self):
@@ -395,7 +395,7 @@ class FixedInterval(Skill):
 class HastedCD(Skill):
     @property
     def cd(self):
-        return apply_haste(self.haste, self.cd)
+        return apply_haste(self.haste, self.cd_base)
 
 
 """"""
@@ -403,6 +403,7 @@ class HastedCD(Skill):
 
 class OverdrawSkill(Skill):
     def set_cd(self):
+        self.status.energies[self.name] -= 1
         self.status.cds[self.name] += self.cd
 
 
@@ -414,9 +415,10 @@ class ChargingSkill(Skill):
         if self.status.energies[self.name] == self.energy:
             self.status.cds.pop(self.name)
         else:
-            self.set_cd()
+            self.status.cds[self.name] = self.cd
 
     def set_cd(self):
+        self.status.energies[self.name] -= 1
         if not self.status.cds[self.name]:
             self.status.cds[self.name] = self.cd
 

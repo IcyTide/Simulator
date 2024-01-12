@@ -16,6 +16,10 @@ class 六合棍(Melee):
 
         self.skill_damage_addition = 205 / 1024
 
+    @property
+    def condition(self):
+        return not self.status.stacks["缴械"]
+
 
 class 破(MagicalDamage):
     def __init__(self, status):
@@ -47,6 +51,10 @@ class 普渡四方(CastingSkill, HastedCD, MagicalDamage):
         self.status.buffs["普渡"].trigger()
         self.status.skills["普渡四方-外功"].cast()
 
+    @property
+    def condition(self):
+        return not self.status.stacks["缴械"]
+
 
 class 普渡四方_外功(PhysicalDamage):
     def __init__(self, status):
@@ -71,15 +79,16 @@ class 韦陀献杵(CastingSkill, MagicalDamage):
             MAGICAL_ATTACK_POWER_COF(144 * 1.2 * 1.15 * 1.15 * 1.35 * 0.9 * 1.15 * 1.1 * 1.05)
         ][-1]
 
+    @property
     def condition(self):
-        return self.status.stacks["禅那"] == 3
+        return self.status.stacks["禅那"] == 3 and not self.status.stacks["缴械"]
 
     def post_cast(self):
+        self.status.buffs["禅那"].clear()
         super().post_cast()
         self.status.buffs["贪破-计数"].clear()
         self.status.skills["破"].cast()
         self.status.skills["韦陀献杵-外功"].cast()
-        self.status.skills["禅那"].clear()
 
 
 class 韦陀献杵_外功(PhysicalDamage):
@@ -104,8 +113,12 @@ class 横扫六合(CastingSkill, MagicalDamage):
         super().post_cast()
         self.status.buffs["贪破-计数"].clear()
         self.status.buffs["禅那"].increase(1)
-        self.status.skills["横扫六合_持续"].cast()
+        self.status.skills["横扫六合-持续"].cast()
         self.status.skills["横扫六合-外功"].cast()
+
+    @property
+    def condition(self):
+        return not self.status.stacks["缴械"]
 
 
 class 横扫六合_外功(PhysicalDamage):
@@ -146,6 +159,10 @@ class 摩诃无量(CastingSkill, MagicalDamage):
         self.status.buffs["贪破-计数"].clear()
         self.status.buffs["禅那"].increase(2)
         self.status.skills["摩诃无量-外功"].cast()
+
+    @property
+    def condition(self):
+        return not self.status.stacks["缴械"]
 
 
 class 摩诃无量_外功(PhysicalDamage):
@@ -197,8 +214,6 @@ class 拿云式(CastingSkill, MagicalDamage):
         super().__init__(status)
         self.name = "拿云式"
 
-        self.activate = False
-
         self.damage_base = [int(778 * 0.95 / 3 / 3), int(778 * 0.95 / 3 * 2 / 3), int(778 * 0.95 / 3)][-1]
         self.damage_rand = [int(778 * 0.1 / 3 / 3), int(778 * 0.95 / 3 * 2 / 3), int(778 * 0.95 / 3)][-1]
         self.attack_power_cof = [
@@ -207,15 +222,16 @@ class 拿云式(CastingSkill, MagicalDamage):
             MAGICAL_ATTACK_POWER_COF(260 * 1.15 * 1.35 * 0.9 * 1.1 * 1.05)
         ][-1]
 
+    @property
     def condition(self):
         return self.status.stacks["禅那"] == 3 and self.status.stacks["拿云"]
 
     def post_cast(self):
+        self.status.buffs["禅那"].clear()
         super().post_cast()
         self.status.buffs["贪破-计数"].trigger()
         self.status.buffs["拿云"].consume()
         self.status.skills["破"].cast()
-        self.status.skills["禅那"].clear()
 
 
 class 守缺式(CastingSkill, ChargingSkill, MagicalDamage):
@@ -243,13 +259,16 @@ class 罗汉金身(CastingSkill):
 
         self.cd_base = 20 * 16
 
+        self.gcd_index = self.name
+
+    @property
     def condition(self):
-        return self.status.stacks["禅那"] == 3
+        return self.status.stacks["禅那"] == 3 and not self.status.stacks["缴械"]
 
     def post_cast(self):
+        self.status.buffs["禅那"].clear()
         super().post_cast()
         self.status.buffs["罗汉金身"].trigger()
-        self.status.buffs["禅那"].clear()
 
 
 class 二业依缘(CastingSkill):
@@ -257,7 +276,12 @@ class 二业依缘(CastingSkill):
         super().__init__(status)
         self.name = "二业依缘"
 
+        self.is_cast = False
+        self.is_hit = False
+
         self.cd_base = 18 * 16
+
+        self.gcd_index = self.name
 
     def post_cast(self):
         super().post_cast()
@@ -267,6 +291,10 @@ class 二业依缘(CastingSkill):
         else:
             self.status.buffs["袈裟"].clear()
             self.status.buffs["伏魔"].trigger()
+
+    @property
+    def condition(self):
+        return not self.status.stacks["缴械"]
 
 
 class 千斤坠(CastingSkill, MagicalDamage):
@@ -291,6 +319,9 @@ class 擒龙诀(CastingSkill):
         super().__init__(status)
         self.name = "擒龙诀"
 
+        self.is_cast = False
+        self.is_hit = False
+
         self.gcd_index = self.name
 
         self.cd_base = 60 * 16
@@ -299,6 +330,10 @@ class 擒龙诀(CastingSkill):
         super().post_cast()
         self.status.skills["擒龙"].cast()
         self.status.buffs["禅那"].increase(3)
+
+    @property
+    def condition(self):
+        return not self.status.stacks["缴械"]
 
 
 class 擒龙(PlacementSkill):
@@ -331,6 +366,14 @@ class 千斤坠_无取(CastingSkill):
         self.damage_rand = 3
         self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(50 * 1.5)
 
+    @property
+    def condition(self):
+        return self.status.stacks[self.name]
+
+    def post_cast(self):
+        super().post_cast()
+        self.status.buffs["禅那"].increase(2)
+
 
 class 千斤坠_无舍(CastingSkill):
     def __init__(self, status):
@@ -344,6 +387,14 @@ class 千斤坠_无舍(CastingSkill):
         self.damage_base = 28
         self.damage_rand = 3
         self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(50 * 1.5)
+
+    @property
+    def condition(self):
+        return self.status.stacks[self.name]
+
+    def post_cast(self):
+        super().post_cast()
+        self.status.buffs["禅那"].increase(2)
 
 
 class 降魔(MagicalDamage):
@@ -392,6 +443,7 @@ class 佛果(TriggerSkill, MagicalDamage):
         self.damage_rand = 101
         self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(120 * 1.12 * 1.3 * 1.05)
 
+    @property
     def condition(self):
         return not self.status.stacks["佛果-冷却"]
 
@@ -430,7 +482,7 @@ class 六合棍意(PlacementSkill):
         self.interval_list = [16] * 9
 
         self.damage_base = 75
-        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(80 * 1.3  * 1.15)
+        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(80 * 1.3 * 1.15)
 
     def pre_cast(self):
         super().pre_cast()
@@ -441,38 +493,10 @@ class 六合棍意(PlacementSkill):
         self.status.buffs["缴械"].clear()
 
 
-class 剑破虚空_神兵(TriggerSkill, MagicalDamage):
-    def __init__(self, status):
-        super().__init__(status)
-        self.name = "剑破虚空·神兵"
-
-        self.is_cast = False
-        self.is_hit = False
-
-        self.probability = 307 / 1024
-
-        self.damage_base = 20
-        self.damage_rand = 2
-        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(65)
-
-
-class 气吞长江_持续(DotSkill, MagicalDamage):
-    def __init__(self, status):
-        super().__init__(status)
-        self.name = "气吞长江-持续"
-
-        self.is_cast = False
-        self.is_hit = False
-
-        self.interval_base = 3 * 16
-        self.tick_base = 10
-
-        self.attack_power_cof = MAGICAL_DOT_ATTACK_POWER_COF(400 * 1.4, self.interval_base)
-
-
 SKILLS_MAP = {
     "通用": [六合棍, 破],
-    "罗汉棍法": [普渡四方, 普渡四方_外功, 韦陀献杵, 韦陀献杵_外功, 横扫六合, 横扫六合_外功, 横扫六合_持续],
+    "罗汉棍法": [普渡四方, 普渡四方_外功, 韦陀献杵, 韦陀献杵_外功, 横扫六合, 横扫六合_外功, 横扫六合_持续, 摩诃无量,
+                 摩诃无量_外功],
     "龙爪功": [捕风式, 捉影式, 拿云式, 守缺式],
     "袈裟伏魔功": [罗汉金身, 二业依缘, 千斤坠],
     "达摩武诀": [擒龙诀, 擒龙],
