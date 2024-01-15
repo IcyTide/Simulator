@@ -32,6 +32,8 @@ class Simulator:
         self.loop = parse_expression(self.status, loop)
 
         self.current_loop = self.prepare if self.prepare else self.loop.copy()
+        if not self.current_loop:
+            self.loop_simulate = self.priority_simulate
 
     @staticmethod
     def record(skill):

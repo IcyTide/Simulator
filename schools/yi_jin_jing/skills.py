@@ -372,7 +372,8 @@ class 千斤坠_无取(CastingSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["禅那"].increase(2)
+        self.status.buffs["禅那"].increase(1)
+        self.status.skills["纷纭-禅那"].cast()
 
 
 class 千斤坠_无舍(CastingSkill):
@@ -394,7 +395,26 @@ class 千斤坠_无舍(CastingSkill):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["禅那"].increase(2)
+        self.status.buffs["禅那"].increase(1)
+        if self.status.stacks["禅那"] < 2:
+            self.status.buffs["禅那"].increase(1)
+        else:
+            self.status.skills["纷纭-禅那"].cast()
+
+
+class 纷纭_禅那(PlacementSkill):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "纷纭-禅那"
+
+        self.is_cast = False
+        self.is_hit = False
+
+        self.interval_list = [12]
+
+    def post_cast(self):
+        super().post_cast()
+        self.status.buffs["禅那"].increase(1)
 
 
 class 降魔(MagicalDamage):
@@ -495,11 +515,10 @@ class 六合棍意(PlacementSkill):
 
 SKILLS_MAP = {
     "通用": [六合棍, 破],
-    "罗汉棍法": [普渡四方, 普渡四方_外功, 韦陀献杵, 韦陀献杵_外功, 横扫六合, 横扫六合_外功, 横扫六合_持续, 摩诃无量,
-                 摩诃无量_外功],
+    "罗汉棍法": [普渡四方, 普渡四方_外功, 韦陀献杵, 韦陀献杵_外功, 横扫六合, 横扫六合_外功, 横扫六合_持续, 摩诃无量, 摩诃无量_外功],
     "龙爪功": [捕风式, 捉影式, 拿云式, 守缺式],
     "袈裟伏魔功": [罗汉金身, 二业依缘, 千斤坠],
     "达摩武诀": [擒龙诀, 擒龙],
-    "奇穴": [千斤坠_无取, 千斤坠_无舍, 降魔, 缩地, 佛果, 金刚龙爪功, 金刚日轮, 六合棍意]
+    "奇穴": [千斤坠_无取, 千斤坠_无舍, 纷纭_禅那, 降魔, 缩地, 佛果, 金刚龙爪功, 金刚日轮, 六合棍意]
 }
 SKILLS = sum(SKILLS_MAP.values(), [])
