@@ -157,7 +157,7 @@ class 我闻:
     def __call__(self, status: Status):
         status.skills["横扫六合"].cd_base -= 3 * 16
 
-        for skill in ("横扫六合", "横扫六合_外功", "横扫六合_持续"):
+        for skill in ("横扫六合", "横扫六合-外功", "横扫六合-持续"):
             status.skills[skill].skill_critical_strike += 0.1
             status.skills[skill].skill_critical_power += 205 / 1024
 
@@ -189,15 +189,12 @@ class 无执:
     @staticmethod
     def add_effect(self: Skill):
         for skill in ("捕风式", "捉影式", "拿云式", "守缺式"):
-            self.status.gcd_group[1] = 0
             self.status.skills[skill].gcd_index = 1
             self.status.skills[skill].gcd_base = 16
 
     @staticmethod
     def remove_effect(self: Skill):
         for skill in ("捕风式", "捉影式", "拿云式", "守缺式"):
-            if not self.status.gcd_group[0]:
-                self.status.gcd_group[0] = 0
             self.status.skills[skill].gcd_index = 0
             self.status.skills[skill].gcd_base = 24
 

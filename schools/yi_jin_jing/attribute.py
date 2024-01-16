@@ -39,5 +39,5 @@ class YiJinJing(Attribute):
         self._spunk = spunk
         self._extra_magical_attack_power = int(spunk * self.SPUNK_TO_ATTACK_POWER)
         self.base_magical_attack_power = self._magical_attack_power_base + spunk * SPUNK_TO_ATTACK_POWER
-        self.extra_magical_critical_strike = int(spunk * self.SPUNK_TO_CRITICAL_STRIKE)
+        self.extra_magical_critical_strike = spunk * self.SPUNK_TO_CRITICAL_STRIKE
         self.base_magical_overcome = self._magical_overcome_base + spunk * SPUNK_TO_OVERCOME

@@ -24,6 +24,10 @@ def spirit_spread(value):
     return {"spirit_base": value}
 
 
+def spunk_spread(value):
+    return {"spunk_base": value}
+
+
 def physical_spread(value1, value2):
     return {"physical_attack_power_base": value1,
             "all_critical_strike_base": value2,
@@ -61,6 +65,10 @@ def strength_food(value):
 
 def spirit_food(value):
     return {"spirit_base": value}
+
+
+def spunk_food(value):
+    return {"spunk_base": value}
 
 
 """ Minor Food """
@@ -105,6 +113,10 @@ def spirit_potion(value):
     return {"spirit_base": value}
 
 
+def spunk_potion(value):
+    return {"spunk_base": value}
+
+
 """ Minor Potion """
 
 
@@ -145,6 +157,10 @@ def strength_wine(value):
 
 def spirit_wine(value):
     return {"spirit_base": value}
+
+
+def spunk_wine(value):
+    return {"spunk_base": value}
 
 
 def haste_wine(value):
@@ -237,6 +253,11 @@ CONSUMABLES = {
     f"老火骨汤({CONSUMABLES_NUMBER['major_food_min']}根骨)":
         spirit_food(CONSUMABLES_NUMBER["major_food_min"]),
 
+    f"鱼片砂锅粥({CONSUMABLES_NUMBER['major_food_max']}元气)":
+        spunk_food(CONSUMABLES_NUMBER["major_food_max"]),
+    f"鱼头豆腐汤({CONSUMABLES_NUMBER['major_food_min']}元气)":
+        spunk_food(CONSUMABLES_NUMBER["major_food_min"]),
+
     f"太后饼({CONSUMABLES_NUMBER['physical_food_max']}外攻)":
         physical_attack_power_food(CONSUMABLES_NUMBER["physical_food_max"]),
     f"煎饼果子({CONSUMABLES_NUMBER['physical_food_min']}外攻)":
@@ -278,6 +299,11 @@ CONSUMABLES = {
         spirit_potion(CONSUMABLES_NUMBER["major_potion_max"]),
     f"中品静心丸({CONSUMABLES_NUMBER['major_potion_min']}根骨)":
         spirit_potion(CONSUMABLES_NUMBER["major_potion_min"]),
+
+    f"上品聚魂丹({CONSUMABLES_NUMBER['major_potion_max']}元气)":
+        spunk_potion(CONSUMABLES_NUMBER["major_potion_max"]),
+    f"中品聚魂丹({CONSUMABLES_NUMBER['major_potion_min']}元气)":
+        spunk_potion(CONSUMABLES_NUMBER["major_potion_min"]),
 
     f"上品亢龙散({CONSUMABLES_NUMBER['physical_potion_max']}外攻)":
         physical_attack_power_potion(CONSUMABLES_NUMBER["physical_potion_max"]),
@@ -332,6 +358,8 @@ CONSUMABLES = {
         strength_wine(CONSUMABLES_NUMBER["major_wine"]),
     f"高粱酒·旬又三({CONSUMABLES_NUMBER['major_wine']}根骨)":
         spirit_wine(CONSUMABLES_NUMBER["major_wine"]),
+    f"状元红·旬又三({CONSUMABLES_NUMBER['major_wine']}元气)":
+        spunk_wine(CONSUMABLES_NUMBER["major_wine"]),
 
     f"女儿红·旬又三({CONSUMABLES_NUMBER['haste_wine']}加速)":
         haste_wine(CONSUMABLES_NUMBER["haste_wine"]),
@@ -347,6 +375,8 @@ CONSUMABLES = {
         strength_spread(CONSUMABLES_NUMBER["major_spread"]),
     f"水晶芙蓉宴({CONSUMABLES_NUMBER['major_spread']}根骨)":
         spirit_spread(CONSUMABLES_NUMBER["major_spread"]),
+    f"水晶芙蓉宴({CONSUMABLES_NUMBER['major_spread']}元气)":
+        spunk_spread(CONSUMABLES_NUMBER["major_spread"]),
 
     f"玉笛谁家听落梅({CONSUMABLES_NUMBER['physical_spread']}外攻{CONSUMABLES_NUMBER['minor_spread']}会心/破招)":
         physical_spread(CONSUMABLES_NUMBER["physical_spread"], CONSUMABLES_NUMBER["minor_spread"]),
@@ -375,6 +405,10 @@ FOODS = {
     "根骨": [
         f"咸骨粥({CONSUMABLES_NUMBER['major_food_max']}根骨)",
         f"老火骨汤({CONSUMABLES_NUMBER['major_food_min']}根骨)"
+    ],
+    "元气": [
+        f"鱼片砂锅粥({CONSUMABLES_NUMBER['major_food_max']}元气)",
+        f"鱼头豆腐汤({CONSUMABLES_NUMBER['major_food_min']}元气)"
     ],
     "": [
         f"白肉血肠({CONSUMABLES_NUMBER['minor_food_max']}破招)",
@@ -407,6 +441,10 @@ POTIONS = {
     "根骨": [
         f"上品静心丸({CONSUMABLES_NUMBER['major_potion_max']}根骨)",
         f"中品静心丸({CONSUMABLES_NUMBER['major_potion_min']}根骨)"
+    ],
+    "元气": [
+        f"上品聚魂丹({CONSUMABLES_NUMBER['major_potion_max']}元气)",
+        f"中品聚魂丹({CONSUMABLES_NUMBER['major_potion_min']}元气)"
     ],
     "": [
         f"上品凝神散({CONSUMABLES_NUMBER['minor_potion_max']}破招)",
@@ -454,7 +492,8 @@ WINES = {
     "": [f"女儿红·旬又三({CONSUMABLES_NUMBER['haste_wine']}加速)"],
     "身法": [f"关外白酒·旬又三({CONSUMABLES_NUMBER['major_wine']}身法)"],
     "力道": [f"汾酒·旬又三({CONSUMABLES_NUMBER['major_wine']}力道)"],
-    "根骨": [f"高粱酒·旬又三({CONSUMABLES_NUMBER['major_wine']}根骨)"]
+    "根骨": [f"高粱酒·旬又三({CONSUMABLES_NUMBER['major_wine']}根骨)"],
+    "元气": [f"状元红·旬又三({CONSUMABLES_NUMBER['major_wine']}元气)"]
 
 }
 SPREADS = {
@@ -466,6 +505,9 @@ SPREADS = {
     ],
     "根骨": [
         f"水晶芙蓉宴({CONSUMABLES_NUMBER['major_spread']}根骨)"
+    ],
+    "元气": [
+        f"水晶芙蓉宴({CONSUMABLES_NUMBER['major_spread']}元气)"
     ],
     "外功": [
         f"玉笛谁家听落梅({CONSUMABLES_NUMBER['physical_spread']}外攻{CONSUMABLES_NUMBER['minor_spread']}会心/破招)"

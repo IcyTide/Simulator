@@ -43,6 +43,7 @@ def combat_script(message_box: QMessageBox, school: School,
     def simulate():
         target_level = int(combat_widget.target_level.combo_box.currentText())
         duration = combat_widget.duration.spin_box.value()
+        gap = combat_widget.gap.spin_box.value()
         prepare = combat_widget.prepare.text_browser.toPlainText()
         priority = combat_widget.priority.text_browser.toPlainText()
         loop = combat_widget.loop.text_browser.toPlainText()
@@ -61,7 +62,7 @@ def combat_script(message_box: QMessageBox, school: School,
         try:
             simulator = Simulator(attribute, SKILLS[school.kind] + school.skills, BUFFS + school.buffs,
                                   gains, Target(target_level), duration, prepare, priority, loop, school.initiation,
-                                  verbose=False)
+                                  gap, verbose=False)
         except SyntaxError as e:
             message_box.setWindowTitle("序列语法错误")
             message_box.setText(e.msg)

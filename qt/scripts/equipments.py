@@ -42,7 +42,7 @@ class Equipment:
         self.set_data = {}
 
         self.strength_level = MAX_STRENGTH_LEVEL
-        self.embed_levels = [MAX_EMBED_LEVEL for i in range(EMBED_POSITIONS[self.position])]
+        self.embed_levels = [MAX_EMBED_LEVEL for _ in range(EMBED_POSITIONS[self.position])]
 
         self.enchant = Enchant()
         if self.position in STONES_POSITIONS:
@@ -152,6 +152,8 @@ class Equipments:
     @property
     def attrs(self):
         final_attrs = defaultdict(int)
+        set_count = {}
+        set_effect = {}
         for equipment in self.equipments.values():
             if not equipment.name or equipment.position == "secondary_weapon":
                 continue
@@ -168,15 +170,45 @@ class Equipments:
             if equipment.stone:
                 for attr, value in equipment.stone.attr.items():
                     final_attrs[attr] += value
+
+            if equipment.set_id not in set_count:
+                set_count[equipment.set_id] = 0
+                set_effect[equipment.set_id] = equipment.set_data
+            set_count[equipment.set_id] += 1
+
+        for set_id, set_data in set_effect.items():
+            for count, effects in set_data.items():
+                if int(count) > set_count[set_id]:
+                    break
+                for effect in effects:
+                    if "gain" not in effect:
+                        for attr, value in effect.items():
+                            final_attrs[attr] += value
+
         return final_attrs
 
     @property
     def gains(self):
         final_gains = []
+        set_count = {}
+        set_effect = {}
         for equipment in self.equipments.values():
             if not equipment.name or equipment.position == "secondary_weapon":
                 continue
             final_gains += [EQUIP_GAINS[gain] for gain in equipment.gains + equipment.special_enchant]
+            if equipment.set_id not in set_count:
+                set_count[equipment.set_id] = 0
+                set_effect[equipment.set_id] = equipment.set_data
+            set_count[equipment.set_id] += 1
+
+        for set_id, set_data in set_effect.items():
+            for count, effects in set_data.items():
+                if int(count) > set_count[set_id]:
+                    break
+                for effect in effects:
+                    if gain := effect.get("gain"):
+                        final_gains.append(EQUIP_GAINS[gain])
+
         return list(set(final_gains))
 
 

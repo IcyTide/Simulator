@@ -353,7 +353,7 @@ class 擒龙(PlacementSkill):
 """
 
 
-class 千斤坠_无取(CastingSkill):
+class 千斤坠_无取(CastingSkill, MagicalDamage):
     def __init__(self, status):
         super().__init__(status)
         self.name = "千斤坠·无取"
@@ -376,7 +376,7 @@ class 千斤坠_无取(CastingSkill):
         self.status.skills["纷纭-禅那"].cast()
 
 
-class 千斤坠_无舍(CastingSkill):
+class 千斤坠_无舍(CastingSkill, MagicalDamage):
     def __init__(self, status):
         super().__init__(status)
         self.name = "千斤坠·无舍"
@@ -396,10 +396,7 @@ class 千斤坠_无舍(CastingSkill):
     def post_cast(self):
         super().post_cast()
         self.status.buffs["禅那"].increase(1)
-        if self.status.stacks["禅那"] < 2:
-            self.status.buffs["禅那"].increase(1)
-        else:
-            self.status.skills["纷纭-禅那"].cast()
+        self.status.skills["纷纭-禅那"].cast()
 
 
 class 纷纭_禅那(PlacementSkill):
@@ -494,7 +491,7 @@ class 金刚日轮(MagicalDamage):
         self.skill_shield_gain = -666 / 1024
 
 
-class 六合棍意(PlacementSkill):
+class 六合棍意(PlacementSkill, MagicalDamage):
     def __init__(self, status):
         super().__init__(status)
         self.name = "六合棍意"

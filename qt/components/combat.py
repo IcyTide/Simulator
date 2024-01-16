@@ -22,6 +22,8 @@ class CombatWidget(QWidget):
         top_layout.addWidget(self.iteration)
         self.delta = SpinWithLabel("会心残差", maximum=1000)
         top_layout.addWidget(self.delta)
+        self.gap = SpinWithLabel("逐帧模拟", maximum=16)
+        top_layout.addWidget(self.gap)
 
         self.button = QPushButton(text="开始模拟!")
         layout.addWidget(self.button)

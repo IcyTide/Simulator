@@ -53,8 +53,8 @@ class 内功双会套装(SnapshotBuff, TriggerBuff):
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        self.status.attribute.magical_critical_strike_gain += self.values[0]
-        self.status.attribute.magical_critical_power_gain += self.values[1]
+        self.status.attribute.magical_critical_strike_gain -= self.values[0]
+        self.status.attribute.magical_critical_power_gain -= self.values[1]
 
 
 class 大附魔腰(SnapshotBuff):

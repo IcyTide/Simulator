@@ -9,7 +9,7 @@ from base.status import Status
 
 class Simulator:
     def __init__(self, attribute, skills, buffs, gains, target, duration,
-                 prepare=None, priority=None, loop=None, initiation=None, verbose=False):
+                 prepare=None, priority=None, loop=None, initiation=None, gap=0, verbose=False):
 
         if verbose:
             self.record = self.record_verbose
@@ -34,6 +34,11 @@ class Simulator:
         self.current_loop = self.prepare if self.prepare else self.loop.copy()
         if not self.current_loop:
             self.loop_simulate = self.priority_simulate
+
+        if gap:
+            self.gap = gap
+        else:
+            self.gap = FRAME_PER_SECOND
 
     @staticmethod
     def record(skill):
@@ -66,7 +71,7 @@ class Simulator:
                       min(self.status.cds.values(), default=FRAME_PER_SECOND),
                       min(self.status.intervals.values(), default=FRAME_PER_SECOND),
                       min(self.status.durations.values(), default=FRAME_PER_SECOND),
-                      self.status.total_frame - self.status.current_frame)
+                      self.status.total_frame - self.status.current_frame, self.gap)
             self.status.timer(math.ceil(gap))
 
     def __call__(self, seed=82):
