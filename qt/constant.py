@@ -2,7 +2,7 @@ import os
 
 from general.gains import equipment
 
-from schools import wen_shui_jue, bei_ao_jue, bing_xin_jue, yi_jin_jing
+from schools import wen_shui_jue, bei_ao_jue, bing_xin_jue, yi_jin_jing, ao_xue_zhan_yi
 
 """ Directory """
 # ASSETS_DIR = os.path.join(os.getcwd(), "qt/assets")
@@ -245,6 +245,40 @@ SUPPORT_SCHOOL = {
             "surplus": "破招",
         }
     },
+    "傲血战意": {
+        "school": "天策",
+        "major": "力道",
+        "kind": "外功",
+        "attribute": ao_xue_zhan_yi.AoXueZhanYi,
+        "formation": "卫公折冲阵",
+        "talents": ao_xue_zhan_yi.TALENTS,
+        "recipes": ao_xue_zhan_yi.RECIPES,
+        "skills": ao_xue_zhan_yi.SKILLS,
+        "buffs": ao_xue_zhan_yi.BUFFS,
+        "initiation": ao_xue_zhan_yi.initiation,
+        "prepare": ao_xue_zhan_yi.prepare,
+        "priority": ao_xue_zhan_yi.priority,
+        "loop": ao_xue_zhan_yi.loop,
+        "display_attrs": {
+            "strength": "力道",
+            "base_physical_attack_power": "基础攻击",
+            "physical_attack_power": "攻击",
+            "base_physical_critical_strike": "会心等级",
+            "physical_critical_strike": "会心",
+            "physical_critical_power_base": "会效等级",
+            "physical_critical_power": "会效",
+            "base_physical_overcome": "基础破防",
+            "final_physical_overcome": "最终破防",
+            "physical_overcome": "破防",
+            "weapon_damage_base": "基础武器伤害",
+            "weapon_damage_rand": "浮动武器伤害",
+            "strain_base": "无双等级",
+            "strain": "无双",
+            "haste_base": "加速等级",
+            "haste": "加速",
+            "surplus": "破招",
+        }
+    },
 }
 
 """ Equip """
@@ -276,14 +310,16 @@ EQUIP_GAINS_NAME = {
     **wen_shui_jue.EQUIP_GAINS_NAME,
     **bei_ao_jue.EQUIP_GAINS_NAME,
     **bing_xin_jue.EQUIP_GAINS_NAME,
-    **yi_jin_jing.EQUIP_GAINS_NAME
+    **yi_jin_jing.EQUIP_GAINS_NAME,
+    **ao_xue_zhan_yi.EQUIP_GAINS_NAME
 }
 EQUIP_GAINS = {
     **equipment.EQUIP_GAINS,
     **wen_shui_jue.EQUIP_GAINS,
     **bei_ao_jue.EQUIP_GAINS,
     **bing_xin_jue.EQUIP_GAINS,
-    **yi_jin_jing.EQUIP_GAINS
+    **yi_jin_jing.EQUIP_GAINS,
+    **ao_xue_zhan_yi.EQUIP_GAINS
 }
 
 """ Talent """
@@ -293,7 +329,8 @@ TALENT_GAINS = {
     **wen_shui_jue.TALENT_GAINS,
     **bei_ao_jue.TALENT_GAINS,
     **bing_xin_jue.TALENT_GAINS,
-    **yi_jin_jing.TALENT_GAINS
+    **yi_jin_jing.TALENT_GAINS,
+    **ao_xue_zhan_yi.TALENT_GAINS
 }
 
 """ Recipes """
@@ -304,5 +341,6 @@ RECIPE_GAINS = {
     **wen_shui_jue.RECIPE_GAINS,
     **bei_ao_jue.RECIPE_GAINS,
     **bing_xin_jue.RECIPE_GAINS,
-    **yi_jin_jing.RECIPE_GAINS
+    **yi_jin_jing.RECIPE_GAINS,
+    **ao_xue_zhan_yi.RECIPE_GAINS
 }

@@ -21,8 +21,8 @@ class 松烟竹雾(Buff):
         super().__init__(status)
         self.name = "松烟竹雾"
 
-    def remove(self):
-        super().remove()
+    def remove(self, stack):
+        super().remove(stack)
         for skill in self.related_skills:
             self.status.skills[skill].activate = False
 
@@ -79,8 +79,8 @@ class 楚歌(Buff):
 
         self.stack_max = 3
 
-    def remove(self):
-        super().remove()
+    def remove(self, stack):
+        super().remove(stack)
         self.status.buffs["楚歌-计数"].clear()
 
 
@@ -93,15 +93,15 @@ class 楚歌_计数(CountBuff):
 
         self.stack_max = 5
 
-    def add(self):
-        super().add()
+    def add(self, stack):
+        super().add(stack)
         if self.status.stacks[self.name] == self.stack_max:
             for _ in range(self.status.stacks["楚歌"]):
                 self.status.skills["楚歌"].cast()
             self.status.buffs["楚歌"].clear()
 
 
-class 见尘(DotBuff):
+class 见尘(PlacementBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "见尘"
@@ -117,12 +117,12 @@ class 含风(SnapshotBuff):
         self.stack_max = 2
         self.values = [0.05, 51 / 1024, 51 / 1024]
 
-    def add(self):
-        super().add()
+    def add(self, stack):
+        super().add(stack)
         self.status.attribute.physical_critical_strike_gain += self.values[0]
 
-    def remove(self):
-        super().remove()
+    def remove(self, stack):
+        super().remove(stack)
         self.status.attribute.physical_critical_strike_gain -= self.values[0]
 
     def gain(self, level, stack):
@@ -147,8 +147,8 @@ class 降麒式_计数(CountBuff):
 
         self.stack_max = 6
 
-    def add(self):
-        super().add()
+    def add(self, stack):
+        super().add(stack)
         if self.status.stacks[self.name] == 6:
             self.clear()
             self.status.buffs["降麒式-就绪"].trigger()
@@ -161,12 +161,12 @@ class 降麒式_就绪(Buff):
 
         self.duration = 15 * 16
 
-    def add(self):
-        super().add()
+    def add(self, stack):
+        super().add(stack)
         self.status.skills["降麒式"].activate = True
 
-    def remove(self):
-        super().remove()
+    def remove(self, stack):
+        super().remove(stack)
         self.status.skills["降麒式"].activate = False
 
 
@@ -205,14 +205,14 @@ class 沉夜重雪(TriggerBuff):
     def condition(self):
         return not self.status.stacks["沉夜重雪-冷却"]
 
-    def add(self):
-        super().add()
+    def add(self, stack):
+        super().add(stack)
         self.status.skills["破釜沉舟"].reset()
         self.status.skills["刀啸风吟"].direct = True
         self.status.buffs["沉夜重雪-冷却"].trigger()
 
-    def remove(self):
-        super().remove()
+    def remove(self, stack):
+        super().remove(stack)
         self.status.skills["刀啸风吟"].direct = False
 
 

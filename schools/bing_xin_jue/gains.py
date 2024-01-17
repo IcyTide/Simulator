@@ -37,12 +37,20 @@ class 橙武特效:
         if not self.status.stacks["飞霜绛露-冷却"]:
             self.status.buffs["飞霜绛露"].trigger()
 
+    @staticmethod
+    def post_hit_effect(self: Skill):
+        if self.status.stacks["飞霜绛露"]:
+            self.reset()
+            self.status.skills["气吞长江-持续"].cast()
+
     def __call__(self, status: Status):
         for skill in status.skills.values():
             if skill.hit_with_cast:
                 skill.post_hit_effect.append(self.post_cast_effect)
             elif skill.is_cast:
                 skill.post_cast_effect.append(self.post_cast_effect)
+
+        status.skills["剑气长江"].post_hit_effect.append(self.post_hit_effect)
 
 
 class 剑破虚空神兵:

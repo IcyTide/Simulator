@@ -150,15 +150,9 @@ class 破釜沉舟(CastingSkill, OverdrawSkill, PhysicalDamage):
     def condition(self):
         return self.status.stacks["秀明尘身"]
 
-    def post_hit(self):
-        self.status.skills["破"].cast(3)
-        super().post_hit()
-
     def post_cast(self):
         super().post_cast()
-        if self.status.stacks["沉夜重雪"]:
-            self.reset()
-            self.status.skills["背水沉舟-持续"].cast()
+        self.status.skills["破"].cast(3)
 
 
 class 闹须弥_持续(DotSkill, PhysicalDamage):

@@ -136,6 +136,8 @@ class Skill:
             effect(self)
 
     def cast(self, level=1):
+        if not level:
+            return
         self.level = level
 
         self.pre_cast()

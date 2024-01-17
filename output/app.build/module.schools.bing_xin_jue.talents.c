@@ -94,7 +94,7 @@ static PyCodeObject *codeobj_9fcc9e7ab1a736c176490d954b77a3c8;
 static PyCodeObject *codeobj_16326c882447cfd23e2446d36aef28e5;
 static PyCodeObject *codeobj_9f23512e2817c5c4f573a0ff3f0c5189;
 static PyCodeObject *codeobj_79a7034d3fe54b78fb20f12d78bba459;
-static PyCodeObject *codeobj_a347541e45f6b6026e3a21502b9b30d8;
+static PyCodeObject *codeobj_a0944597170690aac1fb84bf586ea28d;
 static PyCodeObject *codeobj_f58a937b1b7bbad7f7cd304218caa2b2;
 static PyCodeObject *codeobj_291f8537ccdf9a8e65d456b4a33b2fd3;
 static PyCodeObject *codeobj_9a065f553ab687200a23a5b56b50999e;
@@ -113,7 +113,7 @@ static PyCodeObject *codeobj_af59fd5255243ba3dee8a9d0ba5680f5;
 static PyCodeObject *codeobj_842dd697d30a1c566bd2a92f1fb4012f;
 static PyCodeObject *codeobj_737b071bcef6f21752d4ef14617948d6;
 static PyCodeObject *codeobj_2d2be3d730aa20f1c37858ee4e0374d9;
-static PyCodeObject *codeobj_33d457f8218b91d0d8912c1d474c4dcb;
+static PyCodeObject *codeobj_1a51808d6ab4d65f1f917268f97b77c9;
 static PyCodeObject *codeobj_cfb338ee5e33dedeb41f1ef5f54688fc;
 static PyCodeObject *codeobj_760e615da7a63052234335cdeb4dbee4;
 static PyCodeObject *codeobj_42282278427326ba24e6012d6796705e;
@@ -151,7 +151,7 @@ static void createModuleCodeObjects(void) {
     codeobj_16326c882447cfd23e2446d36aef28e5 = MAKE_CODE_OBJECT(module_filename_obj, 154, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[88], mod_consts[88], mod_consts[140], NULL, 2, 0, 0);
     codeobj_9f23512e2817c5c4f573a0ff3f0c5189 = MAKE_CODE_OBJECT(module_filename_obj, 163, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[88], mod_consts[88], mod_consts[140], NULL, 2, 0, 0);
     codeobj_79a7034d3fe54b78fb20f12d78bba459 = MAKE_CODE_OBJECT(module_filename_obj, 178, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[88], mod_consts[88], mod_consts[140], NULL, 2, 0, 0);
-    codeobj_a347541e45f6b6026e3a21502b9b30d8 = MAKE_CODE_OBJECT(module_filename_obj, 194, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[88], mod_consts[88], mod_consts[140], NULL, 2, 0, 0);
+    codeobj_a0944597170690aac1fb84bf586ea28d = MAKE_CODE_OBJECT(module_filename_obj, 193, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[88], mod_consts[88], mod_consts[140], NULL, 2, 0, 0);
     codeobj_f58a937b1b7bbad7f7cd304218caa2b2 = MAKE_CODE_OBJECT(module_filename_obj, 50, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[88], mod_consts[88], mod_consts[141], NULL, 2, 0, 0);
     codeobj_291f8537ccdf9a8e65d456b4a33b2fd3 = MAKE_CODE_OBJECT(module_filename_obj, 100, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[88], mod_consts[88], mod_consts[141], NULL, 2, 0, 0);
     codeobj_9a065f553ab687200a23a5b56b50999e = MAKE_CODE_OBJECT(module_filename_obj, 67, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[88], mod_consts[88], mod_consts[142], NULL, 2, 0, 0);
@@ -170,7 +170,7 @@ static void createModuleCodeObjects(void) {
     codeobj_842dd697d30a1c566bd2a92f1fb4012f = MAKE_CODE_OBJECT(module_filename_obj, 63, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[17], mod_consts[17], mod_consts[143], NULL, 1, 0, 0);
     codeobj_737b071bcef6f21752d4ef14617948d6 = MAKE_CODE_OBJECT(module_filename_obj, 124, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[17], mod_consts[17], mod_consts[143], NULL, 1, 0, 0);
     codeobj_2d2be3d730aa20f1c37858ee4e0374d9 = MAKE_CODE_OBJECT(module_filename_obj, 139, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[17], mod_consts[17], mod_consts[143], NULL, 1, 0, 0);
-    codeobj_33d457f8218b91d0d8912c1d474c4dcb = MAKE_CODE_OBJECT(module_filename_obj, 191, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[67], mod_consts[67], mod_consts[143], NULL, 1, 0, 0);
+    codeobj_1a51808d6ab4d65f1f917268f97b77c9 = MAKE_CODE_OBJECT(module_filename_obj, 190, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[67], mod_consts[67], mod_consts[143], NULL, 1, 0, 0);
     codeobj_cfb338ee5e33dedeb41f1ef5f54688fc = MAKE_CODE_OBJECT(module_filename_obj, 107, 0, mod_consts[114], mod_consts[114], mod_consts[146], NULL, 0, 0, 0);
     codeobj_760e615da7a63052234335cdeb4dbee4 = MAKE_CODE_OBJECT(module_filename_obj, 167, 0, mod_consts[63], mod_consts[63], mod_consts[146], NULL, 0, 0, 0);
     codeobj_42282278427326ba24e6012d6796705e = MAKE_CODE_OBJECT(module_filename_obj, 133, 0, mod_consts[56], mod_consts[56], mod_consts[146], NULL, 0, 0, 0);
@@ -9609,28 +9609,15 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__33_add_effect(PyT
 
     // Framed code:
     {
-        PyObject *tmp_called_value_1;
+        PyObject *tmp_called_instance_1;
         PyObject *tmp_expression_value_1;
         PyObject *tmp_expression_value_2;
         PyObject *tmp_expression_value_3;
-        PyObject *tmp_expression_value_4;
         PyObject *tmp_subscript_value_1;
         PyObject *tmp_call_result_1;
         CHECK_OBJECT(par_self);
-        tmp_expression_value_4 = par_self;
-        tmp_expression_value_3 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_4, mod_consts[11]);
-        if (tmp_expression_value_3 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 187;
-            type_description_1 = "o";
-            goto frame_exception_exit_1;
-        }
-        tmp_expression_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_3, mod_consts[22]);
-        Py_DECREF(tmp_expression_value_3);
+        tmp_expression_value_3 = par_self;
+        tmp_expression_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_3, mod_consts[11]);
         if (tmp_expression_value_2 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
@@ -9641,8 +9628,7 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__33_add_effect(PyT
             type_description_1 = "o";
             goto frame_exception_exit_1;
         }
-        tmp_subscript_value_1 = mod_consts[65];
-        tmp_expression_value_1 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_2, tmp_subscript_value_1);
+        tmp_expression_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_2, mod_consts[22]);
         Py_DECREF(tmp_expression_value_2);
         if (tmp_expression_value_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -9654,9 +9640,10 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__33_add_effect(PyT
             type_description_1 = "o";
             goto frame_exception_exit_1;
         }
-        tmp_called_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[37]);
+        tmp_subscript_value_1 = mod_consts[65];
+        tmp_called_instance_1 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_1, tmp_subscript_value_1);
         Py_DECREF(tmp_expression_value_1);
-        if (tmp_called_value_1 == NULL) {
+        if (tmp_called_instance_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
@@ -9667,8 +9654,8 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__33_add_effect(PyT
             goto frame_exception_exit_1;
         }
         frame_c271e19e9778591c098dde4bb8c2df6f->m_frame.f_lineno = 187;
-        tmp_call_result_1 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_1);
-        Py_DECREF(tmp_called_value_1);
+        tmp_call_result_1 = CALL_METHOD_NO_ARGS(tstate, tmp_called_instance_1, mod_consts[24]);
+        Py_DECREF(tmp_called_instance_1);
         if (tmp_call_result_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
@@ -9680,138 +9667,6 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__33_add_effect(PyT
             goto frame_exception_exit_1;
         }
         Py_DECREF(tmp_call_result_1);
-    }
-    {
-        PyObject *tmp_called_value_2;
-        PyObject *tmp_expression_value_5;
-        PyObject *tmp_expression_value_6;
-        PyObject *tmp_expression_value_7;
-        PyObject *tmp_expression_value_8;
-        PyObject *tmp_subscript_value_2;
-        PyObject *tmp_call_result_2;
-        PyObject *tmp_args_element_value_1;
-        PyObject *tmp_expression_value_9;
-        PyObject *tmp_expression_value_10;
-        PyObject *tmp_expression_value_11;
-        PyObject *tmp_subscript_value_3;
-        PyObject *tmp_expression_value_12;
-        CHECK_OBJECT(par_self);
-        tmp_expression_value_8 = par_self;
-        tmp_expression_value_7 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_8, mod_consts[11]);
-        if (tmp_expression_value_7 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 188;
-            type_description_1 = "o";
-            goto frame_exception_exit_1;
-        }
-        tmp_expression_value_6 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_7, mod_consts[22]);
-        Py_DECREF(tmp_expression_value_7);
-        if (tmp_expression_value_6 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 188;
-            type_description_1 = "o";
-            goto frame_exception_exit_1;
-        }
-        tmp_subscript_value_2 = mod_consts[65];
-        tmp_expression_value_5 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_6, tmp_subscript_value_2);
-        Py_DECREF(tmp_expression_value_6);
-        if (tmp_expression_value_5 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 188;
-            type_description_1 = "o";
-            goto frame_exception_exit_1;
-        }
-        tmp_called_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[24]);
-        Py_DECREF(tmp_expression_value_5);
-        if (tmp_called_value_2 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 188;
-            type_description_1 = "o";
-            goto frame_exception_exit_1;
-        }
-        CHECK_OBJECT(par_self);
-        tmp_expression_value_11 = par_self;
-        tmp_expression_value_10 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_11, mod_consts[11]);
-        if (tmp_expression_value_10 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-            Py_DECREF(tmp_called_value_2);
-
-            exception_lineno = 188;
-            type_description_1 = "o";
-            goto frame_exception_exit_1;
-        }
-        tmp_expression_value_9 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_10, mod_consts[29]);
-        Py_DECREF(tmp_expression_value_10);
-        if (tmp_expression_value_9 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-            Py_DECREF(tmp_called_value_2);
-
-            exception_lineno = 188;
-            type_description_1 = "o";
-            goto frame_exception_exit_1;
-        }
-        CHECK_OBJECT(par_self);
-        tmp_expression_value_12 = par_self;
-        tmp_subscript_value_3 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_12, mod_consts[45]);
-        if (tmp_subscript_value_3 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-            Py_DECREF(tmp_called_value_2);
-            Py_DECREF(tmp_expression_value_9);
-
-            exception_lineno = 188;
-            type_description_1 = "o";
-            goto frame_exception_exit_1;
-        }
-        tmp_args_element_value_1 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_9, tmp_subscript_value_3);
-        Py_DECREF(tmp_expression_value_9);
-        Py_DECREF(tmp_subscript_value_3);
-        if (tmp_args_element_value_1 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-            Py_DECREF(tmp_called_value_2);
-
-            exception_lineno = 188;
-            type_description_1 = "o";
-            goto frame_exception_exit_1;
-        }
-        frame_c271e19e9778591c098dde4bb8c2df6f->m_frame.f_lineno = 188;
-        tmp_call_result_2 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_2, tmp_args_element_value_1);
-        Py_DECREF(tmp_called_value_2);
-        Py_DECREF(tmp_args_element_value_1);
-        if (tmp_call_result_2 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 188;
-            type_description_1 = "o";
-            goto frame_exception_exit_1;
-        }
-        Py_DECREF(tmp_call_result_2);
     }
 
 
@@ -9890,42 +9745,42 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__34_remove_effect(
 
     // Local variable declarations.
     PyObject *par_self = python_pars[0];
-    struct Nuitka_FrameObject *frame_33d457f8218b91d0d8912c1d474c4dcb;
+    struct Nuitka_FrameObject *frame_1a51808d6ab4d65f1f917268f97b77c9;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
     NUITKA_MAY_BE_UNUSED nuitka_void tmp_unused;
     PyObject *exception_type = NULL;
     PyObject *exception_value = NULL;
     PyTracebackObject *exception_tb = NULL;
     NUITKA_MAY_BE_UNUSED int exception_lineno = 0;
-    static struct Nuitka_FrameObject *cache_frame_33d457f8218b91d0d8912c1d474c4dcb = NULL;
+    static struct Nuitka_FrameObject *cache_frame_1a51808d6ab4d65f1f917268f97b77c9 = NULL;
     PyObject *tmp_return_value = NULL;
 
     // Actual function body.
-    if (isFrameUnusable(cache_frame_33d457f8218b91d0d8912c1d474c4dcb)) {
-        Py_XDECREF(cache_frame_33d457f8218b91d0d8912c1d474c4dcb);
+    if (isFrameUnusable(cache_frame_1a51808d6ab4d65f1f917268f97b77c9)) {
+        Py_XDECREF(cache_frame_1a51808d6ab4d65f1f917268f97b77c9);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_33d457f8218b91d0d8912c1d474c4dcb == NULL) {
+        if (cache_frame_1a51808d6ab4d65f1f917268f97b77c9 == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_33d457f8218b91d0d8912c1d474c4dcb = MAKE_FUNCTION_FRAME(tstate, codeobj_33d457f8218b91d0d8912c1d474c4dcb, module_schools$bing_xin_jue$talents, sizeof(void *));
+        cache_frame_1a51808d6ab4d65f1f917268f97b77c9 = MAKE_FUNCTION_FRAME(tstate, codeobj_1a51808d6ab4d65f1f917268f97b77c9, module_schools$bing_xin_jue$talents, sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_33d457f8218b91d0d8912c1d474c4dcb->m_type_description == NULL);
-    frame_33d457f8218b91d0d8912c1d474c4dcb = cache_frame_33d457f8218b91d0d8912c1d474c4dcb;
+    assert(cache_frame_1a51808d6ab4d65f1f917268f97b77c9->m_type_description == NULL);
+    frame_1a51808d6ab4d65f1f917268f97b77c9 = cache_frame_1a51808d6ab4d65f1f917268f97b77c9;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_33d457f8218b91d0d8912c1d474c4dcb);
-    assert(Py_REFCNT(frame_33d457f8218b91d0d8912c1d474c4dcb) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_1a51808d6ab4d65f1f917268f97b77c9);
+    assert(Py_REFCNT(frame_1a51808d6ab4d65f1f917268f97b77c9) == 2);
 
     // Framed code:
     {
@@ -9945,7 +9800,7 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__34_remove_effect(
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 192;
+            exception_lineno = 191;
             type_description_1 = "o";
             goto frame_exception_exit_1;
         }
@@ -9957,7 +9812,7 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__34_remove_effect(
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 192;
+            exception_lineno = 191;
             type_description_1 = "o";
             goto frame_exception_exit_1;
         }
@@ -9970,7 +9825,7 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__34_remove_effect(
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 192;
+            exception_lineno = 191;
             type_description_1 = "o";
             goto frame_exception_exit_1;
         }
@@ -9982,11 +9837,11 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__34_remove_effect(
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 192;
+            exception_lineno = 191;
             type_description_1 = "o";
             goto frame_exception_exit_1;
         }
-        frame_33d457f8218b91d0d8912c1d474c4dcb->m_frame.f_lineno = 192;
+        frame_1a51808d6ab4d65f1f917268f97b77c9->m_frame.f_lineno = 191;
         tmp_call_result_1 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_1);
         Py_DECREF(tmp_called_value_1);
         if (tmp_call_result_1 == NULL) {
@@ -9995,7 +9850,7 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__34_remove_effect(
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 192;
+            exception_lineno = 191;
             type_description_1 = "o";
             goto frame_exception_exit_1;
         }
@@ -10011,30 +9866,30 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__34_remove_effect(
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_33d457f8218b91d0d8912c1d474c4dcb, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_33d457f8218b91d0d8912c1d474c4dcb->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_33d457f8218b91d0d8912c1d474c4dcb, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_1a51808d6ab4d65f1f917268f97b77c9, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_1a51808d6ab4d65f1f917268f97b77c9->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_1a51808d6ab4d65f1f917268f97b77c9, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_33d457f8218b91d0d8912c1d474c4dcb,
+        frame_1a51808d6ab4d65f1f917268f97b77c9,
         type_description_1,
         par_self
     );
 
 
     // Release cached frame if used for exception.
-    if (frame_33d457f8218b91d0d8912c1d474c4dcb == cache_frame_33d457f8218b91d0d8912c1d474c4dcb) {
+    if (frame_1a51808d6ab4d65f1f917268f97b77c9 == cache_frame_1a51808d6ab4d65f1f917268f97b77c9) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_33d457f8218b91d0d8912c1d474c4dcb);
-        cache_frame_33d457f8218b91d0d8912c1d474c4dcb = NULL;
+        Py_DECREF(cache_frame_1a51808d6ab4d65f1f917268f97b77c9);
+        cache_frame_1a51808d6ab4d65f1f917268f97b77c9 = NULL;
     }
 
-    assertFrameObject(frame_33d457f8218b91d0d8912c1d474c4dcb);
+    assertFrameObject(frame_1a51808d6ab4d65f1f917268f97b77c9);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
@@ -10079,42 +9934,42 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__35___call__(PyThr
     // Local variable declarations.
     PyObject *par_self = python_pars[0];
     PyObject *par_status = python_pars[1];
-    struct Nuitka_FrameObject *frame_a347541e45f6b6026e3a21502b9b30d8;
+    struct Nuitka_FrameObject *frame_a0944597170690aac1fb84bf586ea28d;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
     NUITKA_MAY_BE_UNUSED nuitka_void tmp_unused;
     PyObject *exception_type = NULL;
     PyObject *exception_value = NULL;
     PyTracebackObject *exception_tb = NULL;
     NUITKA_MAY_BE_UNUSED int exception_lineno = 0;
-    static struct Nuitka_FrameObject *cache_frame_a347541e45f6b6026e3a21502b9b30d8 = NULL;
+    static struct Nuitka_FrameObject *cache_frame_a0944597170690aac1fb84bf586ea28d = NULL;
     PyObject *tmp_return_value = NULL;
 
     // Actual function body.
-    if (isFrameUnusable(cache_frame_a347541e45f6b6026e3a21502b9b30d8)) {
-        Py_XDECREF(cache_frame_a347541e45f6b6026e3a21502b9b30d8);
+    if (isFrameUnusable(cache_frame_a0944597170690aac1fb84bf586ea28d)) {
+        Py_XDECREF(cache_frame_a0944597170690aac1fb84bf586ea28d);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_a347541e45f6b6026e3a21502b9b30d8 == NULL) {
+        if (cache_frame_a0944597170690aac1fb84bf586ea28d == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_a347541e45f6b6026e3a21502b9b30d8 = MAKE_FUNCTION_FRAME(tstate, codeobj_a347541e45f6b6026e3a21502b9b30d8, module_schools$bing_xin_jue$talents, sizeof(void *)+sizeof(void *));
+        cache_frame_a0944597170690aac1fb84bf586ea28d = MAKE_FUNCTION_FRAME(tstate, codeobj_a0944597170690aac1fb84bf586ea28d, module_schools$bing_xin_jue$talents, sizeof(void *)+sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_a347541e45f6b6026e3a21502b9b30d8->m_type_description == NULL);
-    frame_a347541e45f6b6026e3a21502b9b30d8 = cache_frame_a347541e45f6b6026e3a21502b9b30d8;
+    assert(cache_frame_a0944597170690aac1fb84bf586ea28d->m_type_description == NULL);
+    frame_a0944597170690aac1fb84bf586ea28d = cache_frame_a0944597170690aac1fb84bf586ea28d;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_a347541e45f6b6026e3a21502b9b30d8);
-    assert(Py_REFCNT(frame_a347541e45f6b6026e3a21502b9b30d8) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_a0944597170690aac1fb84bf586ea28d);
+    assert(Py_REFCNT(frame_a0944597170690aac1fb84bf586ea28d) == 2);
 
     // Framed code:
     {
@@ -10136,7 +9991,7 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__35___call__(PyThr
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 195;
+            exception_lineno = 194;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -10149,7 +10004,7 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__35___call__(PyThr
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 195;
+            exception_lineno = 194;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -10161,7 +10016,7 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__35___call__(PyThr
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 195;
+            exception_lineno = 194;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -10173,7 +10028,7 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__35___call__(PyThr
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 195;
+            exception_lineno = 194;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -10186,11 +10041,11 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__35___call__(PyThr
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_called_value_1);
 
-            exception_lineno = 195;
+            exception_lineno = 194;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
-        frame_a347541e45f6b6026e3a21502b9b30d8->m_frame.f_lineno = 195;
+        frame_a0944597170690aac1fb84bf586ea28d->m_frame.f_lineno = 194;
         tmp_call_result_1 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_1, tmp_args_element_value_1);
         Py_DECREF(tmp_called_value_1);
         Py_DECREF(tmp_args_element_value_1);
@@ -10200,7 +10055,7 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__35___call__(PyThr
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 195;
+            exception_lineno = 194;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -10225,7 +10080,7 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__35___call__(PyThr
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 196;
+            exception_lineno = 195;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -10238,7 +10093,7 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__35___call__(PyThr
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 196;
+            exception_lineno = 195;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -10250,7 +10105,7 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__35___call__(PyThr
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 196;
+            exception_lineno = 195;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -10262,7 +10117,7 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__35___call__(PyThr
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 196;
+            exception_lineno = 195;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -10275,11 +10130,11 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__35___call__(PyThr
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_called_value_2);
 
-            exception_lineno = 196;
+            exception_lineno = 195;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
-        frame_a347541e45f6b6026e3a21502b9b30d8->m_frame.f_lineno = 196;
+        frame_a0944597170690aac1fb84bf586ea28d->m_frame.f_lineno = 195;
         tmp_call_result_2 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_2, tmp_args_element_value_2);
         Py_DECREF(tmp_called_value_2);
         Py_DECREF(tmp_args_element_value_2);
@@ -10289,7 +10144,7 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__35___call__(PyThr
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 196;
+            exception_lineno = 195;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -10305,14 +10160,14 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__35___call__(PyThr
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_a347541e45f6b6026e3a21502b9b30d8, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_a347541e45f6b6026e3a21502b9b30d8->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_a347541e45f6b6026e3a21502b9b30d8, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_a0944597170690aac1fb84bf586ea28d, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_a0944597170690aac1fb84bf586ea28d->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_a0944597170690aac1fb84bf586ea28d, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_a347541e45f6b6026e3a21502b9b30d8,
+        frame_a0944597170690aac1fb84bf586ea28d,
         type_description_1,
         par_self,
         par_status
@@ -10320,16 +10175,16 @@ static PyObject *impl_schools$bing_xin_jue$talents$$$function__35___call__(PyThr
 
 
     // Release cached frame if used for exception.
-    if (frame_a347541e45f6b6026e3a21502b9b30d8 == cache_frame_a347541e45f6b6026e3a21502b9b30d8) {
+    if (frame_a0944597170690aac1fb84bf586ea28d == cache_frame_a0944597170690aac1fb84bf586ea28d) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_a347541e45f6b6026e3a21502b9b30d8);
-        cache_frame_a347541e45f6b6026e3a21502b9b30d8 = NULL;
+        Py_DECREF(cache_frame_a0944597170690aac1fb84bf586ea28d);
+        cache_frame_a0944597170690aac1fb84bf586ea28d = NULL;
     }
 
-    assertFrameObject(frame_a347541e45f6b6026e3a21502b9b30d8);
+    assertFrameObject(frame_a0944597170690aac1fb84bf586ea28d);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
@@ -11027,7 +10882,7 @@ static PyObject *MAKE_FUNCTION_schools$bing_xin_jue$talents$$$function__34_remov
 #if PYTHON_VERSION >= 0x300
         mod_consts[133],
 #endif
-        codeobj_33d457f8218b91d0d8912c1d474c4dcb,
+        codeobj_1a51808d6ab4d65f1f917268f97b77c9,
         NULL,
 #if PYTHON_VERSION >= 0x300
         NULL,
@@ -11052,7 +10907,7 @@ static PyObject *MAKE_FUNCTION_schools$bing_xin_jue$talents$$$function__35___cal
 #if PYTHON_VERSION >= 0x300
         mod_consts[134],
 #endif
-        codeobj_a347541e45f6b6026e3a21502b9b30d8,
+        codeobj_a0944597170690aac1fb84bf586ea28d,
         NULL,
 #if PYTHON_VERSION >= 0x300
         NULL,
@@ -17435,7 +17290,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 191;
+                exception_lineno = 190;
                 type_description_2 = "o";
                 goto frame_exception_exit_19;
             }
@@ -17454,7 +17309,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 190;
+                exception_lineno = 189;
                 type_description_2 = "o";
                 goto frame_exception_exit_19;
             }
@@ -17466,7 +17321,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 191;
+                exception_lineno = 190;
                 type_description_2 = "o";
                 goto frame_exception_exit_19;
             }
@@ -17488,7 +17343,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 194;
+                exception_lineno = 193;
                 type_description_2 = "o";
                 goto frame_exception_exit_19;
             }
@@ -17507,7 +17362,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 194;
+                exception_lineno = 193;
                 type_description_2 = "o";
                 goto frame_exception_exit_19;
             }
@@ -17704,11 +17559,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 214;
+            exception_lineno = 213;
 
             goto frame_exception_exit_1;
         }
-        frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 214;
+        frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 213;
         tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_20);
         if (tmp_dict_value_36 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -17716,7 +17571,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 214;
+            exception_lineno = 213;
 
             goto frame_exception_exit_1;
         }
@@ -17756,11 +17611,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 215;
+                exception_lineno = 214;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 215;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 214;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_21);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -17768,7 +17623,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 215;
+                exception_lineno = 214;
 
                 goto dict_build_exception_1;
             }
@@ -17788,11 +17643,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 216;
+                exception_lineno = 215;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 216;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 215;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_22);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -17800,7 +17655,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 216;
+                exception_lineno = 215;
 
                 goto dict_build_exception_1;
             }
@@ -17820,11 +17675,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 217;
+                exception_lineno = 216;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 217;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 216;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_23);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -17832,7 +17687,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 217;
+                exception_lineno = 216;
 
                 goto dict_build_exception_1;
             }
@@ -17852,11 +17707,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 218;
+                exception_lineno = 217;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 218;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 217;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_24);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -17864,7 +17719,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 218;
+                exception_lineno = 217;
 
                 goto dict_build_exception_1;
             }
@@ -17884,11 +17739,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 219;
+                exception_lineno = 218;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 219;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 218;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_25);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -17896,7 +17751,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 219;
+                exception_lineno = 218;
 
                 goto dict_build_exception_1;
             }
@@ -17916,11 +17771,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 220;
+                exception_lineno = 219;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 220;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 219;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_26);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -17928,7 +17783,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 220;
+                exception_lineno = 219;
 
                 goto dict_build_exception_1;
             }
@@ -17948,11 +17803,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 221;
+                exception_lineno = 220;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 221;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 220;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_27);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -17960,7 +17815,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 221;
+                exception_lineno = 220;
 
                 goto dict_build_exception_1;
             }
@@ -17980,11 +17835,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 222;
+                exception_lineno = 221;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 222;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 221;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_28);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -17992,7 +17847,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 222;
+                exception_lineno = 221;
 
                 goto dict_build_exception_1;
             }
@@ -18012,11 +17867,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 223;
+                exception_lineno = 222;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 223;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 222;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_29);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -18024,7 +17879,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 223;
+                exception_lineno = 222;
 
                 goto dict_build_exception_1;
             }
@@ -18044,11 +17899,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 224;
+                exception_lineno = 223;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 224;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 223;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_30);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -18056,7 +17911,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 224;
+                exception_lineno = 223;
 
                 goto dict_build_exception_1;
             }
@@ -18076,11 +17931,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 225;
+                exception_lineno = 224;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 225;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 224;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_31);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -18088,7 +17943,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 225;
+                exception_lineno = 224;
 
                 goto dict_build_exception_1;
             }
@@ -18108,11 +17963,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 226;
+                exception_lineno = 225;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 226;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 225;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_32);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -18120,7 +17975,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 226;
+                exception_lineno = 225;
 
                 goto dict_build_exception_1;
             }
@@ -18140,11 +17995,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 227;
+                exception_lineno = 226;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 227;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 226;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_33);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -18152,7 +18007,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 227;
+                exception_lineno = 226;
 
                 goto dict_build_exception_1;
             }
@@ -18172,11 +18027,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 228;
+                exception_lineno = 227;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 228;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 227;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_34);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -18184,7 +18039,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 228;
+                exception_lineno = 227;
 
                 goto dict_build_exception_1;
             }
@@ -18204,11 +18059,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 229;
+                exception_lineno = 228;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 229;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 228;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_35);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -18216,7 +18071,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 229;
+                exception_lineno = 228;
 
                 goto dict_build_exception_1;
             }
@@ -18236,11 +18091,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 230;
+                exception_lineno = 229;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 230;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 229;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_36);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -18248,7 +18103,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 230;
+                exception_lineno = 229;
 
                 goto dict_build_exception_1;
             }
@@ -18268,11 +18123,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 231;
+                exception_lineno = 230;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 231;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 230;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_37);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -18280,7 +18135,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 231;
+                exception_lineno = 230;
 
                 goto dict_build_exception_1;
             }
@@ -18300,11 +18155,11 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 232;
+                exception_lineno = 231;
 
                 goto dict_build_exception_1;
             }
-            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 232;
+            frame_ec8753f0746c21393200dbba90f75543->m_frame.f_lineno = 231;
             tmp_dict_value_36 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_38);
             if (tmp_dict_value_36 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -18312,7 +18167,7 @@ PyObject *modulecode_schools$bing_xin_jue$talents(PyThreadState *tstate, PyObjec
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 232;
+                exception_lineno = 231;
 
                 goto dict_build_exception_1;
             }

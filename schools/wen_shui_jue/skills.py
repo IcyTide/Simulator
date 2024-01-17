@@ -455,6 +455,21 @@ class 飞来闻踪(CastingSkill):
         self.status.skills["飞来"].cast()
 
 
+class 云飞玉皇_神兵(TriggerSkill, PhysicalDamage):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "云飞玉皇·神兵"
+
+        self.is_cast = False
+        self.is_hit = False
+
+        self.probability = 307 / 1024
+
+        self.damage_base = 20
+        self.damage_rand = 2
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(60)
+
+
 SKILLS_MAP = {
     "通用": [三柴剑法, 四季剑法, 断潮, 破, 剑气衰减],
     "君子风": [啸日, 听雷],

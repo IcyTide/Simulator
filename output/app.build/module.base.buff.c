@@ -33,9 +33,9 @@ PyObject *module_base$buff;
 PyDictObject *moduledict_base$buff;
 
 /* The declarations of module constants used, if any. */
-static PyObject *mod_consts[121];
+static PyObject *mod_consts[126];
 #ifndef __NUITKA_NO_ASSERT__
-static Py_hash_t mod_consts_hash[121];
+static Py_hash_t mod_consts_hash[126];
 #endif
 
 static PyObject *module_filename_obj = NULL;
@@ -50,7 +50,7 @@ static void createModuleConstants(PyThreadState *tstate) {
         constants_created = true;
 
 #ifndef __NUITKA_NO_ASSERT__
-        for (int i = 0; i < 121; i++) {
+        for (int i = 0; i < 126; i++) {
             mod_consts_hash[i] = DEEP_HASH(tstate, mod_consts[i]);
         }
 #endif
@@ -70,7 +70,7 @@ void checkModuleConstants_base$buff(PyThreadState *tstate) {
     // The module may not have been used at all, then ignore this.
     if (constants_created == false) return;
 
-    for (int i = 0; i < 121; i++) {
+    for (int i = 0; i < 126; i++) {
         assert(mod_consts_hash[i] == DEEP_HASH(tstate, mod_consts[i]));
         CHECK_OBJECT_DEEP(mod_consts[i]);
     }
@@ -80,63 +80,69 @@ void checkModuleConstants_base$buff(PyThreadState *tstate) {
 // The module code objects.
 static PyCodeObject *codeobj_60454b0fdc4335c529e0edbf73a1357e;
 static PyCodeObject *codeobj_4a68a44e422c438b15ab3fd18898c1c5;
-static PyCodeObject *codeobj_e21701fd825860f9352c708525b61ec0;
-static PyCodeObject *codeobj_06e85d187ca3dba7cabf54eeb8a2c948;
-static PyCodeObject *codeobj_d2cdb8a6e068299892acdda3afa1ff19;
-static PyCodeObject *codeobj_0d6a955fd3c5938b1e1ecf4b2975a734;
-static PyCodeObject *codeobj_59f1c54ad2591128370dcc54eb126868;
-static PyCodeObject *codeobj_755313176f2e02236f3250176e450dd4;
+static PyCodeObject *codeobj_d51931bfb6a2f957b2396491e483aed9;
+static PyCodeObject *codeobj_eb6c89fab1c1de5eb4091cf9dd160acd;
+static PyCodeObject *codeobj_243a78ba8956893e6af9bbd02f2cfb3e;
+static PyCodeObject *codeobj_aacbad17084a04da95ae464ac3594415;
+static PyCodeObject *codeobj_065a2e898d11daf53c130dbe6cdc32f9;
+static PyCodeObject *codeobj_2de50f511f8c7caaf9ab18f248625d21;
+static PyCodeObject *codeobj_8366f9f360f761f57874b9d12618e857;
 static PyCodeObject *codeobj_29d4b8cedb7fdd90763a9c373f6e320b;
-static PyCodeObject *codeobj_b6f5baa27d9224103c080f50b50c41fd;
-static PyCodeObject *codeobj_3193481407dfacac742bd1cb16f2d016;
-static PyCodeObject *codeobj_0ad42aae47f3fff1b3f6bd2c74d8e03d;
-static PyCodeObject *codeobj_413049defd2e8bab0f2305cbcc2514ba;
-static PyCodeObject *codeobj_11fa9888dafb4ca4896ca7ea323a330d;
-static PyCodeObject *codeobj_5e630ff32dd6aae4b066d7ee700e6ad7;
-static PyCodeObject *codeobj_9392da601695d790f59e697f80e308f5;
-static PyCodeObject *codeobj_6d734e4d558cabe84fb463255f23e68f;
-static PyCodeObject *codeobj_3d5eecb2551f1ff7dc1dd05b248f79db;
-static PyCodeObject *codeobj_51926d0dd8c9feeac28b424925c1c60e;
-static PyCodeObject *codeobj_a107b85ca742f3f139d54db115cbf96f;
-static PyCodeObject *codeobj_895d81e2cee479c74880ab74e8260525;
-static PyCodeObject *codeobj_1b15ae343668e30fe8dee5e3a6847375;
+static PyCodeObject *codeobj_824b41d9820926acea2c55dd0d5c6045;
+static PyCodeObject *codeobj_6c6ff60554698975f140badb1b5a174b;
+static PyCodeObject *codeobj_95fa4b63bdbde71cd375338c56b720b2;
+static PyCodeObject *codeobj_e791bea657f3cfedfd8e66b944450813;
+static PyCodeObject *codeobj_59f90e5311ae01284de10fa281e00120;
+static PyCodeObject *codeobj_0d398fe981f62f7a07b3093e6d8d0856;
+static PyCodeObject *codeobj_66b25db2102bcaf83de48673c04f8e1c;
+static PyCodeObject *codeobj_7ce6e801b5538577cd06c31605b9fd60;
+static PyCodeObject *codeobj_708bc1a9253563c4d742c21f62a84ccf;
+static PyCodeObject *codeobj_1fb92d1155fb4133c2305e18e2880f34;
+static PyCodeObject *codeobj_60fbc4d2c0df6d8b5811b83a24d14e7e;
+static PyCodeObject *codeobj_90d1910a42824c2443a6fb5f102c5529;
+static PyCodeObject *codeobj_b572e5f5458537a13f92e0986fa6d22d;
+static PyCodeObject *codeobj_aa889ebed17e109732bcc5f436c30be2;
+static PyCodeObject *codeobj_1a410e84a265a23c06fb8798ec90c22b;
 static PyCodeObject *codeobj_b76a86de7b7ec06c4afbf8531b869302;
 static PyCodeObject *codeobj_b422e671aedc4107bcbdd7c30446e854;
-static PyCodeObject *codeobj_1c77b51a7aa5121433b22dd135d900e6;
-static PyCodeObject *codeobj_a5ed54d008a9fbfac3294a96f04f0354;
-static PyCodeObject *codeobj_e5de36bf9bbd30ebd969b490a2c8df81;
-static PyCodeObject *codeobj_e8458d2d4d3a71b031e2b9a8fdac5c70;
+static PyCodeObject *codeobj_034b78b8c0d1a41dd8f4604c1ffee317;
+static PyCodeObject *codeobj_f8e6b552fa24dc9496fa81318ac01d64;
+static PyCodeObject *codeobj_7cfc21170008e5e545103c8c20b2e549;
+static PyCodeObject *codeobj_fc17f86ba5a81b7828d31f950f67e154;
 
 static void createModuleCodeObjects(void) {
-    module_filename_obj = MAKE_RELATIVE_PATH(mod_consts[105]); CHECK_OBJECT(module_filename_obj);
-    codeobj_60454b0fdc4335c529e0edbf73a1357e = MAKE_CODE_OBJECT(module_filename_obj, 1, 0, mod_consts[106], mod_consts[106], NULL, NULL, 0, 0, 0);
-    codeobj_4a68a44e422c438b15ab3fd18898c1c5 = MAKE_CODE_OBJECT(module_filename_obj, 8, 0, mod_consts[54], mod_consts[54], mod_consts[107], NULL, 0, 0, 0);
-    codeobj_e21701fd825860f9352c708525b61ec0 = MAKE_CODE_OBJECT(module_filename_obj, 94, 0, mod_consts[85], mod_consts[85], mod_consts[107], NULL, 0, 0, 0);
-    codeobj_06e85d187ca3dba7cabf54eeb8a2c948 = MAKE_CODE_OBJECT(module_filename_obj, 135, 0, mod_consts[97], mod_consts[97], mod_consts[107], NULL, 0, 0, 0);
-    codeobj_d2cdb8a6e068299892acdda3afa1ff19 = MAKE_CODE_OBJECT(module_filename_obj, 85, 0, mod_consts[81], mod_consts[81], mod_consts[107], NULL, 0, 0, 0);
-    codeobj_0d6a955fd3c5938b1e1ecf4b2975a734 = MAKE_CODE_OBJECT(module_filename_obj, 108, 0, mod_consts[89], mod_consts[89], mod_consts[107], NULL, 0, 0, 0);
-    codeobj_59f1c54ad2591128370dcc54eb126868 = MAKE_CODE_OBJECT(module_filename_obj, 103, 0, mod_consts[87], mod_consts[87], mod_consts[107], NULL, 0, 0, 0);
-    codeobj_755313176f2e02236f3250176e450dd4 = MAKE_CODE_OBJECT(module_filename_obj, 77, 0, mod_consts[73], mod_consts[73], mod_consts[107], NULL, 0, 0, 0);
-    codeobj_29d4b8cedb7fdd90763a9c373f6e320b = MAKE_CODE_OBJECT(module_filename_obj, 23, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[31], mod_consts[31], mod_consts[108], NULL, 1, 0, 0);
-    codeobj_b6f5baa27d9224103c080f50b50c41fd = MAKE_CODE_OBJECT(module_filename_obj, 110, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[31], mod_consts[31], mod_consts[109], mod_consts[107], 1, 0, 0);
-    codeobj_3193481407dfacac742bd1cb16f2d016 = MAKE_CODE_OBJECT(module_filename_obj, 136, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[31], mod_consts[31], mod_consts[109], mod_consts[107], 1, 0, 0);
-    codeobj_0ad42aae47f3fff1b3f6bd2c74d8e03d = MAKE_CODE_OBJECT(module_filename_obj, 115, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[19], mod_consts[19], mod_consts[109], mod_consts[107], 1, 0, 0);
-    codeobj_413049defd2e8bab0f2305cbcc2514ba = MAKE_CODE_OBJECT(module_filename_obj, 37, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[19], mod_consts[19], mod_consts[110], NULL, 1, 0, 0);
-    codeobj_11fa9888dafb4ca4896ca7ea323a330d = MAKE_CODE_OBJECT(module_filename_obj, 72, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[69], mod_consts[69], mod_consts[111], NULL, 1, 0, 0);
-    codeobj_5e630ff32dd6aae4b066d7ee700e6ad7 = MAKE_CODE_OBJECT(module_filename_obj, 63, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[67], mod_consts[67], mod_consts[112], NULL, 2, 0, 0);
-    codeobj_9392da601695d790f59e697f80e308f5 = MAKE_CODE_OBJECT(module_filename_obj, 147, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[101], mod_consts[101], mod_consts[113], NULL, 2, 0, 0);
-    codeobj_6d734e4d558cabe84fb463255f23e68f = MAKE_CODE_OBJECT(module_filename_obj, 89, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[83], mod_consts[83], mod_consts[114], NULL, 1, 0, 0);
-    codeobj_3d5eecb2551f1ff7dc1dd05b248f79db = MAKE_CODE_OBJECT(module_filename_obj, 126, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[93], mod_consts[93], mod_consts[115], NULL, 3, 0, 0);
-    codeobj_51926d0dd8c9feeac28b424925c1c60e = MAKE_CODE_OBJECT(module_filename_obj, 141, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[99], mod_consts[99], mod_consts[113], NULL, 2, 0, 0);
-    codeobj_a107b85ca742f3f139d54db115cbf96f = MAKE_CODE_OBJECT(module_filename_obj, 42, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[21], mod_consts[21], mod_consts[110], NULL, 1, 0, 0);
-    codeobj_895d81e2cee479c74880ab74e8260525 = MAKE_CODE_OBJECT(module_filename_obj, 119, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[21], mod_consts[21], mod_consts[116], mod_consts[107], 1, 0, 0);
-    codeobj_1b15ae343668e30fe8dee5e3a6847375 = MAKE_CODE_OBJECT(module_filename_obj, 130, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[95], mod_consts[95], mod_consts[115], NULL, 3, 0, 0);
-    codeobj_b76a86de7b7ec06c4afbf8531b869302 = MAKE_CODE_OBJECT(module_filename_obj, 30, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[22], mod_consts[22], mod_consts[108], NULL, 1, 0, 0);
-    codeobj_b422e671aedc4107bcbdd7c30446e854 = MAKE_CODE_OBJECT(module_filename_obj, 33, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[16], mod_consts[16], mod_consts[108], NULL, 1, 0, 0);
-    codeobj_1c77b51a7aa5121433b22dd135d900e6 = MAKE_CODE_OBJECT(module_filename_obj, 104, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[16], mod_consts[16], mod_consts[108], NULL, 1, 0, 0);
-    codeobj_a5ed54d008a9fbfac3294a96f04f0354 = MAKE_CODE_OBJECT(module_filename_obj, 95, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[16], mod_consts[16], mod_consts[117], NULL, 1, 0, 0);
-    codeobj_e5de36bf9bbd30ebd969b490a2c8df81 = MAKE_CODE_OBJECT(module_filename_obj, 50, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[25], mod_consts[25], mod_consts[118], NULL, 3, 0, 0);
-    codeobj_e8458d2d4d3a71b031e2b9a8fdac5c70 = MAKE_CODE_OBJECT(module_filename_obj, 80, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[25], mod_consts[25], mod_consts[119], mod_consts[107], 3, 0, 0);
+    module_filename_obj = MAKE_RELATIVE_PATH(mod_consts[112]); CHECK_OBJECT(module_filename_obj);
+    codeobj_60454b0fdc4335c529e0edbf73a1357e = MAKE_CODE_OBJECT(module_filename_obj, 1, 0, mod_consts[113], mod_consts[113], NULL, NULL, 0, 0, 0);
+    codeobj_4a68a44e422c438b15ab3fd18898c1c5 = MAKE_CODE_OBJECT(module_filename_obj, 8, 0, mod_consts[56], mod_consts[56], mod_consts[114], NULL, 0, 0, 0);
+    codeobj_d51931bfb6a2f957b2396491e483aed9 = MAKE_CODE_OBJECT(module_filename_obj, 99, 0, mod_consts[89], mod_consts[89], mod_consts[114], NULL, 0, 0, 0);
+    codeobj_eb6c89fab1c1de5eb4091cf9dd160acd = MAKE_CODE_OBJECT(module_filename_obj, 160, 0, mod_consts[104], mod_consts[104], mod_consts[114], NULL, 0, 0, 0);
+    codeobj_243a78ba8956893e6af9bbd02f2cfb3e = MAKE_CODE_OBJECT(module_filename_obj, 90, 0, mod_consts[85], mod_consts[85], mod_consts[114], NULL, 0, 0, 0);
+    codeobj_aacbad17084a04da95ae464ac3594415 = MAKE_CODE_OBJECT(module_filename_obj, 113, 0, mod_consts[93], mod_consts[93], mod_consts[114], NULL, 0, 0, 0);
+    codeobj_065a2e898d11daf53c130dbe6cdc32f9 = MAKE_CODE_OBJECT(module_filename_obj, 108, 0, mod_consts[91], mod_consts[91], mod_consts[114], NULL, 0, 0, 0);
+    codeobj_2de50f511f8c7caaf9ab18f248625d21 = MAKE_CODE_OBJECT(module_filename_obj, 144, 0, mod_consts[101], mod_consts[101], mod_consts[114], NULL, 0, 0, 0);
+    codeobj_8366f9f360f761f57874b9d12618e857 = MAKE_CODE_OBJECT(module_filename_obj, 82, 0, mod_consts[77], mod_consts[77], mod_consts[114], NULL, 0, 0, 0);
+    codeobj_29d4b8cedb7fdd90763a9c373f6e320b = MAKE_CODE_OBJECT(module_filename_obj, 23, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[30], mod_consts[30], mod_consts[115], NULL, 1, 0, 0);
+    codeobj_824b41d9820926acea2c55dd0d5c6045 = MAKE_CODE_OBJECT(module_filename_obj, 115, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[30], mod_consts[30], mod_consts[116], mod_consts[114], 1, 0, 0);
+    codeobj_6c6ff60554698975f140badb1b5a174b = MAKE_CODE_OBJECT(module_filename_obj, 161, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[30], mod_consts[30], mod_consts[116], mod_consts[114], 1, 0, 0);
+    codeobj_95fa4b63bdbde71cd375338c56b720b2 = MAKE_CODE_OBJECT(module_filename_obj, 37, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[18], mod_consts[18], mod_consts[117], NULL, 2, 0, 0);
+    codeobj_e791bea657f3cfedfd8e66b944450813 = MAKE_CODE_OBJECT(module_filename_obj, 121, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[18], mod_consts[18], mod_consts[118], mod_consts[114], 2, 0, 0);
+    codeobj_59f90e5311ae01284de10fa281e00120 = MAKE_CODE_OBJECT(module_filename_obj, 145, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[18], mod_consts[18], mod_consts[118], mod_consts[114], 2, 0, 0);
+    codeobj_0d398fe981f62f7a07b3093e6d8d0856 = MAKE_CODE_OBJECT(module_filename_obj, 78, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[73], mod_consts[73], mod_consts[115], NULL, 1, 0, 0);
+    codeobj_66b25db2102bcaf83de48673c04f8e1c = MAKE_CODE_OBJECT(module_filename_obj, 72, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[71], mod_consts[71], mod_consts[119], NULL, 2, 0, 0);
+    codeobj_7ce6e801b5538577cd06c31605b9fd60 = MAKE_CODE_OBJECT(module_filename_obj, 172, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[108], mod_consts[108], mod_consts[120], NULL, 2, 0, 0);
+    codeobj_708bc1a9253563c4d742c21f62a84ccf = MAKE_CODE_OBJECT(module_filename_obj, 94, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[87], mod_consts[87], mod_consts[121], NULL, 1, 0, 0);
+    codeobj_1fb92d1155fb4133c2305e18e2880f34 = MAKE_CODE_OBJECT(module_filename_obj, 135, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[97], mod_consts[97], mod_consts[122], NULL, 3, 0, 0);
+    codeobj_60fbc4d2c0df6d8b5811b83a24d14e7e = MAKE_CODE_OBJECT(module_filename_obj, 166, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[106], mod_consts[106], mod_consts[120], NULL, 2, 0, 0);
+    codeobj_90d1910a42824c2443a6fb5f102c5529 = MAKE_CODE_OBJECT(module_filename_obj, 47, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[20], mod_consts[20], mod_consts[117], NULL, 2, 0, 0);
+    codeobj_b572e5f5458537a13f92e0986fa6d22d = MAKE_CODE_OBJECT(module_filename_obj, 126, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[20], mod_consts[20], mod_consts[118], mod_consts[114], 2, 0, 0);
+    codeobj_aa889ebed17e109732bcc5f436c30be2 = MAKE_CODE_OBJECT(module_filename_obj, 150, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[20], mod_consts[20], mod_consts[118], mod_consts[114], 2, 0, 0);
+    codeobj_1a410e84a265a23c06fb8798ec90c22b = MAKE_CODE_OBJECT(module_filename_obj, 139, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[99], mod_consts[99], mod_consts[122], NULL, 3, 0, 0);
+    codeobj_b76a86de7b7ec06c4afbf8531b869302 = MAKE_CODE_OBJECT(module_filename_obj, 30, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[21], mod_consts[21], mod_consts[115], NULL, 1, 0, 0);
+    codeobj_b422e671aedc4107bcbdd7c30446e854 = MAKE_CODE_OBJECT(module_filename_obj, 33, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[17], mod_consts[17], mod_consts[115], NULL, 1, 0, 0);
+    codeobj_034b78b8c0d1a41dd8f4604c1ffee317 = MAKE_CODE_OBJECT(module_filename_obj, 109, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[17], mod_consts[17], mod_consts[115], NULL, 1, 0, 0);
+    codeobj_f8e6b552fa24dc9496fa81318ac01d64 = MAKE_CODE_OBJECT(module_filename_obj, 100, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[17], mod_consts[17], mod_consts[123], NULL, 1, 0, 0);
+    codeobj_7cfc21170008e5e545103c8c20b2e549 = MAKE_CODE_OBJECT(module_filename_obj, 60, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[24], mod_consts[24], mod_consts[124], NULL, 3, 0, 0);
+    codeobj_fc17f86ba5a81b7828d31f950f67e154 = MAKE_CODE_OBJECT(module_filename_obj, 85, CO_OPTIMIZED | CO_NEWLOCALS, mod_consts[24], mod_consts[24], mod_consts[125], mod_consts[114], 3, 0, 0);
 }
 
 // The module function declarations.
@@ -167,16 +173,22 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__16_gain();
 static PyObject *MAKE_FUNCTION_base$buff$$$function__17_revoke();
 
 
-static PyObject *MAKE_FUNCTION_base$buff$$$function__18___post_init__(struct Nuitka_CellObject **closure);
+static PyObject *MAKE_FUNCTION_base$buff$$$function__18_add(struct Nuitka_CellObject **closure);
 
 
-static PyObject *MAKE_FUNCTION_base$buff$$$function__19_increase();
+static PyObject *MAKE_FUNCTION_base$buff$$$function__19_remove(struct Nuitka_CellObject **closure);
 
 
 static PyObject *MAKE_FUNCTION_base$buff$$$function__1___post_init__();
 
 
-static PyObject *MAKE_FUNCTION_base$buff$$$function__20_decrease();
+static PyObject *MAKE_FUNCTION_base$buff$$$function__20___post_init__(struct Nuitka_CellObject **closure);
+
+
+static PyObject *MAKE_FUNCTION_base$buff$$$function__21_increase();
+
+
+static PyObject *MAKE_FUNCTION_base$buff$$$function__22_decrease();
 
 
 static PyObject *MAKE_FUNCTION_base$buff$$$function__2_roll();
@@ -185,10 +197,10 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__2_roll();
 static PyObject *MAKE_FUNCTION_base$buff$$$function__3_set_duration();
 
 
-static PyObject *MAKE_FUNCTION_base$buff$$$function__4_add();
+static PyObject *MAKE_FUNCTION_base$buff$$$function__4_add(PyObject *annotations);
 
 
-static PyObject *MAKE_FUNCTION_base$buff$$$function__5_remove();
+static PyObject *MAKE_FUNCTION_base$buff$$$function__5_remove(PyObject *annotations);
 
 
 static PyObject *MAKE_FUNCTION_base$buff$$$function__6_trigger(PyObject *defaults);
@@ -757,18 +769,24 @@ static PyObject *impl_base$buff$$$function__4_add(PyThreadState *tstate, struct 
 
     // Local variable declarations.
     PyObject *par_self = python_pars[0];
+    PyObject *par_stack = python_pars[1];
+    PyObject *var__ = NULL;
     PyObject *var_effect = NULL;
     PyObject *tmp_for_loop_1__for_iterator = NULL;
     PyObject *tmp_for_loop_1__iter_value = NULL;
+    PyObject *tmp_for_loop_2__for_iterator = NULL;
+    PyObject *tmp_for_loop_2__iter_value = NULL;
     PyObject *tmp_inplace_assign_subscr_1__subscript = NULL;
     PyObject *tmp_inplace_assign_subscr_1__target = NULL;
     PyObject *tmp_inplace_assign_subscr_1__value = NULL;
-    struct Nuitka_FrameObject *frame_413049defd2e8bab0f2305cbcc2514ba;
+    struct Nuitka_FrameObject *frame_95fa4b63bdbde71cd375338c56b720b2;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
     PyObject *exception_type = NULL;
     PyObject *exception_value = NULL;
     PyTracebackObject *exception_tb = NULL;
     NUITKA_MAY_BE_UNUSED int exception_lineno = 0;
+    int tmp_res;
+    PyObject *tmp_return_value = NULL;
     bool tmp_result;
     PyObject *exception_keeper_type_1;
     PyObject *exception_keeper_value_1;
@@ -779,61 +797,147 @@ static PyObject *impl_base$buff$$$function__4_add(PyThreadState *tstate, struct 
     PyObject *exception_keeper_value_2;
     PyTracebackObject *exception_keeper_tb_2;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_2;
-    static struct Nuitka_FrameObject *cache_frame_413049defd2e8bab0f2305cbcc2514ba = NULL;
-    PyObject *tmp_return_value = NULL;
     PyObject *exception_keeper_type_3;
     PyObject *exception_keeper_value_3;
     PyTracebackObject *exception_keeper_tb_3;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_3;
+    static struct Nuitka_FrameObject *cache_frame_95fa4b63bdbde71cd375338c56b720b2 = NULL;
+    PyObject *exception_keeper_type_4;
+    PyObject *exception_keeper_value_4;
+    PyTracebackObject *exception_keeper_tb_4;
+    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_4;
 
     // Actual function body.
     // Tried code:
-    if (isFrameUnusable(cache_frame_413049defd2e8bab0f2305cbcc2514ba)) {
-        Py_XDECREF(cache_frame_413049defd2e8bab0f2305cbcc2514ba);
+    if (isFrameUnusable(cache_frame_95fa4b63bdbde71cd375338c56b720b2)) {
+        Py_XDECREF(cache_frame_95fa4b63bdbde71cd375338c56b720b2);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_413049defd2e8bab0f2305cbcc2514ba == NULL) {
+        if (cache_frame_95fa4b63bdbde71cd375338c56b720b2 == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_413049defd2e8bab0f2305cbcc2514ba = MAKE_FUNCTION_FRAME(tstate, codeobj_413049defd2e8bab0f2305cbcc2514ba, module_base$buff, sizeof(void *)+sizeof(void *));
+        cache_frame_95fa4b63bdbde71cd375338c56b720b2 = MAKE_FUNCTION_FRAME(tstate, codeobj_95fa4b63bdbde71cd375338c56b720b2, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *)+sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_413049defd2e8bab0f2305cbcc2514ba->m_type_description == NULL);
-    frame_413049defd2e8bab0f2305cbcc2514ba = cache_frame_413049defd2e8bab0f2305cbcc2514ba;
+    assert(cache_frame_95fa4b63bdbde71cd375338c56b720b2->m_type_description == NULL);
+    frame_95fa4b63bdbde71cd375338c56b720b2 = cache_frame_95fa4b63bdbde71cd375338c56b720b2;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_413049defd2e8bab0f2305cbcc2514ba);
-    assert(Py_REFCNT(frame_413049defd2e8bab0f2305cbcc2514ba) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_95fa4b63bdbde71cd375338c56b720b2);
+    assert(Py_REFCNT(frame_95fa4b63bdbde71cd375338c56b720b2) == 2);
 
     // Framed code:
     {
         PyObject *tmp_assign_source_1;
+        PyObject *tmp_called_value_1;
+        PyObject *tmp_args_element_value_1;
+        PyObject *tmp_args_element_value_2;
+        PyObject *tmp_sub_expr_left_1;
+        PyObject *tmp_sub_expr_right_1;
         PyObject *tmp_expression_value_1;
         PyObject *tmp_expression_value_2;
+        PyObject *tmp_expression_value_3;
+        PyObject *tmp_expression_value_4;
+        PyObject *tmp_subscript_value_1;
+        PyObject *tmp_expression_value_5;
+        tmp_called_value_1 = LOOKUP_BUILTIN(mod_consts[10]);
+        assert(tmp_called_value_1 != NULL);
+        CHECK_OBJECT(par_stack);
+        tmp_args_element_value_1 = par_stack;
         CHECK_OBJECT(par_self);
-        tmp_expression_value_2 = par_self;
-        tmp_expression_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_2, mod_consts[7]);
-        if (tmp_expression_value_1 == NULL) {
+        tmp_expression_value_1 = par_self;
+        tmp_sub_expr_left_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[11]);
+        if (tmp_sub_expr_left_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
             exception_lineno = 38;
-            type_description_1 = "oo";
+            type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
-        tmp_assign_source_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[10]);
-        Py_DECREF(tmp_expression_value_1);
+        CHECK_OBJECT(par_self);
+        tmp_expression_value_4 = par_self;
+        tmp_expression_value_3 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_4, mod_consts[7]);
+        if (tmp_expression_value_3 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_sub_expr_left_1);
+
+            exception_lineno = 38;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        tmp_expression_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_3, mod_consts[12]);
+        Py_DECREF(tmp_expression_value_3);
+        if (tmp_expression_value_2 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_sub_expr_left_1);
+
+            exception_lineno = 38;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        CHECK_OBJECT(par_self);
+        tmp_expression_value_5 = par_self;
+        tmp_subscript_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[9]);
+        if (tmp_subscript_value_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_sub_expr_left_1);
+            Py_DECREF(tmp_expression_value_2);
+
+            exception_lineno = 38;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        tmp_sub_expr_right_1 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_2, tmp_subscript_value_1);
+        Py_DECREF(tmp_expression_value_2);
+        Py_DECREF(tmp_subscript_value_1);
+        if (tmp_sub_expr_right_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_sub_expr_left_1);
+
+            exception_lineno = 38;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        tmp_args_element_value_2 = BINARY_OPERATION_SUB_OBJECT_OBJECT_OBJECT(tmp_sub_expr_left_1, tmp_sub_expr_right_1);
+        Py_DECREF(tmp_sub_expr_left_1);
+        Py_DECREF(tmp_sub_expr_right_1);
+        if (tmp_args_element_value_2 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 38;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        frame_95fa4b63bdbde71cd375338c56b720b2->m_frame.f_lineno = 38;
+        {
+            PyObject *call_args[] = {tmp_args_element_value_1, tmp_args_element_value_2};
+            tmp_assign_source_1 = CALL_FUNCTION_WITH_ARGS2(tstate, tmp_called_value_1, call_args);
+        }
+
+        Py_DECREF(tmp_args_element_value_2);
         if (tmp_assign_source_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
@@ -841,74 +945,140 @@ static PyObject *impl_base$buff$$$function__4_add(PyThreadState *tstate, struct 
 
 
             exception_lineno = 38;
-            type_description_1 = "oo";
+            type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
-        assert(tmp_inplace_assign_subscr_1__target == NULL);
-        tmp_inplace_assign_subscr_1__target = tmp_assign_source_1;
+        {
+            PyObject *old = par_stack;
+            assert(old != NULL);
+            par_stack = tmp_assign_source_1;
+            Py_DECREF(old);
+        }
+
     }
-    // Tried code:
+    {
+        bool tmp_condition_result_1;
+        PyObject *tmp_operand_value_1;
+        CHECK_OBJECT(par_stack);
+        tmp_operand_value_1 = par_stack;
+        tmp_res = CHECK_IF_TRUE(tmp_operand_value_1);
+        if (tmp_res == -1) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 39;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        tmp_condition_result_1 = (tmp_res == 0) ? true : false;
+        if (tmp_condition_result_1 != false) {
+            goto branch_yes_1;
+        } else {
+            goto branch_no_1;
+        }
+    }
+    branch_yes_1:;
+    tmp_return_value = Py_None;
+    Py_INCREF(tmp_return_value);
+    goto frame_return_exit_1;
+    branch_no_1:;
     {
         PyObject *tmp_assign_source_2;
-        PyObject *tmp_expression_value_3;
+        PyObject *tmp_expression_value_6;
+        PyObject *tmp_expression_value_7;
         CHECK_OBJECT(par_self);
-        tmp_expression_value_3 = par_self;
-        tmp_assign_source_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_3, mod_consts[9]);
+        tmp_expression_value_7 = par_self;
+        tmp_expression_value_6 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_7, mod_consts[7]);
+        if (tmp_expression_value_6 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 42;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        tmp_assign_source_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_6, mod_consts[12]);
+        Py_DECREF(tmp_expression_value_6);
         if (tmp_assign_source_2 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 38;
-            type_description_1 = "oo";
-            goto try_except_handler_2;
+            exception_lineno = 42;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
         }
-        assert(tmp_inplace_assign_subscr_1__subscript == NULL);
-        tmp_inplace_assign_subscr_1__subscript = tmp_assign_source_2;
+        assert(tmp_inplace_assign_subscr_1__target == NULL);
+        tmp_inplace_assign_subscr_1__target = tmp_assign_source_2;
     }
+    // Tried code:
     {
         PyObject *tmp_assign_source_3;
-        PyObject *tmp_expression_value_4;
-        PyObject *tmp_subscript_value_1;
-        CHECK_OBJECT(tmp_inplace_assign_subscr_1__target);
-        tmp_expression_value_4 = tmp_inplace_assign_subscr_1__target;
-        CHECK_OBJECT(tmp_inplace_assign_subscr_1__subscript);
-        tmp_subscript_value_1 = tmp_inplace_assign_subscr_1__subscript;
-        tmp_assign_source_3 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_4, tmp_subscript_value_1);
+        PyObject *tmp_expression_value_8;
+        CHECK_OBJECT(par_self);
+        tmp_expression_value_8 = par_self;
+        tmp_assign_source_3 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_8, mod_consts[9]);
         if (tmp_assign_source_3 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 38;
-            type_description_1 = "oo";
+            exception_lineno = 42;
+            type_description_1 = "oooo";
             goto try_except_handler_2;
         }
-        assert(tmp_inplace_assign_subscr_1__value == NULL);
-        tmp_inplace_assign_subscr_1__value = tmp_assign_source_3;
+        assert(tmp_inplace_assign_subscr_1__subscript == NULL);
+        tmp_inplace_assign_subscr_1__subscript = tmp_assign_source_3;
     }
     {
         PyObject *tmp_assign_source_4;
+        PyObject *tmp_expression_value_9;
+        PyObject *tmp_subscript_value_2;
+        CHECK_OBJECT(tmp_inplace_assign_subscr_1__target);
+        tmp_expression_value_9 = tmp_inplace_assign_subscr_1__target;
+        CHECK_OBJECT(tmp_inplace_assign_subscr_1__subscript);
+        tmp_subscript_value_2 = tmp_inplace_assign_subscr_1__subscript;
+        tmp_assign_source_4 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_9, tmp_subscript_value_2);
+        if (tmp_assign_source_4 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 42;
+            type_description_1 = "oooo";
+            goto try_except_handler_2;
+        }
+        assert(tmp_inplace_assign_subscr_1__value == NULL);
+        tmp_inplace_assign_subscr_1__value = tmp_assign_source_4;
+    }
+    {
+        PyObject *tmp_assign_source_5;
         PyObject *tmp_iadd_expr_left_1;
         PyObject *tmp_iadd_expr_right_1;
         CHECK_OBJECT(tmp_inplace_assign_subscr_1__value);
         tmp_iadd_expr_left_1 = tmp_inplace_assign_subscr_1__value;
-        tmp_iadd_expr_right_1 = mod_consts[11];
-        tmp_result = INPLACE_OPERATION_ADD_OBJECT_LONG(&tmp_iadd_expr_left_1, tmp_iadd_expr_right_1);
+        CHECK_OBJECT(par_stack);
+        tmp_iadd_expr_right_1 = par_stack;
+        tmp_result = INPLACE_OPERATION_ADD_OBJECT_OBJECT(&tmp_iadd_expr_left_1, tmp_iadd_expr_right_1);
         if (tmp_result == false) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 38;
-            type_description_1 = "oo";
+            exception_lineno = 42;
+            type_description_1 = "oooo";
             goto try_except_handler_2;
         }
-        tmp_assign_source_4 = tmp_iadd_expr_left_1;
-        tmp_inplace_assign_subscr_1__value = tmp_assign_source_4;
+        tmp_assign_source_5 = tmp_iadd_expr_left_1;
+        tmp_inplace_assign_subscr_1__value = tmp_assign_source_5;
 
     }
     {
@@ -928,8 +1098,8 @@ static PyObject *impl_base$buff$$$function__4_add(PyThreadState *tstate, struct 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 38;
-            type_description_1 = "oo";
+            exception_lineno = 42;
+            type_description_1 = "oooo";
             goto try_except_handler_2;
         }
     }
@@ -971,107 +1141,194 @@ static PyObject *impl_base$buff$$$function__4_add(PyThreadState *tstate, struct 
     Py_DECREF(tmp_inplace_assign_subscr_1__value);
     tmp_inplace_assign_subscr_1__value = NULL;
     {
-        PyObject *tmp_assign_source_5;
+        PyObject *tmp_assign_source_6;
         PyObject *tmp_iter_arg_1;
-        PyObject *tmp_expression_value_5;
-        CHECK_OBJECT(par_self);
-        tmp_expression_value_5 = par_self;
-        tmp_iter_arg_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[0]);
+        PyObject *tmp_xrange_low_1;
+        CHECK_OBJECT(par_stack);
+        tmp_xrange_low_1 = par_stack;
+        tmp_iter_arg_1 = BUILTIN_XRANGE1(tstate, tmp_xrange_low_1);
         if (tmp_iter_arg_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 39;
-            type_description_1 = "oo";
+            exception_lineno = 43;
+            type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
-        tmp_assign_source_5 = MAKE_ITERATOR(tstate, tmp_iter_arg_1);
+        tmp_assign_source_6 = MAKE_ITERATOR(tstate, tmp_iter_arg_1);
         Py_DECREF(tmp_iter_arg_1);
-        if (tmp_assign_source_5 == NULL) {
+        if (tmp_assign_source_6 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 39;
-            type_description_1 = "oo";
+            exception_lineno = 43;
+            type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
         assert(tmp_for_loop_1__for_iterator == NULL);
-        tmp_for_loop_1__for_iterator = tmp_assign_source_5;
+        tmp_for_loop_1__for_iterator = tmp_assign_source_6;
     }
     // Tried code:
     loop_start_1:;
     {
         PyObject *tmp_next_source_1;
-        PyObject *tmp_assign_source_6;
+        PyObject *tmp_assign_source_7;
         CHECK_OBJECT(tmp_for_loop_1__for_iterator);
         tmp_next_source_1 = tmp_for_loop_1__for_iterator;
-        tmp_assign_source_6 = ITERATOR_NEXT(tmp_next_source_1);
-        if (tmp_assign_source_6 == NULL) {
+        tmp_assign_source_7 = ITERATOR_NEXT(tmp_next_source_1);
+        if (tmp_assign_source_7 == NULL) {
             if (CHECK_AND_CLEAR_STOP_ITERATION_OCCURRED(tstate)) {
 
                 goto loop_end_1;
             } else {
 
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-                type_description_1 = "oo";
-                exception_lineno = 39;
+                type_description_1 = "oooo";
+                exception_lineno = 43;
                 goto try_except_handler_3;
             }
         }
 
         {
             PyObject *old = tmp_for_loop_1__iter_value;
-            tmp_for_loop_1__iter_value = tmp_assign_source_6;
+            tmp_for_loop_1__iter_value = tmp_assign_source_7;
             Py_XDECREF(old);
         }
 
     }
     {
-        PyObject *tmp_assign_source_7;
+        PyObject *tmp_assign_source_8;
         CHECK_OBJECT(tmp_for_loop_1__iter_value);
-        tmp_assign_source_7 = tmp_for_loop_1__iter_value;
+        tmp_assign_source_8 = tmp_for_loop_1__iter_value;
+        {
+            PyObject *old = var__;
+            var__ = tmp_assign_source_8;
+            Py_INCREF(var__);
+            Py_XDECREF(old);
+        }
+
+    }
+    {
+        PyObject *tmp_assign_source_9;
+        PyObject *tmp_iter_arg_2;
+        PyObject *tmp_expression_value_10;
+        if (par_self == NULL) {
+
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 44;
+            type_description_1 = "oooo";
+            goto try_except_handler_3;
+        }
+
+        tmp_expression_value_10 = par_self;
+        tmp_iter_arg_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_10, mod_consts[0]);
+        if (tmp_iter_arg_2 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 44;
+            type_description_1 = "oooo";
+            goto try_except_handler_3;
+        }
+        tmp_assign_source_9 = MAKE_ITERATOR(tstate, tmp_iter_arg_2);
+        Py_DECREF(tmp_iter_arg_2);
+        if (tmp_assign_source_9 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 44;
+            type_description_1 = "oooo";
+            goto try_except_handler_3;
+        }
+        {
+            PyObject *old = tmp_for_loop_2__for_iterator;
+            tmp_for_loop_2__for_iterator = tmp_assign_source_9;
+            Py_XDECREF(old);
+        }
+
+    }
+    // Tried code:
+    loop_start_2:;
+    {
+        PyObject *tmp_next_source_2;
+        PyObject *tmp_assign_source_10;
+        CHECK_OBJECT(tmp_for_loop_2__for_iterator);
+        tmp_next_source_2 = tmp_for_loop_2__for_iterator;
+        tmp_assign_source_10 = ITERATOR_NEXT(tmp_next_source_2);
+        if (tmp_assign_source_10 == NULL) {
+            if (CHECK_AND_CLEAR_STOP_ITERATION_OCCURRED(tstate)) {
+
+                goto loop_end_2;
+            } else {
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+                type_description_1 = "oooo";
+                exception_lineno = 44;
+                goto try_except_handler_4;
+            }
+        }
+
+        {
+            PyObject *old = tmp_for_loop_2__iter_value;
+            tmp_for_loop_2__iter_value = tmp_assign_source_10;
+            Py_XDECREF(old);
+        }
+
+    }
+    {
+        PyObject *tmp_assign_source_11;
+        CHECK_OBJECT(tmp_for_loop_2__iter_value);
+        tmp_assign_source_11 = tmp_for_loop_2__iter_value;
         {
             PyObject *old = var_effect;
-            var_effect = tmp_assign_source_7;
+            var_effect = tmp_assign_source_11;
             Py_INCREF(var_effect);
             Py_XDECREF(old);
         }
 
     }
     {
-        PyObject *tmp_called_value_1;
+        PyObject *tmp_called_value_2;
         PyObject *tmp_call_result_1;
-        PyObject *tmp_args_element_value_1;
+        PyObject *tmp_args_element_value_3;
         CHECK_OBJECT(var_effect);
-        tmp_called_value_1 = var_effect;
+        tmp_called_value_2 = var_effect;
         if (par_self == NULL) {
 
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[12]);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(tstate, exception_value);
 
-            exception_lineno = 40;
-            type_description_1 = "oo";
-            goto try_except_handler_3;
+            exception_lineno = 45;
+            type_description_1 = "oooo";
+            goto try_except_handler_4;
         }
 
-        tmp_args_element_value_1 = par_self;
-        frame_413049defd2e8bab0f2305cbcc2514ba->m_frame.f_lineno = 40;
-        tmp_call_result_1 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_1, tmp_args_element_value_1);
+        tmp_args_element_value_3 = par_self;
+        frame_95fa4b63bdbde71cd375338c56b720b2->m_frame.f_lineno = 45;
+        tmp_call_result_1 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_2, tmp_args_element_value_3);
         if (tmp_call_result_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 40;
-            type_description_1 = "oo";
-            goto try_except_handler_3;
+            exception_lineno = 45;
+            type_description_1 = "oooo";
+            goto try_except_handler_4;
         }
         Py_DECREF(tmp_call_result_1);
     }
@@ -1081,19 +1338,62 @@ static PyObject *impl_base$buff$$$function__4_add(PyThreadState *tstate, struct 
         FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-        exception_lineno = 39;
-        type_description_1 = "oo";
-        goto try_except_handler_3;
+        exception_lineno = 44;
+        type_description_1 = "oooo";
+        goto try_except_handler_4;
     }
-    goto loop_start_1;
-    loop_end_1:;
+    goto loop_start_2;
+    loop_end_2:;
     goto try_end_2;
     // Exception handler code:
-    try_except_handler_3:;
+    try_except_handler_4:;
     exception_keeper_type_2 = exception_type;
     exception_keeper_value_2 = exception_value;
     exception_keeper_tb_2 = exception_tb;
     exception_keeper_lineno_2 = exception_lineno;
+    exception_type = NULL;
+    exception_value = NULL;
+    exception_tb = NULL;
+    exception_lineno = 0;
+
+    Py_XDECREF(tmp_for_loop_2__iter_value);
+    tmp_for_loop_2__iter_value = NULL;
+    CHECK_OBJECT(tmp_for_loop_2__for_iterator);
+    Py_DECREF(tmp_for_loop_2__for_iterator);
+    tmp_for_loop_2__for_iterator = NULL;
+    // Re-raise.
+    exception_type = exception_keeper_type_2;
+    exception_value = exception_keeper_value_2;
+    exception_tb = exception_keeper_tb_2;
+    exception_lineno = exception_keeper_lineno_2;
+
+    goto try_except_handler_3;
+    // End of try:
+    try_end_2:;
+    Py_XDECREF(tmp_for_loop_2__iter_value);
+    tmp_for_loop_2__iter_value = NULL;
+    CHECK_OBJECT(tmp_for_loop_2__for_iterator);
+    Py_DECREF(tmp_for_loop_2__for_iterator);
+    tmp_for_loop_2__for_iterator = NULL;
+    if (CONSIDER_THREADING(tstate) == false) {
+        assert(HAS_ERROR_OCCURRED(tstate));
+
+        FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+        exception_lineno = 43;
+        type_description_1 = "oooo";
+        goto try_except_handler_3;
+    }
+    goto loop_start_1;
+    loop_end_1:;
+    goto try_end_3;
+    // Exception handler code:
+    try_except_handler_3:;
+    exception_keeper_type_3 = exception_type;
+    exception_keeper_value_3 = exception_value;
+    exception_keeper_tb_3 = exception_tb;
+    exception_keeper_lineno_3 = exception_lineno;
     exception_type = NULL;
     exception_value = NULL;
     exception_tb = NULL;
@@ -1105,49 +1405,57 @@ static PyObject *impl_base$buff$$$function__4_add(PyThreadState *tstate, struct 
     Py_DECREF(tmp_for_loop_1__for_iterator);
     tmp_for_loop_1__for_iterator = NULL;
     // Re-raise.
-    exception_type = exception_keeper_type_2;
-    exception_value = exception_keeper_value_2;
-    exception_tb = exception_keeper_tb_2;
-    exception_lineno = exception_keeper_lineno_2;
+    exception_type = exception_keeper_type_3;
+    exception_value = exception_keeper_value_3;
+    exception_tb = exception_keeper_tb_3;
+    exception_lineno = exception_keeper_lineno_3;
 
     goto frame_exception_exit_1;
     // End of try:
-    try_end_2:;
+    try_end_3:;
 
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
 
     goto frame_no_exception_1;
+    frame_return_exit_1:
+
+    // Put the previous frame back on top.
+    popFrameStack(tstate);
+
+    goto try_return_handler_1;
     frame_exception_exit_1:
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_413049defd2e8bab0f2305cbcc2514ba, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_413049defd2e8bab0f2305cbcc2514ba->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_413049defd2e8bab0f2305cbcc2514ba, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_95fa4b63bdbde71cd375338c56b720b2, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_95fa4b63bdbde71cd375338c56b720b2->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_95fa4b63bdbde71cd375338c56b720b2, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_413049defd2e8bab0f2305cbcc2514ba,
+        frame_95fa4b63bdbde71cd375338c56b720b2,
         type_description_1,
         par_self,
+        par_stack,
+        var__,
         var_effect
     );
 
 
     // Release cached frame if used for exception.
-    if (frame_413049defd2e8bab0f2305cbcc2514ba == cache_frame_413049defd2e8bab0f2305cbcc2514ba) {
+    if (frame_95fa4b63bdbde71cd375338c56b720b2 == cache_frame_95fa4b63bdbde71cd375338c56b720b2) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_413049defd2e8bab0f2305cbcc2514ba);
-        cache_frame_413049defd2e8bab0f2305cbcc2514ba = NULL;
+        Py_DECREF(cache_frame_95fa4b63bdbde71cd375338c56b720b2);
+        cache_frame_95fa4b63bdbde71cd375338c56b720b2 = NULL;
     }
 
-    assertFrameObject(frame_413049defd2e8bab0f2305cbcc2514ba);
+    assertFrameObject(frame_95fa4b63bdbde71cd375338c56b720b2);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
@@ -1167,27 +1475,35 @@ static PyObject *impl_base$buff$$$function__4_add(PyThreadState *tstate, struct 
     return NULL;
     // Return handler code:
     try_return_handler_1:;
+    Py_XDECREF(par_stack);
+    par_stack = NULL;
+    Py_XDECREF(var__);
+    var__ = NULL;
     Py_XDECREF(var_effect);
     var_effect = NULL;
     goto function_return_exit;
     // Exception handler code:
     try_except_handler_1:;
-    exception_keeper_type_3 = exception_type;
-    exception_keeper_value_3 = exception_value;
-    exception_keeper_tb_3 = exception_tb;
-    exception_keeper_lineno_3 = exception_lineno;
+    exception_keeper_type_4 = exception_type;
+    exception_keeper_value_4 = exception_value;
+    exception_keeper_tb_4 = exception_tb;
+    exception_keeper_lineno_4 = exception_lineno;
     exception_type = NULL;
     exception_value = NULL;
     exception_tb = NULL;
     exception_lineno = 0;
 
+    Py_XDECREF(par_stack);
+    par_stack = NULL;
+    Py_XDECREF(var__);
+    var__ = NULL;
     Py_XDECREF(var_effect);
     var_effect = NULL;
     // Re-raise.
-    exception_type = exception_keeper_type_3;
-    exception_value = exception_keeper_value_3;
-    exception_tb = exception_keeper_tb_3;
-    exception_lineno = exception_keeper_lineno_3;
+    exception_type = exception_keeper_type_4;
+    exception_value = exception_keeper_value_4;
+    exception_tb = exception_keeper_tb_4;
+    exception_lineno = exception_keeper_lineno_4;
 
     goto function_exception_exit;
     // End of try:
@@ -1224,18 +1540,24 @@ static PyObject *impl_base$buff$$$function__5_remove(PyThreadState *tstate, stru
 
     // Local variable declarations.
     PyObject *par_self = python_pars[0];
+    PyObject *par_stack = python_pars[1];
+    PyObject *var__ = NULL;
     PyObject *var_effect = NULL;
     PyObject *tmp_for_loop_1__for_iterator = NULL;
     PyObject *tmp_for_loop_1__iter_value = NULL;
+    PyObject *tmp_for_loop_2__for_iterator = NULL;
+    PyObject *tmp_for_loop_2__iter_value = NULL;
     PyObject *tmp_inplace_assign_subscr_1__subscript = NULL;
     PyObject *tmp_inplace_assign_subscr_1__target = NULL;
     PyObject *tmp_inplace_assign_subscr_1__value = NULL;
-    struct Nuitka_FrameObject *frame_a107b85ca742f3f139d54db115cbf96f;
+    struct Nuitka_FrameObject *frame_90d1910a42824c2443a6fb5f102c5529;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
     PyObject *exception_type = NULL;
     PyObject *exception_value = NULL;
     PyTracebackObject *exception_tb = NULL;
     NUITKA_MAY_BE_UNUSED int exception_lineno = 0;
+    int tmp_res;
+    PyObject *tmp_return_value = NULL;
     bool tmp_result;
     PyObject *exception_keeper_type_1;
     PyObject *exception_keeper_value_1;
@@ -1246,137 +1568,258 @@ static PyObject *impl_base$buff$$$function__5_remove(PyThreadState *tstate, stru
     PyObject *exception_keeper_value_2;
     PyTracebackObject *exception_keeper_tb_2;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_2;
-    int tmp_res;
-    static struct Nuitka_FrameObject *cache_frame_a107b85ca742f3f139d54db115cbf96f = NULL;
-    PyObject *tmp_return_value = NULL;
     PyObject *exception_keeper_type_3;
     PyObject *exception_keeper_value_3;
     PyTracebackObject *exception_keeper_tb_3;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_3;
+    static struct Nuitka_FrameObject *cache_frame_90d1910a42824c2443a6fb5f102c5529 = NULL;
+    PyObject *exception_keeper_type_4;
+    PyObject *exception_keeper_value_4;
+    PyTracebackObject *exception_keeper_tb_4;
+    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_4;
 
     // Actual function body.
     // Tried code:
-    if (isFrameUnusable(cache_frame_a107b85ca742f3f139d54db115cbf96f)) {
-        Py_XDECREF(cache_frame_a107b85ca742f3f139d54db115cbf96f);
+    if (isFrameUnusable(cache_frame_90d1910a42824c2443a6fb5f102c5529)) {
+        Py_XDECREF(cache_frame_90d1910a42824c2443a6fb5f102c5529);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_a107b85ca742f3f139d54db115cbf96f == NULL) {
+        if (cache_frame_90d1910a42824c2443a6fb5f102c5529 == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_a107b85ca742f3f139d54db115cbf96f = MAKE_FUNCTION_FRAME(tstate, codeobj_a107b85ca742f3f139d54db115cbf96f, module_base$buff, sizeof(void *)+sizeof(void *));
+        cache_frame_90d1910a42824c2443a6fb5f102c5529 = MAKE_FUNCTION_FRAME(tstate, codeobj_90d1910a42824c2443a6fb5f102c5529, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *)+sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_a107b85ca742f3f139d54db115cbf96f->m_type_description == NULL);
-    frame_a107b85ca742f3f139d54db115cbf96f = cache_frame_a107b85ca742f3f139d54db115cbf96f;
+    assert(cache_frame_90d1910a42824c2443a6fb5f102c5529->m_type_description == NULL);
+    frame_90d1910a42824c2443a6fb5f102c5529 = cache_frame_90d1910a42824c2443a6fb5f102c5529;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_a107b85ca742f3f139d54db115cbf96f);
-    assert(Py_REFCNT(frame_a107b85ca742f3f139d54db115cbf96f) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_90d1910a42824c2443a6fb5f102c5529);
+    assert(Py_REFCNT(frame_90d1910a42824c2443a6fb5f102c5529) == 2);
 
     // Framed code:
     {
         PyObject *tmp_assign_source_1;
+        PyObject *tmp_called_value_1;
+        PyObject *tmp_args_element_value_1;
+        PyObject *tmp_args_element_value_2;
         PyObject *tmp_expression_value_1;
         PyObject *tmp_expression_value_2;
+        PyObject *tmp_expression_value_3;
+        PyObject *tmp_subscript_value_1;
+        PyObject *tmp_expression_value_4;
+        tmp_called_value_1 = LOOKUP_BUILTIN(mod_consts[10]);
+        assert(tmp_called_value_1 != NULL);
+        CHECK_OBJECT(par_stack);
+        tmp_args_element_value_1 = par_stack;
         CHECK_OBJECT(par_self);
-        tmp_expression_value_2 = par_self;
-        tmp_expression_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_2, mod_consts[7]);
+        tmp_expression_value_3 = par_self;
+        tmp_expression_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_3, mod_consts[7]);
+        if (tmp_expression_value_2 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 48;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        tmp_expression_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_2, mod_consts[12]);
+        Py_DECREF(tmp_expression_value_2);
         if (tmp_expression_value_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 43;
-            type_description_1 = "oo";
+            exception_lineno = 48;
+            type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
-        tmp_assign_source_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[10]);
+        CHECK_OBJECT(par_self);
+        tmp_expression_value_4 = par_self;
+        tmp_subscript_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_4, mod_consts[9]);
+        if (tmp_subscript_value_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_expression_value_1);
+
+            exception_lineno = 48;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        tmp_args_element_value_2 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_1, tmp_subscript_value_1);
         Py_DECREF(tmp_expression_value_1);
+        Py_DECREF(tmp_subscript_value_1);
+        if (tmp_args_element_value_2 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 48;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        frame_90d1910a42824c2443a6fb5f102c5529->m_frame.f_lineno = 48;
+        {
+            PyObject *call_args[] = {tmp_args_element_value_1, tmp_args_element_value_2};
+            tmp_assign_source_1 = CALL_FUNCTION_WITH_ARGS2(tstate, tmp_called_value_1, call_args);
+        }
+
+        Py_DECREF(tmp_args_element_value_2);
         if (tmp_assign_source_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 43;
-            type_description_1 = "oo";
+            exception_lineno = 48;
+            type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
-        assert(tmp_inplace_assign_subscr_1__target == NULL);
-        tmp_inplace_assign_subscr_1__target = tmp_assign_source_1;
+        {
+            PyObject *old = par_stack;
+            assert(old != NULL);
+            par_stack = tmp_assign_source_1;
+            Py_DECREF(old);
+        }
+
     }
-    // Tried code:
+    {
+        bool tmp_condition_result_1;
+        PyObject *tmp_operand_value_1;
+        CHECK_OBJECT(par_stack);
+        tmp_operand_value_1 = par_stack;
+        tmp_res = CHECK_IF_TRUE(tmp_operand_value_1);
+        if (tmp_res == -1) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 49;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        tmp_condition_result_1 = (tmp_res == 0) ? true : false;
+        if (tmp_condition_result_1 != false) {
+            goto branch_yes_1;
+        } else {
+            goto branch_no_1;
+        }
+    }
+    branch_yes_1:;
+    tmp_return_value = Py_None;
+    Py_INCREF(tmp_return_value);
+    goto frame_return_exit_1;
+    branch_no_1:;
     {
         PyObject *tmp_assign_source_2;
-        PyObject *tmp_expression_value_3;
+        PyObject *tmp_expression_value_5;
+        PyObject *tmp_expression_value_6;
         CHECK_OBJECT(par_self);
-        tmp_expression_value_3 = par_self;
-        tmp_assign_source_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_3, mod_consts[9]);
+        tmp_expression_value_6 = par_self;
+        tmp_expression_value_5 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_6, mod_consts[7]);
+        if (tmp_expression_value_5 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 52;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        tmp_assign_source_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[12]);
+        Py_DECREF(tmp_expression_value_5);
         if (tmp_assign_source_2 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 43;
-            type_description_1 = "oo";
-            goto try_except_handler_2;
+            exception_lineno = 52;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
         }
-        assert(tmp_inplace_assign_subscr_1__subscript == NULL);
-        tmp_inplace_assign_subscr_1__subscript = tmp_assign_source_2;
+        assert(tmp_inplace_assign_subscr_1__target == NULL);
+        tmp_inplace_assign_subscr_1__target = tmp_assign_source_2;
     }
+    // Tried code:
     {
         PyObject *tmp_assign_source_3;
-        PyObject *tmp_expression_value_4;
-        PyObject *tmp_subscript_value_1;
-        CHECK_OBJECT(tmp_inplace_assign_subscr_1__target);
-        tmp_expression_value_4 = tmp_inplace_assign_subscr_1__target;
-        CHECK_OBJECT(tmp_inplace_assign_subscr_1__subscript);
-        tmp_subscript_value_1 = tmp_inplace_assign_subscr_1__subscript;
-        tmp_assign_source_3 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_4, tmp_subscript_value_1);
+        PyObject *tmp_expression_value_7;
+        CHECK_OBJECT(par_self);
+        tmp_expression_value_7 = par_self;
+        tmp_assign_source_3 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_7, mod_consts[9]);
         if (tmp_assign_source_3 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 43;
-            type_description_1 = "oo";
+            exception_lineno = 52;
+            type_description_1 = "oooo";
             goto try_except_handler_2;
         }
-        assert(tmp_inplace_assign_subscr_1__value == NULL);
-        tmp_inplace_assign_subscr_1__value = tmp_assign_source_3;
+        assert(tmp_inplace_assign_subscr_1__subscript == NULL);
+        tmp_inplace_assign_subscr_1__subscript = tmp_assign_source_3;
     }
     {
         PyObject *tmp_assign_source_4;
+        PyObject *tmp_expression_value_8;
+        PyObject *tmp_subscript_value_2;
+        CHECK_OBJECT(tmp_inplace_assign_subscr_1__target);
+        tmp_expression_value_8 = tmp_inplace_assign_subscr_1__target;
+        CHECK_OBJECT(tmp_inplace_assign_subscr_1__subscript);
+        tmp_subscript_value_2 = tmp_inplace_assign_subscr_1__subscript;
+        tmp_assign_source_4 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_8, tmp_subscript_value_2);
+        if (tmp_assign_source_4 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 52;
+            type_description_1 = "oooo";
+            goto try_except_handler_2;
+        }
+        assert(tmp_inplace_assign_subscr_1__value == NULL);
+        tmp_inplace_assign_subscr_1__value = tmp_assign_source_4;
+    }
+    {
+        PyObject *tmp_assign_source_5;
         PyObject *tmp_isub_expr_left_1;
         PyObject *tmp_isub_expr_right_1;
         CHECK_OBJECT(tmp_inplace_assign_subscr_1__value);
         tmp_isub_expr_left_1 = tmp_inplace_assign_subscr_1__value;
-        tmp_isub_expr_right_1 = mod_consts[11];
-        tmp_result = INPLACE_OPERATION_SUB_OBJECT_LONG(&tmp_isub_expr_left_1, tmp_isub_expr_right_1);
+        CHECK_OBJECT(par_stack);
+        tmp_isub_expr_right_1 = par_stack;
+        tmp_result = INPLACE_OPERATION_SUB_OBJECT_OBJECT(&tmp_isub_expr_left_1, tmp_isub_expr_right_1);
         if (tmp_result == false) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 43;
-            type_description_1 = "oo";
+            exception_lineno = 52;
+            type_description_1 = "oooo";
             goto try_except_handler_2;
         }
-        tmp_assign_source_4 = tmp_isub_expr_left_1;
-        tmp_inplace_assign_subscr_1__value = tmp_assign_source_4;
+        tmp_assign_source_5 = tmp_isub_expr_left_1;
+        tmp_inplace_assign_subscr_1__value = tmp_assign_source_5;
 
     }
     {
@@ -1396,8 +1839,8 @@ static PyObject *impl_base$buff$$$function__5_remove(PyThreadState *tstate, stru
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 43;
-            type_description_1 = "oo";
+            exception_lineno = 52;
+            type_description_1 = "oooo";
             goto try_except_handler_2;
         }
     }
@@ -1439,107 +1882,194 @@ static PyObject *impl_base$buff$$$function__5_remove(PyThreadState *tstate, stru
     Py_DECREF(tmp_inplace_assign_subscr_1__value);
     tmp_inplace_assign_subscr_1__value = NULL;
     {
-        PyObject *tmp_assign_source_5;
+        PyObject *tmp_assign_source_6;
         PyObject *tmp_iter_arg_1;
-        PyObject *tmp_expression_value_5;
-        CHECK_OBJECT(par_self);
-        tmp_expression_value_5 = par_self;
-        tmp_iter_arg_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[1]);
+        PyObject *tmp_xrange_low_1;
+        CHECK_OBJECT(par_stack);
+        tmp_xrange_low_1 = par_stack;
+        tmp_iter_arg_1 = BUILTIN_XRANGE1(tstate, tmp_xrange_low_1);
         if (tmp_iter_arg_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 44;
-            type_description_1 = "oo";
+            exception_lineno = 53;
+            type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
-        tmp_assign_source_5 = MAKE_ITERATOR(tstate, tmp_iter_arg_1);
+        tmp_assign_source_6 = MAKE_ITERATOR(tstate, tmp_iter_arg_1);
         Py_DECREF(tmp_iter_arg_1);
-        if (tmp_assign_source_5 == NULL) {
+        if (tmp_assign_source_6 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 44;
-            type_description_1 = "oo";
+            exception_lineno = 53;
+            type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
         assert(tmp_for_loop_1__for_iterator == NULL);
-        tmp_for_loop_1__for_iterator = tmp_assign_source_5;
+        tmp_for_loop_1__for_iterator = tmp_assign_source_6;
     }
     // Tried code:
     loop_start_1:;
     {
         PyObject *tmp_next_source_1;
-        PyObject *tmp_assign_source_6;
+        PyObject *tmp_assign_source_7;
         CHECK_OBJECT(tmp_for_loop_1__for_iterator);
         tmp_next_source_1 = tmp_for_loop_1__for_iterator;
-        tmp_assign_source_6 = ITERATOR_NEXT(tmp_next_source_1);
-        if (tmp_assign_source_6 == NULL) {
+        tmp_assign_source_7 = ITERATOR_NEXT(tmp_next_source_1);
+        if (tmp_assign_source_7 == NULL) {
             if (CHECK_AND_CLEAR_STOP_ITERATION_OCCURRED(tstate)) {
 
                 goto loop_end_1;
             } else {
 
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-                type_description_1 = "oo";
-                exception_lineno = 44;
+                type_description_1 = "oooo";
+                exception_lineno = 53;
                 goto try_except_handler_3;
             }
         }
 
         {
             PyObject *old = tmp_for_loop_1__iter_value;
-            tmp_for_loop_1__iter_value = tmp_assign_source_6;
+            tmp_for_loop_1__iter_value = tmp_assign_source_7;
             Py_XDECREF(old);
         }
 
     }
     {
-        PyObject *tmp_assign_source_7;
+        PyObject *tmp_assign_source_8;
         CHECK_OBJECT(tmp_for_loop_1__iter_value);
-        tmp_assign_source_7 = tmp_for_loop_1__iter_value;
+        tmp_assign_source_8 = tmp_for_loop_1__iter_value;
+        {
+            PyObject *old = var__;
+            var__ = tmp_assign_source_8;
+            Py_INCREF(var__);
+            Py_XDECREF(old);
+        }
+
+    }
+    {
+        PyObject *tmp_assign_source_9;
+        PyObject *tmp_iter_arg_2;
+        PyObject *tmp_expression_value_9;
+        if (par_self == NULL) {
+
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 54;
+            type_description_1 = "oooo";
+            goto try_except_handler_3;
+        }
+
+        tmp_expression_value_9 = par_self;
+        tmp_iter_arg_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_9, mod_consts[1]);
+        if (tmp_iter_arg_2 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 54;
+            type_description_1 = "oooo";
+            goto try_except_handler_3;
+        }
+        tmp_assign_source_9 = MAKE_ITERATOR(tstate, tmp_iter_arg_2);
+        Py_DECREF(tmp_iter_arg_2);
+        if (tmp_assign_source_9 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 54;
+            type_description_1 = "oooo";
+            goto try_except_handler_3;
+        }
+        {
+            PyObject *old = tmp_for_loop_2__for_iterator;
+            tmp_for_loop_2__for_iterator = tmp_assign_source_9;
+            Py_XDECREF(old);
+        }
+
+    }
+    // Tried code:
+    loop_start_2:;
+    {
+        PyObject *tmp_next_source_2;
+        PyObject *tmp_assign_source_10;
+        CHECK_OBJECT(tmp_for_loop_2__for_iterator);
+        tmp_next_source_2 = tmp_for_loop_2__for_iterator;
+        tmp_assign_source_10 = ITERATOR_NEXT(tmp_next_source_2);
+        if (tmp_assign_source_10 == NULL) {
+            if (CHECK_AND_CLEAR_STOP_ITERATION_OCCURRED(tstate)) {
+
+                goto loop_end_2;
+            } else {
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+                type_description_1 = "oooo";
+                exception_lineno = 54;
+                goto try_except_handler_4;
+            }
+        }
+
+        {
+            PyObject *old = tmp_for_loop_2__iter_value;
+            tmp_for_loop_2__iter_value = tmp_assign_source_10;
+            Py_XDECREF(old);
+        }
+
+    }
+    {
+        PyObject *tmp_assign_source_11;
+        CHECK_OBJECT(tmp_for_loop_2__iter_value);
+        tmp_assign_source_11 = tmp_for_loop_2__iter_value;
         {
             PyObject *old = var_effect;
-            var_effect = tmp_assign_source_7;
+            var_effect = tmp_assign_source_11;
             Py_INCREF(var_effect);
             Py_XDECREF(old);
         }
 
     }
     {
-        PyObject *tmp_called_value_1;
+        PyObject *tmp_called_value_2;
         PyObject *tmp_call_result_1;
-        PyObject *tmp_args_element_value_1;
+        PyObject *tmp_args_element_value_3;
         CHECK_OBJECT(var_effect);
-        tmp_called_value_1 = var_effect;
+        tmp_called_value_2 = var_effect;
         if (par_self == NULL) {
 
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[12]);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(tstate, exception_value);
 
-            exception_lineno = 45;
-            type_description_1 = "oo";
-            goto try_except_handler_3;
+            exception_lineno = 55;
+            type_description_1 = "oooo";
+            goto try_except_handler_4;
         }
 
-        tmp_args_element_value_1 = par_self;
-        frame_a107b85ca742f3f139d54db115cbf96f->m_frame.f_lineno = 45;
-        tmp_call_result_1 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_1, tmp_args_element_value_1);
+        tmp_args_element_value_3 = par_self;
+        frame_90d1910a42824c2443a6fb5f102c5529->m_frame.f_lineno = 55;
+        tmp_call_result_1 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_2, tmp_args_element_value_3);
         if (tmp_call_result_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 45;
-            type_description_1 = "oo";
-            goto try_except_handler_3;
+            exception_lineno = 55;
+            type_description_1 = "oooo";
+            goto try_except_handler_4;
         }
         Py_DECREF(tmp_call_result_1);
     }
@@ -1549,19 +2079,62 @@ static PyObject *impl_base$buff$$$function__5_remove(PyThreadState *tstate, stru
         FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-        exception_lineno = 44;
-        type_description_1 = "oo";
-        goto try_except_handler_3;
+        exception_lineno = 54;
+        type_description_1 = "oooo";
+        goto try_except_handler_4;
     }
-    goto loop_start_1;
-    loop_end_1:;
+    goto loop_start_2;
+    loop_end_2:;
     goto try_end_2;
     // Exception handler code:
-    try_except_handler_3:;
+    try_except_handler_4:;
     exception_keeper_type_2 = exception_type;
     exception_keeper_value_2 = exception_value;
     exception_keeper_tb_2 = exception_tb;
     exception_keeper_lineno_2 = exception_lineno;
+    exception_type = NULL;
+    exception_value = NULL;
+    exception_tb = NULL;
+    exception_lineno = 0;
+
+    Py_XDECREF(tmp_for_loop_2__iter_value);
+    tmp_for_loop_2__iter_value = NULL;
+    CHECK_OBJECT(tmp_for_loop_2__for_iterator);
+    Py_DECREF(tmp_for_loop_2__for_iterator);
+    tmp_for_loop_2__for_iterator = NULL;
+    // Re-raise.
+    exception_type = exception_keeper_type_2;
+    exception_value = exception_keeper_value_2;
+    exception_tb = exception_keeper_tb_2;
+    exception_lineno = exception_keeper_lineno_2;
+
+    goto try_except_handler_3;
+    // End of try:
+    try_end_2:;
+    Py_XDECREF(tmp_for_loop_2__iter_value);
+    tmp_for_loop_2__iter_value = NULL;
+    CHECK_OBJECT(tmp_for_loop_2__for_iterator);
+    Py_DECREF(tmp_for_loop_2__for_iterator);
+    tmp_for_loop_2__for_iterator = NULL;
+    if (CONSIDER_THREADING(tstate) == false) {
+        assert(HAS_ERROR_OCCURRED(tstate));
+
+        FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+        exception_lineno = 53;
+        type_description_1 = "oooo";
+        goto try_except_handler_3;
+    }
+    goto loop_start_1;
+    loop_end_1:;
+    goto try_end_3;
+    // Exception handler code:
+    try_except_handler_3:;
+    exception_keeper_type_3 = exception_type;
+    exception_keeper_value_3 = exception_value;
+    exception_keeper_tb_3 = exception_tb;
+    exception_keeper_lineno_3 = exception_lineno;
     exception_type = NULL;
     exception_value = NULL;
     exception_tb = NULL;
@@ -1573,137 +2146,36 @@ static PyObject *impl_base$buff$$$function__5_remove(PyThreadState *tstate, stru
     Py_DECREF(tmp_for_loop_1__for_iterator);
     tmp_for_loop_1__for_iterator = NULL;
     // Re-raise.
-    exception_type = exception_keeper_type_2;
-    exception_value = exception_keeper_value_2;
-    exception_tb = exception_keeper_tb_2;
-    exception_lineno = exception_keeper_lineno_2;
+    exception_type = exception_keeper_type_3;
+    exception_value = exception_keeper_value_3;
+    exception_tb = exception_keeper_tb_3;
+    exception_lineno = exception_keeper_lineno_3;
 
     goto frame_exception_exit_1;
     // End of try:
-    try_end_2:;
+    try_end_3:;
     Py_XDECREF(tmp_for_loop_1__iter_value);
     tmp_for_loop_1__iter_value = NULL;
     CHECK_OBJECT(tmp_for_loop_1__for_iterator);
     Py_DECREF(tmp_for_loop_1__for_iterator);
     tmp_for_loop_1__for_iterator = NULL;
     {
-        bool tmp_condition_result_1;
-        PyObject *tmp_operand_value_1;
-        PyObject *tmp_expression_value_6;
-        PyObject *tmp_expression_value_7;
-        PyObject *tmp_expression_value_8;
-        PyObject *tmp_subscript_value_2;
-        PyObject *tmp_expression_value_9;
-        if (par_self == NULL) {
-
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[12]);
-            exception_tb = NULL;
-            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
-            CHAIN_EXCEPTION(tstate, exception_value);
-
-            exception_lineno = 47;
-            type_description_1 = "oo";
-            goto frame_exception_exit_1;
-        }
-
-        tmp_expression_value_8 = par_self;
-        tmp_expression_value_7 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_8, mod_consts[7]);
-        if (tmp_expression_value_7 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 47;
-            type_description_1 = "oo";
-            goto frame_exception_exit_1;
-        }
-        tmp_expression_value_6 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_7, mod_consts[10]);
-        Py_DECREF(tmp_expression_value_7);
-        if (tmp_expression_value_6 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 47;
-            type_description_1 = "oo";
-            goto frame_exception_exit_1;
-        }
-        if (par_self == NULL) {
-            Py_DECREF(tmp_expression_value_6);
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[12]);
-            exception_tb = NULL;
-            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
-            CHAIN_EXCEPTION(tstate, exception_value);
-
-            exception_lineno = 47;
-            type_description_1 = "oo";
-            goto frame_exception_exit_1;
-        }
-
-        tmp_expression_value_9 = par_self;
-        tmp_subscript_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_9, mod_consts[9]);
-        if (tmp_subscript_value_2 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-            Py_DECREF(tmp_expression_value_6);
-
-            exception_lineno = 47;
-            type_description_1 = "oo";
-            goto frame_exception_exit_1;
-        }
-        tmp_operand_value_1 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_6, tmp_subscript_value_2);
-        Py_DECREF(tmp_expression_value_6);
-        Py_DECREF(tmp_subscript_value_2);
-        if (tmp_operand_value_1 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 47;
-            type_description_1 = "oo";
-            goto frame_exception_exit_1;
-        }
-        tmp_res = CHECK_IF_TRUE(tmp_operand_value_1);
-        Py_DECREF(tmp_operand_value_1);
-        if (tmp_res == -1) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 47;
-            type_description_1 = "oo";
-            goto frame_exception_exit_1;
-        }
-        tmp_condition_result_1 = (tmp_res == 0) ? true : false;
-        if (tmp_condition_result_1 != false) {
-            goto branch_yes_1;
-        } else {
-            goto branch_no_1;
-        }
-    }
-    branch_yes_1:;
-    {
-        PyObject *tmp_called_value_2;
+        bool tmp_condition_result_2;
+        PyObject *tmp_operand_value_2;
         PyObject *tmp_expression_value_10;
         PyObject *tmp_expression_value_11;
         PyObject *tmp_expression_value_12;
-        PyObject *tmp_call_result_2;
-        PyObject *tmp_args_element_value_2;
+        PyObject *tmp_subscript_value_3;
         PyObject *tmp_expression_value_13;
         if (par_self == NULL) {
 
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[12]);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(tstate, exception_value);
 
-            exception_lineno = 48;
-            type_description_1 = "oo";
+            exception_lineno = 57;
+            type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
 
@@ -1715,11 +2187,11 @@ static PyObject *impl_base$buff$$$function__5_remove(PyThreadState *tstate, stru
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 48;
-            type_description_1 = "oo";
+            exception_lineno = 57;
+            type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
-        tmp_expression_value_10 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_11, mod_consts[8]);
+        tmp_expression_value_10 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_11, mod_consts[12]);
         Py_DECREF(tmp_expression_value_11);
         if (tmp_expression_value_10 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -1727,98 +2199,207 @@ static PyObject *impl_base$buff$$$function__5_remove(PyThreadState *tstate, stru
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 48;
-            type_description_1 = "oo";
-            goto frame_exception_exit_1;
-        }
-        tmp_called_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_10, mod_consts[13]);
-        Py_DECREF(tmp_expression_value_10);
-        if (tmp_called_value_2 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 48;
-            type_description_1 = "oo";
+            exception_lineno = 57;
+            type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
         if (par_self == NULL) {
-            Py_DECREF(tmp_called_value_2);
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[12]);
+            Py_DECREF(tmp_expression_value_10);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(tstate, exception_value);
 
-            exception_lineno = 48;
-            type_description_1 = "oo";
+            exception_lineno = 57;
+            type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
 
         tmp_expression_value_13 = par_self;
-        tmp_args_element_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_13, mod_consts[9]);
-        if (tmp_args_element_value_2 == NULL) {
+        tmp_subscript_value_3 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_13, mod_consts[9]);
+        if (tmp_subscript_value_3 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-            Py_DECREF(tmp_called_value_2);
+            Py_DECREF(tmp_expression_value_10);
 
-            exception_lineno = 48;
-            type_description_1 = "oo";
+            exception_lineno = 57;
+            type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
-        frame_a107b85ca742f3f139d54db115cbf96f->m_frame.f_lineno = 48;
-        tmp_call_result_2 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_2, tmp_args_element_value_2);
-        Py_DECREF(tmp_called_value_2);
-        Py_DECREF(tmp_args_element_value_2);
+        tmp_operand_value_2 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_10, tmp_subscript_value_3);
+        Py_DECREF(tmp_expression_value_10);
+        Py_DECREF(tmp_subscript_value_3);
+        if (tmp_operand_value_2 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 57;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        tmp_res = CHECK_IF_TRUE(tmp_operand_value_2);
+        Py_DECREF(tmp_operand_value_2);
+        if (tmp_res == -1) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 57;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        tmp_condition_result_2 = (tmp_res == 0) ? true : false;
+        if (tmp_condition_result_2 != false) {
+            goto branch_yes_2;
+        } else {
+            goto branch_no_2;
+        }
+    }
+    branch_yes_2:;
+    {
+        PyObject *tmp_called_value_3;
+        PyObject *tmp_expression_value_14;
+        PyObject *tmp_expression_value_15;
+        PyObject *tmp_expression_value_16;
+        PyObject *tmp_call_result_2;
+        PyObject *tmp_args_element_value_4;
+        PyObject *tmp_expression_value_17;
+        if (par_self == NULL) {
+
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 58;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+
+        tmp_expression_value_16 = par_self;
+        tmp_expression_value_15 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_16, mod_consts[7]);
+        if (tmp_expression_value_15 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 58;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        tmp_expression_value_14 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_15, mod_consts[8]);
+        Py_DECREF(tmp_expression_value_15);
+        if (tmp_expression_value_14 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 58;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        tmp_called_value_3 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_14, mod_consts[14]);
+        Py_DECREF(tmp_expression_value_14);
+        if (tmp_called_value_3 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 58;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        if (par_self == NULL) {
+            Py_DECREF(tmp_called_value_3);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 58;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+
+        tmp_expression_value_17 = par_self;
+        tmp_args_element_value_4 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_17, mod_consts[9]);
+        if (tmp_args_element_value_4 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_called_value_3);
+
+            exception_lineno = 58;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        frame_90d1910a42824c2443a6fb5f102c5529->m_frame.f_lineno = 58;
+        tmp_call_result_2 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_3, tmp_args_element_value_4);
+        Py_DECREF(tmp_called_value_3);
+        Py_DECREF(tmp_args_element_value_4);
         if (tmp_call_result_2 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 48;
-            type_description_1 = "oo";
+            exception_lineno = 58;
+            type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
         Py_DECREF(tmp_call_result_2);
     }
-    branch_no_1:;
+    branch_no_2:;
 
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
 
     goto frame_no_exception_1;
+    frame_return_exit_1:
+
+    // Put the previous frame back on top.
+    popFrameStack(tstate);
+
+    goto try_return_handler_1;
     frame_exception_exit_1:
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_a107b85ca742f3f139d54db115cbf96f, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_a107b85ca742f3f139d54db115cbf96f->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_a107b85ca742f3f139d54db115cbf96f, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_90d1910a42824c2443a6fb5f102c5529, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_90d1910a42824c2443a6fb5f102c5529->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_90d1910a42824c2443a6fb5f102c5529, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_a107b85ca742f3f139d54db115cbf96f,
+        frame_90d1910a42824c2443a6fb5f102c5529,
         type_description_1,
         par_self,
+        par_stack,
+        var__,
         var_effect
     );
 
 
     // Release cached frame if used for exception.
-    if (frame_a107b85ca742f3f139d54db115cbf96f == cache_frame_a107b85ca742f3f139d54db115cbf96f) {
+    if (frame_90d1910a42824c2443a6fb5f102c5529 == cache_frame_90d1910a42824c2443a6fb5f102c5529) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_a107b85ca742f3f139d54db115cbf96f);
-        cache_frame_a107b85ca742f3f139d54db115cbf96f = NULL;
+        Py_DECREF(cache_frame_90d1910a42824c2443a6fb5f102c5529);
+        cache_frame_90d1910a42824c2443a6fb5f102c5529 = NULL;
     }
 
-    assertFrameObject(frame_a107b85ca742f3f139d54db115cbf96f);
+    assertFrameObject(frame_90d1910a42824c2443a6fb5f102c5529);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
@@ -1833,27 +2414,35 @@ static PyObject *impl_base$buff$$$function__5_remove(PyThreadState *tstate, stru
     return NULL;
     // Return handler code:
     try_return_handler_1:;
+    Py_XDECREF(par_stack);
+    par_stack = NULL;
+    Py_XDECREF(var__);
+    var__ = NULL;
     Py_XDECREF(var_effect);
     var_effect = NULL;
     goto function_return_exit;
     // Exception handler code:
     try_except_handler_1:;
-    exception_keeper_type_3 = exception_type;
-    exception_keeper_value_3 = exception_value;
-    exception_keeper_tb_3 = exception_tb;
-    exception_keeper_lineno_3 = exception_lineno;
+    exception_keeper_type_4 = exception_type;
+    exception_keeper_value_4 = exception_value;
+    exception_keeper_tb_4 = exception_tb;
+    exception_keeper_lineno_4 = exception_lineno;
     exception_type = NULL;
     exception_value = NULL;
     exception_tb = NULL;
     exception_lineno = 0;
 
+    Py_XDECREF(par_stack);
+    par_stack = NULL;
+    Py_XDECREF(var__);
+    var__ = NULL;
     Py_XDECREF(var_effect);
     var_effect = NULL;
     // Re-raise.
-    exception_type = exception_keeper_type_3;
-    exception_value = exception_keeper_value_3;
-    exception_tb = exception_keeper_tb_3;
-    exception_lineno = exception_keeper_lineno_3;
+    exception_type = exception_keeper_type_4;
+    exception_value = exception_keeper_value_4;
+    exception_tb = exception_keeper_tb_4;
+    exception_lineno = exception_keeper_lineno_4;
 
     goto function_exception_exit;
     // End of try:
@@ -1892,84 +2481,68 @@ static PyObject *impl_base$buff$$$function__6_trigger(PyThreadState *tstate, str
     PyObject *par_self = python_pars[0];
     PyObject *par_level = python_pars[1];
     PyObject *par_stack = python_pars[2];
-    PyObject *var__ = NULL;
-    PyObject *tmp_for_loop_1__for_iterator = NULL;
-    PyObject *tmp_for_loop_1__iter_value = NULL;
-    struct Nuitka_FrameObject *frame_e5de36bf9bbd30ebd969b490a2c8df81;
+    struct Nuitka_FrameObject *frame_7cfc21170008e5e545103c8c20b2e549;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
-    bool tmp_result;
+    int tmp_res;
     PyObject *exception_type = NULL;
     PyObject *exception_value = NULL;
     PyTracebackObject *exception_tb = NULL;
     NUITKA_MAY_BE_UNUSED int exception_lineno = 0;
+    PyObject *tmp_return_value = NULL;
+    bool tmp_result;
     NUITKA_MAY_BE_UNUSED nuitka_void tmp_unused;
+    static struct Nuitka_FrameObject *cache_frame_7cfc21170008e5e545103c8c20b2e549 = NULL;
     PyObject *exception_keeper_type_1;
     PyObject *exception_keeper_value_1;
     PyTracebackObject *exception_keeper_tb_1;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_1;
-    static struct Nuitka_FrameObject *cache_frame_e5de36bf9bbd30ebd969b490a2c8df81 = NULL;
-    PyObject *tmp_return_value = NULL;
-    PyObject *exception_keeper_type_2;
-    PyObject *exception_keeper_value_2;
-    PyTracebackObject *exception_keeper_tb_2;
-    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_2;
 
     // Actual function body.
     // Tried code:
-    if (isFrameUnusable(cache_frame_e5de36bf9bbd30ebd969b490a2c8df81)) {
-        Py_XDECREF(cache_frame_e5de36bf9bbd30ebd969b490a2c8df81);
+    if (isFrameUnusable(cache_frame_7cfc21170008e5e545103c8c20b2e549)) {
+        Py_XDECREF(cache_frame_7cfc21170008e5e545103c8c20b2e549);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_e5de36bf9bbd30ebd969b490a2c8df81 == NULL) {
+        if (cache_frame_7cfc21170008e5e545103c8c20b2e549 == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_e5de36bf9bbd30ebd969b490a2c8df81 = MAKE_FUNCTION_FRAME(tstate, codeobj_e5de36bf9bbd30ebd969b490a2c8df81, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *)+sizeof(void *));
+        cache_frame_7cfc21170008e5e545103c8c20b2e549 = MAKE_FUNCTION_FRAME(tstate, codeobj_7cfc21170008e5e545103c8c20b2e549, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_e5de36bf9bbd30ebd969b490a2c8df81->m_type_description == NULL);
-    frame_e5de36bf9bbd30ebd969b490a2c8df81 = cache_frame_e5de36bf9bbd30ebd969b490a2c8df81;
+    assert(cache_frame_7cfc21170008e5e545103c8c20b2e549->m_type_description == NULL);
+    frame_7cfc21170008e5e545103c8c20b2e549 = cache_frame_7cfc21170008e5e545103c8c20b2e549;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_e5de36bf9bbd30ebd969b490a2c8df81);
-    assert(Py_REFCNT(frame_e5de36bf9bbd30ebd969b490a2c8df81) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_7cfc21170008e5e545103c8c20b2e549);
+    assert(Py_REFCNT(frame_7cfc21170008e5e545103c8c20b2e549) == 2);
 
     // Framed code:
     {
-        PyObject *tmp_assattr_value_1;
-        PyObject *tmp_assattr_target_1;
+        bool tmp_condition_result_1;
+        PyObject *tmp_operand_value_1;
         CHECK_OBJECT(par_level);
-        tmp_assattr_value_1 = par_level;
-        CHECK_OBJECT(par_self);
-        tmp_assattr_target_1 = par_self;
-        tmp_result = SET_ATTRIBUTE(tstate, tmp_assattr_target_1, mod_consts[14], tmp_assattr_value_1);
-        if (tmp_result == false) {
+        tmp_operand_value_1 = par_level;
+        tmp_res = CHECK_IF_TRUE(tmp_operand_value_1);
+        if (tmp_res == -1) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 51;
-            type_description_1 = "oooo";
+            exception_lineno = 61;
+            type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
-    }
-    {
-        bool tmp_condition_result_1;
-        PyObject *tmp_cmp_expr_left_1;
-        PyObject *tmp_cmp_expr_right_1;
-        CHECK_OBJECT(par_stack);
-        tmp_cmp_expr_left_1 = par_stack;
-        tmp_cmp_expr_right_1 = Py_None;
-        tmp_condition_result_1 = (tmp_cmp_expr_left_1 == tmp_cmp_expr_right_1) ? true : false;
+        tmp_condition_result_1 = (tmp_res == 0) ? true : false;
         if (tmp_condition_result_1 != false) {
             goto branch_yes_1;
         } else {
@@ -1977,20 +2550,58 @@ static PyObject *impl_base$buff$$$function__6_trigger(PyThreadState *tstate, str
         }
     }
     branch_yes_1:;
+    tmp_return_value = Py_None;
+    Py_INCREF(tmp_return_value);
+    goto frame_return_exit_1;
+    branch_no_1:;
+    {
+        PyObject *tmp_assattr_value_1;
+        PyObject *tmp_assattr_target_1;
+        CHECK_OBJECT(par_level);
+        tmp_assattr_value_1 = par_level;
+        CHECK_OBJECT(par_self);
+        tmp_assattr_target_1 = par_self;
+        tmp_result = SET_ATTRIBUTE(tstate, tmp_assattr_target_1, mod_consts[15], tmp_assattr_value_1);
+        if (tmp_result == false) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 63;
+            type_description_1 = "ooo";
+            goto frame_exception_exit_1;
+        }
+    }
+    {
+        bool tmp_condition_result_2;
+        PyObject *tmp_cmp_expr_left_1;
+        PyObject *tmp_cmp_expr_right_1;
+        CHECK_OBJECT(par_stack);
+        tmp_cmp_expr_left_1 = par_stack;
+        tmp_cmp_expr_right_1 = Py_None;
+        tmp_condition_result_2 = (tmp_cmp_expr_left_1 == tmp_cmp_expr_right_1) ? true : false;
+        if (tmp_condition_result_2 != false) {
+            goto branch_yes_2;
+        } else {
+            goto branch_no_2;
+        }
+    }
+    branch_yes_2:;
     {
         PyObject *tmp_assign_source_1;
         PyObject *tmp_expression_value_1;
         CHECK_OBJECT(par_self);
         tmp_expression_value_1 = par_self;
-        tmp_assign_source_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[15]);
+        tmp_assign_source_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[16]);
         if (tmp_assign_source_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 54;
-            type_description_1 = "oooo";
+            exception_lineno = 66;
+            type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
         {
@@ -2001,263 +2612,109 @@ static PyObject *impl_base$buff$$$function__6_trigger(PyThreadState *tstate, str
         }
 
     }
-    branch_no_1:;
+    branch_no_2:;
     {
         PyObject *tmp_called_instance_1;
         PyObject *tmp_call_result_1;
         CHECK_OBJECT(par_self);
         tmp_called_instance_1 = par_self;
-        frame_e5de36bf9bbd30ebd969b490a2c8df81->m_frame.f_lineno = 56;
-        tmp_call_result_1 = CALL_METHOD_NO_ARGS(tstate, tmp_called_instance_1, mod_consts[16]);
+        frame_7cfc21170008e5e545103c8c20b2e549->m_frame.f_lineno = 68;
+        tmp_call_result_1 = CALL_METHOD_NO_ARGS(tstate, tmp_called_instance_1, mod_consts[17]);
         if (tmp_call_result_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 56;
-            type_description_1 = "oooo";
+            exception_lineno = 68;
+            type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
         Py_DECREF(tmp_call_result_1);
     }
     {
-        PyObject *tmp_assign_source_2;
-        PyObject *tmp_called_value_1;
-        PyObject *tmp_args_element_value_1;
-        PyObject *tmp_args_element_value_2;
-        PyObject *tmp_sub_expr_left_1;
-        PyObject *tmp_sub_expr_right_1;
-        PyObject *tmp_expression_value_2;
-        PyObject *tmp_expression_value_3;
-        PyObject *tmp_expression_value_4;
-        PyObject *tmp_expression_value_5;
-        PyObject *tmp_subscript_value_1;
-        PyObject *tmp_expression_value_6;
-        tmp_called_value_1 = LOOKUP_BUILTIN(mod_consts[17]);
-        assert(tmp_called_value_1 != NULL);
-        CHECK_OBJECT(par_stack);
-        tmp_args_element_value_1 = par_stack;
-        CHECK_OBJECT(par_self);
-        tmp_expression_value_2 = par_self;
-        tmp_sub_expr_left_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_2, mod_consts[18]);
-        if (tmp_sub_expr_left_1 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 58;
-            type_description_1 = "oooo";
-            goto frame_exception_exit_1;
-        }
-        CHECK_OBJECT(par_self);
-        tmp_expression_value_5 = par_self;
-        tmp_expression_value_4 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[7]);
-        if (tmp_expression_value_4 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-            Py_DECREF(tmp_sub_expr_left_1);
-
-            exception_lineno = 58;
-            type_description_1 = "oooo";
-            goto frame_exception_exit_1;
-        }
-        tmp_expression_value_3 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_4, mod_consts[10]);
-        Py_DECREF(tmp_expression_value_4);
-        if (tmp_expression_value_3 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-            Py_DECREF(tmp_sub_expr_left_1);
-
-            exception_lineno = 58;
-            type_description_1 = "oooo";
-            goto frame_exception_exit_1;
-        }
-        CHECK_OBJECT(par_self);
-        tmp_expression_value_6 = par_self;
-        tmp_subscript_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_6, mod_consts[9]);
-        if (tmp_subscript_value_1 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-            Py_DECREF(tmp_sub_expr_left_1);
-            Py_DECREF(tmp_expression_value_3);
-
-            exception_lineno = 58;
-            type_description_1 = "oooo";
-            goto frame_exception_exit_1;
-        }
-        tmp_sub_expr_right_1 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_3, tmp_subscript_value_1);
-        Py_DECREF(tmp_expression_value_3);
-        Py_DECREF(tmp_subscript_value_1);
-        if (tmp_sub_expr_right_1 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-            Py_DECREF(tmp_sub_expr_left_1);
-
-            exception_lineno = 58;
-            type_description_1 = "oooo";
-            goto frame_exception_exit_1;
-        }
-        tmp_args_element_value_2 = BINARY_OPERATION_SUB_OBJECT_OBJECT_OBJECT(tmp_sub_expr_left_1, tmp_sub_expr_right_1);
-        Py_DECREF(tmp_sub_expr_left_1);
-        Py_DECREF(tmp_sub_expr_right_1);
-        if (tmp_args_element_value_2 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 58;
-            type_description_1 = "oooo";
-            goto frame_exception_exit_1;
-        }
-        frame_e5de36bf9bbd30ebd969b490a2c8df81->m_frame.f_lineno = 58;
-        {
-            PyObject *call_args[] = {tmp_args_element_value_1, tmp_args_element_value_2};
-            tmp_assign_source_2 = CALL_FUNCTION_WITH_ARGS2(tstate, tmp_called_value_1, call_args);
-        }
-
-        Py_DECREF(tmp_args_element_value_2);
-        if (tmp_assign_source_2 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 58;
-            type_description_1 = "oooo";
-            goto frame_exception_exit_1;
-        }
-        {
-            PyObject *old = par_stack;
-            assert(old != NULL);
-            par_stack = tmp_assign_source_2;
-            Py_DECREF(old);
-        }
-
-    }
-    {
-        PyObject *tmp_assign_source_3;
-        PyObject *tmp_iter_arg_1;
-        PyObject *tmp_xrange_low_1;
-        CHECK_OBJECT(par_stack);
-        tmp_xrange_low_1 = par_stack;
-        tmp_iter_arg_1 = BUILTIN_XRANGE1(tstate, tmp_xrange_low_1);
-        if (tmp_iter_arg_1 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 60;
-            type_description_1 = "oooo";
-            goto frame_exception_exit_1;
-        }
-        tmp_assign_source_3 = MAKE_ITERATOR(tstate, tmp_iter_arg_1);
-        Py_DECREF(tmp_iter_arg_1);
-        if (tmp_assign_source_3 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 60;
-            type_description_1 = "oooo";
-            goto frame_exception_exit_1;
-        }
-        assert(tmp_for_loop_1__for_iterator == NULL);
-        tmp_for_loop_1__for_iterator = tmp_assign_source_3;
-    }
-    // Tried code:
-    loop_start_1:;
-    {
-        PyObject *tmp_next_source_1;
-        PyObject *tmp_assign_source_4;
-        CHECK_OBJECT(tmp_for_loop_1__for_iterator);
-        tmp_next_source_1 = tmp_for_loop_1__for_iterator;
-        tmp_assign_source_4 = ITERATOR_NEXT(tmp_next_source_1);
-        if (tmp_assign_source_4 == NULL) {
-            if (CHECK_AND_CLEAR_STOP_ITERATION_OCCURRED(tstate)) {
-
-                goto loop_end_1;
-            } else {
-
-                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-                type_description_1 = "oooo";
-                exception_lineno = 60;
-                goto try_except_handler_2;
-            }
-        }
-
-        {
-            PyObject *old = tmp_for_loop_1__iter_value;
-            tmp_for_loop_1__iter_value = tmp_assign_source_4;
-            Py_XDECREF(old);
-        }
-
-    }
-    {
-        PyObject *tmp_assign_source_5;
-        CHECK_OBJECT(tmp_for_loop_1__iter_value);
-        tmp_assign_source_5 = tmp_for_loop_1__iter_value;
-        {
-            PyObject *old = var__;
-            var__ = tmp_assign_source_5;
-            Py_INCREF(var__);
-            Py_XDECREF(old);
-        }
-
-    }
-    {
         PyObject *tmp_called_instance_2;
         PyObject *tmp_call_result_2;
-        if (par_self == NULL) {
-
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[12]);
-            exception_tb = NULL;
-            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
-            CHAIN_EXCEPTION(tstate, exception_value);
-
-            exception_lineno = 61;
-            type_description_1 = "oooo";
-            goto try_except_handler_2;
-        }
-
+        PyObject *tmp_args_element_value_1;
+        CHECK_OBJECT(par_self);
         tmp_called_instance_2 = par_self;
-        frame_e5de36bf9bbd30ebd969b490a2c8df81->m_frame.f_lineno = 61;
-        tmp_call_result_2 = CALL_METHOD_NO_ARGS(tstate, tmp_called_instance_2, mod_consts[19]);
+        CHECK_OBJECT(par_stack);
+        tmp_args_element_value_1 = par_stack;
+        frame_7cfc21170008e5e545103c8c20b2e549->m_frame.f_lineno = 70;
+        tmp_call_result_2 = CALL_METHOD_WITH_SINGLE_ARG(tstate, tmp_called_instance_2, mod_consts[18], tmp_args_element_value_1);
         if (tmp_call_result_2 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 61;
-            type_description_1 = "oooo";
-            goto try_except_handler_2;
+            exception_lineno = 70;
+            type_description_1 = "ooo";
+            goto frame_exception_exit_1;
         }
         Py_DECREF(tmp_call_result_2);
     }
-    if (CONSIDER_THREADING(tstate) == false) {
-        assert(HAS_ERROR_OCCURRED(tstate));
-
-        FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-        exception_lineno = 60;
-        type_description_1 = "oooo";
-        goto try_except_handler_2;
+    // Put the previous frame back on top.
+    popFrameStack(tstate);
+
+    goto frame_no_exception_1;
+    frame_return_exit_1:
+
+    // Put the previous frame back on top.
+    popFrameStack(tstate);
+
+    goto try_return_handler_1;
+    frame_exception_exit_1:
+
+
+    if (exception_tb == NULL) {
+        exception_tb = MAKE_TRACEBACK(frame_7cfc21170008e5e545103c8c20b2e549, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_7cfc21170008e5e545103c8c20b2e549->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_7cfc21170008e5e545103c8c20b2e549, exception_lineno);
     }
-    goto loop_start_1;
-    loop_end_1:;
-    goto try_end_1;
+
+    // Attaches locals to frame if any.
+    Nuitka_Frame_AttachLocals(
+        frame_7cfc21170008e5e545103c8c20b2e549,
+        type_description_1,
+        par_self,
+        par_level,
+        par_stack
+    );
+
+
+    // Release cached frame if used for exception.
+    if (frame_7cfc21170008e5e545103c8c20b2e549 == cache_frame_7cfc21170008e5e545103c8c20b2e549) {
+#if _DEBUG_REFCOUNTS
+        count_active_frame_cache_instances -= 1;
+        count_released_frame_cache_instances += 1;
+#endif
+        Py_DECREF(cache_frame_7cfc21170008e5e545103c8c20b2e549);
+        cache_frame_7cfc21170008e5e545103c8c20b2e549 = NULL;
+    }
+
+    assertFrameObject(frame_7cfc21170008e5e545103c8c20b2e549);
+
+    // Put the previous frame back on top.
+    popFrameStack(tstate);
+
+    // Return the error.
+    goto try_except_handler_1;
+    frame_no_exception_1:;
+    tmp_return_value = Py_None;
+    Py_INCREF(tmp_return_value);
+    goto try_return_handler_1;
+    NUITKA_CANNOT_GET_HERE("tried codes exits in all cases");
+    return NULL;
+    // Return handler code:
+    try_return_handler_1:;
+    Py_XDECREF(par_stack);
+    par_stack = NULL;
+    goto function_return_exit;
     // Exception handler code:
-    try_except_handler_2:;
+    try_except_handler_1:;
     exception_keeper_type_1 = exception_type;
     exception_keeper_value_1 = exception_value;
     exception_keeper_tb_1 = exception_tb;
@@ -2267,103 +2724,13 @@ static PyObject *impl_base$buff$$$function__6_trigger(PyThreadState *tstate, str
     exception_tb = NULL;
     exception_lineno = 0;
 
-    Py_XDECREF(tmp_for_loop_1__iter_value);
-    tmp_for_loop_1__iter_value = NULL;
-    CHECK_OBJECT(tmp_for_loop_1__for_iterator);
-    Py_DECREF(tmp_for_loop_1__for_iterator);
-    tmp_for_loop_1__for_iterator = NULL;
+    Py_XDECREF(par_stack);
+    par_stack = NULL;
     // Re-raise.
     exception_type = exception_keeper_type_1;
     exception_value = exception_keeper_value_1;
     exception_tb = exception_keeper_tb_1;
     exception_lineno = exception_keeper_lineno_1;
-
-    goto frame_exception_exit_1;
-    // End of try:
-    try_end_1:;
-
-
-    // Put the previous frame back on top.
-    popFrameStack(tstate);
-
-    goto frame_no_exception_1;
-    frame_exception_exit_1:
-
-
-    if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_e5de36bf9bbd30ebd969b490a2c8df81, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_e5de36bf9bbd30ebd969b490a2c8df81->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_e5de36bf9bbd30ebd969b490a2c8df81, exception_lineno);
-    }
-
-    // Attaches locals to frame if any.
-    Nuitka_Frame_AttachLocals(
-        frame_e5de36bf9bbd30ebd969b490a2c8df81,
-        type_description_1,
-        par_self,
-        par_level,
-        par_stack,
-        var__
-    );
-
-
-    // Release cached frame if used for exception.
-    if (frame_e5de36bf9bbd30ebd969b490a2c8df81 == cache_frame_e5de36bf9bbd30ebd969b490a2c8df81) {
-#if _DEBUG_REFCOUNTS
-        count_active_frame_cache_instances -= 1;
-        count_released_frame_cache_instances += 1;
-#endif
-        Py_DECREF(cache_frame_e5de36bf9bbd30ebd969b490a2c8df81);
-        cache_frame_e5de36bf9bbd30ebd969b490a2c8df81 = NULL;
-    }
-
-    assertFrameObject(frame_e5de36bf9bbd30ebd969b490a2c8df81);
-
-    // Put the previous frame back on top.
-    popFrameStack(tstate);
-
-    // Return the error.
-    goto try_except_handler_1;
-    frame_no_exception_1:;
-    Py_XDECREF(tmp_for_loop_1__iter_value);
-    tmp_for_loop_1__iter_value = NULL;
-    CHECK_OBJECT(tmp_for_loop_1__for_iterator);
-    Py_DECREF(tmp_for_loop_1__for_iterator);
-    tmp_for_loop_1__for_iterator = NULL;
-    tmp_return_value = Py_None;
-    Py_INCREF(tmp_return_value);
-    goto try_return_handler_1;
-    NUITKA_CANNOT_GET_HERE("tried codes exits in all cases");
-    return NULL;
-    // Return handler code:
-    try_return_handler_1:;
-    CHECK_OBJECT(par_stack);
-    Py_DECREF(par_stack);
-    par_stack = NULL;
-    Py_XDECREF(var__);
-    var__ = NULL;
-    goto function_return_exit;
-    // Exception handler code:
-    try_except_handler_1:;
-    exception_keeper_type_2 = exception_type;
-    exception_keeper_value_2 = exception_value;
-    exception_keeper_tb_2 = exception_tb;
-    exception_keeper_lineno_2 = exception_lineno;
-    exception_type = NULL;
-    exception_value = NULL;
-    exception_tb = NULL;
-    exception_lineno = 0;
-
-    CHECK_OBJECT(par_stack);
-    Py_DECREF(par_stack);
-    par_stack = NULL;
-    Py_XDECREF(var__);
-    var__ = NULL;
-    // Re-raise.
-    exception_type = exception_keeper_type_2;
-    exception_value = exception_keeper_value_2;
-    exception_tb = exception_keeper_tb_2;
-    exception_lineno = exception_keeper_lineno_2;
 
     goto function_exception_exit;
     // End of try:
@@ -2405,54 +2772,47 @@ static PyObject *impl_base$buff$$$function__7_consume(PyThreadState *tstate, str
     // Local variable declarations.
     PyObject *par_self = python_pars[0];
     PyObject *par_stack = python_pars[1];
-    PyObject *var__ = NULL;
-    PyObject *tmp_for_loop_1__for_iterator = NULL;
-    PyObject *tmp_for_loop_1__iter_value = NULL;
-    struct Nuitka_FrameObject *frame_5e630ff32dd6aae4b066d7ee700e6ad7;
+    struct Nuitka_FrameObject *frame_66b25db2102bcaf83de48673c04f8e1c;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
     PyObject *exception_type = NULL;
     PyObject *exception_value = NULL;
     PyTracebackObject *exception_tb = NULL;
     NUITKA_MAY_BE_UNUSED int exception_lineno = 0;
     NUITKA_MAY_BE_UNUSED nuitka_void tmp_unused;
+    static struct Nuitka_FrameObject *cache_frame_66b25db2102bcaf83de48673c04f8e1c = NULL;
+    PyObject *tmp_return_value = NULL;
     PyObject *exception_keeper_type_1;
     PyObject *exception_keeper_value_1;
     PyTracebackObject *exception_keeper_tb_1;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_1;
-    static struct Nuitka_FrameObject *cache_frame_5e630ff32dd6aae4b066d7ee700e6ad7 = NULL;
-    PyObject *tmp_return_value = NULL;
-    PyObject *exception_keeper_type_2;
-    PyObject *exception_keeper_value_2;
-    PyTracebackObject *exception_keeper_tb_2;
-    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_2;
 
     // Actual function body.
     // Tried code:
-    if (isFrameUnusable(cache_frame_5e630ff32dd6aae4b066d7ee700e6ad7)) {
-        Py_XDECREF(cache_frame_5e630ff32dd6aae4b066d7ee700e6ad7);
+    if (isFrameUnusable(cache_frame_66b25db2102bcaf83de48673c04f8e1c)) {
+        Py_XDECREF(cache_frame_66b25db2102bcaf83de48673c04f8e1c);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_5e630ff32dd6aae4b066d7ee700e6ad7 == NULL) {
+        if (cache_frame_66b25db2102bcaf83de48673c04f8e1c == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_5e630ff32dd6aae4b066d7ee700e6ad7 = MAKE_FUNCTION_FRAME(tstate, codeobj_5e630ff32dd6aae4b066d7ee700e6ad7, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *));
+        cache_frame_66b25db2102bcaf83de48673c04f8e1c = MAKE_FUNCTION_FRAME(tstate, codeobj_66b25db2102bcaf83de48673c04f8e1c, module_base$buff, sizeof(void *)+sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_5e630ff32dd6aae4b066d7ee700e6ad7->m_type_description == NULL);
-    frame_5e630ff32dd6aae4b066d7ee700e6ad7 = cache_frame_5e630ff32dd6aae4b066d7ee700e6ad7;
+    assert(cache_frame_66b25db2102bcaf83de48673c04f8e1c->m_type_description == NULL);
+    frame_66b25db2102bcaf83de48673c04f8e1c = cache_frame_66b25db2102bcaf83de48673c04f8e1c;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_5e630ff32dd6aae4b066d7ee700e6ad7);
-    assert(Py_REFCNT(frame_5e630ff32dd6aae4b066d7ee700e6ad7) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_66b25db2102bcaf83de48673c04f8e1c);
+    assert(Py_REFCNT(frame_66b25db2102bcaf83de48673c04f8e1c) == 2);
 
     // Framed code:
     {
@@ -2475,15 +2835,15 @@ static PyObject *impl_base$buff$$$function__7_consume(PyThreadState *tstate, str
         PyObject *tmp_expression_value_1;
         CHECK_OBJECT(par_self);
         tmp_expression_value_1 = par_self;
-        tmp_assign_source_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[20]);
+        tmp_assign_source_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[19]);
         if (tmp_assign_source_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 65;
-            type_description_1 = "ooo";
+            exception_lineno = 74;
+            type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
         {
@@ -2496,270 +2856,51 @@ static PyObject *impl_base$buff$$$function__7_consume(PyThreadState *tstate, str
     }
     branch_no_1:;
     {
-        PyObject *tmp_assign_source_2;
         PyObject *tmp_called_value_1;
-        PyObject *tmp_args_element_value_1;
-        PyObject *tmp_args_element_value_2;
         PyObject *tmp_expression_value_2;
-        PyObject *tmp_expression_value_3;
-        PyObject *tmp_expression_value_4;
-        PyObject *tmp_subscript_value_1;
-        PyObject *tmp_expression_value_5;
-        tmp_called_value_1 = LOOKUP_BUILTIN(mod_consts[17]);
-        assert(tmp_called_value_1 != NULL);
+        PyObject *tmp_call_result_1;
+        PyObject *tmp_args_element_value_1;
+        if (par_self == NULL) {
+
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 76;
+            type_description_1 = "oo";
+            goto frame_exception_exit_1;
+        }
+
+        tmp_expression_value_2 = par_self;
+        tmp_called_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_2, mod_consts[20]);
+        if (tmp_called_value_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 76;
+            type_description_1 = "oo";
+            goto frame_exception_exit_1;
+        }
         CHECK_OBJECT(par_stack);
         tmp_args_element_value_1 = par_stack;
-        if (par_self == NULL) {
-
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[12]);
-            exception_tb = NULL;
-            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
-            CHAIN_EXCEPTION(tstate, exception_value);
-
-            exception_lineno = 67;
-            type_description_1 = "ooo";
-            goto frame_exception_exit_1;
-        }
-
-        tmp_expression_value_4 = par_self;
-        tmp_expression_value_3 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_4, mod_consts[7]);
-        if (tmp_expression_value_3 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 67;
-            type_description_1 = "ooo";
-            goto frame_exception_exit_1;
-        }
-        tmp_expression_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_3, mod_consts[10]);
-        Py_DECREF(tmp_expression_value_3);
-        if (tmp_expression_value_2 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 67;
-            type_description_1 = "ooo";
-            goto frame_exception_exit_1;
-        }
-        if (par_self == NULL) {
-            Py_DECREF(tmp_expression_value_2);
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[12]);
-            exception_tb = NULL;
-            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
-            CHAIN_EXCEPTION(tstate, exception_value);
-
-            exception_lineno = 67;
-            type_description_1 = "ooo";
-            goto frame_exception_exit_1;
-        }
-
-        tmp_expression_value_5 = par_self;
-        tmp_subscript_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[9]);
-        if (tmp_subscript_value_1 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-            Py_DECREF(tmp_expression_value_2);
-
-            exception_lineno = 67;
-            type_description_1 = "ooo";
-            goto frame_exception_exit_1;
-        }
-        tmp_args_element_value_2 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_2, tmp_subscript_value_1);
-        Py_DECREF(tmp_expression_value_2);
-        Py_DECREF(tmp_subscript_value_1);
-        if (tmp_args_element_value_2 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 67;
-            type_description_1 = "ooo";
-            goto frame_exception_exit_1;
-        }
-        frame_5e630ff32dd6aae4b066d7ee700e6ad7->m_frame.f_lineno = 67;
-        {
-            PyObject *call_args[] = {tmp_args_element_value_1, tmp_args_element_value_2};
-            tmp_assign_source_2 = CALL_FUNCTION_WITH_ARGS2(tstate, tmp_called_value_1, call_args);
-        }
-
-        Py_DECREF(tmp_args_element_value_2);
-        if (tmp_assign_source_2 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 67;
-            type_description_1 = "ooo";
-            goto frame_exception_exit_1;
-        }
-        {
-            PyObject *old = par_stack;
-            assert(old != NULL);
-            par_stack = tmp_assign_source_2;
-            Py_DECREF(old);
-        }
-
-    }
-    {
-        PyObject *tmp_assign_source_3;
-        PyObject *tmp_iter_arg_1;
-        PyObject *tmp_xrange_low_1;
-        CHECK_OBJECT(par_stack);
-        tmp_xrange_low_1 = par_stack;
-        tmp_iter_arg_1 = BUILTIN_XRANGE1(tstate, tmp_xrange_low_1);
-        if (tmp_iter_arg_1 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 69;
-            type_description_1 = "ooo";
-            goto frame_exception_exit_1;
-        }
-        tmp_assign_source_3 = MAKE_ITERATOR(tstate, tmp_iter_arg_1);
-        Py_DECREF(tmp_iter_arg_1);
-        if (tmp_assign_source_3 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 69;
-            type_description_1 = "ooo";
-            goto frame_exception_exit_1;
-        }
-        assert(tmp_for_loop_1__for_iterator == NULL);
-        tmp_for_loop_1__for_iterator = tmp_assign_source_3;
-    }
-    // Tried code:
-    loop_start_1:;
-    {
-        PyObject *tmp_next_source_1;
-        PyObject *tmp_assign_source_4;
-        CHECK_OBJECT(tmp_for_loop_1__for_iterator);
-        tmp_next_source_1 = tmp_for_loop_1__for_iterator;
-        tmp_assign_source_4 = ITERATOR_NEXT(tmp_next_source_1);
-        if (tmp_assign_source_4 == NULL) {
-            if (CHECK_AND_CLEAR_STOP_ITERATION_OCCURRED(tstate)) {
-
-                goto loop_end_1;
-            } else {
-
-                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-                type_description_1 = "ooo";
-                exception_lineno = 69;
-                goto try_except_handler_2;
-            }
-        }
-
-        {
-            PyObject *old = tmp_for_loop_1__iter_value;
-            tmp_for_loop_1__iter_value = tmp_assign_source_4;
-            Py_XDECREF(old);
-        }
-
-    }
-    {
-        PyObject *tmp_assign_source_5;
-        CHECK_OBJECT(tmp_for_loop_1__iter_value);
-        tmp_assign_source_5 = tmp_for_loop_1__iter_value;
-        {
-            PyObject *old = var__;
-            var__ = tmp_assign_source_5;
-            Py_INCREF(var__);
-            Py_XDECREF(old);
-        }
-
-    }
-    {
-        PyObject *tmp_called_value_2;
-        PyObject *tmp_expression_value_6;
-        PyObject *tmp_call_result_1;
-        if (par_self == NULL) {
-
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[12]);
-            exception_tb = NULL;
-            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
-            CHAIN_EXCEPTION(tstate, exception_value);
-
-            exception_lineno = 70;
-            type_description_1 = "ooo";
-            goto try_except_handler_2;
-        }
-
-        tmp_expression_value_6 = par_self;
-        tmp_called_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_6, mod_consts[21]);
-        if (tmp_called_value_2 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 70;
-            type_description_1 = "ooo";
-            goto try_except_handler_2;
-        }
-        frame_5e630ff32dd6aae4b066d7ee700e6ad7->m_frame.f_lineno = 70;
-        tmp_call_result_1 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_2);
-        Py_DECREF(tmp_called_value_2);
+        frame_66b25db2102bcaf83de48673c04f8e1c->m_frame.f_lineno = 76;
+        tmp_call_result_1 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_1, tmp_args_element_value_1);
+        Py_DECREF(tmp_called_value_1);
         if (tmp_call_result_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 70;
-            type_description_1 = "ooo";
-            goto try_except_handler_2;
+            exception_lineno = 76;
+            type_description_1 = "oo";
+            goto frame_exception_exit_1;
         }
         Py_DECREF(tmp_call_result_1);
     }
-    if (CONSIDER_THREADING(tstate) == false) {
-        assert(HAS_ERROR_OCCURRED(tstate));
-
-        FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-        exception_lineno = 69;
-        type_description_1 = "ooo";
-        goto try_except_handler_2;
-    }
-    goto loop_start_1;
-    loop_end_1:;
-    goto try_end_1;
-    // Exception handler code:
-    try_except_handler_2:;
-    exception_keeper_type_1 = exception_type;
-    exception_keeper_value_1 = exception_value;
-    exception_keeper_tb_1 = exception_tb;
-    exception_keeper_lineno_1 = exception_lineno;
-    exception_type = NULL;
-    exception_value = NULL;
-    exception_tb = NULL;
-    exception_lineno = 0;
-
-    Py_XDECREF(tmp_for_loop_1__iter_value);
-    tmp_for_loop_1__iter_value = NULL;
-    CHECK_OBJECT(tmp_for_loop_1__for_iterator);
-    Py_DECREF(tmp_for_loop_1__for_iterator);
-    tmp_for_loop_1__for_iterator = NULL;
-    // Re-raise.
-    exception_type = exception_keeper_type_1;
-    exception_value = exception_keeper_value_1;
-    exception_tb = exception_keeper_tb_1;
-    exception_lineno = exception_keeper_lineno_1;
-
-    goto frame_exception_exit_1;
-    // End of try:
-    try_end_1:;
 
 
     // Put the previous frame back on top.
@@ -2770,32 +2911,31 @@ static PyObject *impl_base$buff$$$function__7_consume(PyThreadState *tstate, str
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_5e630ff32dd6aae4b066d7ee700e6ad7, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_5e630ff32dd6aae4b066d7ee700e6ad7->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_5e630ff32dd6aae4b066d7ee700e6ad7, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_66b25db2102bcaf83de48673c04f8e1c, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_66b25db2102bcaf83de48673c04f8e1c->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_66b25db2102bcaf83de48673c04f8e1c, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_5e630ff32dd6aae4b066d7ee700e6ad7,
+        frame_66b25db2102bcaf83de48673c04f8e1c,
         type_description_1,
         par_self,
-        par_stack,
-        var__
+        par_stack
     );
 
 
     // Release cached frame if used for exception.
-    if (frame_5e630ff32dd6aae4b066d7ee700e6ad7 == cache_frame_5e630ff32dd6aae4b066d7ee700e6ad7) {
+    if (frame_66b25db2102bcaf83de48673c04f8e1c == cache_frame_66b25db2102bcaf83de48673c04f8e1c) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_5e630ff32dd6aae4b066d7ee700e6ad7);
-        cache_frame_5e630ff32dd6aae4b066d7ee700e6ad7 = NULL;
+        Py_DECREF(cache_frame_66b25db2102bcaf83de48673c04f8e1c);
+        cache_frame_66b25db2102bcaf83de48673c04f8e1c = NULL;
     }
 
-    assertFrameObject(frame_5e630ff32dd6aae4b066d7ee700e6ad7);
+    assertFrameObject(frame_66b25db2102bcaf83de48673c04f8e1c);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
@@ -2803,11 +2943,6 @@ static PyObject *impl_base$buff$$$function__7_consume(PyThreadState *tstate, str
     // Return the error.
     goto try_except_handler_1;
     frame_no_exception_1:;
-    Py_XDECREF(tmp_for_loop_1__iter_value);
-    tmp_for_loop_1__iter_value = NULL;
-    CHECK_OBJECT(tmp_for_loop_1__for_iterator);
-    Py_DECREF(tmp_for_loop_1__for_iterator);
-    tmp_for_loop_1__for_iterator = NULL;
     tmp_return_value = Py_None;
     Py_INCREF(tmp_return_value);
     goto try_return_handler_1;
@@ -2818,30 +2953,25 @@ static PyObject *impl_base$buff$$$function__7_consume(PyThreadState *tstate, str
     CHECK_OBJECT(par_stack);
     Py_DECREF(par_stack);
     par_stack = NULL;
-    Py_XDECREF(var__);
-    var__ = NULL;
     goto function_return_exit;
     // Exception handler code:
     try_except_handler_1:;
-    exception_keeper_type_2 = exception_type;
-    exception_keeper_value_2 = exception_value;
-    exception_keeper_tb_2 = exception_tb;
-    exception_keeper_lineno_2 = exception_lineno;
+    exception_keeper_type_1 = exception_type;
+    exception_keeper_value_1 = exception_value;
+    exception_keeper_tb_1 = exception_tb;
+    exception_keeper_lineno_1 = exception_lineno;
     exception_type = NULL;
     exception_value = NULL;
     exception_tb = NULL;
     exception_lineno = 0;
 
-    CHECK_OBJECT(par_stack);
-    Py_DECREF(par_stack);
+    Py_XDECREF(par_stack);
     par_stack = NULL;
-    Py_XDECREF(var__);
-    var__ = NULL;
     // Re-raise.
-    exception_type = exception_keeper_type_2;
-    exception_value = exception_keeper_value_2;
-    exception_tb = exception_keeper_tb_2;
-    exception_lineno = exception_keeper_lineno_2;
+    exception_type = exception_keeper_type_1;
+    exception_value = exception_keeper_value_1;
+    exception_tb = exception_keeper_tb_1;
+    exception_lineno = exception_keeper_lineno_1;
 
     goto function_exception_exit;
     // End of try:
@@ -2878,264 +3008,135 @@ static PyObject *impl_base$buff$$$function__8_clear(PyThreadState *tstate, struc
 
     // Local variable declarations.
     PyObject *par_self = python_pars[0];
-    PyObject *var__ = NULL;
-    PyObject *tmp_for_loop_1__for_iterator = NULL;
-    PyObject *tmp_for_loop_1__iter_value = NULL;
-    struct Nuitka_FrameObject *frame_11fa9888dafb4ca4896ca7ea323a330d;
+    struct Nuitka_FrameObject *frame_0d398fe981f62f7a07b3093e6d8d0856;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
+    NUITKA_MAY_BE_UNUSED nuitka_void tmp_unused;
     PyObject *exception_type = NULL;
     PyObject *exception_value = NULL;
     PyTracebackObject *exception_tb = NULL;
     NUITKA_MAY_BE_UNUSED int exception_lineno = 0;
-    NUITKA_MAY_BE_UNUSED nuitka_void tmp_unused;
-    PyObject *exception_keeper_type_1;
-    PyObject *exception_keeper_value_1;
-    PyTracebackObject *exception_keeper_tb_1;
-    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_1;
-    static struct Nuitka_FrameObject *cache_frame_11fa9888dafb4ca4896ca7ea323a330d = NULL;
+    static struct Nuitka_FrameObject *cache_frame_0d398fe981f62f7a07b3093e6d8d0856 = NULL;
     PyObject *tmp_return_value = NULL;
-    PyObject *exception_keeper_type_2;
-    PyObject *exception_keeper_value_2;
-    PyTracebackObject *exception_keeper_tb_2;
-    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_2;
 
     // Actual function body.
-    // Tried code:
-    if (isFrameUnusable(cache_frame_11fa9888dafb4ca4896ca7ea323a330d)) {
-        Py_XDECREF(cache_frame_11fa9888dafb4ca4896ca7ea323a330d);
+    if (isFrameUnusable(cache_frame_0d398fe981f62f7a07b3093e6d8d0856)) {
+        Py_XDECREF(cache_frame_0d398fe981f62f7a07b3093e6d8d0856);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_11fa9888dafb4ca4896ca7ea323a330d == NULL) {
+        if (cache_frame_0d398fe981f62f7a07b3093e6d8d0856 == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_11fa9888dafb4ca4896ca7ea323a330d = MAKE_FUNCTION_FRAME(tstate, codeobj_11fa9888dafb4ca4896ca7ea323a330d, module_base$buff, sizeof(void *)+sizeof(void *));
+        cache_frame_0d398fe981f62f7a07b3093e6d8d0856 = MAKE_FUNCTION_FRAME(tstate, codeobj_0d398fe981f62f7a07b3093e6d8d0856, module_base$buff, sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_11fa9888dafb4ca4896ca7ea323a330d->m_type_description == NULL);
-    frame_11fa9888dafb4ca4896ca7ea323a330d = cache_frame_11fa9888dafb4ca4896ca7ea323a330d;
+    assert(cache_frame_0d398fe981f62f7a07b3093e6d8d0856->m_type_description == NULL);
+    frame_0d398fe981f62f7a07b3093e6d8d0856 = cache_frame_0d398fe981f62f7a07b3093e6d8d0856;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_11fa9888dafb4ca4896ca7ea323a330d);
-    assert(Py_REFCNT(frame_11fa9888dafb4ca4896ca7ea323a330d) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_0d398fe981f62f7a07b3093e6d8d0856);
+    assert(Py_REFCNT(frame_0d398fe981f62f7a07b3093e6d8d0856) == 2);
 
     // Framed code:
     {
-        PyObject *tmp_assign_source_1;
-        PyObject *tmp_iter_arg_1;
-        PyObject *tmp_xrange_low_1;
+        PyObject *tmp_called_value_1;
         PyObject *tmp_expression_value_1;
+        PyObject *tmp_call_result_1;
+        PyObject *tmp_args_element_value_1;
         PyObject *tmp_expression_value_2;
         PyObject *tmp_expression_value_3;
-        PyObject *tmp_subscript_value_1;
         PyObject *tmp_expression_value_4;
-        CHECK_OBJECT(par_self);
-        tmp_expression_value_3 = par_self;
-        tmp_expression_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_3, mod_consts[7]);
-        if (tmp_expression_value_2 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 73;
-            type_description_1 = "oo";
-            goto frame_exception_exit_1;
-        }
-        tmp_expression_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_2, mod_consts[10]);
-        Py_DECREF(tmp_expression_value_2);
-        if (tmp_expression_value_1 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 73;
-            type_description_1 = "oo";
-            goto frame_exception_exit_1;
-        }
-        CHECK_OBJECT(par_self);
-        tmp_expression_value_4 = par_self;
-        tmp_subscript_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_4, mod_consts[9]);
-        if (tmp_subscript_value_1 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-            Py_DECREF(tmp_expression_value_1);
-
-            exception_lineno = 73;
-            type_description_1 = "oo";
-            goto frame_exception_exit_1;
-        }
-        tmp_xrange_low_1 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_1, tmp_subscript_value_1);
-        Py_DECREF(tmp_expression_value_1);
-        Py_DECREF(tmp_subscript_value_1);
-        if (tmp_xrange_low_1 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 73;
-            type_description_1 = "oo";
-            goto frame_exception_exit_1;
-        }
-        tmp_iter_arg_1 = BUILTIN_XRANGE1(tstate, tmp_xrange_low_1);
-        Py_DECREF(tmp_xrange_low_1);
-        if (tmp_iter_arg_1 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 73;
-            type_description_1 = "oo";
-            goto frame_exception_exit_1;
-        }
-        tmp_assign_source_1 = MAKE_ITERATOR(tstate, tmp_iter_arg_1);
-        Py_DECREF(tmp_iter_arg_1);
-        if (tmp_assign_source_1 == NULL) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 73;
-            type_description_1 = "oo";
-            goto frame_exception_exit_1;
-        }
-        assert(tmp_for_loop_1__for_iterator == NULL);
-        tmp_for_loop_1__for_iterator = tmp_assign_source_1;
-    }
-    // Tried code:
-    loop_start_1:;
-    {
-        PyObject *tmp_next_source_1;
-        PyObject *tmp_assign_source_2;
-        CHECK_OBJECT(tmp_for_loop_1__for_iterator);
-        tmp_next_source_1 = tmp_for_loop_1__for_iterator;
-        tmp_assign_source_2 = ITERATOR_NEXT(tmp_next_source_1);
-        if (tmp_assign_source_2 == NULL) {
-            if (CHECK_AND_CLEAR_STOP_ITERATION_OCCURRED(tstate)) {
-
-                goto loop_end_1;
-            } else {
-
-                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-                type_description_1 = "oo";
-                exception_lineno = 73;
-                goto try_except_handler_2;
-            }
-        }
-
-        {
-            PyObject *old = tmp_for_loop_1__iter_value;
-            tmp_for_loop_1__iter_value = tmp_assign_source_2;
-            Py_XDECREF(old);
-        }
-
-    }
-    {
-        PyObject *tmp_assign_source_3;
-        CHECK_OBJECT(tmp_for_loop_1__iter_value);
-        tmp_assign_source_3 = tmp_for_loop_1__iter_value;
-        {
-            PyObject *old = var__;
-            var__ = tmp_assign_source_3;
-            Py_INCREF(var__);
-            Py_XDECREF(old);
-        }
-
-    }
-    {
-        PyObject *tmp_called_value_1;
+        PyObject *tmp_subscript_value_1;
         PyObject *tmp_expression_value_5;
-        PyObject *tmp_call_result_1;
-        if (par_self == NULL) {
-
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[12]);
-            exception_tb = NULL;
-            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
-            CHAIN_EXCEPTION(tstate, exception_value);
-
-            exception_lineno = 74;
-            type_description_1 = "oo";
-            goto try_except_handler_2;
-        }
-
-        tmp_expression_value_5 = par_self;
-        tmp_called_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[21]);
+        CHECK_OBJECT(par_self);
+        tmp_expression_value_1 = par_self;
+        tmp_called_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[20]);
         if (tmp_called_value_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 74;
-            type_description_1 = "oo";
-            goto try_except_handler_2;
+            exception_lineno = 79;
+            type_description_1 = "o";
+            goto frame_exception_exit_1;
         }
-        frame_11fa9888dafb4ca4896ca7ea323a330d->m_frame.f_lineno = 74;
-        tmp_call_result_1 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_1);
+        CHECK_OBJECT(par_self);
+        tmp_expression_value_4 = par_self;
+        tmp_expression_value_3 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_4, mod_consts[7]);
+        if (tmp_expression_value_3 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_called_value_1);
+
+            exception_lineno = 79;
+            type_description_1 = "o";
+            goto frame_exception_exit_1;
+        }
+        tmp_expression_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_3, mod_consts[12]);
+        Py_DECREF(tmp_expression_value_3);
+        if (tmp_expression_value_2 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_called_value_1);
+
+            exception_lineno = 79;
+            type_description_1 = "o";
+            goto frame_exception_exit_1;
+        }
+        CHECK_OBJECT(par_self);
+        tmp_expression_value_5 = par_self;
+        tmp_subscript_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[9]);
+        if (tmp_subscript_value_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_called_value_1);
+            Py_DECREF(tmp_expression_value_2);
+
+            exception_lineno = 79;
+            type_description_1 = "o";
+            goto frame_exception_exit_1;
+        }
+        tmp_args_element_value_1 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_2, tmp_subscript_value_1);
+        Py_DECREF(tmp_expression_value_2);
+        Py_DECREF(tmp_subscript_value_1);
+        if (tmp_args_element_value_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_called_value_1);
+
+            exception_lineno = 79;
+            type_description_1 = "o";
+            goto frame_exception_exit_1;
+        }
+        frame_0d398fe981f62f7a07b3093e6d8d0856->m_frame.f_lineno = 79;
+        tmp_call_result_1 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_1, tmp_args_element_value_1);
         Py_DECREF(tmp_called_value_1);
+        Py_DECREF(tmp_args_element_value_1);
         if (tmp_call_result_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 74;
-            type_description_1 = "oo";
-            goto try_except_handler_2;
+            exception_lineno = 79;
+            type_description_1 = "o";
+            goto frame_exception_exit_1;
         }
         Py_DECREF(tmp_call_result_1);
     }
-    if (CONSIDER_THREADING(tstate) == false) {
-        assert(HAS_ERROR_OCCURRED(tstate));
-
-        FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-        exception_lineno = 73;
-        type_description_1 = "oo";
-        goto try_except_handler_2;
-    }
-    goto loop_start_1;
-    loop_end_1:;
-    goto try_end_1;
-    // Exception handler code:
-    try_except_handler_2:;
-    exception_keeper_type_1 = exception_type;
-    exception_keeper_value_1 = exception_value;
-    exception_keeper_tb_1 = exception_tb;
-    exception_keeper_lineno_1 = exception_lineno;
-    exception_type = NULL;
-    exception_value = NULL;
-    exception_tb = NULL;
-    exception_lineno = 0;
-
-    Py_XDECREF(tmp_for_loop_1__iter_value);
-    tmp_for_loop_1__iter_value = NULL;
-    CHECK_OBJECT(tmp_for_loop_1__for_iterator);
-    Py_DECREF(tmp_for_loop_1__for_iterator);
-    tmp_for_loop_1__for_iterator = NULL;
-    // Re-raise.
-    exception_type = exception_keeper_type_1;
-    exception_value = exception_keeper_value_1;
-    exception_tb = exception_keeper_tb_1;
-    exception_lineno = exception_keeper_lineno_1;
-
-    goto frame_exception_exit_1;
-    // End of try:
-    try_end_1:;
 
 
     // Put the previous frame back on top.
@@ -3146,74 +3147,40 @@ static PyObject *impl_base$buff$$$function__8_clear(PyThreadState *tstate, struc
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_11fa9888dafb4ca4896ca7ea323a330d, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_11fa9888dafb4ca4896ca7ea323a330d->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_11fa9888dafb4ca4896ca7ea323a330d, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_0d398fe981f62f7a07b3093e6d8d0856, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_0d398fe981f62f7a07b3093e6d8d0856->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_0d398fe981f62f7a07b3093e6d8d0856, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_11fa9888dafb4ca4896ca7ea323a330d,
+        frame_0d398fe981f62f7a07b3093e6d8d0856,
         type_description_1,
-        par_self,
-        var__
+        par_self
     );
 
 
     // Release cached frame if used for exception.
-    if (frame_11fa9888dafb4ca4896ca7ea323a330d == cache_frame_11fa9888dafb4ca4896ca7ea323a330d) {
+    if (frame_0d398fe981f62f7a07b3093e6d8d0856 == cache_frame_0d398fe981f62f7a07b3093e6d8d0856) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_11fa9888dafb4ca4896ca7ea323a330d);
-        cache_frame_11fa9888dafb4ca4896ca7ea323a330d = NULL;
+        Py_DECREF(cache_frame_0d398fe981f62f7a07b3093e6d8d0856);
+        cache_frame_0d398fe981f62f7a07b3093e6d8d0856 = NULL;
     }
 
-    assertFrameObject(frame_11fa9888dafb4ca4896ca7ea323a330d);
+    assertFrameObject(frame_0d398fe981f62f7a07b3093e6d8d0856);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
 
     // Return the error.
-    goto try_except_handler_1;
+    goto function_exception_exit;
     frame_no_exception_1:;
-    Py_XDECREF(tmp_for_loop_1__iter_value);
-    tmp_for_loop_1__iter_value = NULL;
-    CHECK_OBJECT(tmp_for_loop_1__for_iterator);
-    Py_DECREF(tmp_for_loop_1__for_iterator);
-    tmp_for_loop_1__for_iterator = NULL;
     tmp_return_value = Py_None;
     Py_INCREF(tmp_return_value);
-    goto try_return_handler_1;
-    NUITKA_CANNOT_GET_HERE("tried codes exits in all cases");
-    return NULL;
-    // Return handler code:
-    try_return_handler_1:;
-    Py_XDECREF(var__);
-    var__ = NULL;
     goto function_return_exit;
-    // Exception handler code:
-    try_except_handler_1:;
-    exception_keeper_type_2 = exception_type;
-    exception_keeper_value_2 = exception_value;
-    exception_keeper_tb_2 = exception_tb;
-    exception_keeper_lineno_2 = exception_lineno;
-    exception_type = NULL;
-    exception_value = NULL;
-    exception_tb = NULL;
-    exception_lineno = 0;
-
-    Py_XDECREF(var__);
-    var__ = NULL;
-    // Re-raise.
-    exception_type = exception_keeper_type_2;
-    exception_value = exception_keeper_value_2;
-    exception_tb = exception_keeper_tb_2;
-    exception_lineno = exception_keeper_lineno_2;
-
-    goto function_exception_exit;
-    // End of try:
 
     NUITKA_CANNOT_GET_HERE("Return statement must have exited already.");
     return NULL;
@@ -3249,42 +3216,42 @@ static PyObject *impl_base$buff$$$function__9_trigger(PyThreadState *tstate, str
     PyObject *par_self = python_pars[0];
     PyObject *par_level = python_pars[1];
     PyObject *par_stack = python_pars[2];
-    struct Nuitka_FrameObject *frame_e8458d2d4d3a71b031e2b9a8fdac5c70;
+    struct Nuitka_FrameObject *frame_fc17f86ba5a81b7828d31f950f67e154;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
     PyObject *exception_type = NULL;
     PyObject *exception_value = NULL;
     PyTracebackObject *exception_tb = NULL;
     NUITKA_MAY_BE_UNUSED int exception_lineno = 0;
     NUITKA_MAY_BE_UNUSED nuitka_void tmp_unused;
-    static struct Nuitka_FrameObject *cache_frame_e8458d2d4d3a71b031e2b9a8fdac5c70 = NULL;
+    static struct Nuitka_FrameObject *cache_frame_fc17f86ba5a81b7828d31f950f67e154 = NULL;
     PyObject *tmp_return_value = NULL;
 
     // Actual function body.
-    if (isFrameUnusable(cache_frame_e8458d2d4d3a71b031e2b9a8fdac5c70)) {
-        Py_XDECREF(cache_frame_e8458d2d4d3a71b031e2b9a8fdac5c70);
+    if (isFrameUnusable(cache_frame_fc17f86ba5a81b7828d31f950f67e154)) {
+        Py_XDECREF(cache_frame_fc17f86ba5a81b7828d31f950f67e154);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_e8458d2d4d3a71b031e2b9a8fdac5c70 == NULL) {
+        if (cache_frame_fc17f86ba5a81b7828d31f950f67e154 == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_e8458d2d4d3a71b031e2b9a8fdac5c70 = MAKE_FUNCTION_FRAME(tstate, codeobj_e8458d2d4d3a71b031e2b9a8fdac5c70, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *)+sizeof(void *));
+        cache_frame_fc17f86ba5a81b7828d31f950f67e154 = MAKE_FUNCTION_FRAME(tstate, codeobj_fc17f86ba5a81b7828d31f950f67e154, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *)+sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_e8458d2d4d3a71b031e2b9a8fdac5c70->m_type_description == NULL);
-    frame_e8458d2d4d3a71b031e2b9a8fdac5c70 = cache_frame_e8458d2d4d3a71b031e2b9a8fdac5c70;
+    assert(cache_frame_fc17f86ba5a81b7828d31f950f67e154->m_type_description == NULL);
+    frame_fc17f86ba5a81b7828d31f950f67e154 = cache_frame_fc17f86ba5a81b7828d31f950f67e154;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_e8458d2d4d3a71b031e2b9a8fdac5c70);
-    assert(Py_REFCNT(frame_e8458d2d4d3a71b031e2b9a8fdac5c70) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_fc17f86ba5a81b7828d31f950f67e154);
+    assert(Py_REFCNT(frame_fc17f86ba5a81b7828d31f950f67e154) == 2);
 
     // Framed code:
     {
@@ -3295,27 +3262,27 @@ static PyObject *impl_base$buff$$$function__9_trigger(PyThreadState *tstate, str
         PyObject *tmp_expression_value_2;
         CHECK_OBJECT(par_self);
         tmp_expression_value_1 = par_self;
-        tmp_cmp_expr_left_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[22]);
+        tmp_cmp_expr_left_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[21]);
         if (tmp_cmp_expr_left_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 81;
+            exception_lineno = 86;
             type_description_1 = "oooc";
             goto frame_exception_exit_1;
         }
         CHECK_OBJECT(par_self);
         tmp_expression_value_2 = par_self;
-        tmp_cmp_expr_right_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_2, mod_consts[23]);
+        tmp_cmp_expr_right_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_2, mod_consts[22]);
         if (tmp_cmp_expr_right_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_cmp_expr_left_1);
 
-            exception_lineno = 81;
+            exception_lineno = 86;
             type_description_1 = "oooc";
             goto frame_exception_exit_1;
         }
@@ -3328,7 +3295,7 @@ static PyObject *impl_base$buff$$$function__9_trigger(PyThreadState *tstate, str
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 81;
+            exception_lineno = 86;
             type_description_1 = "oooc";
             goto frame_exception_exit_1;
         }
@@ -3348,12 +3315,12 @@ static PyObject *impl_base$buff$$$function__9_trigger(PyThreadState *tstate, str
         PyObject *tmp_args_element_value_2;
         if (Nuitka_Cell_GET(self->m_closure[0]) == NULL) {
 
-            FORMAT_UNBOUND_CLOSURE_ERROR(&exception_type, &exception_value, mod_consts[24]);
+            FORMAT_UNBOUND_CLOSURE_ERROR(&exception_type, &exception_value, mod_consts[23]);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(tstate, exception_value);
 
-            exception_lineno = 82;
+            exception_lineno = 87;
             type_description_1 = "oooc";
             goto frame_exception_exit_1;
         }
@@ -3368,7 +3335,7 @@ static PyObject *impl_base$buff$$$function__9_trigger(PyThreadState *tstate, str
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 82;
+            exception_lineno = 87;
             type_description_1 = "oooc";
             goto frame_exception_exit_1;
         }
@@ -3376,13 +3343,13 @@ static PyObject *impl_base$buff$$$function__9_trigger(PyThreadState *tstate, str
         tmp_args_element_value_1 = par_level;
         CHECK_OBJECT(par_stack);
         tmp_args_element_value_2 = par_stack;
-        frame_e8458d2d4d3a71b031e2b9a8fdac5c70->m_frame.f_lineno = 82;
+        frame_fc17f86ba5a81b7828d31f950f67e154->m_frame.f_lineno = 87;
         {
             PyObject *call_args[] = {tmp_args_element_value_1, tmp_args_element_value_2};
             tmp_call_result_1 = CALL_METHOD_WITH_ARGS2(
                 tstate,
                 tmp_called_instance_1,
-                mod_consts[25],
+                mod_consts[24],
                 call_args
             );
         }
@@ -3394,7 +3361,7 @@ static PyObject *impl_base$buff$$$function__9_trigger(PyThreadState *tstate, str
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 82;
+            exception_lineno = 87;
             type_description_1 = "oooc";
             goto frame_exception_exit_1;
         }
@@ -3411,14 +3378,14 @@ static PyObject *impl_base$buff$$$function__9_trigger(PyThreadState *tstate, str
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_e8458d2d4d3a71b031e2b9a8fdac5c70, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_e8458d2d4d3a71b031e2b9a8fdac5c70->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_e8458d2d4d3a71b031e2b9a8fdac5c70, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_fc17f86ba5a81b7828d31f950f67e154, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_fc17f86ba5a81b7828d31f950f67e154->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_fc17f86ba5a81b7828d31f950f67e154, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_e8458d2d4d3a71b031e2b9a8fdac5c70,
+        frame_fc17f86ba5a81b7828d31f950f67e154,
         type_description_1,
         par_self,
         par_level,
@@ -3428,16 +3395,16 @@ static PyObject *impl_base$buff$$$function__9_trigger(PyThreadState *tstate, str
 
 
     // Release cached frame if used for exception.
-    if (frame_e8458d2d4d3a71b031e2b9a8fdac5c70 == cache_frame_e8458d2d4d3a71b031e2b9a8fdac5c70) {
+    if (frame_fc17f86ba5a81b7828d31f950f67e154 == cache_frame_fc17f86ba5a81b7828d31f950f67e154) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_e8458d2d4d3a71b031e2b9a8fdac5c70);
-        cache_frame_e8458d2d4d3a71b031e2b9a8fdac5c70 = NULL;
+        Py_DECREF(cache_frame_fc17f86ba5a81b7828d31f950f67e154);
+        cache_frame_fc17f86ba5a81b7828d31f950f67e154 = NULL;
     }
 
-    assertFrameObject(frame_e8458d2d4d3a71b031e2b9a8fdac5c70);
+    assertFrameObject(frame_fc17f86ba5a81b7828d31f950f67e154);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
@@ -3491,7 +3458,7 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
     PyObject *par_self = python_pars[0];
     PyObject *var_duration = NULL;
     PyObject *tmp_assignment_expr_1__value = NULL;
-    struct Nuitka_FrameObject *frame_6d734e4d558cabe84fb463255f23e68f;
+    struct Nuitka_FrameObject *frame_708bc1a9253563c4d742c21f62a84ccf;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
     PyObject *exception_type = NULL;
     PyObject *exception_value = NULL;
@@ -3502,7 +3469,7 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
     PyTracebackObject *exception_keeper_tb_1;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_1;
     bool tmp_result;
-    static struct Nuitka_FrameObject *cache_frame_6d734e4d558cabe84fb463255f23e68f = NULL;
+    static struct Nuitka_FrameObject *cache_frame_708bc1a9253563c4d742c21f62a84ccf = NULL;
     PyObject *tmp_return_value = NULL;
     PyObject *exception_keeper_type_2;
     PyObject *exception_keeper_value_2;
@@ -3511,31 +3478,31 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
 
     // Actual function body.
     // Tried code:
-    if (isFrameUnusable(cache_frame_6d734e4d558cabe84fb463255f23e68f)) {
-        Py_XDECREF(cache_frame_6d734e4d558cabe84fb463255f23e68f);
+    if (isFrameUnusable(cache_frame_708bc1a9253563c4d742c21f62a84ccf)) {
+        Py_XDECREF(cache_frame_708bc1a9253563c4d742c21f62a84ccf);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_6d734e4d558cabe84fb463255f23e68f == NULL) {
+        if (cache_frame_708bc1a9253563c4d742c21f62a84ccf == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_6d734e4d558cabe84fb463255f23e68f = MAKE_FUNCTION_FRAME(tstate, codeobj_6d734e4d558cabe84fb463255f23e68f, module_base$buff, sizeof(void *)+sizeof(void *));
+        cache_frame_708bc1a9253563c4d742c21f62a84ccf = MAKE_FUNCTION_FRAME(tstate, codeobj_708bc1a9253563c4d742c21f62a84ccf, module_base$buff, sizeof(void *)+sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_6d734e4d558cabe84fb463255f23e68f->m_type_description == NULL);
-    frame_6d734e4d558cabe84fb463255f23e68f = cache_frame_6d734e4d558cabe84fb463255f23e68f;
+    assert(cache_frame_708bc1a9253563c4d742c21f62a84ccf->m_type_description == NULL);
+    frame_708bc1a9253563c4d742c21f62a84ccf = cache_frame_708bc1a9253563c4d742c21f62a84ccf;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_6d734e4d558cabe84fb463255f23e68f);
-    assert(Py_REFCNT(frame_6d734e4d558cabe84fb463255f23e68f) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_708bc1a9253563c4d742c21f62a84ccf);
+    assert(Py_REFCNT(frame_708bc1a9253563c4d742c21f62a84ccf) == 2);
 
     // Framed code:
     {
@@ -3559,7 +3526,7 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 90;
+                exception_lineno = 95;
                 type_description_1 = "oo";
                 goto try_except_handler_2;
             }
@@ -3571,7 +3538,7 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 90;
+                exception_lineno = 95;
                 type_description_1 = "oo";
                 goto try_except_handler_2;
             }
@@ -3584,7 +3551,7 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
                 Py_DECREF(tmp_expression_value_1);
 
-                exception_lineno = 90;
+                exception_lineno = 95;
                 type_description_1 = "oo";
                 goto try_except_handler_2;
             }
@@ -3597,7 +3564,7 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 90;
+                exception_lineno = 95;
                 type_description_1 = "oo";
                 goto try_except_handler_2;
             }
@@ -3653,7 +3620,7 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_outline_return_value_1);
 
-            exception_lineno = 90;
+            exception_lineno = 95;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -3680,18 +3647,18 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
         PyObject *tmp_expression_value_8;
         PyObject *tmp_ass_subscript_1;
         PyObject *tmp_expression_value_9;
-        tmp_called_value_1 = LOOKUP_BUILTIN(mod_consts[17]);
+        tmp_called_value_1 = LOOKUP_BUILTIN(mod_consts[10]);
         assert(tmp_called_value_1 != NULL);
         CHECK_OBJECT(par_self);
         tmp_expression_value_5 = par_self;
-        tmp_args_element_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[26]);
+        tmp_args_element_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[25]);
         if (tmp_args_element_value_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 91;
+            exception_lineno = 96;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -3699,14 +3666,14 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
         tmp_add_expr_left_1 = var_duration;
         CHECK_OBJECT(par_self);
         tmp_expression_value_6 = par_self;
-        tmp_add_expr_right_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_6, mod_consts[27]);
+        tmp_add_expr_right_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_6, mod_consts[26]);
         if (tmp_add_expr_right_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_args_element_value_1);
 
-            exception_lineno = 91;
+            exception_lineno = 96;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -3718,11 +3685,11 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_args_element_value_1);
 
-            exception_lineno = 91;
+            exception_lineno = 96;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
-        frame_6d734e4d558cabe84fb463255f23e68f->m_frame.f_lineno = 91;
+        frame_708bc1a9253563c4d742c21f62a84ccf->m_frame.f_lineno = 96;
         {
             PyObject *call_args[] = {tmp_args_element_value_1, tmp_args_element_value_2};
             tmp_ass_subvalue_1 = CALL_FUNCTION_WITH_ARGS2(tstate, tmp_called_value_1, call_args);
@@ -3736,7 +3703,7 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 91;
+            exception_lineno = 96;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -3749,7 +3716,7 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_ass_subvalue_1);
 
-            exception_lineno = 91;
+            exception_lineno = 96;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -3761,7 +3728,7 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_ass_subvalue_1);
 
-            exception_lineno = 91;
+            exception_lineno = 96;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -3775,7 +3742,7 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
             Py_DECREF(tmp_ass_subvalue_1);
             Py_DECREF(tmp_ass_subscribed_1);
 
-            exception_lineno = 91;
+            exception_lineno = 96;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -3789,7 +3756,7 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 91;
+            exception_lineno = 96;
             type_description_1 = "oo";
             goto frame_exception_exit_1;
         }
@@ -3805,14 +3772,14 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_6d734e4d558cabe84fb463255f23e68f, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_6d734e4d558cabe84fb463255f23e68f->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_6d734e4d558cabe84fb463255f23e68f, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_708bc1a9253563c4d742c21f62a84ccf, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_708bc1a9253563c4d742c21f62a84ccf->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_708bc1a9253563c4d742c21f62a84ccf, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_6d734e4d558cabe84fb463255f23e68f,
+        frame_708bc1a9253563c4d742c21f62a84ccf,
         type_description_1,
         par_self,
         var_duration
@@ -3820,16 +3787,16 @@ static PyObject *impl_base$buff$$$function__10_extend(PyThreadState *tstate, str
 
 
     // Release cached frame if used for exception.
-    if (frame_6d734e4d558cabe84fb463255f23e68f == cache_frame_6d734e4d558cabe84fb463255f23e68f) {
+    if (frame_708bc1a9253563c4d742c21f62a84ccf == cache_frame_708bc1a9253563c4d742c21f62a84ccf) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_6d734e4d558cabe84fb463255f23e68f);
-        cache_frame_6d734e4d558cabe84fb463255f23e68f = NULL;
+        Py_DECREF(cache_frame_708bc1a9253563c4d742c21f62a84ccf);
+        cache_frame_708bc1a9253563c4d742c21f62a84ccf = NULL;
     }
 
-    assertFrameObject(frame_6d734e4d558cabe84fb463255f23e68f);
+    assertFrameObject(frame_708bc1a9253563c4d742c21f62a84ccf);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
@@ -3904,7 +3871,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
     PyObject *var_skill = NULL;
     PyObject *var_interval = NULL;
     PyObject *tmp_assignment_expr_1__value = NULL;
-    struct Nuitka_FrameObject *frame_a5ed54d008a9fbfac3294a96f04f0354;
+    struct Nuitka_FrameObject *frame_f8e6b552fa24dc9496fa81318ac01d64;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
     PyObject *exception_type = NULL;
     PyObject *exception_value = NULL;
@@ -3915,7 +3882,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
     PyTracebackObject *exception_keeper_tb_1;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_1;
     bool tmp_result;
-    static struct Nuitka_FrameObject *cache_frame_a5ed54d008a9fbfac3294a96f04f0354 = NULL;
+    static struct Nuitka_FrameObject *cache_frame_f8e6b552fa24dc9496fa81318ac01d64 = NULL;
     PyObject *tmp_return_value = NULL;
     PyObject *exception_keeper_type_2;
     PyObject *exception_keeper_value_2;
@@ -3924,31 +3891,31 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
 
     // Actual function body.
     // Tried code:
-    if (isFrameUnusable(cache_frame_a5ed54d008a9fbfac3294a96f04f0354)) {
-        Py_XDECREF(cache_frame_a5ed54d008a9fbfac3294a96f04f0354);
+    if (isFrameUnusable(cache_frame_f8e6b552fa24dc9496fa81318ac01d64)) {
+        Py_XDECREF(cache_frame_f8e6b552fa24dc9496fa81318ac01d64);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_a5ed54d008a9fbfac3294a96f04f0354 == NULL) {
+        if (cache_frame_f8e6b552fa24dc9496fa81318ac01d64 == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_a5ed54d008a9fbfac3294a96f04f0354 = MAKE_FUNCTION_FRAME(tstate, codeobj_a5ed54d008a9fbfac3294a96f04f0354, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *));
+        cache_frame_f8e6b552fa24dc9496fa81318ac01d64 = MAKE_FUNCTION_FRAME(tstate, codeobj_f8e6b552fa24dc9496fa81318ac01d64, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_a5ed54d008a9fbfac3294a96f04f0354->m_type_description == NULL);
-    frame_a5ed54d008a9fbfac3294a96f04f0354 = cache_frame_a5ed54d008a9fbfac3294a96f04f0354;
+    assert(cache_frame_f8e6b552fa24dc9496fa81318ac01d64->m_type_description == NULL);
+    frame_f8e6b552fa24dc9496fa81318ac01d64 = cache_frame_f8e6b552fa24dc9496fa81318ac01d64;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_a5ed54d008a9fbfac3294a96f04f0354);
-    assert(Py_REFCNT(frame_a5ed54d008a9fbfac3294a96f04f0354) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_f8e6b552fa24dc9496fa81318ac01d64);
+    assert(Py_REFCNT(frame_f8e6b552fa24dc9496fa81318ac01d64) == 2);
 
     // Framed code:
     {
@@ -3967,11 +3934,11 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 96;
+            exception_lineno = 101;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
-        tmp_expression_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_2, mod_consts[28]);
+        tmp_expression_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_2, mod_consts[27]);
         Py_DECREF(tmp_expression_value_2);
         if (tmp_expression_value_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -3979,7 +3946,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 96;
+            exception_lineno = 101;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -3992,7 +3959,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_expression_value_1);
 
-            exception_lineno = 96;
+            exception_lineno = 101;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -4005,7 +3972,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 96;
+            exception_lineno = 101;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -4033,11 +4000,11 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 97;
+                exception_lineno = 102;
                 type_description_1 = "ooo";
                 goto try_except_handler_2;
             }
-            tmp_expression_value_5 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_6, mod_consts[29]);
+            tmp_expression_value_5 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_6, mod_consts[28]);
             Py_DECREF(tmp_expression_value_6);
             if (tmp_expression_value_5 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -4045,7 +4012,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 97;
+                exception_lineno = 102;
                 type_description_1 = "ooo";
                 goto try_except_handler_2;
             }
@@ -4058,7 +4025,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
                 Py_DECREF(tmp_expression_value_5);
 
-                exception_lineno = 97;
+                exception_lineno = 102;
                 type_description_1 = "ooo";
                 goto try_except_handler_2;
             }
@@ -4071,7 +4038,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 97;
+                exception_lineno = 102;
                 type_description_1 = "ooo";
                 goto try_except_handler_2;
             }
@@ -4127,7 +4094,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_outline_return_value_1);
 
-            exception_lineno = 97;
+            exception_lineno = 102;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -4157,14 +4124,14 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
         tmp_sub_expr_left_1 = var_interval;
         CHECK_OBJECT(var_skill);
         tmp_expression_value_9 = var_skill;
-        tmp_sub_expr_right_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_9, mod_consts[30]);
+        tmp_sub_expr_right_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_9, mod_consts[29]);
         if (tmp_sub_expr_right_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 98;
+            exception_lineno = 103;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -4176,7 +4143,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 98;
+            exception_lineno = 103;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -4189,7 +4156,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_add_expr_left_1);
 
-            exception_lineno = 98;
+            exception_lineno = 103;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -4202,7 +4169,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 98;
+            exception_lineno = 103;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -4215,7 +4182,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_ass_subvalue_1);
 
-            exception_lineno = 98;
+            exception_lineno = 103;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -4227,7 +4194,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_ass_subvalue_1);
 
-            exception_lineno = 98;
+            exception_lineno = 103;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -4241,7 +4208,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
             Py_DECREF(tmp_ass_subvalue_1);
             Py_DECREF(tmp_ass_subscribed_1);
 
-            exception_lineno = 98;
+            exception_lineno = 103;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -4255,7 +4222,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 98;
+            exception_lineno = 103;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -4279,7 +4246,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 100;
+            exception_lineno = 105;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -4292,7 +4259,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_ass_subvalue_2);
 
-            exception_lineno = 100;
+            exception_lineno = 105;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -4304,7 +4271,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_ass_subvalue_2);
 
-            exception_lineno = 100;
+            exception_lineno = 105;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -4318,7 +4285,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
             Py_DECREF(tmp_ass_subvalue_2);
             Py_DECREF(tmp_ass_subscribed_2);
 
-            exception_lineno = 100;
+            exception_lineno = 105;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -4332,7 +4299,7 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 100;
+            exception_lineno = 105;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -4348,14 +4315,14 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_a5ed54d008a9fbfac3294a96f04f0354, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_a5ed54d008a9fbfac3294a96f04f0354->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_a5ed54d008a9fbfac3294a96f04f0354, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_f8e6b552fa24dc9496fa81318ac01d64, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_f8e6b552fa24dc9496fa81318ac01d64->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_f8e6b552fa24dc9496fa81318ac01d64, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_a5ed54d008a9fbfac3294a96f04f0354,
+        frame_f8e6b552fa24dc9496fa81318ac01d64,
         type_description_1,
         par_self,
         var_skill,
@@ -4364,16 +4331,16 @@ static PyObject *impl_base$buff$$$function__11_set_duration(PyThreadState *tstat
 
 
     // Release cached frame if used for exception.
-    if (frame_a5ed54d008a9fbfac3294a96f04f0354 == cache_frame_a5ed54d008a9fbfac3294a96f04f0354) {
+    if (frame_f8e6b552fa24dc9496fa81318ac01d64 == cache_frame_f8e6b552fa24dc9496fa81318ac01d64) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_a5ed54d008a9fbfac3294a96f04f0354);
-        cache_frame_a5ed54d008a9fbfac3294a96f04f0354 = NULL;
+        Py_DECREF(cache_frame_f8e6b552fa24dc9496fa81318ac01d64);
+        cache_frame_f8e6b552fa24dc9496fa81318ac01d64 = NULL;
     }
 
-    assertFrameObject(frame_a5ed54d008a9fbfac3294a96f04f0354);
+    assertFrameObject(frame_f8e6b552fa24dc9496fa81318ac01d64);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
@@ -4450,42 +4417,42 @@ static PyObject *impl_base$buff$$$function__12_set_duration(PyThreadState *tstat
 
     // Local variable declarations.
     PyObject *par_self = python_pars[0];
-    struct Nuitka_FrameObject *frame_1c77b51a7aa5121433b22dd135d900e6;
+    struct Nuitka_FrameObject *frame_034b78b8c0d1a41dd8f4604c1ffee317;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
     PyObject *exception_type = NULL;
     PyObject *exception_value = NULL;
     PyTracebackObject *exception_tb = NULL;
     NUITKA_MAY_BE_UNUSED int exception_lineno = 0;
     bool tmp_result;
-    static struct Nuitka_FrameObject *cache_frame_1c77b51a7aa5121433b22dd135d900e6 = NULL;
+    static struct Nuitka_FrameObject *cache_frame_034b78b8c0d1a41dd8f4604c1ffee317 = NULL;
     PyObject *tmp_return_value = NULL;
 
     // Actual function body.
-    if (isFrameUnusable(cache_frame_1c77b51a7aa5121433b22dd135d900e6)) {
-        Py_XDECREF(cache_frame_1c77b51a7aa5121433b22dd135d900e6);
+    if (isFrameUnusable(cache_frame_034b78b8c0d1a41dd8f4604c1ffee317)) {
+        Py_XDECREF(cache_frame_034b78b8c0d1a41dd8f4604c1ffee317);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_1c77b51a7aa5121433b22dd135d900e6 == NULL) {
+        if (cache_frame_034b78b8c0d1a41dd8f4604c1ffee317 == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_1c77b51a7aa5121433b22dd135d900e6 = MAKE_FUNCTION_FRAME(tstate, codeobj_1c77b51a7aa5121433b22dd135d900e6, module_base$buff, sizeof(void *));
+        cache_frame_034b78b8c0d1a41dd8f4604c1ffee317 = MAKE_FUNCTION_FRAME(tstate, codeobj_034b78b8c0d1a41dd8f4604c1ffee317, module_base$buff, sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_1c77b51a7aa5121433b22dd135d900e6->m_type_description == NULL);
-    frame_1c77b51a7aa5121433b22dd135d900e6 = cache_frame_1c77b51a7aa5121433b22dd135d900e6;
+    assert(cache_frame_034b78b8c0d1a41dd8f4604c1ffee317->m_type_description == NULL);
+    frame_034b78b8c0d1a41dd8f4604c1ffee317 = cache_frame_034b78b8c0d1a41dd8f4604c1ffee317;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_1c77b51a7aa5121433b22dd135d900e6);
-    assert(Py_REFCNT(frame_1c77b51a7aa5121433b22dd135d900e6) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_034b78b8c0d1a41dd8f4604c1ffee317);
+    assert(Py_REFCNT(frame_034b78b8c0d1a41dd8f4604c1ffee317) == 2);
 
     // Framed code:
     {
@@ -4510,11 +4477,11 @@ static PyObject *impl_base$buff$$$function__12_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 105;
+            exception_lineno = 110;
             type_description_1 = "o";
             goto frame_exception_exit_1;
         }
-        tmp_expression_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_3, mod_consts[28]);
+        tmp_expression_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_3, mod_consts[27]);
         Py_DECREF(tmp_expression_value_3);
         if (tmp_expression_value_2 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -4522,7 +4489,7 @@ static PyObject *impl_base$buff$$$function__12_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 105;
+            exception_lineno = 110;
             type_description_1 = "o";
             goto frame_exception_exit_1;
         }
@@ -4535,7 +4502,7 @@ static PyObject *impl_base$buff$$$function__12_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_expression_value_2);
 
-            exception_lineno = 105;
+            exception_lineno = 110;
             type_description_1 = "o";
             goto frame_exception_exit_1;
         }
@@ -4548,7 +4515,7 @@ static PyObject *impl_base$buff$$$function__12_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 105;
+            exception_lineno = 110;
             type_description_1 = "o";
             goto frame_exception_exit_1;
         }
@@ -4560,7 +4527,7 @@ static PyObject *impl_base$buff$$$function__12_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 105;
+            exception_lineno = 110;
             type_description_1 = "o";
             goto frame_exception_exit_1;
         }
@@ -4573,7 +4540,7 @@ static PyObject *impl_base$buff$$$function__12_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_ass_subvalue_1);
 
-            exception_lineno = 105;
+            exception_lineno = 110;
             type_description_1 = "o";
             goto frame_exception_exit_1;
         }
@@ -4585,7 +4552,7 @@ static PyObject *impl_base$buff$$$function__12_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_ass_subvalue_1);
 
-            exception_lineno = 105;
+            exception_lineno = 110;
             type_description_1 = "o";
             goto frame_exception_exit_1;
         }
@@ -4599,7 +4566,7 @@ static PyObject *impl_base$buff$$$function__12_set_duration(PyThreadState *tstat
             Py_DECREF(tmp_ass_subvalue_1);
             Py_DECREF(tmp_ass_subscribed_1);
 
-            exception_lineno = 105;
+            exception_lineno = 110;
             type_description_1 = "o";
             goto frame_exception_exit_1;
         }
@@ -4613,7 +4580,7 @@ static PyObject *impl_base$buff$$$function__12_set_duration(PyThreadState *tstat
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 105;
+            exception_lineno = 110;
             type_description_1 = "o";
             goto frame_exception_exit_1;
         }
@@ -4628,30 +4595,30 @@ static PyObject *impl_base$buff$$$function__12_set_duration(PyThreadState *tstat
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_1c77b51a7aa5121433b22dd135d900e6, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_1c77b51a7aa5121433b22dd135d900e6->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_1c77b51a7aa5121433b22dd135d900e6, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_034b78b8c0d1a41dd8f4604c1ffee317, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_034b78b8c0d1a41dd8f4604c1ffee317->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_034b78b8c0d1a41dd8f4604c1ffee317, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_1c77b51a7aa5121433b22dd135d900e6,
+        frame_034b78b8c0d1a41dd8f4604c1ffee317,
         type_description_1,
         par_self
     );
 
 
     // Release cached frame if used for exception.
-    if (frame_1c77b51a7aa5121433b22dd135d900e6 == cache_frame_1c77b51a7aa5121433b22dd135d900e6) {
+    if (frame_034b78b8c0d1a41dd8f4604c1ffee317 == cache_frame_034b78b8c0d1a41dd8f4604c1ffee317) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_1c77b51a7aa5121433b22dd135d900e6);
-        cache_frame_1c77b51a7aa5121433b22dd135d900e6 = NULL;
+        Py_DECREF(cache_frame_034b78b8c0d1a41dd8f4604c1ffee317);
+        cache_frame_034b78b8c0d1a41dd8f4604c1ffee317 = NULL;
     }
 
-    assertFrameObject(frame_1c77b51a7aa5121433b22dd135d900e6);
+    assertFrameObject(frame_034b78b8c0d1a41dd8f4604c1ffee317);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
@@ -4695,7 +4662,7 @@ static PyObject *impl_base$buff$$$function__13___post_init__(PyThreadState *tsta
 
     // Local variable declarations.
     PyObject *par_self = python_pars[0];
-    struct Nuitka_FrameObject *frame_b6f5baa27d9224103c080f50b50c41fd;
+    struct Nuitka_FrameObject *frame_824b41d9820926acea2c55dd0d5c6045;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
     NUITKA_MAY_BE_UNUSED nuitka_void tmp_unused;
     PyObject *exception_type = NULL;
@@ -4703,35 +4670,35 @@ static PyObject *impl_base$buff$$$function__13___post_init__(PyThreadState *tsta
     PyTracebackObject *exception_tb = NULL;
     NUITKA_MAY_BE_UNUSED int exception_lineno = 0;
     bool tmp_result;
-    static struct Nuitka_FrameObject *cache_frame_b6f5baa27d9224103c080f50b50c41fd = NULL;
+    static struct Nuitka_FrameObject *cache_frame_824b41d9820926acea2c55dd0d5c6045 = NULL;
     PyObject *tmp_return_value = NULL;
 
     // Actual function body.
-    if (isFrameUnusable(cache_frame_b6f5baa27d9224103c080f50b50c41fd)) {
-        Py_XDECREF(cache_frame_b6f5baa27d9224103c080f50b50c41fd);
+    if (isFrameUnusable(cache_frame_824b41d9820926acea2c55dd0d5c6045)) {
+        Py_XDECREF(cache_frame_824b41d9820926acea2c55dd0d5c6045);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_b6f5baa27d9224103c080f50b50c41fd == NULL) {
+        if (cache_frame_824b41d9820926acea2c55dd0d5c6045 == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_b6f5baa27d9224103c080f50b50c41fd = MAKE_FUNCTION_FRAME(tstate, codeobj_b6f5baa27d9224103c080f50b50c41fd, module_base$buff, sizeof(void *)+sizeof(void *));
+        cache_frame_824b41d9820926acea2c55dd0d5c6045 = MAKE_FUNCTION_FRAME(tstate, codeobj_824b41d9820926acea2c55dd0d5c6045, module_base$buff, sizeof(void *)+sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_b6f5baa27d9224103c080f50b50c41fd->m_type_description == NULL);
-    frame_b6f5baa27d9224103c080f50b50c41fd = cache_frame_b6f5baa27d9224103c080f50b50c41fd;
+    assert(cache_frame_824b41d9820926acea2c55dd0d5c6045->m_type_description == NULL);
+    frame_824b41d9820926acea2c55dd0d5c6045 = cache_frame_824b41d9820926acea2c55dd0d5c6045;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_b6f5baa27d9224103c080f50b50c41fd);
-    assert(Py_REFCNT(frame_b6f5baa27d9224103c080f50b50c41fd) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_824b41d9820926acea2c55dd0d5c6045);
+    assert(Py_REFCNT(frame_824b41d9820926acea2c55dd0d5c6045) == 2);
 
     // Framed code:
     {
@@ -4741,12 +4708,12 @@ static PyObject *impl_base$buff$$$function__13___post_init__(PyThreadState *tsta
         PyObject *tmp_call_result_1;
         if (Nuitka_Cell_GET(self->m_closure[0]) == NULL) {
 
-            FORMAT_UNBOUND_CLOSURE_ERROR(&exception_type, &exception_value, mod_consts[24]);
+            FORMAT_UNBOUND_CLOSURE_ERROR(&exception_type, &exception_value, mod_consts[23]);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(tstate, exception_value);
 
-            exception_lineno = 111;
+            exception_lineno = 116;
             type_description_1 = "oc";
             goto frame_exception_exit_1;
         }
@@ -4761,12 +4728,12 @@ static PyObject *impl_base$buff$$$function__13___post_init__(PyThreadState *tsta
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 111;
+            exception_lineno = 116;
             type_description_1 = "oc";
             goto frame_exception_exit_1;
         }
-        frame_b6f5baa27d9224103c080f50b50c41fd->m_frame.f_lineno = 111;
-        tmp_call_result_1 = CALL_METHOD_NO_ARGS(tstate, tmp_called_instance_1, mod_consts[31]);
+        frame_824b41d9820926acea2c55dd0d5c6045->m_frame.f_lineno = 116;
+        tmp_call_result_1 = CALL_METHOD_NO_ARGS(tstate, tmp_called_instance_1, mod_consts[30]);
         Py_DECREF(tmp_called_instance_1);
         if (tmp_call_result_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -4774,7 +4741,7 @@ static PyObject *impl_base$buff$$$function__13___post_init__(PyThreadState *tsta
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 111;
+            exception_lineno = 116;
             type_description_1 = "oc";
             goto frame_exception_exit_1;
         }
@@ -4786,7 +4753,7 @@ static PyObject *impl_base$buff$$$function__13___post_init__(PyThreadState *tsta
         tmp_assattr_value_1 = MAKE_LIST_EMPTY(0);
         CHECK_OBJECT(par_self);
         tmp_assattr_target_1 = par_self;
-        tmp_result = SET_ATTRIBUTE(tstate, tmp_assattr_target_1, mod_consts[32], tmp_assattr_value_1);
+        tmp_result = SET_ATTRIBUTE(tstate, tmp_assattr_target_1, mod_consts[31], tmp_assattr_value_1);
         Py_DECREF(tmp_assattr_value_1);
         if (tmp_result == false) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -4794,7 +4761,7 @@ static PyObject *impl_base$buff$$$function__13___post_init__(PyThreadState *tsta
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 112;
+            exception_lineno = 117;
             type_description_1 = "oc";
             goto frame_exception_exit_1;
         }
@@ -4805,7 +4772,7 @@ static PyObject *impl_base$buff$$$function__13___post_init__(PyThreadState *tsta
         tmp_assattr_value_2 = MAKE_LIST_EMPTY(0);
         CHECK_OBJECT(par_self);
         tmp_assattr_target_2 = par_self;
-        tmp_result = SET_ATTRIBUTE(tstate, tmp_assattr_target_2, mod_consts[33], tmp_assattr_value_2);
+        tmp_result = SET_ATTRIBUTE(tstate, tmp_assattr_target_2, mod_consts[32], tmp_assattr_value_2);
         Py_DECREF(tmp_assattr_value_2);
         if (tmp_result == false) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -4813,7 +4780,26 @@ static PyObject *impl_base$buff$$$function__13___post_init__(PyThreadState *tsta
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 113;
+            exception_lineno = 118;
+            type_description_1 = "oc";
+            goto frame_exception_exit_1;
+        }
+    }
+    {
+        PyObject *tmp_assattr_value_3;
+        PyObject *tmp_assattr_target_3;
+        tmp_assattr_value_3 = MAKE_LIST1(mod_consts[33]);
+        CHECK_OBJECT(par_self);
+        tmp_assattr_target_3 = par_self;
+        tmp_result = SET_ATTRIBUTE(tstate, tmp_assattr_target_3, mod_consts[34], tmp_assattr_value_3);
+        Py_DECREF(tmp_assattr_value_3);
+        if (tmp_result == false) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 119;
             type_description_1 = "oc";
             goto frame_exception_exit_1;
         }
@@ -4828,14 +4814,14 @@ static PyObject *impl_base$buff$$$function__13___post_init__(PyThreadState *tsta
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_b6f5baa27d9224103c080f50b50c41fd, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_b6f5baa27d9224103c080f50b50c41fd->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_b6f5baa27d9224103c080f50b50c41fd, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_824b41d9820926acea2c55dd0d5c6045, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_824b41d9820926acea2c55dd0d5c6045->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_824b41d9820926acea2c55dd0d5c6045, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_b6f5baa27d9224103c080f50b50c41fd,
+        frame_824b41d9820926acea2c55dd0d5c6045,
         type_description_1,
         par_self,
         self->m_closure[0]
@@ -4843,16 +4829,16 @@ static PyObject *impl_base$buff$$$function__13___post_init__(PyThreadState *tsta
 
 
     // Release cached frame if used for exception.
-    if (frame_b6f5baa27d9224103c080f50b50c41fd == cache_frame_b6f5baa27d9224103c080f50b50c41fd) {
+    if (frame_824b41d9820926acea2c55dd0d5c6045 == cache_frame_824b41d9820926acea2c55dd0d5c6045) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_b6f5baa27d9224103c080f50b50c41fd);
-        cache_frame_b6f5baa27d9224103c080f50b50c41fd = NULL;
+        Py_DECREF(cache_frame_824b41d9820926acea2c55dd0d5c6045);
+        cache_frame_824b41d9820926acea2c55dd0d5c6045 = NULL;
     }
 
-    assertFrameObject(frame_b6f5baa27d9224103c080f50b50c41fd);
+    assertFrameObject(frame_824b41d9820926acea2c55dd0d5c6045);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
@@ -4896,7 +4882,11 @@ static PyObject *impl_base$buff$$$function__14_add(PyThreadState *tstate, struct
 
     // Local variable declarations.
     PyObject *par_self = python_pars[0];
-    struct Nuitka_FrameObject *frame_0ad42aae47f3fff1b3f6bd2c74d8e03d;
+    PyObject *par_stack = python_pars[1];
+    PyObject *var_gain_index = NULL;
+    PyObject *tmp_for_loop_1__for_iterator = NULL;
+    PyObject *tmp_for_loop_1__iter_value = NULL;
+    struct Nuitka_FrameObject *frame_e791bea657f3cfedfd8e66b944450813;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
     NUITKA_MAY_BE_UNUSED nuitka_void tmp_unused;
     PyObject *exception_type = NULL;
@@ -4904,35 +4894,44 @@ static PyObject *impl_base$buff$$$function__14_add(PyThreadState *tstate, struct
     PyTracebackObject *exception_tb = NULL;
     NUITKA_MAY_BE_UNUSED int exception_lineno = 0;
     bool tmp_result;
-    static struct Nuitka_FrameObject *cache_frame_0ad42aae47f3fff1b3f6bd2c74d8e03d = NULL;
+    PyObject *exception_keeper_type_1;
+    PyObject *exception_keeper_value_1;
+    PyTracebackObject *exception_keeper_tb_1;
+    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_1;
+    static struct Nuitka_FrameObject *cache_frame_e791bea657f3cfedfd8e66b944450813 = NULL;
     PyObject *tmp_return_value = NULL;
+    PyObject *exception_keeper_type_2;
+    PyObject *exception_keeper_value_2;
+    PyTracebackObject *exception_keeper_tb_2;
+    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_2;
 
     // Actual function body.
-    if (isFrameUnusable(cache_frame_0ad42aae47f3fff1b3f6bd2c74d8e03d)) {
-        Py_XDECREF(cache_frame_0ad42aae47f3fff1b3f6bd2c74d8e03d);
+    // Tried code:
+    if (isFrameUnusable(cache_frame_e791bea657f3cfedfd8e66b944450813)) {
+        Py_XDECREF(cache_frame_e791bea657f3cfedfd8e66b944450813);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_0ad42aae47f3fff1b3f6bd2c74d8e03d == NULL) {
+        if (cache_frame_e791bea657f3cfedfd8e66b944450813 == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_0ad42aae47f3fff1b3f6bd2c74d8e03d = MAKE_FUNCTION_FRAME(tstate, codeobj_0ad42aae47f3fff1b3f6bd2c74d8e03d, module_base$buff, sizeof(void *)+sizeof(void *));
+        cache_frame_e791bea657f3cfedfd8e66b944450813 = MAKE_FUNCTION_FRAME(tstate, codeobj_e791bea657f3cfedfd8e66b944450813, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *)+sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_0ad42aae47f3fff1b3f6bd2c74d8e03d->m_type_description == NULL);
-    frame_0ad42aae47f3fff1b3f6bd2c74d8e03d = cache_frame_0ad42aae47f3fff1b3f6bd2c74d8e03d;
+    assert(cache_frame_e791bea657f3cfedfd8e66b944450813->m_type_description == NULL);
+    frame_e791bea657f3cfedfd8e66b944450813 = cache_frame_e791bea657f3cfedfd8e66b944450813;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_0ad42aae47f3fff1b3f6bd2c74d8e03d);
-    assert(Py_REFCNT(frame_0ad42aae47f3fff1b3f6bd2c74d8e03d) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_e791bea657f3cfedfd8e66b944450813);
+    assert(Py_REFCNT(frame_e791bea657f3cfedfd8e66b944450813) == 2);
 
     // Framed code:
     {
@@ -4940,15 +4939,16 @@ static PyObject *impl_base$buff$$$function__14_add(PyThreadState *tstate, struct
         PyObject *tmp_type_arg_value_1;
         PyObject *tmp_object_arg_value_1;
         PyObject *tmp_call_result_1;
+        PyObject *tmp_args_element_value_1;
         if (Nuitka_Cell_GET(self->m_closure[0]) == NULL) {
 
-            FORMAT_UNBOUND_CLOSURE_ERROR(&exception_type, &exception_value, mod_consts[24]);
+            FORMAT_UNBOUND_CLOSURE_ERROR(&exception_type, &exception_value, mod_consts[23]);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(tstate, exception_value);
 
-            exception_lineno = 116;
-            type_description_1 = "oc";
+            exception_lineno = 122;
+            type_description_1 = "oooc";
             goto frame_exception_exit_1;
         }
 
@@ -4962,12 +4962,14 @@ static PyObject *impl_base$buff$$$function__14_add(PyThreadState *tstate, struct
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 116;
-            type_description_1 = "oc";
+            exception_lineno = 122;
+            type_description_1 = "oooc";
             goto frame_exception_exit_1;
         }
-        frame_0ad42aae47f3fff1b3f6bd2c74d8e03d->m_frame.f_lineno = 116;
-        tmp_call_result_1 = CALL_METHOD_NO_ARGS(tstate, tmp_called_instance_1, mod_consts[19]);
+        CHECK_OBJECT(par_stack);
+        tmp_args_element_value_1 = par_stack;
+        frame_e791bea657f3cfedfd8e66b944450813->m_frame.f_lineno = 122;
+        tmp_call_result_1 = CALL_METHOD_WITH_SINGLE_ARG(tstate, tmp_called_instance_1, mod_consts[18], tmp_args_element_value_1);
         Py_DECREF(tmp_called_instance_1);
         if (tmp_call_result_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -4975,82 +4977,189 @@ static PyObject *impl_base$buff$$$function__14_add(PyThreadState *tstate, struct
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 116;
-            type_description_1 = "oc";
+            exception_lineno = 122;
+            type_description_1 = "oooc";
             goto frame_exception_exit_1;
         }
         Py_DECREF(tmp_call_result_1);
     }
     {
-        PyObject *tmp_ass_subvalue_1;
-        PyObject *tmp_tuple_element_1;
+        PyObject *tmp_assign_source_1;
+        PyObject *tmp_iter_arg_1;
         PyObject *tmp_expression_value_1;
-        PyObject *tmp_ass_subscribed_1;
-        PyObject *tmp_expression_value_6;
-        PyObject *tmp_expression_value_7;
-        PyObject *tmp_ass_subscript_1;
-        PyObject *tmp_expression_value_8;
         CHECK_OBJECT(par_self);
         tmp_expression_value_1 = par_self;
-        tmp_tuple_element_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[14]);
+        tmp_iter_arg_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[34]);
+        if (tmp_iter_arg_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 123;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+        tmp_assign_source_1 = MAKE_ITERATOR(tstate, tmp_iter_arg_1);
+        Py_DECREF(tmp_iter_arg_1);
+        if (tmp_assign_source_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 123;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+        assert(tmp_for_loop_1__for_iterator == NULL);
+        tmp_for_loop_1__for_iterator = tmp_assign_source_1;
+    }
+    // Tried code:
+    loop_start_1:;
+    {
+        PyObject *tmp_next_source_1;
+        PyObject *tmp_assign_source_2;
+        CHECK_OBJECT(tmp_for_loop_1__for_iterator);
+        tmp_next_source_1 = tmp_for_loop_1__for_iterator;
+        tmp_assign_source_2 = ITERATOR_NEXT(tmp_next_source_1);
+        if (tmp_assign_source_2 == NULL) {
+            if (CHECK_AND_CLEAR_STOP_ITERATION_OCCURRED(tstate)) {
+
+                goto loop_end_1;
+            } else {
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+                type_description_1 = "oooc";
+                exception_lineno = 123;
+                goto try_except_handler_2;
+            }
+        }
+
+        {
+            PyObject *old = tmp_for_loop_1__iter_value;
+            tmp_for_loop_1__iter_value = tmp_assign_source_2;
+            Py_XDECREF(old);
+        }
+
+    }
+    {
+        PyObject *tmp_assign_source_3;
+        CHECK_OBJECT(tmp_for_loop_1__iter_value);
+        tmp_assign_source_3 = tmp_for_loop_1__iter_value;
+        {
+            PyObject *old = var_gain_index;
+            var_gain_index = tmp_assign_source_3;
+            Py_INCREF(var_gain_index);
+            Py_XDECREF(old);
+        }
+
+    }
+    {
+        PyObject *tmp_ass_subvalue_1;
+        PyObject *tmp_tuple_element_1;
+        PyObject *tmp_expression_value_2;
+        PyObject *tmp_ass_subscribed_1;
+        PyObject *tmp_expression_value_7;
+        PyObject *tmp_expression_value_8;
+        PyObject *tmp_expression_value_9;
+        PyObject *tmp_subscript_value_2;
+        PyObject *tmp_ass_subscript_1;
+        PyObject *tmp_expression_value_10;
+        if (par_self == NULL) {
+
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 124;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
+        }
+
+        tmp_expression_value_2 = par_self;
+        tmp_tuple_element_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_2, mod_consts[15]);
         if (tmp_tuple_element_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 117;
-            type_description_1 = "oc";
-            goto frame_exception_exit_1;
+            exception_lineno = 124;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
         }
         tmp_ass_subvalue_1 = MAKE_TUPLE_EMPTY(2);
         {
-            PyObject *tmp_expression_value_2;
             PyObject *tmp_expression_value_3;
             PyObject *tmp_expression_value_4;
-            PyObject *tmp_subscript_value_1;
             PyObject *tmp_expression_value_5;
+            PyObject *tmp_subscript_value_1;
+            PyObject *tmp_expression_value_6;
             PyTuple_SET_ITEM(tmp_ass_subvalue_1, 0, tmp_tuple_element_1);
-            CHECK_OBJECT(par_self);
-            tmp_expression_value_4 = par_self;
-            tmp_expression_value_3 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_4, mod_consts[7]);
+            if (par_self == NULL) {
+
+                FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+                exception_tb = NULL;
+                NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+                CHAIN_EXCEPTION(tstate, exception_value);
+
+                exception_lineno = 124;
+                type_description_1 = "oooc";
+                goto tuple_build_exception_1;
+            }
+
+            tmp_expression_value_5 = par_self;
+            tmp_expression_value_4 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[7]);
+            if (tmp_expression_value_4 == NULL) {
+                assert(HAS_ERROR_OCCURRED(tstate));
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+                exception_lineno = 124;
+                type_description_1 = "oooc";
+                goto tuple_build_exception_1;
+            }
+            tmp_expression_value_3 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_4, mod_consts[12]);
+            Py_DECREF(tmp_expression_value_4);
             if (tmp_expression_value_3 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
 
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 117;
-                type_description_1 = "oc";
+                exception_lineno = 124;
+                type_description_1 = "oooc";
                 goto tuple_build_exception_1;
             }
-            tmp_expression_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_3, mod_consts[10]);
-            Py_DECREF(tmp_expression_value_3);
-            if (tmp_expression_value_2 == NULL) {
-                assert(HAS_ERROR_OCCURRED(tstate));
+            if (par_self == NULL) {
+                Py_DECREF(tmp_expression_value_3);
+                FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+                exception_tb = NULL;
+                NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+                CHAIN_EXCEPTION(tstate, exception_value);
 
-                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-                exception_lineno = 117;
-                type_description_1 = "oc";
+                exception_lineno = 124;
+                type_description_1 = "oooc";
                 goto tuple_build_exception_1;
             }
-            CHECK_OBJECT(par_self);
-            tmp_expression_value_5 = par_self;
-            tmp_subscript_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[9]);
+
+            tmp_expression_value_6 = par_self;
+            tmp_subscript_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_6, mod_consts[9]);
             if (tmp_subscript_value_1 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
 
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-                Py_DECREF(tmp_expression_value_2);
+                Py_DECREF(tmp_expression_value_3);
 
-                exception_lineno = 117;
-                type_description_1 = "oc";
+                exception_lineno = 124;
+                type_description_1 = "oooc";
                 goto tuple_build_exception_1;
             }
-            tmp_tuple_element_1 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_2, tmp_subscript_value_1);
-            Py_DECREF(tmp_expression_value_2);
+            tmp_tuple_element_1 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_3, tmp_subscript_value_1);
+            Py_DECREF(tmp_expression_value_3);
             Py_DECREF(tmp_subscript_value_1);
             if (tmp_tuple_element_1 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -5058,8 +5167,8 @@ static PyObject *impl_base$buff$$$function__14_add(PyThreadState *tstate, struct
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 117;
-                type_description_1 = "oc";
+                exception_lineno = 124;
+                type_description_1 = "oooc";
                 goto tuple_build_exception_1;
             }
             PyTuple_SET_ITEM(tmp_ass_subvalue_1, 1, tmp_tuple_element_1);
@@ -5068,37 +5177,74 @@ static PyObject *impl_base$buff$$$function__14_add(PyThreadState *tstate, struct
         // Exception handling pass through code for tuple_build:
         tuple_build_exception_1:;
         Py_DECREF(tmp_ass_subvalue_1);
-        goto frame_exception_exit_1;
+        goto try_except_handler_2;
         // Finished with no exception for tuple_build:
         tuple_build_noexception_1:;
-        CHECK_OBJECT(par_self);
-        tmp_expression_value_7 = par_self;
-        tmp_expression_value_6 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_7, mod_consts[7]);
-        if (tmp_expression_value_6 == NULL) {
+        if (par_self == NULL) {
+            Py_DECREF(tmp_ass_subvalue_1);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 124;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
+        }
+
+        tmp_expression_value_9 = par_self;
+        tmp_expression_value_8 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_9, mod_consts[7]);
+        if (tmp_expression_value_8 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_ass_subvalue_1);
 
-            exception_lineno = 117;
-            type_description_1 = "oc";
-            goto frame_exception_exit_1;
+            exception_lineno = 124;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
         }
-        tmp_ass_subscribed_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_6, mod_consts[34]);
-        Py_DECREF(tmp_expression_value_6);
+        tmp_expression_value_7 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_8, mod_consts[35]);
+        Py_DECREF(tmp_expression_value_8);
+        if (tmp_expression_value_7 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_ass_subvalue_1);
+
+            exception_lineno = 124;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
+        }
+        CHECK_OBJECT(var_gain_index);
+        tmp_subscript_value_2 = var_gain_index;
+        tmp_ass_subscribed_1 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_7, tmp_subscript_value_2);
+        Py_DECREF(tmp_expression_value_7);
         if (tmp_ass_subscribed_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_ass_subvalue_1);
 
-            exception_lineno = 117;
-            type_description_1 = "oc";
-            goto frame_exception_exit_1;
+            exception_lineno = 124;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
         }
-        CHECK_OBJECT(par_self);
-        tmp_expression_value_8 = par_self;
-        tmp_ass_subscript_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_8, mod_consts[9]);
+        if (par_self == NULL) {
+            Py_DECREF(tmp_ass_subvalue_1);
+            Py_DECREF(tmp_ass_subscribed_1);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 124;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
+        }
+
+        tmp_expression_value_10 = par_self;
+        tmp_ass_subscript_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_10, mod_consts[9]);
         if (tmp_ass_subscript_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
@@ -5106,9 +5252,9 @@ static PyObject *impl_base$buff$$$function__14_add(PyThreadState *tstate, struct
             Py_DECREF(tmp_ass_subvalue_1);
             Py_DECREF(tmp_ass_subscribed_1);
 
-            exception_lineno = 117;
-            type_description_1 = "oc";
-            goto frame_exception_exit_1;
+            exception_lineno = 124;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
         }
         tmp_result = SET_SUBSCRIPT(tstate, tmp_ass_subscribed_1, tmp_ass_subscript_1, tmp_ass_subvalue_1);
         Py_DECREF(tmp_ass_subscribed_1);
@@ -5120,11 +5266,49 @@ static PyObject *impl_base$buff$$$function__14_add(PyThreadState *tstate, struct
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 117;
-            type_description_1 = "oc";
-            goto frame_exception_exit_1;
+            exception_lineno = 124;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
         }
     }
+    if (CONSIDER_THREADING(tstate) == false) {
+        assert(HAS_ERROR_OCCURRED(tstate));
+
+        FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+        exception_lineno = 123;
+        type_description_1 = "oooc";
+        goto try_except_handler_2;
+    }
+    goto loop_start_1;
+    loop_end_1:;
+    goto try_end_1;
+    // Exception handler code:
+    try_except_handler_2:;
+    exception_keeper_type_1 = exception_type;
+    exception_keeper_value_1 = exception_value;
+    exception_keeper_tb_1 = exception_tb;
+    exception_keeper_lineno_1 = exception_lineno;
+    exception_type = NULL;
+    exception_value = NULL;
+    exception_tb = NULL;
+    exception_lineno = 0;
+
+    Py_XDECREF(tmp_for_loop_1__iter_value);
+    tmp_for_loop_1__iter_value = NULL;
+    CHECK_OBJECT(tmp_for_loop_1__for_iterator);
+    Py_DECREF(tmp_for_loop_1__for_iterator);
+    tmp_for_loop_1__for_iterator = NULL;
+    // Re-raise.
+    exception_type = exception_keeper_type_1;
+    exception_value = exception_keeper_value_1;
+    exception_tb = exception_keeper_tb_1;
+    exception_lineno = exception_keeper_lineno_1;
+
+    goto frame_exception_exit_1;
+    // End of try:
+    try_end_1:;
 
 
     // Put the previous frame back on top.
@@ -5135,41 +5319,76 @@ static PyObject *impl_base$buff$$$function__14_add(PyThreadState *tstate, struct
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_0ad42aae47f3fff1b3f6bd2c74d8e03d, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_0ad42aae47f3fff1b3f6bd2c74d8e03d->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_0ad42aae47f3fff1b3f6bd2c74d8e03d, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_e791bea657f3cfedfd8e66b944450813, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_e791bea657f3cfedfd8e66b944450813->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_e791bea657f3cfedfd8e66b944450813, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_0ad42aae47f3fff1b3f6bd2c74d8e03d,
+        frame_e791bea657f3cfedfd8e66b944450813,
         type_description_1,
         par_self,
+        par_stack,
+        var_gain_index,
         self->m_closure[0]
     );
 
 
     // Release cached frame if used for exception.
-    if (frame_0ad42aae47f3fff1b3f6bd2c74d8e03d == cache_frame_0ad42aae47f3fff1b3f6bd2c74d8e03d) {
+    if (frame_e791bea657f3cfedfd8e66b944450813 == cache_frame_e791bea657f3cfedfd8e66b944450813) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_0ad42aae47f3fff1b3f6bd2c74d8e03d);
-        cache_frame_0ad42aae47f3fff1b3f6bd2c74d8e03d = NULL;
+        Py_DECREF(cache_frame_e791bea657f3cfedfd8e66b944450813);
+        cache_frame_e791bea657f3cfedfd8e66b944450813 = NULL;
     }
 
-    assertFrameObject(frame_0ad42aae47f3fff1b3f6bd2c74d8e03d);
+    assertFrameObject(frame_e791bea657f3cfedfd8e66b944450813);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
 
     // Return the error.
-    goto function_exception_exit;
+    goto try_except_handler_1;
     frame_no_exception_1:;
+    Py_XDECREF(tmp_for_loop_1__iter_value);
+    tmp_for_loop_1__iter_value = NULL;
+    CHECK_OBJECT(tmp_for_loop_1__for_iterator);
+    Py_DECREF(tmp_for_loop_1__for_iterator);
+    tmp_for_loop_1__for_iterator = NULL;
     tmp_return_value = Py_None;
     Py_INCREF(tmp_return_value);
+    goto try_return_handler_1;
+    NUITKA_CANNOT_GET_HERE("tried codes exits in all cases");
+    return NULL;
+    // Return handler code:
+    try_return_handler_1:;
+    Py_XDECREF(var_gain_index);
+    var_gain_index = NULL;
     goto function_return_exit;
+    // Exception handler code:
+    try_except_handler_1:;
+    exception_keeper_type_2 = exception_type;
+    exception_keeper_value_2 = exception_value;
+    exception_keeper_tb_2 = exception_tb;
+    exception_keeper_lineno_2 = exception_lineno;
+    exception_type = NULL;
+    exception_value = NULL;
+    exception_tb = NULL;
+    exception_lineno = 0;
+
+    Py_XDECREF(var_gain_index);
+    var_gain_index = NULL;
+    // Re-raise.
+    exception_type = exception_keeper_type_2;
+    exception_value = exception_keeper_value_2;
+    exception_tb = exception_keeper_tb_2;
+    exception_lineno = exception_keeper_lineno_2;
+
+    goto function_exception_exit;
+    // End of try:
 
     NUITKA_CANNOT_GET_HERE("Return statement must have exited already.");
     return NULL;
@@ -5177,6 +5396,8 @@ static PyObject *impl_base$buff$$$function__14_add(PyThreadState *tstate, struct
 function_exception_exit:
     CHECK_OBJECT(par_self);
     Py_DECREF(par_self);
+    CHECK_OBJECT(par_stack);
+    Py_DECREF(par_stack);
     assert(exception_type);
     RESTORE_ERROR_OCCURRED(tstate, exception_type, exception_value, exception_tb);
 
@@ -5186,6 +5407,8 @@ function_return_exit:
    // Function cleanup code if any.
     CHECK_OBJECT(par_self);
     Py_DECREF(par_self);
+    CHECK_OBJECT(par_stack);
+    Py_DECREF(par_stack);
 
    // Actual function exit with return value, making sure we did not make
    // the error status worse despite non-NULL return.
@@ -5203,9 +5426,14 @@ static PyObject *impl_base$buff$$$function__15_remove(PyThreadState *tstate, str
 
     // Local variable declarations.
     PyObject *par_self = python_pars[0];
-    PyObject *var_stack = NULL;
+    PyObject *par_stack = python_pars[1];
+    PyObject *var_gain_index = NULL;
     PyObject *tmp_assignment_expr_1__value = NULL;
-    struct Nuitka_FrameObject *frame_895d81e2cee479c74880ab74e8260525;
+    PyObject *tmp_for_loop_1__for_iterator = NULL;
+    PyObject *tmp_for_loop_1__iter_value = NULL;
+    PyObject *tmp_for_loop_2__for_iterator = NULL;
+    PyObject *tmp_for_loop_2__iter_value = NULL;
+    struct Nuitka_FrameObject *frame_b572e5f5458537a13f92e0986fa6d22d;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
     NUITKA_MAY_BE_UNUSED nuitka_void tmp_unused;
     PyObject *exception_type = NULL;
@@ -5217,40 +5445,48 @@ static PyObject *impl_base$buff$$$function__15_remove(PyThreadState *tstate, str
     PyTracebackObject *exception_keeper_tb_1;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_1;
     bool tmp_result;
-    static struct Nuitka_FrameObject *cache_frame_895d81e2cee479c74880ab74e8260525 = NULL;
-    PyObject *tmp_return_value = NULL;
     PyObject *exception_keeper_type_2;
     PyObject *exception_keeper_value_2;
     PyTracebackObject *exception_keeper_tb_2;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_2;
+    PyObject *exception_keeper_type_3;
+    PyObject *exception_keeper_value_3;
+    PyTracebackObject *exception_keeper_tb_3;
+    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_3;
+    static struct Nuitka_FrameObject *cache_frame_b572e5f5458537a13f92e0986fa6d22d = NULL;
+    PyObject *tmp_return_value = NULL;
+    PyObject *exception_keeper_type_4;
+    PyObject *exception_keeper_value_4;
+    PyTracebackObject *exception_keeper_tb_4;
+    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_4;
 
     // Actual function body.
     // Tried code:
-    if (isFrameUnusable(cache_frame_895d81e2cee479c74880ab74e8260525)) {
-        Py_XDECREF(cache_frame_895d81e2cee479c74880ab74e8260525);
+    if (isFrameUnusable(cache_frame_b572e5f5458537a13f92e0986fa6d22d)) {
+        Py_XDECREF(cache_frame_b572e5f5458537a13f92e0986fa6d22d);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_895d81e2cee479c74880ab74e8260525 == NULL) {
+        if (cache_frame_b572e5f5458537a13f92e0986fa6d22d == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_895d81e2cee479c74880ab74e8260525 = MAKE_FUNCTION_FRAME(tstate, codeobj_895d81e2cee479c74880ab74e8260525, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *));
+        cache_frame_b572e5f5458537a13f92e0986fa6d22d = MAKE_FUNCTION_FRAME(tstate, codeobj_b572e5f5458537a13f92e0986fa6d22d, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *)+sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_895d81e2cee479c74880ab74e8260525->m_type_description == NULL);
-    frame_895d81e2cee479c74880ab74e8260525 = cache_frame_895d81e2cee479c74880ab74e8260525;
+    assert(cache_frame_b572e5f5458537a13f92e0986fa6d22d->m_type_description == NULL);
+    frame_b572e5f5458537a13f92e0986fa6d22d = cache_frame_b572e5f5458537a13f92e0986fa6d22d;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_895d81e2cee479c74880ab74e8260525);
-    assert(Py_REFCNT(frame_895d81e2cee479c74880ab74e8260525) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_b572e5f5458537a13f92e0986fa6d22d);
+    assert(Py_REFCNT(frame_b572e5f5458537a13f92e0986fa6d22d) == 2);
 
     // Framed code:
     {
@@ -5259,15 +5495,16 @@ static PyObject *impl_base$buff$$$function__15_remove(PyThreadState *tstate, str
         PyObject *tmp_type_arg_value_1;
         PyObject *tmp_object_arg_value_1;
         PyObject *tmp_call_result_1;
+        PyObject *tmp_args_element_value_1;
         if (Nuitka_Cell_GET(self->m_closure[0]) == NULL) {
 
-            FORMAT_UNBOUND_CLOSURE_ERROR(&exception_type, &exception_value, mod_consts[24]);
+            FORMAT_UNBOUND_CLOSURE_ERROR(&exception_type, &exception_value, mod_consts[23]);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(tstate, exception_value);
 
-            exception_lineno = 120;
-            type_description_1 = "ooc";
+            exception_lineno = 127;
+            type_description_1 = "oooc";
             goto frame_exception_exit_1;
         }
 
@@ -5281,11 +5518,11 @@ static PyObject *impl_base$buff$$$function__15_remove(PyThreadState *tstate, str
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 120;
-            type_description_1 = "ooc";
+            exception_lineno = 127;
+            type_description_1 = "oooc";
             goto frame_exception_exit_1;
         }
-        tmp_called_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[21]);
+        tmp_called_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[20]);
         Py_DECREF(tmp_expression_value_1);
         if (tmp_called_value_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -5293,12 +5530,14 @@ static PyObject *impl_base$buff$$$function__15_remove(PyThreadState *tstate, str
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 120;
-            type_description_1 = "ooc";
+            exception_lineno = 127;
+            type_description_1 = "oooc";
             goto frame_exception_exit_1;
         }
-        frame_895d81e2cee479c74880ab74e8260525->m_frame.f_lineno = 120;
-        tmp_call_result_1 = CALL_FUNCTION_NO_ARGS(tstate, tmp_called_value_1);
+        CHECK_OBJECT(par_stack);
+        tmp_args_element_value_1 = par_stack;
+        frame_b572e5f5458537a13f92e0986fa6d22d->m_frame.f_lineno = 127;
+        tmp_call_result_1 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_1, tmp_args_element_value_1);
         Py_DECREF(tmp_called_value_1);
         if (tmp_call_result_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -5306,8 +5545,8 @@ static PyObject *impl_base$buff$$$function__15_remove(PyThreadState *tstate, str
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 120;
-            type_description_1 = "ooc";
+            exception_lineno = 127;
+            type_description_1 = "oooc";
             goto frame_exception_exit_1;
         }
         Py_DECREF(tmp_call_result_1);
@@ -5333,11 +5572,11 @@ static PyObject *impl_base$buff$$$function__15_remove(PyThreadState *tstate, str
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 121;
-                type_description_1 = "ooc";
+                exception_lineno = 128;
+                type_description_1 = "oooc";
                 goto try_except_handler_2;
             }
-            tmp_expression_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_3, mod_consts[10]);
+            tmp_expression_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_3, mod_consts[12]);
             Py_DECREF(tmp_expression_value_3);
             if (tmp_expression_value_2 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -5345,8 +5584,8 @@ static PyObject *impl_base$buff$$$function__15_remove(PyThreadState *tstate, str
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 121;
-                type_description_1 = "ooc";
+                exception_lineno = 128;
+                type_description_1 = "oooc";
                 goto try_except_handler_2;
             }
             CHECK_OBJECT(par_self);
@@ -5358,8 +5597,8 @@ static PyObject *impl_base$buff$$$function__15_remove(PyThreadState *tstate, str
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
                 Py_DECREF(tmp_expression_value_2);
 
-                exception_lineno = 121;
-                type_description_1 = "ooc";
+                exception_lineno = 128;
+                type_description_1 = "oooc";
                 goto try_except_handler_2;
             }
             tmp_assign_source_1 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_2, tmp_subscript_value_1);
@@ -5371,8 +5610,8 @@ static PyObject *impl_base$buff$$$function__15_remove(PyThreadState *tstate, str
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 121;
-                type_description_1 = "ooc";
+                exception_lineno = 128;
+                type_description_1 = "oooc";
                 goto try_except_handler_2;
             }
             assert(tmp_assignment_expr_1__value == NULL);
@@ -5382,9 +5621,14 @@ static PyObject *impl_base$buff$$$function__15_remove(PyThreadState *tstate, str
             PyObject *tmp_assign_source_2;
             CHECK_OBJECT(tmp_assignment_expr_1__value);
             tmp_assign_source_2 = tmp_assignment_expr_1__value;
-            assert(var_stack == NULL);
-            Py_INCREF(tmp_assign_source_2);
-            var_stack = tmp_assign_source_2;
+            {
+                PyObject *old = par_stack;
+                assert(old != NULL);
+                par_stack = tmp_assign_source_2;
+                Py_INCREF(par_stack);
+                Py_DECREF(old);
+            }
+
         }
         CHECK_OBJECT(tmp_assignment_expr_1__value);
         tmp_outline_return_value_1 = tmp_assignment_expr_1__value;
@@ -5427,8 +5671,8 @@ static PyObject *impl_base$buff$$$function__15_remove(PyThreadState *tstate, str
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_outline_return_value_1);
 
-            exception_lineno = 121;
-            type_description_1 = "ooc";
+            exception_lineno = 128;
+            type_description_1 = "oooc";
             goto frame_exception_exit_1;
         }
         tmp_condition_result_1 = tmp_truth_name_1 == 0 ? NUITKA_BOOL_FALSE : NUITKA_BOOL_TRUE;
@@ -5441,60 +5685,182 @@ static PyObject *impl_base$buff$$$function__15_remove(PyThreadState *tstate, str
     }
     branch_yes_1:;
     {
-        PyObject *tmp_ass_subvalue_1;
-        PyObject *tmp_tuple_element_1;
+        PyObject *tmp_assign_source_3;
+        PyObject *tmp_iter_arg_1;
         PyObject *tmp_expression_value_6;
-        PyObject *tmp_ass_subscribed_1;
-        PyObject *tmp_expression_value_7;
-        PyObject *tmp_expression_value_8;
-        PyObject *tmp_ass_subscript_1;
-        PyObject *tmp_expression_value_9;
         CHECK_OBJECT(par_self);
         tmp_expression_value_6 = par_self;
-        tmp_tuple_element_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_6, mod_consts[14]);
+        tmp_iter_arg_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_6, mod_consts[34]);
+        if (tmp_iter_arg_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 129;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+        tmp_assign_source_3 = MAKE_ITERATOR(tstate, tmp_iter_arg_1);
+        Py_DECREF(tmp_iter_arg_1);
+        if (tmp_assign_source_3 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 129;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+        assert(tmp_for_loop_1__for_iterator == NULL);
+        tmp_for_loop_1__for_iterator = tmp_assign_source_3;
+    }
+    // Tried code:
+    loop_start_1:;
+    {
+        PyObject *tmp_next_source_1;
+        PyObject *tmp_assign_source_4;
+        CHECK_OBJECT(tmp_for_loop_1__for_iterator);
+        tmp_next_source_1 = tmp_for_loop_1__for_iterator;
+        tmp_assign_source_4 = ITERATOR_NEXT(tmp_next_source_1);
+        if (tmp_assign_source_4 == NULL) {
+            if (CHECK_AND_CLEAR_STOP_ITERATION_OCCURRED(tstate)) {
+
+                goto loop_end_1;
+            } else {
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+                type_description_1 = "oooc";
+                exception_lineno = 129;
+                goto try_except_handler_3;
+            }
+        }
+
+        {
+            PyObject *old = tmp_for_loop_1__iter_value;
+            tmp_for_loop_1__iter_value = tmp_assign_source_4;
+            Py_XDECREF(old);
+        }
+
+    }
+    {
+        PyObject *tmp_assign_source_5;
+        CHECK_OBJECT(tmp_for_loop_1__iter_value);
+        tmp_assign_source_5 = tmp_for_loop_1__iter_value;
+        {
+            PyObject *old = var_gain_index;
+            var_gain_index = tmp_assign_source_5;
+            Py_INCREF(var_gain_index);
+            Py_XDECREF(old);
+        }
+
+    }
+    {
+        PyObject *tmp_ass_subvalue_1;
+        PyObject *tmp_tuple_element_1;
+        PyObject *tmp_expression_value_7;
+        PyObject *tmp_ass_subscribed_1;
+        PyObject *tmp_expression_value_8;
+        PyObject *tmp_expression_value_9;
+        PyObject *tmp_expression_value_10;
+        PyObject *tmp_subscript_value_2;
+        PyObject *tmp_ass_subscript_1;
+        PyObject *tmp_expression_value_11;
+        if (par_self == NULL) {
+
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 130;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
+        }
+
+        tmp_expression_value_7 = par_self;
+        tmp_tuple_element_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_7, mod_consts[15]);
         if (tmp_tuple_element_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 122;
-            type_description_1 = "ooc";
-            goto frame_exception_exit_1;
+            exception_lineno = 130;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
         }
         tmp_ass_subvalue_1 = MAKE_TUPLE_EMPTY(2);
         PyTuple_SET_ITEM(tmp_ass_subvalue_1, 0, tmp_tuple_element_1);
-        CHECK_OBJECT(var_stack);
-        tmp_tuple_element_1 = var_stack;
+        CHECK_OBJECT(par_stack);
+        tmp_tuple_element_1 = par_stack;
         PyTuple_SET_ITEM0(tmp_ass_subvalue_1, 1, tmp_tuple_element_1);
-        CHECK_OBJECT(par_self);
-        tmp_expression_value_8 = par_self;
-        tmp_expression_value_7 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_8, mod_consts[7]);
-        if (tmp_expression_value_7 == NULL) {
+        if (par_self == NULL) {
+            Py_DECREF(tmp_ass_subvalue_1);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 130;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
+        }
+
+        tmp_expression_value_10 = par_self;
+        tmp_expression_value_9 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_10, mod_consts[7]);
+        if (tmp_expression_value_9 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_ass_subvalue_1);
 
-            exception_lineno = 122;
-            type_description_1 = "ooc";
-            goto frame_exception_exit_1;
+            exception_lineno = 130;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
         }
-        tmp_ass_subscribed_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_7, mod_consts[34]);
-        Py_DECREF(tmp_expression_value_7);
+        tmp_expression_value_8 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_9, mod_consts[35]);
+        Py_DECREF(tmp_expression_value_9);
+        if (tmp_expression_value_8 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_ass_subvalue_1);
+
+            exception_lineno = 130;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
+        }
+        CHECK_OBJECT(var_gain_index);
+        tmp_subscript_value_2 = var_gain_index;
+        tmp_ass_subscribed_1 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_8, tmp_subscript_value_2);
+        Py_DECREF(tmp_expression_value_8);
         if (tmp_ass_subscribed_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_ass_subvalue_1);
 
-            exception_lineno = 122;
-            type_description_1 = "ooc";
-            goto frame_exception_exit_1;
+            exception_lineno = 130;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
         }
-        CHECK_OBJECT(par_self);
-        tmp_expression_value_9 = par_self;
-        tmp_ass_subscript_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_9, mod_consts[9]);
+        if (par_self == NULL) {
+            Py_DECREF(tmp_ass_subvalue_1);
+            Py_DECREF(tmp_ass_subscribed_1);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 130;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
+        }
+
+        tmp_expression_value_11 = par_self;
+        tmp_ass_subscript_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_11, mod_consts[9]);
         if (tmp_ass_subscript_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
@@ -5502,9 +5868,9 @@ static PyObject *impl_base$buff$$$function__15_remove(PyThreadState *tstate, str
             Py_DECREF(tmp_ass_subvalue_1);
             Py_DECREF(tmp_ass_subscribed_1);
 
-            exception_lineno = 122;
-            type_description_1 = "ooc";
-            goto frame_exception_exit_1;
+            exception_lineno = 130;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
         }
         tmp_result = SET_SUBSCRIPT(tstate, tmp_ass_subscribed_1, tmp_ass_subscript_1, tmp_ass_subvalue_1);
         Py_DECREF(tmp_ass_subscribed_1);
@@ -5516,87 +5882,283 @@ static PyObject *impl_base$buff$$$function__15_remove(PyThreadState *tstate, str
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 122;
-            type_description_1 = "ooc";
-            goto frame_exception_exit_1;
+            exception_lineno = 130;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
         }
     }
+    if (CONSIDER_THREADING(tstate) == false) {
+        assert(HAS_ERROR_OCCURRED(tstate));
+
+        FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+        exception_lineno = 129;
+        type_description_1 = "oooc";
+        goto try_except_handler_3;
+    }
+    goto loop_start_1;
+    loop_end_1:;
+    goto try_end_1;
+    // Exception handler code:
+    try_except_handler_3:;
+    exception_keeper_type_2 = exception_type;
+    exception_keeper_value_2 = exception_value;
+    exception_keeper_tb_2 = exception_tb;
+    exception_keeper_lineno_2 = exception_lineno;
+    exception_type = NULL;
+    exception_value = NULL;
+    exception_tb = NULL;
+    exception_lineno = 0;
+
+    Py_XDECREF(tmp_for_loop_1__iter_value);
+    tmp_for_loop_1__iter_value = NULL;
+    CHECK_OBJECT(tmp_for_loop_1__for_iterator);
+    Py_DECREF(tmp_for_loop_1__for_iterator);
+    tmp_for_loop_1__for_iterator = NULL;
+    // Re-raise.
+    exception_type = exception_keeper_type_2;
+    exception_value = exception_keeper_value_2;
+    exception_tb = exception_keeper_tb_2;
+    exception_lineno = exception_keeper_lineno_2;
+
+    goto frame_exception_exit_1;
+    // End of try:
+    try_end_1:;
+    Py_XDECREF(tmp_for_loop_1__iter_value);
+    tmp_for_loop_1__iter_value = NULL;
+    CHECK_OBJECT(tmp_for_loop_1__for_iterator);
+    Py_DECREF(tmp_for_loop_1__for_iterator);
+    tmp_for_loop_1__for_iterator = NULL;
     goto branch_end_1;
     branch_no_1:;
     {
-        PyObject *tmp_called_value_2;
-        PyObject *tmp_expression_value_10;
-        PyObject *tmp_expression_value_11;
+        PyObject *tmp_assign_source_6;
+        PyObject *tmp_iter_arg_2;
         PyObject *tmp_expression_value_12;
-        PyObject *tmp_call_result_2;
-        PyObject *tmp_args_element_value_1;
-        PyObject *tmp_expression_value_13;
         CHECK_OBJECT(par_self);
         tmp_expression_value_12 = par_self;
-        tmp_expression_value_11 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_12, mod_consts[7]);
-        if (tmp_expression_value_11 == NULL) {
+        tmp_iter_arg_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_12, mod_consts[34]);
+        if (tmp_iter_arg_2 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 124;
-            type_description_1 = "ooc";
+            exception_lineno = 132;
+            type_description_1 = "oooc";
             goto frame_exception_exit_1;
         }
-        tmp_expression_value_10 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_11, mod_consts[34]);
-        Py_DECREF(tmp_expression_value_11);
-        if (tmp_expression_value_10 == NULL) {
+        tmp_assign_source_6 = MAKE_ITERATOR(tstate, tmp_iter_arg_2);
+        Py_DECREF(tmp_iter_arg_2);
+        if (tmp_assign_source_6 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 124;
-            type_description_1 = "ooc";
+            exception_lineno = 132;
+            type_description_1 = "oooc";
             goto frame_exception_exit_1;
         }
-        tmp_called_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_10, mod_consts[13]);
-        Py_DECREF(tmp_expression_value_10);
+        assert(tmp_for_loop_2__for_iterator == NULL);
+        tmp_for_loop_2__for_iterator = tmp_assign_source_6;
+    }
+    // Tried code:
+    loop_start_2:;
+    {
+        PyObject *tmp_next_source_2;
+        PyObject *tmp_assign_source_7;
+        CHECK_OBJECT(tmp_for_loop_2__for_iterator);
+        tmp_next_source_2 = tmp_for_loop_2__for_iterator;
+        tmp_assign_source_7 = ITERATOR_NEXT(tmp_next_source_2);
+        if (tmp_assign_source_7 == NULL) {
+            if (CHECK_AND_CLEAR_STOP_ITERATION_OCCURRED(tstate)) {
+
+                goto loop_end_2;
+            } else {
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+                type_description_1 = "oooc";
+                exception_lineno = 132;
+                goto try_except_handler_4;
+            }
+        }
+
+        {
+            PyObject *old = tmp_for_loop_2__iter_value;
+            tmp_for_loop_2__iter_value = tmp_assign_source_7;
+            Py_XDECREF(old);
+        }
+
+    }
+    {
+        PyObject *tmp_assign_source_8;
+        CHECK_OBJECT(tmp_for_loop_2__iter_value);
+        tmp_assign_source_8 = tmp_for_loop_2__iter_value;
+        {
+            PyObject *old = var_gain_index;
+            var_gain_index = tmp_assign_source_8;
+            Py_INCREF(var_gain_index);
+            Py_XDECREF(old);
+        }
+
+    }
+    {
+        PyObject *tmp_called_value_2;
+        PyObject *tmp_expression_value_13;
+        PyObject *tmp_expression_value_14;
+        PyObject *tmp_expression_value_15;
+        PyObject *tmp_expression_value_16;
+        PyObject *tmp_subscript_value_3;
+        PyObject *tmp_call_result_2;
+        PyObject *tmp_args_element_value_2;
+        PyObject *tmp_expression_value_17;
+        if (par_self == NULL) {
+
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 133;
+            type_description_1 = "oooc";
+            goto try_except_handler_4;
+        }
+
+        tmp_expression_value_16 = par_self;
+        tmp_expression_value_15 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_16, mod_consts[7]);
+        if (tmp_expression_value_15 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 133;
+            type_description_1 = "oooc";
+            goto try_except_handler_4;
+        }
+        tmp_expression_value_14 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_15, mod_consts[35]);
+        Py_DECREF(tmp_expression_value_15);
+        if (tmp_expression_value_14 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 133;
+            type_description_1 = "oooc";
+            goto try_except_handler_4;
+        }
+        CHECK_OBJECT(var_gain_index);
+        tmp_subscript_value_3 = var_gain_index;
+        tmp_expression_value_13 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_14, tmp_subscript_value_3);
+        Py_DECREF(tmp_expression_value_14);
+        if (tmp_expression_value_13 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 133;
+            type_description_1 = "oooc";
+            goto try_except_handler_4;
+        }
+        tmp_called_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_13, mod_consts[14]);
+        Py_DECREF(tmp_expression_value_13);
         if (tmp_called_value_2 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 124;
-            type_description_1 = "ooc";
-            goto frame_exception_exit_1;
+            exception_lineno = 133;
+            type_description_1 = "oooc";
+            goto try_except_handler_4;
         }
-        CHECK_OBJECT(par_self);
-        tmp_expression_value_13 = par_self;
-        tmp_args_element_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_13, mod_consts[9]);
-        if (tmp_args_element_value_1 == NULL) {
+        if (par_self == NULL) {
+            Py_DECREF(tmp_called_value_2);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 133;
+            type_description_1 = "oooc";
+            goto try_except_handler_4;
+        }
+
+        tmp_expression_value_17 = par_self;
+        tmp_args_element_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_17, mod_consts[9]);
+        if (tmp_args_element_value_2 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_called_value_2);
 
-            exception_lineno = 124;
-            type_description_1 = "ooc";
-            goto frame_exception_exit_1;
+            exception_lineno = 133;
+            type_description_1 = "oooc";
+            goto try_except_handler_4;
         }
-        frame_895d81e2cee479c74880ab74e8260525->m_frame.f_lineno = 124;
-        tmp_call_result_2 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_2, tmp_args_element_value_1);
+        frame_b572e5f5458537a13f92e0986fa6d22d->m_frame.f_lineno = 133;
+        tmp_call_result_2 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_2, tmp_args_element_value_2);
         Py_DECREF(tmp_called_value_2);
-        Py_DECREF(tmp_args_element_value_1);
+        Py_DECREF(tmp_args_element_value_2);
         if (tmp_call_result_2 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 124;
-            type_description_1 = "ooc";
-            goto frame_exception_exit_1;
+            exception_lineno = 133;
+            type_description_1 = "oooc";
+            goto try_except_handler_4;
         }
         Py_DECREF(tmp_call_result_2);
     }
+    if (CONSIDER_THREADING(tstate) == false) {
+        assert(HAS_ERROR_OCCURRED(tstate));
+
+        FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+        exception_lineno = 132;
+        type_description_1 = "oooc";
+        goto try_except_handler_4;
+    }
+    goto loop_start_2;
+    loop_end_2:;
+    goto try_end_2;
+    // Exception handler code:
+    try_except_handler_4:;
+    exception_keeper_type_3 = exception_type;
+    exception_keeper_value_3 = exception_value;
+    exception_keeper_tb_3 = exception_tb;
+    exception_keeper_lineno_3 = exception_lineno;
+    exception_type = NULL;
+    exception_value = NULL;
+    exception_tb = NULL;
+    exception_lineno = 0;
+
+    Py_XDECREF(tmp_for_loop_2__iter_value);
+    tmp_for_loop_2__iter_value = NULL;
+    CHECK_OBJECT(tmp_for_loop_2__for_iterator);
+    Py_DECREF(tmp_for_loop_2__for_iterator);
+    tmp_for_loop_2__for_iterator = NULL;
+    // Re-raise.
+    exception_type = exception_keeper_type_3;
+    exception_value = exception_keeper_value_3;
+    exception_tb = exception_keeper_tb_3;
+    exception_lineno = exception_keeper_lineno_3;
+
+    goto frame_exception_exit_1;
+    // End of try:
+    try_end_2:;
+    Py_XDECREF(tmp_for_loop_2__iter_value);
+    tmp_for_loop_2__iter_value = NULL;
+    CHECK_OBJECT(tmp_for_loop_2__for_iterator);
+    Py_DECREF(tmp_for_loop_2__for_iterator);
+    tmp_for_loop_2__for_iterator = NULL;
     branch_end_1:;
 
 
@@ -5608,32 +6170,33 @@ static PyObject *impl_base$buff$$$function__15_remove(PyThreadState *tstate, str
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_895d81e2cee479c74880ab74e8260525, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_895d81e2cee479c74880ab74e8260525->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_895d81e2cee479c74880ab74e8260525, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_b572e5f5458537a13f92e0986fa6d22d, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_b572e5f5458537a13f92e0986fa6d22d->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_b572e5f5458537a13f92e0986fa6d22d, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_895d81e2cee479c74880ab74e8260525,
+        frame_b572e5f5458537a13f92e0986fa6d22d,
         type_description_1,
         par_self,
-        var_stack,
+        par_stack,
+        var_gain_index,
         self->m_closure[0]
     );
 
 
     // Release cached frame if used for exception.
-    if (frame_895d81e2cee479c74880ab74e8260525 == cache_frame_895d81e2cee479c74880ab74e8260525) {
+    if (frame_b572e5f5458537a13f92e0986fa6d22d == cache_frame_b572e5f5458537a13f92e0986fa6d22d) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_895d81e2cee479c74880ab74e8260525);
-        cache_frame_895d81e2cee479c74880ab74e8260525 = NULL;
+        Py_DECREF(cache_frame_b572e5f5458537a13f92e0986fa6d22d);
+        cache_frame_b572e5f5458537a13f92e0986fa6d22d = NULL;
     }
 
-    assertFrameObject(frame_895d81e2cee479c74880ab74e8260525);
+    assertFrameObject(frame_b572e5f5458537a13f92e0986fa6d22d);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
@@ -5648,28 +6211,32 @@ static PyObject *impl_base$buff$$$function__15_remove(PyThreadState *tstate, str
     return NULL;
     // Return handler code:
     try_return_handler_1:;
-    CHECK_OBJECT(var_stack);
-    Py_DECREF(var_stack);
-    var_stack = NULL;
+    CHECK_OBJECT(par_stack);
+    Py_DECREF(par_stack);
+    par_stack = NULL;
+    Py_XDECREF(var_gain_index);
+    var_gain_index = NULL;
     goto function_return_exit;
     // Exception handler code:
     try_except_handler_1:;
-    exception_keeper_type_2 = exception_type;
-    exception_keeper_value_2 = exception_value;
-    exception_keeper_tb_2 = exception_tb;
-    exception_keeper_lineno_2 = exception_lineno;
+    exception_keeper_type_4 = exception_type;
+    exception_keeper_value_4 = exception_value;
+    exception_keeper_tb_4 = exception_tb;
+    exception_keeper_lineno_4 = exception_lineno;
     exception_type = NULL;
     exception_value = NULL;
     exception_tb = NULL;
     exception_lineno = 0;
 
-    Py_XDECREF(var_stack);
-    var_stack = NULL;
+    Py_XDECREF(par_stack);
+    par_stack = NULL;
+    Py_XDECREF(var_gain_index);
+    var_gain_index = NULL;
     // Re-raise.
-    exception_type = exception_keeper_type_2;
-    exception_value = exception_keeper_value_2;
-    exception_tb = exception_keeper_tb_2;
-    exception_lineno = exception_keeper_lineno_2;
+    exception_type = exception_keeper_type_4;
+    exception_value = exception_keeper_value_4;
+    exception_tb = exception_keeper_tb_4;
+    exception_lineno = exception_keeper_lineno_4;
 
     goto function_exception_exit;
     // End of try:
@@ -5711,7 +6278,7 @@ static PyObject *impl_base$buff$$$function__16_gain(PyThreadState *tstate, struc
     PyObject *var_effect = NULL;
     PyObject *tmp_for_loop_1__for_iterator = NULL;
     PyObject *tmp_for_loop_1__iter_value = NULL;
-    struct Nuitka_FrameObject *frame_3d5eecb2551f1ff7dc1dd05b248f79db;
+    struct Nuitka_FrameObject *frame_1fb92d1155fb4133c2305e18e2880f34;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
     PyObject *exception_type = NULL;
     PyObject *exception_value = NULL;
@@ -5722,7 +6289,7 @@ static PyObject *impl_base$buff$$$function__16_gain(PyThreadState *tstate, struc
     PyObject *exception_keeper_value_1;
     PyTracebackObject *exception_keeper_tb_1;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_1;
-    static struct Nuitka_FrameObject *cache_frame_3d5eecb2551f1ff7dc1dd05b248f79db = NULL;
+    static struct Nuitka_FrameObject *cache_frame_1fb92d1155fb4133c2305e18e2880f34 = NULL;
     PyObject *tmp_return_value = NULL;
     PyObject *exception_keeper_type_2;
     PyObject *exception_keeper_value_2;
@@ -5731,31 +6298,31 @@ static PyObject *impl_base$buff$$$function__16_gain(PyThreadState *tstate, struc
 
     // Actual function body.
     // Tried code:
-    if (isFrameUnusable(cache_frame_3d5eecb2551f1ff7dc1dd05b248f79db)) {
-        Py_XDECREF(cache_frame_3d5eecb2551f1ff7dc1dd05b248f79db);
+    if (isFrameUnusable(cache_frame_1fb92d1155fb4133c2305e18e2880f34)) {
+        Py_XDECREF(cache_frame_1fb92d1155fb4133c2305e18e2880f34);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_3d5eecb2551f1ff7dc1dd05b248f79db == NULL) {
+        if (cache_frame_1fb92d1155fb4133c2305e18e2880f34 == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_3d5eecb2551f1ff7dc1dd05b248f79db = MAKE_FUNCTION_FRAME(tstate, codeobj_3d5eecb2551f1ff7dc1dd05b248f79db, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *)+sizeof(void *));
+        cache_frame_1fb92d1155fb4133c2305e18e2880f34 = MAKE_FUNCTION_FRAME(tstate, codeobj_1fb92d1155fb4133c2305e18e2880f34, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *)+sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_3d5eecb2551f1ff7dc1dd05b248f79db->m_type_description == NULL);
-    frame_3d5eecb2551f1ff7dc1dd05b248f79db = cache_frame_3d5eecb2551f1ff7dc1dd05b248f79db;
+    assert(cache_frame_1fb92d1155fb4133c2305e18e2880f34->m_type_description == NULL);
+    frame_1fb92d1155fb4133c2305e18e2880f34 = cache_frame_1fb92d1155fb4133c2305e18e2880f34;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_3d5eecb2551f1ff7dc1dd05b248f79db);
-    assert(Py_REFCNT(frame_3d5eecb2551f1ff7dc1dd05b248f79db) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_1fb92d1155fb4133c2305e18e2880f34);
+    assert(Py_REFCNT(frame_1fb92d1155fb4133c2305e18e2880f34) == 2);
 
     // Framed code:
     {
@@ -5764,14 +6331,14 @@ static PyObject *impl_base$buff$$$function__16_gain(PyThreadState *tstate, struc
         PyObject *tmp_expression_value_1;
         CHECK_OBJECT(par_self);
         tmp_expression_value_1 = par_self;
-        tmp_iter_arg_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[32]);
+        tmp_iter_arg_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[31]);
         if (tmp_iter_arg_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 127;
+            exception_lineno = 136;
             type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
@@ -5783,7 +6350,7 @@ static PyObject *impl_base$buff$$$function__16_gain(PyThreadState *tstate, struc
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 127;
+            exception_lineno = 136;
             type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
@@ -5806,7 +6373,7 @@ static PyObject *impl_base$buff$$$function__16_gain(PyThreadState *tstate, struc
 
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
                 type_description_1 = "oooo";
-                exception_lineno = 127;
+                exception_lineno = 136;
                 goto try_except_handler_2;
             }
         }
@@ -5840,12 +6407,12 @@ static PyObject *impl_base$buff$$$function__16_gain(PyThreadState *tstate, struc
         tmp_called_value_1 = var_effect;
         if (par_self == NULL) {
 
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[12]);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(tstate, exception_value);
 
-            exception_lineno = 128;
+            exception_lineno = 137;
             type_description_1 = "oooo";
             goto try_except_handler_2;
         }
@@ -5853,12 +6420,12 @@ static PyObject *impl_base$buff$$$function__16_gain(PyThreadState *tstate, struc
         tmp_args_element_value_1 = par_self;
         if (par_level == NULL) {
 
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[14]);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[15]);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(tstate, exception_value);
 
-            exception_lineno = 128;
+            exception_lineno = 137;
             type_description_1 = "oooo";
             goto try_except_handler_2;
         }
@@ -5866,18 +6433,18 @@ static PyObject *impl_base$buff$$$function__16_gain(PyThreadState *tstate, struc
         tmp_args_element_value_2 = par_level;
         if (par_stack == NULL) {
 
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[35]);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[36]);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(tstate, exception_value);
 
-            exception_lineno = 128;
+            exception_lineno = 137;
             type_description_1 = "oooo";
             goto try_except_handler_2;
         }
 
         tmp_args_element_value_3 = par_stack;
-        frame_3d5eecb2551f1ff7dc1dd05b248f79db->m_frame.f_lineno = 128;
+        frame_1fb92d1155fb4133c2305e18e2880f34->m_frame.f_lineno = 137;
         {
             PyObject *call_args[] = {tmp_args_element_value_1, tmp_args_element_value_2, tmp_args_element_value_3};
             tmp_call_result_1 = CALL_FUNCTION_WITH_ARGS3(tstate, tmp_called_value_1, call_args);
@@ -5889,7 +6456,7 @@ static PyObject *impl_base$buff$$$function__16_gain(PyThreadState *tstate, struc
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 128;
+            exception_lineno = 137;
             type_description_1 = "oooo";
             goto try_except_handler_2;
         }
@@ -5901,7 +6468,7 @@ static PyObject *impl_base$buff$$$function__16_gain(PyThreadState *tstate, struc
         FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-        exception_lineno = 127;
+        exception_lineno = 136;
         type_description_1 = "oooo";
         goto try_except_handler_2;
     }
@@ -5943,14 +6510,14 @@ static PyObject *impl_base$buff$$$function__16_gain(PyThreadState *tstate, struc
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_3d5eecb2551f1ff7dc1dd05b248f79db, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_3d5eecb2551f1ff7dc1dd05b248f79db->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_3d5eecb2551f1ff7dc1dd05b248f79db, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_1fb92d1155fb4133c2305e18e2880f34, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_1fb92d1155fb4133c2305e18e2880f34->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_1fb92d1155fb4133c2305e18e2880f34, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_3d5eecb2551f1ff7dc1dd05b248f79db,
+        frame_1fb92d1155fb4133c2305e18e2880f34,
         type_description_1,
         par_self,
         par_level,
@@ -5960,16 +6527,16 @@ static PyObject *impl_base$buff$$$function__16_gain(PyThreadState *tstate, struc
 
 
     // Release cached frame if used for exception.
-    if (frame_3d5eecb2551f1ff7dc1dd05b248f79db == cache_frame_3d5eecb2551f1ff7dc1dd05b248f79db) {
+    if (frame_1fb92d1155fb4133c2305e18e2880f34 == cache_frame_1fb92d1155fb4133c2305e18e2880f34) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_3d5eecb2551f1ff7dc1dd05b248f79db);
-        cache_frame_3d5eecb2551f1ff7dc1dd05b248f79db = NULL;
+        Py_DECREF(cache_frame_1fb92d1155fb4133c2305e18e2880f34);
+        cache_frame_1fb92d1155fb4133c2305e18e2880f34 = NULL;
     }
 
-    assertFrameObject(frame_3d5eecb2551f1ff7dc1dd05b248f79db);
+    assertFrameObject(frame_1fb92d1155fb4133c2305e18e2880f34);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
@@ -6059,7 +6626,7 @@ static PyObject *impl_base$buff$$$function__17_revoke(PyThreadState *tstate, str
     PyObject *var_effect = NULL;
     PyObject *tmp_for_loop_1__for_iterator = NULL;
     PyObject *tmp_for_loop_1__iter_value = NULL;
-    struct Nuitka_FrameObject *frame_1b15ae343668e30fe8dee5e3a6847375;
+    struct Nuitka_FrameObject *frame_1a410e84a265a23c06fb8798ec90c22b;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
     PyObject *exception_type = NULL;
     PyObject *exception_value = NULL;
@@ -6070,7 +6637,7 @@ static PyObject *impl_base$buff$$$function__17_revoke(PyThreadState *tstate, str
     PyObject *exception_keeper_value_1;
     PyTracebackObject *exception_keeper_tb_1;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_1;
-    static struct Nuitka_FrameObject *cache_frame_1b15ae343668e30fe8dee5e3a6847375 = NULL;
+    static struct Nuitka_FrameObject *cache_frame_1a410e84a265a23c06fb8798ec90c22b = NULL;
     PyObject *tmp_return_value = NULL;
     PyObject *exception_keeper_type_2;
     PyObject *exception_keeper_value_2;
@@ -6079,31 +6646,31 @@ static PyObject *impl_base$buff$$$function__17_revoke(PyThreadState *tstate, str
 
     // Actual function body.
     // Tried code:
-    if (isFrameUnusable(cache_frame_1b15ae343668e30fe8dee5e3a6847375)) {
-        Py_XDECREF(cache_frame_1b15ae343668e30fe8dee5e3a6847375);
+    if (isFrameUnusable(cache_frame_1a410e84a265a23c06fb8798ec90c22b)) {
+        Py_XDECREF(cache_frame_1a410e84a265a23c06fb8798ec90c22b);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_1b15ae343668e30fe8dee5e3a6847375 == NULL) {
+        if (cache_frame_1a410e84a265a23c06fb8798ec90c22b == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_1b15ae343668e30fe8dee5e3a6847375 = MAKE_FUNCTION_FRAME(tstate, codeobj_1b15ae343668e30fe8dee5e3a6847375, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *)+sizeof(void *));
+        cache_frame_1a410e84a265a23c06fb8798ec90c22b = MAKE_FUNCTION_FRAME(tstate, codeobj_1a410e84a265a23c06fb8798ec90c22b, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *)+sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_1b15ae343668e30fe8dee5e3a6847375->m_type_description == NULL);
-    frame_1b15ae343668e30fe8dee5e3a6847375 = cache_frame_1b15ae343668e30fe8dee5e3a6847375;
+    assert(cache_frame_1a410e84a265a23c06fb8798ec90c22b->m_type_description == NULL);
+    frame_1a410e84a265a23c06fb8798ec90c22b = cache_frame_1a410e84a265a23c06fb8798ec90c22b;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_1b15ae343668e30fe8dee5e3a6847375);
-    assert(Py_REFCNT(frame_1b15ae343668e30fe8dee5e3a6847375) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_1a410e84a265a23c06fb8798ec90c22b);
+    assert(Py_REFCNT(frame_1a410e84a265a23c06fb8798ec90c22b) == 2);
 
     // Framed code:
     {
@@ -6112,14 +6679,14 @@ static PyObject *impl_base$buff$$$function__17_revoke(PyThreadState *tstate, str
         PyObject *tmp_expression_value_1;
         CHECK_OBJECT(par_self);
         tmp_expression_value_1 = par_self;
-        tmp_iter_arg_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[33]);
+        tmp_iter_arg_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[32]);
         if (tmp_iter_arg_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 131;
+            exception_lineno = 140;
             type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
@@ -6131,7 +6698,7 @@ static PyObject *impl_base$buff$$$function__17_revoke(PyThreadState *tstate, str
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 131;
+            exception_lineno = 140;
             type_description_1 = "oooo";
             goto frame_exception_exit_1;
         }
@@ -6154,7 +6721,7 @@ static PyObject *impl_base$buff$$$function__17_revoke(PyThreadState *tstate, str
 
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
                 type_description_1 = "oooo";
-                exception_lineno = 131;
+                exception_lineno = 140;
                 goto try_except_handler_2;
             }
         }
@@ -6188,12 +6755,12 @@ static PyObject *impl_base$buff$$$function__17_revoke(PyThreadState *tstate, str
         tmp_called_value_1 = var_effect;
         if (par_self == NULL) {
 
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[12]);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(tstate, exception_value);
 
-            exception_lineno = 132;
+            exception_lineno = 141;
             type_description_1 = "oooo";
             goto try_except_handler_2;
         }
@@ -6201,12 +6768,12 @@ static PyObject *impl_base$buff$$$function__17_revoke(PyThreadState *tstate, str
         tmp_args_element_value_1 = par_self;
         if (par_level == NULL) {
 
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[14]);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[15]);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(tstate, exception_value);
 
-            exception_lineno = 132;
+            exception_lineno = 141;
             type_description_1 = "oooo";
             goto try_except_handler_2;
         }
@@ -6214,18 +6781,18 @@ static PyObject *impl_base$buff$$$function__17_revoke(PyThreadState *tstate, str
         tmp_args_element_value_2 = par_level;
         if (par_stack == NULL) {
 
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[35]);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[36]);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(tstate, exception_value);
 
-            exception_lineno = 132;
+            exception_lineno = 141;
             type_description_1 = "oooo";
             goto try_except_handler_2;
         }
 
         tmp_args_element_value_3 = par_stack;
-        frame_1b15ae343668e30fe8dee5e3a6847375->m_frame.f_lineno = 132;
+        frame_1a410e84a265a23c06fb8798ec90c22b->m_frame.f_lineno = 141;
         {
             PyObject *call_args[] = {tmp_args_element_value_1, tmp_args_element_value_2, tmp_args_element_value_3};
             tmp_call_result_1 = CALL_FUNCTION_WITH_ARGS3(tstate, tmp_called_value_1, call_args);
@@ -6237,7 +6804,7 @@ static PyObject *impl_base$buff$$$function__17_revoke(PyThreadState *tstate, str
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 132;
+            exception_lineno = 141;
             type_description_1 = "oooo";
             goto try_except_handler_2;
         }
@@ -6249,7 +6816,7 @@ static PyObject *impl_base$buff$$$function__17_revoke(PyThreadState *tstate, str
         FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-        exception_lineno = 131;
+        exception_lineno = 140;
         type_description_1 = "oooo";
         goto try_except_handler_2;
     }
@@ -6291,14 +6858,14 @@ static PyObject *impl_base$buff$$$function__17_revoke(PyThreadState *tstate, str
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_1b15ae343668e30fe8dee5e3a6847375, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_1b15ae343668e30fe8dee5e3a6847375->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_1b15ae343668e30fe8dee5e3a6847375, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_1a410e84a265a23c06fb8798ec90c22b, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_1a410e84a265a23c06fb8798ec90c22b->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_1a410e84a265a23c06fb8798ec90c22b, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_1b15ae343668e30fe8dee5e3a6847375,
+        frame_1a410e84a265a23c06fb8798ec90c22b,
         type_description_1,
         par_self,
         par_level,
@@ -6308,16 +6875,16 @@ static PyObject *impl_base$buff$$$function__17_revoke(PyThreadState *tstate, str
 
 
     // Release cached frame if used for exception.
-    if (frame_1b15ae343668e30fe8dee5e3a6847375 == cache_frame_1b15ae343668e30fe8dee5e3a6847375) {
+    if (frame_1a410e84a265a23c06fb8798ec90c22b == cache_frame_1a410e84a265a23c06fb8798ec90c22b) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_1b15ae343668e30fe8dee5e3a6847375);
-        cache_frame_1b15ae343668e30fe8dee5e3a6847375 = NULL;
+        Py_DECREF(cache_frame_1a410e84a265a23c06fb8798ec90c22b);
+        cache_frame_1a410e84a265a23c06fb8798ec90c22b = NULL;
     }
 
-    assertFrameObject(frame_1b15ae343668e30fe8dee5e3a6847375);
+    assertFrameObject(frame_1a410e84a265a23c06fb8798ec90c22b);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
@@ -6394,7 +6961,7 @@ function_return_exit:
 }
 
 
-static PyObject *impl_base$buff$$$function__18___post_init__(PyThreadState *tstate, struct Nuitka_FunctionObject const *self, PyObject **python_pars) {
+static PyObject *impl_base$buff$$$function__18_add(PyThreadState *tstate, struct Nuitka_FunctionObject const *self, PyObject **python_pars) {
     // Preserve error status for checks
 #ifndef __NUITKA_NO_ASSERT__
     NUITKA_MAY_BE_UNUSED bool had_error = HAS_ERROR_OCCURRED(tstate);
@@ -6402,7 +6969,11 @@ static PyObject *impl_base$buff$$$function__18___post_init__(PyThreadState *tsta
 
     // Local variable declarations.
     PyObject *par_self = python_pars[0];
-    struct Nuitka_FrameObject *frame_3193481407dfacac742bd1cb16f2d016;
+    PyObject *par_stack = python_pars[1];
+    PyObject *var_gain_index = NULL;
+    PyObject *tmp_for_loop_1__for_iterator = NULL;
+    PyObject *tmp_for_loop_1__iter_value = NULL;
+    struct Nuitka_FrameObject *frame_59f90e5311ae01284de10fa281e00120;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
     NUITKA_MAY_BE_UNUSED nuitka_void tmp_unused;
     PyObject *exception_type = NULL;
@@ -6410,35 +6981,1422 @@ static PyObject *impl_base$buff$$$function__18___post_init__(PyThreadState *tsta
     PyTracebackObject *exception_tb = NULL;
     NUITKA_MAY_BE_UNUSED int exception_lineno = 0;
     bool tmp_result;
-    static struct Nuitka_FrameObject *cache_frame_3193481407dfacac742bd1cb16f2d016 = NULL;
+    PyObject *exception_keeper_type_1;
+    PyObject *exception_keeper_value_1;
+    PyTracebackObject *exception_keeper_tb_1;
+    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_1;
+    static struct Nuitka_FrameObject *cache_frame_59f90e5311ae01284de10fa281e00120 = NULL;
     PyObject *tmp_return_value = NULL;
+    PyObject *exception_keeper_type_2;
+    PyObject *exception_keeper_value_2;
+    PyTracebackObject *exception_keeper_tb_2;
+    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_2;
 
     // Actual function body.
-    if (isFrameUnusable(cache_frame_3193481407dfacac742bd1cb16f2d016)) {
-        Py_XDECREF(cache_frame_3193481407dfacac742bd1cb16f2d016);
+    // Tried code:
+    if (isFrameUnusable(cache_frame_59f90e5311ae01284de10fa281e00120)) {
+        Py_XDECREF(cache_frame_59f90e5311ae01284de10fa281e00120);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_3193481407dfacac742bd1cb16f2d016 == NULL) {
+        if (cache_frame_59f90e5311ae01284de10fa281e00120 == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_3193481407dfacac742bd1cb16f2d016 = MAKE_FUNCTION_FRAME(tstate, codeobj_3193481407dfacac742bd1cb16f2d016, module_base$buff, sizeof(void *)+sizeof(void *));
+        cache_frame_59f90e5311ae01284de10fa281e00120 = MAKE_FUNCTION_FRAME(tstate, codeobj_59f90e5311ae01284de10fa281e00120, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *)+sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_3193481407dfacac742bd1cb16f2d016->m_type_description == NULL);
-    frame_3193481407dfacac742bd1cb16f2d016 = cache_frame_3193481407dfacac742bd1cb16f2d016;
+    assert(cache_frame_59f90e5311ae01284de10fa281e00120->m_type_description == NULL);
+    frame_59f90e5311ae01284de10fa281e00120 = cache_frame_59f90e5311ae01284de10fa281e00120;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_3193481407dfacac742bd1cb16f2d016);
-    assert(Py_REFCNT(frame_3193481407dfacac742bd1cb16f2d016) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_59f90e5311ae01284de10fa281e00120);
+    assert(Py_REFCNT(frame_59f90e5311ae01284de10fa281e00120) == 2);
+
+    // Framed code:
+    {
+        PyObject *tmp_called_instance_1;
+        PyObject *tmp_type_arg_value_1;
+        PyObject *tmp_object_arg_value_1;
+        PyObject *tmp_call_result_1;
+        PyObject *tmp_args_element_value_1;
+        if (Nuitka_Cell_GET(self->m_closure[0]) == NULL) {
+
+            FORMAT_UNBOUND_CLOSURE_ERROR(&exception_type, &exception_value, mod_consts[23]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 146;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+
+        tmp_type_arg_value_1 = Nuitka_Cell_GET(self->m_closure[0]);
+        CHECK_OBJECT(par_self);
+        tmp_object_arg_value_1 = par_self;
+        tmp_called_instance_1 = BUILTIN_SUPER0(tstate, moduledict_base$buff, tmp_type_arg_value_1, tmp_object_arg_value_1);
+        if (tmp_called_instance_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 146;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+        CHECK_OBJECT(par_stack);
+        tmp_args_element_value_1 = par_stack;
+        frame_59f90e5311ae01284de10fa281e00120->m_frame.f_lineno = 146;
+        tmp_call_result_1 = CALL_METHOD_WITH_SINGLE_ARG(tstate, tmp_called_instance_1, mod_consts[18], tmp_args_element_value_1);
+        Py_DECREF(tmp_called_instance_1);
+        if (tmp_call_result_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 146;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+        Py_DECREF(tmp_call_result_1);
+    }
+    {
+        PyObject *tmp_assign_source_1;
+        PyObject *tmp_iter_arg_1;
+        PyObject *tmp_expression_value_1;
+        CHECK_OBJECT(par_self);
+        tmp_expression_value_1 = par_self;
+        tmp_iter_arg_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[34]);
+        if (tmp_iter_arg_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 147;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+        tmp_assign_source_1 = MAKE_ITERATOR(tstate, tmp_iter_arg_1);
+        Py_DECREF(tmp_iter_arg_1);
+        if (tmp_assign_source_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 147;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+        assert(tmp_for_loop_1__for_iterator == NULL);
+        tmp_for_loop_1__for_iterator = tmp_assign_source_1;
+    }
+    // Tried code:
+    loop_start_1:;
+    {
+        PyObject *tmp_next_source_1;
+        PyObject *tmp_assign_source_2;
+        CHECK_OBJECT(tmp_for_loop_1__for_iterator);
+        tmp_next_source_1 = tmp_for_loop_1__for_iterator;
+        tmp_assign_source_2 = ITERATOR_NEXT(tmp_next_source_1);
+        if (tmp_assign_source_2 == NULL) {
+            if (CHECK_AND_CLEAR_STOP_ITERATION_OCCURRED(tstate)) {
+
+                goto loop_end_1;
+            } else {
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+                type_description_1 = "oooc";
+                exception_lineno = 147;
+                goto try_except_handler_2;
+            }
+        }
+
+        {
+            PyObject *old = tmp_for_loop_1__iter_value;
+            tmp_for_loop_1__iter_value = tmp_assign_source_2;
+            Py_XDECREF(old);
+        }
+
+    }
+    {
+        PyObject *tmp_assign_source_3;
+        CHECK_OBJECT(tmp_for_loop_1__iter_value);
+        tmp_assign_source_3 = tmp_for_loop_1__iter_value;
+        {
+            PyObject *old = var_gain_index;
+            var_gain_index = tmp_assign_source_3;
+            Py_INCREF(var_gain_index);
+            Py_XDECREF(old);
+        }
+
+    }
+    {
+        PyObject *tmp_ass_subvalue_1;
+        PyObject *tmp_tuple_element_1;
+        PyObject *tmp_expression_value_2;
+        PyObject *tmp_ass_subscribed_1;
+        PyObject *tmp_expression_value_7;
+        PyObject *tmp_expression_value_8;
+        PyObject *tmp_expression_value_9;
+        PyObject *tmp_subscript_value_2;
+        PyObject *tmp_ass_subscript_1;
+        PyObject *tmp_expression_value_10;
+        if (par_self == NULL) {
+
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 148;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
+        }
+
+        tmp_expression_value_2 = par_self;
+        tmp_tuple_element_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_2, mod_consts[15]);
+        if (tmp_tuple_element_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 148;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
+        }
+        tmp_ass_subvalue_1 = MAKE_TUPLE_EMPTY(2);
+        {
+            PyObject *tmp_expression_value_3;
+            PyObject *tmp_expression_value_4;
+            PyObject *tmp_expression_value_5;
+            PyObject *tmp_subscript_value_1;
+            PyObject *tmp_expression_value_6;
+            PyTuple_SET_ITEM(tmp_ass_subvalue_1, 0, tmp_tuple_element_1);
+            if (par_self == NULL) {
+
+                FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+                exception_tb = NULL;
+                NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+                CHAIN_EXCEPTION(tstate, exception_value);
+
+                exception_lineno = 148;
+                type_description_1 = "oooc";
+                goto tuple_build_exception_1;
+            }
+
+            tmp_expression_value_5 = par_self;
+            tmp_expression_value_4 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[7]);
+            if (tmp_expression_value_4 == NULL) {
+                assert(HAS_ERROR_OCCURRED(tstate));
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+                exception_lineno = 148;
+                type_description_1 = "oooc";
+                goto tuple_build_exception_1;
+            }
+            tmp_expression_value_3 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_4, mod_consts[12]);
+            Py_DECREF(tmp_expression_value_4);
+            if (tmp_expression_value_3 == NULL) {
+                assert(HAS_ERROR_OCCURRED(tstate));
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+                exception_lineno = 148;
+                type_description_1 = "oooc";
+                goto tuple_build_exception_1;
+            }
+            if (par_self == NULL) {
+                Py_DECREF(tmp_expression_value_3);
+                FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+                exception_tb = NULL;
+                NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+                CHAIN_EXCEPTION(tstate, exception_value);
+
+                exception_lineno = 148;
+                type_description_1 = "oooc";
+                goto tuple_build_exception_1;
+            }
+
+            tmp_expression_value_6 = par_self;
+            tmp_subscript_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_6, mod_consts[9]);
+            if (tmp_subscript_value_1 == NULL) {
+                assert(HAS_ERROR_OCCURRED(tstate));
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+                Py_DECREF(tmp_expression_value_3);
+
+                exception_lineno = 148;
+                type_description_1 = "oooc";
+                goto tuple_build_exception_1;
+            }
+            tmp_tuple_element_1 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_3, tmp_subscript_value_1);
+            Py_DECREF(tmp_expression_value_3);
+            Py_DECREF(tmp_subscript_value_1);
+            if (tmp_tuple_element_1 == NULL) {
+                assert(HAS_ERROR_OCCURRED(tstate));
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+                exception_lineno = 148;
+                type_description_1 = "oooc";
+                goto tuple_build_exception_1;
+            }
+            PyTuple_SET_ITEM(tmp_ass_subvalue_1, 1, tmp_tuple_element_1);
+        }
+        goto tuple_build_noexception_1;
+        // Exception handling pass through code for tuple_build:
+        tuple_build_exception_1:;
+        Py_DECREF(tmp_ass_subvalue_1);
+        goto try_except_handler_2;
+        // Finished with no exception for tuple_build:
+        tuple_build_noexception_1:;
+        if (par_self == NULL) {
+            Py_DECREF(tmp_ass_subvalue_1);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 148;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
+        }
+
+        tmp_expression_value_9 = par_self;
+        tmp_expression_value_8 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_9, mod_consts[7]);
+        if (tmp_expression_value_8 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_ass_subvalue_1);
+
+            exception_lineno = 148;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
+        }
+        tmp_expression_value_7 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_8, mod_consts[37]);
+        Py_DECREF(tmp_expression_value_8);
+        if (tmp_expression_value_7 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_ass_subvalue_1);
+
+            exception_lineno = 148;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
+        }
+        CHECK_OBJECT(var_gain_index);
+        tmp_subscript_value_2 = var_gain_index;
+        tmp_ass_subscribed_1 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_7, tmp_subscript_value_2);
+        Py_DECREF(tmp_expression_value_7);
+        if (tmp_ass_subscribed_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_ass_subvalue_1);
+
+            exception_lineno = 148;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
+        }
+        if (par_self == NULL) {
+            Py_DECREF(tmp_ass_subvalue_1);
+            Py_DECREF(tmp_ass_subscribed_1);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 148;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
+        }
+
+        tmp_expression_value_10 = par_self;
+        tmp_ass_subscript_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_10, mod_consts[9]);
+        if (tmp_ass_subscript_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_ass_subvalue_1);
+            Py_DECREF(tmp_ass_subscribed_1);
+
+            exception_lineno = 148;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
+        }
+        tmp_result = SET_SUBSCRIPT(tstate, tmp_ass_subscribed_1, tmp_ass_subscript_1, tmp_ass_subvalue_1);
+        Py_DECREF(tmp_ass_subscribed_1);
+        Py_DECREF(tmp_ass_subscript_1);
+        Py_DECREF(tmp_ass_subvalue_1);
+        if (tmp_result == false) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 148;
+            type_description_1 = "oooc";
+            goto try_except_handler_2;
+        }
+    }
+    if (CONSIDER_THREADING(tstate) == false) {
+        assert(HAS_ERROR_OCCURRED(tstate));
+
+        FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+        exception_lineno = 147;
+        type_description_1 = "oooc";
+        goto try_except_handler_2;
+    }
+    goto loop_start_1;
+    loop_end_1:;
+    goto try_end_1;
+    // Exception handler code:
+    try_except_handler_2:;
+    exception_keeper_type_1 = exception_type;
+    exception_keeper_value_1 = exception_value;
+    exception_keeper_tb_1 = exception_tb;
+    exception_keeper_lineno_1 = exception_lineno;
+    exception_type = NULL;
+    exception_value = NULL;
+    exception_tb = NULL;
+    exception_lineno = 0;
+
+    Py_XDECREF(tmp_for_loop_1__iter_value);
+    tmp_for_loop_1__iter_value = NULL;
+    CHECK_OBJECT(tmp_for_loop_1__for_iterator);
+    Py_DECREF(tmp_for_loop_1__for_iterator);
+    tmp_for_loop_1__for_iterator = NULL;
+    // Re-raise.
+    exception_type = exception_keeper_type_1;
+    exception_value = exception_keeper_value_1;
+    exception_tb = exception_keeper_tb_1;
+    exception_lineno = exception_keeper_lineno_1;
+
+    goto frame_exception_exit_1;
+    // End of try:
+    try_end_1:;
+
+
+    // Put the previous frame back on top.
+    popFrameStack(tstate);
+
+    goto frame_no_exception_1;
+    frame_exception_exit_1:
+
+
+    if (exception_tb == NULL) {
+        exception_tb = MAKE_TRACEBACK(frame_59f90e5311ae01284de10fa281e00120, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_59f90e5311ae01284de10fa281e00120->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_59f90e5311ae01284de10fa281e00120, exception_lineno);
+    }
+
+    // Attaches locals to frame if any.
+    Nuitka_Frame_AttachLocals(
+        frame_59f90e5311ae01284de10fa281e00120,
+        type_description_1,
+        par_self,
+        par_stack,
+        var_gain_index,
+        self->m_closure[0]
+    );
+
+
+    // Release cached frame if used for exception.
+    if (frame_59f90e5311ae01284de10fa281e00120 == cache_frame_59f90e5311ae01284de10fa281e00120) {
+#if _DEBUG_REFCOUNTS
+        count_active_frame_cache_instances -= 1;
+        count_released_frame_cache_instances += 1;
+#endif
+        Py_DECREF(cache_frame_59f90e5311ae01284de10fa281e00120);
+        cache_frame_59f90e5311ae01284de10fa281e00120 = NULL;
+    }
+
+    assertFrameObject(frame_59f90e5311ae01284de10fa281e00120);
+
+    // Put the previous frame back on top.
+    popFrameStack(tstate);
+
+    // Return the error.
+    goto try_except_handler_1;
+    frame_no_exception_1:;
+    Py_XDECREF(tmp_for_loop_1__iter_value);
+    tmp_for_loop_1__iter_value = NULL;
+    CHECK_OBJECT(tmp_for_loop_1__for_iterator);
+    Py_DECREF(tmp_for_loop_1__for_iterator);
+    tmp_for_loop_1__for_iterator = NULL;
+    tmp_return_value = Py_None;
+    Py_INCREF(tmp_return_value);
+    goto try_return_handler_1;
+    NUITKA_CANNOT_GET_HERE("tried codes exits in all cases");
+    return NULL;
+    // Return handler code:
+    try_return_handler_1:;
+    Py_XDECREF(var_gain_index);
+    var_gain_index = NULL;
+    goto function_return_exit;
+    // Exception handler code:
+    try_except_handler_1:;
+    exception_keeper_type_2 = exception_type;
+    exception_keeper_value_2 = exception_value;
+    exception_keeper_tb_2 = exception_tb;
+    exception_keeper_lineno_2 = exception_lineno;
+    exception_type = NULL;
+    exception_value = NULL;
+    exception_tb = NULL;
+    exception_lineno = 0;
+
+    Py_XDECREF(var_gain_index);
+    var_gain_index = NULL;
+    // Re-raise.
+    exception_type = exception_keeper_type_2;
+    exception_value = exception_keeper_value_2;
+    exception_tb = exception_keeper_tb_2;
+    exception_lineno = exception_keeper_lineno_2;
+
+    goto function_exception_exit;
+    // End of try:
+
+    NUITKA_CANNOT_GET_HERE("Return statement must have exited already.");
+    return NULL;
+
+function_exception_exit:
+    CHECK_OBJECT(par_self);
+    Py_DECREF(par_self);
+    CHECK_OBJECT(par_stack);
+    Py_DECREF(par_stack);
+    assert(exception_type);
+    RESTORE_ERROR_OCCURRED(tstate, exception_type, exception_value, exception_tb);
+
+    return NULL;
+
+function_return_exit:
+   // Function cleanup code if any.
+    CHECK_OBJECT(par_self);
+    Py_DECREF(par_self);
+    CHECK_OBJECT(par_stack);
+    Py_DECREF(par_stack);
+
+   // Actual function exit with return value, making sure we did not make
+   // the error status worse despite non-NULL return.
+   CHECK_OBJECT(tmp_return_value);
+   assert(had_error || !HAS_ERROR_OCCURRED(tstate));
+   return tmp_return_value;
+}
+
+
+static PyObject *impl_base$buff$$$function__19_remove(PyThreadState *tstate, struct Nuitka_FunctionObject const *self, PyObject **python_pars) {
+    // Preserve error status for checks
+#ifndef __NUITKA_NO_ASSERT__
+    NUITKA_MAY_BE_UNUSED bool had_error = HAS_ERROR_OCCURRED(tstate);
+#endif
+
+    // Local variable declarations.
+    PyObject *par_self = python_pars[0];
+    PyObject *par_stack = python_pars[1];
+    PyObject *var_gain_index = NULL;
+    PyObject *tmp_assignment_expr_1__value = NULL;
+    PyObject *tmp_for_loop_1__for_iterator = NULL;
+    PyObject *tmp_for_loop_1__iter_value = NULL;
+    PyObject *tmp_for_loop_2__for_iterator = NULL;
+    PyObject *tmp_for_loop_2__iter_value = NULL;
+    struct Nuitka_FrameObject *frame_aa889ebed17e109732bcc5f436c30be2;
+    NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
+    NUITKA_MAY_BE_UNUSED nuitka_void tmp_unused;
+    PyObject *exception_type = NULL;
+    PyObject *exception_value = NULL;
+    PyTracebackObject *exception_tb = NULL;
+    NUITKA_MAY_BE_UNUSED int exception_lineno = 0;
+    PyObject *exception_keeper_type_1;
+    PyObject *exception_keeper_value_1;
+    PyTracebackObject *exception_keeper_tb_1;
+    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_1;
+    bool tmp_result;
+    PyObject *exception_keeper_type_2;
+    PyObject *exception_keeper_value_2;
+    PyTracebackObject *exception_keeper_tb_2;
+    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_2;
+    PyObject *exception_keeper_type_3;
+    PyObject *exception_keeper_value_3;
+    PyTracebackObject *exception_keeper_tb_3;
+    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_3;
+    static struct Nuitka_FrameObject *cache_frame_aa889ebed17e109732bcc5f436c30be2 = NULL;
+    PyObject *tmp_return_value = NULL;
+    PyObject *exception_keeper_type_4;
+    PyObject *exception_keeper_value_4;
+    PyTracebackObject *exception_keeper_tb_4;
+    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_4;
+
+    // Actual function body.
+    // Tried code:
+    if (isFrameUnusable(cache_frame_aa889ebed17e109732bcc5f436c30be2)) {
+        Py_XDECREF(cache_frame_aa889ebed17e109732bcc5f436c30be2);
+
+#if _DEBUG_REFCOUNTS
+        if (cache_frame_aa889ebed17e109732bcc5f436c30be2 == NULL) {
+            count_active_frame_cache_instances += 1;
+        } else {
+            count_released_frame_cache_instances += 1;
+        }
+        count_allocated_frame_cache_instances += 1;
+#endif
+        cache_frame_aa889ebed17e109732bcc5f436c30be2 = MAKE_FUNCTION_FRAME(tstate, codeobj_aa889ebed17e109732bcc5f436c30be2, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *)+sizeof(void *));
+#if _DEBUG_REFCOUNTS
+    } else {
+        count_hit_frame_cache_instances += 1;
+#endif
+    }
+
+    assert(cache_frame_aa889ebed17e109732bcc5f436c30be2->m_type_description == NULL);
+    frame_aa889ebed17e109732bcc5f436c30be2 = cache_frame_aa889ebed17e109732bcc5f436c30be2;
+
+    // Push the new frame as the currently active one, and we should be exclusively
+    // owning it.
+    pushFrameStackCompiledFrame(tstate, frame_aa889ebed17e109732bcc5f436c30be2);
+    assert(Py_REFCNT(frame_aa889ebed17e109732bcc5f436c30be2) == 2);
+
+    // Framed code:
+    {
+        PyObject *tmp_called_value_1;
+        PyObject *tmp_expression_value_1;
+        PyObject *tmp_type_arg_value_1;
+        PyObject *tmp_object_arg_value_1;
+        PyObject *tmp_call_result_1;
+        PyObject *tmp_args_element_value_1;
+        if (Nuitka_Cell_GET(self->m_closure[0]) == NULL) {
+
+            FORMAT_UNBOUND_CLOSURE_ERROR(&exception_type, &exception_value, mod_consts[23]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 151;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+
+        tmp_type_arg_value_1 = Nuitka_Cell_GET(self->m_closure[0]);
+        CHECK_OBJECT(par_self);
+        tmp_object_arg_value_1 = par_self;
+        tmp_expression_value_1 = BUILTIN_SUPER0(tstate, moduledict_base$buff, tmp_type_arg_value_1, tmp_object_arg_value_1);
+        if (tmp_expression_value_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 151;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+        tmp_called_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_1, mod_consts[20]);
+        Py_DECREF(tmp_expression_value_1);
+        if (tmp_called_value_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 151;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+        CHECK_OBJECT(par_stack);
+        tmp_args_element_value_1 = par_stack;
+        frame_aa889ebed17e109732bcc5f436c30be2->m_frame.f_lineno = 151;
+        tmp_call_result_1 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_1, tmp_args_element_value_1);
+        Py_DECREF(tmp_called_value_1);
+        if (tmp_call_result_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 151;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+        Py_DECREF(tmp_call_result_1);
+    }
+    {
+        nuitka_bool tmp_condition_result_1;
+        PyObject *tmp_outline_return_value_1;
+        int tmp_truth_name_1;
+        // Tried code:
+        {
+            PyObject *tmp_assign_source_1;
+            PyObject *tmp_expression_value_2;
+            PyObject *tmp_expression_value_3;
+            PyObject *tmp_expression_value_4;
+            PyObject *tmp_subscript_value_1;
+            PyObject *tmp_expression_value_5;
+            CHECK_OBJECT(par_self);
+            tmp_expression_value_4 = par_self;
+            tmp_expression_value_3 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_4, mod_consts[7]);
+            if (tmp_expression_value_3 == NULL) {
+                assert(HAS_ERROR_OCCURRED(tstate));
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+                exception_lineno = 152;
+                type_description_1 = "oooc";
+                goto try_except_handler_2;
+            }
+            tmp_expression_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_3, mod_consts[12]);
+            Py_DECREF(tmp_expression_value_3);
+            if (tmp_expression_value_2 == NULL) {
+                assert(HAS_ERROR_OCCURRED(tstate));
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+                exception_lineno = 152;
+                type_description_1 = "oooc";
+                goto try_except_handler_2;
+            }
+            CHECK_OBJECT(par_self);
+            tmp_expression_value_5 = par_self;
+            tmp_subscript_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[9]);
+            if (tmp_subscript_value_1 == NULL) {
+                assert(HAS_ERROR_OCCURRED(tstate));
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+                Py_DECREF(tmp_expression_value_2);
+
+                exception_lineno = 152;
+                type_description_1 = "oooc";
+                goto try_except_handler_2;
+            }
+            tmp_assign_source_1 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_2, tmp_subscript_value_1);
+            Py_DECREF(tmp_expression_value_2);
+            Py_DECREF(tmp_subscript_value_1);
+            if (tmp_assign_source_1 == NULL) {
+                assert(HAS_ERROR_OCCURRED(tstate));
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+                exception_lineno = 152;
+                type_description_1 = "oooc";
+                goto try_except_handler_2;
+            }
+            assert(tmp_assignment_expr_1__value == NULL);
+            tmp_assignment_expr_1__value = tmp_assign_source_1;
+        }
+        {
+            PyObject *tmp_assign_source_2;
+            CHECK_OBJECT(tmp_assignment_expr_1__value);
+            tmp_assign_source_2 = tmp_assignment_expr_1__value;
+            {
+                PyObject *old = par_stack;
+                assert(old != NULL);
+                par_stack = tmp_assign_source_2;
+                Py_INCREF(par_stack);
+                Py_DECREF(old);
+            }
+
+        }
+        CHECK_OBJECT(tmp_assignment_expr_1__value);
+        tmp_outline_return_value_1 = tmp_assignment_expr_1__value;
+        Py_INCREF(tmp_outline_return_value_1);
+        goto try_return_handler_2;
+        NUITKA_CANNOT_GET_HERE("tried codes exits in all cases");
+        return NULL;
+        // Return handler code:
+        try_return_handler_2:;
+        CHECK_OBJECT(tmp_assignment_expr_1__value);
+        Py_DECREF(tmp_assignment_expr_1__value);
+        tmp_assignment_expr_1__value = NULL;
+        goto outline_result_1;
+        // Exception handler code:
+        try_except_handler_2:;
+        exception_keeper_type_1 = exception_type;
+        exception_keeper_value_1 = exception_value;
+        exception_keeper_tb_1 = exception_tb;
+        exception_keeper_lineno_1 = exception_lineno;
+        exception_type = NULL;
+        exception_value = NULL;
+        exception_tb = NULL;
+        exception_lineno = 0;
+
+        // Re-raise.
+        exception_type = exception_keeper_type_1;
+        exception_value = exception_keeper_value_1;
+        exception_tb = exception_keeper_tb_1;
+        exception_lineno = exception_keeper_lineno_1;
+
+        goto frame_exception_exit_1;
+        // End of try:
+        NUITKA_CANNOT_GET_HERE("Return statement must have exited already.");
+        return NULL;
+        outline_result_1:;
+        tmp_truth_name_1 = CHECK_IF_TRUE(tmp_outline_return_value_1);
+        if (tmp_truth_name_1 == -1) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_outline_return_value_1);
+
+            exception_lineno = 152;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+        tmp_condition_result_1 = tmp_truth_name_1 == 0 ? NUITKA_BOOL_FALSE : NUITKA_BOOL_TRUE;
+        Py_DECREF(tmp_outline_return_value_1);
+        if (tmp_condition_result_1 == NUITKA_BOOL_TRUE) {
+            goto branch_yes_1;
+        } else {
+            goto branch_no_1;
+        }
+    }
+    branch_yes_1:;
+    {
+        PyObject *tmp_assign_source_3;
+        PyObject *tmp_iter_arg_1;
+        PyObject *tmp_expression_value_6;
+        CHECK_OBJECT(par_self);
+        tmp_expression_value_6 = par_self;
+        tmp_iter_arg_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_6, mod_consts[34]);
+        if (tmp_iter_arg_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 153;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+        tmp_assign_source_3 = MAKE_ITERATOR(tstate, tmp_iter_arg_1);
+        Py_DECREF(tmp_iter_arg_1);
+        if (tmp_assign_source_3 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 153;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+        assert(tmp_for_loop_1__for_iterator == NULL);
+        tmp_for_loop_1__for_iterator = tmp_assign_source_3;
+    }
+    // Tried code:
+    loop_start_1:;
+    {
+        PyObject *tmp_next_source_1;
+        PyObject *tmp_assign_source_4;
+        CHECK_OBJECT(tmp_for_loop_1__for_iterator);
+        tmp_next_source_1 = tmp_for_loop_1__for_iterator;
+        tmp_assign_source_4 = ITERATOR_NEXT(tmp_next_source_1);
+        if (tmp_assign_source_4 == NULL) {
+            if (CHECK_AND_CLEAR_STOP_ITERATION_OCCURRED(tstate)) {
+
+                goto loop_end_1;
+            } else {
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+                type_description_1 = "oooc";
+                exception_lineno = 153;
+                goto try_except_handler_3;
+            }
+        }
+
+        {
+            PyObject *old = tmp_for_loop_1__iter_value;
+            tmp_for_loop_1__iter_value = tmp_assign_source_4;
+            Py_XDECREF(old);
+        }
+
+    }
+    {
+        PyObject *tmp_assign_source_5;
+        CHECK_OBJECT(tmp_for_loop_1__iter_value);
+        tmp_assign_source_5 = tmp_for_loop_1__iter_value;
+        {
+            PyObject *old = var_gain_index;
+            var_gain_index = tmp_assign_source_5;
+            Py_INCREF(var_gain_index);
+            Py_XDECREF(old);
+        }
+
+    }
+    {
+        PyObject *tmp_ass_subvalue_1;
+        PyObject *tmp_tuple_element_1;
+        PyObject *tmp_expression_value_7;
+        PyObject *tmp_ass_subscribed_1;
+        PyObject *tmp_expression_value_8;
+        PyObject *tmp_expression_value_9;
+        PyObject *tmp_expression_value_10;
+        PyObject *tmp_subscript_value_2;
+        PyObject *tmp_ass_subscript_1;
+        PyObject *tmp_expression_value_11;
+        if (par_self == NULL) {
+
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 154;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
+        }
+
+        tmp_expression_value_7 = par_self;
+        tmp_tuple_element_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_7, mod_consts[15]);
+        if (tmp_tuple_element_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 154;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
+        }
+        tmp_ass_subvalue_1 = MAKE_TUPLE_EMPTY(2);
+        PyTuple_SET_ITEM(tmp_ass_subvalue_1, 0, tmp_tuple_element_1);
+        CHECK_OBJECT(par_stack);
+        tmp_tuple_element_1 = par_stack;
+        PyTuple_SET_ITEM0(tmp_ass_subvalue_1, 1, tmp_tuple_element_1);
+        if (par_self == NULL) {
+            Py_DECREF(tmp_ass_subvalue_1);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 154;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
+        }
+
+        tmp_expression_value_10 = par_self;
+        tmp_expression_value_9 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_10, mod_consts[7]);
+        if (tmp_expression_value_9 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_ass_subvalue_1);
+
+            exception_lineno = 154;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
+        }
+        tmp_expression_value_8 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_9, mod_consts[37]);
+        Py_DECREF(tmp_expression_value_9);
+        if (tmp_expression_value_8 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_ass_subvalue_1);
+
+            exception_lineno = 154;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
+        }
+        CHECK_OBJECT(var_gain_index);
+        tmp_subscript_value_2 = var_gain_index;
+        tmp_ass_subscribed_1 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_8, tmp_subscript_value_2);
+        Py_DECREF(tmp_expression_value_8);
+        if (tmp_ass_subscribed_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_ass_subvalue_1);
+
+            exception_lineno = 154;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
+        }
+        if (par_self == NULL) {
+            Py_DECREF(tmp_ass_subvalue_1);
+            Py_DECREF(tmp_ass_subscribed_1);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 154;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
+        }
+
+        tmp_expression_value_11 = par_self;
+        tmp_ass_subscript_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_11, mod_consts[9]);
+        if (tmp_ass_subscript_1 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_ass_subvalue_1);
+            Py_DECREF(tmp_ass_subscribed_1);
+
+            exception_lineno = 154;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
+        }
+        tmp_result = SET_SUBSCRIPT(tstate, tmp_ass_subscribed_1, tmp_ass_subscript_1, tmp_ass_subvalue_1);
+        Py_DECREF(tmp_ass_subscribed_1);
+        Py_DECREF(tmp_ass_subscript_1);
+        Py_DECREF(tmp_ass_subvalue_1);
+        if (tmp_result == false) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 154;
+            type_description_1 = "oooc";
+            goto try_except_handler_3;
+        }
+    }
+    if (CONSIDER_THREADING(tstate) == false) {
+        assert(HAS_ERROR_OCCURRED(tstate));
+
+        FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+        exception_lineno = 153;
+        type_description_1 = "oooc";
+        goto try_except_handler_3;
+    }
+    goto loop_start_1;
+    loop_end_1:;
+    goto try_end_1;
+    // Exception handler code:
+    try_except_handler_3:;
+    exception_keeper_type_2 = exception_type;
+    exception_keeper_value_2 = exception_value;
+    exception_keeper_tb_2 = exception_tb;
+    exception_keeper_lineno_2 = exception_lineno;
+    exception_type = NULL;
+    exception_value = NULL;
+    exception_tb = NULL;
+    exception_lineno = 0;
+
+    Py_XDECREF(tmp_for_loop_1__iter_value);
+    tmp_for_loop_1__iter_value = NULL;
+    CHECK_OBJECT(tmp_for_loop_1__for_iterator);
+    Py_DECREF(tmp_for_loop_1__for_iterator);
+    tmp_for_loop_1__for_iterator = NULL;
+    // Re-raise.
+    exception_type = exception_keeper_type_2;
+    exception_value = exception_keeper_value_2;
+    exception_tb = exception_keeper_tb_2;
+    exception_lineno = exception_keeper_lineno_2;
+
+    goto frame_exception_exit_1;
+    // End of try:
+    try_end_1:;
+    Py_XDECREF(tmp_for_loop_1__iter_value);
+    tmp_for_loop_1__iter_value = NULL;
+    CHECK_OBJECT(tmp_for_loop_1__for_iterator);
+    Py_DECREF(tmp_for_loop_1__for_iterator);
+    tmp_for_loop_1__for_iterator = NULL;
+    goto branch_end_1;
+    branch_no_1:;
+    {
+        PyObject *tmp_assign_source_6;
+        PyObject *tmp_iter_arg_2;
+        PyObject *tmp_expression_value_12;
+        CHECK_OBJECT(par_self);
+        tmp_expression_value_12 = par_self;
+        tmp_iter_arg_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_12, mod_consts[34]);
+        if (tmp_iter_arg_2 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 156;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+        tmp_assign_source_6 = MAKE_ITERATOR(tstate, tmp_iter_arg_2);
+        Py_DECREF(tmp_iter_arg_2);
+        if (tmp_assign_source_6 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 156;
+            type_description_1 = "oooc";
+            goto frame_exception_exit_1;
+        }
+        assert(tmp_for_loop_2__for_iterator == NULL);
+        tmp_for_loop_2__for_iterator = tmp_assign_source_6;
+    }
+    // Tried code:
+    loop_start_2:;
+    {
+        PyObject *tmp_next_source_2;
+        PyObject *tmp_assign_source_7;
+        CHECK_OBJECT(tmp_for_loop_2__for_iterator);
+        tmp_next_source_2 = tmp_for_loop_2__for_iterator;
+        tmp_assign_source_7 = ITERATOR_NEXT(tmp_next_source_2);
+        if (tmp_assign_source_7 == NULL) {
+            if (CHECK_AND_CLEAR_STOP_ITERATION_OCCURRED(tstate)) {
+
+                goto loop_end_2;
+            } else {
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+                type_description_1 = "oooc";
+                exception_lineno = 156;
+                goto try_except_handler_4;
+            }
+        }
+
+        {
+            PyObject *old = tmp_for_loop_2__iter_value;
+            tmp_for_loop_2__iter_value = tmp_assign_source_7;
+            Py_XDECREF(old);
+        }
+
+    }
+    {
+        PyObject *tmp_assign_source_8;
+        CHECK_OBJECT(tmp_for_loop_2__iter_value);
+        tmp_assign_source_8 = tmp_for_loop_2__iter_value;
+        {
+            PyObject *old = var_gain_index;
+            var_gain_index = tmp_assign_source_8;
+            Py_INCREF(var_gain_index);
+            Py_XDECREF(old);
+        }
+
+    }
+    {
+        PyObject *tmp_called_value_2;
+        PyObject *tmp_expression_value_13;
+        PyObject *tmp_expression_value_14;
+        PyObject *tmp_expression_value_15;
+        PyObject *tmp_expression_value_16;
+        PyObject *tmp_subscript_value_3;
+        PyObject *tmp_call_result_2;
+        PyObject *tmp_args_element_value_2;
+        PyObject *tmp_expression_value_17;
+        if (par_self == NULL) {
+
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 157;
+            type_description_1 = "oooc";
+            goto try_except_handler_4;
+        }
+
+        tmp_expression_value_16 = par_self;
+        tmp_expression_value_15 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_16, mod_consts[7]);
+        if (tmp_expression_value_15 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 157;
+            type_description_1 = "oooc";
+            goto try_except_handler_4;
+        }
+        tmp_expression_value_14 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_15, mod_consts[37]);
+        Py_DECREF(tmp_expression_value_15);
+        if (tmp_expression_value_14 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 157;
+            type_description_1 = "oooc";
+            goto try_except_handler_4;
+        }
+        CHECK_OBJECT(var_gain_index);
+        tmp_subscript_value_3 = var_gain_index;
+        tmp_expression_value_13 = LOOKUP_SUBSCRIPT(tstate, tmp_expression_value_14, tmp_subscript_value_3);
+        Py_DECREF(tmp_expression_value_14);
+        if (tmp_expression_value_13 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 157;
+            type_description_1 = "oooc";
+            goto try_except_handler_4;
+        }
+        tmp_called_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_13, mod_consts[14]);
+        Py_DECREF(tmp_expression_value_13);
+        if (tmp_called_value_2 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 157;
+            type_description_1 = "oooc";
+            goto try_except_handler_4;
+        }
+        if (par_self == NULL) {
+            Py_DECREF(tmp_called_value_2);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
+            exception_tb = NULL;
+            NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
+            CHAIN_EXCEPTION(tstate, exception_value);
+
+            exception_lineno = 157;
+            type_description_1 = "oooc";
+            goto try_except_handler_4;
+        }
+
+        tmp_expression_value_17 = par_self;
+        tmp_args_element_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_17, mod_consts[9]);
+        if (tmp_args_element_value_2 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_called_value_2);
+
+            exception_lineno = 157;
+            type_description_1 = "oooc";
+            goto try_except_handler_4;
+        }
+        frame_aa889ebed17e109732bcc5f436c30be2->m_frame.f_lineno = 157;
+        tmp_call_result_2 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_2, tmp_args_element_value_2);
+        Py_DECREF(tmp_called_value_2);
+        Py_DECREF(tmp_args_element_value_2);
+        if (tmp_call_result_2 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 157;
+            type_description_1 = "oooc";
+            goto try_except_handler_4;
+        }
+        Py_DECREF(tmp_call_result_2);
+    }
+    if (CONSIDER_THREADING(tstate) == false) {
+        assert(HAS_ERROR_OCCURRED(tstate));
+
+        FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+        exception_lineno = 156;
+        type_description_1 = "oooc";
+        goto try_except_handler_4;
+    }
+    goto loop_start_2;
+    loop_end_2:;
+    goto try_end_2;
+    // Exception handler code:
+    try_except_handler_4:;
+    exception_keeper_type_3 = exception_type;
+    exception_keeper_value_3 = exception_value;
+    exception_keeper_tb_3 = exception_tb;
+    exception_keeper_lineno_3 = exception_lineno;
+    exception_type = NULL;
+    exception_value = NULL;
+    exception_tb = NULL;
+    exception_lineno = 0;
+
+    Py_XDECREF(tmp_for_loop_2__iter_value);
+    tmp_for_loop_2__iter_value = NULL;
+    CHECK_OBJECT(tmp_for_loop_2__for_iterator);
+    Py_DECREF(tmp_for_loop_2__for_iterator);
+    tmp_for_loop_2__for_iterator = NULL;
+    // Re-raise.
+    exception_type = exception_keeper_type_3;
+    exception_value = exception_keeper_value_3;
+    exception_tb = exception_keeper_tb_3;
+    exception_lineno = exception_keeper_lineno_3;
+
+    goto frame_exception_exit_1;
+    // End of try:
+    try_end_2:;
+    Py_XDECREF(tmp_for_loop_2__iter_value);
+    tmp_for_loop_2__iter_value = NULL;
+    CHECK_OBJECT(tmp_for_loop_2__for_iterator);
+    Py_DECREF(tmp_for_loop_2__for_iterator);
+    tmp_for_loop_2__for_iterator = NULL;
+    branch_end_1:;
+
+
+    // Put the previous frame back on top.
+    popFrameStack(tstate);
+
+    goto frame_no_exception_1;
+    frame_exception_exit_1:
+
+
+    if (exception_tb == NULL) {
+        exception_tb = MAKE_TRACEBACK(frame_aa889ebed17e109732bcc5f436c30be2, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_aa889ebed17e109732bcc5f436c30be2->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_aa889ebed17e109732bcc5f436c30be2, exception_lineno);
+    }
+
+    // Attaches locals to frame if any.
+    Nuitka_Frame_AttachLocals(
+        frame_aa889ebed17e109732bcc5f436c30be2,
+        type_description_1,
+        par_self,
+        par_stack,
+        var_gain_index,
+        self->m_closure[0]
+    );
+
+
+    // Release cached frame if used for exception.
+    if (frame_aa889ebed17e109732bcc5f436c30be2 == cache_frame_aa889ebed17e109732bcc5f436c30be2) {
+#if _DEBUG_REFCOUNTS
+        count_active_frame_cache_instances -= 1;
+        count_released_frame_cache_instances += 1;
+#endif
+        Py_DECREF(cache_frame_aa889ebed17e109732bcc5f436c30be2);
+        cache_frame_aa889ebed17e109732bcc5f436c30be2 = NULL;
+    }
+
+    assertFrameObject(frame_aa889ebed17e109732bcc5f436c30be2);
+
+    // Put the previous frame back on top.
+    popFrameStack(tstate);
+
+    // Return the error.
+    goto try_except_handler_1;
+    frame_no_exception_1:;
+    tmp_return_value = Py_None;
+    Py_INCREF(tmp_return_value);
+    goto try_return_handler_1;
+    NUITKA_CANNOT_GET_HERE("tried codes exits in all cases");
+    return NULL;
+    // Return handler code:
+    try_return_handler_1:;
+    CHECK_OBJECT(par_stack);
+    Py_DECREF(par_stack);
+    par_stack = NULL;
+    Py_XDECREF(var_gain_index);
+    var_gain_index = NULL;
+    goto function_return_exit;
+    // Exception handler code:
+    try_except_handler_1:;
+    exception_keeper_type_4 = exception_type;
+    exception_keeper_value_4 = exception_value;
+    exception_keeper_tb_4 = exception_tb;
+    exception_keeper_lineno_4 = exception_lineno;
+    exception_type = NULL;
+    exception_value = NULL;
+    exception_tb = NULL;
+    exception_lineno = 0;
+
+    Py_XDECREF(par_stack);
+    par_stack = NULL;
+    Py_XDECREF(var_gain_index);
+    var_gain_index = NULL;
+    // Re-raise.
+    exception_type = exception_keeper_type_4;
+    exception_value = exception_keeper_value_4;
+    exception_tb = exception_keeper_tb_4;
+    exception_lineno = exception_keeper_lineno_4;
+
+    goto function_exception_exit;
+    // End of try:
+
+    NUITKA_CANNOT_GET_HERE("Return statement must have exited already.");
+    return NULL;
+
+function_exception_exit:
+    CHECK_OBJECT(par_self);
+    Py_DECREF(par_self);
+    assert(exception_type);
+    RESTORE_ERROR_OCCURRED(tstate, exception_type, exception_value, exception_tb);
+
+    return NULL;
+
+function_return_exit:
+   // Function cleanup code if any.
+    CHECK_OBJECT(par_self);
+    Py_DECREF(par_self);
+
+   // Actual function exit with return value, making sure we did not make
+   // the error status worse despite non-NULL return.
+   CHECK_OBJECT(tmp_return_value);
+   assert(had_error || !HAS_ERROR_OCCURRED(tstate));
+   return tmp_return_value;
+}
+
+
+static PyObject *impl_base$buff$$$function__20___post_init__(PyThreadState *tstate, struct Nuitka_FunctionObject const *self, PyObject **python_pars) {
+    // Preserve error status for checks
+#ifndef __NUITKA_NO_ASSERT__
+    NUITKA_MAY_BE_UNUSED bool had_error = HAS_ERROR_OCCURRED(tstate);
+#endif
+
+    // Local variable declarations.
+    PyObject *par_self = python_pars[0];
+    struct Nuitka_FrameObject *frame_6c6ff60554698975f140badb1b5a174b;
+    NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
+    NUITKA_MAY_BE_UNUSED nuitka_void tmp_unused;
+    PyObject *exception_type = NULL;
+    PyObject *exception_value = NULL;
+    PyTracebackObject *exception_tb = NULL;
+    NUITKA_MAY_BE_UNUSED int exception_lineno = 0;
+    bool tmp_result;
+    static struct Nuitka_FrameObject *cache_frame_6c6ff60554698975f140badb1b5a174b = NULL;
+    PyObject *tmp_return_value = NULL;
+
+    // Actual function body.
+    if (isFrameUnusable(cache_frame_6c6ff60554698975f140badb1b5a174b)) {
+        Py_XDECREF(cache_frame_6c6ff60554698975f140badb1b5a174b);
+
+#if _DEBUG_REFCOUNTS
+        if (cache_frame_6c6ff60554698975f140badb1b5a174b == NULL) {
+            count_active_frame_cache_instances += 1;
+        } else {
+            count_released_frame_cache_instances += 1;
+        }
+        count_allocated_frame_cache_instances += 1;
+#endif
+        cache_frame_6c6ff60554698975f140badb1b5a174b = MAKE_FUNCTION_FRAME(tstate, codeobj_6c6ff60554698975f140badb1b5a174b, module_base$buff, sizeof(void *)+sizeof(void *));
+#if _DEBUG_REFCOUNTS
+    } else {
+        count_hit_frame_cache_instances += 1;
+#endif
+    }
+
+    assert(cache_frame_6c6ff60554698975f140badb1b5a174b->m_type_description == NULL);
+    frame_6c6ff60554698975f140badb1b5a174b = cache_frame_6c6ff60554698975f140badb1b5a174b;
+
+    // Push the new frame as the currently active one, and we should be exclusively
+    // owning it.
+    pushFrameStackCompiledFrame(tstate, frame_6c6ff60554698975f140badb1b5a174b);
+    assert(Py_REFCNT(frame_6c6ff60554698975f140badb1b5a174b) == 2);
 
     // Framed code:
     {
@@ -6448,12 +8406,12 @@ static PyObject *impl_base$buff$$$function__18___post_init__(PyThreadState *tsta
         PyObject *tmp_call_result_1;
         if (Nuitka_Cell_GET(self->m_closure[0]) == NULL) {
 
-            FORMAT_UNBOUND_CLOSURE_ERROR(&exception_type, &exception_value, mod_consts[24]);
+            FORMAT_UNBOUND_CLOSURE_ERROR(&exception_type, &exception_value, mod_consts[23]);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(tstate, exception_value);
 
-            exception_lineno = 137;
+            exception_lineno = 162;
             type_description_1 = "oc";
             goto frame_exception_exit_1;
         }
@@ -6468,12 +8426,12 @@ static PyObject *impl_base$buff$$$function__18___post_init__(PyThreadState *tsta
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 137;
+            exception_lineno = 162;
             type_description_1 = "oc";
             goto frame_exception_exit_1;
         }
-        frame_3193481407dfacac742bd1cb16f2d016->m_frame.f_lineno = 137;
-        tmp_call_result_1 = CALL_METHOD_NO_ARGS(tstate, tmp_called_instance_1, mod_consts[31]);
+        frame_6c6ff60554698975f140badb1b5a174b->m_frame.f_lineno = 162;
+        tmp_call_result_1 = CALL_METHOD_NO_ARGS(tstate, tmp_called_instance_1, mod_consts[30]);
         Py_DECREF(tmp_called_instance_1);
         if (tmp_call_result_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -6481,7 +8439,7 @@ static PyObject *impl_base$buff$$$function__18___post_init__(PyThreadState *tsta
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 137;
+            exception_lineno = 162;
             type_description_1 = "oc";
             goto frame_exception_exit_1;
         }
@@ -6493,7 +8451,7 @@ static PyObject *impl_base$buff$$$function__18___post_init__(PyThreadState *tsta
         tmp_assattr_value_1 = MAKE_LIST_EMPTY(0);
         CHECK_OBJECT(par_self);
         tmp_assattr_target_1 = par_self;
-        tmp_result = SET_ATTRIBUTE(tstate, tmp_assattr_target_1, mod_consts[36], tmp_assattr_value_1);
+        tmp_result = SET_ATTRIBUTE(tstate, tmp_assattr_target_1, mod_consts[38], tmp_assattr_value_1);
         Py_DECREF(tmp_assattr_value_1);
         if (tmp_result == false) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -6501,7 +8459,7 @@ static PyObject *impl_base$buff$$$function__18___post_init__(PyThreadState *tsta
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 138;
+            exception_lineno = 163;
             type_description_1 = "oc";
             goto frame_exception_exit_1;
         }
@@ -6512,7 +8470,7 @@ static PyObject *impl_base$buff$$$function__18___post_init__(PyThreadState *tsta
         tmp_assattr_value_2 = MAKE_LIST_EMPTY(0);
         CHECK_OBJECT(par_self);
         tmp_assattr_target_2 = par_self;
-        tmp_result = SET_ATTRIBUTE(tstate, tmp_assattr_target_2, mod_consts[37], tmp_assattr_value_2);
+        tmp_result = SET_ATTRIBUTE(tstate, tmp_assattr_target_2, mod_consts[39], tmp_assattr_value_2);
         Py_DECREF(tmp_assattr_value_2);
         if (tmp_result == false) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -6520,7 +8478,7 @@ static PyObject *impl_base$buff$$$function__18___post_init__(PyThreadState *tsta
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 139;
+            exception_lineno = 164;
             type_description_1 = "oc";
             goto frame_exception_exit_1;
         }
@@ -6535,14 +8493,14 @@ static PyObject *impl_base$buff$$$function__18___post_init__(PyThreadState *tsta
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_3193481407dfacac742bd1cb16f2d016, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_3193481407dfacac742bd1cb16f2d016->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_3193481407dfacac742bd1cb16f2d016, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_6c6ff60554698975f140badb1b5a174b, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_6c6ff60554698975f140badb1b5a174b->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_6c6ff60554698975f140badb1b5a174b, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_3193481407dfacac742bd1cb16f2d016,
+        frame_6c6ff60554698975f140badb1b5a174b,
         type_description_1,
         par_self,
         self->m_closure[0]
@@ -6550,16 +8508,16 @@ static PyObject *impl_base$buff$$$function__18___post_init__(PyThreadState *tsta
 
 
     // Release cached frame if used for exception.
-    if (frame_3193481407dfacac742bd1cb16f2d016 == cache_frame_3193481407dfacac742bd1cb16f2d016) {
+    if (frame_6c6ff60554698975f140badb1b5a174b == cache_frame_6c6ff60554698975f140badb1b5a174b) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_3193481407dfacac742bd1cb16f2d016);
-        cache_frame_3193481407dfacac742bd1cb16f2d016 = NULL;
+        Py_DECREF(cache_frame_6c6ff60554698975f140badb1b5a174b);
+        cache_frame_6c6ff60554698975f140badb1b5a174b = NULL;
     }
 
-    assertFrameObject(frame_3193481407dfacac742bd1cb16f2d016);
+    assertFrameObject(frame_6c6ff60554698975f140badb1b5a174b);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
@@ -6595,7 +8553,7 @@ function_return_exit:
 }
 
 
-static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, struct Nuitka_FunctionObject const *self, PyObject **python_pars) {
+static PyObject *impl_base$buff$$$function__21_increase(PyThreadState *tstate, struct Nuitka_FunctionObject const *self, PyObject **python_pars) {
     // Preserve error status for checks
 #ifndef __NUITKA_NO_ASSERT__
     NUITKA_MAY_BE_UNUSED bool had_error = HAS_ERROR_OCCURRED(tstate);
@@ -6607,7 +8565,7 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
     PyObject *var_effect = NULL;
     PyObject *tmp_for_loop_1__for_iterator = NULL;
     PyObject *tmp_for_loop_1__iter_value = NULL;
-    struct Nuitka_FrameObject *frame_51926d0dd8c9feeac28b424925c1c60e;
+    struct Nuitka_FrameObject *frame_60fbc4d2c0df6d8b5811b83a24d14e7e;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
     NUITKA_MAY_BE_UNUSED nuitka_void tmp_unused;
     PyObject *exception_type = NULL;
@@ -6619,7 +8577,7 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
     PyObject *exception_keeper_value_1;
     PyTracebackObject *exception_keeper_tb_1;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_1;
-    static struct Nuitka_FrameObject *cache_frame_51926d0dd8c9feeac28b424925c1c60e = NULL;
+    static struct Nuitka_FrameObject *cache_frame_60fbc4d2c0df6d8b5811b83a24d14e7e = NULL;
     PyObject *tmp_return_value = NULL;
     PyObject *exception_keeper_type_2;
     PyObject *exception_keeper_value_2;
@@ -6628,31 +8586,31 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
 
     // Actual function body.
     // Tried code:
-    if (isFrameUnusable(cache_frame_51926d0dd8c9feeac28b424925c1c60e)) {
-        Py_XDECREF(cache_frame_51926d0dd8c9feeac28b424925c1c60e);
+    if (isFrameUnusable(cache_frame_60fbc4d2c0df6d8b5811b83a24d14e7e)) {
+        Py_XDECREF(cache_frame_60fbc4d2c0df6d8b5811b83a24d14e7e);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_51926d0dd8c9feeac28b424925c1c60e == NULL) {
+        if (cache_frame_60fbc4d2c0df6d8b5811b83a24d14e7e == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_51926d0dd8c9feeac28b424925c1c60e = MAKE_FUNCTION_FRAME(tstate, codeobj_51926d0dd8c9feeac28b424925c1c60e, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *));
+        cache_frame_60fbc4d2c0df6d8b5811b83a24d14e7e = MAKE_FUNCTION_FRAME(tstate, codeobj_60fbc4d2c0df6d8b5811b83a24d14e7e, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_51926d0dd8c9feeac28b424925c1c60e->m_type_description == NULL);
-    frame_51926d0dd8c9feeac28b424925c1c60e = cache_frame_51926d0dd8c9feeac28b424925c1c60e;
+    assert(cache_frame_60fbc4d2c0df6d8b5811b83a24d14e7e->m_type_description == NULL);
+    frame_60fbc4d2c0df6d8b5811b83a24d14e7e = cache_frame_60fbc4d2c0df6d8b5811b83a24d14e7e;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_51926d0dd8c9feeac28b424925c1c60e);
-    assert(Py_REFCNT(frame_51926d0dd8c9feeac28b424925c1c60e) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_60fbc4d2c0df6d8b5811b83a24d14e7e);
+    assert(Py_REFCNT(frame_60fbc4d2c0df6d8b5811b83a24d14e7e) == 2);
 
     // Framed code:
     {
@@ -6660,15 +8618,15 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
         PyObject *tmp_call_result_1;
         CHECK_OBJECT(par_self);
         tmp_called_instance_1 = par_self;
-        frame_51926d0dd8c9feeac28b424925c1c60e->m_frame.f_lineno = 142;
-        tmp_call_result_1 = CALL_METHOD_NO_ARGS(tstate, tmp_called_instance_1, mod_consts[16]);
+        frame_60fbc4d2c0df6d8b5811b83a24d14e7e->m_frame.f_lineno = 167;
+        tmp_call_result_1 = CALL_METHOD_NO_ARGS(tstate, tmp_called_instance_1, mod_consts[17]);
         if (tmp_call_result_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 142;
+            exception_lineno = 167;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -6692,7 +8650,7 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
         PyObject *tmp_expression_value_7;
         PyObject *tmp_ass_subscript_1;
         PyObject *tmp_expression_value_8;
-        tmp_called_value_1 = LOOKUP_BUILTIN(mod_consts[17]);
+        tmp_called_value_1 = LOOKUP_BUILTIN(mod_consts[10]);
         assert(tmp_called_value_1 != NULL);
         CHECK_OBJECT(par_self);
         tmp_expression_value_3 = par_self;
@@ -6703,11 +8661,11 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 143;
+            exception_lineno = 168;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
-        tmp_expression_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_2, mod_consts[10]);
+        tmp_expression_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_2, mod_consts[12]);
         Py_DECREF(tmp_expression_value_2);
         if (tmp_expression_value_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -6715,7 +8673,7 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 143;
+            exception_lineno = 168;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -6728,7 +8686,7 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_expression_value_1);
 
-            exception_lineno = 143;
+            exception_lineno = 168;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -6741,7 +8699,7 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 143;
+            exception_lineno = 168;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -6755,24 +8713,24 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 143;
+            exception_lineno = 168;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
         CHECK_OBJECT(par_self);
         tmp_expression_value_5 = par_self;
-        tmp_args_element_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[18]);
+        tmp_args_element_value_2 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[11]);
         if (tmp_args_element_value_2 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_args_element_value_1);
 
-            exception_lineno = 143;
+            exception_lineno = 168;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
-        frame_51926d0dd8c9feeac28b424925c1c60e->m_frame.f_lineno = 143;
+        frame_60fbc4d2c0df6d8b5811b83a24d14e7e->m_frame.f_lineno = 168;
         {
             PyObject *call_args[] = {tmp_args_element_value_1, tmp_args_element_value_2};
             tmp_ass_subvalue_1 = CALL_FUNCTION_WITH_ARGS2(tstate, tmp_called_value_1, call_args);
@@ -6786,7 +8744,7 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 143;
+            exception_lineno = 168;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -6799,11 +8757,11 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_ass_subvalue_1);
 
-            exception_lineno = 143;
+            exception_lineno = 168;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
-        tmp_ass_subscribed_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_6, mod_consts[10]);
+        tmp_ass_subscribed_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_6, mod_consts[12]);
         Py_DECREF(tmp_expression_value_6);
         if (tmp_ass_subscribed_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -6811,7 +8769,7 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_ass_subvalue_1);
 
-            exception_lineno = 143;
+            exception_lineno = 168;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -6825,7 +8783,7 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
             Py_DECREF(tmp_ass_subvalue_1);
             Py_DECREF(tmp_ass_subscribed_1);
 
-            exception_lineno = 143;
+            exception_lineno = 168;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -6839,7 +8797,7 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 143;
+            exception_lineno = 168;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -6850,14 +8808,14 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
         PyObject *tmp_expression_value_9;
         CHECK_OBJECT(par_self);
         tmp_expression_value_9 = par_self;
-        tmp_iter_arg_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_9, mod_consts[36]);
+        tmp_iter_arg_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_9, mod_consts[38]);
         if (tmp_iter_arg_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 144;
+            exception_lineno = 169;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -6869,7 +8827,7 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 144;
+            exception_lineno = 169;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -6892,7 +8850,7 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
 
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
                 type_description_1 = "ooo";
-                exception_lineno = 144;
+                exception_lineno = 169;
                 goto try_except_handler_2;
             }
         }
@@ -6924,18 +8882,18 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
         tmp_called_value_2 = var_effect;
         if (par_self == NULL) {
 
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[12]);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(tstate, exception_value);
 
-            exception_lineno = 145;
+            exception_lineno = 170;
             type_description_1 = "ooo";
             goto try_except_handler_2;
         }
 
         tmp_args_element_value_3 = par_self;
-        frame_51926d0dd8c9feeac28b424925c1c60e->m_frame.f_lineno = 145;
+        frame_60fbc4d2c0df6d8b5811b83a24d14e7e->m_frame.f_lineno = 170;
         tmp_call_result_2 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_2, tmp_args_element_value_3);
         if (tmp_call_result_2 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -6943,7 +8901,7 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 145;
+            exception_lineno = 170;
             type_description_1 = "ooo";
             goto try_except_handler_2;
         }
@@ -6955,7 +8913,7 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
         FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-        exception_lineno = 144;
+        exception_lineno = 169;
         type_description_1 = "ooo";
         goto try_except_handler_2;
     }
@@ -6997,14 +8955,14 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_51926d0dd8c9feeac28b424925c1c60e, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_51926d0dd8c9feeac28b424925c1c60e->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_51926d0dd8c9feeac28b424925c1c60e, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_60fbc4d2c0df6d8b5811b83a24d14e7e, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_60fbc4d2c0df6d8b5811b83a24d14e7e->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_60fbc4d2c0df6d8b5811b83a24d14e7e, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_51926d0dd8c9feeac28b424925c1c60e,
+        frame_60fbc4d2c0df6d8b5811b83a24d14e7e,
         type_description_1,
         par_self,
         par_stack,
@@ -7013,16 +8971,16 @@ static PyObject *impl_base$buff$$$function__19_increase(PyThreadState *tstate, s
 
 
     // Release cached frame if used for exception.
-    if (frame_51926d0dd8c9feeac28b424925c1c60e == cache_frame_51926d0dd8c9feeac28b424925c1c60e) {
+    if (frame_60fbc4d2c0df6d8b5811b83a24d14e7e == cache_frame_60fbc4d2c0df6d8b5811b83a24d14e7e) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_51926d0dd8c9feeac28b424925c1c60e);
-        cache_frame_51926d0dd8c9feeac28b424925c1c60e = NULL;
+        Py_DECREF(cache_frame_60fbc4d2c0df6d8b5811b83a24d14e7e);
+        cache_frame_60fbc4d2c0df6d8b5811b83a24d14e7e = NULL;
     }
 
-    assertFrameObject(frame_51926d0dd8c9feeac28b424925c1c60e);
+    assertFrameObject(frame_60fbc4d2c0df6d8b5811b83a24d14e7e);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
@@ -7095,7 +9053,7 @@ function_return_exit:
 }
 
 
-static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, struct Nuitka_FunctionObject const *self, PyObject **python_pars) {
+static PyObject *impl_base$buff$$$function__22_decrease(PyThreadState *tstate, struct Nuitka_FunctionObject const *self, PyObject **python_pars) {
     // Preserve error status for checks
 #ifndef __NUITKA_NO_ASSERT__
     NUITKA_MAY_BE_UNUSED bool had_error = HAS_ERROR_OCCURRED(tstate);
@@ -7107,7 +9065,7 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
     PyObject *var_effect = NULL;
     PyObject *tmp_for_loop_1__for_iterator = NULL;
     PyObject *tmp_for_loop_1__iter_value = NULL;
-    struct Nuitka_FrameObject *frame_9392da601695d790f59e697f80e308f5;
+    struct Nuitka_FrameObject *frame_7ce6e801b5538577cd06c31605b9fd60;
     NUITKA_MAY_BE_UNUSED char const *type_description_1 = NULL;
     NUITKA_MAY_BE_UNUSED nuitka_void tmp_unused;
     PyObject *exception_type = NULL;
@@ -7119,7 +9077,7 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
     PyObject *exception_keeper_value_1;
     PyTracebackObject *exception_keeper_tb_1;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_1;
-    static struct Nuitka_FrameObject *cache_frame_9392da601695d790f59e697f80e308f5 = NULL;
+    static struct Nuitka_FrameObject *cache_frame_7ce6e801b5538577cd06c31605b9fd60 = NULL;
     PyObject *tmp_return_value = NULL;
     PyObject *exception_keeper_type_2;
     PyObject *exception_keeper_value_2;
@@ -7128,31 +9086,31 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
 
     // Actual function body.
     // Tried code:
-    if (isFrameUnusable(cache_frame_9392da601695d790f59e697f80e308f5)) {
-        Py_XDECREF(cache_frame_9392da601695d790f59e697f80e308f5);
+    if (isFrameUnusable(cache_frame_7ce6e801b5538577cd06c31605b9fd60)) {
+        Py_XDECREF(cache_frame_7ce6e801b5538577cd06c31605b9fd60);
 
 #if _DEBUG_REFCOUNTS
-        if (cache_frame_9392da601695d790f59e697f80e308f5 == NULL) {
+        if (cache_frame_7ce6e801b5538577cd06c31605b9fd60 == NULL) {
             count_active_frame_cache_instances += 1;
         } else {
             count_released_frame_cache_instances += 1;
         }
         count_allocated_frame_cache_instances += 1;
 #endif
-        cache_frame_9392da601695d790f59e697f80e308f5 = MAKE_FUNCTION_FRAME(tstate, codeobj_9392da601695d790f59e697f80e308f5, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *));
+        cache_frame_7ce6e801b5538577cd06c31605b9fd60 = MAKE_FUNCTION_FRAME(tstate, codeobj_7ce6e801b5538577cd06c31605b9fd60, module_base$buff, sizeof(void *)+sizeof(void *)+sizeof(void *));
 #if _DEBUG_REFCOUNTS
     } else {
         count_hit_frame_cache_instances += 1;
 #endif
     }
 
-    assert(cache_frame_9392da601695d790f59e697f80e308f5->m_type_description == NULL);
-    frame_9392da601695d790f59e697f80e308f5 = cache_frame_9392da601695d790f59e697f80e308f5;
+    assert(cache_frame_7ce6e801b5538577cd06c31605b9fd60->m_type_description == NULL);
+    frame_7ce6e801b5538577cd06c31605b9fd60 = cache_frame_7ce6e801b5538577cd06c31605b9fd60;
 
     // Push the new frame as the currently active one, and we should be exclusively
     // owning it.
-    pushFrameStackCompiledFrame(tstate, frame_9392da601695d790f59e697f80e308f5);
-    assert(Py_REFCNT(frame_9392da601695d790f59e697f80e308f5) == 2);
+    pushFrameStackCompiledFrame(tstate, frame_7ce6e801b5538577cd06c31605b9fd60);
+    assert(Py_REFCNT(frame_7ce6e801b5538577cd06c31605b9fd60) == 2);
 
     // Framed code:
     {
@@ -7160,15 +9118,15 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
         PyObject *tmp_call_result_1;
         CHECK_OBJECT(par_self);
         tmp_called_instance_1 = par_self;
-        frame_9392da601695d790f59e697f80e308f5->m_frame.f_lineno = 148;
-        tmp_call_result_1 = CALL_METHOD_NO_ARGS(tstate, tmp_called_instance_1, mod_consts[16]);
+        frame_7ce6e801b5538577cd06c31605b9fd60->m_frame.f_lineno = 173;
+        tmp_call_result_1 = CALL_METHOD_NO_ARGS(tstate, tmp_called_instance_1, mod_consts[17]);
         if (tmp_call_result_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 148;
+            exception_lineno = 173;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -7191,7 +9149,7 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
         PyObject *tmp_expression_value_6;
         PyObject *tmp_ass_subscript_1;
         PyObject *tmp_expression_value_7;
-        tmp_called_value_1 = LOOKUP_BUILTIN(mod_consts[38]);
+        tmp_called_value_1 = LOOKUP_BUILTIN(mod_consts[40]);
         assert(tmp_called_value_1 != NULL);
         CHECK_OBJECT(par_self);
         tmp_expression_value_3 = par_self;
@@ -7202,11 +9160,11 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 149;
+            exception_lineno = 174;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
-        tmp_expression_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_2, mod_consts[10]);
+        tmp_expression_value_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_2, mod_consts[12]);
         Py_DECREF(tmp_expression_value_2);
         if (tmp_expression_value_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -7214,7 +9172,7 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 149;
+            exception_lineno = 174;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -7227,7 +9185,7 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_expression_value_1);
 
-            exception_lineno = 149;
+            exception_lineno = 174;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -7240,7 +9198,7 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 149;
+            exception_lineno = 174;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -7254,12 +9212,12 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 149;
+            exception_lineno = 174;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
-        tmp_args_element_value_2 = mod_consts[39];
-        frame_9392da601695d790f59e697f80e308f5->m_frame.f_lineno = 149;
+        tmp_args_element_value_2 = mod_consts[41];
+        frame_7ce6e801b5538577cd06c31605b9fd60->m_frame.f_lineno = 174;
         {
             PyObject *call_args[] = {tmp_args_element_value_1, tmp_args_element_value_2};
             tmp_ass_subvalue_1 = CALL_FUNCTION_WITH_ARGS2(tstate, tmp_called_value_1, call_args);
@@ -7272,7 +9230,7 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 149;
+            exception_lineno = 174;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -7285,11 +9243,11 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_ass_subvalue_1);
 
-            exception_lineno = 149;
+            exception_lineno = 174;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
-        tmp_ass_subscribed_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[10]);
+        tmp_ass_subscribed_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_5, mod_consts[12]);
         Py_DECREF(tmp_expression_value_5);
         if (tmp_ass_subscribed_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -7297,7 +9255,7 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
             Py_DECREF(tmp_ass_subvalue_1);
 
-            exception_lineno = 149;
+            exception_lineno = 174;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -7311,7 +9269,7 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
             Py_DECREF(tmp_ass_subvalue_1);
             Py_DECREF(tmp_ass_subscribed_1);
 
-            exception_lineno = 149;
+            exception_lineno = 174;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -7325,7 +9283,7 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 149;
+            exception_lineno = 174;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -7336,14 +9294,14 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
         PyObject *tmp_expression_value_8;
         CHECK_OBJECT(par_self);
         tmp_expression_value_8 = par_self;
-        tmp_iter_arg_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_8, mod_consts[37]);
+        tmp_iter_arg_1 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_8, mod_consts[39]);
         if (tmp_iter_arg_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 150;
+            exception_lineno = 175;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -7355,7 +9313,7 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 150;
+            exception_lineno = 175;
             type_description_1 = "ooo";
             goto frame_exception_exit_1;
         }
@@ -7378,7 +9336,7 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
 
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
                 type_description_1 = "ooo";
-                exception_lineno = 150;
+                exception_lineno = 175;
                 goto try_except_handler_2;
             }
         }
@@ -7410,18 +9368,18 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
         tmp_called_value_2 = var_effect;
         if (par_self == NULL) {
 
-            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[12]);
+            FORMAT_UNBOUND_LOCAL_ERROR(&exception_type, &exception_value, mod_consts[13]);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(tstate, exception_value);
 
-            exception_lineno = 151;
+            exception_lineno = 176;
             type_description_1 = "ooo";
             goto try_except_handler_2;
         }
 
         tmp_args_element_value_3 = par_self;
-        frame_9392da601695d790f59e697f80e308f5->m_frame.f_lineno = 151;
+        frame_7ce6e801b5538577cd06c31605b9fd60->m_frame.f_lineno = 176;
         tmp_call_result_2 = CALL_FUNCTION_WITH_SINGLE_ARG(tstate, tmp_called_value_2, tmp_args_element_value_3);
         if (tmp_call_result_2 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -7429,7 +9387,7 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 151;
+            exception_lineno = 176;
             type_description_1 = "ooo";
             goto try_except_handler_2;
         }
@@ -7441,7 +9399,7 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
         FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-        exception_lineno = 150;
+        exception_lineno = 175;
         type_description_1 = "ooo";
         goto try_except_handler_2;
     }
@@ -7483,14 +9441,14 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
 
 
     if (exception_tb == NULL) {
-        exception_tb = MAKE_TRACEBACK(frame_9392da601695d790f59e697f80e308f5, exception_lineno);
-    } else if (exception_tb->tb_frame != &frame_9392da601695d790f59e697f80e308f5->m_frame) {
-        exception_tb = ADD_TRACEBACK(exception_tb, frame_9392da601695d790f59e697f80e308f5, exception_lineno);
+        exception_tb = MAKE_TRACEBACK(frame_7ce6e801b5538577cd06c31605b9fd60, exception_lineno);
+    } else if (exception_tb->tb_frame != &frame_7ce6e801b5538577cd06c31605b9fd60->m_frame) {
+        exception_tb = ADD_TRACEBACK(exception_tb, frame_7ce6e801b5538577cd06c31605b9fd60, exception_lineno);
     }
 
     // Attaches locals to frame if any.
     Nuitka_Frame_AttachLocals(
-        frame_9392da601695d790f59e697f80e308f5,
+        frame_7ce6e801b5538577cd06c31605b9fd60,
         type_description_1,
         par_self,
         par_stack,
@@ -7499,16 +9457,16 @@ static PyObject *impl_base$buff$$$function__20_decrease(PyThreadState *tstate, s
 
 
     // Release cached frame if used for exception.
-    if (frame_9392da601695d790f59e697f80e308f5 == cache_frame_9392da601695d790f59e697f80e308f5) {
+    if (frame_7ce6e801b5538577cd06c31605b9fd60 == cache_frame_7ce6e801b5538577cd06c31605b9fd60) {
 #if _DEBUG_REFCOUNTS
         count_active_frame_cache_instances -= 1;
         count_released_frame_cache_instances += 1;
 #endif
-        Py_DECREF(cache_frame_9392da601695d790f59e697f80e308f5);
-        cache_frame_9392da601695d790f59e697f80e308f5 = NULL;
+        Py_DECREF(cache_frame_7ce6e801b5538577cd06c31605b9fd60);
+        cache_frame_7ce6e801b5538577cd06c31605b9fd60 = NULL;
     }
 
-    assertFrameObject(frame_9392da601695d790f59e697f80e308f5);
+    assertFrameObject(frame_7ce6e801b5538577cd06c31605b9fd60);
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
@@ -7585,11 +9543,11 @@ function_return_exit:
 static PyObject *MAKE_FUNCTION_base$buff$$$function__10_extend() {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
         impl_base$buff$$$function__10_extend,
-        mod_consts[83],
+        mod_consts[87],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[84],
+        mod_consts[88],
 #endif
-        codeobj_6d734e4d558cabe84fb463255f23e68f,
+        codeobj_708bc1a9253563c4d742c21f62a84ccf,
         NULL,
 #if PYTHON_VERSION >= 0x300
         NULL,
@@ -7610,11 +9568,11 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__10_extend() {
 static PyObject *MAKE_FUNCTION_base$buff$$$function__11_set_duration() {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
         impl_base$buff$$$function__11_set_duration,
-        mod_consts[16],
+        mod_consts[17],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[86],
+        mod_consts[90],
 #endif
-        codeobj_a5ed54d008a9fbfac3294a96f04f0354,
+        codeobj_f8e6b552fa24dc9496fa81318ac01d64,
         NULL,
 #if PYTHON_VERSION >= 0x300
         NULL,
@@ -7635,11 +9593,11 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__11_set_duration() {
 static PyObject *MAKE_FUNCTION_base$buff$$$function__12_set_duration() {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
         impl_base$buff$$$function__12_set_duration,
-        mod_consts[16],
+        mod_consts[17],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[88],
+        mod_consts[92],
 #endif
-        codeobj_1c77b51a7aa5121433b22dd135d900e6,
+        codeobj_034b78b8c0d1a41dd8f4604c1ffee317,
         NULL,
 #if PYTHON_VERSION >= 0x300
         NULL,
@@ -7660,11 +9618,11 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__12_set_duration() {
 static PyObject *MAKE_FUNCTION_base$buff$$$function__13___post_init__(struct Nuitka_CellObject **closure) {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
         impl_base$buff$$$function__13___post_init__,
-        mod_consts[31],
+        mod_consts[30],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[90],
+        mod_consts[94],
 #endif
-        codeobj_b6f5baa27d9224103c080f50b50c41fd,
+        codeobj_824b41d9820926acea2c55dd0d5c6045,
         NULL,
 #if PYTHON_VERSION >= 0x300
         NULL,
@@ -7685,11 +9643,11 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__13___post_init__(struct Nui
 static PyObject *MAKE_FUNCTION_base$buff$$$function__14_add(struct Nuitka_CellObject **closure) {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
         impl_base$buff$$$function__14_add,
-        mod_consts[19],
+        mod_consts[18],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[91],
+        mod_consts[95],
 #endif
-        codeobj_0ad42aae47f3fff1b3f6bd2c74d8e03d,
+        codeobj_e791bea657f3cfedfd8e66b944450813,
         NULL,
 #if PYTHON_VERSION >= 0x300
         NULL,
@@ -7710,11 +9668,11 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__14_add(struct Nuitka_CellOb
 static PyObject *MAKE_FUNCTION_base$buff$$$function__15_remove(struct Nuitka_CellObject **closure) {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
         impl_base$buff$$$function__15_remove,
-        mod_consts[21],
+        mod_consts[20],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[92],
+        mod_consts[96],
 #endif
-        codeobj_895d81e2cee479c74880ab74e8260525,
+        codeobj_b572e5f5458537a13f92e0986fa6d22d,
         NULL,
 #if PYTHON_VERSION >= 0x300
         NULL,
@@ -7735,11 +9693,11 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__15_remove(struct Nuitka_Cel
 static PyObject *MAKE_FUNCTION_base$buff$$$function__16_gain() {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
         impl_base$buff$$$function__16_gain,
-        mod_consts[93],
+        mod_consts[97],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[94],
+        mod_consts[98],
 #endif
-        codeobj_3d5eecb2551f1ff7dc1dd05b248f79db,
+        codeobj_1fb92d1155fb4133c2305e18e2880f34,
         NULL,
 #if PYTHON_VERSION >= 0x300
         NULL,
@@ -7760,11 +9718,11 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__16_gain() {
 static PyObject *MAKE_FUNCTION_base$buff$$$function__17_revoke() {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
         impl_base$buff$$$function__17_revoke,
-        mod_consts[95],
+        mod_consts[99],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[96],
+        mod_consts[100],
 #endif
-        codeobj_1b15ae343668e30fe8dee5e3a6847375,
+        codeobj_1a410e84a265a23c06fb8798ec90c22b,
         NULL,
 #if PYTHON_VERSION >= 0x300
         NULL,
@@ -7782,14 +9740,14 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__17_revoke() {
 
 
 
-static PyObject *MAKE_FUNCTION_base$buff$$$function__18___post_init__(struct Nuitka_CellObject **closure) {
+static PyObject *MAKE_FUNCTION_base$buff$$$function__18_add(struct Nuitka_CellObject **closure) {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
-        impl_base$buff$$$function__18___post_init__,
-        mod_consts[31],
+        impl_base$buff$$$function__18_add,
+        mod_consts[18],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[98],
+        mod_consts[102],
 #endif
-        codeobj_3193481407dfacac742bd1cb16f2d016,
+        codeobj_59f90e5311ae01284de10fa281e00120,
         NULL,
 #if PYTHON_VERSION >= 0x300
         NULL,
@@ -7807,14 +9765,14 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__18___post_init__(struct Nui
 
 
 
-static PyObject *MAKE_FUNCTION_base$buff$$$function__19_increase() {
+static PyObject *MAKE_FUNCTION_base$buff$$$function__19_remove(struct Nuitka_CellObject **closure) {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
-        impl_base$buff$$$function__19_increase,
-        mod_consts[99],
+        impl_base$buff$$$function__19_remove,
+        mod_consts[20],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[100],
+        mod_consts[103],
 #endif
-        codeobj_51926d0dd8c9feeac28b424925c1c60e,
+        codeobj_aa889ebed17e109732bcc5f436c30be2,
         NULL,
 #if PYTHON_VERSION >= 0x300
         NULL,
@@ -7822,8 +9780,8 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__19_increase() {
 #endif
         module_base$buff,
         NULL,
-        NULL,
-        0
+        closure,
+        1
     );
 
 
@@ -7835,9 +9793,9 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__19_increase() {
 static PyObject *MAKE_FUNCTION_base$buff$$$function__1___post_init__() {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
         impl_base$buff$$$function__1___post_init__,
-        mod_consts[31],
+        mod_consts[30],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[59],
+        mod_consts[62],
 #endif
         codeobj_29d4b8cedb7fdd90763a9c373f6e320b,
         NULL,
@@ -7857,14 +9815,64 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__1___post_init__() {
 
 
 
-static PyObject *MAKE_FUNCTION_base$buff$$$function__20_decrease() {
+static PyObject *MAKE_FUNCTION_base$buff$$$function__20___post_init__(struct Nuitka_CellObject **closure) {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
-        impl_base$buff$$$function__20_decrease,
-        mod_consts[101],
+        impl_base$buff$$$function__20___post_init__,
+        mod_consts[30],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[102],
+        mod_consts[105],
 #endif
-        codeobj_9392da601695d790f59e697f80e308f5,
+        codeobj_6c6ff60554698975f140badb1b5a174b,
+        NULL,
+#if PYTHON_VERSION >= 0x300
+        NULL,
+        NULL,
+#endif
+        module_base$buff,
+        NULL,
+        closure,
+        1
+    );
+
+
+    return (PyObject *)result;
+}
+
+
+
+static PyObject *MAKE_FUNCTION_base$buff$$$function__21_increase() {
+    struct Nuitka_FunctionObject *result = Nuitka_Function_New(
+        impl_base$buff$$$function__21_increase,
+        mod_consts[106],
+#if PYTHON_VERSION >= 0x300
+        mod_consts[107],
+#endif
+        codeobj_60fbc4d2c0df6d8b5811b83a24d14e7e,
+        NULL,
+#if PYTHON_VERSION >= 0x300
+        NULL,
+        NULL,
+#endif
+        module_base$buff,
+        NULL,
+        NULL,
+        0
+    );
+
+
+    return (PyObject *)result;
+}
+
+
+
+static PyObject *MAKE_FUNCTION_base$buff$$$function__22_decrease() {
+    struct Nuitka_FunctionObject *result = Nuitka_Function_New(
+        impl_base$buff$$$function__22_decrease,
+        mod_consts[108],
+#if PYTHON_VERSION >= 0x300
+        mod_consts[109],
+#endif
+        codeobj_7ce6e801b5538577cd06c31605b9fd60,
         NULL,
 #if PYTHON_VERSION >= 0x300
         NULL,
@@ -7885,9 +9893,9 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__20_decrease() {
 static PyObject *MAKE_FUNCTION_base$buff$$$function__2_roll() {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
         impl_base$buff$$$function__2_roll,
-        mod_consts[22],
+        mod_consts[21],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[60],
+        mod_consts[63],
 #endif
         codeobj_b76a86de7b7ec06c4afbf8531b869302,
         NULL,
@@ -7910,9 +9918,9 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__2_roll() {
 static PyObject *MAKE_FUNCTION_base$buff$$$function__3_set_duration() {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
         impl_base$buff$$$function__3_set_duration,
-        mod_consts[16],
+        mod_consts[17],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[61],
+        mod_consts[64],
 #endif
         codeobj_b422e671aedc4107bcbdd7c30446e854,
         NULL,
@@ -7932,18 +9940,18 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__3_set_duration() {
 
 
 
-static PyObject *MAKE_FUNCTION_base$buff$$$function__4_add() {
+static PyObject *MAKE_FUNCTION_base$buff$$$function__4_add(PyObject *annotations) {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
         impl_base$buff$$$function__4_add,
-        mod_consts[19],
+        mod_consts[18],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[62],
+        mod_consts[66],
 #endif
-        codeobj_413049defd2e8bab0f2305cbcc2514ba,
+        codeobj_95fa4b63bdbde71cd375338c56b720b2,
         NULL,
 #if PYTHON_VERSION >= 0x300
         NULL,
-        NULL,
+        annotations,
 #endif
         module_base$buff,
         NULL,
@@ -7957,18 +9965,18 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__4_add() {
 
 
 
-static PyObject *MAKE_FUNCTION_base$buff$$$function__5_remove() {
+static PyObject *MAKE_FUNCTION_base$buff$$$function__5_remove(PyObject *annotations) {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
         impl_base$buff$$$function__5_remove,
-        mod_consts[21],
+        mod_consts[20],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[63],
+        mod_consts[67],
 #endif
-        codeobj_a107b85ca742f3f139d54db115cbf96f,
+        codeobj_90d1910a42824c2443a6fb5f102c5529,
         NULL,
 #if PYTHON_VERSION >= 0x300
         NULL,
-        NULL,
+        annotations,
 #endif
         module_base$buff,
         NULL,
@@ -7985,11 +9993,11 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__5_remove() {
 static PyObject *MAKE_FUNCTION_base$buff$$$function__6_trigger(PyObject *defaults) {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
         impl_base$buff$$$function__6_trigger,
-        mod_consts[25],
+        mod_consts[24],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[65],
+        mod_consts[69],
 #endif
-        codeobj_e5de36bf9bbd30ebd969b490a2c8df81,
+        codeobj_7cfc21170008e5e545103c8c20b2e549,
         defaults,
 #if PYTHON_VERSION >= 0x300
         NULL,
@@ -8010,11 +10018,11 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__6_trigger(PyObject *default
 static PyObject *MAKE_FUNCTION_base$buff$$$function__7_consume(PyObject *defaults) {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
         impl_base$buff$$$function__7_consume,
-        mod_consts[67],
+        mod_consts[71],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[68],
+        mod_consts[72],
 #endif
-        codeobj_5e630ff32dd6aae4b066d7ee700e6ad7,
+        codeobj_66b25db2102bcaf83de48673c04f8e1c,
         defaults,
 #if PYTHON_VERSION >= 0x300
         NULL,
@@ -8035,11 +10043,11 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__7_consume(PyObject *default
 static PyObject *MAKE_FUNCTION_base$buff$$$function__8_clear() {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
         impl_base$buff$$$function__8_clear,
-        mod_consts[69],
+        mod_consts[73],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[70],
+        mod_consts[74],
 #endif
-        codeobj_11fa9888dafb4ca4896ca7ea323a330d,
+        codeobj_0d398fe981f62f7a07b3093e6d8d0856,
         NULL,
 #if PYTHON_VERSION >= 0x300
         NULL,
@@ -8060,11 +10068,11 @@ static PyObject *MAKE_FUNCTION_base$buff$$$function__8_clear() {
 static PyObject *MAKE_FUNCTION_base$buff$$$function__9_trigger(PyObject *defaults, struct Nuitka_CellObject **closure) {
     struct Nuitka_FunctionObject *result = Nuitka_Function_New(
         impl_base$buff$$$function__9_trigger,
-        mod_consts[25],
+        mod_consts[24],
 #if PYTHON_VERSION >= 0x300
-        mod_consts[79],
+        mod_consts[83],
 #endif
-        codeobj_e8458d2d4d3a71b031e2b9a8fdac5c70,
+        codeobj_fc17f86ba5a81b7828d31f950f67e154,
         defaults,
 #if PYTHON_VERSION >= 0x300
         NULL,
@@ -8112,9 +10120,11 @@ static function_impl_code const function_table_base$buff[] = {
     impl_base$buff$$$function__15_remove,
     impl_base$buff$$$function__16_gain,
     impl_base$buff$$$function__17_revoke,
-    impl_base$buff$$$function__18___post_init__,
-    impl_base$buff$$$function__19_increase,
-    impl_base$buff$$$function__20_decrease,
+    impl_base$buff$$$function__18_add,
+    impl_base$buff$$$function__19_remove,
+    impl_base$buff$$$function__20___post_init__,
+    impl_base$buff$$$function__21_increase,
+    impl_base$buff$$$function__22_decrease,
     NULL
 };
 
@@ -8326,7 +10336,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         UPDATE_STRING_DICT0(
             moduledict_base$buff,
             (Nuitka_StringObject *)const_str_plain___package__,
-            mod_consts[120]
+            mod_consts[33]
         );
 #elif 0
         PyObject *module_name = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)const_str_plain___name__);
@@ -8427,8 +10437,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     PyObject *outline_4_var___class__ = NULL;
     struct Nuitka_CellObject *outline_5_var___class__ = NULL;
     struct Nuitka_CellObject *outline_6_var___class__ = NULL;
-    PyObject *outline_7_var___class__ = NULL;
+    struct Nuitka_CellObject *outline_7_var___class__ = NULL;
     PyObject *outline_8_var___class__ = NULL;
+    PyObject *outline_9_var___class__ = NULL;
+    PyObject *tmp_class_creation_10__bases = NULL;
+    PyObject *tmp_class_creation_10__bases_orig = NULL;
+    PyObject *tmp_class_creation_10__class_decl_dict = NULL;
+    PyObject *tmp_class_creation_10__metaclass = NULL;
+    PyObject *tmp_class_creation_10__prepared = NULL;
     PyObject *tmp_class_creation_1__class_decl_dict = NULL;
     PyObject *tmp_class_creation_1__prepared = NULL;
     PyObject *tmp_class_creation_2__bases = NULL;
@@ -8495,8 +10511,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     PyObject *exception_keeper_value_3;
     PyTracebackObject *exception_keeper_tb_3;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_3;
-    PyObject *locals_base$buff$$$class__2_TriggerBuff_77 = NULL;
-    struct Nuitka_FrameObject *frame_755313176f2e02236f3250176e450dd4_3;
+    PyObject *locals_base$buff$$$class__2_TriggerBuff_82 = NULL;
+    struct Nuitka_FrameObject *frame_8366f9f360f761f57874b9d12618e857_3;
     NUITKA_MAY_BE_UNUSED char const *type_description_3 = NULL;
     PyObject *exception_keeper_type_4;
     PyObject *exception_keeper_value_4;
@@ -8510,8 +10526,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     PyObject *exception_keeper_value_6;
     PyTracebackObject *exception_keeper_tb_6;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_6;
-    PyObject *locals_base$buff$$$class__3_ExtendBuff_85 = NULL;
-    struct Nuitka_FrameObject *frame_d2cdb8a6e068299892acdda3afa1ff19_4;
+    PyObject *locals_base$buff$$$class__3_ExtendBuff_90 = NULL;
+    struct Nuitka_FrameObject *frame_243a78ba8956893e6af9bbd02f2cfb3e_4;
     NUITKA_MAY_BE_UNUSED char const *type_description_4 = NULL;
     PyObject *exception_keeper_type_7;
     PyObject *exception_keeper_value_7;
@@ -8525,8 +10541,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     PyObject *exception_keeper_value_9;
     PyTracebackObject *exception_keeper_tb_9;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_9;
-    PyObject *locals_base$buff$$$class__4_DotBuff_94 = NULL;
-    struct Nuitka_FrameObject *frame_e21701fd825860f9352c708525b61ec0_5;
+    PyObject *locals_base$buff$$$class__4_DotBuff_99 = NULL;
+    struct Nuitka_FrameObject *frame_d51931bfb6a2f957b2396491e483aed9_5;
     NUITKA_MAY_BE_UNUSED char const *type_description_5 = NULL;
     PyObject *exception_keeper_type_10;
     PyObject *exception_keeper_value_10;
@@ -8540,8 +10556,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     PyObject *exception_keeper_value_12;
     PyTracebackObject *exception_keeper_tb_12;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_12;
-    PyObject *locals_base$buff$$$class__5_PlacementBuff_103 = NULL;
-    struct Nuitka_FrameObject *frame_59f1c54ad2591128370dcc54eb126868_6;
+    PyObject *locals_base$buff$$$class__5_PlacementBuff_108 = NULL;
+    struct Nuitka_FrameObject *frame_065a2e898d11daf53c130dbe6cdc32f9_6;
     NUITKA_MAY_BE_UNUSED char const *type_description_6 = NULL;
     PyObject *exception_keeper_type_13;
     PyObject *exception_keeper_value_13;
@@ -8555,8 +10571,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     PyObject *exception_keeper_value_15;
     PyTracebackObject *exception_keeper_tb_15;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_15;
-    PyObject *locals_base$buff$$$class__6_GainBuff_108 = NULL;
-    struct Nuitka_FrameObject *frame_0d6a955fd3c5938b1e1ecf4b2975a734_7;
+    PyObject *locals_base$buff$$$class__6_GainBuff_113 = NULL;
+    struct Nuitka_FrameObject *frame_aacbad17084a04da95ae464ac3594415_7;
     NUITKA_MAY_BE_UNUSED char const *type_description_7 = NULL;
     PyObject *exception_keeper_type_16;
     PyObject *exception_keeper_value_16;
@@ -8570,8 +10586,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     PyObject *exception_keeper_value_18;
     PyTracebackObject *exception_keeper_tb_18;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_18;
-    PyObject *locals_base$buff$$$class__7_Energy_135 = NULL;
-    struct Nuitka_FrameObject *frame_06e85d187ca3dba7cabf54eeb8a2c948_8;
+    PyObject *locals_base$buff$$$class__7_SnapshotBuff_144 = NULL;
+    struct Nuitka_FrameObject *frame_2de50f511f8c7caaf9ab18f248625d21_8;
     NUITKA_MAY_BE_UNUSED char const *type_description_8 = NULL;
     PyObject *exception_keeper_type_19;
     PyObject *exception_keeper_value_19;
@@ -8585,7 +10601,9 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     PyObject *exception_keeper_value_21;
     PyTracebackObject *exception_keeper_tb_21;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_21;
-    PyObject *locals_base$buff$$$class__8_CDBuff_154 = NULL;
+    PyObject *locals_base$buff$$$class__8_Energy_160 = NULL;
+    struct Nuitka_FrameObject *frame_eb6c89fab1c1de5eb4091cf9dd160acd_9;
+    NUITKA_MAY_BE_UNUSED char const *type_description_9 = NULL;
     PyObject *exception_keeper_type_22;
     PyObject *exception_keeper_value_22;
     PyTracebackObject *exception_keeper_tb_22;
@@ -8598,7 +10616,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     PyObject *exception_keeper_value_24;
     PyTracebackObject *exception_keeper_tb_24;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_24;
-    PyObject *locals_base$buff$$$class__9_CountBuff_158 = NULL;
+    PyObject *locals_base$buff$$$class__9_CDBuff_179 = NULL;
     PyObject *exception_keeper_type_25;
     PyObject *exception_keeper_value_25;
     PyTracebackObject *exception_keeper_tb_25;
@@ -8611,17 +10629,30 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     PyObject *exception_keeper_value_27;
     PyTracebackObject *exception_keeper_tb_27;
     NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_27;
+    PyObject *locals_base$buff$$$class__10_CountBuff_183 = NULL;
+    PyObject *exception_keeper_type_28;
+    PyObject *exception_keeper_value_28;
+    PyTracebackObject *exception_keeper_tb_28;
+    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_28;
+    PyObject *exception_keeper_type_29;
+    PyObject *exception_keeper_value_29;
+    PyTracebackObject *exception_keeper_tb_29;
+    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_29;
+    PyObject *exception_keeper_type_30;
+    PyObject *exception_keeper_value_30;
+    PyTracebackObject *exception_keeper_tb_30;
+    NUITKA_MAY_BE_UNUSED int exception_keeper_lineno_30;
 
     // Module code.
     {
         PyObject *tmp_assign_source_1;
         tmp_assign_source_1 = Py_None;
-        UPDATE_STRING_DICT0(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[40], tmp_assign_source_1);
+        UPDATE_STRING_DICT0(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[42], tmp_assign_source_1);
     }
     {
         PyObject *tmp_assign_source_2;
         tmp_assign_source_2 = module_filename_obj;
-        UPDATE_STRING_DICT0(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[41], tmp_assign_source_2);
+        UPDATE_STRING_DICT0(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[43], tmp_assign_source_2);
     }
     frame_60454b0fdc4335c529e0edbf73a1357e = MAKE_MODULE_FRAME(codeobj_60454b0fdc4335c529e0edbf73a1357e, module_base$buff);
 
@@ -8635,14 +10666,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_assattr_value_1;
         PyObject *tmp_assattr_target_1;
         tmp_assattr_value_1 = module_filename_obj;
-        tmp_assattr_target_1 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[42]);
+        tmp_assattr_target_1 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[44]);
 
         if (unlikely(tmp_assattr_target_1 == NULL)) {
-            tmp_assattr_target_1 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[42]);
+            tmp_assattr_target_1 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[44]);
         }
 
         assert(!(tmp_assattr_target_1 == NULL));
-        tmp_result = SET_ATTRIBUTE(tstate, tmp_assattr_target_1, mod_consts[43], tmp_assattr_value_1);
+        tmp_result = SET_ATTRIBUTE(tstate, tmp_assattr_target_1, mod_consts[45], tmp_assattr_value_1);
         if (tmp_result == false) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
@@ -8658,14 +10689,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_assattr_value_2;
         PyObject *tmp_assattr_target_2;
         tmp_assattr_value_2 = Py_True;
-        tmp_assattr_target_2 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[42]);
+        tmp_assattr_target_2 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[44]);
 
         if (unlikely(tmp_assattr_target_2 == NULL)) {
-            tmp_assattr_target_2 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[42]);
+            tmp_assattr_target_2 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[44]);
         }
 
         assert(!(tmp_assattr_target_2 == NULL));
-        tmp_result = SET_ATTRIBUTE(tstate, tmp_assattr_target_2, mod_consts[44], tmp_assattr_value_2);
+        tmp_result = SET_ATTRIBUTE(tstate, tmp_assattr_target_2, mod_consts[46], tmp_assattr_value_2);
         if (tmp_result == false) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
@@ -8680,7 +10711,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     {
         PyObject *tmp_assign_source_3;
         tmp_assign_source_3 = Py_None;
-        UPDATE_STRING_DICT0(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[45], tmp_assign_source_3);
+        UPDATE_STRING_DICT0(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[47], tmp_assign_source_3);
     }
     {
         PyObject *tmp_assign_source_4;
@@ -8693,7 +10724,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         tmp_globals_arg_value_1 = (PyObject *)moduledict_base$buff;
         tmp_locals_arg_value_1 = Py_None;
         tmp_fromlist_value_1 = Py_None;
-        tmp_level_value_1 = mod_consts[39];
+        tmp_level_value_1 = mod_consts[41];
         frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 1;
         tmp_assign_source_4 = IMPORT_MODULE5(tstate, tmp_name_value_1, tmp_globals_arg_value_1, tmp_locals_arg_value_1, tmp_fromlist_value_1, tmp_level_value_1);
         if (tmp_assign_source_4 == NULL) {
@@ -8716,11 +10747,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_locals_arg_value_2;
         PyObject *tmp_fromlist_value_2;
         PyObject *tmp_level_value_2;
-        tmp_name_value_2 = mod_consts[46];
+        tmp_name_value_2 = mod_consts[48];
         tmp_globals_arg_value_2 = (PyObject *)moduledict_base$buff;
         tmp_locals_arg_value_2 = Py_None;
-        tmp_fromlist_value_2 = mod_consts[47];
-        tmp_level_value_2 = mod_consts[39];
+        tmp_fromlist_value_2 = mod_consts[49];
+        tmp_level_value_2 = mod_consts[41];
         frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 2;
         tmp_import_name_from_1 = IMPORT_MODULE5(tstate, tmp_name_value_2, tmp_globals_arg_value_2, tmp_locals_arg_value_2, tmp_fromlist_value_2, tmp_level_value_2);
         if (tmp_import_name_from_1 == NULL) {
@@ -8738,11 +10769,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 tstate,
                 tmp_import_name_from_1,
                 (PyObject *)moduledict_base$buff,
-                mod_consts[48],
-                mod_consts[39]
+                mod_consts[50],
+                mod_consts[41]
             );
         } else {
-            tmp_assign_source_5 = IMPORT_NAME_FROM_MODULE(tstate, tmp_import_name_from_1, mod_consts[48]);
+            tmp_assign_source_5 = IMPORT_NAME_FROM_MODULE(tstate, tmp_import_name_from_1, mod_consts[50]);
         }
 
         Py_DECREF(tmp_import_name_from_1);
@@ -8756,7 +10787,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
             goto frame_exception_exit_1;
         }
-        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[48], tmp_assign_source_5);
+        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[50], tmp_assign_source_5);
     }
     {
         PyObject *tmp_assign_source_6;
@@ -8766,11 +10797,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_locals_arg_value_3;
         PyObject *tmp_fromlist_value_3;
         PyObject *tmp_level_value_3;
-        tmp_name_value_3 = mod_consts[49];
+        tmp_name_value_3 = mod_consts[51];
         tmp_globals_arg_value_3 = (PyObject *)moduledict_base$buff;
         tmp_locals_arg_value_3 = Py_None;
-        tmp_fromlist_value_3 = mod_consts[50];
-        tmp_level_value_3 = mod_consts[39];
+        tmp_fromlist_value_3 = mod_consts[52];
+        tmp_level_value_3 = mod_consts[41];
         frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 4;
         tmp_import_name_from_2 = IMPORT_MODULE5(tstate, tmp_name_value_3, tmp_globals_arg_value_3, tmp_locals_arg_value_3, tmp_fromlist_value_3, tmp_level_value_3);
         if (tmp_import_name_from_2 == NULL) {
@@ -8788,11 +10819,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 tstate,
                 tmp_import_name_from_2,
                 (PyObject *)moduledict_base$buff,
-                mod_consts[51],
-                mod_consts[39]
+                mod_consts[53],
+                mod_consts[41]
             );
         } else {
-            tmp_assign_source_6 = IMPORT_NAME_FROM_MODULE(tstate, tmp_import_name_from_2, mod_consts[51]);
+            tmp_assign_source_6 = IMPORT_NAME_FROM_MODULE(tstate, tmp_import_name_from_2, mod_consts[53]);
         }
 
         Py_DECREF(tmp_import_name_from_2);
@@ -8806,7 +10837,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
             goto frame_exception_exit_1;
         }
-        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[51], tmp_assign_source_6);
+        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[53], tmp_assign_source_6);
     }
     {
         PyObject *tmp_assign_source_7;
@@ -8825,10 +10856,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_assign_source_9;
         PyObject *tmp_called_value_1;
         PyObject *tmp_args_element_value_1;
-        tmp_called_value_1 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[48]);
+        tmp_called_value_1 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[50]);
 
         if (unlikely(tmp_called_value_1 == NULL)) {
-            tmp_called_value_1 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[48]);
+            tmp_called_value_1 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[50]);
         }
 
         if (tmp_called_value_1 == NULL) {
@@ -8848,14 +10879,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             locals_base$buff$$$class__1_Buff_8 = tmp_set_locals_1;
             Py_INCREF(tmp_set_locals_1);
         }
-        tmp_dictset_value = mod_consts[52];
-        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[53], tmp_dictset_value);
-        assert(!(tmp_res != 0));
         tmp_dictset_value = mod_consts[54];
         tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[55], tmp_dictset_value);
         assert(!(tmp_res != 0));
+        tmp_dictset_value = mod_consts[56];
+        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[57], tmp_dictset_value);
+        assert(!(tmp_res != 0));
         tmp_dictset_value = MAKE_DICT_EMPTY();
-        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[56], tmp_dictset_value);
+        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[58], tmp_dictset_value);
         Py_DECREF(tmp_dictset_value);
         assert(!(tmp_res != 0));
         // Tried code:
@@ -8872,18 +10903,18 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_ass_subvalue_1;
             PyObject *tmp_ass_subscribed_1;
             PyObject *tmp_ass_subscript_1;
-            tmp_ass_subvalue_1 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[51]);
+            tmp_ass_subvalue_1 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[53]);
 
             if (unlikely(tmp_ass_subvalue_1 == NULL)) {
-                tmp_ass_subvalue_1 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[51]);
+                tmp_ass_subvalue_1 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[53]);
             }
 
             assert(!(tmp_ass_subvalue_1 == NULL));
-            tmp_ass_subscribed_1 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[56]);
+            tmp_ass_subscribed_1 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[58]);
 
             if (unlikely(tmp_ass_subscribed_1 == NULL && CHECK_AND_CLEAR_KEY_ERROR_OCCURRED(tstate))) {
 
-                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[56]);
+                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[58]);
                 NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
                 CHAIN_EXCEPTION(tstate, exception_value);
 
@@ -8923,11 +10954,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_ass_subscribed_2;
             PyObject *tmp_ass_subscript_2;
             tmp_ass_subvalue_2 = (PyObject *)&PyUnicode_Type;
-            tmp_ass_subscribed_2 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[56]);
+            tmp_ass_subscribed_2 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[58]);
 
             if (unlikely(tmp_ass_subscribed_2 == NULL && CHECK_AND_CLEAR_KEY_ERROR_OCCURRED(tstate))) {
 
-                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[56]);
+                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[58]);
                 NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
                 CHAIN_EXCEPTION(tstate, exception_value);
 
@@ -8960,18 +10991,18 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             }
         }
         tmp_dictset_value = Py_True;
-        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[57], tmp_dictset_value);
+        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[59], tmp_dictset_value);
         assert(!(tmp_res != 0));
         {
             PyObject *tmp_ass_subvalue_3;
             PyObject *tmp_ass_subscribed_3;
             PyObject *tmp_ass_subscript_3;
             tmp_ass_subvalue_3 = (PyObject *)&PyBool_Type;
-            tmp_ass_subscribed_3 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[56]);
+            tmp_ass_subscribed_3 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[58]);
 
             if (unlikely(tmp_ass_subscribed_3 == NULL && CHECK_AND_CLEAR_KEY_ERROR_OCCURRED(tstate))) {
 
-                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[56]);
+                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[58]);
                 NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
                 CHAIN_EXCEPTION(tstate, exception_value);
 
@@ -8990,7 +11021,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 type_description_2 = "o";
                 goto frame_exception_exit_2;
             }
-            tmp_ass_subscript_3 = mod_consts[57];
+            tmp_ass_subscript_3 = mod_consts[59];
             tmp_result = SET_SUBSCRIPT(tstate, tmp_ass_subscribed_3, tmp_ass_subscript_3, tmp_ass_subvalue_3);
             if (tmp_result == false) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -9003,19 +11034,19 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 goto frame_exception_exit_2;
             }
         }
-        tmp_dictset_value = mod_consts[11];
-        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[14], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[60];
+        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[15], tmp_dictset_value);
         assert(!(tmp_res != 0));
         {
             PyObject *tmp_ass_subvalue_4;
             PyObject *tmp_ass_subscribed_4;
             PyObject *tmp_ass_subscript_4;
             tmp_ass_subvalue_4 = (PyObject *)&PyLong_Type;
-            tmp_ass_subscribed_4 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[56]);
+            tmp_ass_subscribed_4 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[58]);
 
             if (unlikely(tmp_ass_subscribed_4 == NULL && CHECK_AND_CLEAR_KEY_ERROR_OCCURRED(tstate))) {
 
-                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[56]);
+                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[58]);
                 NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
                 CHAIN_EXCEPTION(tstate, exception_value);
 
@@ -9034,7 +11065,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 type_description_2 = "o";
                 goto frame_exception_exit_2;
             }
-            tmp_ass_subscript_4 = mod_consts[14];
+            tmp_ass_subscript_4 = mod_consts[15];
             tmp_result = SET_SUBSCRIPT(tstate, tmp_ass_subscribed_4, tmp_ass_subscript_4, tmp_ass_subvalue_4);
             if (tmp_result == false) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -9047,7 +11078,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 goto frame_exception_exit_2;
             }
         }
-        tmp_dictset_value = mod_consts[58];
+        tmp_dictset_value = mod_consts[61];
         tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[6], tmp_dictset_value);
         assert(!(tmp_res != 0));
         {
@@ -9055,11 +11086,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_ass_subscribed_5;
             PyObject *tmp_ass_subscript_5;
             tmp_ass_subvalue_5 = (PyObject *)&PyLong_Type;
-            tmp_ass_subscribed_5 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[56]);
+            tmp_ass_subscribed_5 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[58]);
 
             if (unlikely(tmp_ass_subscribed_5 == NULL && CHECK_AND_CLEAR_KEY_ERROR_OCCURRED(tstate))) {
 
-                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[56]);
+                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[58]);
                 NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
                 CHAIN_EXCEPTION(tstate, exception_value);
 
@@ -9091,19 +11122,19 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 goto frame_exception_exit_2;
             }
         }
-        tmp_dictset_value = mod_consts[11];
-        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[15], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[60];
+        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[16], tmp_dictset_value);
         assert(!(tmp_res != 0));
         {
             PyObject *tmp_ass_subvalue_6;
             PyObject *tmp_ass_subscribed_6;
             PyObject *tmp_ass_subscript_6;
             tmp_ass_subvalue_6 = (PyObject *)&PyLong_Type;
-            tmp_ass_subscribed_6 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[56]);
+            tmp_ass_subscribed_6 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[58]);
 
             if (unlikely(tmp_ass_subscribed_6 == NULL && CHECK_AND_CLEAR_KEY_ERROR_OCCURRED(tstate))) {
 
-                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[56]);
+                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[58]);
                 NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
                 CHAIN_EXCEPTION(tstate, exception_value);
 
@@ -9122,7 +11153,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 type_description_2 = "o";
                 goto frame_exception_exit_2;
             }
-            tmp_ass_subscript_6 = mod_consts[15];
+            tmp_ass_subscript_6 = mod_consts[16];
             tmp_result = SET_SUBSCRIPT(tstate, tmp_ass_subscribed_6, tmp_ass_subscript_6, tmp_ass_subvalue_6);
             if (tmp_result == false) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -9135,19 +11166,19 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 goto frame_exception_exit_2;
             }
         }
-        tmp_dictset_value = mod_consts[11];
-        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[20], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[60];
+        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[19], tmp_dictset_value);
         assert(!(tmp_res != 0));
         {
             PyObject *tmp_ass_subvalue_7;
             PyObject *tmp_ass_subscribed_7;
             PyObject *tmp_ass_subscript_7;
             tmp_ass_subvalue_7 = (PyObject *)&PyLong_Type;
-            tmp_ass_subscribed_7 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[56]);
+            tmp_ass_subscribed_7 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[58]);
 
             if (unlikely(tmp_ass_subscribed_7 == NULL && CHECK_AND_CLEAR_KEY_ERROR_OCCURRED(tstate))) {
 
-                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[56]);
+                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[58]);
                 NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
                 CHAIN_EXCEPTION(tstate, exception_value);
 
@@ -9166,7 +11197,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 type_description_2 = "o";
                 goto frame_exception_exit_2;
             }
-            tmp_ass_subscript_7 = mod_consts[20];
+            tmp_ass_subscript_7 = mod_consts[19];
             tmp_result = SET_SUBSCRIPT(tstate, tmp_ass_subscribed_7, tmp_ass_subscript_7, tmp_ass_subvalue_7);
             if (tmp_result == false) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -9179,19 +11210,19 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 goto frame_exception_exit_2;
             }
         }
-        tmp_dictset_value = mod_consts[11];
-        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[18], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[60];
+        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[11], tmp_dictset_value);
         assert(!(tmp_res != 0));
         {
             PyObject *tmp_ass_subvalue_8;
             PyObject *tmp_ass_subscribed_8;
             PyObject *tmp_ass_subscript_8;
             tmp_ass_subvalue_8 = (PyObject *)&PyLong_Type;
-            tmp_ass_subscribed_8 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[56]);
+            tmp_ass_subscribed_8 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[58]);
 
             if (unlikely(tmp_ass_subscribed_8 == NULL && CHECK_AND_CLEAR_KEY_ERROR_OCCURRED(tstate))) {
 
-                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[56]);
+                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[58]);
                 NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
                 CHAIN_EXCEPTION(tstate, exception_value);
 
@@ -9210,7 +11241,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 type_description_2 = "o";
                 goto frame_exception_exit_2;
             }
-            tmp_ass_subscript_8 = mod_consts[18];
+            tmp_ass_subscript_8 = mod_consts[11];
             tmp_result = SET_SUBSCRIPT(tstate, tmp_ass_subscribed_8, tmp_ass_subscript_8, tmp_ass_subvalue_8);
             if (tmp_result == false) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -9258,11 +11289,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 type_description_2 = "o";
                 goto frame_exception_exit_2;
             }
-            tmp_ass_subscribed_9 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[56]);
+            tmp_ass_subscribed_9 = DICT_GET_ITEM0(tstate, locals_base$buff$$$class__1_Buff_8, mod_consts[58]);
 
             if (unlikely(tmp_ass_subscribed_9 == NULL && CHECK_AND_CLEAR_KEY_ERROR_OCCURRED(tstate))) {
                 Py_DECREF(tmp_ass_subvalue_9);
-                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[56]);
+                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[58]);
                 NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
                 CHAIN_EXCEPTION(tstate, exception_value);
 
@@ -9299,7 +11330,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
         tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__1___post_init__();
 
-        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[31], tmp_dictset_value);
+        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[30], tmp_dictset_value);
         Py_DECREF(tmp_dictset_value);
         assert(!(tmp_res != 0));
         {
@@ -9323,7 +11354,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 type_description_2 = "o";
                 goto frame_exception_exit_2;
             }
-            tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[22], tmp_dictset_value);
+            tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[21], tmp_dictset_value);
             Py_DECREF(tmp_dictset_value);
             if (tmp_res != 0) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -9377,44 +11408,52 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
         tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__3_set_duration();
 
-        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[16], tmp_dictset_value);
-        Py_DECREF(tmp_dictset_value);
-        assert(!(tmp_res != 0));
-
-
-        tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__4_add();
-
-        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[19], tmp_dictset_value);
-        Py_DECREF(tmp_dictset_value);
-        assert(!(tmp_res != 0));
-
-
-        tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__5_remove();
-
-        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[21], tmp_dictset_value);
+        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[17], tmp_dictset_value);
         Py_DECREF(tmp_dictset_value);
         assert(!(tmp_res != 0));
         {
+            PyObject *tmp_annotations_1;
+            tmp_annotations_1 = DICT_COPY(mod_consts[65]);
+
+
+            tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__4_add(tmp_annotations_1);
+
+            tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[18], tmp_dictset_value);
+            Py_DECREF(tmp_dictset_value);
+            assert(!(tmp_res != 0));
+        }
+        {
+            PyObject *tmp_annotations_2;
+            tmp_annotations_2 = DICT_COPY(mod_consts[65]);
+
+
+            tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__5_remove(tmp_annotations_2);
+
+            tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[20], tmp_dictset_value);
+            Py_DECREF(tmp_dictset_value);
+            assert(!(tmp_res != 0));
+        }
+        {
             PyObject *tmp_defaults_1;
-            tmp_defaults_1 = mod_consts[64];
+            tmp_defaults_1 = mod_consts[68];
             Py_INCREF(tmp_defaults_1);
 
 
             tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__6_trigger(tmp_defaults_1);
 
-            tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[25], tmp_dictset_value);
+            tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[24], tmp_dictset_value);
             Py_DECREF(tmp_dictset_value);
             assert(!(tmp_res != 0));
         }
         {
             PyObject *tmp_defaults_2;
-            tmp_defaults_2 = mod_consts[66];
+            tmp_defaults_2 = mod_consts[70];
             Py_INCREF(tmp_defaults_2);
 
 
             tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__7_consume(tmp_defaults_2);
 
-            tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[67], tmp_dictset_value);
+            tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[71], tmp_dictset_value);
             Py_DECREF(tmp_dictset_value);
             assert(!(tmp_res != 0));
         }
@@ -9422,7 +11461,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
         tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__8_clear();
 
-        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[69], tmp_dictset_value);
+        tmp_res = PyDict_SetItem(locals_base$buff$$$class__1_Buff_8, mod_consts[73], tmp_dictset_value);
         Py_DECREF(tmp_dictset_value);
         assert(!(tmp_res != 0));
         {
@@ -9432,10 +11471,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_tuple_element_1;
             PyObject *tmp_kwargs_value_1;
             tmp_called_value_3 = (PyObject *)&PyType_Type;
-            tmp_tuple_element_1 = mod_consts[54];
+            tmp_tuple_element_1 = mod_consts[56];
             tmp_args_value_1 = MAKE_TUPLE_EMPTY(3);
             PyTuple_SET_ITEM0(tmp_args_value_1, 0, tmp_tuple_element_1);
-            tmp_tuple_element_1 = mod_consts[71];
+            tmp_tuple_element_1 = mod_consts[75];
             PyTuple_SET_ITEM0(tmp_args_value_1, 1, tmp_tuple_element_1);
             tmp_tuple_element_1 = locals_base$buff$$$class__1_Buff_8;
             PyTuple_SET_ITEM0(tmp_args_value_1, 2, tmp_tuple_element_1);
@@ -9535,7 +11574,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
             goto try_except_handler_1;
         }
-        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[54], tmp_assign_source_9);
+        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[56], tmp_assign_source_9);
     }
     goto try_end_1;
     // Exception handler code:
@@ -9573,10 +11612,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     {
         PyObject *tmp_assign_source_11;
         PyObject *tmp_tuple_element_2;
-        tmp_tuple_element_2 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[54]);
+        tmp_tuple_element_2 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[56]);
 
         if (unlikely(tmp_tuple_element_2 == NULL)) {
-            tmp_tuple_element_2 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[54]);
+            tmp_tuple_element_2 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[56]);
         }
 
         assert(!(tmp_tuple_element_2 == NULL));
@@ -9603,7 +11642,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 77;
+            exception_lineno = 82;
 
             goto try_except_handler_4;
         }
@@ -9633,7 +11672,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 77;
+            exception_lineno = 82;
 
             goto try_except_handler_4;
         }
@@ -9646,7 +11685,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         condexpr_true_1:;
         CHECK_OBJECT(tmp_class_creation_2__bases);
         tmp_expression_value_2 = tmp_class_creation_2__bases;
-        tmp_subscript_value_1 = mod_consts[39];
+        tmp_subscript_value_1 = mod_consts[41];
         tmp_type_arg_1 = LOOKUP_SUBSCRIPT_CONST(tstate, tmp_expression_value_2, tmp_subscript_value_1, 0);
         if (tmp_type_arg_1 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -9654,7 +11693,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 77;
+            exception_lineno = 82;
 
             goto try_except_handler_4;
         }
@@ -9666,7 +11705,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 77;
+            exception_lineno = 82;
 
             goto try_except_handler_4;
         }
@@ -9685,7 +11724,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 77;
+            exception_lineno = 82;
 
             goto try_except_handler_4;
         }
@@ -9697,14 +11736,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_expression_value_3;
         CHECK_OBJECT(tmp_class_creation_2__metaclass);
         tmp_expression_value_3 = tmp_class_creation_2__metaclass;
-        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_3, mod_consts[72]);
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_3, mod_consts[76]);
         if (tmp_res == -1) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 77;
+            exception_lineno = 82;
 
             goto try_except_handler_4;
         }
@@ -9725,18 +11764,18 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_kwargs_value_2;
         CHECK_OBJECT(tmp_class_creation_2__metaclass);
         tmp_expression_value_4 = tmp_class_creation_2__metaclass;
-        tmp_called_value_4 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_4, mod_consts[72]);
+        tmp_called_value_4 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_4, mod_consts[76]);
         if (tmp_called_value_4 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 77;
+            exception_lineno = 82;
 
             goto try_except_handler_4;
         }
-        tmp_tuple_element_3 = mod_consts[73];
+        tmp_tuple_element_3 = mod_consts[77];
         tmp_args_value_2 = MAKE_TUPLE_EMPTY(2);
         PyTuple_SET_ITEM0(tmp_args_value_2, 0, tmp_tuple_element_3);
         CHECK_OBJECT(tmp_class_creation_2__bases);
@@ -9744,7 +11783,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyTuple_SET_ITEM0(tmp_args_value_2, 1, tmp_tuple_element_3);
         CHECK_OBJECT(tmp_class_creation_2__class_decl_dict);
         tmp_kwargs_value_2 = tmp_class_creation_2__class_decl_dict;
-        frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 77;
+        frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 82;
         tmp_assign_source_15 = CALL_FUNCTION(tstate, tmp_called_value_4, tmp_args_value_2, tmp_kwargs_value_2);
         Py_DECREF(tmp_called_value_4);
         Py_DECREF(tmp_args_value_2);
@@ -9754,7 +11793,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 77;
+            exception_lineno = 82;
 
             goto try_except_handler_4;
         }
@@ -9767,14 +11806,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_expression_value_5;
         CHECK_OBJECT(tmp_class_creation_2__prepared);
         tmp_expression_value_5 = tmp_class_creation_2__prepared;
-        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_5, mod_consts[74]);
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_5, mod_consts[78]);
         if (tmp_res == -1) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 77;
+            exception_lineno = 82;
 
             goto try_except_handler_4;
         }
@@ -9799,11 +11838,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_name_value_4;
         PyObject *tmp_default_value_1;
         tmp_raise_type_1 = PyExc_TypeError;
-        tmp_mod_expr_left_1 = mod_consts[75];
+        tmp_mod_expr_left_1 = mod_consts[79];
         CHECK_OBJECT(tmp_class_creation_2__metaclass);
         tmp_expression_value_6 = tmp_class_creation_2__metaclass;
-        tmp_name_value_4 = mod_consts[76];
-        tmp_default_value_1 = mod_consts[77];
+        tmp_name_value_4 = mod_consts[80];
+        tmp_default_value_1 = mod_consts[81];
         tmp_tuple_element_4 = BUILTIN_GETATTR(tstate, tmp_expression_value_6, tmp_name_value_4, tmp_default_value_1);
         if (tmp_tuple_element_4 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -9811,7 +11850,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 77;
+            exception_lineno = 82;
 
             goto try_except_handler_4;
         }
@@ -9824,7 +11863,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             tmp_type_arg_2 = tmp_class_creation_2__prepared;
             tmp_expression_value_7 = BUILTIN_TYPE1(tmp_type_arg_2);
             assert(!(tmp_expression_value_7 == NULL));
-            tmp_tuple_element_4 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_7, mod_consts[76]);
+            tmp_tuple_element_4 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_7, mod_consts[80]);
             Py_DECREF(tmp_expression_value_7);
             if (tmp_tuple_element_4 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -9832,7 +11871,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 77;
+                exception_lineno = 82;
 
                 goto tuple_build_exception_1;
             }
@@ -9853,14 +11892,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 77;
+            exception_lineno = 82;
 
             goto try_except_handler_4;
         }
         exception_type = tmp_raise_type_1;
         Py_INCREF(tmp_raise_type_1);
         exception_value = tmp_raise_value_1;
-        exception_lineno = 77;
+        exception_lineno = 82;
         RAISE_EXCEPTION_IMPLICIT(tstate, &exception_type, &exception_value, &exception_tb);
 
         goto try_except_handler_4;
@@ -9882,37 +11921,37 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_set_locals_2;
             CHECK_OBJECT(tmp_class_creation_2__prepared);
             tmp_set_locals_2 = tmp_class_creation_2__prepared;
-            locals_base$buff$$$class__2_TriggerBuff_77 = tmp_set_locals_2;
+            locals_base$buff$$$class__2_TriggerBuff_82 = tmp_set_locals_2;
             Py_INCREF(tmp_set_locals_2);
         }
         // Tried code:
         // Tried code:
-        tmp_dictset_value = mod_consts[52];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__2_TriggerBuff_77, mod_consts[53], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[54];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__2_TriggerBuff_82, mod_consts[55], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 77;
+            exception_lineno = 82;
 
             goto try_except_handler_6;
         }
-        tmp_dictset_value = mod_consts[73];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__2_TriggerBuff_77, mod_consts[55], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[77];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__2_TriggerBuff_82, mod_consts[57], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 77;
+            exception_lineno = 82;
 
             goto try_except_handler_6;
         }
         tmp_dictset_value = MAKE_DICT_EMPTY();
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__2_TriggerBuff_77, mod_consts[56], tmp_dictset_value);
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__2_TriggerBuff_82, mod_consts[58], tmp_dictset_value);
         Py_DECREF(tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -9920,27 +11959,27 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 77;
+            exception_lineno = 82;
 
             goto try_except_handler_6;
         }
-        frame_755313176f2e02236f3250176e450dd4_3 = MAKE_CLASS_FRAME(tstate, codeobj_755313176f2e02236f3250176e450dd4, module_base$buff, NULL, sizeof(void *));
+        frame_8366f9f360f761f57874b9d12618e857_3 = MAKE_CLASS_FRAME(tstate, codeobj_8366f9f360f761f57874b9d12618e857, module_base$buff, NULL, sizeof(void *));
 
         // Push the new frame as the currently active one, and we should be exclusively
         // owning it.
-        pushFrameStackCompiledFrame(tstate, frame_755313176f2e02236f3250176e450dd4_3);
-        assert(Py_REFCNT(frame_755313176f2e02236f3250176e450dd4_3) == 2);
+        pushFrameStackCompiledFrame(tstate, frame_8366f9f360f761f57874b9d12618e857_3);
+        assert(Py_REFCNT(frame_8366f9f360f761f57874b9d12618e857_3) == 2);
 
         // Framed code:
-        tmp_dictset_value = mod_consts[11];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__2_TriggerBuff_77, mod_consts[23], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[60];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__2_TriggerBuff_82, mod_consts[22], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 78;
+            exception_lineno = 83;
             type_description_2 = "c";
             goto frame_exception_exit_3;
         }
@@ -9948,7 +11987,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_ass_subvalue_10;
             PyObject *tmp_ass_subscribed_10;
             PyObject *tmp_ass_subscript_10;
-            tmp_ass_subvalue_10 = PyObject_GetItem(locals_base$buff$$$class__2_TriggerBuff_77, mod_consts[78]);
+            tmp_ass_subvalue_10 = PyObject_GetItem(locals_base$buff$$$class__2_TriggerBuff_82, mod_consts[82]);
 
             if (tmp_ass_subvalue_10 == NULL) {
                 if (CHECK_AND_CLEAR_KEY_ERROR_OCCURRED(tstate)) {
@@ -9959,15 +11998,15 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 }
             }
 
-            tmp_ass_subscribed_10 = PyObject_GetItem(locals_base$buff$$$class__2_TriggerBuff_77, mod_consts[56]);
+            tmp_ass_subscribed_10 = PyObject_GetItem(locals_base$buff$$$class__2_TriggerBuff_82, mod_consts[58]);
 
             if (unlikely(tmp_ass_subscribed_10 == NULL && CHECK_AND_CLEAR_KEY_ERROR_OCCURRED(tstate))) {
                 Py_DECREF(tmp_ass_subvalue_10);
-                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[56]);
+                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[58]);
                 NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
                 CHAIN_EXCEPTION(tstate, exception_value);
 
-                exception_lineno = 78;
+                exception_lineno = 83;
                 type_description_2 = "c";
                 goto frame_exception_exit_3;
             }
@@ -9978,11 +12017,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
                 Py_DECREF(tmp_ass_subvalue_10);
 
-                exception_lineno = 78;
+                exception_lineno = 83;
                 type_description_2 = "c";
                 goto frame_exception_exit_3;
             }
-            tmp_ass_subscript_10 = mod_consts[23];
+            tmp_ass_subscript_10 = mod_consts[22];
             tmp_result = SET_SUBSCRIPT(tstate, tmp_ass_subscribed_10, tmp_ass_subscript_10, tmp_ass_subvalue_10);
             Py_DECREF(tmp_ass_subscribed_10);
             Py_DECREF(tmp_ass_subvalue_10);
@@ -9992,7 +12031,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 78;
+                exception_lineno = 83;
                 type_description_2 = "c";
                 goto frame_exception_exit_3;
             }
@@ -10000,7 +12039,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         {
             PyObject *tmp_defaults_3;
             struct Nuitka_CellObject *tmp_closure_1[1];
-            tmp_defaults_3 = mod_consts[64];
+            tmp_defaults_3 = mod_consts[68];
             Py_INCREF(tmp_defaults_3);
 
             tmp_closure_1[0] = outline_1_var___class__;
@@ -10008,7 +12047,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
             tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__9_trigger(tmp_defaults_3, tmp_closure_1);
 
-            tmp_res = PyObject_SetItem(locals_base$buff$$$class__2_TriggerBuff_77, mod_consts[25], tmp_dictset_value);
+            tmp_res = PyObject_SetItem(locals_base$buff$$$class__2_TriggerBuff_82, mod_consts[24], tmp_dictset_value);
             Py_DECREF(tmp_dictset_value);
             if (tmp_res != 0) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -10016,7 +12055,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 80;
+                exception_lineno = 85;
                 type_description_2 = "c";
                 goto frame_exception_exit_3;
             }
@@ -10031,21 +12070,21 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
 
         if (exception_tb == NULL) {
-            exception_tb = MAKE_TRACEBACK(frame_755313176f2e02236f3250176e450dd4_3, exception_lineno);
-        } else if (exception_tb->tb_frame != &frame_755313176f2e02236f3250176e450dd4_3->m_frame) {
-            exception_tb = ADD_TRACEBACK(exception_tb, frame_755313176f2e02236f3250176e450dd4_3, exception_lineno);
+            exception_tb = MAKE_TRACEBACK(frame_8366f9f360f761f57874b9d12618e857_3, exception_lineno);
+        } else if (exception_tb->tb_frame != &frame_8366f9f360f761f57874b9d12618e857_3->m_frame) {
+            exception_tb = ADD_TRACEBACK(exception_tb, frame_8366f9f360f761f57874b9d12618e857_3, exception_lineno);
         }
 
         // Attaches locals to frame if any.
         Nuitka_Frame_AttachLocals(
-            frame_755313176f2e02236f3250176e450dd4_3,
+            frame_8366f9f360f761f57874b9d12618e857_3,
             type_description_2,
             outline_1_var___class__
         );
 
 
 
-        assertFrameObject(frame_755313176f2e02236f3250176e450dd4_3);
+        assertFrameObject(frame_8366f9f360f761f57874b9d12618e857_3);
 
         // Put the previous frame back on top.
         popFrameStack(tstate);
@@ -10073,7 +12112,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 77;
+                exception_lineno = 82;
 
                 goto try_except_handler_6;
             }
@@ -10086,14 +12125,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         branch_yes_3:;
         CHECK_OBJECT(tmp_class_creation_2__bases_orig);
         tmp_dictset_value = tmp_class_creation_2__bases_orig;
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__2_TriggerBuff_77, mod_consts[80], tmp_dictset_value);
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__2_TriggerBuff_82, mod_consts[84], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 77;
+            exception_lineno = 82;
 
             goto try_except_handler_6;
         }
@@ -10106,17 +12145,17 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_kwargs_value_3;
             CHECK_OBJECT(tmp_class_creation_2__metaclass);
             tmp_called_value_5 = tmp_class_creation_2__metaclass;
-            tmp_tuple_element_5 = mod_consts[73];
+            tmp_tuple_element_5 = mod_consts[77];
             tmp_args_value_3 = MAKE_TUPLE_EMPTY(3);
             PyTuple_SET_ITEM0(tmp_args_value_3, 0, tmp_tuple_element_5);
             CHECK_OBJECT(tmp_class_creation_2__bases);
             tmp_tuple_element_5 = tmp_class_creation_2__bases;
             PyTuple_SET_ITEM0(tmp_args_value_3, 1, tmp_tuple_element_5);
-            tmp_tuple_element_5 = locals_base$buff$$$class__2_TriggerBuff_77;
+            tmp_tuple_element_5 = locals_base$buff$$$class__2_TriggerBuff_82;
             PyTuple_SET_ITEM0(tmp_args_value_3, 2, tmp_tuple_element_5);
             CHECK_OBJECT(tmp_class_creation_2__class_decl_dict);
             tmp_kwargs_value_3 = tmp_class_creation_2__class_decl_dict;
-            frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 77;
+            frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 82;
             tmp_assign_source_18 = CALL_FUNCTION(tstate, tmp_called_value_5, tmp_args_value_3, tmp_kwargs_value_3);
             Py_DECREF(tmp_args_value_3);
             if (tmp_assign_source_18 == NULL) {
@@ -10125,7 +12164,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 77;
+                exception_lineno = 82;
 
                 goto try_except_handler_6;
             }
@@ -10141,8 +12180,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         return NULL;
         // Return handler code:
         try_return_handler_6:;
-        Py_DECREF(locals_base$buff$$$class__2_TriggerBuff_77);
-        locals_base$buff$$$class__2_TriggerBuff_77 = NULL;
+        Py_DECREF(locals_base$buff$$$class__2_TriggerBuff_82);
+        locals_base$buff$$$class__2_TriggerBuff_82 = NULL;
         goto try_return_handler_5;
         // Exception handler code:
         try_except_handler_6:;
@@ -10155,8 +12194,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         exception_tb = NULL;
         exception_lineno = 0;
 
-        Py_DECREF(locals_base$buff$$$class__2_TriggerBuff_77);
-        locals_base$buff$$$class__2_TriggerBuff_77 = NULL;
+        Py_DECREF(locals_base$buff$$$class__2_TriggerBuff_82);
+        locals_base$buff$$$class__2_TriggerBuff_82 = NULL;
         // Re-raise.
         exception_type = exception_keeper_type_4;
         exception_value = exception_keeper_value_4;
@@ -10195,10 +12234,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         NUITKA_CANNOT_GET_HERE("Return statement must have exited already.");
         return NULL;
         outline_exception_2:;
-        exception_lineno = 77;
+        exception_lineno = 82;
         goto try_except_handler_4;
         outline_result_2:;
-        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[73], tmp_assign_source_17);
+        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[77], tmp_assign_source_17);
     }
     goto try_end_2;
     // Exception handler code:
@@ -10251,10 +12290,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     {
         PyObject *tmp_assign_source_19;
         PyObject *tmp_tuple_element_6;
-        tmp_tuple_element_6 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[54]);
+        tmp_tuple_element_6 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[56]);
 
         if (unlikely(tmp_tuple_element_6 == NULL)) {
-            tmp_tuple_element_6 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[54]);
+            tmp_tuple_element_6 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[56]);
         }
 
         if (tmp_tuple_element_6 == NULL) {
@@ -10263,7 +12302,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 85;
+            exception_lineno = 90;
 
             goto try_except_handler_7;
         }
@@ -10289,7 +12328,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 85;
+            exception_lineno = 90;
 
             goto try_except_handler_7;
         }
@@ -10319,7 +12358,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 85;
+            exception_lineno = 90;
 
             goto try_except_handler_7;
         }
@@ -10332,7 +12371,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         condexpr_true_2:;
         CHECK_OBJECT(tmp_class_creation_3__bases);
         tmp_expression_value_8 = tmp_class_creation_3__bases;
-        tmp_subscript_value_2 = mod_consts[39];
+        tmp_subscript_value_2 = mod_consts[41];
         tmp_type_arg_3 = LOOKUP_SUBSCRIPT_CONST(tstate, tmp_expression_value_8, tmp_subscript_value_2, 0);
         if (tmp_type_arg_3 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -10340,7 +12379,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 85;
+            exception_lineno = 90;
 
             goto try_except_handler_7;
         }
@@ -10352,7 +12391,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 85;
+            exception_lineno = 90;
 
             goto try_except_handler_7;
         }
@@ -10371,7 +12410,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 85;
+            exception_lineno = 90;
 
             goto try_except_handler_7;
         }
@@ -10383,14 +12422,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_expression_value_9;
         CHECK_OBJECT(tmp_class_creation_3__metaclass);
         tmp_expression_value_9 = tmp_class_creation_3__metaclass;
-        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_9, mod_consts[72]);
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_9, mod_consts[76]);
         if (tmp_res == -1) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 85;
+            exception_lineno = 90;
 
             goto try_except_handler_7;
         }
@@ -10411,18 +12450,18 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_kwargs_value_4;
         CHECK_OBJECT(tmp_class_creation_3__metaclass);
         tmp_expression_value_10 = tmp_class_creation_3__metaclass;
-        tmp_called_value_6 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_10, mod_consts[72]);
+        tmp_called_value_6 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_10, mod_consts[76]);
         if (tmp_called_value_6 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 85;
+            exception_lineno = 90;
 
             goto try_except_handler_7;
         }
-        tmp_tuple_element_7 = mod_consts[81];
+        tmp_tuple_element_7 = mod_consts[85];
         tmp_args_value_4 = MAKE_TUPLE_EMPTY(2);
         PyTuple_SET_ITEM0(tmp_args_value_4, 0, tmp_tuple_element_7);
         CHECK_OBJECT(tmp_class_creation_3__bases);
@@ -10430,7 +12469,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyTuple_SET_ITEM0(tmp_args_value_4, 1, tmp_tuple_element_7);
         CHECK_OBJECT(tmp_class_creation_3__class_decl_dict);
         tmp_kwargs_value_4 = tmp_class_creation_3__class_decl_dict;
-        frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 85;
+        frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 90;
         tmp_assign_source_23 = CALL_FUNCTION(tstate, tmp_called_value_6, tmp_args_value_4, tmp_kwargs_value_4);
         Py_DECREF(tmp_called_value_6);
         Py_DECREF(tmp_args_value_4);
@@ -10440,7 +12479,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 85;
+            exception_lineno = 90;
 
             goto try_except_handler_7;
         }
@@ -10453,14 +12492,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_expression_value_11;
         CHECK_OBJECT(tmp_class_creation_3__prepared);
         tmp_expression_value_11 = tmp_class_creation_3__prepared;
-        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_11, mod_consts[74]);
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_11, mod_consts[78]);
         if (tmp_res == -1) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 85;
+            exception_lineno = 90;
 
             goto try_except_handler_7;
         }
@@ -10485,11 +12524,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_name_value_5;
         PyObject *tmp_default_value_2;
         tmp_raise_type_2 = PyExc_TypeError;
-        tmp_mod_expr_left_2 = mod_consts[75];
+        tmp_mod_expr_left_2 = mod_consts[79];
         CHECK_OBJECT(tmp_class_creation_3__metaclass);
         tmp_expression_value_12 = tmp_class_creation_3__metaclass;
-        tmp_name_value_5 = mod_consts[76];
-        tmp_default_value_2 = mod_consts[77];
+        tmp_name_value_5 = mod_consts[80];
+        tmp_default_value_2 = mod_consts[81];
         tmp_tuple_element_8 = BUILTIN_GETATTR(tstate, tmp_expression_value_12, tmp_name_value_5, tmp_default_value_2);
         if (tmp_tuple_element_8 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -10497,7 +12536,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 85;
+            exception_lineno = 90;
 
             goto try_except_handler_7;
         }
@@ -10510,7 +12549,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             tmp_type_arg_4 = tmp_class_creation_3__prepared;
             tmp_expression_value_13 = BUILTIN_TYPE1(tmp_type_arg_4);
             assert(!(tmp_expression_value_13 == NULL));
-            tmp_tuple_element_8 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_13, mod_consts[76]);
+            tmp_tuple_element_8 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_13, mod_consts[80]);
             Py_DECREF(tmp_expression_value_13);
             if (tmp_tuple_element_8 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -10518,7 +12557,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 85;
+                exception_lineno = 90;
 
                 goto tuple_build_exception_2;
             }
@@ -10539,14 +12578,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 85;
+            exception_lineno = 90;
 
             goto try_except_handler_7;
         }
         exception_type = tmp_raise_type_2;
         Py_INCREF(tmp_raise_type_2);
         exception_value = tmp_raise_value_2;
-        exception_lineno = 85;
+        exception_lineno = 90;
         RAISE_EXCEPTION_IMPLICIT(tstate, &exception_type, &exception_value, &exception_tb);
 
         goto try_except_handler_7;
@@ -10567,37 +12606,37 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_set_locals_3;
             CHECK_OBJECT(tmp_class_creation_3__prepared);
             tmp_set_locals_3 = tmp_class_creation_3__prepared;
-            locals_base$buff$$$class__3_ExtendBuff_85 = tmp_set_locals_3;
+            locals_base$buff$$$class__3_ExtendBuff_90 = tmp_set_locals_3;
             Py_INCREF(tmp_set_locals_3);
         }
         // Tried code:
         // Tried code:
-        tmp_dictset_value = mod_consts[52];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__3_ExtendBuff_85, mod_consts[53], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[54];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__3_ExtendBuff_90, mod_consts[55], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 85;
+            exception_lineno = 90;
 
             goto try_except_handler_9;
         }
-        tmp_dictset_value = mod_consts[81];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__3_ExtendBuff_85, mod_consts[55], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[85];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__3_ExtendBuff_90, mod_consts[57], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 85;
+            exception_lineno = 90;
 
             goto try_except_handler_9;
         }
         tmp_dictset_value = MAKE_DICT_EMPTY();
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__3_ExtendBuff_85, mod_consts[56], tmp_dictset_value);
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__3_ExtendBuff_90, mod_consts[58], tmp_dictset_value);
         Py_DECREF(tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -10605,27 +12644,27 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 85;
+            exception_lineno = 90;
 
             goto try_except_handler_9;
         }
-        frame_d2cdb8a6e068299892acdda3afa1ff19_4 = MAKE_CLASS_FRAME(tstate, codeobj_d2cdb8a6e068299892acdda3afa1ff19, module_base$buff, NULL, sizeof(void *));
+        frame_243a78ba8956893e6af9bbd02f2cfb3e_4 = MAKE_CLASS_FRAME(tstate, codeobj_243a78ba8956893e6af9bbd02f2cfb3e, module_base$buff, NULL, sizeof(void *));
 
         // Push the new frame as the currently active one, and we should be exclusively
         // owning it.
-        pushFrameStackCompiledFrame(tstate, frame_d2cdb8a6e068299892acdda3afa1ff19_4);
-        assert(Py_REFCNT(frame_d2cdb8a6e068299892acdda3afa1ff19_4) == 2);
+        pushFrameStackCompiledFrame(tstate, frame_243a78ba8956893e6af9bbd02f2cfb3e_4);
+        assert(Py_REFCNT(frame_243a78ba8956893e6af9bbd02f2cfb3e_4) == 2);
 
         // Framed code:
-        tmp_dictset_value = mod_consts[39];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__3_ExtendBuff_85, mod_consts[27], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[41];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__3_ExtendBuff_90, mod_consts[26], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 86;
+            exception_lineno = 91;
             type_description_2 = "o";
             goto frame_exception_exit_4;
         }
@@ -10633,7 +12672,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_ass_subvalue_11;
             PyObject *tmp_ass_subscribed_11;
             PyObject *tmp_ass_subscript_11;
-            tmp_ass_subvalue_11 = PyObject_GetItem(locals_base$buff$$$class__3_ExtendBuff_85, mod_consts[82]);
+            tmp_ass_subvalue_11 = PyObject_GetItem(locals_base$buff$$$class__3_ExtendBuff_90, mod_consts[86]);
 
             if (tmp_ass_subvalue_11 == NULL) {
                 if (CHECK_AND_CLEAR_KEY_ERROR_OCCURRED(tstate)) {
@@ -10644,15 +12683,15 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 }
             }
 
-            tmp_ass_subscribed_11 = PyObject_GetItem(locals_base$buff$$$class__3_ExtendBuff_85, mod_consts[56]);
+            tmp_ass_subscribed_11 = PyObject_GetItem(locals_base$buff$$$class__3_ExtendBuff_90, mod_consts[58]);
 
             if (unlikely(tmp_ass_subscribed_11 == NULL && CHECK_AND_CLEAR_KEY_ERROR_OCCURRED(tstate))) {
                 Py_DECREF(tmp_ass_subvalue_11);
-                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[56]);
+                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[58]);
                 NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
                 CHAIN_EXCEPTION(tstate, exception_value);
 
-                exception_lineno = 86;
+                exception_lineno = 91;
                 type_description_2 = "o";
                 goto frame_exception_exit_4;
             }
@@ -10663,11 +12702,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
                 Py_DECREF(tmp_ass_subvalue_11);
 
-                exception_lineno = 86;
+                exception_lineno = 91;
                 type_description_2 = "o";
                 goto frame_exception_exit_4;
             }
-            tmp_ass_subscript_11 = mod_consts[27];
+            tmp_ass_subscript_11 = mod_consts[26];
             tmp_result = SET_SUBSCRIPT(tstate, tmp_ass_subscribed_11, tmp_ass_subscript_11, tmp_ass_subvalue_11);
             Py_DECREF(tmp_ass_subscribed_11);
             Py_DECREF(tmp_ass_subvalue_11);
@@ -10677,20 +12716,20 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 86;
+                exception_lineno = 91;
                 type_description_2 = "o";
                 goto frame_exception_exit_4;
             }
         }
-        tmp_dictset_value = mod_consts[58];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__3_ExtendBuff_85, mod_consts[26], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[61];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__3_ExtendBuff_90, mod_consts[25], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 87;
+            exception_lineno = 92;
             type_description_2 = "o";
             goto frame_exception_exit_4;
         }
@@ -10698,7 +12737,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_ass_subvalue_12;
             PyObject *tmp_ass_subscribed_12;
             PyObject *tmp_ass_subscript_12;
-            tmp_ass_subvalue_12 = PyObject_GetItem(locals_base$buff$$$class__3_ExtendBuff_85, mod_consts[82]);
+            tmp_ass_subvalue_12 = PyObject_GetItem(locals_base$buff$$$class__3_ExtendBuff_90, mod_consts[86]);
 
             if (tmp_ass_subvalue_12 == NULL) {
                 if (CHECK_AND_CLEAR_KEY_ERROR_OCCURRED(tstate)) {
@@ -10709,15 +12748,15 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 }
             }
 
-            tmp_ass_subscribed_12 = PyObject_GetItem(locals_base$buff$$$class__3_ExtendBuff_85, mod_consts[56]);
+            tmp_ass_subscribed_12 = PyObject_GetItem(locals_base$buff$$$class__3_ExtendBuff_90, mod_consts[58]);
 
             if (unlikely(tmp_ass_subscribed_12 == NULL && CHECK_AND_CLEAR_KEY_ERROR_OCCURRED(tstate))) {
                 Py_DECREF(tmp_ass_subvalue_12);
-                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[56]);
+                FORMAT_NAME_ERROR(&exception_type, &exception_value, mod_consts[58]);
                 NORMALIZE_EXCEPTION(tstate, &exception_type, &exception_value, &exception_tb);
                 CHAIN_EXCEPTION(tstate, exception_value);
 
-                exception_lineno = 87;
+                exception_lineno = 92;
                 type_description_2 = "o";
                 goto frame_exception_exit_4;
             }
@@ -10728,11 +12767,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
                 Py_DECREF(tmp_ass_subvalue_12);
 
-                exception_lineno = 87;
+                exception_lineno = 92;
                 type_description_2 = "o";
                 goto frame_exception_exit_4;
             }
-            tmp_ass_subscript_12 = mod_consts[26];
+            tmp_ass_subscript_12 = mod_consts[25];
             tmp_result = SET_SUBSCRIPT(tstate, tmp_ass_subscribed_12, tmp_ass_subscript_12, tmp_ass_subvalue_12);
             Py_DECREF(tmp_ass_subscribed_12);
             Py_DECREF(tmp_ass_subvalue_12);
@@ -10742,7 +12781,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 87;
+                exception_lineno = 92;
                 type_description_2 = "o";
                 goto frame_exception_exit_4;
             }
@@ -10751,7 +12790,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
         tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__10_extend();
 
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__3_ExtendBuff_85, mod_consts[83], tmp_dictset_value);
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__3_ExtendBuff_90, mod_consts[87], tmp_dictset_value);
         Py_DECREF(tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -10759,7 +12798,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 89;
+            exception_lineno = 94;
             type_description_2 = "o";
             goto frame_exception_exit_4;
         }
@@ -10773,21 +12812,21 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
 
         if (exception_tb == NULL) {
-            exception_tb = MAKE_TRACEBACK(frame_d2cdb8a6e068299892acdda3afa1ff19_4, exception_lineno);
-        } else if (exception_tb->tb_frame != &frame_d2cdb8a6e068299892acdda3afa1ff19_4->m_frame) {
-            exception_tb = ADD_TRACEBACK(exception_tb, frame_d2cdb8a6e068299892acdda3afa1ff19_4, exception_lineno);
+            exception_tb = MAKE_TRACEBACK(frame_243a78ba8956893e6af9bbd02f2cfb3e_4, exception_lineno);
+        } else if (exception_tb->tb_frame != &frame_243a78ba8956893e6af9bbd02f2cfb3e_4->m_frame) {
+            exception_tb = ADD_TRACEBACK(exception_tb, frame_243a78ba8956893e6af9bbd02f2cfb3e_4, exception_lineno);
         }
 
         // Attaches locals to frame if any.
         Nuitka_Frame_AttachLocals(
-            frame_d2cdb8a6e068299892acdda3afa1ff19_4,
+            frame_243a78ba8956893e6af9bbd02f2cfb3e_4,
             type_description_2,
             outline_2_var___class__
         );
 
 
 
-        assertFrameObject(frame_d2cdb8a6e068299892acdda3afa1ff19_4);
+        assertFrameObject(frame_243a78ba8956893e6af9bbd02f2cfb3e_4);
 
         // Put the previous frame back on top.
         popFrameStack(tstate);
@@ -10815,7 +12854,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 85;
+                exception_lineno = 90;
 
                 goto try_except_handler_9;
             }
@@ -10828,14 +12867,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         branch_yes_6:;
         CHECK_OBJECT(tmp_class_creation_3__bases_orig);
         tmp_dictset_value = tmp_class_creation_3__bases_orig;
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__3_ExtendBuff_85, mod_consts[80], tmp_dictset_value);
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__3_ExtendBuff_90, mod_consts[84], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 85;
+            exception_lineno = 90;
 
             goto try_except_handler_9;
         }
@@ -10848,17 +12887,17 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_kwargs_value_5;
             CHECK_OBJECT(tmp_class_creation_3__metaclass);
             tmp_called_value_7 = tmp_class_creation_3__metaclass;
-            tmp_tuple_element_9 = mod_consts[81];
+            tmp_tuple_element_9 = mod_consts[85];
             tmp_args_value_5 = MAKE_TUPLE_EMPTY(3);
             PyTuple_SET_ITEM0(tmp_args_value_5, 0, tmp_tuple_element_9);
             CHECK_OBJECT(tmp_class_creation_3__bases);
             tmp_tuple_element_9 = tmp_class_creation_3__bases;
             PyTuple_SET_ITEM0(tmp_args_value_5, 1, tmp_tuple_element_9);
-            tmp_tuple_element_9 = locals_base$buff$$$class__3_ExtendBuff_85;
+            tmp_tuple_element_9 = locals_base$buff$$$class__3_ExtendBuff_90;
             PyTuple_SET_ITEM0(tmp_args_value_5, 2, tmp_tuple_element_9);
             CHECK_OBJECT(tmp_class_creation_3__class_decl_dict);
             tmp_kwargs_value_5 = tmp_class_creation_3__class_decl_dict;
-            frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 85;
+            frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 90;
             tmp_assign_source_26 = CALL_FUNCTION(tstate, tmp_called_value_7, tmp_args_value_5, tmp_kwargs_value_5);
             Py_DECREF(tmp_args_value_5);
             if (tmp_assign_source_26 == NULL) {
@@ -10867,7 +12906,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 85;
+                exception_lineno = 90;
 
                 goto try_except_handler_9;
             }
@@ -10882,8 +12921,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         return NULL;
         // Return handler code:
         try_return_handler_9:;
-        Py_DECREF(locals_base$buff$$$class__3_ExtendBuff_85);
-        locals_base$buff$$$class__3_ExtendBuff_85 = NULL;
+        Py_DECREF(locals_base$buff$$$class__3_ExtendBuff_90);
+        locals_base$buff$$$class__3_ExtendBuff_90 = NULL;
         goto try_return_handler_8;
         // Exception handler code:
         try_except_handler_9:;
@@ -10896,8 +12935,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         exception_tb = NULL;
         exception_lineno = 0;
 
-        Py_DECREF(locals_base$buff$$$class__3_ExtendBuff_85);
-        locals_base$buff$$$class__3_ExtendBuff_85 = NULL;
+        Py_DECREF(locals_base$buff$$$class__3_ExtendBuff_90);
+        locals_base$buff$$$class__3_ExtendBuff_90 = NULL;
         // Re-raise.
         exception_type = exception_keeper_type_7;
         exception_value = exception_keeper_value_7;
@@ -10936,10 +12975,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         NUITKA_CANNOT_GET_HERE("Return statement must have exited already.");
         return NULL;
         outline_exception_3:;
-        exception_lineno = 85;
+        exception_lineno = 90;
         goto try_except_handler_7;
         outline_result_3:;
-        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[81], tmp_assign_source_25);
+        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[85], tmp_assign_source_25);
     }
     goto try_end_3;
     // Exception handler code:
@@ -10991,10 +13030,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     {
         PyObject *tmp_assign_source_27;
         PyObject *tmp_tuple_element_10;
-        tmp_tuple_element_10 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[54]);
+        tmp_tuple_element_10 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[56]);
 
         if (unlikely(tmp_tuple_element_10 == NULL)) {
-            tmp_tuple_element_10 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[54]);
+            tmp_tuple_element_10 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[56]);
         }
 
         if (tmp_tuple_element_10 == NULL) {
@@ -11003,7 +13042,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 94;
+            exception_lineno = 99;
 
             goto try_except_handler_10;
         }
@@ -11029,7 +13068,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 94;
+            exception_lineno = 99;
 
             goto try_except_handler_10;
         }
@@ -11059,7 +13098,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 94;
+            exception_lineno = 99;
 
             goto try_except_handler_10;
         }
@@ -11072,7 +13111,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         condexpr_true_3:;
         CHECK_OBJECT(tmp_class_creation_4__bases);
         tmp_expression_value_14 = tmp_class_creation_4__bases;
-        tmp_subscript_value_3 = mod_consts[39];
+        tmp_subscript_value_3 = mod_consts[41];
         tmp_type_arg_5 = LOOKUP_SUBSCRIPT_CONST(tstate, tmp_expression_value_14, tmp_subscript_value_3, 0);
         if (tmp_type_arg_5 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -11080,7 +13119,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 94;
+            exception_lineno = 99;
 
             goto try_except_handler_10;
         }
@@ -11092,7 +13131,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 94;
+            exception_lineno = 99;
 
             goto try_except_handler_10;
         }
@@ -11111,7 +13150,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 94;
+            exception_lineno = 99;
 
             goto try_except_handler_10;
         }
@@ -11123,14 +13162,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_expression_value_15;
         CHECK_OBJECT(tmp_class_creation_4__metaclass);
         tmp_expression_value_15 = tmp_class_creation_4__metaclass;
-        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_15, mod_consts[72]);
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_15, mod_consts[76]);
         if (tmp_res == -1) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 94;
+            exception_lineno = 99;
 
             goto try_except_handler_10;
         }
@@ -11151,18 +13190,18 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_kwargs_value_6;
         CHECK_OBJECT(tmp_class_creation_4__metaclass);
         tmp_expression_value_16 = tmp_class_creation_4__metaclass;
-        tmp_called_value_8 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_16, mod_consts[72]);
+        tmp_called_value_8 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_16, mod_consts[76]);
         if (tmp_called_value_8 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 94;
+            exception_lineno = 99;
 
             goto try_except_handler_10;
         }
-        tmp_tuple_element_11 = mod_consts[85];
+        tmp_tuple_element_11 = mod_consts[89];
         tmp_args_value_6 = MAKE_TUPLE_EMPTY(2);
         PyTuple_SET_ITEM0(tmp_args_value_6, 0, tmp_tuple_element_11);
         CHECK_OBJECT(tmp_class_creation_4__bases);
@@ -11170,7 +13209,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyTuple_SET_ITEM0(tmp_args_value_6, 1, tmp_tuple_element_11);
         CHECK_OBJECT(tmp_class_creation_4__class_decl_dict);
         tmp_kwargs_value_6 = tmp_class_creation_4__class_decl_dict;
-        frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 94;
+        frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 99;
         tmp_assign_source_31 = CALL_FUNCTION(tstate, tmp_called_value_8, tmp_args_value_6, tmp_kwargs_value_6);
         Py_DECREF(tmp_called_value_8);
         Py_DECREF(tmp_args_value_6);
@@ -11180,7 +13219,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 94;
+            exception_lineno = 99;
 
             goto try_except_handler_10;
         }
@@ -11193,14 +13232,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_expression_value_17;
         CHECK_OBJECT(tmp_class_creation_4__prepared);
         tmp_expression_value_17 = tmp_class_creation_4__prepared;
-        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_17, mod_consts[74]);
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_17, mod_consts[78]);
         if (tmp_res == -1) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 94;
+            exception_lineno = 99;
 
             goto try_except_handler_10;
         }
@@ -11225,11 +13264,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_name_value_6;
         PyObject *tmp_default_value_3;
         tmp_raise_type_3 = PyExc_TypeError;
-        tmp_mod_expr_left_3 = mod_consts[75];
+        tmp_mod_expr_left_3 = mod_consts[79];
         CHECK_OBJECT(tmp_class_creation_4__metaclass);
         tmp_expression_value_18 = tmp_class_creation_4__metaclass;
-        tmp_name_value_6 = mod_consts[76];
-        tmp_default_value_3 = mod_consts[77];
+        tmp_name_value_6 = mod_consts[80];
+        tmp_default_value_3 = mod_consts[81];
         tmp_tuple_element_12 = BUILTIN_GETATTR(tstate, tmp_expression_value_18, tmp_name_value_6, tmp_default_value_3);
         if (tmp_tuple_element_12 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -11237,7 +13276,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 94;
+            exception_lineno = 99;
 
             goto try_except_handler_10;
         }
@@ -11250,7 +13289,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             tmp_type_arg_6 = tmp_class_creation_4__prepared;
             tmp_expression_value_19 = BUILTIN_TYPE1(tmp_type_arg_6);
             assert(!(tmp_expression_value_19 == NULL));
-            tmp_tuple_element_12 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_19, mod_consts[76]);
+            tmp_tuple_element_12 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_19, mod_consts[80]);
             Py_DECREF(tmp_expression_value_19);
             if (tmp_tuple_element_12 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -11258,7 +13297,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 94;
+                exception_lineno = 99;
 
                 goto tuple_build_exception_3;
             }
@@ -11279,14 +13318,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 94;
+            exception_lineno = 99;
 
             goto try_except_handler_10;
         }
         exception_type = tmp_raise_type_3;
         Py_INCREF(tmp_raise_type_3);
         exception_value = tmp_raise_value_3;
-        exception_lineno = 94;
+        exception_lineno = 99;
         RAISE_EXCEPTION_IMPLICIT(tstate, &exception_type, &exception_value, &exception_tb);
 
         goto try_except_handler_10;
@@ -11307,48 +13346,48 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_set_locals_4;
             CHECK_OBJECT(tmp_class_creation_4__prepared);
             tmp_set_locals_4 = tmp_class_creation_4__prepared;
-            locals_base$buff$$$class__4_DotBuff_94 = tmp_set_locals_4;
+            locals_base$buff$$$class__4_DotBuff_99 = tmp_set_locals_4;
             Py_INCREF(tmp_set_locals_4);
         }
         // Tried code:
         // Tried code:
-        tmp_dictset_value = mod_consts[52];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__4_DotBuff_94, mod_consts[53], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[54];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__4_DotBuff_99, mod_consts[55], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 94;
+            exception_lineno = 99;
 
             goto try_except_handler_12;
         }
-        tmp_dictset_value = mod_consts[85];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__4_DotBuff_94, mod_consts[55], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[89];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__4_DotBuff_99, mod_consts[57], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 94;
+            exception_lineno = 99;
 
             goto try_except_handler_12;
         }
-        frame_e21701fd825860f9352c708525b61ec0_5 = MAKE_CLASS_FRAME(tstate, codeobj_e21701fd825860f9352c708525b61ec0, module_base$buff, NULL, sizeof(void *));
+        frame_d51931bfb6a2f957b2396491e483aed9_5 = MAKE_CLASS_FRAME(tstate, codeobj_d51931bfb6a2f957b2396491e483aed9, module_base$buff, NULL, sizeof(void *));
 
         // Push the new frame as the currently active one, and we should be exclusively
         // owning it.
-        pushFrameStackCompiledFrame(tstate, frame_e21701fd825860f9352c708525b61ec0_5);
-        assert(Py_REFCNT(frame_e21701fd825860f9352c708525b61ec0_5) == 2);
+        pushFrameStackCompiledFrame(tstate, frame_d51931bfb6a2f957b2396491e483aed9_5);
+        assert(Py_REFCNT(frame_d51931bfb6a2f957b2396491e483aed9_5) == 2);
 
         // Framed code:
 
 
         tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__11_set_duration();
 
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__4_DotBuff_94, mod_consts[16], tmp_dictset_value);
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__4_DotBuff_99, mod_consts[17], tmp_dictset_value);
         Py_DECREF(tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -11356,7 +13395,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 95;
+            exception_lineno = 100;
             type_description_2 = "o";
             goto frame_exception_exit_5;
         }
@@ -11370,21 +13409,21 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
 
         if (exception_tb == NULL) {
-            exception_tb = MAKE_TRACEBACK(frame_e21701fd825860f9352c708525b61ec0_5, exception_lineno);
-        } else if (exception_tb->tb_frame != &frame_e21701fd825860f9352c708525b61ec0_5->m_frame) {
-            exception_tb = ADD_TRACEBACK(exception_tb, frame_e21701fd825860f9352c708525b61ec0_5, exception_lineno);
+            exception_tb = MAKE_TRACEBACK(frame_d51931bfb6a2f957b2396491e483aed9_5, exception_lineno);
+        } else if (exception_tb->tb_frame != &frame_d51931bfb6a2f957b2396491e483aed9_5->m_frame) {
+            exception_tb = ADD_TRACEBACK(exception_tb, frame_d51931bfb6a2f957b2396491e483aed9_5, exception_lineno);
         }
 
         // Attaches locals to frame if any.
         Nuitka_Frame_AttachLocals(
-            frame_e21701fd825860f9352c708525b61ec0_5,
+            frame_d51931bfb6a2f957b2396491e483aed9_5,
             type_description_2,
             outline_3_var___class__
         );
 
 
 
-        assertFrameObject(frame_e21701fd825860f9352c708525b61ec0_5);
+        assertFrameObject(frame_d51931bfb6a2f957b2396491e483aed9_5);
 
         // Put the previous frame back on top.
         popFrameStack(tstate);
@@ -11412,7 +13451,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 94;
+                exception_lineno = 99;
 
                 goto try_except_handler_12;
             }
@@ -11425,14 +13464,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         branch_yes_9:;
         CHECK_OBJECT(tmp_class_creation_4__bases_orig);
         tmp_dictset_value = tmp_class_creation_4__bases_orig;
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__4_DotBuff_94, mod_consts[80], tmp_dictset_value);
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__4_DotBuff_99, mod_consts[84], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 94;
+            exception_lineno = 99;
 
             goto try_except_handler_12;
         }
@@ -11445,17 +13484,17 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_kwargs_value_7;
             CHECK_OBJECT(tmp_class_creation_4__metaclass);
             tmp_called_value_9 = tmp_class_creation_4__metaclass;
-            tmp_tuple_element_13 = mod_consts[85];
+            tmp_tuple_element_13 = mod_consts[89];
             tmp_args_value_7 = MAKE_TUPLE_EMPTY(3);
             PyTuple_SET_ITEM0(tmp_args_value_7, 0, tmp_tuple_element_13);
             CHECK_OBJECT(tmp_class_creation_4__bases);
             tmp_tuple_element_13 = tmp_class_creation_4__bases;
             PyTuple_SET_ITEM0(tmp_args_value_7, 1, tmp_tuple_element_13);
-            tmp_tuple_element_13 = locals_base$buff$$$class__4_DotBuff_94;
+            tmp_tuple_element_13 = locals_base$buff$$$class__4_DotBuff_99;
             PyTuple_SET_ITEM0(tmp_args_value_7, 2, tmp_tuple_element_13);
             CHECK_OBJECT(tmp_class_creation_4__class_decl_dict);
             tmp_kwargs_value_7 = tmp_class_creation_4__class_decl_dict;
-            frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 94;
+            frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 99;
             tmp_assign_source_34 = CALL_FUNCTION(tstate, tmp_called_value_9, tmp_args_value_7, tmp_kwargs_value_7);
             Py_DECREF(tmp_args_value_7);
             if (tmp_assign_source_34 == NULL) {
@@ -11464,7 +13503,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 94;
+                exception_lineno = 99;
 
                 goto try_except_handler_12;
             }
@@ -11479,8 +13518,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         return NULL;
         // Return handler code:
         try_return_handler_12:;
-        Py_DECREF(locals_base$buff$$$class__4_DotBuff_94);
-        locals_base$buff$$$class__4_DotBuff_94 = NULL;
+        Py_DECREF(locals_base$buff$$$class__4_DotBuff_99);
+        locals_base$buff$$$class__4_DotBuff_99 = NULL;
         goto try_return_handler_11;
         // Exception handler code:
         try_except_handler_12:;
@@ -11493,8 +13532,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         exception_tb = NULL;
         exception_lineno = 0;
 
-        Py_DECREF(locals_base$buff$$$class__4_DotBuff_94);
-        locals_base$buff$$$class__4_DotBuff_94 = NULL;
+        Py_DECREF(locals_base$buff$$$class__4_DotBuff_99);
+        locals_base$buff$$$class__4_DotBuff_99 = NULL;
         // Re-raise.
         exception_type = exception_keeper_type_10;
         exception_value = exception_keeper_value_10;
@@ -11533,10 +13572,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         NUITKA_CANNOT_GET_HERE("Return statement must have exited already.");
         return NULL;
         outline_exception_4:;
-        exception_lineno = 94;
+        exception_lineno = 99;
         goto try_except_handler_10;
         outline_result_4:;
-        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[85], tmp_assign_source_33);
+        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[89], tmp_assign_source_33);
     }
     goto try_end_4;
     // Exception handler code:
@@ -11588,10 +13627,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     {
         PyObject *tmp_assign_source_35;
         PyObject *tmp_tuple_element_14;
-        tmp_tuple_element_14 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[54]);
+        tmp_tuple_element_14 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[56]);
 
         if (unlikely(tmp_tuple_element_14 == NULL)) {
-            tmp_tuple_element_14 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[54]);
+            tmp_tuple_element_14 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[56]);
         }
 
         if (tmp_tuple_element_14 == NULL) {
@@ -11600,7 +13639,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 103;
+            exception_lineno = 108;
 
             goto try_except_handler_13;
         }
@@ -11626,7 +13665,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 103;
+            exception_lineno = 108;
 
             goto try_except_handler_13;
         }
@@ -11656,7 +13695,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 103;
+            exception_lineno = 108;
 
             goto try_except_handler_13;
         }
@@ -11669,7 +13708,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         condexpr_true_4:;
         CHECK_OBJECT(tmp_class_creation_5__bases);
         tmp_expression_value_20 = tmp_class_creation_5__bases;
-        tmp_subscript_value_4 = mod_consts[39];
+        tmp_subscript_value_4 = mod_consts[41];
         tmp_type_arg_7 = LOOKUP_SUBSCRIPT_CONST(tstate, tmp_expression_value_20, tmp_subscript_value_4, 0);
         if (tmp_type_arg_7 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -11677,7 +13716,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 103;
+            exception_lineno = 108;
 
             goto try_except_handler_13;
         }
@@ -11689,7 +13728,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 103;
+            exception_lineno = 108;
 
             goto try_except_handler_13;
         }
@@ -11708,7 +13747,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 103;
+            exception_lineno = 108;
 
             goto try_except_handler_13;
         }
@@ -11720,14 +13759,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_expression_value_21;
         CHECK_OBJECT(tmp_class_creation_5__metaclass);
         tmp_expression_value_21 = tmp_class_creation_5__metaclass;
-        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_21, mod_consts[72]);
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_21, mod_consts[76]);
         if (tmp_res == -1) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 103;
+            exception_lineno = 108;
 
             goto try_except_handler_13;
         }
@@ -11748,18 +13787,18 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_kwargs_value_8;
         CHECK_OBJECT(tmp_class_creation_5__metaclass);
         tmp_expression_value_22 = tmp_class_creation_5__metaclass;
-        tmp_called_value_10 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_22, mod_consts[72]);
+        tmp_called_value_10 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_22, mod_consts[76]);
         if (tmp_called_value_10 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 103;
+            exception_lineno = 108;
 
             goto try_except_handler_13;
         }
-        tmp_tuple_element_15 = mod_consts[87];
+        tmp_tuple_element_15 = mod_consts[91];
         tmp_args_value_8 = MAKE_TUPLE_EMPTY(2);
         PyTuple_SET_ITEM0(tmp_args_value_8, 0, tmp_tuple_element_15);
         CHECK_OBJECT(tmp_class_creation_5__bases);
@@ -11767,7 +13806,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyTuple_SET_ITEM0(tmp_args_value_8, 1, tmp_tuple_element_15);
         CHECK_OBJECT(tmp_class_creation_5__class_decl_dict);
         tmp_kwargs_value_8 = tmp_class_creation_5__class_decl_dict;
-        frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 103;
+        frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 108;
         tmp_assign_source_39 = CALL_FUNCTION(tstate, tmp_called_value_10, tmp_args_value_8, tmp_kwargs_value_8);
         Py_DECREF(tmp_called_value_10);
         Py_DECREF(tmp_args_value_8);
@@ -11777,7 +13816,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 103;
+            exception_lineno = 108;
 
             goto try_except_handler_13;
         }
@@ -11790,14 +13829,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_expression_value_23;
         CHECK_OBJECT(tmp_class_creation_5__prepared);
         tmp_expression_value_23 = tmp_class_creation_5__prepared;
-        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_23, mod_consts[74]);
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_23, mod_consts[78]);
         if (tmp_res == -1) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 103;
+            exception_lineno = 108;
 
             goto try_except_handler_13;
         }
@@ -11822,11 +13861,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_name_value_7;
         PyObject *tmp_default_value_4;
         tmp_raise_type_4 = PyExc_TypeError;
-        tmp_mod_expr_left_4 = mod_consts[75];
+        tmp_mod_expr_left_4 = mod_consts[79];
         CHECK_OBJECT(tmp_class_creation_5__metaclass);
         tmp_expression_value_24 = tmp_class_creation_5__metaclass;
-        tmp_name_value_7 = mod_consts[76];
-        tmp_default_value_4 = mod_consts[77];
+        tmp_name_value_7 = mod_consts[80];
+        tmp_default_value_4 = mod_consts[81];
         tmp_tuple_element_16 = BUILTIN_GETATTR(tstate, tmp_expression_value_24, tmp_name_value_7, tmp_default_value_4);
         if (tmp_tuple_element_16 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -11834,7 +13873,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 103;
+            exception_lineno = 108;
 
             goto try_except_handler_13;
         }
@@ -11847,7 +13886,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             tmp_type_arg_8 = tmp_class_creation_5__prepared;
             tmp_expression_value_25 = BUILTIN_TYPE1(tmp_type_arg_8);
             assert(!(tmp_expression_value_25 == NULL));
-            tmp_tuple_element_16 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_25, mod_consts[76]);
+            tmp_tuple_element_16 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_25, mod_consts[80]);
             Py_DECREF(tmp_expression_value_25);
             if (tmp_tuple_element_16 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -11855,7 +13894,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 103;
+                exception_lineno = 108;
 
                 goto tuple_build_exception_4;
             }
@@ -11876,14 +13915,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 103;
+            exception_lineno = 108;
 
             goto try_except_handler_13;
         }
         exception_type = tmp_raise_type_4;
         Py_INCREF(tmp_raise_type_4);
         exception_value = tmp_raise_value_4;
-        exception_lineno = 103;
+        exception_lineno = 108;
         RAISE_EXCEPTION_IMPLICIT(tstate, &exception_type, &exception_value, &exception_tb);
 
         goto try_except_handler_13;
@@ -11904,48 +13943,48 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_set_locals_5;
             CHECK_OBJECT(tmp_class_creation_5__prepared);
             tmp_set_locals_5 = tmp_class_creation_5__prepared;
-            locals_base$buff$$$class__5_PlacementBuff_103 = tmp_set_locals_5;
+            locals_base$buff$$$class__5_PlacementBuff_108 = tmp_set_locals_5;
             Py_INCREF(tmp_set_locals_5);
         }
         // Tried code:
         // Tried code:
-        tmp_dictset_value = mod_consts[52];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__5_PlacementBuff_103, mod_consts[53], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[54];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__5_PlacementBuff_108, mod_consts[55], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 103;
+            exception_lineno = 108;
 
             goto try_except_handler_15;
         }
-        tmp_dictset_value = mod_consts[87];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__5_PlacementBuff_103, mod_consts[55], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[91];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__5_PlacementBuff_108, mod_consts[57], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 103;
+            exception_lineno = 108;
 
             goto try_except_handler_15;
         }
-        frame_59f1c54ad2591128370dcc54eb126868_6 = MAKE_CLASS_FRAME(tstate, codeobj_59f1c54ad2591128370dcc54eb126868, module_base$buff, NULL, sizeof(void *));
+        frame_065a2e898d11daf53c130dbe6cdc32f9_6 = MAKE_CLASS_FRAME(tstate, codeobj_065a2e898d11daf53c130dbe6cdc32f9, module_base$buff, NULL, sizeof(void *));
 
         // Push the new frame as the currently active one, and we should be exclusively
         // owning it.
-        pushFrameStackCompiledFrame(tstate, frame_59f1c54ad2591128370dcc54eb126868_6);
-        assert(Py_REFCNT(frame_59f1c54ad2591128370dcc54eb126868_6) == 2);
+        pushFrameStackCompiledFrame(tstate, frame_065a2e898d11daf53c130dbe6cdc32f9_6);
+        assert(Py_REFCNT(frame_065a2e898d11daf53c130dbe6cdc32f9_6) == 2);
 
         // Framed code:
 
 
         tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__12_set_duration();
 
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__5_PlacementBuff_103, mod_consts[16], tmp_dictset_value);
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__5_PlacementBuff_108, mod_consts[17], tmp_dictset_value);
         Py_DECREF(tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -11953,7 +13992,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 104;
+            exception_lineno = 109;
             type_description_2 = "o";
             goto frame_exception_exit_6;
         }
@@ -11967,21 +14006,21 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
 
         if (exception_tb == NULL) {
-            exception_tb = MAKE_TRACEBACK(frame_59f1c54ad2591128370dcc54eb126868_6, exception_lineno);
-        } else if (exception_tb->tb_frame != &frame_59f1c54ad2591128370dcc54eb126868_6->m_frame) {
-            exception_tb = ADD_TRACEBACK(exception_tb, frame_59f1c54ad2591128370dcc54eb126868_6, exception_lineno);
+            exception_tb = MAKE_TRACEBACK(frame_065a2e898d11daf53c130dbe6cdc32f9_6, exception_lineno);
+        } else if (exception_tb->tb_frame != &frame_065a2e898d11daf53c130dbe6cdc32f9_6->m_frame) {
+            exception_tb = ADD_TRACEBACK(exception_tb, frame_065a2e898d11daf53c130dbe6cdc32f9_6, exception_lineno);
         }
 
         // Attaches locals to frame if any.
         Nuitka_Frame_AttachLocals(
-            frame_59f1c54ad2591128370dcc54eb126868_6,
+            frame_065a2e898d11daf53c130dbe6cdc32f9_6,
             type_description_2,
             outline_4_var___class__
         );
 
 
 
-        assertFrameObject(frame_59f1c54ad2591128370dcc54eb126868_6);
+        assertFrameObject(frame_065a2e898d11daf53c130dbe6cdc32f9_6);
 
         // Put the previous frame back on top.
         popFrameStack(tstate);
@@ -12009,7 +14048,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 103;
+                exception_lineno = 108;
 
                 goto try_except_handler_15;
             }
@@ -12022,14 +14061,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         branch_yes_12:;
         CHECK_OBJECT(tmp_class_creation_5__bases_orig);
         tmp_dictset_value = tmp_class_creation_5__bases_orig;
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__5_PlacementBuff_103, mod_consts[80], tmp_dictset_value);
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__5_PlacementBuff_108, mod_consts[84], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 103;
+            exception_lineno = 108;
 
             goto try_except_handler_15;
         }
@@ -12042,17 +14081,17 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_kwargs_value_9;
             CHECK_OBJECT(tmp_class_creation_5__metaclass);
             tmp_called_value_11 = tmp_class_creation_5__metaclass;
-            tmp_tuple_element_17 = mod_consts[87];
+            tmp_tuple_element_17 = mod_consts[91];
             tmp_args_value_9 = MAKE_TUPLE_EMPTY(3);
             PyTuple_SET_ITEM0(tmp_args_value_9, 0, tmp_tuple_element_17);
             CHECK_OBJECT(tmp_class_creation_5__bases);
             tmp_tuple_element_17 = tmp_class_creation_5__bases;
             PyTuple_SET_ITEM0(tmp_args_value_9, 1, tmp_tuple_element_17);
-            tmp_tuple_element_17 = locals_base$buff$$$class__5_PlacementBuff_103;
+            tmp_tuple_element_17 = locals_base$buff$$$class__5_PlacementBuff_108;
             PyTuple_SET_ITEM0(tmp_args_value_9, 2, tmp_tuple_element_17);
             CHECK_OBJECT(tmp_class_creation_5__class_decl_dict);
             tmp_kwargs_value_9 = tmp_class_creation_5__class_decl_dict;
-            frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 103;
+            frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 108;
             tmp_assign_source_42 = CALL_FUNCTION(tstate, tmp_called_value_11, tmp_args_value_9, tmp_kwargs_value_9);
             Py_DECREF(tmp_args_value_9);
             if (tmp_assign_source_42 == NULL) {
@@ -12061,7 +14100,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 103;
+                exception_lineno = 108;
 
                 goto try_except_handler_15;
             }
@@ -12076,8 +14115,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         return NULL;
         // Return handler code:
         try_return_handler_15:;
-        Py_DECREF(locals_base$buff$$$class__5_PlacementBuff_103);
-        locals_base$buff$$$class__5_PlacementBuff_103 = NULL;
+        Py_DECREF(locals_base$buff$$$class__5_PlacementBuff_108);
+        locals_base$buff$$$class__5_PlacementBuff_108 = NULL;
         goto try_return_handler_14;
         // Exception handler code:
         try_except_handler_15:;
@@ -12090,8 +14129,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         exception_tb = NULL;
         exception_lineno = 0;
 
-        Py_DECREF(locals_base$buff$$$class__5_PlacementBuff_103);
-        locals_base$buff$$$class__5_PlacementBuff_103 = NULL;
+        Py_DECREF(locals_base$buff$$$class__5_PlacementBuff_108);
+        locals_base$buff$$$class__5_PlacementBuff_108 = NULL;
         // Re-raise.
         exception_type = exception_keeper_type_13;
         exception_value = exception_keeper_value_13;
@@ -12130,10 +14169,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         NUITKA_CANNOT_GET_HERE("Return statement must have exited already.");
         return NULL;
         outline_exception_5:;
-        exception_lineno = 103;
+        exception_lineno = 108;
         goto try_except_handler_13;
         outline_result_5:;
-        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[87], tmp_assign_source_41);
+        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[91], tmp_assign_source_41);
     }
     goto try_end_5;
     // Exception handler code:
@@ -12185,10 +14224,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     {
         PyObject *tmp_assign_source_43;
         PyObject *tmp_tuple_element_18;
-        tmp_tuple_element_18 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[54]);
+        tmp_tuple_element_18 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[56]);
 
         if (unlikely(tmp_tuple_element_18 == NULL)) {
-            tmp_tuple_element_18 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[54]);
+            tmp_tuple_element_18 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[56]);
         }
 
         if (tmp_tuple_element_18 == NULL) {
@@ -12197,7 +14236,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 108;
+            exception_lineno = 113;
 
             goto try_except_handler_16;
         }
@@ -12223,7 +14262,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 108;
+            exception_lineno = 113;
 
             goto try_except_handler_16;
         }
@@ -12253,7 +14292,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 108;
+            exception_lineno = 113;
 
             goto try_except_handler_16;
         }
@@ -12266,7 +14305,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         condexpr_true_5:;
         CHECK_OBJECT(tmp_class_creation_6__bases);
         tmp_expression_value_26 = tmp_class_creation_6__bases;
-        tmp_subscript_value_5 = mod_consts[39];
+        tmp_subscript_value_5 = mod_consts[41];
         tmp_type_arg_9 = LOOKUP_SUBSCRIPT_CONST(tstate, tmp_expression_value_26, tmp_subscript_value_5, 0);
         if (tmp_type_arg_9 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -12274,7 +14313,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 108;
+            exception_lineno = 113;
 
             goto try_except_handler_16;
         }
@@ -12286,7 +14325,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 108;
+            exception_lineno = 113;
 
             goto try_except_handler_16;
         }
@@ -12305,7 +14344,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 108;
+            exception_lineno = 113;
 
             goto try_except_handler_16;
         }
@@ -12317,14 +14356,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_expression_value_27;
         CHECK_OBJECT(tmp_class_creation_6__metaclass);
         tmp_expression_value_27 = tmp_class_creation_6__metaclass;
-        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_27, mod_consts[72]);
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_27, mod_consts[76]);
         if (tmp_res == -1) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 108;
+            exception_lineno = 113;
 
             goto try_except_handler_16;
         }
@@ -12345,18 +14384,18 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_kwargs_value_10;
         CHECK_OBJECT(tmp_class_creation_6__metaclass);
         tmp_expression_value_28 = tmp_class_creation_6__metaclass;
-        tmp_called_value_12 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_28, mod_consts[72]);
+        tmp_called_value_12 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_28, mod_consts[76]);
         if (tmp_called_value_12 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 108;
+            exception_lineno = 113;
 
             goto try_except_handler_16;
         }
-        tmp_tuple_element_19 = mod_consts[89];
+        tmp_tuple_element_19 = mod_consts[93];
         tmp_args_value_10 = MAKE_TUPLE_EMPTY(2);
         PyTuple_SET_ITEM0(tmp_args_value_10, 0, tmp_tuple_element_19);
         CHECK_OBJECT(tmp_class_creation_6__bases);
@@ -12364,7 +14403,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyTuple_SET_ITEM0(tmp_args_value_10, 1, tmp_tuple_element_19);
         CHECK_OBJECT(tmp_class_creation_6__class_decl_dict);
         tmp_kwargs_value_10 = tmp_class_creation_6__class_decl_dict;
-        frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 108;
+        frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 113;
         tmp_assign_source_47 = CALL_FUNCTION(tstate, tmp_called_value_12, tmp_args_value_10, tmp_kwargs_value_10);
         Py_DECREF(tmp_called_value_12);
         Py_DECREF(tmp_args_value_10);
@@ -12374,7 +14413,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 108;
+            exception_lineno = 113;
 
             goto try_except_handler_16;
         }
@@ -12387,14 +14426,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_expression_value_29;
         CHECK_OBJECT(tmp_class_creation_6__prepared);
         tmp_expression_value_29 = tmp_class_creation_6__prepared;
-        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_29, mod_consts[74]);
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_29, mod_consts[78]);
         if (tmp_res == -1) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 108;
+            exception_lineno = 113;
 
             goto try_except_handler_16;
         }
@@ -12419,11 +14458,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_name_value_8;
         PyObject *tmp_default_value_5;
         tmp_raise_type_5 = PyExc_TypeError;
-        tmp_mod_expr_left_5 = mod_consts[75];
+        tmp_mod_expr_left_5 = mod_consts[79];
         CHECK_OBJECT(tmp_class_creation_6__metaclass);
         tmp_expression_value_30 = tmp_class_creation_6__metaclass;
-        tmp_name_value_8 = mod_consts[76];
-        tmp_default_value_5 = mod_consts[77];
+        tmp_name_value_8 = mod_consts[80];
+        tmp_default_value_5 = mod_consts[81];
         tmp_tuple_element_20 = BUILTIN_GETATTR(tstate, tmp_expression_value_30, tmp_name_value_8, tmp_default_value_5);
         if (tmp_tuple_element_20 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -12431,7 +14470,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 108;
+            exception_lineno = 113;
 
             goto try_except_handler_16;
         }
@@ -12444,7 +14483,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             tmp_type_arg_10 = tmp_class_creation_6__prepared;
             tmp_expression_value_31 = BUILTIN_TYPE1(tmp_type_arg_10);
             assert(!(tmp_expression_value_31 == NULL));
-            tmp_tuple_element_20 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_31, mod_consts[76]);
+            tmp_tuple_element_20 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_31, mod_consts[80]);
             Py_DECREF(tmp_expression_value_31);
             if (tmp_tuple_element_20 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -12452,7 +14491,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 108;
+                exception_lineno = 113;
 
                 goto tuple_build_exception_5;
             }
@@ -12473,14 +14512,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 108;
+            exception_lineno = 113;
 
             goto try_except_handler_16;
         }
         exception_type = tmp_raise_type_5;
         Py_INCREF(tmp_raise_type_5);
         exception_value = tmp_raise_value_5;
-        exception_lineno = 108;
+        exception_lineno = 113;
         RAISE_EXCEPTION_IMPLICIT(tstate, &exception_type, &exception_value, &exception_tb);
 
         goto try_except_handler_16;
@@ -12502,41 +14541,41 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_set_locals_6;
             CHECK_OBJECT(tmp_class_creation_6__prepared);
             tmp_set_locals_6 = tmp_class_creation_6__prepared;
-            locals_base$buff$$$class__6_GainBuff_108 = tmp_set_locals_6;
+            locals_base$buff$$$class__6_GainBuff_113 = tmp_set_locals_6;
             Py_INCREF(tmp_set_locals_6);
         }
         // Tried code:
         // Tried code:
-        tmp_dictset_value = mod_consts[52];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__6_GainBuff_108, mod_consts[53], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[54];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__6_GainBuff_113, mod_consts[55], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 108;
+            exception_lineno = 113;
 
             goto try_except_handler_18;
         }
-        tmp_dictset_value = mod_consts[89];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__6_GainBuff_108, mod_consts[55], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[93];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__6_GainBuff_113, mod_consts[57], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 108;
+            exception_lineno = 113;
 
             goto try_except_handler_18;
         }
-        frame_0d6a955fd3c5938b1e1ecf4b2975a734_7 = MAKE_CLASS_FRAME(tstate, codeobj_0d6a955fd3c5938b1e1ecf4b2975a734, module_base$buff, NULL, sizeof(void *));
+        frame_aacbad17084a04da95ae464ac3594415_7 = MAKE_CLASS_FRAME(tstate, codeobj_aacbad17084a04da95ae464ac3594415, module_base$buff, NULL, sizeof(void *));
 
         // Push the new frame as the currently active one, and we should be exclusively
         // owning it.
-        pushFrameStackCompiledFrame(tstate, frame_0d6a955fd3c5938b1e1ecf4b2975a734_7);
-        assert(Py_REFCNT(frame_0d6a955fd3c5938b1e1ecf4b2975a734_7) == 2);
+        pushFrameStackCompiledFrame(tstate, frame_aacbad17084a04da95ae464ac3594415_7);
+        assert(Py_REFCNT(frame_aacbad17084a04da95ae464ac3594415_7) == 2);
 
         // Framed code:
         {
@@ -12547,28 +14586,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
             tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__13___post_init__(tmp_closure_2);
 
-            tmp_res = PyObject_SetItem(locals_base$buff$$$class__6_GainBuff_108, mod_consts[31], tmp_dictset_value);
-            Py_DECREF(tmp_dictset_value);
-            if (tmp_res != 0) {
-                assert(HAS_ERROR_OCCURRED(tstate));
-
-                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-                exception_lineno = 110;
-                type_description_2 = "c";
-                goto frame_exception_exit_7;
-            }
-        }
-        {
-            struct Nuitka_CellObject *tmp_closure_3[1];
-
-            tmp_closure_3[0] = outline_5_var___class__;
-            Py_INCREF(tmp_closure_3[0]);
-
-            tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__14_add(tmp_closure_3);
-
-            tmp_res = PyObject_SetItem(locals_base$buff$$$class__6_GainBuff_108, mod_consts[19], tmp_dictset_value);
+            tmp_res = PyObject_SetItem(locals_base$buff$$$class__6_GainBuff_113, mod_consts[30], tmp_dictset_value);
             Py_DECREF(tmp_dictset_value);
             if (tmp_res != 0) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -12582,14 +14600,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             }
         }
         {
-            struct Nuitka_CellObject *tmp_closure_4[1];
+            struct Nuitka_CellObject *tmp_closure_3[1];
 
-            tmp_closure_4[0] = outline_5_var___class__;
-            Py_INCREF(tmp_closure_4[0]);
+            tmp_closure_3[0] = outline_5_var___class__;
+            Py_INCREF(tmp_closure_3[0]);
 
-            tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__15_remove(tmp_closure_4);
+            tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__14_add(tmp_closure_3);
 
-            tmp_res = PyObject_SetItem(locals_base$buff$$$class__6_GainBuff_108, mod_consts[21], tmp_dictset_value);
+            tmp_res = PyObject_SetItem(locals_base$buff$$$class__6_GainBuff_113, mod_consts[18], tmp_dictset_value);
             Py_DECREF(tmp_dictset_value);
             if (tmp_res != 0) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -12597,7 +14615,28 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 119;
+                exception_lineno = 121;
+                type_description_2 = "c";
+                goto frame_exception_exit_7;
+            }
+        }
+        {
+            struct Nuitka_CellObject *tmp_closure_4[1];
+
+            tmp_closure_4[0] = outline_5_var___class__;
+            Py_INCREF(tmp_closure_4[0]);
+
+            tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__15_remove(tmp_closure_4);
+
+            tmp_res = PyObject_SetItem(locals_base$buff$$$class__6_GainBuff_113, mod_consts[20], tmp_dictset_value);
+            Py_DECREF(tmp_dictset_value);
+            if (tmp_res != 0) {
+                assert(HAS_ERROR_OCCURRED(tstate));
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+                exception_lineno = 126;
                 type_description_2 = "c";
                 goto frame_exception_exit_7;
             }
@@ -12606,7 +14645,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
         tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__16_gain();
 
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__6_GainBuff_108, mod_consts[93], tmp_dictset_value);
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__6_GainBuff_113, mod_consts[97], tmp_dictset_value);
         Py_DECREF(tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -12614,7 +14653,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 126;
+            exception_lineno = 135;
             type_description_2 = "c";
             goto frame_exception_exit_7;
         }
@@ -12622,7 +14661,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
         tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__17_revoke();
 
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__6_GainBuff_108, mod_consts[95], tmp_dictset_value);
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__6_GainBuff_113, mod_consts[99], tmp_dictset_value);
         Py_DECREF(tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -12630,7 +14669,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 130;
+            exception_lineno = 139;
             type_description_2 = "c";
             goto frame_exception_exit_7;
         }
@@ -12644,21 +14683,21 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
 
         if (exception_tb == NULL) {
-            exception_tb = MAKE_TRACEBACK(frame_0d6a955fd3c5938b1e1ecf4b2975a734_7, exception_lineno);
-        } else if (exception_tb->tb_frame != &frame_0d6a955fd3c5938b1e1ecf4b2975a734_7->m_frame) {
-            exception_tb = ADD_TRACEBACK(exception_tb, frame_0d6a955fd3c5938b1e1ecf4b2975a734_7, exception_lineno);
+            exception_tb = MAKE_TRACEBACK(frame_aacbad17084a04da95ae464ac3594415_7, exception_lineno);
+        } else if (exception_tb->tb_frame != &frame_aacbad17084a04da95ae464ac3594415_7->m_frame) {
+            exception_tb = ADD_TRACEBACK(exception_tb, frame_aacbad17084a04da95ae464ac3594415_7, exception_lineno);
         }
 
         // Attaches locals to frame if any.
         Nuitka_Frame_AttachLocals(
-            frame_0d6a955fd3c5938b1e1ecf4b2975a734_7,
+            frame_aacbad17084a04da95ae464ac3594415_7,
             type_description_2,
             outline_5_var___class__
         );
 
 
 
-        assertFrameObject(frame_0d6a955fd3c5938b1e1ecf4b2975a734_7);
+        assertFrameObject(frame_aacbad17084a04da95ae464ac3594415_7);
 
         // Put the previous frame back on top.
         popFrameStack(tstate);
@@ -12686,7 +14725,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 108;
+                exception_lineno = 113;
 
                 goto try_except_handler_18;
             }
@@ -12699,14 +14738,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         branch_yes_15:;
         CHECK_OBJECT(tmp_class_creation_6__bases_orig);
         tmp_dictset_value = tmp_class_creation_6__bases_orig;
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__6_GainBuff_108, mod_consts[80], tmp_dictset_value);
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__6_GainBuff_113, mod_consts[84], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 108;
+            exception_lineno = 113;
 
             goto try_except_handler_18;
         }
@@ -12719,17 +14758,17 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_kwargs_value_11;
             CHECK_OBJECT(tmp_class_creation_6__metaclass);
             tmp_called_value_13 = tmp_class_creation_6__metaclass;
-            tmp_tuple_element_21 = mod_consts[89];
+            tmp_tuple_element_21 = mod_consts[93];
             tmp_args_value_11 = MAKE_TUPLE_EMPTY(3);
             PyTuple_SET_ITEM0(tmp_args_value_11, 0, tmp_tuple_element_21);
             CHECK_OBJECT(tmp_class_creation_6__bases);
             tmp_tuple_element_21 = tmp_class_creation_6__bases;
             PyTuple_SET_ITEM0(tmp_args_value_11, 1, tmp_tuple_element_21);
-            tmp_tuple_element_21 = locals_base$buff$$$class__6_GainBuff_108;
+            tmp_tuple_element_21 = locals_base$buff$$$class__6_GainBuff_113;
             PyTuple_SET_ITEM0(tmp_args_value_11, 2, tmp_tuple_element_21);
             CHECK_OBJECT(tmp_class_creation_6__class_decl_dict);
             tmp_kwargs_value_11 = tmp_class_creation_6__class_decl_dict;
-            frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 108;
+            frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 113;
             tmp_assign_source_50 = CALL_FUNCTION(tstate, tmp_called_value_13, tmp_args_value_11, tmp_kwargs_value_11);
             Py_DECREF(tmp_args_value_11);
             if (tmp_assign_source_50 == NULL) {
@@ -12738,7 +14777,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 108;
+                exception_lineno = 113;
 
                 goto try_except_handler_18;
             }
@@ -12754,8 +14793,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         return NULL;
         // Return handler code:
         try_return_handler_18:;
-        Py_DECREF(locals_base$buff$$$class__6_GainBuff_108);
-        locals_base$buff$$$class__6_GainBuff_108 = NULL;
+        Py_DECREF(locals_base$buff$$$class__6_GainBuff_113);
+        locals_base$buff$$$class__6_GainBuff_113 = NULL;
         goto try_return_handler_17;
         // Exception handler code:
         try_except_handler_18:;
@@ -12768,8 +14807,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         exception_tb = NULL;
         exception_lineno = 0;
 
-        Py_DECREF(locals_base$buff$$$class__6_GainBuff_108);
-        locals_base$buff$$$class__6_GainBuff_108 = NULL;
+        Py_DECREF(locals_base$buff$$$class__6_GainBuff_113);
+        locals_base$buff$$$class__6_GainBuff_113 = NULL;
         // Re-raise.
         exception_type = exception_keeper_type_16;
         exception_value = exception_keeper_value_16;
@@ -12808,10 +14847,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         NUITKA_CANNOT_GET_HERE("Return statement must have exited already.");
         return NULL;
         outline_exception_6:;
-        exception_lineno = 108;
+        exception_lineno = 113;
         goto try_except_handler_16;
         outline_result_6:;
-        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[89], tmp_assign_source_49);
+        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[93], tmp_assign_source_49);
     }
     goto try_end_6;
     // Exception handler code:
@@ -12863,10 +14902,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     {
         PyObject *tmp_assign_source_51;
         PyObject *tmp_tuple_element_22;
-        tmp_tuple_element_22 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[54]);
+        tmp_tuple_element_22 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[93]);
 
         if (unlikely(tmp_tuple_element_22 == NULL)) {
-            tmp_tuple_element_22 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[54]);
+            tmp_tuple_element_22 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[93]);
         }
 
         if (tmp_tuple_element_22 == NULL) {
@@ -12875,7 +14914,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 135;
+            exception_lineno = 144;
 
             goto try_except_handler_19;
         }
@@ -12901,7 +14940,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 135;
+            exception_lineno = 144;
 
             goto try_except_handler_19;
         }
@@ -12931,7 +14970,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 135;
+            exception_lineno = 144;
 
             goto try_except_handler_19;
         }
@@ -12944,7 +14983,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         condexpr_true_6:;
         CHECK_OBJECT(tmp_class_creation_7__bases);
         tmp_expression_value_32 = tmp_class_creation_7__bases;
-        tmp_subscript_value_6 = mod_consts[39];
+        tmp_subscript_value_6 = mod_consts[41];
         tmp_type_arg_11 = LOOKUP_SUBSCRIPT_CONST(tstate, tmp_expression_value_32, tmp_subscript_value_6, 0);
         if (tmp_type_arg_11 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -12952,7 +14991,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 135;
+            exception_lineno = 144;
 
             goto try_except_handler_19;
         }
@@ -12964,7 +15003,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 135;
+            exception_lineno = 144;
 
             goto try_except_handler_19;
         }
@@ -12983,7 +15022,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 135;
+            exception_lineno = 144;
 
             goto try_except_handler_19;
         }
@@ -12995,14 +15034,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_expression_value_33;
         CHECK_OBJECT(tmp_class_creation_7__metaclass);
         tmp_expression_value_33 = tmp_class_creation_7__metaclass;
-        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_33, mod_consts[72]);
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_33, mod_consts[76]);
         if (tmp_res == -1) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 135;
+            exception_lineno = 144;
 
             goto try_except_handler_19;
         }
@@ -13023,18 +15062,18 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_kwargs_value_12;
         CHECK_OBJECT(tmp_class_creation_7__metaclass);
         tmp_expression_value_34 = tmp_class_creation_7__metaclass;
-        tmp_called_value_14 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_34, mod_consts[72]);
+        tmp_called_value_14 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_34, mod_consts[76]);
         if (tmp_called_value_14 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 135;
+            exception_lineno = 144;
 
             goto try_except_handler_19;
         }
-        tmp_tuple_element_23 = mod_consts[97];
+        tmp_tuple_element_23 = mod_consts[101];
         tmp_args_value_12 = MAKE_TUPLE_EMPTY(2);
         PyTuple_SET_ITEM0(tmp_args_value_12, 0, tmp_tuple_element_23);
         CHECK_OBJECT(tmp_class_creation_7__bases);
@@ -13042,7 +15081,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyTuple_SET_ITEM0(tmp_args_value_12, 1, tmp_tuple_element_23);
         CHECK_OBJECT(tmp_class_creation_7__class_decl_dict);
         tmp_kwargs_value_12 = tmp_class_creation_7__class_decl_dict;
-        frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 135;
+        frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 144;
         tmp_assign_source_55 = CALL_FUNCTION(tstate, tmp_called_value_14, tmp_args_value_12, tmp_kwargs_value_12);
         Py_DECREF(tmp_called_value_14);
         Py_DECREF(tmp_args_value_12);
@@ -13052,7 +15091,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 135;
+            exception_lineno = 144;
 
             goto try_except_handler_19;
         }
@@ -13065,14 +15104,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_expression_value_35;
         CHECK_OBJECT(tmp_class_creation_7__prepared);
         tmp_expression_value_35 = tmp_class_creation_7__prepared;
-        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_35, mod_consts[74]);
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_35, mod_consts[78]);
         if (tmp_res == -1) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 135;
+            exception_lineno = 144;
 
             goto try_except_handler_19;
         }
@@ -13097,11 +15136,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_name_value_9;
         PyObject *tmp_default_value_6;
         tmp_raise_type_6 = PyExc_TypeError;
-        tmp_mod_expr_left_6 = mod_consts[75];
+        tmp_mod_expr_left_6 = mod_consts[79];
         CHECK_OBJECT(tmp_class_creation_7__metaclass);
         tmp_expression_value_36 = tmp_class_creation_7__metaclass;
-        tmp_name_value_9 = mod_consts[76];
-        tmp_default_value_6 = mod_consts[77];
+        tmp_name_value_9 = mod_consts[80];
+        tmp_default_value_6 = mod_consts[81];
         tmp_tuple_element_24 = BUILTIN_GETATTR(tstate, tmp_expression_value_36, tmp_name_value_9, tmp_default_value_6);
         if (tmp_tuple_element_24 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -13109,7 +15148,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 135;
+            exception_lineno = 144;
 
             goto try_except_handler_19;
         }
@@ -13122,7 +15161,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             tmp_type_arg_12 = tmp_class_creation_7__prepared;
             tmp_expression_value_37 = BUILTIN_TYPE1(tmp_type_arg_12);
             assert(!(tmp_expression_value_37 == NULL));
-            tmp_tuple_element_24 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_37, mod_consts[76]);
+            tmp_tuple_element_24 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_37, mod_consts[80]);
             Py_DECREF(tmp_expression_value_37);
             if (tmp_tuple_element_24 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -13130,7 +15169,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 135;
+                exception_lineno = 144;
 
                 goto tuple_build_exception_6;
             }
@@ -13151,14 +15190,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 135;
+            exception_lineno = 144;
 
             goto try_except_handler_19;
         }
         exception_type = tmp_raise_type_6;
         Py_INCREF(tmp_raise_type_6);
         exception_value = tmp_raise_value_6;
-        exception_lineno = 135;
+        exception_lineno = 144;
         RAISE_EXCEPTION_IMPLICIT(tstate, &exception_type, &exception_value, &exception_tb);
 
         goto try_except_handler_19;
@@ -13180,41 +15219,41 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_set_locals_7;
             CHECK_OBJECT(tmp_class_creation_7__prepared);
             tmp_set_locals_7 = tmp_class_creation_7__prepared;
-            locals_base$buff$$$class__7_Energy_135 = tmp_set_locals_7;
+            locals_base$buff$$$class__7_SnapshotBuff_144 = tmp_set_locals_7;
             Py_INCREF(tmp_set_locals_7);
         }
         // Tried code:
         // Tried code:
-        tmp_dictset_value = mod_consts[52];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__7_Energy_135, mod_consts[53], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[54];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__7_SnapshotBuff_144, mod_consts[55], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 135;
+            exception_lineno = 144;
 
             goto try_except_handler_21;
         }
-        tmp_dictset_value = mod_consts[97];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__7_Energy_135, mod_consts[55], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[101];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__7_SnapshotBuff_144, mod_consts[57], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 135;
+            exception_lineno = 144;
 
             goto try_except_handler_21;
         }
-        frame_06e85d187ca3dba7cabf54eeb8a2c948_8 = MAKE_CLASS_FRAME(tstate, codeobj_06e85d187ca3dba7cabf54eeb8a2c948, module_base$buff, NULL, sizeof(void *));
+        frame_2de50f511f8c7caaf9ab18f248625d21_8 = MAKE_CLASS_FRAME(tstate, codeobj_2de50f511f8c7caaf9ab18f248625d21, module_base$buff, NULL, sizeof(void *));
 
         // Push the new frame as the currently active one, and we should be exclusively
         // owning it.
-        pushFrameStackCompiledFrame(tstate, frame_06e85d187ca3dba7cabf54eeb8a2c948_8);
-        assert(Py_REFCNT(frame_06e85d187ca3dba7cabf54eeb8a2c948_8) == 2);
+        pushFrameStackCompiledFrame(tstate, frame_2de50f511f8c7caaf9ab18f248625d21_8);
+        assert(Py_REFCNT(frame_2de50f511f8c7caaf9ab18f248625d21_8) == 2);
 
         // Framed code:
         {
@@ -13223,9 +15262,9 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             tmp_closure_5[0] = outline_6_var___class__;
             Py_INCREF(tmp_closure_5[0]);
 
-            tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__18___post_init__(tmp_closure_5);
+            tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__18_add(tmp_closure_5);
 
-            tmp_res = PyObject_SetItem(locals_base$buff$$$class__7_Energy_135, mod_consts[31], tmp_dictset_value);
+            tmp_res = PyObject_SetItem(locals_base$buff$$$class__7_SnapshotBuff_144, mod_consts[18], tmp_dictset_value);
             Py_DECREF(tmp_dictset_value);
             if (tmp_res != 0) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -13233,42 +15272,31 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 136;
+                exception_lineno = 145;
                 type_description_2 = "c";
                 goto frame_exception_exit_8;
             }
         }
+        {
+            struct Nuitka_CellObject *tmp_closure_6[1];
+
+            tmp_closure_6[0] = outline_6_var___class__;
+            Py_INCREF(tmp_closure_6[0]);
+
+            tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__19_remove(tmp_closure_6);
+
+            tmp_res = PyObject_SetItem(locals_base$buff$$$class__7_SnapshotBuff_144, mod_consts[20], tmp_dictset_value);
+            Py_DECREF(tmp_dictset_value);
+            if (tmp_res != 0) {
+                assert(HAS_ERROR_OCCURRED(tstate));
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-        tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__19_increase();
-
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__7_Energy_135, mod_consts[99], tmp_dictset_value);
-        Py_DECREF(tmp_dictset_value);
-        if (tmp_res != 0) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 141;
-            type_description_2 = "c";
-            goto frame_exception_exit_8;
-        }
-
-
-        tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__20_decrease();
-
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__7_Energy_135, mod_consts[101], tmp_dictset_value);
-        Py_DECREF(tmp_dictset_value);
-        if (tmp_res != 0) {
-            assert(HAS_ERROR_OCCURRED(tstate));
-
-            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
-
-
-            exception_lineno = 147;
-            type_description_2 = "c";
-            goto frame_exception_exit_8;
+                exception_lineno = 150;
+                type_description_2 = "c";
+                goto frame_exception_exit_8;
+            }
         }
 
 
@@ -13280,21 +15308,21 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
 
         if (exception_tb == NULL) {
-            exception_tb = MAKE_TRACEBACK(frame_06e85d187ca3dba7cabf54eeb8a2c948_8, exception_lineno);
-        } else if (exception_tb->tb_frame != &frame_06e85d187ca3dba7cabf54eeb8a2c948_8->m_frame) {
-            exception_tb = ADD_TRACEBACK(exception_tb, frame_06e85d187ca3dba7cabf54eeb8a2c948_8, exception_lineno);
+            exception_tb = MAKE_TRACEBACK(frame_2de50f511f8c7caaf9ab18f248625d21_8, exception_lineno);
+        } else if (exception_tb->tb_frame != &frame_2de50f511f8c7caaf9ab18f248625d21_8->m_frame) {
+            exception_tb = ADD_TRACEBACK(exception_tb, frame_2de50f511f8c7caaf9ab18f248625d21_8, exception_lineno);
         }
 
         // Attaches locals to frame if any.
         Nuitka_Frame_AttachLocals(
-            frame_06e85d187ca3dba7cabf54eeb8a2c948_8,
+            frame_2de50f511f8c7caaf9ab18f248625d21_8,
             type_description_2,
             outline_6_var___class__
         );
 
 
 
-        assertFrameObject(frame_06e85d187ca3dba7cabf54eeb8a2c948_8);
+        assertFrameObject(frame_2de50f511f8c7caaf9ab18f248625d21_8);
 
         // Put the previous frame back on top.
         popFrameStack(tstate);
@@ -13322,7 +15350,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 135;
+                exception_lineno = 144;
 
                 goto try_except_handler_21;
             }
@@ -13335,14 +15363,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         branch_yes_18:;
         CHECK_OBJECT(tmp_class_creation_7__bases_orig);
         tmp_dictset_value = tmp_class_creation_7__bases_orig;
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__7_Energy_135, mod_consts[80], tmp_dictset_value);
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__7_SnapshotBuff_144, mod_consts[84], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 135;
+            exception_lineno = 144;
 
             goto try_except_handler_21;
         }
@@ -13355,17 +15383,17 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_kwargs_value_13;
             CHECK_OBJECT(tmp_class_creation_7__metaclass);
             tmp_called_value_15 = tmp_class_creation_7__metaclass;
-            tmp_tuple_element_25 = mod_consts[97];
+            tmp_tuple_element_25 = mod_consts[101];
             tmp_args_value_13 = MAKE_TUPLE_EMPTY(3);
             PyTuple_SET_ITEM0(tmp_args_value_13, 0, tmp_tuple_element_25);
             CHECK_OBJECT(tmp_class_creation_7__bases);
             tmp_tuple_element_25 = tmp_class_creation_7__bases;
             PyTuple_SET_ITEM0(tmp_args_value_13, 1, tmp_tuple_element_25);
-            tmp_tuple_element_25 = locals_base$buff$$$class__7_Energy_135;
+            tmp_tuple_element_25 = locals_base$buff$$$class__7_SnapshotBuff_144;
             PyTuple_SET_ITEM0(tmp_args_value_13, 2, tmp_tuple_element_25);
             CHECK_OBJECT(tmp_class_creation_7__class_decl_dict);
             tmp_kwargs_value_13 = tmp_class_creation_7__class_decl_dict;
-            frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 135;
+            frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 144;
             tmp_assign_source_58 = CALL_FUNCTION(tstate, tmp_called_value_15, tmp_args_value_13, tmp_kwargs_value_13);
             Py_DECREF(tmp_args_value_13);
             if (tmp_assign_source_58 == NULL) {
@@ -13374,7 +15402,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 135;
+                exception_lineno = 144;
 
                 goto try_except_handler_21;
             }
@@ -13390,8 +15418,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         return NULL;
         // Return handler code:
         try_return_handler_21:;
-        Py_DECREF(locals_base$buff$$$class__7_Energy_135);
-        locals_base$buff$$$class__7_Energy_135 = NULL;
+        Py_DECREF(locals_base$buff$$$class__7_SnapshotBuff_144);
+        locals_base$buff$$$class__7_SnapshotBuff_144 = NULL;
         goto try_return_handler_20;
         // Exception handler code:
         try_except_handler_21:;
@@ -13404,8 +15432,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         exception_tb = NULL;
         exception_lineno = 0;
 
-        Py_DECREF(locals_base$buff$$$class__7_Energy_135);
-        locals_base$buff$$$class__7_Energy_135 = NULL;
+        Py_DECREF(locals_base$buff$$$class__7_SnapshotBuff_144);
+        locals_base$buff$$$class__7_SnapshotBuff_144 = NULL;
         // Re-raise.
         exception_type = exception_keeper_type_19;
         exception_value = exception_keeper_value_19;
@@ -13444,10 +15472,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         NUITKA_CANNOT_GET_HERE("Return statement must have exited already.");
         return NULL;
         outline_exception_7:;
-        exception_lineno = 135;
+        exception_lineno = 144;
         goto try_except_handler_19;
         outline_result_7:;
-        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[97], tmp_assign_source_57);
+        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[101], tmp_assign_source_57);
     }
     goto try_end_7;
     // Exception handler code:
@@ -13499,10 +15527,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     {
         PyObject *tmp_assign_source_59;
         PyObject *tmp_tuple_element_26;
-        tmp_tuple_element_26 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[54]);
+        tmp_tuple_element_26 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[56]);
 
         if (unlikely(tmp_tuple_element_26 == NULL)) {
-            tmp_tuple_element_26 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[54]);
+            tmp_tuple_element_26 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[56]);
         }
 
         if (tmp_tuple_element_26 == NULL) {
@@ -13511,7 +15539,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 154;
+            exception_lineno = 160;
 
             goto try_except_handler_22;
         }
@@ -13537,7 +15565,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 154;
+            exception_lineno = 160;
 
             goto try_except_handler_22;
         }
@@ -13567,7 +15595,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 154;
+            exception_lineno = 160;
 
             goto try_except_handler_22;
         }
@@ -13580,7 +15608,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         condexpr_true_7:;
         CHECK_OBJECT(tmp_class_creation_8__bases);
         tmp_expression_value_38 = tmp_class_creation_8__bases;
-        tmp_subscript_value_7 = mod_consts[39];
+        tmp_subscript_value_7 = mod_consts[41];
         tmp_type_arg_13 = LOOKUP_SUBSCRIPT_CONST(tstate, tmp_expression_value_38, tmp_subscript_value_7, 0);
         if (tmp_type_arg_13 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -13588,7 +15616,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 154;
+            exception_lineno = 160;
 
             goto try_except_handler_22;
         }
@@ -13600,7 +15628,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 154;
+            exception_lineno = 160;
 
             goto try_except_handler_22;
         }
@@ -13619,7 +15647,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 154;
+            exception_lineno = 160;
 
             goto try_except_handler_22;
         }
@@ -13631,14 +15659,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_expression_value_39;
         CHECK_OBJECT(tmp_class_creation_8__metaclass);
         tmp_expression_value_39 = tmp_class_creation_8__metaclass;
-        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_39, mod_consts[72]);
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_39, mod_consts[76]);
         if (tmp_res == -1) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 154;
+            exception_lineno = 160;
 
             goto try_except_handler_22;
         }
@@ -13659,18 +15687,18 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_kwargs_value_14;
         CHECK_OBJECT(tmp_class_creation_8__metaclass);
         tmp_expression_value_40 = tmp_class_creation_8__metaclass;
-        tmp_called_value_16 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_40, mod_consts[72]);
+        tmp_called_value_16 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_40, mod_consts[76]);
         if (tmp_called_value_16 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 154;
+            exception_lineno = 160;
 
             goto try_except_handler_22;
         }
-        tmp_tuple_element_27 = mod_consts[103];
+        tmp_tuple_element_27 = mod_consts[104];
         tmp_args_value_14 = MAKE_TUPLE_EMPTY(2);
         PyTuple_SET_ITEM0(tmp_args_value_14, 0, tmp_tuple_element_27);
         CHECK_OBJECT(tmp_class_creation_8__bases);
@@ -13678,7 +15706,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyTuple_SET_ITEM0(tmp_args_value_14, 1, tmp_tuple_element_27);
         CHECK_OBJECT(tmp_class_creation_8__class_decl_dict);
         tmp_kwargs_value_14 = tmp_class_creation_8__class_decl_dict;
-        frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 154;
+        frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 160;
         tmp_assign_source_63 = CALL_FUNCTION(tstate, tmp_called_value_16, tmp_args_value_14, tmp_kwargs_value_14);
         Py_DECREF(tmp_called_value_16);
         Py_DECREF(tmp_args_value_14);
@@ -13688,7 +15716,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 154;
+            exception_lineno = 160;
 
             goto try_except_handler_22;
         }
@@ -13701,14 +15729,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_expression_value_41;
         CHECK_OBJECT(tmp_class_creation_8__prepared);
         tmp_expression_value_41 = tmp_class_creation_8__prepared;
-        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_41, mod_consts[74]);
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_41, mod_consts[78]);
         if (tmp_res == -1) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 154;
+            exception_lineno = 160;
 
             goto try_except_handler_22;
         }
@@ -13733,11 +15761,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_name_value_10;
         PyObject *tmp_default_value_7;
         tmp_raise_type_7 = PyExc_TypeError;
-        tmp_mod_expr_left_7 = mod_consts[75];
+        tmp_mod_expr_left_7 = mod_consts[79];
         CHECK_OBJECT(tmp_class_creation_8__metaclass);
         tmp_expression_value_42 = tmp_class_creation_8__metaclass;
-        tmp_name_value_10 = mod_consts[76];
-        tmp_default_value_7 = mod_consts[77];
+        tmp_name_value_10 = mod_consts[80];
+        tmp_default_value_7 = mod_consts[81];
         tmp_tuple_element_28 = BUILTIN_GETATTR(tstate, tmp_expression_value_42, tmp_name_value_10, tmp_default_value_7);
         if (tmp_tuple_element_28 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -13745,7 +15773,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 154;
+            exception_lineno = 160;
 
             goto try_except_handler_22;
         }
@@ -13758,7 +15786,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             tmp_type_arg_14 = tmp_class_creation_8__prepared;
             tmp_expression_value_43 = BUILTIN_TYPE1(tmp_type_arg_14);
             assert(!(tmp_expression_value_43 == NULL));
-            tmp_tuple_element_28 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_43, mod_consts[76]);
+            tmp_tuple_element_28 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_43, mod_consts[80]);
             Py_DECREF(tmp_expression_value_43);
             if (tmp_tuple_element_28 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -13766,7 +15794,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 154;
+                exception_lineno = 160;
 
                 goto tuple_build_exception_7;
             }
@@ -13787,14 +15815,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 154;
+            exception_lineno = 160;
 
             goto try_except_handler_22;
         }
         exception_type = tmp_raise_type_7;
         Py_INCREF(tmp_raise_type_7);
         exception_value = tmp_raise_value_7;
-        exception_lineno = 154;
+        exception_lineno = 160;
         RAISE_EXCEPTION_IMPLICIT(tstate, &exception_type, &exception_value, &exception_tb);
 
         goto try_except_handler_22;
@@ -13811,39 +15839,138 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     branch_end_19:;
     {
         PyObject *tmp_assign_source_65;
+        outline_7_var___class__ = Nuitka_Cell_Empty();
         {
             PyObject *tmp_set_locals_8;
             CHECK_OBJECT(tmp_class_creation_8__prepared);
             tmp_set_locals_8 = tmp_class_creation_8__prepared;
-            locals_base$buff$$$class__8_CDBuff_154 = tmp_set_locals_8;
+            locals_base$buff$$$class__8_Energy_160 = tmp_set_locals_8;
             Py_INCREF(tmp_set_locals_8);
         }
         // Tried code:
         // Tried code:
-        tmp_dictset_value = mod_consts[52];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__8_CDBuff_154, mod_consts[53], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[54];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__8_Energy_160, mod_consts[55], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 154;
+            exception_lineno = 160;
 
             goto try_except_handler_24;
         }
-        tmp_dictset_value = mod_consts[103];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__8_CDBuff_154, mod_consts[55], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[104];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__8_Energy_160, mod_consts[57], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 154;
+            exception_lineno = 160;
 
             goto try_except_handler_24;
         }
+        frame_eb6c89fab1c1de5eb4091cf9dd160acd_9 = MAKE_CLASS_FRAME(tstate, codeobj_eb6c89fab1c1de5eb4091cf9dd160acd, module_base$buff, NULL, sizeof(void *));
+
+        // Push the new frame as the currently active one, and we should be exclusively
+        // owning it.
+        pushFrameStackCompiledFrame(tstate, frame_eb6c89fab1c1de5eb4091cf9dd160acd_9);
+        assert(Py_REFCNT(frame_eb6c89fab1c1de5eb4091cf9dd160acd_9) == 2);
+
+        // Framed code:
+        {
+            struct Nuitka_CellObject *tmp_closure_7[1];
+
+            tmp_closure_7[0] = outline_7_var___class__;
+            Py_INCREF(tmp_closure_7[0]);
+
+            tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__20___post_init__(tmp_closure_7);
+
+            tmp_res = PyObject_SetItem(locals_base$buff$$$class__8_Energy_160, mod_consts[30], tmp_dictset_value);
+            Py_DECREF(tmp_dictset_value);
+            if (tmp_res != 0) {
+                assert(HAS_ERROR_OCCURRED(tstate));
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+                exception_lineno = 161;
+                type_description_2 = "c";
+                goto frame_exception_exit_9;
+            }
+        }
+
+
+        tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__21_increase();
+
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__8_Energy_160, mod_consts[106], tmp_dictset_value);
+        Py_DECREF(tmp_dictset_value);
+        if (tmp_res != 0) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 166;
+            type_description_2 = "c";
+            goto frame_exception_exit_9;
+        }
+
+
+        tmp_dictset_value = MAKE_FUNCTION_base$buff$$$function__22_decrease();
+
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__8_Energy_160, mod_consts[108], tmp_dictset_value);
+        Py_DECREF(tmp_dictset_value);
+        if (tmp_res != 0) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 172;
+            type_description_2 = "c";
+            goto frame_exception_exit_9;
+        }
+
+
+        // Put the previous frame back on top.
+        popFrameStack(tstate);
+
+        goto frame_no_exception_8;
+        frame_exception_exit_9:
+
+
+        if (exception_tb == NULL) {
+            exception_tb = MAKE_TRACEBACK(frame_eb6c89fab1c1de5eb4091cf9dd160acd_9, exception_lineno);
+        } else if (exception_tb->tb_frame != &frame_eb6c89fab1c1de5eb4091cf9dd160acd_9->m_frame) {
+            exception_tb = ADD_TRACEBACK(exception_tb, frame_eb6c89fab1c1de5eb4091cf9dd160acd_9, exception_lineno);
+        }
+
+        // Attaches locals to frame if any.
+        Nuitka_Frame_AttachLocals(
+            frame_eb6c89fab1c1de5eb4091cf9dd160acd_9,
+            type_description_2,
+            outline_7_var___class__
+        );
+
+
+
+        assertFrameObject(frame_eb6c89fab1c1de5eb4091cf9dd160acd_9);
+
+        // Put the previous frame back on top.
+        popFrameStack(tstate);
+
+        // Return the error.
+        goto nested_frame_exit_8;
+        frame_no_exception_8:;
+        goto skip_nested_handling_8;
+        nested_frame_exit_8:;
+
+        goto try_except_handler_24;
+        skip_nested_handling_8:;
         {
             nuitka_bool tmp_condition_result_28;
             PyObject *tmp_cmp_expr_left_7;
@@ -13859,7 +15986,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 154;
+                exception_lineno = 160;
 
                 goto try_except_handler_24;
             }
@@ -13872,14 +15999,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         branch_yes_21:;
         CHECK_OBJECT(tmp_class_creation_8__bases_orig);
         tmp_dictset_value = tmp_class_creation_8__bases_orig;
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__8_CDBuff_154, mod_consts[80], tmp_dictset_value);
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__8_Energy_160, mod_consts[84], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 154;
+            exception_lineno = 160;
 
             goto try_except_handler_24;
         }
@@ -13892,17 +16019,17 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_kwargs_value_15;
             CHECK_OBJECT(tmp_class_creation_8__metaclass);
             tmp_called_value_17 = tmp_class_creation_8__metaclass;
-            tmp_tuple_element_29 = mod_consts[103];
+            tmp_tuple_element_29 = mod_consts[104];
             tmp_args_value_15 = MAKE_TUPLE_EMPTY(3);
             PyTuple_SET_ITEM0(tmp_args_value_15, 0, tmp_tuple_element_29);
             CHECK_OBJECT(tmp_class_creation_8__bases);
             tmp_tuple_element_29 = tmp_class_creation_8__bases;
             PyTuple_SET_ITEM0(tmp_args_value_15, 1, tmp_tuple_element_29);
-            tmp_tuple_element_29 = locals_base$buff$$$class__8_CDBuff_154;
+            tmp_tuple_element_29 = locals_base$buff$$$class__8_Energy_160;
             PyTuple_SET_ITEM0(tmp_args_value_15, 2, tmp_tuple_element_29);
             CHECK_OBJECT(tmp_class_creation_8__class_decl_dict);
             tmp_kwargs_value_15 = tmp_class_creation_8__class_decl_dict;
-            frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 154;
+            frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 160;
             tmp_assign_source_66 = CALL_FUNCTION(tstate, tmp_called_value_17, tmp_args_value_15, tmp_kwargs_value_15);
             Py_DECREF(tmp_args_value_15);
             if (tmp_assign_source_66 == NULL) {
@@ -13911,23 +16038,24 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 154;
+                exception_lineno = 160;
 
                 goto try_except_handler_24;
             }
-            assert(outline_7_var___class__ == NULL);
-            outline_7_var___class__ = tmp_assign_source_66;
+            assert(Nuitka_Cell_GET(outline_7_var___class__) == NULL);
+            PyCell_SET(outline_7_var___class__, tmp_assign_source_66);
+
         }
-        CHECK_OBJECT(outline_7_var___class__);
-        tmp_assign_source_65 = outline_7_var___class__;
+        CHECK_OBJECT(Nuitka_Cell_GET(outline_7_var___class__));
+        tmp_assign_source_65 = Nuitka_Cell_GET(outline_7_var___class__);
         Py_INCREF(tmp_assign_source_65);
         goto try_return_handler_24;
         NUITKA_CANNOT_GET_HERE("tried codes exits in all cases");
         return NULL;
         // Return handler code:
         try_return_handler_24:;
-        Py_DECREF(locals_base$buff$$$class__8_CDBuff_154);
-        locals_base$buff$$$class__8_CDBuff_154 = NULL;
+        Py_DECREF(locals_base$buff$$$class__8_Energy_160);
+        locals_base$buff$$$class__8_Energy_160 = NULL;
         goto try_return_handler_23;
         // Exception handler code:
         try_except_handler_24:;
@@ -13940,8 +16068,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         exception_tb = NULL;
         exception_lineno = 0;
 
-        Py_DECREF(locals_base$buff$$$class__8_CDBuff_154);
-        locals_base$buff$$$class__8_CDBuff_154 = NULL;
+        Py_DECREF(locals_base$buff$$$class__8_Energy_160);
+        locals_base$buff$$$class__8_Energy_160 = NULL;
         // Re-raise.
         exception_type = exception_keeper_type_22;
         exception_value = exception_keeper_value_22;
@@ -13980,10 +16108,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         NUITKA_CANNOT_GET_HERE("Return statement must have exited already.");
         return NULL;
         outline_exception_8:;
-        exception_lineno = 154;
+        exception_lineno = 160;
         goto try_except_handler_22;
         outline_result_8:;
-        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[103], tmp_assign_source_65);
+        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[104], tmp_assign_source_65);
     }
     goto try_end_8;
     // Exception handler code:
@@ -14035,10 +16163,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     {
         PyObject *tmp_assign_source_67;
         PyObject *tmp_tuple_element_30;
-        tmp_tuple_element_30 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[54]);
+        tmp_tuple_element_30 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[56]);
 
         if (unlikely(tmp_tuple_element_30 == NULL)) {
-            tmp_tuple_element_30 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[54]);
+            tmp_tuple_element_30 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[56]);
         }
 
         if (tmp_tuple_element_30 == NULL) {
@@ -14047,7 +16175,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 158;
+            exception_lineno = 179;
 
             goto try_except_handler_25;
         }
@@ -14073,7 +16201,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 158;
+            exception_lineno = 179;
 
             goto try_except_handler_25;
         }
@@ -14103,7 +16231,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 158;
+            exception_lineno = 179;
 
             goto try_except_handler_25;
         }
@@ -14116,7 +16244,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         condexpr_true_8:;
         CHECK_OBJECT(tmp_class_creation_9__bases);
         tmp_expression_value_44 = tmp_class_creation_9__bases;
-        tmp_subscript_value_8 = mod_consts[39];
+        tmp_subscript_value_8 = mod_consts[41];
         tmp_type_arg_15 = LOOKUP_SUBSCRIPT_CONST(tstate, tmp_expression_value_44, tmp_subscript_value_8, 0);
         if (tmp_type_arg_15 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -14124,7 +16252,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 158;
+            exception_lineno = 179;
 
             goto try_except_handler_25;
         }
@@ -14136,7 +16264,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 158;
+            exception_lineno = 179;
 
             goto try_except_handler_25;
         }
@@ -14155,7 +16283,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 158;
+            exception_lineno = 179;
 
             goto try_except_handler_25;
         }
@@ -14167,14 +16295,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_expression_value_45;
         CHECK_OBJECT(tmp_class_creation_9__metaclass);
         tmp_expression_value_45 = tmp_class_creation_9__metaclass;
-        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_45, mod_consts[72]);
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_45, mod_consts[76]);
         if (tmp_res == -1) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 158;
+            exception_lineno = 179;
 
             goto try_except_handler_25;
         }
@@ -14195,18 +16323,18 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_kwargs_value_16;
         CHECK_OBJECT(tmp_class_creation_9__metaclass);
         tmp_expression_value_46 = tmp_class_creation_9__metaclass;
-        tmp_called_value_18 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_46, mod_consts[72]);
+        tmp_called_value_18 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_46, mod_consts[76]);
         if (tmp_called_value_18 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 158;
+            exception_lineno = 179;
 
             goto try_except_handler_25;
         }
-        tmp_tuple_element_31 = mod_consts[104];
+        tmp_tuple_element_31 = mod_consts[110];
         tmp_args_value_16 = MAKE_TUPLE_EMPTY(2);
         PyTuple_SET_ITEM0(tmp_args_value_16, 0, tmp_tuple_element_31);
         CHECK_OBJECT(tmp_class_creation_9__bases);
@@ -14214,7 +16342,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyTuple_SET_ITEM0(tmp_args_value_16, 1, tmp_tuple_element_31);
         CHECK_OBJECT(tmp_class_creation_9__class_decl_dict);
         tmp_kwargs_value_16 = tmp_class_creation_9__class_decl_dict;
-        frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 158;
+        frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 179;
         tmp_assign_source_71 = CALL_FUNCTION(tstate, tmp_called_value_18, tmp_args_value_16, tmp_kwargs_value_16);
         Py_DECREF(tmp_called_value_18);
         Py_DECREF(tmp_args_value_16);
@@ -14224,7 +16352,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 158;
+            exception_lineno = 179;
 
             goto try_except_handler_25;
         }
@@ -14237,14 +16365,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_expression_value_47;
         CHECK_OBJECT(tmp_class_creation_9__prepared);
         tmp_expression_value_47 = tmp_class_creation_9__prepared;
-        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_47, mod_consts[74]);
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_47, mod_consts[78]);
         if (tmp_res == -1) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 158;
+            exception_lineno = 179;
 
             goto try_except_handler_25;
         }
@@ -14269,11 +16397,11 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         PyObject *tmp_name_value_11;
         PyObject *tmp_default_value_8;
         tmp_raise_type_8 = PyExc_TypeError;
-        tmp_mod_expr_left_8 = mod_consts[75];
+        tmp_mod_expr_left_8 = mod_consts[79];
         CHECK_OBJECT(tmp_class_creation_9__metaclass);
         tmp_expression_value_48 = tmp_class_creation_9__metaclass;
-        tmp_name_value_11 = mod_consts[76];
-        tmp_default_value_8 = mod_consts[77];
+        tmp_name_value_11 = mod_consts[80];
+        tmp_default_value_8 = mod_consts[81];
         tmp_tuple_element_32 = BUILTIN_GETATTR(tstate, tmp_expression_value_48, tmp_name_value_11, tmp_default_value_8);
         if (tmp_tuple_element_32 == NULL) {
             assert(HAS_ERROR_OCCURRED(tstate));
@@ -14281,7 +16409,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 158;
+            exception_lineno = 179;
 
             goto try_except_handler_25;
         }
@@ -14294,7 +16422,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             tmp_type_arg_16 = tmp_class_creation_9__prepared;
             tmp_expression_value_49 = BUILTIN_TYPE1(tmp_type_arg_16);
             assert(!(tmp_expression_value_49 == NULL));
-            tmp_tuple_element_32 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_49, mod_consts[76]);
+            tmp_tuple_element_32 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_49, mod_consts[80]);
             Py_DECREF(tmp_expression_value_49);
             if (tmp_tuple_element_32 == NULL) {
                 assert(HAS_ERROR_OCCURRED(tstate));
@@ -14302,7 +16430,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 158;
+                exception_lineno = 179;
 
                 goto tuple_build_exception_8;
             }
@@ -14323,14 +16451,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 158;
+            exception_lineno = 179;
 
             goto try_except_handler_25;
         }
         exception_type = tmp_raise_type_8;
         Py_INCREF(tmp_raise_type_8);
         exception_value = tmp_raise_value_8;
-        exception_lineno = 158;
+        exception_lineno = 179;
         RAISE_EXCEPTION_IMPLICIT(tstate, &exception_type, &exception_value, &exception_tb);
 
         goto try_except_handler_25;
@@ -14351,32 +16479,32 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_set_locals_9;
             CHECK_OBJECT(tmp_class_creation_9__prepared);
             tmp_set_locals_9 = tmp_class_creation_9__prepared;
-            locals_base$buff$$$class__9_CountBuff_158 = tmp_set_locals_9;
+            locals_base$buff$$$class__9_CDBuff_179 = tmp_set_locals_9;
             Py_INCREF(tmp_set_locals_9);
         }
         // Tried code:
         // Tried code:
-        tmp_dictset_value = mod_consts[52];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__9_CountBuff_158, mod_consts[53], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[54];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__9_CDBuff_179, mod_consts[55], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 158;
+            exception_lineno = 179;
 
             goto try_except_handler_27;
         }
-        tmp_dictset_value = mod_consts[104];
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__9_CountBuff_158, mod_consts[55], tmp_dictset_value);
+        tmp_dictset_value = mod_consts[110];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__9_CDBuff_179, mod_consts[57], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 158;
+            exception_lineno = 179;
 
             goto try_except_handler_27;
         }
@@ -14395,7 +16523,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 158;
+                exception_lineno = 179;
 
                 goto try_except_handler_27;
             }
@@ -14408,14 +16536,14 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         branch_yes_24:;
         CHECK_OBJECT(tmp_class_creation_9__bases_orig);
         tmp_dictset_value = tmp_class_creation_9__bases_orig;
-        tmp_res = PyObject_SetItem(locals_base$buff$$$class__9_CountBuff_158, mod_consts[80], tmp_dictset_value);
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__9_CDBuff_179, mod_consts[84], tmp_dictset_value);
         if (tmp_res != 0) {
             assert(HAS_ERROR_OCCURRED(tstate));
 
             FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-            exception_lineno = 158;
+            exception_lineno = 179;
 
             goto try_except_handler_27;
         }
@@ -14428,17 +16556,17 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
             PyObject *tmp_kwargs_value_17;
             CHECK_OBJECT(tmp_class_creation_9__metaclass);
             tmp_called_value_19 = tmp_class_creation_9__metaclass;
-            tmp_tuple_element_33 = mod_consts[104];
+            tmp_tuple_element_33 = mod_consts[110];
             tmp_args_value_17 = MAKE_TUPLE_EMPTY(3);
             PyTuple_SET_ITEM0(tmp_args_value_17, 0, tmp_tuple_element_33);
             CHECK_OBJECT(tmp_class_creation_9__bases);
             tmp_tuple_element_33 = tmp_class_creation_9__bases;
             PyTuple_SET_ITEM0(tmp_args_value_17, 1, tmp_tuple_element_33);
-            tmp_tuple_element_33 = locals_base$buff$$$class__9_CountBuff_158;
+            tmp_tuple_element_33 = locals_base$buff$$$class__9_CDBuff_179;
             PyTuple_SET_ITEM0(tmp_args_value_17, 2, tmp_tuple_element_33);
             CHECK_OBJECT(tmp_class_creation_9__class_decl_dict);
             tmp_kwargs_value_17 = tmp_class_creation_9__class_decl_dict;
-            frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 158;
+            frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 179;
             tmp_assign_source_74 = CALL_FUNCTION(tstate, tmp_called_value_19, tmp_args_value_17, tmp_kwargs_value_17);
             Py_DECREF(tmp_args_value_17);
             if (tmp_assign_source_74 == NULL) {
@@ -14447,7 +16575,7 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
                 FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
 
 
-                exception_lineno = 158;
+                exception_lineno = 179;
 
                 goto try_except_handler_27;
             }
@@ -14462,8 +16590,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         return NULL;
         // Return handler code:
         try_return_handler_27:;
-        Py_DECREF(locals_base$buff$$$class__9_CountBuff_158);
-        locals_base$buff$$$class__9_CountBuff_158 = NULL;
+        Py_DECREF(locals_base$buff$$$class__9_CDBuff_179);
+        locals_base$buff$$$class__9_CDBuff_179 = NULL;
         goto try_return_handler_26;
         // Exception handler code:
         try_except_handler_27:;
@@ -14476,8 +16604,8 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         exception_tb = NULL;
         exception_lineno = 0;
 
-        Py_DECREF(locals_base$buff$$$class__9_CountBuff_158);
-        locals_base$buff$$$class__9_CountBuff_158 = NULL;
+        Py_DECREF(locals_base$buff$$$class__9_CDBuff_179);
+        locals_base$buff$$$class__9_CDBuff_179 = NULL;
         // Re-raise.
         exception_type = exception_keeper_type_25;
         exception_value = exception_keeper_value_25;
@@ -14516,10 +16644,10 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
         NUITKA_CANNOT_GET_HERE("Return statement must have exited already.");
         return NULL;
         outline_exception_9:;
-        exception_lineno = 158;
+        exception_lineno = 179;
         goto try_except_handler_25;
         outline_result_9:;
-        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[104], tmp_assign_source_73);
+        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[110], tmp_assign_source_73);
     }
     goto try_end_9;
     // Exception handler code:
@@ -14552,12 +16680,548 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
     goto frame_exception_exit_1;
     // End of try:
     try_end_9:;
+    CHECK_OBJECT(tmp_class_creation_9__bases_orig);
+    Py_DECREF(tmp_class_creation_9__bases_orig);
+    tmp_class_creation_9__bases_orig = NULL;
+    CHECK_OBJECT(tmp_class_creation_9__bases);
+    Py_DECREF(tmp_class_creation_9__bases);
+    tmp_class_creation_9__bases = NULL;
+    CHECK_OBJECT(tmp_class_creation_9__class_decl_dict);
+    Py_DECREF(tmp_class_creation_9__class_decl_dict);
+    tmp_class_creation_9__class_decl_dict = NULL;
+    CHECK_OBJECT(tmp_class_creation_9__metaclass);
+    Py_DECREF(tmp_class_creation_9__metaclass);
+    tmp_class_creation_9__metaclass = NULL;
+    CHECK_OBJECT(tmp_class_creation_9__prepared);
+    Py_DECREF(tmp_class_creation_9__prepared);
+    tmp_class_creation_9__prepared = NULL;
+    // Tried code:
+    {
+        PyObject *tmp_assign_source_75;
+        PyObject *tmp_tuple_element_34;
+        tmp_tuple_element_34 = GET_STRING_DICT_VALUE(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[56]);
+
+        if (unlikely(tmp_tuple_element_34 == NULL)) {
+            tmp_tuple_element_34 = GET_MODULE_VARIABLE_VALUE_FALLBACK(tstate, mod_consts[56]);
+        }
+
+        if (tmp_tuple_element_34 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 183;
+
+            goto try_except_handler_28;
+        }
+        tmp_assign_source_75 = MAKE_TUPLE_EMPTY(1);
+        PyTuple_SET_ITEM0(tmp_assign_source_75, 0, tmp_tuple_element_34);
+        assert(tmp_class_creation_10__bases_orig == NULL);
+        tmp_class_creation_10__bases_orig = tmp_assign_source_75;
+    }
+    {
+        PyObject *tmp_assign_source_76;
+        PyObject *tmp_dircall_arg1_9;
+        CHECK_OBJECT(tmp_class_creation_10__bases_orig);
+        tmp_dircall_arg1_9 = tmp_class_creation_10__bases_orig;
+        Py_INCREF(tmp_dircall_arg1_9);
+
+        {
+            PyObject *dir_call_args[] = {tmp_dircall_arg1_9};
+            tmp_assign_source_76 = impl___main__$$$function__1__mro_entries_conversion(tstate, dir_call_args);
+        }
+        if (tmp_assign_source_76 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 183;
+
+            goto try_except_handler_28;
+        }
+        assert(tmp_class_creation_10__bases == NULL);
+        tmp_class_creation_10__bases = tmp_assign_source_76;
+    }
+    {
+        PyObject *tmp_assign_source_77;
+        tmp_assign_source_77 = MAKE_DICT_EMPTY();
+        assert(tmp_class_creation_10__class_decl_dict == NULL);
+        tmp_class_creation_10__class_decl_dict = tmp_assign_source_77;
+    }
+    {
+        PyObject *tmp_assign_source_78;
+        PyObject *tmp_metaclass_value_9;
+        nuitka_bool tmp_condition_result_33;
+        int tmp_truth_name_9;
+        PyObject *tmp_type_arg_17;
+        PyObject *tmp_expression_value_50;
+        PyObject *tmp_subscript_value_9;
+        PyObject *tmp_bases_value_9;
+        CHECK_OBJECT(tmp_class_creation_10__bases);
+        tmp_truth_name_9 = CHECK_IF_TRUE(tmp_class_creation_10__bases);
+        if (tmp_truth_name_9 == -1) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 183;
+
+            goto try_except_handler_28;
+        }
+        tmp_condition_result_33 = tmp_truth_name_9 == 0 ? NUITKA_BOOL_FALSE : NUITKA_BOOL_TRUE;
+        if (tmp_condition_result_33 == NUITKA_BOOL_TRUE) {
+            goto condexpr_true_9;
+        } else {
+            goto condexpr_false_9;
+        }
+        condexpr_true_9:;
+        CHECK_OBJECT(tmp_class_creation_10__bases);
+        tmp_expression_value_50 = tmp_class_creation_10__bases;
+        tmp_subscript_value_9 = mod_consts[41];
+        tmp_type_arg_17 = LOOKUP_SUBSCRIPT_CONST(tstate, tmp_expression_value_50, tmp_subscript_value_9, 0);
+        if (tmp_type_arg_17 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 183;
+
+            goto try_except_handler_28;
+        }
+        tmp_metaclass_value_9 = BUILTIN_TYPE1(tmp_type_arg_17);
+        Py_DECREF(tmp_type_arg_17);
+        if (tmp_metaclass_value_9 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 183;
+
+            goto try_except_handler_28;
+        }
+        goto condexpr_end_9;
+        condexpr_false_9:;
+        tmp_metaclass_value_9 = (PyObject *)&PyType_Type;
+        Py_INCREF(tmp_metaclass_value_9);
+        condexpr_end_9:;
+        CHECK_OBJECT(tmp_class_creation_10__bases);
+        tmp_bases_value_9 = tmp_class_creation_10__bases;
+        tmp_assign_source_78 = SELECT_METACLASS(tstate, tmp_metaclass_value_9, tmp_bases_value_9);
+        Py_DECREF(tmp_metaclass_value_9);
+        if (tmp_assign_source_78 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 183;
+
+            goto try_except_handler_28;
+        }
+        assert(tmp_class_creation_10__metaclass == NULL);
+        tmp_class_creation_10__metaclass = tmp_assign_source_78;
+    }
+    {
+        bool tmp_condition_result_34;
+        PyObject *tmp_expression_value_51;
+        CHECK_OBJECT(tmp_class_creation_10__metaclass);
+        tmp_expression_value_51 = tmp_class_creation_10__metaclass;
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_51, mod_consts[76]);
+        if (tmp_res == -1) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 183;
+
+            goto try_except_handler_28;
+        }
+        tmp_condition_result_34 = (tmp_res != 0) ? true : false;
+        if (tmp_condition_result_34 != false) {
+            goto branch_yes_25;
+        } else {
+            goto branch_no_25;
+        }
+    }
+    branch_yes_25:;
+    {
+        PyObject *tmp_assign_source_79;
+        PyObject *tmp_called_value_20;
+        PyObject *tmp_expression_value_52;
+        PyObject *tmp_args_value_18;
+        PyObject *tmp_tuple_element_35;
+        PyObject *tmp_kwargs_value_18;
+        CHECK_OBJECT(tmp_class_creation_10__metaclass);
+        tmp_expression_value_52 = tmp_class_creation_10__metaclass;
+        tmp_called_value_20 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_52, mod_consts[76]);
+        if (tmp_called_value_20 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 183;
+
+            goto try_except_handler_28;
+        }
+        tmp_tuple_element_35 = mod_consts[111];
+        tmp_args_value_18 = MAKE_TUPLE_EMPTY(2);
+        PyTuple_SET_ITEM0(tmp_args_value_18, 0, tmp_tuple_element_35);
+        CHECK_OBJECT(tmp_class_creation_10__bases);
+        tmp_tuple_element_35 = tmp_class_creation_10__bases;
+        PyTuple_SET_ITEM0(tmp_args_value_18, 1, tmp_tuple_element_35);
+        CHECK_OBJECT(tmp_class_creation_10__class_decl_dict);
+        tmp_kwargs_value_18 = tmp_class_creation_10__class_decl_dict;
+        frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 183;
+        tmp_assign_source_79 = CALL_FUNCTION(tstate, tmp_called_value_20, tmp_args_value_18, tmp_kwargs_value_18);
+        Py_DECREF(tmp_called_value_20);
+        Py_DECREF(tmp_args_value_18);
+        if (tmp_assign_source_79 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 183;
+
+            goto try_except_handler_28;
+        }
+        assert(tmp_class_creation_10__prepared == NULL);
+        tmp_class_creation_10__prepared = tmp_assign_source_79;
+    }
+    {
+        bool tmp_condition_result_35;
+        PyObject *tmp_operand_value_9;
+        PyObject *tmp_expression_value_53;
+        CHECK_OBJECT(tmp_class_creation_10__prepared);
+        tmp_expression_value_53 = tmp_class_creation_10__prepared;
+        tmp_res = HAS_ATTR_BOOL2(tstate, tmp_expression_value_53, mod_consts[78]);
+        if (tmp_res == -1) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 183;
+
+            goto try_except_handler_28;
+        }
+        tmp_operand_value_9 = (tmp_res != 0) ? Py_True : Py_False;
+        tmp_res = CHECK_IF_TRUE(tmp_operand_value_9);
+        assert(!(tmp_res == -1));
+        tmp_condition_result_35 = (tmp_res == 0) ? true : false;
+        if (tmp_condition_result_35 != false) {
+            goto branch_yes_26;
+        } else {
+            goto branch_no_26;
+        }
+    }
+    branch_yes_26:;
+    {
+        PyObject *tmp_raise_type_9;
+        PyObject *tmp_raise_value_9;
+        PyObject *tmp_mod_expr_left_9;
+        PyObject *tmp_mod_expr_right_9;
+        PyObject *tmp_tuple_element_36;
+        PyObject *tmp_expression_value_54;
+        PyObject *tmp_name_value_12;
+        PyObject *tmp_default_value_9;
+        tmp_raise_type_9 = PyExc_TypeError;
+        tmp_mod_expr_left_9 = mod_consts[79];
+        CHECK_OBJECT(tmp_class_creation_10__metaclass);
+        tmp_expression_value_54 = tmp_class_creation_10__metaclass;
+        tmp_name_value_12 = mod_consts[80];
+        tmp_default_value_9 = mod_consts[81];
+        tmp_tuple_element_36 = BUILTIN_GETATTR(tstate, tmp_expression_value_54, tmp_name_value_12, tmp_default_value_9);
+        if (tmp_tuple_element_36 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 183;
+
+            goto try_except_handler_28;
+        }
+        tmp_mod_expr_right_9 = MAKE_TUPLE_EMPTY(2);
+        {
+            PyObject *tmp_expression_value_55;
+            PyObject *tmp_type_arg_18;
+            PyTuple_SET_ITEM(tmp_mod_expr_right_9, 0, tmp_tuple_element_36);
+            CHECK_OBJECT(tmp_class_creation_10__prepared);
+            tmp_type_arg_18 = tmp_class_creation_10__prepared;
+            tmp_expression_value_55 = BUILTIN_TYPE1(tmp_type_arg_18);
+            assert(!(tmp_expression_value_55 == NULL));
+            tmp_tuple_element_36 = LOOKUP_ATTRIBUTE(tstate, tmp_expression_value_55, mod_consts[80]);
+            Py_DECREF(tmp_expression_value_55);
+            if (tmp_tuple_element_36 == NULL) {
+                assert(HAS_ERROR_OCCURRED(tstate));
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+                exception_lineno = 183;
+
+                goto tuple_build_exception_9;
+            }
+            PyTuple_SET_ITEM(tmp_mod_expr_right_9, 1, tmp_tuple_element_36);
+        }
+        goto tuple_build_noexception_9;
+        // Exception handling pass through code for tuple_build:
+        tuple_build_exception_9:;
+        Py_DECREF(tmp_mod_expr_right_9);
+        goto try_except_handler_28;
+        // Finished with no exception for tuple_build:
+        tuple_build_noexception_9:;
+        tmp_raise_value_9 = BINARY_OPERATION_MOD_OBJECT_UNICODE_TUPLE(tmp_mod_expr_left_9, tmp_mod_expr_right_9);
+        Py_DECREF(tmp_mod_expr_right_9);
+        if (tmp_raise_value_9 == NULL) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 183;
+
+            goto try_except_handler_28;
+        }
+        exception_type = tmp_raise_type_9;
+        Py_INCREF(tmp_raise_type_9);
+        exception_value = tmp_raise_value_9;
+        exception_lineno = 183;
+        RAISE_EXCEPTION_IMPLICIT(tstate, &exception_type, &exception_value, &exception_tb);
+
+        goto try_except_handler_28;
+    }
+    branch_no_26:;
+    goto branch_end_25;
+    branch_no_25:;
+    {
+        PyObject *tmp_assign_source_80;
+        tmp_assign_source_80 = MAKE_DICT_EMPTY();
+        assert(tmp_class_creation_10__prepared == NULL);
+        tmp_class_creation_10__prepared = tmp_assign_source_80;
+    }
+    branch_end_25:;
+    {
+        PyObject *tmp_assign_source_81;
+        {
+            PyObject *tmp_set_locals_10;
+            CHECK_OBJECT(tmp_class_creation_10__prepared);
+            tmp_set_locals_10 = tmp_class_creation_10__prepared;
+            locals_base$buff$$$class__10_CountBuff_183 = tmp_set_locals_10;
+            Py_INCREF(tmp_set_locals_10);
+        }
+        // Tried code:
+        // Tried code:
+        tmp_dictset_value = mod_consts[54];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__10_CountBuff_183, mod_consts[55], tmp_dictset_value);
+        if (tmp_res != 0) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 183;
+
+            goto try_except_handler_30;
+        }
+        tmp_dictset_value = mod_consts[111];
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__10_CountBuff_183, mod_consts[57], tmp_dictset_value);
+        if (tmp_res != 0) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 183;
+
+            goto try_except_handler_30;
+        }
+        {
+            nuitka_bool tmp_condition_result_36;
+            PyObject *tmp_cmp_expr_left_9;
+            PyObject *tmp_cmp_expr_right_9;
+            CHECK_OBJECT(tmp_class_creation_10__bases);
+            tmp_cmp_expr_left_9 = tmp_class_creation_10__bases;
+            CHECK_OBJECT(tmp_class_creation_10__bases_orig);
+            tmp_cmp_expr_right_9 = tmp_class_creation_10__bases_orig;
+            tmp_condition_result_36 = RICH_COMPARE_NE_NBOOL_OBJECT_TUPLE(tmp_cmp_expr_left_9, tmp_cmp_expr_right_9);
+            if (tmp_condition_result_36 == NUITKA_BOOL_EXCEPTION) {
+                assert(HAS_ERROR_OCCURRED(tstate));
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+                exception_lineno = 183;
+
+                goto try_except_handler_30;
+            }
+            if (tmp_condition_result_36 == NUITKA_BOOL_TRUE) {
+                goto branch_yes_27;
+            } else {
+                goto branch_no_27;
+            }
+        }
+        branch_yes_27:;
+        CHECK_OBJECT(tmp_class_creation_10__bases_orig);
+        tmp_dictset_value = tmp_class_creation_10__bases_orig;
+        tmp_res = PyObject_SetItem(locals_base$buff$$$class__10_CountBuff_183, mod_consts[84], tmp_dictset_value);
+        if (tmp_res != 0) {
+            assert(HAS_ERROR_OCCURRED(tstate));
+
+            FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+            exception_lineno = 183;
+
+            goto try_except_handler_30;
+        }
+        branch_no_27:;
+        {
+            PyObject *tmp_assign_source_82;
+            PyObject *tmp_called_value_21;
+            PyObject *tmp_args_value_19;
+            PyObject *tmp_tuple_element_37;
+            PyObject *tmp_kwargs_value_19;
+            CHECK_OBJECT(tmp_class_creation_10__metaclass);
+            tmp_called_value_21 = tmp_class_creation_10__metaclass;
+            tmp_tuple_element_37 = mod_consts[111];
+            tmp_args_value_19 = MAKE_TUPLE_EMPTY(3);
+            PyTuple_SET_ITEM0(tmp_args_value_19, 0, tmp_tuple_element_37);
+            CHECK_OBJECT(tmp_class_creation_10__bases);
+            tmp_tuple_element_37 = tmp_class_creation_10__bases;
+            PyTuple_SET_ITEM0(tmp_args_value_19, 1, tmp_tuple_element_37);
+            tmp_tuple_element_37 = locals_base$buff$$$class__10_CountBuff_183;
+            PyTuple_SET_ITEM0(tmp_args_value_19, 2, tmp_tuple_element_37);
+            CHECK_OBJECT(tmp_class_creation_10__class_decl_dict);
+            tmp_kwargs_value_19 = tmp_class_creation_10__class_decl_dict;
+            frame_60454b0fdc4335c529e0edbf73a1357e->m_frame.f_lineno = 183;
+            tmp_assign_source_82 = CALL_FUNCTION(tstate, tmp_called_value_21, tmp_args_value_19, tmp_kwargs_value_19);
+            Py_DECREF(tmp_args_value_19);
+            if (tmp_assign_source_82 == NULL) {
+                assert(HAS_ERROR_OCCURRED(tstate));
+
+                FETCH_ERROR_OCCURRED(tstate, &exception_type, &exception_value, &exception_tb);
+
+
+                exception_lineno = 183;
+
+                goto try_except_handler_30;
+            }
+            assert(outline_9_var___class__ == NULL);
+            outline_9_var___class__ = tmp_assign_source_82;
+        }
+        CHECK_OBJECT(outline_9_var___class__);
+        tmp_assign_source_81 = outline_9_var___class__;
+        Py_INCREF(tmp_assign_source_81);
+        goto try_return_handler_30;
+        NUITKA_CANNOT_GET_HERE("tried codes exits in all cases");
+        return NULL;
+        // Return handler code:
+        try_return_handler_30:;
+        Py_DECREF(locals_base$buff$$$class__10_CountBuff_183);
+        locals_base$buff$$$class__10_CountBuff_183 = NULL;
+        goto try_return_handler_29;
+        // Exception handler code:
+        try_except_handler_30:;
+        exception_keeper_type_28 = exception_type;
+        exception_keeper_value_28 = exception_value;
+        exception_keeper_tb_28 = exception_tb;
+        exception_keeper_lineno_28 = exception_lineno;
+        exception_type = NULL;
+        exception_value = NULL;
+        exception_tb = NULL;
+        exception_lineno = 0;
+
+        Py_DECREF(locals_base$buff$$$class__10_CountBuff_183);
+        locals_base$buff$$$class__10_CountBuff_183 = NULL;
+        // Re-raise.
+        exception_type = exception_keeper_type_28;
+        exception_value = exception_keeper_value_28;
+        exception_tb = exception_keeper_tb_28;
+        exception_lineno = exception_keeper_lineno_28;
+
+        goto try_except_handler_29;
+        // End of try:
+        NUITKA_CANNOT_GET_HERE("tried codes exits in all cases");
+        return NULL;
+        // Return handler code:
+        try_return_handler_29:;
+        CHECK_OBJECT(outline_9_var___class__);
+        Py_DECREF(outline_9_var___class__);
+        outline_9_var___class__ = NULL;
+        goto outline_result_10;
+        // Exception handler code:
+        try_except_handler_29:;
+        exception_keeper_type_29 = exception_type;
+        exception_keeper_value_29 = exception_value;
+        exception_keeper_tb_29 = exception_tb;
+        exception_keeper_lineno_29 = exception_lineno;
+        exception_type = NULL;
+        exception_value = NULL;
+        exception_tb = NULL;
+        exception_lineno = 0;
+
+        // Re-raise.
+        exception_type = exception_keeper_type_29;
+        exception_value = exception_keeper_value_29;
+        exception_tb = exception_keeper_tb_29;
+        exception_lineno = exception_keeper_lineno_29;
+
+        goto outline_exception_10;
+        // End of try:
+        NUITKA_CANNOT_GET_HERE("Return statement must have exited already.");
+        return NULL;
+        outline_exception_10:;
+        exception_lineno = 183;
+        goto try_except_handler_28;
+        outline_result_10:;
+        UPDATE_STRING_DICT1(moduledict_base$buff, (Nuitka_StringObject *)mod_consts[111], tmp_assign_source_81);
+    }
+    goto try_end_10;
+    // Exception handler code:
+    try_except_handler_28:;
+    exception_keeper_type_30 = exception_type;
+    exception_keeper_value_30 = exception_value;
+    exception_keeper_tb_30 = exception_tb;
+    exception_keeper_lineno_30 = exception_lineno;
+    exception_type = NULL;
+    exception_value = NULL;
+    exception_tb = NULL;
+    exception_lineno = 0;
+
+    Py_XDECREF(tmp_class_creation_10__bases_orig);
+    tmp_class_creation_10__bases_orig = NULL;
+    Py_XDECREF(tmp_class_creation_10__bases);
+    tmp_class_creation_10__bases = NULL;
+    Py_XDECREF(tmp_class_creation_10__class_decl_dict);
+    tmp_class_creation_10__class_decl_dict = NULL;
+    Py_XDECREF(tmp_class_creation_10__metaclass);
+    tmp_class_creation_10__metaclass = NULL;
+    Py_XDECREF(tmp_class_creation_10__prepared);
+    tmp_class_creation_10__prepared = NULL;
+    // Re-raise.
+    exception_type = exception_keeper_type_30;
+    exception_value = exception_keeper_value_30;
+    exception_tb = exception_keeper_tb_30;
+    exception_lineno = exception_keeper_lineno_30;
+
+    goto frame_exception_exit_1;
+    // End of try:
+    try_end_10:;
 
 
     // Put the previous frame back on top.
     popFrameStack(tstate);
 
-    goto frame_no_exception_8;
+    goto frame_no_exception_9;
     frame_exception_exit_1:
 
 
@@ -14576,22 +17240,22 @@ PyObject *modulecode_base$buff(PyThreadState *tstate, PyObject *module, struct N
 
     // Return the error.
     goto module_exception_exit;
-    frame_no_exception_8:;
-    CHECK_OBJECT(tmp_class_creation_9__bases_orig);
-    Py_DECREF(tmp_class_creation_9__bases_orig);
-    tmp_class_creation_9__bases_orig = NULL;
-    CHECK_OBJECT(tmp_class_creation_9__bases);
-    Py_DECREF(tmp_class_creation_9__bases);
-    tmp_class_creation_9__bases = NULL;
-    CHECK_OBJECT(tmp_class_creation_9__class_decl_dict);
-    Py_DECREF(tmp_class_creation_9__class_decl_dict);
-    tmp_class_creation_9__class_decl_dict = NULL;
-    CHECK_OBJECT(tmp_class_creation_9__metaclass);
-    Py_DECREF(tmp_class_creation_9__metaclass);
-    tmp_class_creation_9__metaclass = NULL;
-    CHECK_OBJECT(tmp_class_creation_9__prepared);
-    Py_DECREF(tmp_class_creation_9__prepared);
-    tmp_class_creation_9__prepared = NULL;
+    frame_no_exception_9:;
+    CHECK_OBJECT(tmp_class_creation_10__bases_orig);
+    Py_DECREF(tmp_class_creation_10__bases_orig);
+    tmp_class_creation_10__bases_orig = NULL;
+    CHECK_OBJECT(tmp_class_creation_10__bases);
+    Py_DECREF(tmp_class_creation_10__bases);
+    tmp_class_creation_10__bases = NULL;
+    CHECK_OBJECT(tmp_class_creation_10__class_decl_dict);
+    Py_DECREF(tmp_class_creation_10__class_decl_dict);
+    tmp_class_creation_10__class_decl_dict = NULL;
+    CHECK_OBJECT(tmp_class_creation_10__metaclass);
+    Py_DECREF(tmp_class_creation_10__metaclass);
+    tmp_class_creation_10__metaclass = NULL;
+    CHECK_OBJECT(tmp_class_creation_10__prepared);
+    Py_DECREF(tmp_class_creation_10__prepared);
+    tmp_class_creation_10__prepared = NULL;
 
     // Report to PGO about leaving the module without error.
     PGO_onModuleExit("base$buff", false);

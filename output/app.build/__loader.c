@@ -76,6 +76,13 @@ extern PyObject *modulecode_qt$scripts$recipes(PyThreadState *tstate, PyObject *
 extern PyObject *modulecode_qt$scripts$talents(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
 extern PyObject *modulecode_qt$scripts$top(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
 extern PyObject *modulecode_schools(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
+extern PyObject *modulecode_schools$ao_xue_zhan_yi(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
+extern PyObject *modulecode_schools$ao_xue_zhan_yi$attribute(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
+extern PyObject *modulecode_schools$ao_xue_zhan_yi$buffs(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
+extern PyObject *modulecode_schools$ao_xue_zhan_yi$gains(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
+extern PyObject *modulecode_schools$ao_xue_zhan_yi$recipes(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
+extern PyObject *modulecode_schools$ao_xue_zhan_yi$skills(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
+extern PyObject *modulecode_schools$ao_xue_zhan_yi$talents(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
 extern PyObject *modulecode_schools$bei_ao_jue(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
 extern PyObject *modulecode_schools$bei_ao_jue$attribute(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
 extern PyObject *modulecode_schools$bei_ao_jue$buffs(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
@@ -97,6 +104,13 @@ extern PyObject *modulecode_schools$wen_shui_jue$gains(PyThreadState *tstate, Py
 extern PyObject *modulecode_schools$wen_shui_jue$recipes(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
 extern PyObject *modulecode_schools$wen_shui_jue$skills(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
 extern PyObject *modulecode_schools$wen_shui_jue$talents(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
+extern PyObject *modulecode_schools$yi_jin_jing(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
+extern PyObject *modulecode_schools$yi_jin_jing$attribute(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
+extern PyObject *modulecode_schools$yi_jin_jing$buffs(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
+extern PyObject *modulecode_schools$yi_jin_jing$gains(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
+extern PyObject *modulecode_schools$yi_jin_jing$recipes(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
+extern PyObject *modulecode_schools$yi_jin_jing$skills(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
+extern PyObject *modulecode_schools$yi_jin_jing$talents(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
 extern PyObject *modulecode_shiboken6(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
 extern PyObject *modulecode_utils(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
 extern PyObject *modulecode_utils$analyze(PyThreadState *tstate, PyObject *, struct Nuitka_MetaPathBasedLoaderEntry const *);
@@ -400,6 +414,41 @@ static struct Nuitka_MetaPathBasedLoaderEntry meta_path_loader_entries[] = {
 , NULL
 #endif
 },
+    {"schools.ao_xue_zhan_yi", modulecode_schools$ao_xue_zhan_yi, 0, 0, NUITKA_TRANSLATED_FLAG | NUITKA_PACKAGE_FLAG
+#if defined(_NUITKA_FREEZER_HAS_FILE_PATH)
+, NULL
+#endif
+},
+    {"schools.ao_xue_zhan_yi.attribute", modulecode_schools$ao_xue_zhan_yi$attribute, 0, 0, NUITKA_TRANSLATED_FLAG
+#if defined(_NUITKA_FREEZER_HAS_FILE_PATH)
+, NULL
+#endif
+},
+    {"schools.ao_xue_zhan_yi.buffs", modulecode_schools$ao_xue_zhan_yi$buffs, 0, 0, NUITKA_TRANSLATED_FLAG
+#if defined(_NUITKA_FREEZER_HAS_FILE_PATH)
+, NULL
+#endif
+},
+    {"schools.ao_xue_zhan_yi.gains", modulecode_schools$ao_xue_zhan_yi$gains, 0, 0, NUITKA_TRANSLATED_FLAG
+#if defined(_NUITKA_FREEZER_HAS_FILE_PATH)
+, NULL
+#endif
+},
+    {"schools.ao_xue_zhan_yi.recipes", modulecode_schools$ao_xue_zhan_yi$recipes, 0, 0, NUITKA_TRANSLATED_FLAG
+#if defined(_NUITKA_FREEZER_HAS_FILE_PATH)
+, NULL
+#endif
+},
+    {"schools.ao_xue_zhan_yi.skills", modulecode_schools$ao_xue_zhan_yi$skills, 0, 0, NUITKA_TRANSLATED_FLAG
+#if defined(_NUITKA_FREEZER_HAS_FILE_PATH)
+, NULL
+#endif
+},
+    {"schools.ao_xue_zhan_yi.talents", modulecode_schools$ao_xue_zhan_yi$talents, 0, 0, NUITKA_TRANSLATED_FLAG
+#if defined(_NUITKA_FREEZER_HAS_FILE_PATH)
+, NULL
+#endif
+},
     {"schools.bei_ao_jue", modulecode_schools$bei_ao_jue, 0, 0, NUITKA_TRANSLATED_FLAG | NUITKA_PACKAGE_FLAG
 #if defined(_NUITKA_FREEZER_HAS_FILE_PATH)
 , NULL
@@ -501,6 +550,41 @@ static struct Nuitka_MetaPathBasedLoaderEntry meta_path_loader_entries[] = {
 #endif
 },
     {"schools.wen_shui_jue.talents", modulecode_schools$wen_shui_jue$talents, 0, 0, NUITKA_TRANSLATED_FLAG
+#if defined(_NUITKA_FREEZER_HAS_FILE_PATH)
+, NULL
+#endif
+},
+    {"schools.yi_jin_jing", modulecode_schools$yi_jin_jing, 0, 0, NUITKA_TRANSLATED_FLAG | NUITKA_PACKAGE_FLAG
+#if defined(_NUITKA_FREEZER_HAS_FILE_PATH)
+, NULL
+#endif
+},
+    {"schools.yi_jin_jing.attribute", modulecode_schools$yi_jin_jing$attribute, 0, 0, NUITKA_TRANSLATED_FLAG
+#if defined(_NUITKA_FREEZER_HAS_FILE_PATH)
+, NULL
+#endif
+},
+    {"schools.yi_jin_jing.buffs", modulecode_schools$yi_jin_jing$buffs, 0, 0, NUITKA_TRANSLATED_FLAG
+#if defined(_NUITKA_FREEZER_HAS_FILE_PATH)
+, NULL
+#endif
+},
+    {"schools.yi_jin_jing.gains", modulecode_schools$yi_jin_jing$gains, 0, 0, NUITKA_TRANSLATED_FLAG
+#if defined(_NUITKA_FREEZER_HAS_FILE_PATH)
+, NULL
+#endif
+},
+    {"schools.yi_jin_jing.recipes", modulecode_schools$yi_jin_jing$recipes, 0, 0, NUITKA_TRANSLATED_FLAG
+#if defined(_NUITKA_FREEZER_HAS_FILE_PATH)
+, NULL
+#endif
+},
+    {"schools.yi_jin_jing.skills", modulecode_schools$yi_jin_jing$skills, 0, 0, NUITKA_TRANSLATED_FLAG
+#if defined(_NUITKA_FREEZER_HAS_FILE_PATH)
+, NULL
+#endif
+},
+    {"schools.yi_jin_jing.talents", modulecode_schools$yi_jin_jing$talents, 0, 0, NUITKA_TRANSLATED_FLAG
 #if defined(_NUITKA_FREEZER_HAS_FILE_PATH)
 , NULL
 #endif

@@ -6,7 +6,7 @@ from base.status import Status
 class 涅果:
     def __call__(self, status: Status):
         status.skills["普渡四方"].skill_damage_addition += 102 / 1024
-        status.skills["普渡四方_外功"].skill_damage_addition += 102 / 1024
+        status.skills["普渡四方-外功"].skill_damage_addition += 102 / 1024
 
 
 class 明法:
@@ -161,7 +161,7 @@ class 我闻:
             status.skills[skill].skill_critical_strike += 0.1
             status.skills[skill].skill_critical_power += 205 / 1024
 
-        status.buffs["横扫六合_持续"].stack_max = 3
+        status.buffs["横扫六合-持续"].stack_max = 3
 
 
 class 众嗔:

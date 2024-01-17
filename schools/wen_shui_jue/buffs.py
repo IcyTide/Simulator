@@ -27,16 +27,16 @@ class 山居剑意(GainBuff):
         super().__init__(status)
         self.name = "山居剑意"
 
-    def add(self):
-        super().add()
+    def add(self, stack):
+        super().add(stack)
         self.status.skills["断潮"].probability = 1
         for attr, value in self.status.attribute.primary_weapon_attribute.items():
             setattr(self.status.attribute, attr, getattr(self.status.attribute, attr) - value)
         for attr, value in self.status.attribute.secondary_weapon_attribute.items():
             setattr(self.status.attribute, attr, getattr(self.status.attribute, attr) + value)
 
-    def remove(self):
-        super().remove()
+    def remove(self, stack):
+        super().remove(stack)
         self.status.skills["断潮"].probability = 717 / 1024
         for attr, value in self.status.attribute.secondary_weapon_attribute.items():
             setattr(self.status.attribute, attr, getattr(self.status.attribute, attr) - value)
@@ -67,14 +67,14 @@ class 莺鸣(GainBuff):
 
         self.value = 0.2
 
-    def add(self):
-        super().add()
+    def add(self, stack):
+        super().add(stack)
         self.status.buffs["剑气"].stack_max += 100
         self.status.buffs["剑气"].increase(135)
         self.status.attribute.physical_critical_strike_gain += self.value
 
-    def remove(self):
-        super().remove()
+    def remove(self, stack):
+        super().remove(stack)
         self.status.buffs["剑气"].stack_max -= 100
         self.status.attribute.physical_critical_strike_gain -= self.value
 
@@ -120,13 +120,13 @@ class 夜雨(Buff):
 
         self.duration = 16 * 5
 
-    def add(self):
-        super().add()
+    def add(self, stack):
+        super().add(stack)
         self.status.skills["云飞玉皇"].surplus_level = 4
         self.status.skills["云飞玉皇"].direct = True
 
-    def remove(self):
-        super().remove()
+    def remove(self, stack):
+        super().remove(stack)
         self.status.skills["云飞玉皇"].surplus_level = 1
         self.status.skills["云飞玉皇"].direct = False
 
@@ -151,13 +151,13 @@ class 凤鸣(GainBuff):
 
         self.gain_group = ["夕照雷峰", "云飞玉皇", "云飞玉皇-额外"]
 
-    def add(self):
-        super().add()
+    def add(self, stack):
+        super().add(stack)
         self.status.skills["夕照雷峰"].skill_critical_strike += self.values[0]
         self.status.skills["云飞玉皇"].skill_critical_strike += self.values[0]
 
-    def remove(self):
-        super().remove()
+    def remove(self, stack):
+        super().remove(stack)
         self.status.skills["夕照雷峰"].skill_critical_strike -= self.values[0]
         self.status.skills["云飞玉皇"].skill_critical_strike -= self.values[0]
 
@@ -191,13 +191,13 @@ class 造化(GainBuff):
 
         self.gain_group = ["夕照雷峰", "云飞玉皇", "云飞玉皇-额外"]
 
-    def add(self):
-        super().add()
+    def add(self, stack):
+        super().add(stack)
         self.status.skills["夕照雷峰"].cost -= 2
         self.status.skills["云飞玉皇"].cost -= 2
 
-    def remove(self):
-        super().remove()
+    def remove(self, stack):
+        super().remove(stack)
         self.status.skills["夕照雷峰"].cost += 2
         self.status.skills["云飞玉皇"].cost += 2
 
@@ -301,8 +301,8 @@ class 碧归_计数(CountBuff):
 
         self.stack_max = 2
 
-    def add(self):
-        super().add()
+    def add(self, stack):
+        super().add(stack)
         if self.status.stacks[self.name] == self.stack_max:
             self.status.buffs["碧归"].trigger()
             self.clear()
@@ -318,12 +318,12 @@ class 如风(ExtendBuff):
 
         self.value = 82 / 1024
 
-    def add(self):
-        super().add()
+    def add(self, stack):
+        super().add(stack)
         self.status.attribute.haste_gain += self.value
 
-    def remove(self):
-        super().remove()
+    def remove(self, stack):
+        super().remove(stack)
         self.status.attribute.haste_gain -= self.value
 
 
@@ -351,12 +351,12 @@ class 闻踪(GainBuff, ExtendBuff):
         self.duration_add = 8 * 5
         self.values = [0.1, 410 / 1024]
 
-    def add(self):
-        super().add()
+    def add(self, stack):
+        super().add(stack)
         self.status.attribute.physical_critical_strike_gain += self.values[0]
 
-    def remove(self):
-        super().remove()
+    def remove(self, stack):
+        super().remove(stack)
         self.status.attribute.physical_critical_strike_gain -= self.values[0]
 
     def gain(self, level, stack):
@@ -381,15 +381,15 @@ class 螭尘(TriggerBuff):
     def condition(self):
         return not self.status.stacks["螭尘-冷却"]
 
-    def add(self):
-        super().add()
+    def add(self, stack):
+        super().add(stack)
         self.status.skills["云飞玉皇"].reset()
         self.status.skills["夕照雷峰"].direct = True
         self.status.skills["云飞玉皇"].direct = True
         self.status.buffs["螭尘-冷却"].trigger()
 
-    def remove(self):
-        super().remove()
+    def remove(self, stack):
+        super().remove(stack)
 
         self.status.skills["夕照雷峰"].direct = False
         self.status.skills["云飞玉皇"].direct = False

@@ -42,21 +42,28 @@ class 橙武特效:
         if not self.status.stacks["沉夜重雪-冷却"]:
             self.status.buffs["沉夜重雪"].trigger()
 
+    @staticmethod
+    def post_hit_effect(self: Skill):
+        if self.status.stacks["沉夜重雪"]:
+            self.reset()
+            self.status.skills["背水沉舟-持续"].cast()
+
     def __call__(self, status: Status):
         for skill in status.skills.values():
             if skill.hit_with_cast:
                 skill.post_hit_effect.append(self.post_cast_effect)
             elif skill.is_cast:
                 skill.post_cast_effect.append(self.post_cast_effect)
+        status.skills["破釜沉舟"].post_hit_effect.append(self.post_hit_effect)
 
 
 class 上将军印神兵:
     @staticmethod
-    def post_cast_effect(self: Skill):
+    def post_hit_effect(self: Skill):
         self.status.skills["上将军印·神兵"].cast()
 
     def __call__(self, status: Status):
-        status.skills["上将军印"].post_cast_effect.append(self.post_cast_effect)
+        status.skills["上将军印"].post_hit_effect.append(self.post_hit_effect)
 
 
 class 五相斩:

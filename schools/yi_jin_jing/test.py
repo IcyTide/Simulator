@@ -23,7 +23,6 @@ def main():
     counts = simulator()
     dps, details, summary, gradients = analyze_details(1, simulator, counts)
     print(details)
-    print(dps)
 
 
 if __name__ == '__main__':
