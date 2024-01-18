@@ -21,8 +21,8 @@ class 骑御(Buff):
         super().__init__(status)
         self.name = "骑御"
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         self.status.buffs["驰骋"].trigger()
 
 
@@ -43,12 +43,12 @@ class 激雷(SnapshotBuff):
 
         self.value = 0.3
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         self.status.attribute.physical_critical_strike_gain += self.value
 
-    def remove(self, stack):
-        super().remove(stack)
+    def remove(self):
+        super().remove()
         self.status.attribute.physical_critical_strike_gain -= self.value
 
     def gain(self, level, stack):
@@ -89,14 +89,14 @@ class 挫锐(Buff):
             (status.skills["穿云"].attack_power_cof, status.skills["穿云"].weapon_damage_cof, 1)
         ]
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         self.status.skills["穿云"].attack_power_cof = self.values[0][0]
         self.status.skills["穿云"].weapon_damage_cof = self.values[0][1]
         self.status.skills["穿云"].tick_base = self.values[0][2]
 
-    def remove(self, stack):
-        super().remove(stack)
+    def remove(self):
+        super().remove()
         self.status.skills["穿云"].attack_power_cof = self.values[1][0]
         self.status.skills["穿云"].weapon_damage_cof = self.values[1][1]
         self.status.skills["穿云"].tick_base = self.values[1][2]
@@ -141,22 +141,37 @@ class 龙驭(SnapshotBuff):
         self.status.attribute.damage_addition -= self.value * stack
 
 
-class 牧云(SnapshotBuff):
+class 牧云(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "牧云"
 
-        self.stack_max = 4
         self.duration = 60 * 16
+
+    def add(self):
+        super().add()
+        self.status.buffs["牧云-增益"].trigger()
+
+    def remove(self):
+        super().remove()
+        self.status.buffs["牧云-增益"].clear()
+
+
+class 牧云_增益(SnapshotBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "牧云-增益"
+
+        self.stack_max = 4
 
         self.values = [0.03, 60 / 1024]
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         self.status.attribute.physical_critical_strike_gain += self.values[0]
 
-    def remove(self, stack):
-        super().remove(stack)
+    def remove(self):
+        super().remove()
         self.status.attribute.physical_critical_strike_gain -= self.values[0]
 
     def gain(self, level, stack):
@@ -253,8 +268,8 @@ class 旷野孤疆(TriggerBuff):
     def condition(self):
         return not self.status.stacks["旷野孤疆-冷却"]
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         self.status.skills["龙吟"].reset()
         self.status.buffs["战意"].increase(5)
         self.status.buffs["旷野孤疆-冷却"].trigger()
@@ -270,5 +285,5 @@ class 旷野孤疆_冷却(CDBuff):
 
 BUFFS = [
     军啸, 战意, 骑御, 流血, 激雷, 驰骋,
-    挫锐, 大漠, 龙驭, 牧云, 风虎, 战心, 渊, 夜征, 旷野孤疆, 旷野孤疆_冷却
+    挫锐, 大漠, 龙驭, 牧云, 牧云_增益, 风虎, 战心, 渊, 夜征, 旷野孤疆, 旷野孤疆_冷却
 ]

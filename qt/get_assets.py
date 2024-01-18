@@ -84,7 +84,7 @@ enchant_params = {
 }
 
 
-@cache
+# @cache
 def get_equips_list(position):
     position_id = POSITION_MAP[position]
     url = f"https://node.jx3box.com/equip/{SUFFIX_MAP[position_id]}"
@@ -98,7 +98,8 @@ def get_equips_list(position):
         res = requests.get(url, params=params).json()
         equips.extend(res['list'])
 
-    result = {get_equip_name(row): get_equip_detail(row) for row in reversed(equips) if row['DetailType'] != "9"}
+    result = {get_equip_name(row): get_equip_detail(row) for row in reversed(equips) if
+              row['SubType'] != "0" or row['DetailType'] != "9"}
 
     return result
 
@@ -124,6 +125,8 @@ def get_secondary_weapons():
 
 def get_equip_name(row):
     name = row['Name']
+    if "无封" in name:
+        name = f"{row['MagicKind']}{name}"
     attrs = " ".join([EQUIP_ATTR_MAP[attr] for attr in EQUIP_ATTR_MAP if attr in row['_Attrs']])
     level = row['Level']
     return f"{name} ({attrs}) {level}"

@@ -1,1 +1,1 @@
-gradio>=4.7.0
+pyside6

@@ -35,8 +35,8 @@ class 贪破_计数(CountBuff):
 
         self.stack_max = 4
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         if self.status.stacks[self.name] == self.stack_max:
             self.status.buffs["贪破"].clear()
             self.clear()
@@ -156,8 +156,8 @@ class 秉心(CountBuff):
         self.stack_max = 3
         self.count_list = []
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         if self.status.stacks[self.name] == self.stack_max:
             self.status.buffs["拿云"].trigger()
             self.clear()
@@ -176,12 +176,12 @@ class 身意(SnapshotBuff):
 
         self.values = [0.05, 52 / 1024]
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         self.status.attribute.magical_critical_strike_gain += self.values[0]
 
-    def remove(self, stack):
-        super().remove(stack)
+    def remove(self):
+        super().remove()
         self.status.attribute.magical_critical_strike_gain -= self.values[0]
 
     def gain(self, level, stack):
@@ -202,13 +202,13 @@ class 千斤坠_无取(Buff):
 
         self.duration = 144
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         self.status.skills["千斤坠"].activate = False
         self.status.skills["千斤坠·无取"].activate = True
 
-    def remove(self, stack):
-        super().remove(stack)
+    def remove(self):
+        super().remove()
         self.status.skills["千斤坠"].activate = True
         self.status.skills["千斤坠·无取"].activate = False
 
@@ -220,13 +220,13 @@ class 千斤坠_无舍(Buff):
 
         self.duration = 144
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         self.status.skills["千斤坠"].activate = False
         self.status.skills["千斤坠·无舍"].activate = True
 
-    def remove(self, stack):
-        super().remove(stack)
+    def remove(self):
+        super().remove()
         self.status.skills["千斤坠"].activate = True
         self.status.skills["千斤坠·无舍"].activate = False
 
@@ -308,13 +308,13 @@ class 缴械(Buff):
 
         self.skills = ["六合棍", "普渡四方", "韦陀献杵", "横扫六合", "罗汉金身", "擒龙诀"]
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         for skill in self.skills:
             self.status.skills[skill].activate = False
 
-    def remove(self, stack):
-        super().remove(stack)
+    def remove(self):
+        super().remove()
         for skill in self.skills:
             self.status.skills[skill].activate = True
 
@@ -338,12 +338,12 @@ class 金刚日轮(SnapshotBuff):
 
         self.values = [0.06, 62 / 1024]
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         self.status.attribute.magical_critical_strike_gain += self.values[0]
 
-    def remove(self, stack):
-        super().remove(stack)
+    def remove(self):
+        super().remove()
         self.status.attribute.magical_critical_strike_gain -= self.values[0]
 
     def gain(self, level, stack):
@@ -366,8 +366,8 @@ class 金刚日轮_计数(CountBuff):
         self.stack_max = 2
         self.count_list = []
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         if self.status.stacks[self.name] == self.stack_max:
             self.status.skills["金刚日轮"].cast()
             self.clear()
@@ -391,8 +391,8 @@ class 桑莲妙境(TriggerBuff):
 
         self.probability = 25 / 1024
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         self.status.skills["守缺式"].reset()
         self.status.buffs["桑莲妙境-冷却"].trigger()
 

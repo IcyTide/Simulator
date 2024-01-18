@@ -38,12 +38,12 @@ class 满堂(SnapshotBuff):
 
         self.values = [0.08, 21 / 1024]
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         self.status.attribute.magical_critical_strike_gain += self.values[0]
 
-    def remove(self, stack):
-        super().remove(stack)
+    def remove(self):
+        super().remove()
         self.status.attribute.magical_critical_strike_gain -= self.values[0]
 
     def gain(self, level, stack):
@@ -94,12 +94,12 @@ class 枕上(Buff):
 
         self.value = 10 / 1024
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         self.status.attribute.haste_gain += self.value
 
-    def remove(self, stack):
-        super().remove(stack)
+    def remove(self):
+        super().remove()
         self.status.attribute.haste_gain -= self.value
 
 
@@ -110,22 +110,20 @@ class 广陵月(Buff):
 
         self.duration = 16 * 6
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         self.status.skills["剑破虚空"].cost = False
 
-    def remove(self, stack):
-        super().remove(stack)
+    def remove(self):
+        super().remove()
         self.status.skills["剑破虚空"].cost = True
-        self.status.buffs["广陵月-会效"].clear()
+        self.status.buffs["广陵月-增益"].clear()
 
 
-class 广陵月_会效(SnapshotBuff):
+class 广陵月_增益(SnapshotBuff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "广陵月-会效"
-
-        self.duration = 16 * 6
+        self.name = "广陵月-增益"
 
         self.stack_max = 10
 
@@ -178,8 +176,8 @@ class 钗燕_计数(CountBuff):
 
         self.count_list = []
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         if self.status.stacks[self.name] == self.stack_max:
             self.status.skills["钗燕"].cast()
             self.status.skills["急曲-持续"].cast()
@@ -199,12 +197,12 @@ class 盈袖(Buff):
 
         self.value = 204 / 1024
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         self.status.attribute.extra_haste += self.value
 
-    def remove(self, stack):
-        super().remove(stack)
+    def remove(self):
+        super().remove()
         self.status.attribute.extra_haste -= self.value
 
 
@@ -236,8 +234,8 @@ class 化冰_计数(CountBuff):
 
         self.stack_max = 3
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         if self.status.stacks[self.name] == 3:
             self.status.skills["化冰"].cast()
             self.clear()
@@ -314,8 +312,8 @@ class 飞霜绛露(TriggerBuff):
 
         self.probability = 25 / 1024
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         self.status.skills["剑气长江"].reset()
         self.status.buffs["飞霜绛露-冷却"].trigger()
 
@@ -338,6 +336,6 @@ class 气吞长江_持续(DotBuff):
         self.stack_max = 3
 
 
-BUFFS = [嗔怒, 剑舞, 满堂, 急曲_持续, 繁音急节, 枕上, 广陵月, 广陵月_会效, 流玉, 流玉_持续,
+BUFFS = [嗔怒, 剑舞, 满堂, 急曲_持续, 繁音急节, 枕上, 广陵月, 广陵月_增益, 流玉, 流玉_持续,
          钗燕_计数, 盈袖, 化冰, 化冰_计数, 夜天, 琼霄_持续, 琼霄_冷却, 凝华, 霜降,
          飞霜绛露, 飞霜绛露_冷却, 气吞长江_持续]

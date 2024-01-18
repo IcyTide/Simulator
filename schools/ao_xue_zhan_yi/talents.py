@@ -99,7 +99,7 @@ class 牧云:
     @staticmethod
     def post_cast_effect_add(self: Skill):
         if self.status.stacks["牧云"]:
-            self.status.buffs["牧云"].add(1)
+            self.status.buffs["牧云-增益"].trigger()
 
     def __call__(self, status: Status):
         status.skills["突"].cd_base += 37 * 16

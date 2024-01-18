@@ -1,5 +1,4 @@
-from base.constant import PHYSICAL_ATTACK_POWER_COF, MAGICAL_ATTACK_POWER_COF, WEAPON_DAMAGE_COF, \
-    MAGICAL_DOT_ATTACK_POWER_COF, SURPLUS_COF
+from base.constant import MAGICAL_ATTACK_POWER_COF, MAGICAL_DOT_ATTACK_POWER_COF, SURPLUS_COF
 from base.skill import *
 
 """
@@ -247,7 +246,7 @@ class 广陵月_伤害(MagicalDamage):
 
     def pre_cast(self):
         super().pre_cast()
-        self.status.buffs["广陵月-会效"].trigger()
+        self.status.buffs["广陵月-增益"].trigger()
 
 
 class 流玉_持续(DotSkill, MagicalDamage):

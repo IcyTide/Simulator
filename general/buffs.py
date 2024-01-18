@@ -10,12 +10,12 @@ class 外功双会套装(SnapshotBuff, TriggerBuff):
 
         self.values = [0.04, 41 / 1024]
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         self.status.attribute.physical_critical_strike_gain += self.values[0]
 
-    def remove(self, stack):
-        super().remove(stack)
+    def remove(self):
+        super().remove()
         self.status.attribute.physical_critical_strike_gain -= self.values[0]
 
     def gain(self, level, stack):
@@ -38,12 +38,12 @@ class 内功双会套装(SnapshotBuff, TriggerBuff):
 
         self.values = [0.04, 41 / 1024]
 
-    def add(self, stack):
-        super().add(stack)
+    def add(self):
+        super().add()
         self.status.attribute.magical_critical_strike_gain += self.values[0]
 
-    def remove(self, stack):
-        super().remove(stack)
+    def remove(self):
+        super().remove()
         self.status.attribute.magical_critical_strike_gain -= self.values[0]
 
     def gain(self, level, stack):
