@@ -23,6 +23,7 @@ class Buff:
     def __post_init__(self):
         self.add_effect = []
         self.remove_effect = []
+        self.clear_effect = []
 
         self.dice = random.Random(82)
 
@@ -74,6 +75,8 @@ class Buff:
     def clear(self):
         for _ in range(self.status.stacks[self.name]):
             self.remove()
+        for effect in self.clear_effect:
+            effect(self)
 
 
 class TriggerBuff(Buff):
@@ -87,6 +90,14 @@ class TriggerBuff(Buff):
 class ExtendBuff(Buff):
     duration_add: int = 0
     duration_max: int = 3600 * 16
+
+    def set_duration(self):
+        if duration := self.status.durations[self.name]:
+            self.status.durations[self.name] = min(self.duration_max, duration + self.duration_add)
+        elif self.duration:
+            self.status.durations[self.name] = self.duration
+        else:
+            self.status.durations[self.name] = self.duration_add
 
     def extend(self):
         if duration := self.status.durations[self.name]:

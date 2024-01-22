@@ -67,10 +67,10 @@ class Simulator:
         while self.status.total_frame > self.status.current_frame:
             self.priority_simulate()
             self.loop_simulate()
-            gap = min(min(self.status.gcd_group.values(), default=FRAME_PER_SECOND),
-                      min(self.status.cds.values(), default=FRAME_PER_SECOND),
-                      min(self.status.intervals.values(), default=FRAME_PER_SECOND),
-                      min(self.status.durations.values(), default=FRAME_PER_SECOND),
+            gap = min(self.status.gcd_group.min(),
+                      self.status.cds.min(),
+                      self.status.intervals.min(),
+                      self.status.durations.min(),
                       self.status.total_frame - self.status.current_frame, self.gap)
             self.status.timer(math.ceil(gap))
 

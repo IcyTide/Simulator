@@ -45,6 +45,26 @@ class 坚壁清野_持续(PlacementBuff):
         self.name = "坚壁清野-持续"
 
 
+class 冥鼓(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "冥鼓"
+
+        self.value = 410 / 1024
+
+        self.gain_group = ["破"]
+
+    def gain(self, level, stack):
+        super().gain(level, stack)
+        for skill in self.gain_group:
+            self.status.skills[skill].skill_shield_gain -= self.value
+
+    def revoke(self, level, stack):
+        super().revoke(level, stack)
+        for skill in self.gain_group:
+            self.status.skills[skill].skill_shield_gain += self.value
+
+
 class 霜天(GainBuff):
     def __init__(self, status):
         super().__init__(status)
@@ -236,6 +256,6 @@ class 背水沉舟_持续(Buff):
 
 BUFFS = [
     朔气, 秀明尘身, 松烟竹雾, 雪絮金屏, 闹须弥_持续, 坚壁清野_持续,
-    霜天, 楚歌, 楚歌_计数, 见尘, 含风, 降麒式_计数, 降麒式_就绪, 降麒式_持续, 降麒式,
+    冥鼓, 霜天, 楚歌, 楚歌_计数, 见尘, 含风, 降麒式_计数, 降麒式_就绪, 降麒式_持续, 降麒式,
     沉夜重雪, 沉夜重雪_冷却, 背水沉舟_持续
 ]

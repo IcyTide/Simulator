@@ -349,6 +349,7 @@ class 闻踪(GainBuff, ExtendBuff):
         self.name = "闻踪"
 
         self.duration_add = 8 * 5
+        self.duration = 0
         self.values = [0.1, 410 / 1024]
 
     def add(self):

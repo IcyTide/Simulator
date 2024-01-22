@@ -338,6 +338,7 @@ class PeriodicalSkill(Skill):
             effect(self)
 
         self.status.ticks[self.name] = 0
+        self.haste = self.status.attribute.haste
         if not self.status.intervals[self.name]:
             self.status.intervals[self.name] = self.interval
 
@@ -539,7 +540,7 @@ class DotSkill(PeriodicalSkill):
             for buff, (level, stack) in
             dict(chain(self.status.gains[""] + self.status.gains[self.name], self.snapshot.gains)).items()
         )
-        self.status.record(Damage(self.name, critical, level, times, gains))
+        self.status.record(Damage(self.name, critical, level, times * self.status.stacks[self.name], gains))
 
 
 class PlacementSkill(PeriodicalSkill, FixedInterval):

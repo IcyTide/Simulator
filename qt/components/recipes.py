@@ -12,7 +12,7 @@ class RecipesWidget(QWidget):
 
         self.recipes = []
 
-        columns = 2
+        columns = 4
         rows = MAX_RECIPE_SKILLS // columns
         for i in range(rows):
             for j in range(columns):

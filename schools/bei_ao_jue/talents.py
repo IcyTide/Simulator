@@ -27,6 +27,20 @@ class 阳关:
         status.skills["上将军印"].skill_shield_gain -= 205 / 1024
 
 
+class 冥鼓:
+    @staticmethod
+    def pre_cast_effect(self: Skill):
+        if self.level == 3:
+            self.status.buffs["冥鼓"].trigger()
+        else:
+            self.status.buffs["冥鼓"].clear()
+
+    def __call__(self, status: Status):
+        status.skills["破釜沉舟"].skill_damage_addition += 205 / 1024
+        status.skills["破釜沉舟"].skill_shield_gain -= 410 / 1024
+        status.skills["破"].pre_cast_effect.append(self.pre_cast_effect)
+
+
 class 霜天:
     @staticmethod
     def post_hit_effect(self: Skill):
@@ -138,7 +152,7 @@ class 降麒式:
 TALENTS = [
     ["龙息"],
     ["归酣"],
-    ["阳关"],
+    ["阳关", "冥鼓"],
     ["霜天"],
     ["含风"],
     ["见尘"],
@@ -153,6 +167,7 @@ TALENT_GAINS = {
     "龙息": 龙息(),
     "归酣": 归酣(),
     "阳关": 阳关(),
+    "冥鼓": 冥鼓(),
     "霜天": 霜天(),
     "含风": 含风(),
     "见尘": 见尘(),

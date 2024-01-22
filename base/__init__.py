@@ -1,3 +1,6 @@
+from base.constant import FRAME_PER_SECOND
+
+
 class Monitor(dict):
     def __init__(self, default=None):
         super().__init__()
@@ -23,6 +26,9 @@ class Monitor(dict):
             result[key] = value
         return result.items()
 
+    def min(self):
+        return min(self.values(), default=FRAME_PER_SECOND)
+
     def pop(self, __key):
         if __key in self:
             super().pop(__key)
@@ -30,6 +36,3 @@ class Monitor(dict):
 
 def monitor():
     return Monitor()
-
-
-from heapq import heapify
