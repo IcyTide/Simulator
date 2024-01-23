@@ -15,6 +15,7 @@ def initiation(status: Status):
 
 prepare = ''
 priority = """
+六合棍,
 罗汉金身,
 擒龙诀(禅那:stack=0),
 千斤坠·无取(金刚日轮:stack=0|千斤坠·无取:duration<0.75),

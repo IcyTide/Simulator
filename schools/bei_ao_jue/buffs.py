@@ -221,10 +221,6 @@ class 沉夜重雪(TriggerBuff):
 
         self.probability = 31 / 1024
 
-    @property
-    def condition(self):
-        return not self.status.stacks["沉夜重雪-冷却"]
-
     def add(self):
         super().add()
         self.status.skills["破釜沉舟"].reset()

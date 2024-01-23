@@ -2,10 +2,10 @@ from base.buff import Buff, GainBuff, SnapshotBuff, DotBuff, CDBuff, PlacementBu
 from general.buffs import 外功双会套装
 
 
-class 军啸(外功双会套装):
+class 朔气(外功双会套装):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "军啸"
+        self.name = "朔气"
 
 
 class 锐意(Energy):
@@ -303,7 +303,43 @@ class 截辕_持续(DotBuff):
         self.name = "截辕-持续"
 
 
+class 绝地天通刀(TriggerBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "绝地天通刀"
+
+        self.probability = 31 / 1024
+
+    def add(self):
+        super().add()
+        self.status.skills["破釜沉舟"].reset()
+        self.status.skills["刀啸风吟"].direct = True
+        self.status.buffs["沉夜重雪-冷却"].trigger()
+
+    def remove(self):
+        super().remove()
+        self.status.skills["刀啸风吟"].direct = False
+
+
+class 沉夜重雪_冷却(CDBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "沉夜重雪-冷却"
+
+        self.duration = 30 * 16
+
+
+class 背水沉舟_持续(Buff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "背水沉舟-持续"
+
+        self.is_dot = True
+
+        self.stack_max = 3
+
+
 BUFFS = [
-    军啸, 锐意, 身形, 识破, 破绽, 流血, 单手持刀, 双手持刀, 行云式_二, 行云式_三, 沧浪三叠_二, 沧浪三叠_三, 灭影追风, 灭影追风_快照,
+    朔气, 锐意, 身形, 识破, 破绽, 流血, 单手持刀, 双手持刀, 行云式_二, 行云式_三, 沧浪三叠_二, 沧浪三叠_三, 灭影追风, 灭影追风_快照,
     戗风, 雨积, 镇机, 界破, 长溯, 涤瑕, 流岚, 潋风, 截辕_持续
 ]

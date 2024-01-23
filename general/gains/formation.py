@@ -234,11 +234,12 @@ class 乱暮浊茵阵:
 
 class 横云破锋阵:
     def __init__(self, rate, core_rate):
-        pass
+        self.core_rate = core_rate
 
     def __call__(self, status: Status):
         status.attribute.physical_attack_power_gain += 50 / 1024
         status.attribute.surplus += 1516
+        status.attribute.physical_critical_power_gain += self.core_rate * 100 / 1024
         status.attribute.physical_overcome_gain += 256 / 1024
 
 
