@@ -30,6 +30,8 @@ class 外功风特效:
 
     def __call__(self, status: Status):
         status.attribute.physical_overcome_base += self.value * self.duration / self.cd
+        # status.skills["风特效"].activate = True
+        # status.buffs["风特效"].value = self.value
 
 
 class 内功风特效:
@@ -40,6 +42,8 @@ class 内功风特效:
 
     def __call__(self, status: Status):
         status.attribute.magical_overcome_base += self.value * self.duration / self.cd
+        # status.skills["风特效"].activate = True
+        # status.buffs["风特效"].value = self.value
 
 
 class 大附魔帽:

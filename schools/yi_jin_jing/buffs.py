@@ -231,12 +231,6 @@ class 千斤坠_无舍(Buff):
         self.status.skills["千斤坠·无舍"].activate = False
 
 
-class 纷纭_禅那(PlacementBuff):
-    def __init__(self, status):
-        super().__init__(status)
-        self.name = "纷纭-禅那"
-
-
 class 缩地(TriggerBuff):
     def __init__(self, status):
         super().__init__(status)
@@ -406,5 +400,5 @@ class 桑莲妙境_冷却(CDBuff):
 
 
 BUFFS = [佛吼, 贪破, 贪破_计数, 禅那, 普渡, 横扫六合_持续, 罗汉金身, 袈裟, 伏魔, 擒龙,
-         拿云, 秉心, 身意, 千斤坠_无取, 千斤坠_无舍, 纷纭_禅那, 缩地, 金刚怒目, 三生, 众嗔, 缴械, 佛果_冷却, 金刚日轮,
+         拿云, 秉心, 身意, 千斤坠_无取, 千斤坠_无舍, 缩地, 金刚怒目, 三生, 众嗔, 缴械, 佛果_冷却, 金刚日轮,
          金刚日轮_计数, 六合棍意]

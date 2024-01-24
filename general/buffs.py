@@ -1,4 +1,4 @@
-from base.buff import SnapshotBuff, TriggerBuff, CDBuff
+from base.buff import SnapshotBuff, TriggerBuff, CDBuff, GainBuff
 
 
 class 外功双会套装(SnapshotBuff, TriggerBuff):
@@ -57,6 +57,42 @@ class 内功双会套装(SnapshotBuff, TriggerBuff):
         self.status.attribute.magical_critical_power_gain -= self.values[1]
 
 
+class 外功风特效(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "风特效"
+
+        self.duration = 15 * 16
+
+        self.value = 0
+
+    def gain(self, level, stack):
+        super().gain(level, stack)
+        self.status.attribute.physical_overcome_base += self.value
+
+    def revoke(self, level, stack):
+        super().revoke(level, stack)
+        self.status.attribute.physical_overcome_base -= self.value
+
+
+class 内功风特效(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "风特效"
+
+        self.duration = 15 * 16
+
+        self.value = 0
+
+    def gain(self, level, stack):
+        super().gain(level, stack)
+        self.status.attribute.magical_overcome_base += self.value
+
+    def revoke(self, level, stack):
+        super().revoke(level, stack)
+        self.status.attribute.magical_overcome_base -= self.value
+
+
 class 大附魔腰(SnapshotBuff):
     def __init__(self, status):
         super().__init__(status)
@@ -98,4 +134,7 @@ class 大附魔脚_冷却(CDBuff):
         self.duration = 10 * 16
 
 
-BUFFS = [大附魔腰, 大附魔腰_冷却, 大附魔腕_冷却, 大附魔脚_冷却]
+BUFFS = {
+    "外功": [外功风特效, 大附魔腰, 大附魔腰_冷却, 大附魔腕_冷却, 大附魔脚_冷却],
+    "内功": [内功风特效, 大附魔腰, 大附魔腰_冷却, 大附魔腕_冷却, 大附魔脚_冷却]
+}

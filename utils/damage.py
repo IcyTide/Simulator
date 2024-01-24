@@ -68,6 +68,7 @@ def overcome_result(damage, overcome, shield_base, shield_gain, shield_ignore, s
 
 @cache
 def critical_result(damage, critical_strike, critical_power):
+    critical_strike = max(1, critical_strike)
     # return int(damage * critical_power)       # actual critical damage
     return int(damage * (1 - critical_strike + critical_strike * critical_power))  # expected damage
 

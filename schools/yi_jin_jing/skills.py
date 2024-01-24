@@ -14,6 +14,9 @@ class 六合棍(Melee):
         self.gcd_index = self.name
         self.gcd_base = 24
 
+        self.is_cast = False
+        self.is_hit = False
+
         self.skill_damage_addition = 205 / 1024
 
     @property
@@ -61,8 +64,9 @@ class 普渡四方_外功(PhysicalDamage):
         super().__init__(status)
         self.name = "普渡四方-外功"
 
-        self.damage_base = int(100 * 0.95)
-        self.damage_rand = int(25 * 0.1)
+        self.is_cast = False
+        self.is_hit = False
+
         self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
 
 
@@ -96,8 +100,9 @@ class 韦陀献杵_外功(PhysicalDamage):
         super().__init__(status)
         self.name = "韦陀献杵-外功"
 
-        self.damage_base = int(110 * 0.95)
-        self.damage_rand = int(40 * 0.1)
+        self.is_cast = False
+        self.is_hit = False
+
         self.weapon_damage_cof = WEAPON_DAMAGE_COF(2048)
 
 
@@ -126,8 +131,9 @@ class 横扫六合_外功(PhysicalDamage):
         super().__init__(status)
         self.name = "横扫六合-外功"
 
-        self.damage_base = int(120 * 0.95)
-        self.damage_rand = int(56 * 0.1)
+        self.is_cast = False
+        self.is_hit = False
+
         self.weapon_damage_cof = WEAPON_DAMAGE_COF(2048)
 
 
@@ -150,8 +156,6 @@ class 摩诃无量(CastingSkill, MagicalDamage):
 
         self.cd_base = 15 * 16
 
-        self.damage_base = 22
-        self.damage_rand = 2
         self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(16)
 
     def post_cast(self):
@@ -169,6 +173,9 @@ class 摩诃无量_外功(PhysicalDamage):
     def __init__(self, status):
         super().__init__(status)
         self.name = "摩诃无量-外功"
+
+        self.is_cast = False
+        self.is_hit = False
 
         self.damage_base = int(130 * 0.95)
         self.damage_rand = int(71 * 0.1)
@@ -399,7 +406,7 @@ class 千斤坠_无舍(CastingSkill, MagicalDamage):
         self.status.skills["纷纭-禅那"].cast()
 
 
-class 纷纭_禅那(PlacementSkill):
+class 纷纭_禅那(FixedInterval):
     def __init__(self, status):
         super().__init__(status)
         self.name = "纷纭-禅那"

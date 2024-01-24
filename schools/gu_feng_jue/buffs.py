@@ -261,6 +261,8 @@ class 涤瑕(SnapshotBuff):
 
         self.values = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
 
+        self.gain_group = ["流血"]
+
     def gain(self, level, stack):
         super().gain(level, stack)
         self.status.skills["流血"].attack_power_cof_gain += self.values[self.level - 1]

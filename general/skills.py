@@ -1,5 +1,23 @@
 from base.constant import PHYSICAL_ATTACK_POWER_COF, MAGICAL_ATTACK_POWER_COF
-from base.skill import TriggerSkill, PhysicalDamage, MagicalDamage
+from base.skill import TriggerSkill, PhysicalDamage, MagicalDamage, CastingSkill
+
+
+class 风特效(CastingSkill):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "风特效"
+
+        self.activate = False
+
+        self.is_cast = False
+        self.is_hit = False
+
+        self.gcd_index = self.name
+        self.cd_base = 180 * 16
+
+    def post_cast(self):
+        super().post_cast()
+        self.status.buffs["风特效"].trigger()
 
 
 class 大附魔腰(TriggerSkill):
@@ -94,6 +112,6 @@ class 内功_刃凌(TriggerSkill, MagicalDamage):
 
 
 SKILLS = {
-    "外功": [大附魔腰, 外功_昆吾_弦刃, 外功_刃凌],
-    "内功": [大附魔腰, 内功_昆吾_弦刃, 内功_刃凌]
+    "外功": [风特效, 大附魔腰, 外功_昆吾_弦刃, 外功_刃凌],
+    "内功": [风特效, 大附魔腰, 内功_昆吾_弦刃, 内功_刃凌]
 }
