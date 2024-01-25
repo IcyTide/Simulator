@@ -96,10 +96,13 @@ class Attribute:
 
     _all_shield_ignore: float = 0
 
-    _physical_shield_ignore: float = 0
-    _magical_shield_ignore: float = 0
+    physical_shield_ignore: float = 0
+    magical_shield_ignore: float = 0
 
-    damage_addition: float = 0
+    _all_damage_addition: float = 0
+    physical_damage_addition: float = 0
+    magical_damage_addition: float = 0
+    
     pve_addition: float = 0
     cd_reduction: float = 0
 
@@ -848,20 +851,16 @@ class Attribute:
     def all_shield_ignore(self, all_shield_ignore):
         residual = all_shield_ignore - self._all_shield_ignore
         self.physical_shield_ignore += residual
+        self.magical_shield_ignore += residual
         self._all_shield_ignore = all_shield_ignore
-
+    
     @property
-    def physical_shield_ignore(self):
-        return self._physical_shield_ignore
+    def all_damage_addition(self):
+        return self._all_damage_addition
 
-    @physical_shield_ignore.setter
-    def physical_shield_ignore(self, physical_shield_ignore):
-        self._physical_shield_ignore = physical_shield_ignore
-
-    @property
-    def magical_shield_ignore(self):
-        return self._magical_shield_ignore
-
-    @magical_shield_ignore.setter
-    def magical_shield_ignore(self, magical_shield_ignore):
-        self._magical_shield_ignore = magical_shield_ignore
+    @all_damage_addition.setter
+    def all_damage_addition(self, all_damage_addition):
+        residual = all_damage_addition - self._all_damage_addition
+        self.physical_damage_addition += residual
+        self.magical_damage_addition += residual
+        self._all_damage_addition = all_damage_addition

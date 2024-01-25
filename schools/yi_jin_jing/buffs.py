@@ -115,11 +115,11 @@ class 伏魔(SnapshotBuff):
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        self.status.attribute.damage_addition += self.value
+        self.status.attribute.all_damage_addition += self.value
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        self.status.attribute.damage_addition -= self.value
+        self.status.attribute.all_damage_addition -= self.value
 
 
 class 擒龙(SnapshotBuff, PlacementBuff):

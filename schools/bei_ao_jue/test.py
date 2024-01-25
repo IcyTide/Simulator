@@ -10,12 +10,12 @@ def main():
 
     attribute = BeiAoJue()
     attribute.strength_base += 10000
-    attribute.surplus += 10000
-    attribute.strain_base += 10000
+    attribute.surplus += 20000
+    attribute.strain_base += 20000
     attribute.haste_base += 300
-    attribute.physical_attack_power_base += 10000
-    attribute.physical_critical_strike_base += 10000
-    attribute.physical_overcome_base += 10000
+    attribute.physical_attack_power_base += 20000
+    attribute.physical_critical_strike_base += 20000
+    attribute.physical_overcome_base += 20000
 
     gains = ([TALENT_GAINS[talents[0]] for talents in TALENTS]
              + [RECIPE_GAINS[recipe] for recipes in RECIPES.values() for recipe in recipes[:4]])

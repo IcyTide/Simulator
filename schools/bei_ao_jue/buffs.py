@@ -207,11 +207,11 @@ class 降麒式(SnapshotBuff):
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        self.status.attribute.damage_addition += self.value
+        self.status.attribute.all_damage_addition += self.value
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        self.status.attribute.damage_addition -= self.value
+        self.status.attribute.all_damage_addition -= self.value
 
 
 class 沉夜重雪(TriggerBuff):

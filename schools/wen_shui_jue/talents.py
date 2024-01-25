@@ -107,11 +107,11 @@ class 造化:
 class 怜光:
     @staticmethod
     def gain_effect(self: Buff, level, stack):
-        self.status.attribute.damage_addition += 102 / 1024
+        self.status.attribute.all_damage_addition += 102 / 1024
 
     @staticmethod
     def revoke_effect(self: Buff, level, stack):
-        self.status.attribute.damage_addition -= 102 / 1024
+        self.status.attribute.all_damage_addition -= 102 / 1024
 
     def __call__(self, status: Status):
         status.buffs["山居剑意"].gain_effect.append(self.gain_effect)

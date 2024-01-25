@@ -9,12 +9,13 @@ def main():
     duration = 300
 
     attribute = YiJinJing()
-    attribute.spirit_base += 10000
-    attribute.surplus += 10000
-    attribute.strain_base += 30000
+    attribute.spunk_base += 10000
+    attribute.haste_base += 883
+    attribute.surplus += 20000
+    attribute.strain_base += 20000
     attribute.magical_attack_power_base += 20000
-    attribute.magical_critical_strike_base += 10000
-    attribute.magical_overcome_base += 25000
+    attribute.magical_critical_strike_base += 20000
+    attribute.magical_overcome_base += 20000
 
     gains = ([TALENT_GAINS[talents[0]] for talents in TALENTS]
              + [RECIPE_GAINS[recipe] for recipes in RECIPES.values() for recipe in recipes[:4]])

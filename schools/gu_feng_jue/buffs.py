@@ -78,36 +78,24 @@ class 双手持刀(Buff):
         self.status.buffs["单手持刀"].clear()
 
 
-class 行云式_二(Buff):
+class 行云式(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "行云式·二"
+        self.name = "行云式"
 
         self.duration = 160
 
+        self.stack_max = 2
 
-class 行云式_三(Buff):
+
+class 沧浪三叠(Buff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "行云式·三"
+        self.name = "沧浪三叠"
 
         self.duration = 160
 
-
-class 沧浪三叠_二(Buff):
-    def __init__(self, status):
-        super().__init__(status)
-        self.name = "沧浪三叠·二"
-
-        self.duration = 160
-
-
-class 沧浪三叠_三(Buff):
-    def __init__(self, status):
-        super().__init__(status)
-        self.name = "沧浪三叠·三"
-
-        self.duration = 160
+        self.stack_max = 2
 
 
 class 灭影追风(GainBuff):
@@ -342,6 +330,6 @@ class 背水沉舟_持续(Buff):
 
 
 BUFFS = [
-    朔气, 锐意, 身形, 识破, 破绽, 流血, 单手持刀, 双手持刀, 行云式_二, 行云式_三, 沧浪三叠_二, 沧浪三叠_三, 灭影追风, 灭影追风_快照,
+    朔气, 锐意, 身形, 识破, 破绽, 流血, 单手持刀, 双手持刀, 行云式, 沧浪三叠, 灭影追风, 灭影追风_快照,
     戗风, 雨积, 镇机, 界破, 长溯, 涤瑕, 流岚, 潋风, 截辕_持续
 ]

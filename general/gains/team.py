@@ -35,7 +35,7 @@ class 泠风解怀:
             self.rate = rate / 100
 
         def __call__(self, status: Status):
-            status.attribute.damage_addition += self.value * self.rate
+            status.attribute.all_damage_addition += self.value * self.rate
 
     def __init__(self, value):
         self.value = value
@@ -248,7 +248,7 @@ class 仙王蛊鼎:
             self.rate = rate / 100
 
         def __call__(self, status: Status):
-            status.attribute.damage_addition += self.value * self.rate
+            status.attribute.all_damage_addition += self.value * self.rate
 
     def __init__(self, value):
         self.value = value

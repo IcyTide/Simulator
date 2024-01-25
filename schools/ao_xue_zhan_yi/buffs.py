@@ -134,11 +134,11 @@ class 龙驭(SnapshotBuff):
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        self.status.attribute.damage_addition += self.value * stack
+        self.status.attribute.all_damage_addition += self.value * stack
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        self.status.attribute.damage_addition -= self.value * stack
+        self.status.attribute.all_damage_addition -= self.value * stack
 
 
 class 牧云(Buff):

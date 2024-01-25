@@ -64,7 +64,8 @@ class 电逝:
     @staticmethod
     def pre_cast_effect(self: Skill):
         if self.status.stacks["灭影追风"]:
-            self.status.buffs["行云式·三"].trigger()
+            for _ in range(2):
+                self.status.buffs["行云式"].trigger()
 
     def __call__(self, status: Status):
         status.buffs["灭影追风"].duration += 5 * 16

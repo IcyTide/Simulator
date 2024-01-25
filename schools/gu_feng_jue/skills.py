@@ -79,9 +79,9 @@ class 行云式(CastingSkill):
     def post_cast(self):
         super().post_cast()
         self.status.buffs["锐意"].increase(5)
-        if self.status.stacks["行云式·三"]:
+        if self.status.stacks["行云式"] == 2:
             self.status.skills["行云式·三"].cast()
-        elif self.status.stacks["行云式·二"]:
+        elif self.status.stacks["行云式"] == 1:
             self.status.skills["行云式·二"].cast()
         else:
             self.status.skills["行云式·一"].cast()
@@ -108,7 +108,7 @@ class 行云式_一(PhysicalDamage):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["行云式·二"].trigger()
+        self.status.buffs["行云式"].trigger()
 
 
 class 行云式_二(PhysicalDamage):
@@ -131,8 +131,7 @@ class 行云式_二(PhysicalDamage):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["行云式·二"].clear()
-        self.status.buffs["行云式·三"].trigger()
+        self.status.buffs["行云式"].trigger()
 
 
 class 行云式_三(PhysicalDamage):
@@ -155,7 +154,7 @@ class 行云式_三(PhysicalDamage):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["行云式·三"].clear()
+        self.status.buffs["行云式"].clear()
 
 
 class 停云式(CastingSkill, PhysicalDamage):
@@ -258,9 +257,9 @@ class 沧浪三叠(CastingSkill):
 
     def post_cast(self):
         super().post_cast()
-        if self.status.stacks["沧浪三叠·三"]:
+        if self.status.stacks["沧浪三叠"] == 2:
             self.status.skills["沧浪三叠·三"].cast()
-        elif self.status.stacks["沧浪三叠·二"]:
+        elif self.status.stacks["沧浪三叠"] == 1:
             self.status.skills["沧浪三叠·二"].cast()
         else:
             self.status.skills["沧浪三叠·一"].cast()
@@ -287,7 +286,7 @@ class 沧浪三叠_一(PhysicalDamage):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["沧浪三叠·二"].trigger()
+        self.status.buffs["沧浪三叠"].trigger()
 
 
 class 沧浪三叠_二(PhysicalDamage):
@@ -310,8 +309,7 @@ class 沧浪三叠_二(PhysicalDamage):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["沧浪三叠·二"].clear()
-        self.status.buffs["沧浪三叠·三"].trigger()
+        self.status.buffs["沧浪三叠"].trigger()
 
 
 class 沧浪三叠_三(PhysicalDamage):
@@ -334,7 +332,7 @@ class 沧浪三叠_三(PhysicalDamage):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["沧浪三叠·三"].clear()
+        self.status.buffs["沧浪三叠"].clear()
 
 
 class 横云断浪(CastingSkill, PhysicalDamage):

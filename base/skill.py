@@ -443,7 +443,7 @@ class PhysicalDamage(DamageSkill):
             self.surplus_cof, self.surplus_cof_gain, self.attribute.surplus
         )
 
-        damage = damage_addition_result(damage, self.attribute.damage_addition + self.skill_damage_addition)
+        damage = damage_addition_result(damage, self.attribute.physical_damage_addition + self.skill_damage_addition)
         damage = overcome_result(damage, self.attribute.physical_overcome,
                                  self.target.physical_shield_base,
                                  self.target.physical_shield_gain + self.skill_shield_gain,
@@ -485,7 +485,7 @@ class MagicalDamage(DamageSkill):
             self.surplus_cof, self.surplus_cof_gain, self.attribute.surplus
         )
 
-        damage = damage_addition_result(damage, self.attribute.damage_addition + self.skill_damage_addition)
+        damage = damage_addition_result(damage, self.attribute.magical_damage_addition + self.skill_damage_addition)
         damage = overcome_result(damage, self.attribute.magical_overcome,
                                  self.target.magical_shield_base,
                                  self.target.magical_shield_gain + self.skill_shield_gain,

@@ -1,3 +1,5 @@
+import random
+
 from base.constant import MAGICAL_ATTACK_POWER_COF, WEAPON_DAMAGE_COF, MAGICAL_DOT_ATTACK_POWER_COF, SURPLUS_COF
 from base.skill import *
 
@@ -22,6 +24,31 @@ class 六合棍(Melee):
     @property
     def condition(self):
         return not self.status.stacks["缴械"]
+
+
+class 阵眼_禅那(LoopSkill):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "阵眼-禅那"
+
+        self._interval_rand = [0]
+        self.rand_range = 80
+        self.rand_base = 160
+
+        self.interval_base = 16
+
+    @property
+    def interval_rand(self):
+        return self.dice.choice(self._interval_rand)
+
+    @interval_rand.setter
+    def interval_rand(self, rand_range):
+        self._interval_rand = list(range(max(self.rand_range - rand_range, 1)))
+
+    def post_hit(self):
+        super().post_hit()
+        self.status.buffs["禅那"].increase(1)
+        self.interval_base = self.rand_base + self.interval_rand
 
 
 class 破(MagicalDamage):
@@ -518,7 +545,7 @@ class 六合棍意(PlacementSkill, MagicalDamage):
 
 
 SKILLS_MAP = {
-    "通用": [六合棍, 破],
+    "通用": [六合棍, 破, 阵眼_禅那],
     "罗汉棍法": [普渡四方, 普渡四方_外功, 韦陀献杵, 韦陀献杵_外功, 横扫六合, 横扫六合_外功, 横扫六合_持续, 摩诃无量, 摩诃无量_外功],
     "龙爪功": [捕风式, 捉影式, 拿云式, 守缺式],
     "袈裟伏魔功": [罗汉金身, 二业依缘, 千斤坠],

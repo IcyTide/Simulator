@@ -40,12 +40,15 @@ class 天鼓雷音阵:
     def __init__(self, rate, core_rate):
         self.stack = 5
         self.rate = rate / 100
-        self.core_rate = core_rate / 100
+        self.core_rate = core_rate
 
     def __call__(self, status: Status):
         status.attribute.magical_attack_power_gain += 51 / 1024
         status.attribute.strain_gain += 20 / 1024
         status.attribute.magical_overcome_gain += 102 / 1024
+        if self.core_rate:
+            status.skills["阵眼-禅那"].interval_rand = self.core_rate
+            status.skills["阵眼-禅那"].cast()
         status.attribute.magical_attack_power_gain += self.rate * self.stack * 21 / 1024
 
 
@@ -219,7 +222,7 @@ class 九星游年阵:
         status.attribute.strain_gain += 20 / 1024
         status.attribute.magical_critical_power_gain += 100 / 1024
         status.attribute.magical_critical_power_gain += self.core_rate * sum(self.values) / len(self.values) / 1024
-        status.attribute.damage_addition += self.rate * 0.5 * 154 / 1024
+        status.attribute.all_damage_addition += self.rate * 0.5 * 154 / 1024
 
 
 class 乱暮浊茵阵:
@@ -228,7 +231,7 @@ class 乱暮浊茵阵:
 
     def __call__(self, status: Status):
         status.attribute.magical_attack_power_gain += 51 / 1024
-        status.attribute.damage_addition += 31 / 1024
+        status.attribute.all_damage_addition += 31 / 1024
         status.attribute.all_critical_strike_gain += 0.03
 
 
@@ -251,7 +254,7 @@ class 苍梧引灵阵:
     def __call__(self, status: Status):
         status.attribute.all_critical_strike_gain += 0.03
         status.attribute.strain_gain += 20 / 1024
-        status.attribute.damage_addition += 62 / 1024
+        status.attribute.all_damage_addition += 62 / 1024
         status.attribute.all_critical_power_gain += self.rate * 150 / 1024
 
 

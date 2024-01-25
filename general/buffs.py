@@ -103,11 +103,11 @@ class 大附魔腰(SnapshotBuff):
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        self.status.attribute.damage_addition += self.value[level - 1]
+        self.status.attribute.all_damage_addition += self.value[level - 1]
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        self.status.attribute.damage_addition -= self.value[level - 1]
+        self.status.attribute.all_damage_addition -= self.value[level - 1]
 
 
 class 大附魔腰_冷却(CDBuff):
