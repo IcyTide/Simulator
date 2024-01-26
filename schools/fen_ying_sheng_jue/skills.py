@@ -254,8 +254,8 @@ class 净世破魔击_月(MagicalDamage):
         self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(60 * 1.15 * 1.1 * 1.1 * 1.1 * 1.05 * 1.1 * 1.1)
 
     def post_hit(self):
-        super().post_hit()
         self.status.skills["净世破魔击·月-外功"].cast()
+        super().post_hit()
 
     def post_cast(self):
         self.status.buffs["月灵"].clear()
@@ -344,7 +344,7 @@ class 银月斩(CastingSkill, MagicalDamage):
             self.status.buffs["月灵"].increase(self.gain)
         if self.status.stacks["烈日"]:
             self.status.skills["破"].cast()
-        self.status.buffs["银月斩-持续"].trigger()
+        self.status.skills["银月斩-持续"].cast()
         self.status.skills["银月斩-外功"].cast()
 
 
@@ -559,7 +559,8 @@ class 靡业报劫_日(DotSkill, MagicalDamage):
 
     def post_cast(self):
         super().post_cast()
-        self.status.skills["靡业报劫·终"].cast()
+        if self.level == 1:
+            self.status.skills["靡业报劫·终"].cast()
 
 
 class 靡业报劫_月(DotSkill, MagicalDamage):
@@ -577,7 +578,8 @@ class 靡业报劫_月(DotSkill, MagicalDamage):
 
     def post_cast(self):
         super().post_cast()
-        self.status.skills["靡业报劫·终"].cast()
+        if self.level == 1:
+            self.status.skills["靡业报劫·终"].cast()
 
 
 class 靡业报劫_终(MagicalDamage):
@@ -740,9 +742,9 @@ class 赤日轮_悬象(FixedInterval, MagicalDamage):
 
         self.interval_list = [8]
 
-        self.damage_base = int(135 * 1.2)
-        self.damage_rand = int(20 * 1.2)
-        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(96 * 1.2 * 1.1 * 1.1 * 1.1 * 1.05)
+        self.damage_base = int(37 * 1.2)
+        self.damage_rand = int(5 * 1.2)
+        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(32 * 1.2 * 1.1 * 1.1 * 1.1 * 1.05)
 
     def pre_cast(self):
         super().pre_cast()
@@ -756,9 +758,9 @@ class 烈日斩_悬象(FixedInterval, MagicalDamage):
 
         self.interval_list = [8]
 
-        self.damage_base = int(490 * 0.95 / 3)
-        self.damage_rand = int(485 * 0.1 / 3)
-        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(141 * 1.1 * 1.1 * 1.05 * 1.05)
+        self.damage_base = int(125 * 0.95 / 3)
+        self.damage_rand = int(67 * 0.1 / 3)
+        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(64 * 1.1 * 1.1 * 1.05 * 1.05)
 
     def pre_cast(self):
         super().pre_cast()
@@ -796,7 +798,7 @@ class 生死劫_月_悬象(FixedInterval, MagicalDamage):
 
         self.damage_base = 70
         self.damage_rand = 10
-        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(64)
+        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(64 * 1.05)
 
     def pre_cast(self):
         super().pre_cast()
@@ -833,7 +835,7 @@ class 净世破魔击_月_悬象(FixedInterval, MagicalDamage):
 
         self.damage_base = int(262 * 2 * 0.98 / 7)
         self.damage_rand = int(262 * 2 * 0.04 / 7)
-        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(60 * 1.15 * 1.1 * 1.1 * 1.1 * 1.05 * 1.1 * 1.1)
+        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(60 * 1.15 * 1.1 * 1.1 * 1.1 * 1.05 * 1.1 * 0.7)
 
     def pre_cast(self):
         super().pre_cast()
@@ -847,9 +849,9 @@ class 幽月轮_悬象(FixedInterval, MagicalDamage):
 
         self.interval_list = [8]
 
-        self.damage_base = int(381 * 0.95 / 5)
-        self.damage_rand = int(381 * 0.1 / 5)
-        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(80 * 1.2 * 1.1 * 1.1 * 1.1 * 1.05)
+        self.damage_base = int(100 * 0.95 / 5)
+        self.damage_rand = int(25 * 0.1 / 5)
+        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(40 * 1.2 * 1.1 * 1.1 * 1.1 * 1.05)
 
     def pre_cast(self):
         super().pre_cast()
@@ -863,9 +865,9 @@ class 银月斩_悬象(FixedInterval, MagicalDamage):
 
         self.interval_list = [8]
 
-        self.damage_base = int(413 * 0.95 / 4)
-        self.damage_rand = int(413 * 0.1 / 4)
-        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(128 * 1.1 * 1.1 * 1.1 * 1.05 * 1.05)
+        self.damage_base = int(73 * 0.95 / 4)
+        self.damage_rand = int(73 * 0.1 / 4)
+        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(40 * 1.1 * 1.1 * 1.1 * 1.05)
 
     def pre_cast(self):
         super().pre_cast()
@@ -875,7 +877,7 @@ class 银月斩_悬象(FixedInterval, MagicalDamage):
         super().post_cast()
         if self.status.stacks["烈日"]:
             self.status.skills["破"].cast()
-        self.status.buffs["银月斩-持续"].trigger()
+        self.status.skills["银月斩-持续"].cast()
 
 
 SKILLS_MAP = {
@@ -890,7 +892,8 @@ SKILLS_MAP = {
     "奇穴": [
         诛邪镇魔, 诛邪镇魔_日, 诛邪镇魔_月, 洞若观火_日, 洞若观火_月, 靡业报劫, 靡业报劫_日, 靡业报劫_月, 靡业报劫_终,
         净体不畏_日, 净体不畏_月, 降灵尊, 悬象著明, 悬象著明_日, 悬象著明_日_外功, 悬象著明_月, 悬象著明_月_外功,
-        赤日轮_悬象, 烈日斩_悬象, 幽月轮_悬象, 银月斩_悬象, 生死劫_日_悬象, 生死劫_月_悬象, 净世破魔击_日_悬象, 净世破魔击_月_悬象
+        赤日轮_悬象, 烈日斩_悬象, 幽月轮_悬象, 银月斩_悬象, 生死劫_日_悬象, 生死劫_月_悬象, 净世破魔击_日_悬象,
+        净世破魔击_月_悬象
     ]
 }
 SKILLS = sum(SKILLS_MAP.values(), [])

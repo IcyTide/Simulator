@@ -6,7 +6,7 @@ from utils.analyze import analyze_details
 
 
 def main():
-    duration = 300
+    duration = 274
 
     attribute = FenYingShengJue()
     attribute.spunk_base += 10000

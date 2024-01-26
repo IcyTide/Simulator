@@ -85,7 +85,7 @@ class 银月斩_持续(DotBuff):
         self.name = "银月斩-持续"
 
 
-class 光明相(GainBuff):
+class 光明相(SnapshotBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "光明相"
@@ -359,7 +359,7 @@ class 日月齐光_净世破魔击(Buff):
         self.duration = 384
 
 
-class 日月齐光_生死劫(SnapshotBuff, ExtendBuff):
+class 日月齐光_生死劫(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "日月齐光·生死劫"
@@ -367,7 +367,7 @@ class 日月齐光_生死劫(SnapshotBuff, ExtendBuff):
         self.duration = 384
 
 
-class 日月齐光_悬象著明(SnapshotBuff, ExtendBuff):
+class 日月齐光_悬象著明(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "日月齐光·悬象著明"

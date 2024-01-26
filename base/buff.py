@@ -97,7 +97,7 @@ class ExtendBuff(Buff):
         elif self.duration:
             self.status.durations[self.name] = self.duration
         else:
-            self.status.durations[self.name] = self.duration_add
+            self.status.durations[self.name] += self.duration_add
 
     def extend(self):
         if duration := self.status.durations[self.name]:

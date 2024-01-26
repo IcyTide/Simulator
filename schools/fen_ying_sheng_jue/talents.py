@@ -176,12 +176,20 @@ class 靡业报劫:
         self.status.skills["靡业报劫"].cast()
         self.status.skills["靡业报劫·月"].cast()
 
+    @staticmethod
+    def post_cast_effect_sun_shadow(self: Skill):
+        self.status.skills["靡业报劫·日"].cast(2)
+
+    @staticmethod
+    def post_cast_effect_moon_shadow(self: Skill):
+        self.status.skills["靡业报劫·月"].cast(2)
+
     def __call__(self, status: Status):
         status.skills["生死劫"].cd_base += 14 * 16
-        for skill in ["生死劫·日", "生死劫·日·悬象"]:
-            status.skills[skill].post_cast_effect.append(self.post_cast_effect_sun)
-        for skill in ["生死劫·月", "生死劫·月·悬象"]:
-            status.skills[skill].post_cast_effect.append(self.post_cast_effect_moon)
+        status.skills["生死劫·日"].post_cast_effect.append(self.post_cast_effect_sun)
+        status.skills["生死劫·月"].post_cast_effect.append(self.post_cast_effect_moon)
+        status.skills["生死劫·日·悬象"].post_cast_effect.append(self.post_cast_effect_sun_shadow)
+        status.skills["生死劫·月·悬象"].post_cast_effect.append(self.post_cast_effect_moon_shadow)
 
 
 class 超凡入圣:
@@ -228,6 +236,14 @@ class 净体不畏:
         self.status.cds["烈日斩"] = max(0, self.status.cds["烈日斩"] - 16)
         self.status.cds["银月斩"] = max(0, self.status.cds["银月斩"] - 16)
         if self.status.stacks["银月斩-持续"]:
+            self.status.skills["烈日斩-外功"].cast()
+            self.status.skills["净体不畏·日"].cast(1)
+
+    @staticmethod
+    def post_cast_effect_sun_shadow_1(self: Skill):
+        self.status.cds["烈日斩"] = max(0, self.status.cds["烈日斩"] - 16)
+        self.status.cds["银月斩"] = max(0, self.status.cds["银月斩"] - 16)
+        if self.status.stacks["银月斩-持续"]:
             self.status.skills["净体不畏·日"].cast(1)
 
     @staticmethod
@@ -250,6 +266,14 @@ class 净体不畏:
         self.status.cds["烈日斩"] = max(0, self.status.cds["烈日斩"] - 16)
         self.status.cds["银月斩"] = max(0, self.status.cds["银月斩"] - 16)
         if self.status.stacks["烈日"]:
+            self.status.skills["银月斩-外功"].cast()
+            self.status.skills["净体不畏·月"].cast(1)
+
+    @staticmethod
+    def post_cast_effect_moon_shadow_1(self: Skill):
+        self.status.cds["烈日斩"] = max(0, self.status.cds["烈日斩"] - 16)
+        self.status.cds["银月斩"] = max(0, self.status.cds["银月斩"] - 16)
+        if self.status.stacks["烈日"]:
             self.status.skills["净体不畏·月"].cast(1)
 
     @staticmethod
@@ -268,8 +292,8 @@ class 净体不畏:
             self.status.skills["净体不畏·月"].cast(4)
 
     def __call__(self, status: Status):
-        for skill in ["烈日斩", "烈日斩·悬象"]:
-            status.skills[skill].post_cast_effect.append(self.post_cast_effect_sun_1)
+        status.skills["烈日斩"].post_cast_effect.append(self.post_cast_effect_sun_1)
+        status.skills["烈日斩·悬象"].post_cast_effect.append(self.post_cast_effect_sun_shadow_1)
         for skill in ["赤日轮", "赤日轮·悬象"]:
             status.skills[skill].post_cast_effect.append(self.post_cast_effect_sun_2)
         for skill in ["净世破魔击·日", "净世破魔击·日·悬象", "悬象著明·日"]:
@@ -277,8 +301,8 @@ class 净体不畏:
         for skill in ["生死劫·日", "生死劫·日·悬象", "诛邪镇魔-日"]:
             status.skills[skill].post_cast_effect.append(self.post_cast_effect_sun_4)
 
-        for skill in ["银月斩", "银月斩·悬象"]:
-            status.skills[skill].post_cast_effect.append(self.post_cast_effect_moon_1)
+        status.skills["银月斩"].post_cast_effect.append(self.post_cast_effect_moon_1)
+        status.skills["银月斩·悬象"].post_cast_effect.append(self.post_cast_effect_moon_shadow_1)
         for skill in ["幽月轮", "幽月轮·悬象"]:
             status.skills[skill].post_cast_effect.append(self.post_cast_effect_moon_2)
         for skill in ["净世破魔击·月", "净世破魔击·月·悬象", "悬象著明·月"]:
@@ -289,7 +313,7 @@ class 净体不畏:
 
 class 降灵尊:
     @staticmethod
-    def post_cast_effect(self: Buff):
+    def post_cast_effect_trigger(self: Buff):
         self.status.buffs["降灵尊"].trigger()
 
     @staticmethod
@@ -306,12 +330,19 @@ class 降灵尊:
             self.status.skills["降灵尊"].cast()
             self.status.buffs["日灵"].increase(20)
 
+    @staticmethod
+    def post_cast_effect(self: Buff):
+        if self.status.stacks["降灵尊"]:
+            self.status.skills["破"].cast()
+            self.status.skills["降灵尊"].cast()
+
     def __call__(self, status: Status):
-        status.skills["暗尘弥散"].post_cast_effect.append(self.post_cast_effect)
+        status.skills["暗尘弥散"].post_cast_effect.append(self.post_cast_effect_trigger)
         for skill in ["生死劫·日", "生死劫·日·悬象", "净世破魔击·日", "净世破魔击·日·悬象", "悬象著明·日"]:
             status.skills[skill].post_cast_effect.append(self.post_cast_effect_sun)
         for skill in ["生死劫·月", "生死劫·月·悬象", "净世破魔击·月", "净世破魔击·月·悬象", "悬象著明·月"]:
             status.skills[skill].post_cast_effect.append(self.post_cast_effect_moon)
+        status.skills["诛邪镇魔"].post_cast_effect.append(self.post_cast_effect)
 
 
 class 万念俱寂:
@@ -365,7 +396,7 @@ class 悬象著明:
 class 日月齐光:
     @staticmethod
     def post_cast_effect_sun_1(self: Skill):
-        if 0 < self.status.stacks["日月齐光"] < 3:
+        if self.status.stacks["日月齐光"]:
             if not self.status.stacks["日月齐光·净世破魔击"]:
                 self.status.buffs["日月齐光"].trigger()
                 self.status.buffs["日月齐光·净世破魔击"].trigger()
@@ -380,7 +411,7 @@ class 日月齐光:
 
     @staticmethod
     def post_cast_effect_sun_2(self: Skill):
-        if 0 < self.status.stacks["日月齐光"] < 3:
+        if self.status.stacks["日月齐光"]:
             if not self.status.stacks["日月齐光·生死劫"]:
                 self.status.buffs["日月齐光"].trigger()
                 self.status.buffs["日月齐光·生死劫"].trigger()
@@ -395,7 +426,7 @@ class 日月齐光:
 
     @staticmethod
     def post_cast_effect_sun_3(self: Skill):
-        if 0 < self.status.stacks["日月齐光"] < 3:
+        if self.status.stacks["日月齐光"]:
             if not self.status.stacks["日月齐光·悬象著明"]:
                 self.status.buffs["日月齐光"].trigger()
                 self.status.buffs["日月齐光·悬象著明"].trigger()

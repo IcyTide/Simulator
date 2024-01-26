@@ -300,9 +300,9 @@ class CastingSkill(Skill):
             self.hit()
 
     def post_cast(self):
-        super().post_cast()
-        self.status.casting = False
         self.set_cd()
+        self.status.casting = False
+        super().post_cast()
 
 
 class ChannelSkill(Skill):
@@ -328,8 +328,8 @@ class ChannelSkill(Skill):
             self.hit()
 
     def post_cast(self):
-        super().post_cast()
         self.status.casting = False
+        super().post_cast()
 
 
 class PeriodicalSkill(Skill):
