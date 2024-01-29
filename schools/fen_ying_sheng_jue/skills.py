@@ -820,6 +820,10 @@ class 净世破魔击_日_悬象(FixedInterval, MagicalDamage):
         super().pre_cast()
         self.status.buffs["悬象著明·日"].consume()
 
+    def post_cast(self):
+        super().post_cast()
+        self.status.skills["净世破魔击·日-外功"].cast()
+
 
 class 净世破魔击_月_悬象(FixedInterval, MagicalDamage):
     def __init__(self, status):
@@ -840,6 +844,10 @@ class 净世破魔击_月_悬象(FixedInterval, MagicalDamage):
     def pre_cast(self):
         super().pre_cast()
         self.status.buffs["悬象著明·月"].consume()
+
+    def post_hit(self):
+        super().post_hit()
+        self.status.skills["净世破魔击·月-外功"].cast()
 
 
 class 幽月轮_悬象(FixedInterval, MagicalDamage):
@@ -880,8 +888,23 @@ class 银月斩_悬象(FixedInterval, MagicalDamage):
         self.status.skills["银月斩-持续"].cast()
 
 
+class 驱夜断愁_神兵(TriggerSkill, PhysicalDamage):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "驱夜断愁·神兵"
+
+        self.is_cast = False
+        self.is_hit = False
+
+        self.probability = 307 / 1024
+
+        self.damage_base = 20
+        self.damage_rand = 2
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(50)
+
+
 SKILLS_MAP = {
-    "通用": [大漠刀法, 破],
+    "通用": [大漠刀法, 破, 驱夜断愁_神兵],
     "日月净世": [
         赤日轮, 赤日轮_外功, 烈日斩, 烈日斩_外功, 幽月轮, 幽月轮_外功, 银月斩, 银月斩_持续, 银月斩_外功,
         生死劫, 生死劫_日, 生死劫_日_外功, 生死劫_月, 生死劫_月_外功,

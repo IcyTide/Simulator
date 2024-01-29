@@ -14,6 +14,7 @@ def initiation(status: Status):
 prepare = ''
 priority = """
 下马(牧云:duration<1.5|渊:cd=0&龙牙:cd>0.75),
+梅花枪法,
 突(牧云:duration<1.5),
 渊(牧云:duration>10),
 撼如雷(渊:duration=10),

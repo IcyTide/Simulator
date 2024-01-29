@@ -400,8 +400,7 @@ class 风来吴山_持续(PlacementSkill, PhysicalDamage):
         super().post_hit()
         self.status.buffs["剑气"].increase(5)
         if self.status.intervals[self.name]:
-            self.status.buffs["层云"].clear()
-            self.status.buffs["层云"].trigger(min(self.status.ticks[self.name], 5))
+            self.status.buffs["层云"].trigger()
 
     def post_cast(self):
         super().post_cast()

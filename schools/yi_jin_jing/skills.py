@@ -544,8 +544,23 @@ class 六合棍意(PlacementSkill, MagicalDamage):
         self.status.buffs["缴械"].clear()
 
 
+class 守缺式_神兵(TriggerSkill, PhysicalDamage):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "守缺式·神兵"
+
+        self.is_cast = False
+        self.is_hit = False
+
+        self.probability = 307 / 1024
+
+        self.damage_base = 20
+        self.damage_rand = 2
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(50)
+
+
 SKILLS_MAP = {
-    "通用": [六合棍, 破, 阵眼_禅那],
+    "通用": [六合棍, 破, 阵眼_禅那, 守缺式_神兵],
     "罗汉棍法": [普渡四方, 普渡四方_外功, 韦陀献杵, 韦陀献杵_外功, 横扫六合, 横扫六合_外功, 横扫六合_持续, 摩诃无量, 摩诃无量_外功],
     "龙爪功": [捕风式, 捉影式, 拿云式, 守缺式],
     "袈裟伏魔功": [罗汉金身, 二业依缘, 千斤坠],

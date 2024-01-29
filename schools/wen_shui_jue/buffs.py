@@ -221,17 +221,19 @@ class 层云(GainBuff):
 
         self.duration = 128
 
+        self.stack_max = 5
+
         self.values = [72 / 1024, 143 / 1024, 215 / 1024, 287 / 1024, 358 / 1024]
 
         self.gain_group = ["风来吴山-持续"]
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        self.status.skills["风来吴山-持续"].skill_damage_addition += self.values[level - 1]
+        self.status.skills["风来吴山-持续"].skill_damage_addition += self.values[stack - 1]
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        self.status.skills["风来吴山-持续"].skill_damage_addition -= self.values[level - 1]
+        self.status.skills["风来吴山-持续"].skill_damage_addition -= self.values[stack - 1]
 
 
 class 风来吴山_持续(PlacementBuff):

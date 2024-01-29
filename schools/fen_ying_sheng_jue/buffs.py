@@ -432,6 +432,26 @@ class 驱夷逐法(GainBuff):
             self.status.skills[skill].skill_damage_addition -= self.value
 
 
+class 血月(TriggerBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "血月"
+
+        self.probability = 25 / 1024
+
+    def add(self):
+        super().add()
+        self.status.buffs["血月-冷却"].trigger()
+
+
+class 桑莲妙境_冷却(CDBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "血月-冷却"
+
+        self.duration = 30 * 16
+
+
 BUFFS = [明尊, 日灵, 月灵, 暗尘, 赤日轮, 烈日, 幽月轮, 银月斩_持续, 光明相,
          魂_日, 魂_月, 诛邪镇魔, 明光_日, 明光_月, 灼烧, 日月同辉, 日月灵魂, 靡业报劫_日, 靡业报劫_月, 超凡入圣, 用晦而明, 诛戮, 降灵尊,
          悬象著明_日, 悬象著明_月, 日月齐光_日, 日月齐光_月, 日月齐光_净世破魔击, 日月齐光_生死劫, 日月齐光_悬象著明, 日月齐光, 驱夷逐法]

@@ -95,18 +95,15 @@ class 承磊:
 class 镇机:
     @staticmethod
     def add_effect(self: Buff):
-        self.status.buffs["镇机"].trigger(self.status.stacks[self.name])
+        self.status.buffs["镇机"].trigger()
 
     @staticmethod
-    def remove_effect(self: Buff):
-        if self.status.stacks[self.name]:
-            self.status.buffs["镇机"].trigger(self.status.stacks[self.name])
-        else:
-            self.status.buffs["镇机"].clear()
+    def clear_effect(self: Buff):
+        self.status.buffs["镇机"].clear()
 
     def __call__(self, status: Status):
         status.buffs["破绽"].add_effect.append(self.add_effect)
-        status.buffs["破绽"].remove_effect.append(self.remove_effect)
+        status.buffs["破绽"].clear_effect.append(self.clear_effect)
 
 
 class 界破:
@@ -150,18 +147,15 @@ class 周流:
 class 涤瑕:
     @staticmethod
     def add_effect(self: Buff):
-        self.status.buffs["涤瑕"].trigger(self.status.stacks[self.name])
+        self.status.buffs["涤瑕"].trigger()
 
     @staticmethod
-    def remove_effect(self: Buff):
-        if self.status.stacks[self.name]:
-            self.status.buffs["涤瑕"].trigger(self.status.stacks[self.name])
-        else:
-            self.status.buffs["涤瑕"].clear()
+    def clear_effect(self: Buff):
+        self.status.buffs["涤瑕"].clear()
 
     def __call__(self, status: Status):
-        status.buffs["破绽"].add_effect.append(self.add_effect)
-        status.buffs["破绽"].remove_effect.append(self.remove_effect)
+        status.buffs["流血"].add_effect.append(self.add_effect)
+        status.buffs["流血"].clear_effect.append(self.clear_effect)
 
 
 class 强膂:
@@ -235,7 +229,7 @@ class 截辕:
 
 
 TALENTS = [
-    ["中峙", "渊冲"],
+    ["渊冲", "中峙"],
     ["戗风"],
     ["溃延", "雨积"],
     ["放皓"],

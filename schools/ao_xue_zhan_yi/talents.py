@@ -110,11 +110,14 @@ class 牧云:
 class 风虎:
     @staticmethod
     def increase_effect(self: Buff):
+        self.status.buffs["风虎"].clear()
         self.status.buffs["风虎"].trigger(self.status.stacks[self.name])
 
     @staticmethod
     def decrease_effect(self: Buff):
-        self.status.buffs["风虎"].trigger(self.status.stacks[self.name])
+        self.status.buffs["风虎"].clear()
+        if stack := self.status.stacks[self.name]:
+            self.status.buffs["风虎"].trigger(stack)
 
     def __call__(self, status: Status):
         status.buffs["战意"].increase_effect.append(self.increase_effect)

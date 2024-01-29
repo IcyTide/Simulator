@@ -197,6 +197,8 @@ class 镇机(GainBuff):
         super().__init__(status)
         self.name = "镇机"
 
+        self.stack_max = 6
+
         self.values = [
             154 / 1024,
             307 / 1024,
@@ -206,17 +208,17 @@ class 镇机(GainBuff):
             922 / 1024
         ]
 
-        self.gain_group = ["断云式"]
+        self.gain_group = ["断云式", "断云式-额外"]
 
     def gain(self, level, stack):
         super().gain(level, stack)
         for skill in self.gain_group:
-            self.status.skills[skill].skill_damage_addition += self.values[self.level - 1]
+            self.status.skills[skill].skill_damage_addition += self.values[stack - 1]
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
         for skill in self.gain_group:
-            self.status.skills[skill].skill_damage_addition -= self.values[self.level - 1]
+            self.status.skills[skill].skill_damage_addition -= self.values[stack - 1]
 
 
 class 界破(PlacementBuff):
@@ -247,17 +249,19 @@ class 涤瑕(SnapshotBuff):
         super().__init__(status)
         self.name = "涤瑕"
 
+        self.stack_max = 6
+
         self.values = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
 
         self.gain_group = ["流血"]
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        self.status.skills["流血"].attack_power_cof_gain += self.values[self.level - 1]
+        self.status.skills["流血"].attack_power_cof_gain += self.values[stack - 1]
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        self.status.skills["流血"].attack_power_cof_gain -= self.values[self.level - 1]
+        self.status.skills["流血"].attack_power_cof_gain -= self.values[stack - 1]
 
 
 class 流岚(GainBuff, ExtendBuff):

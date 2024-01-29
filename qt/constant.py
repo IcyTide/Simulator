@@ -2,7 +2,7 @@ import os
 
 from general.gains import equipment
 
-from schools import wen_shui_jue, bei_ao_jue, bing_xin_jue, yi_jin_jing, ao_xue_zhan_yi, gu_feng_jue
+from schools import wen_shui_jue, bei_ao_jue, bing_xin_jue, yi_jin_jing, ao_xue_zhan_yi, gu_feng_jue, fen_ying_sheng_jue
 
 """ Directory """
 # ASSETS_DIR = os.path.join(os.getcwd(), "qt/assets")
@@ -56,20 +56,24 @@ ATTR_TYPE_MAP = {
     "atMagicAttackPowerBase": "magical_attack_power_base",
     "atLunarAttackPowerBase": "magical_attack_power_base",
     "atSolarAttackPowerBase": "magical_attack_power_base",
+    "atSolarAndLunarAttackPowerBase": "magical_attack_power_base",
     "atPhysicsOvercomeBase": "physical_overcome_base",
     "atMagicOvercome": "magical_overcome_base",
     "atLunarOvercomeBase": "magical_overcome_base",
     "atSolarOvercomeBase": "magical_overcome_base",
+    "atSolarAndLunarOvercomeBase": "magical_overcome_base",
     "atAllTypeCriticalStrike": "all_critical_strike_base",
     "atPhysicsCriticalStrike": "physical_critical_strike_base",
     "atMagicCriticalStrike": "magical_critical_strike_base",
     "atLunarCriticalStrike": "magical_critical_strike_base",
     "atSolarCriticalStrike": "magical_critical_strike_base",
+    "atSolarAndLunarCriticalStrike": "magical_critical_strike_base",
     "atAllTypeCriticalDamagePowerBase": "all_critical_power_base",
     "atPhysicsCriticalDamagePowerBase": "physical_critical_power_base",
     "atMagicCriticalDamagePowerBase": "magical_critical_power_base",
     "atLunarCriticalDamagePowerBase": "magical_critical_power_base",
     "atSolarCriticalDamagePowerBase": "magical_critical_power_base",
+    "atSolarAndLunarCriticalDamagePowerBase": "magical_critical_power_base",
     "atSurplusValueBase": "surplus",
     "atStrainBase": "strain_base",
     "atHasteBase": "haste_base",
@@ -313,6 +317,40 @@ SUPPORT_SCHOOL = {
             "surplus": "破招",
         }
     },
+    "焚影圣诀": {
+        "school": "明教",
+        "major": "元气",
+        "kind": "内功",
+        "attribute": fen_ying_sheng_jue.FenYingShengJue,
+        "formation": "炎威破魔阵",
+        "talents": fen_ying_sheng_jue.TALENTS,
+        "recipes": fen_ying_sheng_jue.RECIPES,
+        "skills": fen_ying_sheng_jue.SKILLS,
+        "buffs": fen_ying_sheng_jue.BUFFS,
+        "initiation": fen_ying_sheng_jue.initiation,
+        "prepare": fen_ying_sheng_jue.prepare,
+        "priority": fen_ying_sheng_jue.priority,
+        "loop": fen_ying_sheng_jue.loop,
+        "display_attrs": {
+            "spunk": "元气",
+            "base_magical_attack_power": "基础攻击",
+            "magical_attack_power": "攻击",
+            "base_magical_critical_strike": "会心等级",
+            "magical_critical_strike": "会心",
+            "magical_critical_power_base": "会效等级",
+            "magical_critical_power": "会效",
+            "base_magical_overcome": "基础破防",
+            "final_magical_overcome": "最终破防",
+            "magical_overcome": "破防",
+            "weapon_damage_base": "基础武器伤害",
+            "weapon_damage_rand": "浮动武器伤害",
+            "strain_base": "无双等级",
+            "strain": "无双",
+            "haste_base": "加速等级",
+            "haste": "加速",
+            "surplus": "破招",
+        }
+    },
 }
 
 """ Equip """
@@ -346,7 +384,8 @@ EQUIP_GAINS_NAME = {
     **bing_xin_jue.EQUIP_GAINS_NAME,
     **yi_jin_jing.EQUIP_GAINS_NAME,
     **ao_xue_zhan_yi.EQUIP_GAINS_NAME,
-    **gu_feng_jue.EQUIP_GAINS_NAME
+    **gu_feng_jue.EQUIP_GAINS_NAME,
+    **fen_ying_sheng_jue.EQUIP_GAINS_NAME
 }
 EQUIP_GAINS = {
     **equipment.EQUIP_GAINS,
@@ -355,7 +394,8 @@ EQUIP_GAINS = {
     **bing_xin_jue.EQUIP_GAINS,
     **yi_jin_jing.EQUIP_GAINS,
     **ao_xue_zhan_yi.EQUIP_GAINS,
-    **gu_feng_jue.EQUIP_GAINS
+    **gu_feng_jue.EQUIP_GAINS,
+    **fen_ying_sheng_jue.EQUIP_GAINS
 }
 
 """ Talent """
@@ -367,7 +407,8 @@ TALENT_GAINS = {
     **bing_xin_jue.TALENT_GAINS,
     **yi_jin_jing.TALENT_GAINS,
     **ao_xue_zhan_yi.TALENT_GAINS,
-    **gu_feng_jue.TALENT_GAINS
+    **gu_feng_jue.TALENT_GAINS,
+    **fen_ying_sheng_jue.TALENT_GAINS
 }
 
 """ Recipes """
@@ -380,5 +421,6 @@ RECIPE_GAINS = {
     **bing_xin_jue.RECIPE_GAINS,
     **yi_jin_jing.RECIPE_GAINS,
     **ao_xue_zhan_yi.RECIPE_GAINS,
-    **gu_feng_jue.RECIPE_GAINS
+    **gu_feng_jue.RECIPE_GAINS,
+    **fen_ying_sheng_jue.RECIPE_GAINS
 }

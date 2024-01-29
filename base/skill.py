@@ -540,7 +540,7 @@ class DotSkill(PeriodicalSkill):
             for buff, (level, stack) in
             dict(chain(self.status.gains[""] + self.status.gains[self.name], self.snapshot.gains)).items()
         )
-        self.status.record(Damage(self.name, critical, level, times * self.status.stacks[self.name], gains))
+        self.status.record(Damage(self.name, critical, level, times * max(1, self.status.stacks[self.name]), gains))
 
 
 class PlacementSkill(PeriodicalSkill, FixedInterval):

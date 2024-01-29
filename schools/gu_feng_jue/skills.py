@@ -66,6 +66,7 @@ class 避实击虚(TriggerSkill, PhysicalDamage):
             PHYSICAL_ATTACK_POWER_COF(160),
             PHYSICAL_ATTACK_POWER_COF(200),
         ]
+        self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
 
 
 class 行云式(CastingSkill):
@@ -219,6 +220,10 @@ class 断云式(CastingSkill, PhysicalDamage):
     def condition(self):
         return self.status.stacks["锐意"] == 100 and self.status.stacks["单手持刀"]
 
+    def set_gcd(self):
+        self.status.gcd_group[0] = self.gcd
+        self.status.gcd_group[1] = self.gcd
+
     def post_cast(self):
         super().post_cast()
         self.status.skills["断云式-额外"].cast()
@@ -342,7 +347,7 @@ class 横云断浪(CastingSkill, PhysicalDamage):
 
         self.cd_base = 12 * 16
 
-        self.gcd_index = 1
+        self.gcd_index = self.name
 
         self.damage_base = int(1203 * 0.6)
         self.damage_rand = int(1473 * 0.1 * 0.6)
@@ -352,6 +357,9 @@ class 横云断浪(CastingSkill, PhysicalDamage):
     @property
     def condition(self):
         return self.status.stacks["双手持刀"]
+
+    def set_gcd(self):
+        self.status.gcd_group[1] = self.gcd
 
     def post_cast(self):
         super().post_cast()
@@ -455,6 +463,8 @@ class 驰风八步(CastingSkill, PhysicalDamage):
         self.name = "驰风八步"
 
         self.cd_base = 30 * 16
+
+        self.gcd_index = self.name
 
         self.damage_base = 25
         self.damage_rand = 5

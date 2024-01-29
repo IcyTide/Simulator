@@ -1,1 +1,0 @@
-nuitka --standalone --windows-disable-console --windows-icon-from-ico=./qt/assets/icon.ico --nofollow-import-to=http,email --include-data-dir=./qt/assets=qt/assets/ --enable-plugin=pyside6 --output-dir=output  qt/app.py

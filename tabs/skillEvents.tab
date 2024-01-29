@@ -1,0 +1,2283 @@
+ID	Name	EventType	Odds	SkillID	SkillLevel	SkillCaster	SkillTarget	EventMask1	EventMask2	Save	Useage	EventSkillID	EventSkillLevel	AngleFlag	BeginAngle	EndAngle
+0	未知	Hit	1024	19	1	EventCaster	EventCaster	1	0	0	0	0	0	0	0	0
+3	未知	Hit	1024	33	1	EventCaster	EventCaster	1	0	0	0	0	0		0	0
+5	忍术荒武刀	Dodge	1024	5010	9	EventTarget	EventTarget	262144	0	0	0	0	0		0	0
+21	万花_毫针_被击回血1	BeHit	1024	151	1	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+42	纯阳_剑冲阴阳	Hit	410	337	1	EventCaster	EventTarget	131076	0	0	3	0	0		0	0
+49	纯阳_玄一无相	Hit	410	338	1	EventCaster	EventTarget	131076	0	0	3	0	0		0	0
+59	吐故纳新	BeHit	1024	340	1	EventCaster	EventTarget	131076	0	0	3	0	0		0	0
+60	吐故纳新	BeHit	1024	340	2	EventCaster	EventTarget	131076	0	0	3	0	0		0	0
+61	吐故纳新	BeHit	1024	340	3	EventCaster	EventTarget	131076	0	0	3	0	0		0	0
+62	吐故纳新	BeHit	1024	340	4	EventCaster	EventTarget	131076	0	0	3	0	0		0	0
+63	吐故纳新	BeHit	1024	340	5	EventCaster	EventTarget	131076	0	0	3	0	0		0	0
+64	吐故纳新	BeHit	1024	340	6	EventCaster	EventTarget	131076	0	0	3	0	0		0	0
+66	天策_徐如林_恢复生命 1级	Hit	512	408	1	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+67	天策_掠如火_增加仇恨	BeHit	1024	410	1	EventCaster	EventTarget	1	0	0	1	0	0		0	0
+68	天策_铁牢律_坚韧	BeHit	128	414	1	EventCaster	EventCaster	131564	0	0	1	0	0		0	0
+77	七秀_袖手_鹊踏枝闪避1	Dodge	256	2933	1	EventCaster	EventTarget	131084	0	0	4	0	0		0	0
+78	天策_徐如林_恢复生命 2级	Hit	512	408	2	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+79	天策_徐如林_恢复生命 3级	Hit	512	408	3	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+80	天策_徐如林_恢复生命 4级	Hit	512	408	4	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+81	天策_御_驱散BUFF_1级	BeHit	1024	443	1	EventCaster	EventCaster	131564	0	0	1	0	0		0	0
+82	天策-龙吟_攻击被躲闪(为启用)	BeDodge	1024	448	1	EventCaster	EventTarget	131076	0	0	1	0	0		0	0
+83	天策-龙吟_躲闪攻击(未启用)	Dodge	1024	448	1	EventCaster	EventCaster	131076	0	0	1	0	0		0	0
+84	天策_守如山_傲血战意_反击	BeHit	0	417	1	EventCaster	EventTarget	131076	0	0	1	0	0		0	0
+86	少林_攻击增加点	Hit	1024	204	1	EventCaster	EventCaster	67108864	131072	0	5	0	0		0	0
+87	少林_被击增加点	BeHit	1024	339	1	EventCaster	EventCaster	131564	0	0	5	0	0		0	0
+88	天策_龙吟触发克敌(废弃)	CriticalStrike	174	448	1	EventCaster	EventCaster	131076	0	0	1	0	0		0	0
+89	纯阳_紫霞功_放气后回气	CriticalStrike	1024	336	2	EventCaster	EventCaster	536870912	16	0	3	0	0		0	0
+90	会心50%回气半格	CriticalStrike	512	336	1	EventCaster	EventCaster	131076	0	0	3	0	0		0	0
+91	少林_被击回血1	BeHit	256	268	1	EventCaster	EventCaster	131564	0	0	5	0	0		0	0
+92	少林_被击回血2	BeHit	256	268	2	EventCaster	EventCaster	131564	0	0	5	0	0		0	0
+93	少林_被击回血3	BeHit	256	268	3	EventCaster	EventCaster	131564	0	0	5	0	0		0	0
+94	少林_被击回血4	BeHit	256	268	4	EventCaster	EventCaster	131564	0	0	5	0	0		0	0
+95	少林_被击回血5	BeHit	256	268	5	EventCaster	EventCaster	131564	0	0	5	0	0		0	0
+98	少林_被击加防2	BeHit	512	273	1	EventCaster	EventCaster	131564	0	0	5	0	0		0	0
+99	少林_被击增加点2	BeHit	153	3681	1	EventCaster	EventCaster	131564	0	0	5	0	0		0	0
+100	万花_厥阴指_打断后沉默	HitOTAction	1024	144	1	EventCaster	EventTarget	2097152	0	0	2	0	0		0	0
+101	万花-傍花随柳-施技定身1级	Cast	1024	150	1	EventCaster	EventCaster	28	0	0	2	0	0		0	0
+103	七秀_冰心诀_被击冰环	BeHit	102	509	1	EventCaster	EventTarget	131084	0	0	4	0	0		0	0
+104	万花-傍花随柳-施技定身2级	Cast	1024	150	2	EventCaster	EventCaster	28	0	0	2	0	0		0	0
+105	万花-傍花随柳-施技定身3级	Cast	1024	150	3	EventCaster	EventCaster	28	0	0	2	0	0		0	0
+106	万花-傍花随柳-施技定身4级	Cast	1024	150	4	EventCaster	EventCaster	28	0	0	2	0	0		0	0
+107	万花-傍花随柳-施技定身5级	Cast	1024	150	5	EventCaster	EventCaster	28	0	0	2	0	0		0	0
+108	万花_毫针_被击回血2	BeHit	1024	151	2	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+109	万花_毫针_被击回血3	BeHit	1024	151	3	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+110	万花_毫针_被击回血4	BeHit	1024	151	4	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+111	万花_毫针_被击回血5	BeHit	1024	151	5	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+112	万花_毫针_被击回血6	BeHit	1024	151	6	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+113	2938号任务用技能事件	BeHit	1024	5010	1	EventCaster	EventTarget	0	16777216	0	15	0	0		0	0
+114	天策-破坚阵_击晕	HitOTAction	1024	478	1	EventCaster	EventTarget	1048576	0	0	1	0	0		0	0
+115	万花_离经易道_太素九针_回内	Cast	205	292	1	EventCaster	EventCaster	8388608	0	0	2	0	0		0	0
+116	万花_离经易道_太素九针_瞬发2	Cast	102	293	1	EventCaster	EventCaster	8388608	0	0	2	0	0		0	0
+117	纯阳_剑飞惊天	HitOTAction	1024	335	1	EventCaster	EventTarget	0	0	0	3	310	0		0	0
+118	天策_崩_打断施法成功效果_1级	HitOTAction	1024	483	1	EventCaster	EventTarget	2097152	0	0	1	0	0		0	0
+119	经脉-两次攻击1	Hit	10	125	1	EventCaster	EventTarget	131076	0	0	31	0	0		0	0
+120	经脉-两次攻击2	Hit	20	125	1	EventCaster	EventTarget	131076	0	0	31	0	0		0	0
+121	经脉-两次攻击3	Hit	30	125	1	EventCaster	EventTarget	131076	0	0	31	0	0		0	0
+122	经脉-定身1	Hit	10	294	1	EventCaster	EventTarget	131084	0	0	31	0	0		0	0
+123	经脉-定身2	Hit	20	294	1	EventCaster	EventTarget	131084	0	0	31	0	0		0	0
+124	经脉-定身3	Hit	30	294	1	EventCaster	EventTarget	131084	0	0	31	0	0		0	0
+125	经脉-增加暴击1	Hit	10	295	1	EventCaster	EventCaster	131076	0	0	31	0	0		0	0
+126	经脉-增加暴击2	Hit	20	295	1	EventCaster	EventCaster	131076	0	0	31	0	0		0	0
+127	经脉-增加暴击3	Hit	30	295	1	EventCaster	EventCaster	131076	0	0	31	0	0		0	0
+128	经脉-增加伤害1	Hit	10	296	1	EventCaster	EventCaster	131076	0	0	31	0	0		0	0
+129	经脉-增加伤害2	Hit	20	296	1	EventCaster	EventCaster	131076	0	0	31	0	0		0	0
+130	经脉-增加伤害3	Hit	30	296	1	EventCaster	EventCaster	131076	0	0	31	0	0		0	0
+131	经脉-DOT1	Hit	10	297	1	EventCaster	EventCaster	480	0	0	31	0	0		0	0
+132	经脉-DOT2	Hit	20	297	1	EventCaster	EventCaster	480	0	0	31	0	0		0	0
+133	经脉-DOT3	Hit	30	297	1	EventCaster	EventCaster	480	0	0	31	0	0		0	0
+134	经脉-减速1	Hit	10	298	1	EventCaster	EventTarget	480	0	0	31	0	0		0	0
+135	经脉-减速2	Hit	20	298	1	EventCaster	EventTarget	480	0	0	31	0	0		0	0
+136	经脉-减速3	Hit	30	298	1	EventCaster	EventTarget	480	0	0	31	0	0		0	0
+137	经脉-击晕1	Hit	10	299	1	EventCaster	EventTarget	480	0	0	31	0	0		0	0
+138	经脉-击晕2	Hit	20	299	1	EventCaster	EventTarget	480	0	0	31	0	0		0	0
+139	经脉-击晕3	Hit	30	299	1	EventCaster	EventTarget	480	0	0	31	0	0		0	0
+140	经脉-DEBUFF1	Hit	10	341	1	EventCaster	EventTarget	480	0	0	31	0	0		0	0
+141	经脉-DEBUFF2	Hit	20	341	1	EventCaster	EventTarget	480	0	0	31	0	0		0	0
+142	经脉-DEBUFF3	Hit	30	341	1	EventCaster	EventTarget	480	0	0	31	0	0		0	0
+143	少林_被暴击增加点	BeCriticalStrike	1024	204	2	EventCaster	EventCaster	131564	0	0	5	0	0		0	0
+144	天策_埋骨_龙吟触发致残1	Hit	338	518	1	EventCaster	EventTarget	4194304	0	0	1	0	0		0	0
+145	天策_崩_打断施法成功效果_2级	HitOTAction	1024	483	2	EventCaster	EventTarget	2097152	0	0	1	0	0		0	0
+146	天策_崩_打断施法成功效果_3级	HitOTAction	1024	483	3	EventCaster	EventTarget	2097152	0	0	1	0	0		0	0
+147	天策_崩_打断施法成功效果_4级	HitOTAction	1024	483	4	EventCaster	EventTarget	2097152	0	0	1	0	0		0	0
+148	天策_崩_打断施法成功效果_5级	HitOTAction	1024	483	5	EventCaster	EventTarget	2097152	0	0	1	0	0		0	0
+152	天策_徐如林_恢复生命 5级	Hit	512	408	5	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+153	万花_离经易道_被击回血	BeHitOTAction	205	598	1	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+154	万花_离经易道_被击回血	BeHitOTAction	205	598	2	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+155	万花_离经易道_被击回血	BeHitOTAction	205	598	3	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+156	万花_离经易道_被击回血	BeHitOTAction	205	598	4	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+157	万花_离经易道_被击回血	BeHitOTAction	205	598	5	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+158	万花_离经易道_被击回血	BeHitOTAction	205	598	6	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+159	万花_离经易道_被击回血	BeHitOTAction	205	598	7	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+160	纯阳_太虚剑意_放气暴击1	CriticalStrike	1024	24964	1	EventCaster	EventTarget	536870912	0	0	3	0	0		0	0
+161	纯阳_紫霞功_锁足1	Hit	34	602	1	EventCaster	EventTarget	0	4194304	0	3	0	0		0	0
+162	万花_花间游_吞噬	Hit	204	601	1	EventCaster	EventTarget	16777216	0	0	2	0	0		0	0
+163	天策_御_驱散BUFF_2级	BeHit	1024	443	2	EventCaster	EventCaster	131564	0	0	1	0	0		0	0
+164	天策_御_驱散BUFF_3级	BeHit	1024	443	3	EventCaster	EventCaster	131564	0	0	1	0	0		0	0
+165	天策_御_驱散BUFF_4级	BeHit	1024	443	4	EventCaster	EventCaster	131564	0	0	1	0	0		0	0
+166	天策_御_驱散BUFF_5级	BeHit	1024	443	5	EventCaster	EventCaster	131564	0	0	1	0	0		0	0
+167	天策_御_驱散BUFF_6级	BeHit	1024	443	6	EventCaster	EventCaster	131564	0	0	1	0	0		0	0
+168	天策_御_增加仇恨_1级(未启用)	BeHit	1024	603	1	EventCaster	EventTarget	131564	0	0	1	0	0		0	0
+169	天策_御_增加仇恨_2级(未启用)	BeHit	1024	603	2	EventCaster	EventTarget	131564	0	0	1	0	0		0	0
+170	天策_御_增加仇恨_3级(未启用)	BeHit	1024	603	3	EventCaster	EventTarget	131564	0	0	1	0	0		0	0
+171	天策_御_增加仇恨_4级(未启用)	BeHit	1024	603	4	EventCaster	EventTarget	131564	0	0	1	0	0		0	0
+172	天策_御_增加仇恨_5级(未启用)	BeHit	1024	603	5	EventCaster	EventTarget	131564	0	0	1	0	0		0	0
+173	天策_御_增加仇恨_6级(未启用)	BeHit	1024	603	6	EventCaster	EventTarget	131564	0	0	1	0	0		0	0
+174	万花_春泥护花	BeHit	1024	604	1	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+175	少林_被击加抗3	BeHit	512	607	1	EventCaster	EventCaster	480	0	0	5	0	0		0	0
+176	七秀_冰心诀_闪避后还击_70	Dodge	1024	502	2	EventCaster	EventTarget	2	0	0	4	0	0		0	0
+178	万花_水月无间	Cast	0	615	1	EventCaster	EventCaster	1024	0	0	2	0	0		0	0
+179	少林_阵法_攻击	Hit	1024	28	1	EventCaster	EventCaster	131116	0	0	5	0	0		0	0
+180	七秀_江海凝光_爆击清CD	CriticalStrike	205	700	1	EventCaster	EventCaster	0	4	0	4	0	0		0	0
+181	纯阳_韬光养晦_下一击后清除会心buff	Cast	1024	711	6	EventCaster	EventCaster	536871040	0	0	3	0	0		0	0
+183	少林_被击_击倒目标	BeHit	50	270	1	EventCaster	EventTarget	131564	0	0	5	0	0		0	0
+184	少林_韦陀献杵_恢复反击点	Hit	512	204	1	EventCaster	EventCaster	268435456	0	0	5	0	0		0	0
+186	天策_疾如风_会心触发啸如虎	CriticalStrike	1024	718	1	EventCaster	EventCaster	131076	0	0	1	0	0		0	0
+187	少林_防御阵法_第四重_被击	BeHit	1024	742	1	EventCaster	EventTarget	131564	0	0	5	0	0		0	0
+189	少林_攻击阵法_第四重_被击	CriticalStrike	1024	747	1	EventCaster	EventCaster	1073873388	0	0	5	0	0		0	0
+191	天策_防御阵法_第四重_被击	BeHit	1024	750	1	EventCaster	EventTarget	131564	0	0	1	0	0		0	0
+192	万花治疗阵法第四重_过量治疗	BeCriticalStrike	1024	105	1	EventCaster	EventCaster	4096	0	0	2	0	0		0	0
+193	天策_防御阵法_第六重_重置定军	BeKill	1024	753	1	EventCaster	EventTarget	131583	0	0	1	0	0		0	0
+194	万花治疗阵法第六重_致死	Kill	1024	109	1	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+195	万花治疗阵法第六重_瞬发buff清除	Cast	0	229	1	EventCaster	EventCaster	1024	0	0	2	0	0		0	0
+196	天策_攻击阵法_第四重_暴击+阵眼力量	CriticalStrike	1024	756	1	EventCaster	EventTarget	131076	0	0	1	0	0		0	0
+197	天策_攻击阵法_第六重_死亡-暴击	BeKill	1024	769	1	EventCaster	EventCaster	131583	0	0	1	0	0		0	0
+198	万花伤害阵法第四重_施放伤害技能	CriticalStrike	1024	770	1	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+199	纯阳_气宗阵法_第四重_暴击	CriticalStrike	1024	352	1	EventCaster	EventCaster	480	0	0	3	0	0		0	0
+200	七秀治疗阵法第四重_过量治疗	BeCriticalStrike	1024	529	1	EventCaster	EventCaster	4096	0	0	4	0	0		0	0
+201	纯阳-气宗阵法-第六重-内功伤害增加	BeCriticalStrike	1024	353	1	EventCaster	EventCaster	131564	0	0	3	0	0		0	0
+202	七秀治疗阵法第六重	Dodge	1024	779	1	EventCaster	EventCaster	147948	0	0	4	0	0		0	0
+203	纯阳_剑宗阵法_第四重_暴击+气	CriticalStrike	1024	777	1	EventCaster	EventCaster	131084	0	0	3	0	0		0	0
+204	纯阳_剑宗阵法第六重_暴击+BUFF	BeCriticalStrike	1024	786	1	EventCaster	EventCaster	131564	0	0	3	0	0		0	0
+205	纯阳	Hit	1024	33	1	EventCaster	EventCaster	1	0	0	3	0	0		0	0
+206	七秀伤害阵法第四重	CriticalStrike	1024	785	1	EventCaster	EventCaster	131564	0	0	4	0	0		0	0
+207	七秀伤害阵法第六重	Dodge	1024	788	1	EventCaster	EventCaster	511	0	0	4	0	0		0	0
+208	纯阳剑宗阵法第五重_清除瞬发buff	Cast	1024	784	1	EventCaster	EventCaster	1024	0	0	3	0	0		0	0
+209	天策-疾如风_会心触发虎啸_秘笈	CriticalStrike	717	718	1	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+210	重伤保护	Cast	1024	807	1	EventCaster	EventCaster	19	0	0	0	0	0		0	0
+211	诞生保护	Cast	1024	808	1	EventCaster	EventCaster	198655	32	0	0	0	0		0	0
+212	25级命中后加外防	Hit	27	813	1	EventCaster	EventCaster	131076	0	0	16	0	0		0	0
+213	35级命中后加外防	Hit	27	813	2	EventCaster	EventCaster	131076	0	0	16	0	0		0	0
+214	45级命中后加外防	Hit	27	813	3	EventCaster	EventCaster	131076	0	0	16	0	0		0	0
+215	25级命中后加力量	Hit	27	812	1	EventCaster	EventCaster	131076	0	0	16	0	0		0	0
+216	35级命中后加力量	Hit	27	812	2	EventCaster	EventCaster	131076	0	0	16	0	0		0	0
+217	45级命中后加力量	Hit	27	812	1	EventCaster	EventCaster	131076	0	0	16	0	0		0	0
+218	55级命中后加外功及AP	Hit	18	817	1	EventCaster	EventCaster	131076	0	0	16	0	0		0	0
+219	65级命中后加外功及AP	Hit	18	817	2	EventCaster	EventCaster	131076	0	0	16	0	0		0	0
+220	55级命中后加内功及AP	Hit	57	818	1	EventCaster	EventCaster	224	0	0	16	0	0		0	0
+221	65级命中后加内功及AP	Hit	57	818	2	EventCaster	EventCaster	224	0	0	16	0	0		0	0
+222	55级命中后加治疗量	Hit	57	819	1	EventCaster	EventCaster	4096	0	0	16	0	0		0	0
+223	65级命中后加治疗量	Hit	57	819	2	EventCaster	EventCaster	4096	0	0	16	0	0		0	0
+224	75级命中吸血	Hit	27	820	1	EventCaster	EventTarget	131076	0	0	16	0	0		0	0
+225	85级命中吸血	Hit	27	820	2	EventCaster	EventTarget	131076	0	0	16	0	0		0	0
+226	75级命中吸蓝	Hit	85	821	1	EventCaster	EventTarget	224	0	0	16	0	0		0	0
+227	85级命中吸蓝	Hit	85	821	2	EventCaster	EventTarget	224	0	0	16	0	0		0	0
+228	放气未命中回气	Miss	1024	711	6	EventCaster	EventCaster	536870912	0	0	3	0	0		0	0
+229	七秀_绛唇珠袖_施展轻功受到伤害	Cast	1024	508	1	EventCaster	EventCaster	65536	0	0	4	0	0		0	0
+230	七秀_绛唇珠袖_施展轻功受到伤害2	Cast	1024	508	2	EventCaster	EventCaster	65536	0	0	4	0	0		0	0
+231	七秀_绛唇珠袖_施展轻功受到伤害3	Cast	1024	508	3	EventCaster	EventCaster	65536	0	0	4	0	0		0	0
+232	七秀_绛唇珠袖_施展轻功受到伤害4	Cast	1024	508	4	EventCaster	EventCaster	65536	0	0	4	0	0		0	0
+233	七秀_绛唇珠袖_施展轻功受到伤害5	Cast	1024	508	5	EventCaster	EventCaster	65536	0	0	4	0	0		0	0
+234	纯阳_两仪_四象瞬发1	Cast	205	904	1	EventCaster	EventCaster	0	16	0	3	0	0		0	0
+235	外功暴击后驱散Buff	CriticalStrike	1024	912	1	EventCaster	EventCaster	268	0	0	31	0	0		0	0
+236	少林_横扫六合_洗髓加点	Hit	1024	1018	1	EventCaster	EventCaster	0	32		5	0	0		0	0
+237	扬州跳木桩活动BUFF技能事件	Cast	1024	7179	1	EventCaster	EventCaster	65536	0	0	15	0	0		0	0
+238	龙门荒漠_徐如林回血子技能	Hit	1024	7185	1	EventCaster	EventCaster	2	0	0	15	0	0		0	0
+239	少林_万佛朝宗_命中增加减伤	Hit	1024	1098	1	EventCaster	EventCaster	0	64		5	0	0		0	0
+240	战宝迦兰_小怪_典狱长_蛇蛊·葵甲_被击回血	BeHit	1024	1109	1	EventCaster	EventCaster	131564	0		0	0	0		0	0
+241	纯阳_外功命中_15%减速	BeHit	153	1118	1	EventCaster	EventTarget	131076	0		3	0	0		0	0
+242	吐故纳新_被击失去生阳	BeHit	1024	1119	1	EventCaster	EventCaster	131564	0		3	0	0		0	0
+243	万花_花间游_阳明指刷新芙蓉并蒂	Cast	1024	1121	1	EventCaster	EventTarget	0	0		2	0	0		0	0
+244	万花_花间游_阳明指刷新傍花随柳	Cast	512	1122	1	EventCaster	EventTarget	16777216	0		2	0	0		0	0
+245	万花_离经易道_碧水滔天_加疗伤1	Cast	1024	1126	1	EventCaster	EventCaster	1024	0		2	0	0		0	0
+246	万花_花间游_玉石俱焚_定身 20%	Cast	410	1127	1	EventCaster	EventTarget	0	128		2	0	0		0	0
+247	打坐运功被打断	BeHit	1024	1132	1	EventCaster	EventCaster	131564	0		31	0	0		0	0
+248	纯阳大道无术蓄气	Cast	1024	336	1	EventCaster	EventCaster	0	256		16	0	0		0	0
+249	纯阳三才化生蓄气	Cast	1024	336	1	EventCaster	EventCaster	0	512		16	0	0		0	0
+250	天策龙吟致残	Cast	102	1151	1	EventCaster	EventTarget	4194304	0		16	0	0		0	0
+251	少林摩诃无量加豆	Cast	408	204	1	EventCaster	EventCaster	0	131072		16	0	0		0	0
+252	七秀江海凝光加AP	Cast	204	1152	1	EventCaster	EventCaster	0	4		16	0	0		0	0
+253	七秀回雪飘摇加治疗	Cast	204	1153	1	EventCaster	EventCaster	0	8		16	0	0		0	0
+254	万花浮花浪蕊加AP	Cast	512	1154	1	EventCaster	EventCaster	0	1048576		16	0	0		0	0
+255	万花提针加春泥护花	Cast	153	1155	1	EventCaster	EventCaster	0	4096		16	0	0		0	0
+256	战宝迦兰_2号BOSS_朱癸_蛇蛊·葵之甲	BeHit	1024	1157	1	EventCaster	EventCaster	131564	0		0	0	0		0	0
+257	万花_离经易道_太素九针瞬发后清BUFF	Cast	1024	1186	1	EventCaster	EventCaster	2147483648	0		2	0	0		0	0
+258	风雨稻香村_NPC_陈月_清露护花	BeHit	1024	1202	1	EventCaster	EventCaster	131564	0	0	0	0	0		0	0
+259	七秀_云裳_躲闪	Dodge	512	1232	1	EventCaster	EventCaster	131084	0	0	4	0	0		0	0
+260	万花_花间游_暴击回血	BeCriticalStrike	1024	1237	1	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+261	万花_离经易道_会心加目标受治疗量	CriticalStrike	1024	1242	1	EventCaster	EventTarget	8388608	0	0	2	0	0		0	0
+262	纯阳大道无术蓄两格气	Cast	1024	336	4	EventCaster	EventCaster	0	256		16	0	0		0	0
+263	纯阳三才化生蓄两格气	Cast	1024	336	4	EventCaster	EventCaster	0	512		16	0	0		0	0
+264	天策龙吟20%几率致残	Cast	204	1151	1	EventCaster	EventTarget	4194304	0		16	0	0		0	0
+265	少林摩诃无量40%加两豆	Cast	408	204	2	EventCaster	EventCaster	0	131072		16	0	0		0	0
+266	七秀江海凝光加20%AP	Cast	204	1152	2	EventCaster	EventCaster	0	4		16	0	0		0	0
+267	七秀回雪飘摇加20%治疗	Cast	204	1153	2	EventCaster	EventCaster	0	8		16	0	0		0	0
+268	万花浮花浪蕊加20%AP	Cast	512	1154	2	EventCaster	EventCaster	0	1048576		16	0	0		0	0
+269	万花提针加两层春泥护花	Cast	153	1155	2	EventCaster	EventCaster	0	4096		16	0	0		0	0
+270	中秋活动_驱散换模BUFF	Cast	1024	7246	1	EventCaster	EventCaster	65537	0	0	15	0	0		0	0
+271	驱散换模换动作效果	Cast	1024	1550	1	EventCaster	EventCaster	3	32	0	0	0	0		0	0
+272	纯描述用技能事件	Cast	1	11	1	EventCaster	EventCaster	0	0		16	0	0		0	0
+273	驱散打坐保护	Cast	1024	1574	1	EventCaster	EventCaster	18	0	0	0	0	0		0	0
+275	内功暴击后驱散Buff	CriticalStrike	1024	912	2	EventCaster	EventCaster	4576	0	0	31	0	0		0	0
+276	万花_会心加自身治疗AP1	CriticalStrike	1024	1588	1	EventCaster	EventCaster	8388608	0	0	2	0	0		0	0
+277	藏剑_君子风_断潮_技能事件_躲闪	Dodge	1024	1650	2	EventCaster	EventCaster	131084	0		6	0	0		0	0
+278	25人战宝迦兰_2号BOSS_朱癸_蛇蛊·葵之甲	BeHit	1024	1157	2	EventCaster	EventCaster	131564	0		0	0	0		0	0
+279	藏剑_秀水剑法_九溪弥烟_命中	Hit	1024	1683	1	EventCaster	EventCaster	0	2097152		6	0	0		0	0
+280	T1纯阳混元命中5%会心buff	Hit	50	1695	1	EventCaster	EventCaster	128	0		16	0	0		0	0
+281	天策外功伤害招式加AP	Cast	102	1304	1	EventCaster	EventCaster	2	0		16	0	0		0	0
+282	少林阳性伤害招式加AP	Cast	102	1305	1	EventCaster	EventCaster	32	0		16	0	0		0	0
+283	七秀阴性伤害招式加AP	Cast	102	1306	1	EventCaster	EventCaster	64	0		16	0	0		0	0
+284	纯阳混元性伤害招式加AP	Cast	102	1307	1	EventCaster	EventCaster	128	0		16	0	0		0	0
+285	纯阳外功伤害招式加AP	Cast	102	1319	1	EventCaster	EventCaster	2	0		16	0	0		0	0
+286	万花混元性伤害招式加AP	Cast	102	1320	1	EventCaster	EventCaster	128	0		16	0	0		0	0
+287	T0施展阳性伤害10%几率提高阳性内功AP	Cast	102	1305	1	EventCaster	EventCaster	32	0		16	0	0		0	0
+288	T0施展阴性伤害10%几率提高阴性内功AP	Cast	102	1306	1	EventCaster	EventCaster	64	0		16	0	0		0	0
+289	T0施展纯阳混元性伤害10%几率提高混元性内功AP	Cast	102	1319	1	EventCaster	EventCaster	128	0		16	0	0		0	0
+290	T0施展纯阳外功伤害10%几率提高外功AP	Cast	102	1307	1	EventCaster	EventCaster	131084	0		16	0	0		0	0
+291	T0施展天策外功伤害10%几率提高外功AP	Cast	102	1304	1	EventCaster	EventCaster	131084	0		16	0	0		0	0
+292	T0施展万花混元性伤害10%几率提高混元性内功AP	Cast	102	1320	1	EventCaster	EventCaster	128	0		16	0	0		0	0
+293	T1疗伤命中5%几率会心buff	Hit	50	1322	1	EventCaster	EventCaster	4096	0		16	0	0		0	0
+294	T1混元命中5%几率会心buff	Hit	50	1322	1	EventCaster	EventCaster	128	0		16	0	0		0	0
+295	T1外功命中5%几率会心buff	Hit	50	1322	4	EventCaster	EventCaster	131084	0		16	0	0		0	0
+296	T1阴性命中5%几率会心buff	Hit	50	1322	1	EventCaster	EventCaster	64	0		16	0	0		0	0
+297	T1阳性命中5%几率会心buff	Hit	50	1322	1	EventCaster	EventCaster	32	0		16	0	0		0	0
+298	T1被命中提高御劲	BeHit	102	1322	7	EventCaster	EventCaster	131564	0		16	0	0		0	0
+299	T系列被会心清除御劲	BeCriticalStrike	1024	1321	1	EventCaster	EventCaster	131564	0		16	0	0		0	0
+300	T2疗伤命中5%几率会心buff	Hit	50	1322	2	EventCaster	EventCaster	4096	0		16	0	0		0	0
+301	T2混元命中5%几率会心buff	Hit	50	1322	2	EventCaster	EventCaster	128	0		16	0	0		0	0
+302	T2外功命中5%几率会心buff	Hit	50	1322	5	EventCaster	EventCaster	131084	0		16	0	0		0	0
+303	T2阴性命中5%几率会心buff	Hit	50	1322	2	EventCaster	EventCaster	64	0		16	0	0		0	0
+304	T2阳性命中5%几率会心buff	Hit	50	1322	2	EventCaster	EventCaster	32	0		16	0	0		0	0
+305	T2被命中提高御劲	BeHit	102	1322	8	EventCaster	EventCaster	131564	0		16	0	0		0	0
+306	T3疗伤命中5%几率会心buff	Hit	50	1322	3	EventCaster	EventCaster	4096	0		16	0	0		0	0
+307	T3混元命中5%几率会心buff	Hit	50	1322	3	EventCaster	EventCaster	128	0		16	0	0		0	0
+308	T3外功命中5%几率会心buff	Hit	50	1322	6	EventCaster	EventCaster	131084	0		16	0	0		0	0
+309	T3阴性命中5%几率会心buff	Hit	50	1322	3	EventCaster	EventCaster	64	0		16	0	0		0	0
+310	T3阳性命中5%几率会心buff	Hit	50	1322	3	EventCaster	EventCaster	32	0		16	0	0		0	0
+311	T3被命中提高闪避	BeHit	102	1322	10	EventCaster	EventCaster	131564	0		16	0	0		0	0
+312	T系列内功会心清除buff	CriticalStrike	1024	1321	1	EventCaster	EventCaster	4576	0		16	0	0		0	0
+313	T系列外功会心清除buff	CriticalStrike	1024	1321	1	EventCaster	EventCaster	4	0		16	0	0		0	0
+314	万花_春泥护花减仇恨BUFF清除	Hit	1024	1400	1	EventCaster	EventCaster	4224	0	0	2	0	0		0	0
+315	碎星辰飘渺效果_暴击减威胁1	CriticalStrike	1024	1402	1	EventCaster	EventTarget	131564	0	0	3	0	0		0	0
+316	碎星辰飘渺效果_暴击减威胁2	CriticalStrike	1024	1402	2	EventCaster	EventTarget	131564	0	0	3	0	0		0	0
+317	碎星辰飘渺效果_暴击减威胁3	CriticalStrike	1024	1402	3	EventCaster	EventTarget	131564	0	0	3	0	0		0	0
+318	碎星辰飘渺效果_暴击减威胁4	CriticalStrike	1024	1402	4	EventCaster	EventTarget	131564	0	0	3	0	0		0	0
+319	碎星辰飘渺效果_暴击减威胁5	CriticalStrike	1024	1402	5	EventCaster	EventTarget	131564	0	0	3	0	0		0	0
+320	碎星辰飘渺效果_暴击减威胁6	CriticalStrike	1024	1402	6	EventCaster	EventTarget	131564	0	0	3	0	0		0	0
+321	碎星辰飘渺效果_暴击减威胁7	CriticalStrike	1024	1402	7	EventCaster	EventTarget	131564	0	0	3	0	0		0	0
+322	七星_翟季真_回血	Hit	1024	1371	1	EventCaster	EventCaster	131564	0	0	15	0	0		0	0
+323	英雄日轮_1号BOSS_尸灵武者_火的蔓延	BeHit	1024	1471	1	EventCaster	EventTarget	131564	0	0	0	0	0		0	0
+324	英雄天子峰_4号boss道衍_震慑_被击技能事件	BeHit	100	1490	1	EventCaster	EventTarget	131564	0		15	0	0		0	0
+325	英雄荻花宫_玩家_轮回化生_被击技能事件	BeHit	1024	1494	1	EventTarget	EventCaster	32	0		15	0	0		0	0
+326	T1万花混元命中5%会心buff	Hit	50	1696	1	EventCaster	EventCaster	128	0		16	0	0		0	0
+327	T1万花治疗命中5%会心buff	Hit	50	1697	1	EventCaster	EventCaster	4096	0		16	0	0		0	0
+328	T1七秀治疗命中5%会心buff	Hit	50	1699	1	EventCaster	EventCaster	4096	0		16	0	0		0	0
+329	T1天策外功命中5%会心buff	Hit	50	1692	4	EventCaster	EventCaster	12	0		16	0	0		0	0
+330	T1纯阳外功命中5%会心buff	Hit	50	1693	4	EventCaster	EventCaster	12	0		16	0	0		0	0
+331	T1少林阳性命中5%会心buff	Hit	50	1694	1	EventCaster	EventCaster	131104	0		16	0	0		0	0
+332	T1七秀阴性命中5%会心buff	Hit	50	1698	1	EventCaster	EventCaster	64	0		16	0	0		0	0
+333	2人副本_狩猎_猎人的守护	BeHit	1024	1796	1	EventCaster	EventCaster	147948	0		15	0	0		0	0
+334	藏剑_内功_普通攻击命中回气	Hit	1024	1797	1	EventCaster	EventCaster	131072	0		6	0	0		0	0
+335	藏剑_释放灵峰剑式7%不耗怒气	Cast	71	1799	1	EventCaster	EventCaster	0	1024		6	0	0		0	0
+336	经脉内功暴击驱散buff	CriticalStrike	1024	1840	1	EventCaster	EventCaster	480	0	0	31	0	0		0	0
+337	经脉外功暴击驱散buff	CriticalStrike	1024	1841	1	EventCaster	EventCaster	268	0	0	31	0	0		0	0
+338	70橙武_傲血	Cast	51	1850	2	EventCaster	EventCaster	12	0		16	0	0		0	0
+339	70橙武_铁牢	Cast	51	1851	2	EventCaster	EventCaster	131084	0		16	0	0		0	0
+340	70橙武_花间	Cast	51	1856	2	EventCaster	EventCaster	128	0		16	0	0		0	0
+341	70橙武_离经	Cast	102	1857	1	EventCaster	EventCaster	4096	0		16	0	0		0	0
+342	70橙武_太虚	Cast	51	1852	2	EventCaster	EventCaster	12	0		16	0	0		0	0
+343	70橙武_紫霞	Cast	41	1853	2	EventCaster	EventCaster	128	0		16	0	0		0	0
+344	70橙武_冰心	Cast	51	1858	2	EventCaster	EventCaster	64	0		16	0	0		0	0
+345	70橙武_云裳	Cast	51	1859	1	EventCaster	EventCaster	4096	0		16	0	0		0	0
+346	70橙武_易经	Cast	51	1854	2	EventCaster	EventCaster	32	0		16	0	0		0	0
+347	70橙武_洗髓	Cast	51	1855	2	EventCaster	EventCaster	16	0		16	0	0		0	0
+348	70橙武_问水	Cast	41	1881	2	EventCaster	EventCaster	12	0		16	0	0		0	0
+349	70橙武_山居	Cast	61	1882	2	EventCaster	EventCaster	12	0		16	0	0		0	0
+350	天策技能10%几率触发龙吟	Cast	102	448	1	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+351	三才化生_被击50%消失	BeHit	512	1829	1	EventCaster	EventCaster	492	0		3	0	0		0	0
+352	藏剑_阵法第四重_阵体暴击	CriticalStrike	1024	1874	1	EventCaster	EventCaster	131084	0		6	0	0		0	0
+353	藏剑_阵法第六重_阵体闪避	Dodge	1024	1875	1	EventCaster	EventCaster	131564	0		6	0	0		0	0
+354	纯阳_八卦洞玄_成功打断事件	HitOTAction	1024	1886	1	EventCaster	EventTarget	2097152	0	0	3	0	0		0	0
+355	吐故纳新_被外功击中15%锁足	BeHit	153	1887	1	EventCaster	EventTarget	131564	0	0	3	0	0		0	0
+356	藏剑醉月加5剑气	Cast	1024	1897	1	EventCaster	EventCaster	0	4096		16	0	0		0	0
+357	藏剑醉月加10剑气	Cast	1024	1898	1	EventCaster	EventCaster	0	4096		16	0	0		0	0
+358	T0施展藏剑外功伤害10%几率提高外功AP	Cast	102	1906	1	EventCaster	EventCaster	131084	0		16	0	0		0	0
+359	T1藏剑外功命中5%会心buff	Hit	50	1907	4	EventCaster	EventCaster	12	0		16	0	0		0	0
+360	藏剑_外功暴击回剑气1	CriticalStrike	0	2895	1	EventCaster	EventCaster	131084	0		6	0	0		0	0
+361	藏剑_灵峰剑式不耗剑气驱散事件	Cast	1024	1910	1	EventCaster	EventCaster	0	1024	0	6	0	0		0	0
+362	2人副本_宇文宝藏_固·铁布衫	BeHit	1024	1932	1	EventCaster	EventCaster	147948	0		15	0	0		0	0
+363	藏剑_摘星_打断运功眩晕	HitOTAction	1024	1909	1	EventCaster	EventTarget	0	0	0	6	1940	0		0	0
+364	经脉-增加目标防御1	Hit	10	1945	1	EventCaster	EventTarget	4096	0	0	31	0	0		0	0
+365	经脉-增加目标防御2	Hit	20	1945	1	EventCaster	EventTarget	4096	0	0	31	0	0		0	0
+366	经脉-增加目标防御3	Hit	30	1945	1	EventCaster	EventTarget	4096	0	0	31	0	0		0	0
+367	经脉-增加治疗目标Hot1	Hit	10	1948	1	EventCaster	EventTarget	4096	0	0	31	0	0		0	0
+368	经脉-增加治疗目标Hot2	Hit	20	1948	1	EventCaster	EventTarget	4096	0	0	31	0	0		0	0
+369	经脉-增加治疗目标Hot3	Hit	30	1948	1	EventCaster	EventTarget	4096	0	0	31	0	0		0	0
+370	英雄剑冢_毫针_回血	BeHit	1024	2012	1	EventCaster	EventCaster	131564	0	0	0	0	0		0	0
+371	英雄剑冢_冰魄_攻击上buff	BeHit	1024	2053	1	EventCaster	EventTarget	132588	0		0	0	0		0	0
+372	25人普通谢云流_剑冲阴阳	BeHit	1024	2067	2	EventTarget	EventCaster	131086	0		0	0	0		0	0
+373	荻花宫后山_小怪_尸人_被击中瘟疫	BeHit	1024	2069	1	EventCaster	EventTarget	131564	0	0	0	0	0		0	0
+374	荻花宫后山_1号BOSS_被击中瘟疫	BeHit	1024	2074	1	EventCaster	EventTarget	131564	0	0	0	0	0		0	0
+375	荻花圣殿_1号BOSS_牡丹_痛血指	Hit	1024	2099	1	EventTarget	EventCaster	448	0	0	0	0	0		0	0
+376	七秀蝶弄足加20%御劲	Cast	1024	2125	1	EventCaster	EventCaster	0	16384		16	0	0		0	0
+377	七秀天地低昂加20%御劲	Cast	1024	2125	1	EventCaster	EventCaster	0	32768		16	0	0		0	0
+378	少林摩诃无量80%加两豆	Cast	818	204	2	EventCaster	EventCaster	0	131072		16	0	0		0	0
+379	天策断魂刺降20%御劲	Cast	1024	2126	1	EventCaster	EventTarget	0	65536		16	0	0		0	0
+380	万花芙蓉并蒂降20%御劲	Cast	1024	2126	1	EventCaster	EventTarget	0	262144		16	0	0		0	0
+381	万花星楼月影加20%御劲	Cast	1024	2125	1	EventCaster	EventCaster	0	524288		16	0	0		0	0
+382	藏剑醉月加15剑气	Cast	1024	2127	1	EventCaster	EventCaster	0	4096		16	0	0		0	0
+383	荻花圣殿_3号BOSS_慕容追风_瘟疫反噬	BeHit	1024	2108	1	EventCaster	EventTarget	448	0	0	0	0	0		0	0
+384	荻花圣殿_3号BOSS_红药祭祀_古蝉毒水	BeHit	1024	2132	1	EventCaster	EventTarget	131108	0	0	0	0	0		0	0
+385	纯阳大道无术蓄三格气	Cast	1024	336	6	EventCaster	EventCaster	0	256		16	0	0		0	0
+386	纯阳三才化生蓄三格气	Cast	1024	336	6	EventCaster	EventCaster	0	512		16	0	0		0	0
+387	七秀江海凝光25%提高内功AP	Cast	256	1152	2	EventCaster	EventCaster	0	4		16	0	0		0	0
+388	七秀回血飘摇25%提高治疗AP	Cast	256	1153	2	EventCaster	EventCaster	0	8		16	0	0		0	0
+389	少林摩诃无量50%加两豆	Cast	512	204	2	EventCaster	EventCaster	0	131072		16	0	0		0	0
+390	天策龙吟25%几率致残	Cast	256	1151	1	EventCaster	EventTarget	4194304	0		16	0	0		0	0
+391	万花浮花浪蕊60%加AP	Cast	614	1154	2	EventCaster	EventCaster	0	1048576		16	0	0		0	0
+392	万花提针20%加两层春泥护花	Cast	205	1155	2	EventCaster	EventCaster	0	4096		16	0	0		0	0
+393	英雄25人谢云流_剑冲阴阳	BeHit	1024	2147	3	EventTarget	EventCaster	131086	0		0	0	0		0	0
+394	荻花宫后山_小怪_红衣教守卫_致死打击	BeHit	1024	2148	1	EventTarget	EventCaster	131566	0		0	0	0		0	0
+395	若神	Cast	1024	2167	1	EventCaster	EventCaster	18	0	0	0	0	0		0	0
+396	五方行尽_被击50%消失	BeHit	512	2294	1	EventCaster	EventCaster	492	0		3	0	0		0	0
+397	藏剑_西子情_泉凝月_检测内力	BeHit	1024	2300	1	EventCaster	EventCaster	131564	0		6	0	0		0	0
+398	荻花宫后山_小怪_尸人_被击中瘟疫_英雄	BeHit	1024	2069	2	EventCaster	EventTarget	131564	0	0	0	0	0		0	0
+399	荻花宫后山_1号BOSS_被击中瘟疫_英雄	BeHit	1024	2074	2	EventCaster	EventTarget	131564	0	0	0	0	0		0	0
+400	无量宫_多多_斗转星移_被击施放技能	BeHit	1024	2355	1	EventCaster	EventTarget	131564	0	0	0	0	0		0	0
+401	五毒治疗阵法第四重_过量治疗	BeCriticalStrike	1024	2483	1	EventCaster	EventCaster	4096	0	0	9	0	0		0	0
+402	五毒阵法第六重_被会心伤害	BeCriticalStrike	1024	2485	1	EventCaster	EventCaster	131564	0	0	9	0	0		0	0
+403	五毒攻击阵法第四重_内功会心	CriticalStrike	1024	2489	1	EventCaster	EventCaster	480	0	0	9	0	0		0	0
+404	T0施展五毒毒性伤害10%几率提高毒性内功AP	Cast	102	2528	1	EventCaster	EventCaster	256	0		16	0	0		0	0
+405	T1五毒毒性命中5%会心buff	Hit	50	2529	1	EventCaster	EventCaster	256	0		16	0	0		0	0
+406	T1五毒治疗命中5%会心buff	Hit	50	2529	1	EventCaster	EventCaster	4096	0		16	0	0		0	0
+407	帮会_隐身取消	Cast	1024	7376	1	EventCaster	EventCaster	18	0	0	0	0	0		0	0
+408	五毒_眠蛊_伤害招式命中驱散	BeHit	1024	2545	1	EventCaster	EventCaster	131564	0	0	9	0	0		0	0
+409	五毒轻功_施放技能取消BUFF	Cast	1024	2550	1	EventCaster	EventCaster	18	0	0	9	0	0		0	0
+410	藏剑_秀水剑法_曲水寻梅_消除BUFF	Cast	1024	2852	1	EventCaster	EventCaster	1024	0		6	0	0		0	0
+411	藏剑_君子风_断潮_技能事件_会心1	CriticalStrike	154	1650	1	EventCaster	EventCaster	131084	0		6	0	0		0	0
+412	藏剑_君子风_断潮_技能事件_会心2	CriticalStrike	1024	18386	1	EventCaster	EventTarget	0	262144		6	0	0		0	0
+413	藏剑_云飞玉皇瞬发1	Cast	102	2856	1	EventCaster	EventCaster	0	16777216		6	0	0		0	0
+414	藏剑_云飞玉皇瞬发2	Cast	205	2856	1	EventCaster	EventCaster	0	16777216		6	0	0		0	0
+415	藏剑_云飞玉皇瞬发3	CriticalStrike	1024	2856	1	EventCaster	EventCaster	0	16777216		6	0	0		0	0
+416	藏剑_删除瞬发BUFF	Cast	1024	2857	1	EventCaster	EventCaster	0	8388608		6	0	0		0	0
+417	藏剑_云飞玉皇会心1	CriticalStrike	1024	2858	1	EventCaster	EventCaster	0	8388608		6	0	0		0	0
+418	藏剑_云飞玉皇会心2	CriticalStrike	1024	2858	2	EventCaster	EventCaster	0	8388608		6	0	0		0	0
+419	藏剑_云飞玉皇会心3	CriticalStrike	1024	2858	3	EventCaster	EventCaster	0	8388608		6	0	0		0	0
+420	藏剑删除凤鸣BUFF	Hit	1024	2859	1	EventCaster	EventCaster	12	0		6	0	0		0	0
+421	少林_被击_2.5%几率触发击倒	BeHit	25	270	1	EventCaster	EventTarget	131564	0	0	5	0	0		0	0
+422	少林_横扫六合_33%加点	Hit	512	1018	1	EventCaster	EventCaster	0	32		5	0	0		0	0
+423	少林_横扫六合66%加点	Hit	1024	1018	1	EventCaster	EventCaster	0	32		5	0	0		0	0
+424	少林_横扫六合100%加点	Hit	1024	1018	1	EventCaster	EventCaster	0	32		5	0	0		0	0
+426	万花_花间游_玉石俱焚_定身 10%	Cast	204	1127	1	EventCaster	EventTarget	0	128		2	0	0		0	0
+427	万花_花间游_吞噬 5%	Hit	102	601	1	EventCaster	EventTarget	16777216	0	0	2	0	0		0	0
+428	少林_攻击50%增加点加威胁	Hit	512	2868	1	EventCaster	EventCaster	67108864	0	0	5	0	0		0	0
+429	少林_威胁+30%Buff删除	Cast	1024	2867	1	EventCaster	EventCaster	16	0	0	5	0	0		0	0
+430	万花_阳明50%几率重置芙蓉	Cast	512	1121	1	EventCaster	EventTarget	16777216	0		2	0	0		0	0
+431	万花_玉石33%几率重置DOT	Cast	342	2869	1	EventCaster	EventTarget	0	128		2	0	0		0	0
+432	万花_玉石66%几率重置DOT	Cast	683	2869	1	EventCaster	EventTarget	0	128		2	0	0		0	0
+433	万花_玉石100%几率重置DOT	Cast	1024	2869	1	EventCaster	EventTarget	0	128		2	0	0		0	0
+434	少林_攻击100%增加点加威胁	Hit	1024	2868	1	EventCaster	EventCaster	67108864	0	0	5	0	0		0	0
+435	少林_被击加抗1	BeHit	171	607	1	EventCaster	EventCaster	480	0	0	5	0	0		0	0
+436	少林_被击加抗2	BeHit	341	607	1	EventCaster	EventCaster	480	0	0	5	0	0		0	0
+437	少林_被击加防1	BeHit	256	273	1	EventCaster	EventCaster	131564	0	0	5	0	0		0	0
+438	万花镇派_沃土_驱散春泥会心BUFF	Hit	1024	2871	1	EventCaster	EventCaster	4224	0	0	2	0	0		0	0
+439	万花_会心加自身治疗AP2	CriticalStrike	1024	1588	2	EventCaster	EventCaster	8388608	0	0	2	0	0		0	0
+440	万花_会心加自身治疗AP3	CriticalStrike	1024	1588	3	EventCaster	EventCaster	8388608	0	0	2	0	0		0	0
+441	万花_朱扉_会心加目标被治疗量	CriticalStrike	1024	1242	2	EventCaster	EventTarget	8388608	0	0	2	0	0		0	0
+442	万花_枕灯眠_太素九针瞬发1	Cast	51	293	1	EventCaster	EventCaster	8388608	0	0	2	0	0		0	0
+443	藏剑_外功暴击回剑气2	CriticalStrike	1024	2895	2	EventCaster	EventCaster	131084	0		6	0	0		0	0
+444	藏剑_释放灵峰剑式15%不耗怒气	Cast	153	1799	1	EventCaster	EventCaster	0	1024		6	0	0		0	0
+445	纯阳_紫霞功_锁足2	Hit	68	602	1	EventCaster	EventTarget	0	4194304	0	3	0	0		0	0
+446	纯阳_紫霞功_锁足3	Hit	102	602	1	EventCaster	EventTarget	0	4194304	0	3	0	0		0	0
+447	纯阳_外功命中_30%减速	BeHit	307	1118	1	EventCaster	EventTarget	131076	0		3	0	0		0	0
+448	天策_埋骨_龙吟触发致残2	Hit	676	518	1	EventCaster	EventTarget	4194304	0	0	1	0	0		0	0
+449	天策_埋骨_龙吟触发致残3	Hit	1024	518	1	EventCaster	EventTarget	4194304	0	0	1	0	0		0	0
+450	天策_神勇_龙牙会心重置龙吟1	CriticalStrike	256	2904	1	EventCaster	EventCaster	0	33554432	0	1	0	0		0	0
+451	天策_神勇_龙牙会心重置龙吟2	Hit	358	2904	1	EventCaster	EventCaster	0	33554432	0	1	0	0		0	0
+452	天策_铁牢律_坚韧2	BeHit	1024	414	1	EventCaster	EventCaster	131564	0	0	1	0	0		0	0
+453	天策_留侯_格挡重置定军1	Parry	154	2905	1	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+454	天策_留侯_格挡重置定军2	Parry	307	2905	1	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+455	天策_留侯_格挡重置定军3	Parry	512	2905	1	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+456	纯阳_两仪_四象瞬发2	Hit	408	904	2	EventCaster	EventCaster	0	33554432	0	3	0	0		0	0
+457	林虎_40%徐如林效果1	Hit	410	408	1	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+458	林虎_40%徐如林效果2	Hit	410	408	2	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+459	林虎_40%徐如林效果3	Hit	410	408	3	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+460	林虎_40%徐如林效果4	Hit	410	408	4	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+461	林虎_40%徐如林效果5	Hit	410	408	5	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+462	林虎_50%徐如林效果1	Hit	512	408	1	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+463	林虎_50%徐如林效果2	Hit	512	408	2	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+464	林虎_50%徐如林效果3	Hit	512	408	3	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+465	林虎_50%徐如林效果4	Hit	512	408	4	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+466	林虎_50%徐如林效果5	Hit	512	408	5	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+467	会心上减消耗Buff1	CriticalStrike	102	2908	1	EventCaster	EventCaster	131564	0	0	3	0	0		0	0
+468	会心上减消耗Buff2	CriticalStrike	205	2908	1	EventCaster	EventCaster	131564	0	0	3	0	0		0	0
+469	天策_龙城铁壁_驱散	BeHit	1024	2918	1	EventCaster	EventCaster	131564	0	0	1	0	0		0	0
+470	纯阳_太虚剑意_放气暴击2	CriticalStrike	1024	600	2	EventCaster	EventTarget	536870912	0	0	3	0	0		0	0
+471	纯阳_太虚剑意_放气暴击3	CriticalStrike	1024	600	3	EventCaster	EventTarget	536870912	0	0	3	0	0		0	0
+472	镇派_太虚剑意_命中叠刃1	Hit	1024	2920	1	EventCaster	EventTarget	536870912	0	0	3	0	0		0	0
+473	镇派_太虚剑意_命中叠刃2	Hit	1024	2920	2	EventCaster	EventTarget	536870912	0	0	3	0	0		0	0
+474	镇派_太虚剑意_暴击叠刃1	CriticalStrike	1024	2920	1	EventCaster	EventTarget	536870912	0	0	3	0	0		0	0
+475	镇派_太虚剑意_暴击叠刃2	CriticalStrike	1024	2920	2	EventCaster	EventTarget	536870912	0	0	3	0	0		0	0
+476	会心100%回气半格	CriticalStrike	1024	336	1	EventCaster	EventCaster	131076	0	0	3	0	0		0	0
+477	纯阳_紫霞功_暴击锁足1	CriticalStrike	34	602	1	EventCaster	EventTarget	0	4194304	0	3	0	0		0	0
+478	纯阳_紫霞功_暴击锁足2	CriticalStrike	68	602	1	EventCaster	EventTarget	0	4194304	0	3	0	0		0	0
+479	纯阳_紫霞功_暴击锁足3	CriticalStrike	102	602	1	EventCaster	EventTarget	0	4194304	0	3	0	0		0	0
+480	七秀_丰年_获得剑舞1	Hit	512	3415	1	EventCaster	EventTarget	64	0	0	4	0	0		0	0
+481	七秀_丰年_获得剑舞2	CriticalStrike	1024	2931	1	EventCaster	EventTarget	64	0	0	4	0	0		0	0
+482	七秀_袖手_鹊踏枝闪避2	Dodge	512	2933	1	EventCaster	EventTarget	131084	0	0	4	0	0		0	0
+483	七秀_剑痕_重置CD1	Dodge	512	2966	1	EventCaster	EventCaster	131084	0	0	4	0	0		0	0
+484	七秀_剑痕_重置CD2	Dodge	1024	2966	1	EventCaster	EventCaster	131084	0	0	4	0	0		0	0
+485	七秀_云裳_躲闪2	Dodge	1024	1232	2	EventCaster	EventCaster	131084	0	0	4	0	0		0	0
+486	七秀_青枝_躲闪回剑舞1	Dodge	512	2934	1	EventCaster	EventCaster	131084	0	0	4	0	0		0	0
+487	七秀_青枝_躲闪回剑舞2	BeHit	1024	2934	1	EventCaster	EventCaster	131564	0	0	4	0	0		0	0
+488	五毒_蛊打断1	HitOTAction	1024	2968	1	EventCaster	EventTarget	2097152	0	0	9	0	0		0	0
+489	五毒_蛊打断2	HitOTAction	1024	2968	2	EventCaster	EventTarget	2097152	0	0	9	0	0		0	0
+490	七秀_醉回肠_治疗会心回剑舞1	CriticalStrike	512	2934	1	EventCaster	EventCaster	4096	0	0	4	0	0		0	0
+491	七秀_醉回肠_治疗会心回剑舞2	CriticalStrike	1024	2934	1	EventCaster	EventCaster	4160	0	0	4	0	0		0	0
+492	镇派_蛇会心1	CriticalStrike	0	2974	1	EventCaster	EventCaster	256	0	0	9	0	0		0	0
+493	镇派_蛇会心2	CriticalStrike	0	2974	1	EventCaster	EventCaster	256	0	0	9	0	0		0	0
+494	镇派_蟾蜍被击1	Hit	0	2975	1	EventCaster	EventCaster	256	0	0	9	0	0		0	0
+495	镇派_蟾蜍被击2	Hit	0	2975	1	EventCaster	EventCaster	256	0	0	9	0	0		0	0
+496	七秀_粉翅_回雪飘摇回剑舞1	Cast	512	3016	1	EventCaster	EventCaster	0	8	0	4	0	0		0	0
+497	七秀_粉翅_回雪飘摇回剑舞2	Cast	1024	3016	1	EventCaster	EventCaster	0	8	0	4	0	0		0	0
+498	蛊虫献祭重置宠物CD1	Cast	341	2979	1	EventCaster	EventCaster	0	67108864	0	9	0	0		0	0
+499	蛊虫献祭重置宠物CD2	Cast	683	2979	1	EventCaster	EventCaster	0	67108864	0	9	0	0		0	0
+500	蛊虫献祭重置宠物CD3	Cast	1024	2979	1	EventCaster	EventCaster	0	67108864	0	9	0	0		0	0
+501	五毒_召唤宠物加AP1	Cast	1024	2980	1	EventCaster	EventCaster	0	134217728	0	9	0	0		0	0
+502	七秀_风唤梦_会心驱散BUFF	CriticalStrike	1024	2982	1	EventCaster	EventCaster	4160	0	0	4	0	0		0	0
+503	七秀_秋深_伤害重置风袖低昂1	Hit	10	2985	1	EventCaster	EventCaster	64	0	0	4	0	0		0	0
+504	七秀_秋深_伤害重置风袖低昂2	Hit	20	2985	1	EventCaster	EventCaster	64	0	0	4	0	0		0	0
+505	七秀_秋深_伤害重置风袖低昂3	Hit	30	2985	1	EventCaster	EventCaster	64	0	0	4	0	0		0	0
+506	七秀_秋深_治疗重置风袖低昂1	Hit	10	2985	1	EventCaster	EventCaster	4096	0	0	4	0	0		0	0
+507	七秀_秋深_治疗重置风袖低昂2	Hit	20	2985	1	EventCaster	EventCaster	4096	0	0	4	0	0		0	0
+508	七秀_秋深_治疗重置风袖低昂3	Hit	30	2985	1	EventCaster	EventCaster	4096	0	0	4	0	0		0	0
+509	镇派_被内功击回血1	BeHit	102	2989	1	EventCaster	EventCaster	480	0	0	9	0	0		0	0
+510	镇派_被内功击回血2	BeHit	204	2989	1	EventCaster	EventCaster	480	0	0	9	0	0		0	0
+511	镇派_毒内功命中_宠物加血1	Hit	1024	2990	1	EventCaster	EventCaster	16	0	0	9	0	0		0	0
+512	镇派_毒内功命中_宠物加血2	Hit	1024	2991	1	EventCaster	EventCaster	4352	0	0	9	0	0		0	0
+513	五毒_召唤宠物加AP2	Cast	1024	2980	2	EventCaster	EventCaster	0	134217728	0	9	0	0		0	0
+514	镇派_治疗25%加治疗	Hit	256	2998	1	EventCaster	EventTarget	4096	0	0	9	0	0		0	0
+515	镇派_治疗50%加治疗	Hit	512	2998	1	EventCaster	EventTarget	4096	0	0	9	0	0		0	0
+516	镇派_女娲10%解控	BeHit	307	2999	1	EventCaster	EventCaster	131564	0	0	9	0	0		0	0
+517	镇派_女娲20%解控	BeHit	614	2999	1	EventCaster	EventCaster	131564	0	0	9	0	0		0	0
+518	镇派_女娲30%解控	BeHit	922	2999	1	EventCaster	EventCaster	131564	0	0	9	0	0		0	0
+519	镇派_治疗2%冰蚕瞬发	Cast	21	3000	1	EventCaster	EventCaster	4096	0	0	9	0	0		0	0
+520	镇派_治疗4%冰蚕瞬发	Cast	41	3000	1	EventCaster	EventCaster	4096	0	0	9	0	0		0	0
+521	镇派_治疗6%冰蚕瞬发	Cast	61	3000	1	EventCaster	EventCaster	4096	0	0	9	0	0		0	0
+522	万花_离经易道_碧水滔天_加疗伤2	Cast	1024	1126	2	EventCaster	EventCaster	1024	0		2	0	0		0	0
+523	英雄无量宫_多多_斗转星移_被击施放技能	BeHit	1024	2355	2	EventCaster	EventTarget	131564	0	0	0	0	0		0	0
+524	荻花圣殿10人英雄_1号BOSS_牡丹_痛血指	Hit	1024	2099	2	EventTarget	EventCaster	448	0	0	0	0	0		0	0
+525	荻花圣殿25人普通_1号BOSS_牡丹_痛血指	Hit	1024	2099	3	EventTarget	EventCaster	448	0	0	0	0	0		0	0
+526	荻花圣殿25人英雄_1号BOSS_牡丹_痛血指	Hit	1024	2099	4	EventTarget	EventCaster	448	0	0	0	0	0		0	0
+527	荻花圣殿10人英雄_3号BOSS_慕容追风_瘟疫反噬	BeHit	1024	2108	2	EventCaster	EventTarget	448	0	0	0	0	0		0	0
+528	荻花圣殿_25人普通_3号BOSS_慕容追风_瘟疫反噬	BeHit	1024	2108	3	EventCaster	EventTarget	448	0	0	0	0	0		0	0
+529	荻花圣殿_25人英雄_3号BOSS_慕容追风_瘟疫反噬	BeHit	1024	2108	4	EventCaster	EventTarget	448	0	0	0	0	0		0	0
+530	荻花圣殿_10人英雄_3号BOSS_红药祭祀_古蝉毒水	BeHit	1024	2132	2	EventCaster	EventTarget	131108	0	0	0	0	0		0	0
+531	荻花圣殿_25人普通_3号BOSS_红药祭祀_古蝉毒水	BeHit	1024	2132	3	EventCaster	EventTarget	131108	0	0	0	0	0		0	0
+532	荻花圣殿_25人英雄_3号BOSS_红药祭祀_古蝉毒水	BeHit	1024	2132	4	EventCaster	EventTarget	131108	0	0	0	0	0		0	0
+533	气纯阵法第五重	Cast	1024	354	1	EventCaster	EventCaster	1073741824	0	0	3	0	0		0	0
+534	剑纯阵法第五重	CriticalStrike	1024	783	1	EventCaster	EventCaster	1073741824	0	0	3	0	0		0	0
+535	英雄无量宫_多多_斗转星移_被击施放技能	BeHit	1024	2355	2	EventCaster	EventTarget	131564	0	0	0	0	0		0	0
+536	荻花圣殿成就_分身不顾	BeHit	1024	3027	1	EventCaster	EventCaster	131564	0		0	0	0		0	0
+538	镇派_蜘蛛攻击回蓝1	Hit	102	3044	1	EventCaster	EventCaster	256	0	0	9	0	0		0	0
+539	镇派_蜘蛛攻击回蓝2	Hit	205	3044	1	EventCaster	EventCaster	256	0	0	9	0	0		0	0
+540	少林MT6件套装属性(1级)	BeHit	102	1322	7	EventCaster	EventCaster	131564	0		16	0	0		0	0
+541	少林MT6件套装属性(2级)	BeHit	102	1322	7	EventCaster	EventCaster	131564	0		16	0	0		0	0
+542	少林MT6件套装属性(3级)	BeHit	102	1322	11	EventCaster	EventCaster	131564	0		16	0	0		0	0
+543	笑问筋	Cast	205	7465	1	EventCaster	EventCaster	135660	0	0	12	0	0		0	0
+544	霸王餐	Cast	205	7465	2	EventCaster	EventCaster	135660	0	0	12	0	0		0	0
+545	龙虎豆	Cast	205	7465	3	EventCaster	EventCaster	135660	0	0	12	0	0		0	0
+546	六筋炖	Cast	205	7465	4	EventCaster	EventCaster	135660	0	0	12	0	0		0	0
+547	酱腐骨	Cast	205	7465	5	EventCaster	EventCaster	135660	0	0	12	0	0		0	0
+548	般若水	Cast	205	7467	1	EventCaster	EventCaster	135660	0	0	12	0	0		0	0
+549	意气水	Cast	205	7467	2	EventCaster	EventCaster	135660	0	0	12	0	0		0	0
+550	重黎水	Cast	205	7467	3	EventCaster	EventCaster	135660	0	0	12	0	0		0	0
+551	逸隐水	Cast	205	7467	4	EventCaster	EventCaster	135660	0	0	12	0	0		0	0
+552	赤炼水	Cast	205	7467	5	EventCaster	EventCaster	135660	0	0	12	0	0		0	0
+553	80橙武_毒经	Cast	89	3065	1	EventCaster	EventCaster	256	0		16	0	0		0	0
+554	80橙武_补天	Cast	51	3066	2	EventCaster	EventCaster	4096	0		16	0	0		0	0
+555	镇派_北斗_被击晕眩1	BeHit	1024	3069	1	EventCaster	EventCaster	131564	0	0	3	0	0		0	0
+556	镇派_北斗_被击晕眩2	BeHit	1024	3069	2	EventCaster	EventCaster	131564	0	0	3	0	0		0	0
+557	万花_花间游_玉石俱焚_定身 30%	Cast	0	1127	1	EventCaster	EventTarget	0	128		2	0	0		0	0
+558	蜀风_套装效果_6件治疗	Cast	102	3071	1	EventCaster	EventCaster	4096	0		16	0	0		0	0
+559	80橙武_傲血	Cast	51	1850	1	EventCaster	EventCaster	12	0		16	0	0		0	0
+560	80橙武_铁牢	Cast	51	1851	1	EventCaster	EventCaster	131084	0		16	0	0		0	0
+561	80橙武_紫霞	Cast	41	1853	1	EventCaster	EventCaster	128	0		16	0	0		0	0
+562	80橙武_太虚	Cast	51	1852	1	EventCaster	EventCaster	12	0		16	0	0		0	0
+563	80橙武_冰心	Cast	41	1858	1	EventCaster	EventCaster	64	0		16	0	0		0	0
+564	80橙武_云裳	Cast	51	1859	1	EventCaster	EventCaster	4096	0		16	0	0		0	0
+565	80橙武_花间	Cast	41	1856	1	EventCaster	EventCaster	128	0		16	0	0		0	0
+566	80橙武_离经	Cast	102	1857	2	EventCaster	EventCaster	4096	0		16	0	0		0	0
+567	80橙武_山居	Cast	61	1882	1	EventCaster	EventCaster	12	0		16	0	0		0	0
+568	80橙武_问水	Cast	41	1881	1	EventCaster	EventCaster	12	0		16	0	0		0	0
+571	80橙武_易经	Cast	69	1854	1	EventCaster	EventCaster	32	0		16	0	0		0	0
+572	80橙武_洗髓	Cast	51	1855	1	EventCaster	EventCaster	16	0		16	0	0		0	0
+573	80橙武_傲血_攻击带致残	Hit	1024	31031	1	EventCaster	EventTarget	0	0		16	415	0		0	0
+574	荻花圣殿_阿里曼神护	BeCast	1024	3124	1	EventCaster	EventCaster	0	262144	0	0	0	0		0	0
+575	石塔_狂野冲锋	Hit	1024	7495	1	EventCaster	EventCaster	131075	0	0	0	0	0		0	0
+576	神剑冢_御风_断脉剑	Cast	1024	3157	1	EventCaster	EventCaster	1	0	0	15	0	0		0	0
+577	唐门_陷空翎_解除	BeHit	512	3163	1	EventCaster	EventTarget	131564	0	0	10	0	0		0	0
+578	唐门_影遁_破除	Cast	1024	3195	1	EventCaster	EventCaster	131072	32768	0	10	0	0		0	0
+579	70橙武_补天	Cast	51	3066	1	EventCaster	EventCaster	4096	0		16	0	0		0	0
+580	唐门_梅花针_打断后沉默	HitOTAction	1024	3226	1	EventCaster	EventTarget	2097152	0	0	10	0	0		0	0
+581	70橙武_毒经	Cast	89	3065	2	EventCaster	EventCaster	256	0		16	0	0		0	0
+582	唐门_会心回复神机1	CriticalStrike	205	3169	1	EventCaster	EventCaster	268	0	0	10	0	0		0	0
+583	唐门_会心回复神机2	CriticalStrike	410	3169	1	EventCaster	EventCaster	268	0	0	10	0	0		0	0
+584	唐门_会心回复神机3	CriticalStrike	1024	3169	1	EventCaster	EventCaster	268	0	0	10	0	0		0	0
+585	唐门_概率瞬发追命箭1	CriticalStrike	204	3293	1	EventCaster	EventCaster	0	2147483648	0	10	0	0		0	0
+586	唐门_概率瞬发追命箭2	CriticalStrike	408	3293	1	EventCaster	EventCaster	0	2147483648	0	10	0	0		0	0
+587	唐门_概率瞬发追命箭3	CriticalStrike	613	3293	1	EventCaster	EventCaster	0	2147483648	0	10	0	0		0	0
+589	唐门_刷新化血镖1	Hit	1024	3295	1	EventCaster	EventTarget	0	536870912	0	10	0	0		0	0
+590	唐门_刷新化血镖2	Hit	676	3295	1	EventCaster	EventTarget	0	536870912	0	10	0	0		0	0
+591	唐门_刷新化血镖3	Hit	1024	3295	1	EventCaster	EventTarget	0	536870912	0	10	0	0		0	0
+592	唐门_会心后减消耗1	CriticalStrike	205	3298	1	EventCaster	EventCaster	131340	0	0	10	0	0		0	0
+593	唐门_会心后减消耗2	CriticalStrike	410	3298	1	EventCaster	EventCaster	131340	0	0	10	0	0		0	0
+594	唐门_会心后减消耗3	CriticalStrike	1024	3298	1	EventCaster	EventCaster	131340	0	0	10	0	0		0	0
+595	唐门_驱散减消耗BUFF	Cast	1024	3299	1	EventCaster	EventCaster	2147483648	0	0	10	0	0		0	0
+596	唐门_惊鸿游龙_躲闪后回血1	Dodge	1024	3300	1	EventCaster	EventCaster	1	0	0	10	0	0		0	0
+597	唐门_惊鸿游龙_躲闪后回血2	Dodge	1024	3302	1	EventCaster	EventCaster	1	0	0	10	0	0		0	0
+598	唐门_惊鸿游龙_躲闪后回血3	Dodge	1024	3303	1	EventCaster	EventCaster	1	0	0	10	0	0		0	0
+599	唐门_蚀肌弹_5%吞DOT	Hit	717	3304	1	EventCaster	EventTarget	0	0	0	10	3105	0		0	0
+600	唐门_连弩_5%吞DOT	Hit	717	3304	1	EventCaster	EventTarget	0	0	0	10	3364	0		0	0
+601	唐门_重弩_5%吞DOT	Hit	717	3304	1	EventCaster	EventTarget	0	0	0	10	3366	0		0	0
+603	唐门_外功阵第四重_阵体暴击	CriticalStrike	1024	3329	1	EventCaster	EventCaster	131084	0		10	0	0		0	0
+604	唐门_内功阵第四重_阵体暴击	CriticalStrike	1024	3329	1	EventCaster	EventCaster	480	0		10	0	0		0	0
+605	唐门_外功阵第六重_目标重伤	Kill	1024	3331	1	EventCaster	EventCaster	131564	0	0	10	0	0		0	0
+606	唐门_内功阵第六重_队友重伤	BeKill	1024	3334	1	EventCaster	EventCaster	131583	0	0	10	0	0		0	0
+607	唐门_外功阵法第六重_招式附带击倒	Hit	1024	3332	1	EventCaster	EventTarget	131340	0	0	10	0	0		0	0
+608	唐门_连弩_小队增益1	Hit	51	3307	1	EventCaster	EventTarget	0	0	0	10	3364	0		0	0
+609	唐门_连弩_小队增益2	Hit	102	3307	1	EventCaster	EventTarget	0	0	0	10	3364	0		0	0
+610	唐门_驱散瞬发追命箭	Cast	1024	3354	1	EventCaster	EventCaster	0	1073741824	0	10	0	0		0	0
+611	唐门_驱散瞬发蚀肌弹	Cast	1024	3354	2	EventCaster	EventCaster	0	268435456	0	10	0	0		0	0
+612	唐门_迷神钉_受到伤害解除	BeHit	1024	3381	1	EventCaster	EventCaster	131564	0	0	10	0	0		0	0
+613	唐门_夺魄箭加会心	Hit	512	3297	1	EventCaster	EventTarget	0	2147483648	0	10	0	0		0	0
+614	唐门_夺魄箭加会心	Hit	1024	3297	1	EventCaster	EventTarget	0	2147483648	0	10	0	0		0	0
+615	唐门_夺魄箭加会心	Hit	1024	3297	1	EventCaster	EventTarget	0	2147483648	0	10	0	0		0	0
+616	PVE通用_加10%攻击	Cast	102	3383	1	EventCaster	EventCaster	492	0		16	0	0		0	0
+617	PVE通用_加10%疗效	Cast	102	3383	2	EventCaster	EventCaster	4096	0		16	0	0		0	0
+618	PVE通用_加10%防御	BeHit	102	3383	3	EventCaster	EventCaster	131564	0		16	0	0		0	0
+619	唐门PVE4件套_箭弩	Cast	102	3388	1	EventCaster	EventCaster	12	0		16	0	0		0	0
+620	唐门PVE4件套_机关	Cast	102	3388	2	EventCaster	EventCaster	268	0		16	0	0		0	0
+621	新丰年_会心后消失	CriticalStrike	1024	3416	1	EventCaster	EventCaster	4160	0	0	4	0	0		0	0
+622	荻花洞窟_狂蟒之怒_石化	BeHit	1024	3424	1	EventCaster	EventCaster	135660	0		0	0	0		0	0
+623	经脉-被击退后加防御1	BeHit	1024	3461	1	EventCaster	EventCaster	0	8192	0	31	0	0		0	0
+624	经脉-被击退后加防御2	BeHit	1024	3461	2	EventCaster	EventCaster	0	8192	0	31	0	0		0	0
+625	经脉-被击退后加防御3	BeHit	1024	3461	3	EventCaster	EventCaster	0	8192	0	31	0	0		0	0
+626	经脉-被击倒后加防御1	BeHit	1024	3460	1	EventCaster	EventCaster	0	16384	0	31	0	0		0	0
+627	经脉-被击倒后加防御2	BeHit	1024	3460	2	EventCaster	EventCaster	0	16384	0	31	0	0		0	0
+628	经脉-被击倒后加防御3	BeHit	1024	3460	3	EventCaster	EventCaster	0	16384	0	31	0	0		0	0
+629	80橙武_惊羽	Cast	41	3476	1	EventCaster	EventCaster	12	0		16	0	0		0	0
+630	80橙武_天罗	Cast	41	3477	1	EventCaster	EventCaster	268	0		16	0	0		0	0
+631	70橙武_惊羽	Cast	41	3476	2	EventCaster	EventCaster	12	0		16	0	0		0	0
+632	70橙武_天罗	Cast	41	3477	2	EventCaster	EventCaster	268	0		16	0	0		0	0
+633	持国回忆录_紫鹰_黄蜂刺甲	BeHit	1024	3489	1	EventCaster	EventTarget	480	0		0	0	0		0	0
+634	持国回忆录_青龙长老_毒啸	BeHit	1024	3495	1	EventCaster	EventCaster	4096	0		0	0	0		0	0
+635	持国回忆录_鼠王_鼠毛千针	BeHit	1024	3506	1	EventCaster	EventTarget	131564	0		0	0	0		0	0
+636	荻花洞窟被打断AOE	BeHitOTAction	1024	3557	1	EventCaster	EventCaster	2097152	0	0	0	0	0		0	0
+637	持国回忆录_血眼龙王_少林破绽技	BeHit	1024	3561	1	EventCaster	EventCaster	0	0		0	499	0		0	0
+638	烛龙殿_鼠王_轰隆隆	HitOTAction	1024	3567	1	EventCaster	EventTarget	2097152	0	0	0	0	0		0	0
+639	探梅	BeHit	1024	1943	1	EventCaster	EventTarget	0	2048		6	0	0		0	0
+640	蛊惑众生	BeHit	1024	2448	1	EventCaster	EventTarget	0	2048		9	0	0		0	0
+641	苍山洱海_外功击晕	Hit	51	299	1	EventCaster	EventTarget	131086	0	0	0	0	0		0	0
+642	苍山洱海_内功击晕	Hit	51	299	1	EventCaster	EventTarget	496	0	0	0	0	0		0	0
+643	苍山洱海_连杀_盾	Kill	1024	7548	1	EventCaster	EventCaster	131583	0	0	0	0	0		0	0
+644	苍山洱海_连杀_外功	Kill	1024	7549	1	EventCaster	EventCaster	131583	0	0	0	0	0		0	0
+645	苍山洱海_连杀_内功	Kill	1024	7550	1	EventCaster	EventCaster	131583	0	0	0	0	0		0	0
+646	苍山洱海_连杀_加速	Kill	1024	7551	1	EventCaster	EventCaster	131583	0	0	0	0	0		0	0
+647	苍山洱海_命中几率回复	Hit	102	7552	1	EventCaster	EventCaster	131583	0	0	0	0	0		0	0
+648	苍山洱海_被击锁足	BeHit	102	7554	1	EventCaster	EventTarget	480	0	0	0	0	0		0	0
+649	苍山洱海_被击摔倒	BeHit	51	7553	1	EventCaster	EventTarget	131086	0	0	0	0	0		0	0
+650	苍山洱海_被击加血上限	BeHit	810	7556	1	EventTarget	EventCaster	131564	0	0	0	0	0		0	0
+651	万花_瞬发阳明驱散BUFF	Cast	1024	3652	1	EventCaster	EventCaster	0	0	0	2	179	0		0	0
+652	万花_芙蓉后瞬发兰催1级	Cast	512	3654	1	EventCaster	EventCaster	0	0	0	2	186	0		0	0
+653	万花_芙蓉后瞬发兰催2级	Cast	1024	3654	1	EventCaster	EventCaster	0	0	0	2	186	0		0	0
+654	万花_瞬发兰催驱散BUFF	Cast	1024	3653	1	EventCaster	EventCaster	0	0	0	2	190	0		0	0
+655	少林_被击增加点30%	BeHit	306	3681	1	EventCaster	EventCaster	131564	0	0	5	0	0		0	0
+656	烛龙殿_小怪_挥击	HitOTAction	1024	3716	1	EventCaster	EventTarget	2097152	0	0	0	0	0		0	0
+657	天策_灭_刷新破风1级	Hit	512	3781	1	EventCaster	EventTarget	524288	0	0	1	0	0		0	0
+658	天策_灭_刷新破风2级	Hit	1024	3781	1	EventCaster	EventTarget	524288	0	0	1	0	0		0	0
+659	270武器外功	Hit	18	3786	1	EventCaster	EventCaster	131084	0	0	16	0	0		0	0
+660	270武器内功	Hit	57	3786	2	EventCaster	EventCaster	480	0	0	16	0	0		0	0
+661	270武器治疗	Hit	57	3786	3	EventCaster	EventCaster	4096	0	0	16	0	0		0	0
+662	270武器防御	Hit	57	3786	4	EventCaster	EventCaster	131564	0	0	16	0	0		0	0
+663	藏剑_摘星打断获得剑气	HitOTAction	1024	3790	1	EventCaster	EventCaster	2097152	0	0	6	0	0		0	0
+664	藏剑_断潮命中后5点气	Hit	1024	3791	1	EventCaster	EventTarget	0	0	0	6	1651	0		0	0
+665	藏剑_断潮命中后10点气	Hit	1024	3791	2	EventCaster	EventTarget	0	0	0	6	1651	0		0	0
+666	藏剑踏雪寻梅雷锋瞬发1	Cast	512	3798	1	EventCaster	EventCaster	0	0	0	6	2742	0		0	0
+667	藏剑踏雪寻梅雷锋瞬发2	Cast	1024	3798	1	EventCaster	EventCaster	0	0	0	6	1646	0		0	0
+668	藏剑删除雷锋瞬发buff	Cast	1024	3803	1	EventCaster	EventCaster	0	0		6	1600	0		0	0
+669	少林_无相诀_驱散回血	BeHit	1024	3804	1	EventCaster	EventCaster	33685504	0	0	5	0	0		0	0
+670	少林_被击回蓝1	BeHit	256	3805	1	EventCaster	EventCaster	131564	0	0	5	0	0		0	0
+671	少林_被击回蓝2	BeHit	512	3805	1	EventCaster	EventCaster	131564	0	0	5	0	0		0	0
+672	韦陀献杵会心挂dot1	Hit	1024	3807	1	EventCaster	EventTarget	0	4		5	0	0		0	0
+673	韦陀献杵会心挂dot2	CriticalStrike	1024	3807	1	EventCaster	EventTarget	0	4		5	0	0		0	0
+674	拿云式会心挂dot1	Hit	512	3807	1	EventCaster	EventTarget	0	4		5	0	0		0	0
+675	拿云式会心挂dot2	CriticalStrike	1024	3807	1	EventCaster	EventTarget	0	4		5	0	0		0	0
+676	五毒_玄水蛊	Cast	51	3818	1	EventCaster	EventCaster	18	0	0	9	0	0		0	0
+677	万花_春泥护花_百分比回血1	BeHit	1024	3890	1	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+678	万花_春泥护花_百分比回血2	BeHit	1024	3890	2	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+679	苍山洱海_杀戮成性	Kill	1024	7597	1	EventCaster	EventCaster	1	0	0	0	0	0		0	0
+682	唐门_重弩_小队增益1	Hit	51	3307	1	EventCaster	EventTarget	0	0	0	10	3366	0		0	0
+683	唐门_重弩_小队增益2	Hit	102	3307	1	EventCaster	EventTarget	0	0	0	10	3366	0		0	0
+684	持国回忆录_紫鹰_紫风飞镖	Cast	1024	3907	1	EventCaster	EventCaster	65536	0		0	0	0		0	0
+685	英雄持国回忆录_鼠王_鼠毛千针	BeHit	1024	3506	2	EventCaster	EventTarget	131564	0		0	0	0		0	0
+686	持国回忆录_血眼龙王_红尘落英拳_外功	BeHit	1024	3941	1	EventCaster	EventCaster	131084	0		0	0	0		0	0
+687	持国回忆录_血眼龙王_红尘落英拳_内功	BeHit	1024	3941	1	EventCaster	EventCaster	480	0		0	0	0		0	0
+688	唐门特殊武器_无影无幻	BeHitOTAction	1024	3943	1	EventCaster	EventCaster	2097152	0	0	0	0	0		0	0
+689	千缘外功饰品效果	Hit	1024	4022	1	EventCaster	EventCaster	131084	0		16	0	0		0	0
+690	千缘内功饰品效果	Hit	1024	4022	2	EventCaster	EventCaster	480	0		16	0	0		0	0
+691	千缘治疗饰品效果	Hit	1024	4022	3	EventCaster	EventCaster	4096	0		16	0	0		0	0
+692	千缘坦克饰品效果	Hit	1024	4022	4	EventCaster	EventCaster	131564	0		16	0	0		0	0
+693	明教_寂镜卫_激活反击	BeHit	1024	4039	1	EventCaster	EventCaster	131564	0		8	0	0		0	0
+694	25人天王殿_无花而果删除BUFF	BeHit	1024	4055	1	EventCaster	EventCaster	480	0	0	0	0	0		0	0
+695	25人天王殿_学海苦舟回内	BeHit	1024	4056	1	EventCaster	EventCaster	131564	0	0	0	0	0		0	0
+696	明教_暗尘弥散_施展伤害招式显形	PreCast	1024	4058	1	EventCaster	EventCaster	131564	32768		8	0	0		0	0
+697	明教_暗尘弥散_被打显形	BeHit	1024	4950	1	EventCaster	EventCaster	131564	0		8	0	0		0	0
+698	明教_银月斩会心后加能量1	CriticalStrike	1024	4064	1	EventCaster	EventCaster	0	0		8	3960	0		0	0
+699	明教_银月斩会心后加能量2	CriticalStrike	1024	4064	2	EventCaster	EventCaster	0	0		8	13468	0		0	0
+700	万花_正常会心后加血上限1级	CriticalStrike	1024	4079	1	EventCaster	EventTarget	0	0	0	2	3038	0		0	0
+701	万花_正常会心后加血上限2级	CriticalStrike	1024	4079	2	EventCaster	EventTarget	0	0	0	2	3038	0		0	0
+702	万花_30%会心后加血上限1级	CriticalStrike	1024	4079	1	EventCaster	EventTarget	0	0	0	2	3039	0		0	0
+703	万花_30%会心后加血上限2级	CriticalStrike	1024	4079	1	EventCaster	EventTarget	0	0	0	2	3039	0		0	0
+704	万花_60%会心后加血上限1级	CriticalStrike	1024	4079	2	EventCaster	EventTarget	0	0	0	2	3040	0		0	0
+705	万花_60%会心后加血上限2级	CriticalStrike	1024	4079	2	EventCaster	EventTarget	0	0	0	2	3040	0		0	0
+706	天策_掠如火_团队无威胁1	Cast	1024	4094	1	EventCaster	EventCaster	0	0	0	1	411	0		0	0
+707	天策_掠如火_团队无威胁2	Cast	1024	4094	2	EventCaster	EventCaster	0	0	0	1	411	0		0	0
+708	天策_掠如火_团队无威胁3	Cast	1024	4094	3	EventCaster	EventCaster	0	0	0	1	411	0		0	0
+709	少林特殊武器被打	BeHit	1024	4102	1	EventCaster	EventTarget	131564	0		16	0	0		0	0
+711	25人持国回忆录_青龙长老_毒啸	BeHit	1024	3495	2	EventCaster	EventCaster	4096	0		0	0	0		0	0
+713	明教密道_狂暴反击	BeCast	1024	4189	1	EventCaster	EventTarget	131564	0	0	0	0	0		0	0
+714	明教密道_被击删除BUFF	BeHit	1024	4191	1	EventCaster	EventCaster	131564	0	0	0	0	0		0	0
+716	明教密道_狂暴反击80	BeCast	1024	4189	2	EventCaster	EventTarget	131564	0	0	0	0	0		0	0
+718	明教密道_火焰盾反击	BeCast	1024	4192	1	EventCaster	EventTarget	131564	0	0	0	0	0		0	0
+719	明教密道_火焰反击80	BeCast	1024	4192	2	EventCaster	EventTarget	131564	0	0	0	0	0		0	0
+720	南诏皇宫_泰崇傣_封印	BeHit	102	4236	1	EventTarget	EventCaster	0	0		0	4239	1		0	0
+721	南诏皇宫_泰崇傣_残背	BeHit	1024	4246	1	EventCaster	EventTarget	492	0		0	0	0		0	0
+722	南诏皇宫_泰崇傣_灼热护甲	BeHit	1024	4247	1	EventCaster	EventCaster	4096	0		0	0	0		0	0
+723	明教密道_大力丸打断	BeHitOTAction	1024	4249	1	EventCaster	EventCaster	2097152	0	0	0	0	0		0	0
+724	南诏皇宫_段宗公_残影	Cast	307	4263	1	EventCaster	EventCaster	4096	0		0	0	0		0	0
+725	南诏皇宫_萧杀_龙象波诺功	BeHit	1024	4281	1	EventCaster	EventCaster	4096	0	0	15	0	0		0	0
+726	南诏皇宫_王遗风_冰雪霜皇	Cast	1024	4283	1	EventCaster	EventTarget	131072	0	0	15	0	0		0	0
+727	小橙武BOSS_少林_千斤坠被捉事件	BeCast	1024	4362	1	EventCaster	EventCaster	0	0		15	242	0		0	0
+728	小橙武BOSS_少林_无相诀打断事件	BeCast	1024	4342	1	EventCaster	EventCaster	0	0		15	2589	0		0	0
+729	明教_烈日斩会心后加能量1	CriticalStrike	1024	4063	1	EventCaster	EventCaster	0	0		8	3963	0		0	0
+730	明教_烈日斩会心后加能量2	CriticalStrike	1024	4063	2	EventCaster	EventCaster	0	0		8	3963	0		0	0
+731	明教_夜叉心_招式带减速	Hit	1024	4065	1	EventCaster	EventTarget	131180	0	0	8	0	0		0	0
+732	明教_夜叉心_招式带锁足	Hit	1024	4065	2	EventCaster	EventTarget	131180	0	0	8	0	0		0	0
+733	明教_夜叉心_招式带定身	Hit	1024	4065	3	EventCaster	EventTarget	131180	0	0	8	0	0		0	0
+734	明教_夜叉心_招式带晕眩	Hit	1024	4065	4	EventCaster	EventTarget	131180	0	0	8	0	0		0	0
+735	明教密道_无影击被打断	BeHitOTAction	1024	4444	1	EventCaster	EventCaster	2097152	0	0	0	0	0		0	0
+736	明教_会心后加移动速度1	CriticalStrike	1024	4068	1	EventCaster	EventCaster	131296	0		8	0	0		0	0
+737	明教_会心后加移动速度2	CriticalStrike	1024	4068	2	EventCaster	EventCaster	131296	0		8	0	0		0	0
+738	明教_净世破魔击日_几率带DOT1	Hit	512	4070	1	EventCaster	EventTarget	0	0	0	8	4037	0		0	0
+739	明教_净世破魔击日_几率带DOT2	Hit	1024	4070	1	EventCaster	EventTarget	0	0	0	8	4037	0		0	0
+740	明教_几率带流血1	Hit	204	4071	1	EventCaster	EventCaster	488	0	0	8	0	0		0	0
+741	明教_几率带流血2	Hit	204	4071	2	EventCaster	EventCaster	488	0	0	8	0	0		0	0
+742	明教_几率带流血3	Hit	204	4071	3	EventCaster	EventCaster	488	0	0	8	0	0		0	0
+743	明教_圣明佑_消耗后加会效1	Cast	1024	4468	1	EventCaster	EventCaster	0	0		8	3965	0		0	0
+744	明教_生死劫_消耗后加会效1	Cast	1024	4468	1	EventCaster	EventCaster	0	0		8	3966	0		0	0
+745	明教_破魔击_消耗后加会效1	Cast	1024	4468	1	EventCaster	EventCaster	0	0		8	3967	0		0	0
+746	明教_圣明佑_消耗后加会效2	Cast	1024	4468	2	EventCaster	EventCaster	0	0		8	3965	0		0	0
+747	明教_生死劫_消耗后加会效2	Cast	1024	4468	2	EventCaster	EventCaster	0	0		8	3966	0		0	0
+748	明教_破魔击_消耗后加会效2	Cast	1024	4468	2	EventCaster	EventCaster	0	0		8	3967	0		0	0
+749	明教_被打重置贪魔体1	BeHit	1024	4469	1	EventCaster	EventCaster	131564	0		8	0	0		0	0
+750	明教_被打重置贪魔体2	BeHit	1024	4469	2	EventCaster	EventCaster	131564	0		8	0	0		0	0
+751	明教_闪避后回血1	Dodge	1024	4470	1	EventCaster	EventCaster	131086	0		8	0	0		0	0
+752	明教_闪避后回血2	Dodge	1024	4470	2	EventCaster	EventCaster	131086	0		8	0	0		0	0
+753	明教_招架后回血1	Parry	1024	4470	1	EventCaster	EventCaster	14	0		8	0	0		0	0
+754	明教_招架后回血2	Parry	0	4470	2	EventCaster	EventCaster	131086	0		8	0	0		0	0
+755	明教_使目标减攻击1	Hit	205	4472	1	EventCaster	EventTarget	492	0		8	0	0		0	0
+756	明教_使目标减攻击2	Hit	205	4472	2	EventCaster	EventTarget	0	0		8	3981	0		0	0
+757	明教_破魔击_消耗后加外防	Cast	1024	4473	1	EventCaster	EventCaster	0	0		8	4037	0		0	0
+758	明教_破魔击_消耗后加内防	Cast	1024	4492	1	EventCaster	EventCaster	0	0		8	4038	0		0	0
+759	明教_生死劫_消耗后加外防	Cast	1024	4473	1	EventCaster	EventCaster	0	0		8	4035	0		0	0
+760	明教_生死劫_消耗后加内防	Cast	1024	4492	1	EventCaster	EventCaster	0	0		8	4036	0		0	0
+761	明教_圣明佑_消耗后加外防	Cast	1024	4473	1	EventCaster	EventCaster	0	0		8	4033	0		0	0
+762	明教_圣明佑_消耗后加内防	Cast	1024	4492	1	EventCaster	EventCaster	0	0		8	4034	0		0	0
+763	明教_秘籍_幽月轮_会心后加月能1	CriticalStrike	1024	4474	1	EventCaster	EventCaster	0	0		8	4024	0		0	0
+764	明教_秘籍_幽月轮_会心后加月能2	CriticalStrike	1024	4474	1	EventCaster	EventCaster	0	0		8	4025	0		0	0
+765	明教_秘籍_幽月轮_会心后加月能3	CriticalStrike	1024	4474	1	EventCaster	EventCaster	0	0		8	4026	0		0	0
+766	明教场景_隐身使用后添加反隐身	Cast	1024	7666	1	EventCaster	EventCaster	0	0		15	4043	0		0	0
+767	明教_秘籍_净世破魔击日_会心后驱散	CriticalStrike	1024	4475	1	EventCaster	EventTarget	0	65536		8	0	0		0	0
+768	明教_秘籍_净世破魔击月_会心后驱散	CriticalStrike	1024	4475	1	EventCaster	EventTarget	0	0		8	4476	0		0	0
+769	明教_几率日月灵魂1	Hit	338	4071	1	EventCaster	EventCaster	0	2147483648	0	8	0	0	1	64	192
+770	明教_几率日月灵魂2	Hit	686	4071	1	EventCaster	EventCaster	0	2147483648	0	8	0	0	1	64	192
+771	明教_几率日月灵魂3	Hit	1024	4071	1	EventCaster	EventCaster	0	2147483648	0	8	0	0	1	64	192
+772	南诏皇宫_军阵_侍卫_归刃	Cast	1024	4548	1	EventCaster	EventCaster	1	0	0	0	0	0		0	0
+773	南诏皇宫_军阵_物资兵_自我治愈	BeHit	1024	4576	1	EventCaster	EventCaster	492	0	0	0	0	0		0	0
+774	南诏皇宫_军阵_物资兵_格挡	BeHit	1024	4583	1	EventCaster	EventCaster	492	0	0	0	0	0		0	0
+775	南诏皇宫_军阵_枪斗士_气合	BeHit	1024	4645	1	EventCaster	EventCaster	492	0	0	0	0	0		0	0
+776	南诏皇宫_军阵_枪斗士_心力爆发	Cast	1024	4747	1	EventCaster	EventCaster	1	0	0	0	0	0		0	0
+777	明教_攻击阵_会心后阵眼加会效	CriticalStrike	1024	4684	1	EventCaster	EventCaster	131564	0	0	8	0	0		0	0
+778	明教_攻击阵_驱夜断愁小队加会心	Cast	1024	4685	1	EventCaster	EventCaster	0	0		8	3979	0		0	0
+779	明教_攻击阵_目标死亡阵眼回血	Kill	1024	4686	1	EventCaster	EventCaster	131564	0	0	8	19055	0		0	0
+780	明教_防御阵_被打阵眼加气血上限	BeHit	1024	4697	1	EventCaster	EventCaster	131564	0		8	0	0		0	0
+781	明教_防御阵_渡厄力小队加防御	Cast	1024	4698	1	EventCaster	EventCaster	0	0		8	3982	0		0	0
+782	明教_防御阵_队友死亡阵眼回血	BeKill	1024	4699	1	EventCaster	EventTarget	131583	0	0	8	0	0		0	0
+783	南诏皇宫_军阵_投枪者_逆鳞枪阵	Cast	154	4712	1	EventCaster	EventTarget	492	0	0	0	0	0		0	0
+784	南诏皇宫_康雪烛_斗转之笔	BeHit	1024	4750	1	EventCaster	EventCaster	492	0	0	0	0	0		0	0
+785	南诏皇宫_阁罗凤_一阳指·二品_被打断	BeHitOTAction	1024	4770	1	EventCaster	EventCaster	2097152	0	0	0	0	0		0	0
+786	明教场景_赤日轮三段被击	BeHit	1024	7689	1	EventCaster	EventTarget	0	0		15	4030	0		0	0
+787	明教场景_净世破魔击被击	BeHit	1024	7690	1	EventCaster	EventTarget	0	0		15	4037	0		0	0
+788	明教场景_净世破魔击被击2	BeHit	1024	7690	1	EventCaster	EventTarget	0	0		15	4038	0		0	0
+791	南诏皇宫_阁罗凤_狼隐咆哮_被驱散_清风垂露	BeHit	1024	4780	1	EventCaster	EventCaster	0	0	0	0	133	0		0	0
+792	南诏皇宫_军阵_敌军恶尸_毒性皮肤	BeHit	1024	4798	1	EventCaster	EventTarget	131564	0	0	0	0	0		0	0
+793	南诏皇宫_军阵_敌军铁盾兵_盾击	BeHit	1024	4800	1	EventCaster	EventCaster	131564	0	0	0	0	0		0	0
+794	T1明教技能命中3%几率触发会心buff	Hit	33	4804	1	EventCaster	EventCaster	96	0		16	0	0		0	0
+795	T0明教施展招式获得AP增加buff	Cast	68	4803	1	EventCaster	EventCaster	96	0		16	0	0		0	0
+796	T2明教技能命中3%几率触发会心buff	Hit	33	4804	2	EventCaster	EventCaster	96	0		16	0	0		0	0
+797	T3明教技能命中3%几率触发会心buff	Hit	33	4804	3	EventCaster	EventCaster	96	0		16	0	0		0	0
+798	明教技能触发10%AP	Cast	66	3383	1	EventCaster	EventCaster	492	0		16	0	0		0	0
+799	明教MT6件套属性(1级)	BeHit	102	1322	7	EventCaster	EventCaster	131564	0		16	0	0		0	0
+800	明教MT6件套属性(2级)	BeHit	102	1322	7	EventCaster	EventCaster	131564	0		16	0	0		0	0
+801	明教MT6件套属性(3级)	BeHit	102	1322	12	EventCaster	EventCaster	131564	0		16	0	0		0	0
+802	万花_枕灯眠_会心触发1	CriticalStrike	51	293	1	EventCaster	EventCaster	8388608	0	0	2	0	0		0	0
+803	万花_枕灯眠_会心触发2	CriticalStrike	102	293	1	EventCaster	EventCaster	8388608	0	0	2	0	0		0	0
+804	南诏皇宫_军阵_阁罗凤_破绽	BeHit	1024	4805	1	EventCaster	EventTarget	131072	0	0	0	0	0		0	0
+805	明教_光明相_圣明佑日	Cast	1024	4477	1	EventCaster	EventCaster	0	0		8	34348	0		0	0
+806	明教_光明相_圣明佑月	Cast	1024	4477	2	EventCaster	EventCaster	0	0		8	34349	0		0	0
+807	明教_光明相_生死劫日	Cast	1024	4477	1	EventCaster	EventCaster	0	0		8	4035	0		0	0
+808	明教_光明相_生死劫月	Cast	1024	4477	2	EventCaster	EventCaster	0	0		8	4036	0		0	0
+809	明教_光明相_净世破魔击日	Cast	1024	4477	1	EventCaster	EventCaster	0	0		8	4037	0		0	0
+810	明教_光明相_净世破魔击月	Cast	1024	4477	2	EventCaster	EventCaster	0	0		8	4038	0		0	0
+811	南诏皇宫_4号_被打断	BeHit	1024	4815	1	EventCaster	EventCaster	2097152	0	0	0	0	0		0	0
+812	明教_击杀重置驱夜断愁	Kill	1024	4479	1	EventCaster	EventCaster	131567	0		8	0	0		0	0
+813	明教_驱夜断愁_背后1	Cast	1024	4481	1	EventCaster	EventTarget	0	0		8	3979	0	1	64	192
+814	明教_驱夜断愁_背后2	Cast	1024	4482	1	EventCaster	EventTarget	0	0		8	3979	0	1	64	192
+815	明教_被击_加内防1	BeHit	1024	4491	1	EventCaster	EventCaster	131564	0		8	0	0		0	0
+816	明教_被击_加内防2	Hit	256	4491	2	EventCaster	EventCaster	492	0		8	0	0		0	0
+817	明教场景_监视被刺	Cast	1024	7706	1	EventCaster	EventCaster	0	0		15	3979	0		0	0
+818	南诏皇宫_康雪烛_血涌	BeHit	1024	4508	1	EventCaster	EventCaster	4096	0	0	0	0	0		0	0
+819	明教场景_戒火斩被击	BeHit	1024	7714	1	EventCaster	EventTarget	0	0		15	3980	0		0	0
+820	明教_净世破魔击日_镇派额外仇恨1	Hit	1024	4493	1	EventCaster	EventTarget	0	65536		8	0	0		0	0
+821	明教_净世破魔击日_镇派额外仇恨2	Hit	1024	4493	2	EventCaster	EventTarget	0	65536		8	0	0		0	0
+822	明教_净世破魔击月_镇派额外仇恨1	Hit	1024	4869	1	EventCaster	EventTarget	0	0		8	4476	0		0	0
+823	明教_净世破魔击月_镇派额外仇恨2	Hit	1024	4869	2	EventCaster	EventTarget	0	0		8	4476	0		0	0
+824	帮会约战_被打出特效	BeHit	1024	7715	1	EventCaster	EventCaster	131564	0		15	0	0		0	0
+825	特殊属性雷锐刃命中目标	Hit	25	4876	1	EventCaster	EventCaster	131564	0		16	0	0		0	0
+826	特殊属性雷激流命中目标	Hit	25	4876	2	EventCaster	EventCaster	131564	0		16	0	0		0	0
+827	特殊属性雷斩铁命中目标	Hit	25	4876	3	EventCaster	EventCaster	131564	0		16	0	0		0	0
+828	特殊属性雷灭气命中目标	Hit	25	4876	4	EventCaster	EventCaster	131564	0		16	0	0		0	0
+829	特殊属性雷痛切命中目标	Hit	25	4876	5	EventCaster	EventCaster	131564	0		16	0	0		0	0
+830	特殊属性雷御受被命中(2级)	Hit	51	4876	6	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+831	特殊属性雷灵动被命中(2级)	Hit	51	4876	7	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+832	特殊属性雷不屈被命中(2级)	Hit	51	4876	8	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+833	特殊属性雷海纳命中目标	Hit	25	4876	9	EventCaster	EventCaster	4096	0		16	0	0		0	0
+834	特殊属性雷狂攻命中目标	Hit	25	4876	10	EventCaster	EventCaster	131564	0		16	0	0		0	0
+835	特殊属性雷回春命中目标	Hit	51	4876	11	EventCaster	EventCaster	131564	0		16	0	0		0	0
+836	特殊属性雷回魂命中目标(2级)	Hit	25	4876	12	EventCaster	EventCaster	4096	0		16	0	0	0	0	0
+837	特殊属性雷仇敌被命中	BeHit	51	4876	13	EventCaster	EventCaster	131564	0		16	0	0		0	0
+838	明教_极乐引_带无威胁	Cast	1024	4471	1	EventCaster	EventCaster	0	0	0	8	3971	0	0	0	0
+839	特殊属性水锐刃命中	Hit	1024	4877	1	EventCaster	EventCaster	131564	0		16	0	0		0	0
+840	特殊属性水激流命中	Hit	1024	4877	2	EventCaster	EventCaster	131564	0		16	0	0		0	0
+841	特殊属性水痛切命中	Hit	1024	4877	3	EventCaster	EventCaster	131564	0		16	0	0		0	0
+842	特殊属性水血魂命中	Hit	1024	4877	4	EventCaster	EventCaster	131564	0		16	0	0		0	0
+843	特殊属性水海纳命中	Hit	1024	4877	5	EventCaster	EventCaster	4096	0		16	0	0		0	0
+844	特殊属性水御受命中	Hit	1024	4877	6	EventCaster	EventCaster	131564	0		16	0	0		0	0
+845	特殊属性水灵动命中	Hit	1024	4877	7	EventCaster	EventCaster	131564	0		16	0	0		0	0
+846	特殊属性水不屈命中	Hit	1024	4877	8	EventCaster	EventCaster	131564	0		16	0	0		0	0
+847	特殊属性水无双命中	Hit	1024	4877	9	EventCaster	EventCaster	131564	0		16	0	0		0	0
+848	特殊属性水锐眼命中	Hit	1024	4877	10	EventCaster	EventCaster	131564	0		16	0	0		0	0
+849	特殊属性水狂攻命中	Hit	1024	4877	11	EventCaster	EventCaster	131564	0		16	0	0		0	0
+850	特殊属性水仇敌命中	Hit	1024	4877	12	EventCaster	EventCaster	131564	0		16	0	0		0	0
+852	特殊属性破守御	Hit	1024	4878	1	EventCaster	EventTarget	131564	0	0	16	0	0	0	0	0
+853	特殊属性破生血	Hit	1024	4878	2	EventCaster	EventTarget	131564	0	0	16	0	0	0	0	0
+854	特殊属性破耐受	Hit	1024	4878	3	EventCaster	EventTarget	131564	0	0	16	0	0	0	0	0
+855	特殊属性破普生	Hit	1024	4878	4	EventCaster	EventTarget	131564	0	0	16	0	0	0	0	0
+856	特殊属性疾加易伤	Hit	1024	4880	1	EventCaster	EventTarget	131564	0	0	16	0	0	0	0	0
+857	特殊属性疾加血	BeHit	1024	4881	1	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+858	特殊属性疾加疗效	Hit	1024	4881	2	EventCaster	EventCaster	4096	0	0	16	0	0	0	0	0
+859	特殊属性疾加盾	Dodge	1024	4881	4	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+860	特殊属性疾加拆招	Parry	1024	4881	3	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+861	南诏皇宫_柳公子_破绽_万花	BeHit	1024	4905	1	EventCaster	EventCaster	0	0	0	0	187	0		0	0
+862	南诏皇宫_柳公子_破绽_剑纯	BeHit	1024	4905	1	EventCaster	EventCaster	0	0	0	0	366	0		0	0
+863	南诏皇宫_柳公子_破绽_气纯	BeHit	1024	4905	1	EventCaster	EventCaster	0	0	0	0	2674	0		0	0
+864	南诏皇宫_柳公子_破绽_七秀	BeHit	1024	4905	1	EventCaster	EventCaster	0	0	0	0	544	0		0	0
+865	南诏皇宫_柳公子_破绽_少林	BeHit	1024	4905	1	EventCaster	EventCaster	0	0	0	0	240	0		0	0
+866	南诏皇宫_柳公子_破绽_藏剑	BeHit	1024	4905	1	EventCaster	EventCaster	0	0	0	0	1577	0		0	0
+867	南诏皇宫_柳公子_破绽_明教	BeHit	1024	4905	1	EventCaster	EventCaster	0	0	0	0	3977	0		0	0
+868	南诏皇宫_柳公子_破绽_五毒	BeHit	1024	4905	1	EventCaster	EventCaster	0	0	0	0	2218	0		0	0
+869	南诏皇宫_柳公子_破绽_唐门	BeHit	1024	4905	1	EventCaster	EventCaster	0	0	0	0	3089	0		0	0
+870	南诏皇宫_柳公子_破绽_天策	BeHit	1024	4905	1	EventCaster	EventCaster	0	0	0	0	480	0		0	0
+871	明教_无明魂锁_被打后醒	BeHit	1024	4922	1	EventCaster	EventCaster	131564	0	0	8	0	0	0	0	0
+872	明教_驱夜断愁_驱散暗尘	Cast	1024	4923	1	EventCaster	EventCaster	0	0	0	8	3979	0	0	0	0
+873	明教_伤害招式几率带暗尘	Hit	1024	4924	1	EventCaster	EventCaster	236	0	0	8	0	0	0	0	0
+874	南诏皇宫_阁罗凤_狼隐咆哮_被驱散_利针	BeHit	1024	4780	1	EventCaster	EventCaster	0	0	0	0	2654	0		0	0
+875	南诏皇宫_阁罗凤_狼隐咆哮_被驱散_吞日月	BeHit	1024	4780	1	EventCaster	EventCaster	0	0	0	0	708	0		0	0
+876	南诏皇宫_阁罗凤_狼隐咆哮_被驱散_跳珠撼玉	BeHit	1024	4780	1	EventCaster	EventCaster	0	0	0	0	566	0		0	0
+877	25人南诏皇宫_泰崇傣_残背	BeHit	1024	4246	2	EventCaster	EventTarget	492	0		0	0	0		0	0
+878	25人南诏皇宫_泰崇傣_灼热护甲	BeHit	1024	4247	2	EventCaster	EventCaster	4096	0		0	0	0		0	0
+879	南诏皇宫_萧杀_龙象波诺功_25人	BeHit	1024	4281	2	EventCaster	EventCaster	4096	0	0	15	0	0		0	0
+880	25人南诏皇宫_康雪烛_血涌	BeHit	1024	4508	2	EventCaster	EventCaster	4096	0	0	0	0	0		0	0
+881	70橙武_明教DPS	Cast	21	4940	1	EventCaster	EventCaster	96	0		16	0	0		0	0
+882	70橙武_明教T	Cast	41	4941	1	EventCaster	EventCaster	96	0		16	0	0		0	0
+883	80橙武_明教DPS	Cast	21	4940	2	EventCaster	EventCaster	96	0		16	0	0		0	0
+884	80橙武_明教T	Cast	41	4941	2	EventCaster	EventCaster	96	0		16	0	0		0	0
+885	橙武_明教dps_耗豆后加豆1	Cast	1024	4942	1	EventCaster	EventCaster	0	4		16	0	0		0	0
+886	橙武_明教dps_耗豆后加豆2	Cast	1024	22002	1	EventCaster	EventCaster	0	2		16	0	0		0	0
+887	橙武_明教dps_耗豆后加豆3	Cast	1024	4942	1	EventCaster	EventCaster	0	0		16	0	0		0	0
+888	橙武_明教dps_耗豆后加豆4	Cast	1024	4942	1	EventCaster	EventCaster	0	0		16	4036	0		0	0
+889	橙武_明教dps_耗豆后加豆5	Cast	1024	4942	1	EventCaster	EventCaster	0	0		16	4037	0		0	0
+890	橙武_明教dps_耗豆后加豆6	Cast	1024	4942	1	EventCaster	EventCaster	0	0		16	4038	0		0	0
+891	门派活动_生死蛊	BeHit	1024	2918	1	EventCaster	EventCaster	131564	0	0	15	0	0		0	0
+892	明教_极乐因_群嘲	Cast	1024	4968	1	EventCaster	EventCaster	0	0	0	8	3971	0	0	0	0
+893	明教_净世破魔击日_判个数	Cast	1024	4969	1	EventCaster	EventTarget	0	0	0	8	4037	0	0	0	0
+894	破军套加破防值1	Hit	1024	4970	1	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+895	破军套加破防值2	Hit	1024	4970	2	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+896	破军套加破防值3	Hit	1024	4970	3	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+897	破军套加破防值4	Hit	1024	4970	4	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+898	破军套加破防值5	Hit	1024	4970	5	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+899	破军套加破防值6	Hit	1024	4970	6	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+900	破军套加破防值7	Hit	1024	4970	7	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+901	破军套加破防值8	Hit	1024	4970	8	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+902	破军套加破防值9	Hit	1024	4970	9	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+903	破军套加破防值10	Hit	1024	4970	10	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+904	破军套加破防值11	Hit	1024	4970	11	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+905	南诏皇宫_6号_陈和尚_致命格挡	BeHit	1024	4981	1	EventCaster	EventCaster	492	0	0	0	0	0		0	0
+906	南诏皇宫_6号_李倓_龙头被击	BeHit	1024	4981	1	EventCaster	EventTarget	131072	0	0	0	0	0		0	0
+907	三号被击buff	BeHit	1024	5199	1	EventCaster	EventCaster	131564	0	0	13	0	0	0	0	0
+908	明教特殊武器_监控攻击	Cast	1024	5213	1	EventCaster	EventCaster	131072	0	0	16	0	0	0	0	0
+909	南诏皇宫_小怪_绞喉_被打断	BeHitOTAction	1024	5227	1	EventCaster	EventCaster	2097152	0	0	0	0	0		0	0
+910	南诏皇宫_6号_康雪烛_钟林浪蕊	Cast	307	5246	1	EventCaster	EventCaster	12780	0	0	0	0	0		0	0
+911	华清宫回忆录_高力士_鹰爪功_被击消除	BeHit	1024	5288	1	EventCaster	EventCaster	131564	0	0	0	0	0		0	0
+912	明教_驱夜断愁_判背后	PreCast	1024	5289	1	EventCaster	EventCaster	0	0		8	3979	0	1	64	192
+913	华清宫回忆录_安禄山_头脑发热加BUFF	Cast	1024	6519	1	EventCaster	EventCaster	18	0	0	0	0	0		0	0
+914	大唐监狱_七伤拳给自己加buff	Hit	1024	7841	1	EventCaster	EventCaster	131072	0	0	0	0	0	0	0	0
+915	二号小怪被击buff	BeHit	1024	5377	1	EventCaster	EventCaster	131564	0	0	13	0	0	0	0	0
+916	战宝军械库_血眼龙王_逆鳞之殇	Cast	1024	5387	1	EventCaster	EventCaster	1024	0	0	0	0	0		0	0
+917	战宝军械库_狼牙盾兵_盾击	BeHit	1024	5395	1	EventCaster	EventCaster	131564	0	0	0	0	0		0	0
+918	战宝军械库_刀兵_纳刀	Hit	1024	5404	1	EventCaster	EventCaster	131564	0	0	0	0	0		0	0
+919	战宝军械库_骑兵_枪林之风	BeHit	1024	5412	1	EventCaster	EventCaster	492	0	0	0	0	0		0	0
+920	战宝军械库_骠骑_枪林之风	BeHit	1024	5412	2	EventCaster	EventCaster	492	0	0	0	0	0		0	0
+921	战宝军械库_骁骑_枪林之风	BeHit	1024	5412	3	EventCaster	EventCaster	492	0	0	0	0	0		0	0
+922	七秀_丰年_治疗1	Cast	512	3415	1	EventCaster	EventTarget	4096	0	0	4	0	0		0	0
+923	七秀_丰年_治疗2	CriticalStrike	1024	2931	1	EventCaster	EventTarget	4096	0	0	4	0	0		0	0
+924	大明宫_耶律燕_NPC被打断	HitOTAction	1024	5488	1	EventCaster	EventTarget	1	0	0	0	5487	1	0	0	0
+925	大明宫_耶律燕_NPC护盾消除	BeHit	1024	5491	1	EventCaster	EventCaster	1	0	0	0	5488	1	0	0	0
+926	少林攻击阵法第六重复制天策197	BeKill	1024	769	2	EventCaster	EventCaster	131583	0	0	5	0	0		0	0
+927	明教_暗尘弥散_杀人用	Kill	1024	5502	1	EventCaster	EventCaster	131564	32768		8	0	0		0	0
+928	大明宫_剑圣_无式·封脉	HitOTAction	1024	5543	1	EventCaster	EventTarget	1	0	0	0	5542	1	0	0	0
+929	大明宫_剑圣_无式·绞刀	BeHit	1024	5555	1	EventCaster	EventCaster	4096	0	0	0	0	0	0	0	0
+930	大明宫_傀儡·饿鬼_外障	BeHit	1024	5615	1	EventCaster	EventCaster	4096	0	0	0	0	0	0	0	0
+931	天策_90级奇穴_疾如风期间造成AOE	Hit	1024	6243	1	EventCaster	EventCaster	12	0	0	1	0	0	0	0	0
+932	天策_90级奇穴_删除龙牙减攻击debuff	Hit	1024	6068	1	EventCaster	EventCaster	131564	0	0	1	0	0	0	0	0
+933	天策_90级奇穴_疾如风期间仇恨AOE	Hit	1024	6243	1	EventCaster	EventCaster	12	0	0	1	0	0	0	0	0
+934	四象会心额外回气	CriticalStrike	1024	336	1	EventCaster	EventCaster	0	0	0	3	896	0		0	0
+935	混元伤害减紫气CD	Hit	1024	6101	1	EventCaster	EventCaster	128	0	0	3	0	0	0	0	0
+936	破军套加破防值12	Hit	1024	4970	12	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+937	吐故纳新外功反弹	BeHit	1024	6102	6	EventCaster	EventTarget	131076	0	0	3	0	0		0	0
+938	万花_听风吹雪减cd	Hit	1024	6107	1	EventCaster	EventCaster	1	0	0	2	0	0	0	0	0
+939	万花_治疗AOE叠层数	Cast	1024	6111	1	EventCaster	EventCaster	4096	0	0	2	0	0	0	0	0
+940	万花_乱撒减cd	Hit	1024	6143	1	EventCaster	EventCaster	128	0	0	2	0	0	0	0	0
+941	万花_治疗会心叠加层数	CriticalStrike	1024	6111	1	EventCaster	EventCaster	4096	0	0	2	0	0	0	0	0
+942	藏剑外功伤害减1秒cd	Hit	1024	6165	1	EventCaster	EventCaster	4	0	0	6	0	0	0	0	0
+943	藏剑删掉2段的buff	Cast	1024	6167	1	EventCaster	EventCaster	4	0	0	6	0	0	0	0	0
+944	藏剑删掉啸日会心	Cast	1024	6169	1	EventCaster	EventCaster	4	0	0	6	0	0	0	0	0
+945	藏家啸日回气删buff	Hit	1024	6170	1	EventCaster	EventCaster	4	0	0	6	0	0	0	0	0
+946	明教_减生灭予夺cd	Hit	1024	6176	1	EventCaster	EventCaster	96	0	0	8	0	0	0	0	0
+947	明教_朝圣言减cd	Hit	1024	6177	1	EventCaster	EventCaster	0	4194304	0	8	0	0	0	0	0
+948	明教_极乐引_自己高威胁	Cast	1024	6179	1	EventCaster	EventCaster	0	0	0	8	3971	0	0	0	0
+949	五毒_蛇攻击减cd	Hit	1024	6194	1	EventCaster	EventCaster	256	0	0	9	0	0		0	0
+950	唐门_外功会心刷新化血镖	CriticalStrike	1024	3295	1	EventCaster	EventTarget	8388608	0	0	10	0	0	0	0	0
+951	唐门_毒性伤害引爆化血镖	Hit	154	3304	1	EventCaster	EventTarget	256	0	0	10	0	0		0	0
+952	七秀_繁音减cd	Hit	1024	6206	1	EventCaster	EventCaster	4160	0	0	4	0	0	0	0	0
+953	少林_韦陀被击删除减伤	BeHit	1024	6214	1	EventCaster	EventCaster	131564	0	0	5	0	0		0	0
+954	神剑冢_炙狱邪龙_恶狗拦路	BeHit	1024	6224	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+955	安史之乱_苏曼莎_凯风	BeHit	1024	7916	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+956	少林_反弹眩晕	BeHit	1024	6254	1	EventCaster	EventTarget	131564	0	0	5	0	0	0	0	0
+957	少林_反弹眩晕tank	BeHit	1024	6255	1	EventCaster	EventTarget	131564	0	0	5	0	0	0	0	0
+958	明教_极乐引_回血	Cast	1024	6259	1	EventCaster	EventCaster	0	0	0	8	3971	0	0	0	0
+959	唐门_心无旁骛减cd事件	Hit	1024	6261	1	EventCaster	EventCaster	0	0	0	10	3105	0	0	0	0
+960	大明宫_剑圣_散华	Cast	1024	6289	1	EventCaster	EventCaster	480	0	0	0	0	0	0	0	0
+961	大明宫_剑圣_胧返	BeHit	1024	6295	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+962	大明宫_剑圣_叶落十七式	Hit	1024	19	1	EventCaster	EventCaster	131084	0	0	0	0	0	0	0	0
+963	大明宫_剑圣_十二风水剑	Hit	1024	6321	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+964	大明宫_剑圣_十二风水剑_25	Hit	1024	6321	2	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+965	大明宫_剑圣_绝情刺	Cast	1024	6326	1	EventCaster	EventCaster	16	0	0	0	0	0	0	0	0
+966	大明宫_剑圣_绝情刺_25	Cast	1024	6326	2	EventCaster	EventCaster	16	0	0	0	0	0	0	0	0
+967	万花_锋针不朽清除	BeHit	1024	6346	1	EventCaster	EventCaster	131564	0	0	2	0	0	0	0	0
+968	大明宫_傀儡·地狱_生死劫·生	BeHit	1024	3424	1	EventCaster	EventCaster	4096	0		0	0	0		0	0
+969	大明宫_剑圣_徐如林	Hit	1024	6404	1	EventCaster	EventCaster	131084	0	0	0	0	0	0	0	0
+970	战宝军械库_血眼龙王_逆鳞	Cast	1024	5387	2	EventCaster	EventCaster	1024	0	0	0	0	0		0	0
+971	唐门_夺魄箭会心回内	Hit	1024	24058	1	EventCaster	EventTarget	12	0	0	10	0	0	0	0	0
+972	杀人回气	Kill	0	6074	2	EventCaster	EventCaster	1	0	0	3	0	0	0	0	0
+973	唐门_暴雨梨花针会心回内	CriticalStrike	1024	6440	3	EventCaster	EventCaster	0	0	0	10	3227	0	0	0	0
+974	天地无极带叠刃	Hit	1024	600	1	EventCaster	EventTarget	0	32	0	3	0	0		0	0
+975	唐门_招式会心回内	CriticalStrike	512	6453	1	EventCaster	EventCaster	131340	0	0	10	0	0	0	0	0
+976	唐门_追命箭瞬发夺魄	Hit	1024	6458	1	EventCaster	EventCaster	0	0	0	10	6920	0	0	0	0
+977	唐门_闪避加急速	Dodge	0	6462	1	EventCaster	EventCaster	131084	0	0	10	0	0	0	0	0
+978	唐门_闪避回血	Dodge	1024	6463	1	EventCaster	EventCaster	131084	0	0	10	0	0	0	0	0
+979	唐门_杀死目标瞬发追命箭	Kill	512	6474	1	EventCaster	EventCaster	131084	0	0	10	0	0	0	0	0
+980	招式会心减气场cd	CriticalStrike	1024	6476	1	EventCaster	EventCaster	131084	0	0	3	0	0	0	0	0
+981	被击重置坐忘和人剑cd	BeHit	1024	6478	1	EventCaster	EventCaster	131566	0	0	3	0	0	0	0	0
+982	七星会心事件	Cast	1024	6487	1	EventCaster	EventCaster	128	0	0	3	0	0	0	0	0
+983	唐门_蚀肌弹会心回内	Hit	358	6440	2	EventCaster	EventCaster	0	0	0	10	3105	0	0	0	0
+984	唐门_连弩普通伤害	CriticalStrike	1024	6496	1	EventCaster	EventCaster	0	0	0	10	3401	0	0	0	0
+985	唐门_连弩特殊伤害	CriticalStrike	1024	6496	1	EventCaster	EventCaster	0	0	0	10	3404	0	0	0	0
+986	唐门_重弩攻击眩晕	Hit	205	6497	1	EventCaster	EventTarget	0	0	0	10	3366	0	0	0	0
+987	唐门_毒刹攻击回血	Hit	1024	6500	1	EventCaster	EventCaster	0	0	0	10	3367	0	0	0	0
+988	唐门_毒刹_5%吞DOT	Hit	717	3304	1	EventCaster	EventTarget	0	0	0	10	3367	0		0	0
+989	唐门_连弩触发蚀肌弹瞬发	Hit	256	6509	1	EventCaster	EventCaster	0	0	0	10	3364	0	0	0	0
+990	唐门_重弩触发蚀肌弹瞬发	Hit	256	6509	1	EventCaster	EventCaster	0	0	0	10	3366	0	0	0	0
+991	唐门_毒刹触发蚀肌弹瞬发	Hit	256	6509	1	EventCaster	EventCaster	0	0	0	10	3367	0	0	0	0
+992	天策_被击删风虎	BeHit	1024	6502	1	EventCaster	EventCaster	492	0	0	1	0	0	0	0	0
+993	藏剑满剑气必定会心	Cast	0	6538	1	EventCaster	EventCaster	2	0	0	6	0	0	0	0	0
+994	满剑气会心删除	Cast	1024	6539	1	EventCaster	EventCaster	4	0	0	6	0	0	0	0	0
+995	丐帮_落水打狗_省蓝BUFF	Cast	1024	6494	1	EventCaster	EventCaster	0	1	0	7	0	0		0	0
+996	天策_招架后加防御	Parry	0	6551	1	EventCaster	EventCaster	131084	0	0	1	0	0		0	0
+997	天策_低血量	BeHit	1024	6552	1	EventCaster	EventCaster	131564	0	0	1	0	0		0	0
+998	七秀_击杀满剑舞	Kill	0	6912	1	EventCaster	EventCaster	1	0	0	4	0	0	0	0	0
+999	七秀_剑气会心回剑舞	CriticalStrike	1024	2934	1	EventCaster	EventCaster	0	0	0	4	561	0		0	0
+1000	七秀_玳弦急曲会心急速	CriticalStrike	1024	6918	1	EventCaster	EventCaster	0	0	0	4	6234	0		0	0
+1001	七秀_被击加闪避	BeHit	1024	6563	1	EventCaster	EventCaster	131564	0	0	4	0	0	0	0	0
+1002	七秀_假死被击	BeHit	1024	6568	1	EventCaster	EventCaster	131564	0	0	4	0	0	0	0	0
+1003	七秀_会心回蓝	CriticalStrike	0	1	1	EventCaster	EventCaster	0	0	0	4	0	0	0	0	0
+1004	少林_被击	BeHit	512	6592	1	EventCaster	EventCaster	131564	0	0	5	0	0	0	0	0
+1005	少林_被打加血	BeHit	307	6598	1	EventCaster	EventCaster	131564	0	0	5	0	0	0	0	0
+1006	少林_低血量回血	BeHit	1024	6601	1	EventCaster	EventCaster	131564	0	0	5	0	0	0	0	0
+1007	七秀_治疗传染翔舞	Hit	307	6635	1	EventCaster	EventTarget	4096	0	0	4	0	0	0	0	0
+1008	五毒_宠物死亡AOE伤害	BeKill	1024	6638	1	EventCaster	EventCaster	131583	0	0	9	0	0	0	0	0
+1009	五毒_宠物死亡AOE格挡	BeKill	1024	6639	1	EventCaster	EventCaster	131583	0	0	9	0	0	0	0	0
+1010	五毒_格挡消除	BeHit	1024	6640	1	EventCaster	EventCaster	131564	0	0	9	0	0	0	0	0
+1011	五毒_蝎心使下一招式加伤害	CriticalStrike	1024	9445	1	EventCaster	EventCaster	0	0	0	9	9331	0	0	0	0
+1012	五毒_蝎心DOT使下一招式加伤害	CriticalStrike	1024	9445	1	EventCaster	EventCaster	0	0	0	9	6621	0	0	0	0
+1013	五毒_加伤害消除	Cast	1024	6643	1	EventCaster	EventCaster	256	0	0	9	0	0	0	0	0
+1014	五毒_蝎心会心加急速	Hit	102	6645	1	EventCaster	EventCaster	0	0	0	9	2209	0	0	0	0
+1015	五毒_蝎心DOT会心加急速	Hit	102	6645	1	EventCaster	EventCaster	0	0	0	9	6621	0	0	0	0
+1016	七秀_治疗会心加疗伤	CriticalStrike	1024	6651	1	EventCaster	EventCaster	4096	0	0	4	0	0	0	0	0
+1017	五毒_宠物替死	BeHit	1024	6653	1	EventCaster	EventCaster	131564	0	0	9	0	0	0	0	0
+1018	七秀_治疗低血量	Hit	1024	3415	2	EventCaster	EventTarget	4096	0	0	4	0	0		0	0
+1019	五毒_宠物AOE治疗	BeKill	1024	6671	1	EventCaster	EventCaster	131583	0	0	9	0	0	0	0	0
+1020	万花_删除星楼移动速度	BeHit	1024	6697	1	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+1021	万花_删除春泥急速	Cast	1024	6698	1	EventCaster	EventCaster	4588	0	0	2	0	0	0	0	0
+1022	万花_会心重置玉石	Hit	0	6699	1	EventCaster	EventCaster	0	0	0	2	179	0	0	0	0
+1023	万花_阳明会心重置dot	Hit	307	6700	1	EventCaster	EventTarget	0	0	0	2	179	0	0	0	0
+1024	七秀_驱散翔舞传染	Hit	307	6635	2	EventCaster	EventTarget	4096	0	0	4	0	0	0	0	0
+1025	万花_治疗带hot	Hit	1024	6105	1	EventCaster	EventTarget	0	0	0	2	0	0	0	0	0
+1026	明教_背后加会心	PreCast	1024	6735	1	EventCaster	EventCaster	96	0	0	8	0	0	1	64	192
+1027	明教_杀人重置隐身	Kill	1024	6738	1	EventCaster	EventTarget	1	0	0	8	0	0	0	0	0
+1028	明教_归寂道被击回血	BeHit	1024	6746	1	EventCaster	EventTarget	131564	0	0	8	0	0	0	0	0
+1029	明教_圣明佑_消耗后仇恨	Cast	1024	6750	1	EventCaster	EventCaster	0	0		8	3965	0		0	0
+1030	明教_生死劫_消耗后仇恨	Cast	1024	6750	1	EventCaster	EventCaster	0	0		8	3966	0		0	0
+1031	明教_破魔击_消耗后仇恨	Cast	1024	6750	1	EventCaster	EventCaster	0	0		8	3967	0		0	0
+1032	明教_圣明佑_消耗后回血	Cast	1024	6752	1	EventCaster	EventCaster	0	0		8	3965	0		0	0
+1033	明教_生死劫_消耗后回血	Cast	1024	6752	1	EventCaster	EventCaster	0	0		8	3966	0		0	0
+1034	明教_破魔击_消耗后回血	Cast	1024	6752	1	EventCaster	EventCaster	0	0		8	3967	0		0	0
+1035	明教_消除格挡	BeHit	1024	6762	1	EventCaster	EventCaster	131564	0	0	8	0	0	0	0	0
+1036	明教_被击加闪避	BeHit	1024	6765	1	EventCaster	EventCaster	131564	0		8	0	0		0	0
+1037	明教_被击加日月	BeHit	102	6769	1	EventCaster	EventCaster	131564	0	0	8	0	0	0	0	0
+1038	天策_招架加威胁值	BeHit	1024	26747	1	EventCaster	EventCaster	131564	0	0	1	0	0		0	0
+1039	天策_低血量加治疗	BeHit	1024	6551	3	EventCaster	EventCaster	131564	0	0	1	0	0		0	0
+1040	万花_重伤群刷	BeKill	0	6774	1	EventCaster	EventCaster	131583	0	0	2	0	0	0	0	0
+1041	天策_低血量守如山减cd	BeHit	512	6551	4	EventCaster	EventCaster	131564	0	0	1	0	0		0	0
+1042	少林_被治疗加血	BeHit	1024	6791	1	EventCaster	EventCaster	4096	0	0	5	0	0	0	0	0
+1043	少林_低血量提高治疗量	BeHit	1024	6551	5	EventCaster	EventCaster	131564	0	0	5	0	0		0	0
+1044	丐帮_会心阵眼破防提高	CriticalStrike	1024	6792	1	EventCaster	EventCaster	131564	0	0	7	0	0		0	0
+1045	90橙武_傲雪天策	Cast	31	1850	3	EventCaster	EventCaster	12	0		16	0	0		0	0
+1046	90橙武_铁牢天策	Cast	31	1851	3	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1047	90橙武_易筋少林	Cast	69	1854	3	EventCaster	EventCaster	32	0		16	0	0		0	0
+1048	90橙武_洗髓少林	Cast	31	1855	3	EventCaster	EventCaster	16	0		16	0	0		0	0
+1049	90橙武_花间万花	Cast	31	1856	3	EventCaster	EventCaster	128	0		16	0	0		0	0
+1050	90橙武_离经万花	Cast	61	1857	3	EventCaster	EventCaster	4096	0		16	0	0		0	0
+1051	90橙武_气纯	Cast	25	1853	3	EventCaster	EventCaster	128	0		16	0	0		0	0
+1052	90橙武_剑纯	Cast	31	1852	3	EventCaster	EventCaster	12	0		16	0	0		0	0
+1053	90橙武_冰心七秀	Cast	25	1858	3	EventCaster	EventCaster	64	0		16	0	0		0	0
+1054	90橙武_云裳七秀	Cast	31	18977	1	EventCaster	EventTarget	4096	0		16	0	0		0	0
+1055	90橙武_毒经五毒	Cast	89	3065	3	EventCaster	EventCaster	256	0		16	0	0		0	0
+1056	90橙武_补天五毒	Cast	51	3066	3	EventCaster	EventCaster	4096	0		16	0	0		0	0
+1057	90橙武_天罗唐门	Cast	25	3477	3	EventCaster	EventCaster	268	0		16	0	0		0	0
+1058	90橙武_惊羽唐门	Cast	25	3476	3	EventCaster	EventCaster	12	0		16	0	0		0	0
+1059	90橙武_轻剑藏剑	Cast	25	1881	3	EventCaster	EventCaster	12	0		16	0	0		0	0
+1060	90橙武_重剑藏剑	Cast	37	1882	3	EventCaster	EventCaster	12	0		16	0	0		0	0
+1061	90橙武_丐帮	Hit	15	6950	3	EventCaster	EventCaster	12	0	0	16	0	0	0	0	0
+1062	90橙武_焚影明教	Cast	24	4940	3	EventCaster	EventCaster	96	0		16	0	0		0	0
+1063	90橙武_明尊明教	Cast	25	4941	3	EventCaster	EventCaster	96	0		16	0	0		0	0
+1064	藏剑闪避回血	Dodge	1024	6803	1	EventCaster	EventCaster	131084	0	0	6	0	0	0	0	0
+1065	80橙武_丐帮	Hit	1024	6875	1	EventCaster	EventCaster	0	0	0	16	5638	0	0	0	0
+1066	70橙武_丐帮	Hit	1024	6875	1	EventCaster	EventCaster	0	0	0	16	5638	0	0	0	0
+1067	五毒_被会心加速	BeCriticalStrike	1024	6804	1	EventCaster	EventCaster	131564	0	0	9	0	0	0	0	0
+1068	特殊属性雷急速命中目标(2级)	Hit	25	4876	14	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1069	特殊属性水急速命中目标(2级)	Hit	1024	4877	13	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1070	特殊属性雷痛切命中1级	Hit	25	4876	15	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1074	丐帮_5重阵法小队成员加外功	Hit	1024	6805	1	EventCaster	EventCaster	0	0	0	7	5266	0		0	0
+1075	丐帮_6重阵法小队被会心	BeCriticalStrike	1024	6807	1	EventCaster	EventCaster	131564	0	0	7	0	0		0	0
+1076	唐门_暴雨梨花针毒会心回内	CriticalStrike	1024	6440	3	EventCaster	EventCaster	0	4096	0	10	3228	0	0	0	0
+1077	丐帮_30%血量加伤害	Hit	1024	6849	1	EventCaster	EventTarget	12	0	0	7	0	0	0	0	0
+1078	丐帮_30%几率解减速	BeHit	307	6850	1	EventCaster	EventCaster	131564	0	0	7	0	0	0	0	0
+1079	丐帮_攻击满蓝加攻击	Cast	1024	6852	1	EventCaster	EventCaster	12	0	0	7	0	0	0	0	0
+1080	丐帮_醉逍遥被打断	BeHitOTAction	1024	6854	1	EventCaster	EventCaster	1	0	0	7	5272	0	0	0	0
+1082	丐帮秘笈_拨狗朝天会心回内3%	CriticalStrike	1024	6865	3	EventCaster	EventCaster	0	0	0	7	13524	0	0	0	0
+1083	丐帮秘笈_横打双獒会心回内3%	CriticalStrike	1024	6865	3	EventCaster	EventCaster	0	0	0	7	6378	0	0	0	0
+1084	藏剑空剑气重置啸日	Cast	0	6868	1	EventCaster	EventCaster	2	0	0	6	0	0	0	0	0
+1085	唐门_重伤目标恢复神机值	Kill	1024	6873	1	EventCaster	EventCaster	131340	0	0	10	0	0	0	0	0
+1086	唐门_神机值恢复	PreCast	1024	6876	1	EventCaster	EventCaster	12	0	0	10	0	0	0	0	0
+1087	万花_快雪刷dot	Hit	102	6135	24	EventCaster	EventTarget	0	0	0	2	6233	0	0	0	0
+1088	万花_快雪刷dot	Hit	102	6135	24	EventCaster	EventTarget	0	0	0	2	6701	0	0	0	0
+1089	七秀_下一招式会心	Hit	1024	6902	1	EventCaster	EventCaster	64	0	0	4	0	0	0	0	0
+1090	10%攻击删除	Hit	1024	6913	1	EventCaster	EventCaster	12	0	0	3	0	0	0	0	0
+1091	唐门_隐身追命瞬发夺魄	Hit	1024	6458	1	EventCaster	EventCaster	0	0	0	10	6921	0	0	0	0
+1092	丐帮奇穴_天下无狗减伤	Cast	1024	6922	1	EventCaster	EventCaster	0	0	0	7	5260	0	0	0	0
+1093	五彩石吸蓝4级	Hit	31	6940	1	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1094	五彩石吸蓝5级	Hit	31	6940	2	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1095	70橙武丐帮触发	Hit	26	6950	1	EventCaster	EventCaster	12	0	0	16	0	0	0	0	0
+1096	80橙武丐帮触发	Hit	26	6950	2	EventCaster	EventCaster	12	0	0	16	0	0	0	0	0
+1097	小橙武BOSS_丐帮_酒中仙	BeHitOTAction	1024	6966	1	EventCaster	EventCaster	2097152	0	0	0	0	0	0	0	0
+1098	闪避回蓝	Dodge	1024	6986	1	EventCaster	EventCaster	131086	0	0	长安内城沈眠风	0	0	0	0	0
+1099	血战天策_阿史那从礼_小蓝球被治疗	BeHit	1024	6997	1	EventCaster	EventTarget	4097	0	0	0	0	0	0	0	0
+1100	大明宫_剑圣_刃遁消除	Cast	1024	8018	1	EventCaster	EventCaster	131090	0	0	0	0	0		0	0
+1101	直城门_恶狼_盾壁	BeHit	1024	19	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+1102	风雪稻香村_老无名_内力凝结	Cast	1024	8084	1	EventCaster	EventCaster	18	0	0	0	0	0	0	0	0
+1103	血战天策_阻援_扔石头	Cast	1024	8116	1	EventCaster	EventCaster	18	0	0	0	0	0	0	0	0
+1106	风雪稻香村_老无名_归寂道响应	BeHit	1024	8131	1	EventCaster	EventCaster	0	0	0	0	3981	0	0	0	0
+1107	五毒_被击回蓝	BeHit	1024	8135	1	EventCaster	EventCaster	492	0	0	9	0	0	0	0	0
+1109	血战天策_黑齿元佑_禁默释放AOE	Cast	102	8158	1	EventCaster	EventCaster	135660	0	0	0	0	0	0	0	0
+1110	长安内城_沈眠风	BeHit	1024	8186	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+1111	血战天策_苏曼莎_终风_攻击掉血	Cast	1024	8267	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+1112	血战天策_阿史那从礼_被击给自己添加吸收盾事件	BeHit	1024	8269	1	EventCaster	EventCaster	1	0	0	0	0	0	0	0	0
+1113	血战天策_苏曼莎_桃舞风花阵_被击重伤	BeHit	1024	8273	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+1114	血战天策_苏曼莎_有色花雨_释放治疗损血	Cast	1024	8280	1	EventCaster	EventCaster	18	0	0	0	0	0	0	0	0
+1115	血战天策_苏曼莎_冰雨舞_冻结	BeHit	1024	8273	1	EventCaster	EventCaster	135660	0	0	0	0	0	0	0	0
+1116	血战天策_苏曼莎_闪舞刺_无力	Cast	1024	8273	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+1117	血战天策_令狐伤_颤脏	Cast	51	8303	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+1118	血战天策_令狐伤_千花乱影剑	BeHit	1024	8306	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+1119	直城门_阿史那承庆_被打断	BeHitOTAction	1024	8317	1	EventCaster	EventCaster	2097152	0	0	0	0	0	0	0	0
+1120	血战天策_保护青雅牧场_骨折	BeHit	1024	8320	1	EventCaster	EventCaster	131084	0	0	0	0	0	0	0	0
+1121	血战天策_小怪_暗沉潜行	BeHit	1024	8372	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+1122	血战天策_小怪_无味花毒	Cast	1024	8373	1	EventCaster	EventCaster	35656172	0	0	0	0	0	0	0	0
+1123	血战天策_小怪_叶流体	BeHit	1024	8361	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+1124	血战天策_小怪_花粉风暴	BeHit	1024	8273	1	EventCaster	EventCaster	4096	0	0	0	0	0	0	0	0
+1125	血战预热_骑砍被击	BeHit	510	8452	1	EventCaster	EventCaster	0	0	0	0	28	0	0	0	0
+1126	血战天策_狼牙据点_蚀心引被打断	BeHitOTAction	1024	8463	1	EventCaster	EventCaster	2097152	0	0	0	0	0	0	0	0
+1127	丐帮_神龙加见龙cd	Cast	1024	8475	1	EventCaster	EventCaster	0	0	0	7	6600	0	0	0	0
+1128	少林_被远程风筝重置捉影式	BeHit	0	8483	1	EventCaster	EventTarget	131564	0	0	5	0	0	0	0	0
+1129	血战天策_小怪_无味花毒_吟唱	Cast	1024	8525	1	EventCaster	EventCaster	33792	0	0	0	0	0	0	0	0
+1130	长安内城_东市禁区守卫	BeHit	1024	2918	1	EventCaster	EventTarget	131567	0	0	15	3366	1		0	0
+1131	少林_70血量减伤	BeHit	1024	8557	1	EventCaster	EventCaster	131564	0	0	5	0	0	0	0	0
+1132	血战天策_黑齿元佑_暗影之力反弹1	BeHit	204	8558	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+1133	血战天策_黑齿元佑_暗影之力反弹2	BeHit	408	8558	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+1134	血战天策_黑齿元佑_暗影之力反弹3	BeHit	614	8558	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+1135	血战天策_黑齿元佑_暗影之力反弹4	BeHit	816	8558	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+1136	血战天策_黑齿元佑_暗影之力反弹5	BeHit	1024	8558	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+1137	少林_被打免疫减速	BeHit	307	8559	1	EventCaster	EventCaster	131564	0	0	5	0	0	0	0	0
+1138	血战天策_小怪_猎手欲望	BeHit	1024	8569	1	EventCaster	EventTarget	480	0	0	0	0	0	0	0	0
+1139	血战天策_小怪_被杀成就	BeKill	1024	8596	1	EventCaster	EventCaster	131583	0	0	0	8325	0	0	0	0
+1140	橙武丐帮换技能	Hit	1024	6875	1	EventCaster	EventCaster	0	0	0	16	8490	0	0	0	0
+1141	英雄血战天策_苏曼莎_有色花雨_施放	Cast	1024	8280	2	EventCaster	EventCaster	18	0	0	0	0	0	0	0	0
+1142	英雄血战天策_小怪_猎手欲望	BeHit	1024	8569	2	EventCaster	EventTarget	480	0	0	0	0	0	0	0	0
+1143	英雄血战天策_小怪_无味花毒	Cast	1024	8373	2	EventCaster	EventCaster	35656172	0	0	0	0	0	0	0	0
+1144	英雄血战天策_小怪_无味花毒_吟唱	Cast	1024	8525	2	EventCaster	EventCaster	33792	0	0	0	0	0	0	0	0
+1145	血战天策_令狐伤_一剑诀·三重	BeHit	1024	8631	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+1146	血战天策_令狐伤_一剑诀·五重(空)	BeHit	1024	8637	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+1147	风雪稻香村_小怪关卡_百鸟碎星_碎	BeHit	1024	19	1	EventCaster	EventCaster	1	0	0	0	0	0	0	0	0
+1148	风雪稻香村_黑鹰_十二生肖_酉鸡_读条打断	HitOTAction	1024	8743	1	EventCaster	EventTarget	2097152	0	0	0	8724	1	0	0	0
+1149	风雪稻香村_史朝义_精准触发攻击	Cast	1024	8797	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+1150	风雪稻香村_史朝义_强击触发100%	Cast	1024	8798	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+1151	风雪稻香村_史朝义_强击触发50%	Cast	512	8799	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+1152	秦皇陵_令狐伤_恐怖割裂_致死	BeHit	1024	8273	1	EventCaster	EventCaster	0	0	0	0	8885	0	0	0	0
+1153	秦皇陵_令狐伤_厚铁毒尘	BeHit	1024	8919	1	EventCaster	EventTarget	256	0	0	0	0	0	0	0	0
+1154	英雄血战天策_令狐伤_NPC被击消失	BeHit	1024	8948	1	EventCaster	EventCaster	0	0	0	0	3353	0	0	0	0
+1155	风雪稻香村_史朝义_普通炮台触发	Cast	1024	8961	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+1156	天策_仗剑_被击删buff	BeHit	1024	8999	1	EventCaster	EventCaster	131564	0	0	1	0	0	0	0	0
+1157	天策_披甲_招架重置龙吟	Parry	0	9000	1	EventCaster	EventCaster	131084	0	0	1	0	0	0	0	0
+1158	天策_大漠_招架打防御	Parry	1024	9008	1	EventCaster	EventCaster	131084	0	0	1	0	0	0	0	0
+1159	天策_大漠_招架打防御新事件	Parry	1024	9008	1	EventCaster	EventCaster	131084	0	0	1	0	0	0	0	0
+1161	气纯_气竭万事会心触发	Hit	1024	19	1	EventCaster	EventCaster	1	0	0	3	0	0	0	0	0
+1162	藏剑_怜光轻剑伤害加buff	Hit	1024	9028	1	EventCaster	EventCaster	0	0	0	6	1590	0	0	0	0
+1163	万花_阳明指会心40%几率刷新dot	CriticalStrike	1024	9036	1	EventCaster	EventCaster	16777216	0	0	2	0	0	0	0	0
+1164	剑纯_无欲_天地无极会心重置八荒	CriticalStrike	1024	9067	1	EventCaster	EventCaster	0	268435456	0	3	0	0	0	0	0
+1165	春明门_崔乾佑_打断回血	BeHit	1024	9222	1	EventCaster	EventCaster	131074	0	0	0	0	0	0	64	192
+1166	天策_附魔_突重置定军	Hit	1024	9264	1	EventCaster	EventCaster	0	512	0	1	0	0	0	0	0
+1167	明教_附魔_贪魔体被击回血	BeHit	1024	9273	1	EventCaster	EventCaster	131564	0	0	8	0	0	0	0	0
+1168	明教_附魔_净世破魔击几率触发暗尘	Cast	358	9275	1	EventCaster	EventCaster	0	0	0	8	3967	0	0	0	0
+1169	明教_附魔_净世破魔击几率回复日月能	Cast	1024	9276	1	EventCaster	EventCaster	0	0	0	8	3967	0	0	0	0
+1170	少林_附魔_灵山施雨加强	BeHit	1024	268	6	EventCaster	EventCaster	131564	0	0	5	0	0		0	0
+1171	藏剑_附魔_云飞后重置云飞CD	Cast	1024	9288	1	EventCaster	EventCaster	0	0	0	6	1593	0	0	0	0
+1172	藏剑_附魔_大风车期间减伤100%	Cast	1024	9292	1	EventCaster	EventCaster	0	0	0	6	1905	0	0	0	0
+1173	七秀_附魔_玲珑刷新上元	Cast	358	9321	1	EventCaster	EventTarget	0	0	0	4	2983	0	0	0	0
+1174	春明门_崔乾佑_打断回血辅助	BeHit	1024	9222	1	EventCaster	EventCaster	0	0	0	0	5258	0	0	64	192
+1175	春明门_崔乾佑_打断回血辅助1	BeHit	1024	9222	1	EventCaster	EventCaster	0	0	0	0	5354	0	0	64	192
+1176	再临·常断	Hit	1024	9378	1	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1177	再临·河顽	Hit	1024	9378	2	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1178	再临·凝海	Hit	1024	9378	3	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1179	再临·神药	Hit	1024	9378	4	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1180	再临·大难	Hit	1024	9378	5	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1181	再临·占角	Hit	1024	9378	6	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1182	再临·清心	Hit	1024	9378	7	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1183	再临·雪王	Hit	1024	9378	8	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1184	再临·寸心	Hit	1024	9378	9	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1185	再临·兮婉	Hit	1024	9378	10	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1186	再临·影来	Hit	1024	9378	11	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1187	再临·息吹	Hit	1024	9378	12	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1188	再临·隐流	Hit	1024	9378	13	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1189	再临·冥刺	Hit	1024	9378	14	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1190	再临·绝荆	Hit	1024	9378	15	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1191	再临·饥饮	Hit	1024	9378	16	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1192	再临·精炎	Hit	1024	9378	17	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1193	再临·世间	Hit	1024	9378	18	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1194	挖宝外壳	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1195	丐帮_被击回蓝	BeHit	1024	9444	1	EventCaster	EventCaster	131564	0	0	7	0	0	0	0	0
+1196	五毒_凤凰蛊不死效果	BeHit	1024	9480	1	EventCaster	EventCaster	131564	0	0	9	0	0	0	0	0
+1197	逐虎驱狼_白陶_双生协调被打断	BeHitOTAction	1024	10345	1	EventCaster	EventCaster	2097153	0	0	0	0	0	0	0	0
+1199	盾刀20%减伤	Hit	1024	19	1	EventCaster	EventCaster	1	0	0	苍云	0	0	0	0	0
+1200	盾刀20%减伤	BeHit	1024	13125	1	EventCaster	EventCaster	131567	0	0	14	0	0	0	0	0
+1201	恋战_攻击叠会心	Hit	1024	13127	1	EventCaster	EventCaster	12	0	0	14	0	0	0	0	0
+1202	恋战_会心删会心buff	CriticalStrike	1024	13128	1	EventCaster	EventCaster	524	0	0	14	0	0	0	0	0
+1203	寒甲_招架后提升自身AP	Parry	1024	13135	1	EventCaster	EventCaster	131078	0	0	14	0	0	0	0	0
+1204	铿锵_招架后回复自身怒气	Parry	1024	13137	1	EventCaster	EventCaster	131564	0	0	14	0	0	0	0	0
+1205	坚铁_被击叠加提升招架率buff	BeHit	1024	13139	1	EventCaster	EventCaster	131564	0	0	14	0	0	0	0	0
+1206	坚铁_招架后删除招架率buff	Parry	1024	13140	1	EventCaster	EventCaster	131564	0	0	14	0	0	0	0	0
+1207	盾立_被击回复怒气	BeHit	1024	13183	1	EventCaster	EventCaster	131564	0	0	14	0	0	0	0	0
+1208	逐虎驱狼_史思明_阎罗附体反噬	Cast	1024	13196	1	EventCaster	EventCaster	12798	0	0	0	0	0	0	0	0
+1209	逐虎驱狼_白陶_技能被打断	BeHitOTAction	1024	13226	1	EventCaster	EventCaster	1	0	0	0	0	0	0	0	0
+1210	苍云防御阵法第四重被击	BeHit	1024	13237	1	EventCaster	EventTarget	131564	0	0	14	0	0	0	0	0
+1211	苍云防御阵法第六重重伤	BeKill	1024	13239	1	EventCaster	EventTarget	131583	0	0	14	0	0	0	0	0
+1212	逐虎驱狼_史思明_被监视读条触发BOSS技能	Cast	1024	13246	1	EventCaster	EventCaster	1	0	0	0	0	0	0	0	0
+1213	逐虎驱狼_史思明_无懈可击抵挡伤害	BeHit	1024	13294	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+1214	苍云攻击阵第四重队友会心自身回怒	CriticalStrike	1024	13330	1	EventCaster	EventCaster	131084	0	0	14	0	0	0	0	0
+1215	苍云攻击阵第六重被击加攻击	BeHit	1024	13332	1	EventCaster	EventCaster	131564	0	0	14	0	0	0	0	0
+1216	少林_罗汉金身_被击几率回血	BeHit	102	13353	1	EventCaster	EventCaster	131564	0	0	5	0	0	0	0	0
+1217	慑服被击消失	BeHit	1024	13375	1	EventCaster	EventCaster	131078	0	0	14	0	0	0	0	0
+1218	盾挡被击删buff	Parry	1024	13393	1	EventCaster	EventCaster	131084	0	0	14	0	0	0	0	0
+1219	盾飞打断	HitOTAction	1024	13396	1	EventCaster	EventTarget	0	0	0	14	13398	0	0	0	0
+1220	蝎心触发尾后针	CriticalStrike	1024	9445	1	EventCaster	EventCaster	0	0	0	9	9332	0	0	0	0
+1221	蝎心触发尾后针2	CriticalStrike	1024	9445	1	EventCaster	EventCaster	0	0	0	9	9405	0	0	0	0
+1222	苍云MT4件套属性	BeHit	102	1322	13	EventCaster	EventCaster	131564	0		16	0	0		0	0
+1223	破军套装加破防13	Hit	1024	4970	13	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1224	再临·雪峦	Hit	1024	9378	19	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1225	再临·照山	Hit	1024	9378	20	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1226	90橙武_分山劲	Cast	31	13410	1	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1227	90橙武_铁骨衣	Cast	31	13410	2	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1228	删除蚀肌弹延迟buff	Cast	1024	3354	3	EventCaster	EventCaster	536870912	0	0	10	0	0		0	0
+1229	苍云盾墙姿态被击	BeHit	1024	13457	1	EventCaster	EventCaster	492	0	0	14	0	0	0	0	0
+1230	盾墙下被击触发盾压	Parry	1024	13460	1	EventCaster	EventCaster	492	0	0	14	0	0	0	0	0
+1231	80橙武_分山劲	Cast	31	13410	3	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1232	80橙武_铁骨衣	Cast	31	13410	4	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1233	70橙武_分山劲	Cast	31	13410	5	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1234	70橙武_铁骨衣	Cast	31	13410	6	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1235	太原_通用被治疗处理	BeHit	1024	13552	1	EventTarget	EventCaster	4096	0	0	0	0	0	0	0	0
+1236	短期禁止怒气消耗	Cast	1024	13561	1	EventCaster	EventCaster	1073741824	0	0	14	0	0	0	0	0
+1237	外功伤害技触发血影	Hit	1024	13565	1	EventCaster	EventTarget	537001984	0	0	14	0	0	0	0	0
+1238	丐帮特殊武器	Hit	102	13640	1	EventCaster	EventTarget	131564	0	0	16	0	0	0	0	0
+1239	七秀_鹊踏期间闪避回蓝	Dodge	1024	13679	1	EventCaster	EventCaster	131084	0	0	4	0	0	0	0	0
+1240	幽月轮会心后回能13663	CriticalStrike	1024	4474	1	EventCaster	EventCaster	0	0		8	13663	0		0	0
+1241	幽月轮会心后回能13664	CriticalStrike	1024	4474	1	EventCaster	EventCaster	0	0		8	13664	0		0	0
+1242	幽月轮会心后回能13665	CriticalStrike	1024	4474	1	EventCaster	EventCaster	0	0		8	13665	0		0	0
+1243	幽月轮会心后回能13666	CriticalStrike	1024	4474	1	EventCaster	EventCaster	0	0		8	13666	0		0	0
+1244	幽月轮会心后回能13667	CriticalStrike	1024	4474	1	EventCaster	EventCaster	0	0		8	13667	0		0	0
+1245	幽月轮会心后回能13668	CriticalStrike	1024	4474	1	EventCaster	EventCaster	0	0		8	13668	0		0	0
+1247	天策_风虎奇穴_被击添加计数buff	Cast	1024	13805	1	EventCaster	EventCaster	12	0	0	1	0	0	0	0	0
+1248	明教场景_赤日轮三段被击2	BeHit	1024	7689	1	EventCaster	EventTarget	0	0		15	13674	0		0	0
+1249	明教场景_赤日轮三段被击3	BeHit	1024	7689	1	EventCaster	EventTarget	0	0		15	13671	0		0	0
+1250	引仙水榭_剑姬阵_被击回血	BeHit	1024	14007	1	EventCaster	EventCaster	480	0	0	0	0	0	0	0	0
+1251	引仙水榭_剑姬阵_被击回血高级	BeHit	1024	14007	2	EventCaster	EventCaster	480	0	0	0	0	0	0	0	0
+1252	新建	Hit	1024	19	1	EventCaster	EventCaster	1	0	0	长歌	0	0	0	0	0
+1254	妙意_命中低气血目标自身会心会效提高	Hit	1024	14241	1	EventCaster	EventTarget	131136	0	0	17	0	0	0	0	0
+1255	掷杯_命中低气血目标自身疗伤成效提高10%	Cast	1024	14243	1	EventCaster	EventTarget	4096	0	0	17	0	0	0	0	0
+1256	凝绝_疗伤招式会心后增加5%加速率	CriticalStrike	1024	14245	1	EventCaster	EventCaster	4096	0	0	17	0	0	0	0	0
+1257	寒梅_被击删除寒梅减伤buff	BeHit	1024	14250	1	EventCaster	EventCaster	492	0	0	17	0	0	0	0	0
+1258	气略_宫立刻伤害	Cast	1024	14310	1	EventCaster	EventTarget	0	0	0	17	14302	0	0	0	0
+1259	气略_商dot立刻伤害	Cast	1024	14311	1	EventCaster	EventTarget	0	0	0	17	14065	0	0	0	0
+1260	气略_角dot立刻伤害	Cast	1024	14312	1	EventCaster	EventTarget	0	0	0	17	14066	0	0	0	0
+1261	广雅_宫吟唱会心刷新dot	Hit	1024	14338	1	EventCaster	EventTarget	0	64	0	17	0	0	0	0	0
+1262	广雅_移动宫会心刷新dot	CriticalStrike	0	14338	1	EventCaster	EventTarget	0	0	0	17	14474	0	0	0	0
+1263	羽_轻羽_删除一次性减伤	BeHit	1024	14340	1	EventCaster	EventCaster	492	0	0	17	0	0	0	0	0
+1264	羽治疗_轻羽_删除一次性减伤	BeHit	1024	14358	1	EventCaster	EventCaster	492	0	0	17	0	0	0	0	0
+1265	寸光阴_宫治疗吟唱会心几率刷新目标小队buff	Hit	1024	14407	1	EventCaster	EventTarget	0	512	0	17	0	0	0	0	0
+1266	洪声_宫hot立刻治疗效果	Cast	1024	14417	1	EventCaster	EventTarget	0	0	0	17	14303	0	0	0	0
+1267	洪声_商hot立刻治疗效果	Cast	1024	14418	1	EventCaster	EventTarget	0	0	0	17	14138	0	0	0	0
+1268	洪声_角hot立刻治疗效果	Cast	1024	14419	1	EventCaster	EventTarget	0	0	0	17	14139	0	0	0	0
+1269	治疗阵法第四重被疗伤会心	BeCriticalStrike	1024	14427	1	EventCaster	EventCaster	4096	0	0	17	0	0	0	0	0
+1270	治疗阵法第六重攻击会心	BeCriticalStrike	1024	14428	1	EventCaster	EventCaster	131564	0	0	17	0	0	0	0	0
+1271	治疗阵法清楚第6重buff效果	Cast	1024	14431	1	EventCaster	EventCaster	135660	0	0	17	0	0	0	0	0
+1272	输出阵法第四重会心提高阵眼会效	CriticalStrike	1024	14434	1	EventCaster	EventCaster	131564	0	0	17	0	0	0	0	0
+1273	输出阵法第六重被会心提高阵眼破防	BeCriticalStrike	1024	14435	1	EventCaster	EventCaster	131564	0	0	17	0	0	0	0	0
+1274	输出阵法第五重阵眼会心给小队成员叠加会心	CriticalStrike	1024	14436	1	EventCaster	EventCaster	536870912	0	0	17	0	0	0	0	0
+1275	阴山大草原_被治疗处理_治疗吸收盾	BeHit	1024	14440	1	EventTarget	EventCaster	4096	0	0	0	0	0	0	0	0
+1276	天音知脉_被击删除御效果	BeHit	1024	14471	1	EventCaster	EventCaster	131564	0	0	17	0	0	0	0	0
+1277	梅花三弄过量治疗事件	OverHeal	1024	14536	1	EventCaster	EventTarget	0	8	0	17	0	0	0	0	0
+1278	梅花三弄过量治疗盾被击删除	BeHit	1024	14537	1	EventCaster	EventCaster	131564	0	0	17	0	0	0	0	0
+1279	T0长歌施展技能10%几率提高阴性内功AP	Cast	102	14539	1	EventCaster	EventCaster	64	0		16	0	0		0	0
+1280	清绝影歌期间假死	BeHit	1024	14599	1	EventCaster	EventCaster	131565	0	0	17	0	0	0	0	0
+1281	藏剑_如风_外功会心延长加速时间	CriticalStrike	1024	14606	1	EventCaster	EventCaster	4	0	0	6	0	0	0	0	0
+1282	藏剑_片玉_被击判定血量	BeHit	1024	14608	1	EventCaster	EventCaster	131564	0	0	6	0	0	0	0	0
+1283	山色_会心后回复10点怒气	CriticalStrike	1024	14610	1	EventCaster	EventCaster	0	0	0	6	2896	0	0	0	0
+1284	山色_夕照会心后回复10点怒气	CriticalStrike	1024	14610	1	EventCaster	EventCaster	0	0	0	6	2897	0	0	0	0
+1285	峰聚_耗剑气技能施展后删除buff	Cast	1024	14612	1	EventCaster	EventCaster	536870912	0	0	6	0	0	0	0	0
+1286	泉韵_被击判定血量	BeHit	1024	14614	1	EventCaster	EventCaster	131564	0	0	6	0	0	0	0	0
+1287	雾锁_外功招式会心下一个招式无视目标防御等级	Hit	1024	14621	1	EventCaster	EventCaster	0	0	0	6	2896	0	0	0	0
+1288	雾锁_删除无视目标防御等级buff	Cast	1024	14622	1	EventCaster	EventCaster	12	0	0	6	0	0	0	0	0
+1289	太极无极会心回豆	CriticalStrike	0	336	1	EventCaster	EventCaster	0	0	0	3	0	0		0	0
+1290	笑醉狂期间被击回复5%气血	BeHit	512	14630	1	EventCaster	EventCaster	131564	0	0	7	0	0	0	0	0
+1291	砚悬_施展技能删除会心buff	Cast	1024	14638	1	EventCaster	EventCaster	4224	0	0	2	0	0	0	0	0
+1292	涓流_会心斩杀	Hit	1024	14644	1	EventCaster	EventTarget	492	0	0	2	0	0	0	0	0
+1293	万花_新毫针_被击回血	BeHit	1024	14646	1	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+1294	局针会心添加毫针	Hit	1024	14663	1	EventCaster	EventTarget	0	0	0	2	137	0	0	0	0
+1295	提针会心添加毫针	Hit	1024	14663	1	EventCaster	EventTarget	0	0	0	2	138	0	0	0	0
+1296	寒耀月打断事件	HitOTAction	1024	14693	1	EventCaster	EventTarget	0	0	0	8	3961	0	0	0	0
+1297	明教_无明魂锁_50%以下被打后醒	BeHit	1024	14700	1	EventCaster	EventCaster	131564	0	0	8	0	0	0	0	0
+1298	被控状态下10%减伤判定	BeHit	1024	14704	1	EventCaster	EventCaster	137215	0	0	4	0	0	0	0	0
+1299	招式会心降低梵音1秒调息时间	CriticalStrike	0	14712	1	EventCaster	EventCaster	4588	0	0	4	0	0	0	0	0
+1300	招式会心触发拿云可施展	Hit	307	14749	1	EventCaster	EventCaster	32	0	0	5	0	0	0	0	0
+1301	施展伤害技能删除捕风的会心buff	Cast	1024	14751	1	EventCaster	EventCaster	32	0	0	5	0	0	0	0	0
+1302	罗汉金身被击15%几率解除控制	BeHit	204	14756	1	EventCaster	EventCaster	131564	0	0	5	0	0	0	0	0
+1303	罗汉金身被击30%几率解除控制	BeHit	307	14756	1	EventCaster	EventCaster	131564	0	0	5	0	0	0	0	0
+1304	罗汉金身被击50%解除控制	BeHit	410	14756	1	EventCaster	EventCaster	131564	0	0	5	0	0	0	0	0
+1305	施展伤害技能刷新捉影计时buff	Cast	1024	14760	1	EventCaster	EventCaster	131104	0	0	5	0	0	0	0	0
+1306	被击删除无尘35%减伤	BeHit	1024	14790	1	EventCaster	EventCaster	131564	0	0	5	0	0	0	0	0
+1307	舍身期间目标被击回血自身回血	BeHit	512	14797	1	EventCaster	EventCaster	492	0	0	5	0	0	0	0	0
+1308	至武_低气血值重置守如山	BeHit	1024	14803	1	EventCaster	EventCaster	131564	0	0	1	0	0	0	0	0
+1309	山居听雷会心回复5点剑气	CriticalStrike	1024	14812	1	EventCaster	EventCaster	0	0	0	6	1707	0	0	0	0
+1310	断潮会心后下一个云飞不消耗剑气	CriticalStrike	0	14813	1	EventCaster	EventCaster	0	0	0	6	1651	0	0	0	0
+1311	明教_记录_圣明佑日	Cast	1024	14876	1	EventCaster	EventCaster	0	0		8	4033	0		0	0
+1312	明教_记录_圣明佑月	Cast	1024	14875	1	EventCaster	EventCaster	0	0		8	4034	0		0	0
+1313	明教_记录_破魔日	Cast	1024	14876	1	EventCaster	EventCaster	0	0		8	4037	0		0	0
+1314	明教_记录_破魔月	Cast	1024	14875	1	EventCaster	EventCaster	0	0		8	4038	0		0	0
+1315	明教_记录_生死劫·日	Cast	1024	14876	1	EventCaster	EventCaster	0	0		8	4035	0		0	0
+1316	明教_记录_生死劫·月	Cast	1024	14875	1	EventCaster	EventCaster	0	0		8	4036	0		0	0
+1317	明教_记录_记录日月值	Hit	1024	14877	1	EventCaster	EventCaster	112	0	0	8	0	0	0	0	0
+1318	啸如虎_被会心延长持续时间1秒	BeCriticalStrike	1024	14878	1	EventCaster	EventCaster	131564	0	0	1	0	0	0	0	0
+1319	人剑减伤被击删除一层	BeHit	1024	14891	1	EventCaster	EventCaster	492	0	0	3	0	0	0	0	0
+1320	蝎心会心删除会心buff	CriticalStrike	1024	14899	1	EventCaster	EventCaster	0	8	0	1	0	0	0	0	0
+1321	石虎被击判定血量	BeHit	1024	14900	1	EventCaster	EventCaster	131564	0	0	14	0	0	0	0	0
+1322	血怒被击回血	BeHit	1024	14902	1	EventCaster	EventCaster	131564	0	0	14	0	0	0	0	0
+1323	判定目标气血添加无视防御效果	Hit	1024	14904	1	EventCaster	EventTarget	12	0	0	14	0	0	0	0	0
+1324	删除无视目标30外防buff	Hit	1024	14905	1	EventCaster	EventCaster	12	0	0	14	0	0	0	0	0
+1325	外功招式会心延长血怒持续时间	CriticalStrike	1024	14906	1	EventCaster	EventCaster	12	0	0	14	0	0	0	0	0
+1326	夕照会心叠加增益破防	Hit	1024	14621	1	EventCaster	EventCaster	0	0	0	6	2897	0	0	0	0
+1327	明教_会心_圣明佑日	Cast	1024	14913	1	EventCaster	EventCaster	0	0		8	4033	0		0	0
+1328	明教_会心_圣明佑月	Cast	1024	14913	2	EventCaster	EventCaster	0	0		8	4034	0		0	0
+1329	明教_会心_破魔日	Cast	1024	14913	1	EventCaster	EventCaster	0	0		8	4037	0		0	0
+1330	明教_会心_破魔月	Cast	1024	14913	2	EventCaster	EventCaster	0	0		8	4038	0		0	0
+1331	明教_会心_生死劫·日	Cast	1024	14913	1	EventCaster	EventCaster	0	0		8	4035	0		0	0
+1332	明教_会心_生死劫月	Cast	1024	14913	2	EventCaster	EventCaster	0	0		8	4036	0		0	0
+1333	阴性内功会心删除月系	Cast	1024	14914	2	EventCaster	EventCaster	64	0	0	8	0	0	0	0	0
+1334	阳性内功会心删除日系	Cast	1024	14914	1	EventCaster	EventCaster	32	0	0	8	0	0	0	0	0
+1335	明教_瀚海_圣明佑日	Cast	1024	14918	1	EventCaster	EventCaster	0	0		8	4033	0		0	0
+1336	明教_瀚海_圣明佑月	Cast	1024	14918	2	EventCaster	EventCaster	0	0		8	4034	0		0	0
+1337	明教_瀚海_破魔日	Cast	1024	14918	1	EventCaster	EventCaster	0	0		8	4037	0		0	0
+1338	明教_瀚海_破魔月	Cast	1024	14918	2	EventCaster	EventCaster	0	0		8	4038	0		0	0
+1339	明教_瀚海_生死劫日	Cast	1024	14918	1	EventCaster	EventCaster	0	0		8	4035	0		0	0
+1340	明教_瀚海_生死劫月	Cast	1024	14918	2	EventCaster	EventCaster	0	0		8	4036	0		0	0
+1341	明教_心火叹	BeHit	1024	14925	1	EventCaster	EventCaster	131564	0	0	8	0	0	0	0	0
+1342	剑主天地会心后下一招式伤害提高	CriticalStrike	1024	14935	1	EventCaster	EventCaster	0	0	0	4	30524	0	0	0	0
+1343	释放技能后删除剑主的buff	Hit	1024	14936	1	EventCaster	EventCaster	64	0	0	4	0	0	0	0	0
+1344	罗汉金身被击几率触发回豆和提高伤害	Cast	719	14955	1	EventCaster	EventCaster	32	0	0	5	0	0	0	0	0
+1345	施展招式删除罗汉金身buff	Cast	1024	14961	1	EventCaster	EventCaster	492	0	0	5	0	0	0	0	0
+1346	折叶笼花免死判定	BeHit	1024	14964	1	EventCaster	EventCaster	131564	0	0	2	0	0	0	0	0
+1347	天地无极打断事件	HitOTAction	1024	14987	1	EventCaster	EventTarget	0	262144	0	3	0	0	0	0	0
+1348	七星拱瑞_被击事件	BeHit	1024	14993	1	EventCaster	EventCaster	131564	0	0	3	0	0	0	0	0
+1349	新_被击触发北斗	BeHit	1024	14998	1	EventCaster	EventCaster	131564	0	0	3	0	0	0	0	0
+1350	群体隐身释放技能后现身	Cast	1024	15035	1	EventCaster	EventCaster	137215	0	0	10	0	0	0	0	0
+1351	假死隐身判定技能	BeHit	1024	15036	1	EventCaster	EventCaster	131564	0	0	10	0	0	0	0	0
+1352	释放技能后解除被动触发的假死隐身	Cast	1024	15037	1	EventCaster	EventCaster	137215	0	0	10	0	0	0	0	0
+1353	弩攻击给自己叠加2%会心	CriticalStrike	1024	15049	1	EventCaster	EventCaster	492	0	0	10	0	0	0	0	0
+1354	弩会心后删除叠加的会心buff	CriticalStrike	1024	15050	1	EventCaster	EventCaster	0	536870912	0	10	0	0	0	0	0
+1355	千岛湖_打坐测试	BeHit	1024	15120	1	EventCaster	EventCaster	0	0	0	0	17	0	0	0	0
+1356	阳春白雪切换姿态	Cast	1024	15091	1	EventCaster	EventCaster	4176	0	0	17	0	0	0	0	0
+1357	伤害招式会心加速提高5%	CriticalStrike	1024	15100	1	EventCaster	EventCaster	131136	0	0	17	0	0	0	0	0
+1358	特殊属性水·百川命中	Hit	1024	4877	14	EventCaster	EventCaster	4096	0	0	16	0	0	0	0	0
+1359	特殊属性水·灭虚命中	Hit	1024	4877	15	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1360	特殊属性水·斩流命中	Hit	1024	4877	16	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1361	特殊属性水·封山命中	Hit	1024	4877	17	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1362	被击删除一层战八方减伤	BeHit	1024	15117	1	EventCaster	EventCaster	131564	0	0	1	0	0	0	0	0
+1363	被击击倒目标	BeHit	154	15118	1	EventCaster	EventTarget	131564	0	0	5	0	0	0	0	0
+1364	阴性伤害招式会心	CriticalStrike	1024	15130	1	EventCaster	EventCaster	64	0	0	4	0	0	0	0	0
+1365	治疗会心回血	CriticalStrike	1024	19695	1	EventCaster	EventCaster	4096	0	0	4	0	0	0	0	0
+1366	阴山大草原_摔跤_格挡被击	BeHit	1024	15126	1	EventCaster	EventCaster	1	0	0	0	28	0	0	0	0
+1367	逐一击破判定AOE	PreCast	1024	26551	1	EventCaster	EventTarget	0	65536	0	10	0	0	0	0	0
+1368	删除逐一击破伤害buff	Hit	1024	15151	1	EventCaster	EventCaster	264	0	0	10	0	0	0	0	0
+1369	破军套装加破防14	Hit	1024	4970	14	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1370	再临·清音	Hit	1024	9378	21	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1371	再临·松风	Hit	1024	9378	22	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1372	90橙武莫问长歌	Cast	25	15183	4	EventCaster	EventCaster	64	0		16	0	0		0	0
+1373	90橙武相知长歌	Cast	25	15184	4	EventCaster	EventCaster	4096	0		16	0	0		0	0
+1374	剑出鸿蒙换buff	Cast	1024	15194	1	EventCaster	EventTarget	128	0	0	3	0	0	0	0	0
+1375	施展疗伤招式删除献祭蝴蝶必会心效果	Hit	1024	15206	1	EventCaster	EventCaster	4096	0	0	9	0	0	0	0	0
+1376	满堂势删会心	Hit	1024	15207	1	EventCaster	EventCaster	4160	0	0	4	0	0	0	0	0
+1377	95橙武_傲血天策	Cast	31	1850	4	EventCaster	EventCaster	12	0		16	0	0		0	0
+1378	95橙武_铁牢天策	Cast	31	1851	4	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1379	95橙武_易经少林	Cast	69	1854	4	EventCaster	EventCaster	32	0		16	0	0		0	0
+1380	95橙武_洗髓少林	Cast	31	1855	4	EventCaster	EventCaster	16	0		16	0	0		0	0
+1381	95橙武_花间万花	Cast	31	1856	4	EventCaster	EventCaster	128	0		16	0	0		0	0
+1382	95橙武_离经万花	Cast	61	1857	4	EventCaster	EventCaster	4096	0		16	0	0		0	0
+1383	95橙武_气纯	Cast	25	1853	4	EventCaster	EventCaster	128	0		16	0	0		0	0
+1384	95橙武_剑纯	Cast	31	1852	4	EventCaster	EventCaster	12	0		16	0	0		0	0
+1385	95橙武_冰心七秀	Cast	25	1858	4	EventCaster	EventCaster	64	0		16	0	0		0	0
+1386	95橙武_云裳七秀	Cast	31	18977	2	EventCaster	EventTarget	4096	0		16	0	0		0	0
+1387	95橙武_毒经五毒	Cast	89	3065	4	EventCaster	EventCaster	256	0		16	0	0		0	0
+1388	95橙武_补天五毒	Cast	51	3066	4	EventCaster	EventCaster	4096	0		16	0	0		0	0
+1389	95橙武_天罗唐门	Cast	25	3477	4	EventCaster	EventCaster	268	0		16	0	0		0	0
+1390	95橙武_惊羽唐门	Cast	25	3476	4	EventCaster	EventCaster	12	0		16	0	0		0	0
+1391	95橙武_轻剑藏剑	Cast	25	1881	4	EventCaster	EventCaster	12	0		16	0	0		0	0
+1392	95橙武_重剑藏剑	Cast	37	1882	4	EventCaster	EventCaster	12	0		16	0	0		0	0
+1393	95橙武_丐帮	Hit	15	6950	4	EventCaster	EventCaster	12	0	0	16	0	0	0	0	0
+1394	95橙武_焚影明教	Cast	24	4940	4	EventCaster	EventCaster	96	0		16	0	0		0	0
+1395	95橙武_明尊明教	Cast	25	4941	4	EventCaster	EventCaster	96	0		16	0	0		0	0
+1396	95橙武_分山苍云	Cast	31	13410	7	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1397	95橙武_铁骨苍云	Cast	31	13410	8	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1398	95橙武_相知长歌	Cast	25	15184	1	EventCaster	EventCaster	4096	0		16	0	0		0	0
+1399	95橙武_莫问长歌	Cast	25	15183	1	EventCaster	EventCaster	64	0		16	0	0		0	0
+1400	阴风峡日常_盗宝贼被击	BeHit	1024	15191	1	EventCaster	EventCaster	1	0	0	0	0	0	0	0	0
+1401	命中目标失去亦枯亦荣	Hit	1024	15442	1	EventCaster	EventTarget	32	0	0	5	0	0	0	0	0
+1402	95橙戒触发1	Hit	1024	15721	1	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1403	95橙戒触发2	Hit	1024	15721	2	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1404	95橙戒触发3	Hit	1024	15721	3	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1405	95橙戒触发4	Hit	1024	15721	4	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1406	95橙戒触发5	Hit	1024	15721	5	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1407	95橙戒触发6	Hit	1024	15721	6	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1408	95橙戒触发7	Hit	1024	15721	7	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1409	95橙戒触发8	Hit	1024	15721	8	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1410	95橙戒触发9	Hit	1024	15721	9	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1411	五毒门派跟宠加血	BeHit	1024	15743	1	EventTarget	EventCaster	4096	0	0	15	0	0	0	0	0
+1412	繁音急节被击加闪避	BeHit	1024	15756	1	EventCaster	EventCaster	131086	0	0	4	0	0	0	0	0
+1413	闪避删除雾雨效果	Dodge	1024	15757	1	EventCaster	EventCaster	131086	0	0	4	0	0	0	0	0
+1414	95橙戒触发治疗1	Hit	1024	15831	1	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1415	95橙戒触发治疗2	Hit	1024	15831	2	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1416	95橙戒触发治疗3	Hit	1024	15831	3	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1417	95橙戒触发治疗4	Hit	1024	15831	4	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1418	95橙戒触发治疗5	Hit	1024	15831	5	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1419	95橙戒触发治疗6	Hit	1024	15831	6	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1420	95橙戒触发治疗7	Hit	1024	15831	7	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1421	95橙戒触发治疗8	Hit	1024	15831	8	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1422	95橙戒触发治疗9	Hit	1024	15831	9	EventCaster	EventCaster	4606	0	0	16	0	0	0	0	0
+1423	苍云特殊武器_被击响应	BeHit	1024	15991	1	EventCaster	EventTarget	133118	0	0	16	0	0	0	0	0
+1424	方士攻击触发	Hit	256	16083	1	EventCaster	EventTarget	492	0	0	16	0	0	0	0	0
+1425	方士受击触发	BeHit	256	16087	1	EventCaster	EventCaster	0	0	0	16	16059	1	0	0	0
+1426	丐帮无咎被击重置龙啸	BeHit	1024	16106	1	EventCaster	EventCaster	131564	0	0	7	0	0	0	0	0
+1427	触发普通攻击带特效判定	Cast	1024	16421	1	EventCaster	EventCaster	543	0	0	18	0	0	0	0	0
+1428	沉秋风会心挂Dot	CriticalStrike	1024	16485	1	EventCaster	EventTarget	524288	0	0	18	0	0	0	0	0
+1429	Miss触发碎江天	BeMiss	1024	16607	1	EventCaster	EventCaster	493	0	0	18	0	0	0	0	0
+1430	施展招式解除不可选中效果	Cast	1024	16669	1	EventCaster	EventCaster	2147614720	0	0	18	0	0	0	0	0
+1431	阵法四重小队成员会心回复能量	CriticalStrike	1024	16680	1	EventCaster	EventCaster	492	0	0	18	0	0	0	0	0
+1432	阵法五重小队成员会心几率提高	Cast	1024	16676	1	EventCaster	EventCaster	536870912	0	0	18	0	0	0	0	0
+1433	阵法六重阵眼增加会心	BeCriticalStrike	1024	16677	1	EventCaster	EventCaster	131564	0	0	18	0	0	0	0	0
+1434	删除六重会心效果	Cast	1024	16678	1	EventCaster	EventCaster	4588	0	0	18	0	0	0	0	0
+1435	奇穴无绝会心回复能量	Hit	306	16699	1	EventCaster	EventCaster	2147483648	0	0	18	0	0	0	0	0
+1436	楚歌_目标低血量自身输出增强	Hit	1024	16738	1	EventCaster	EventTarget	131084	0	0	18	0	0	0	0	0
+1437	裁骨_鞘刀被击回复能量	BeHit	1024	16741	1	EventCaster	EventCaster	492	0	0	18	0	0	0	0	0
+1438	重烟_被击无法自动回能	BeHit	1024	16747	1	EventCaster	EventCaster	131582	0	0	18	0	0	0	0	0
+1439	逐鹿_项王击鼎会心增加旋转跳数	CriticalStrike	1024	16749	1	EventCaster	EventCaster	67108864	0	0	18	0	0	0	0	0
+1440	重激_删除技能伤害加成效果	Cast	1024	16771	1	EventCaster	EventCaster	14	0	0	18	0	0	0	0	0
+1441	碎江天被击获得施展次数	BeCriticalStrike	102	16806	1	EventCaster	EventCaster	492	0	0	18	0	0	0	0	0
+1442	冷川被击假死回血	BeHit	1024	16819	1	EventCaster	EventCaster	131564	0	0	18	0	0	0	0	0
+1443	奔流_项王击鼎旋转会心降破釜沉舟调息	CriticalStrike	1024	16844	1	EventCaster	EventCaster	134217728	0	0	18	0	0	0	0	0
+1444	闪避回复一层剑舞	Dodge	1024	16858	1	EventCaster	EventCaster	131084	0	0	4	0	0		0	0
+1445	心境回能量	Hit	1024	16949	1	EventCaster	EventTarget	12	0	0	18	0	0	0	0	0
+1446	项王击鼎会心回复怒气	Cast	306	16950	1	EventCaster	EventCaster	67108864	0	0	18	0	0	0	0	0
+1447	蔽日_释放技能删除一层效果	Cast	1024	16955	1	EventCaster	EventCaster	492	0	0	18	0	0	0	0	0
+1448	70橙武_北傲诀	Cast	31	16984	1	EventCaster	EventCaster	12	0		16	0	0		0	0
+1449	80橙武_北傲诀	Cast	31	16984	2	EventCaster	EventCaster	12	0		16	0	0		0	0
+1450	90橙武_北傲诀	Cast	31	16984	3	EventCaster	EventCaster	12	0		16	0	0		0	0
+1451	95橙武_北傲诀	Cast	31	16984	4	EventCaster	EventCaster	12	0		16	0	0		0	0
+1452	T0施展霸刀外功伤害10%几率提高外功AP	Cast	102	16986	1	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1453	破军套加破防值13	Hit	1024	4970	15	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1454	再临·霸刀	Hit	1024	9378	23	EventCaster	EventCaster	135660	0	0	16	0	0	0	0	0
+1455	孤漠_会心回复伤害	CriticalStrike	1024	17046	1	EventCaster	EventCaster	262144	0	0	18	0	0	0	0	0
+1456	醉斩会心提高刀啸伤害	CriticalStrike	1024	17051	1	EventCaster	EventCaster	1048576	0	0	18	0	0	0	0	0
+1457	命中几率刷新闹须弥dot	Hit	306	17059	1	EventCaster	EventTarget	131084	0	0	18	0	0	0	0	0
+1458	伤害技能命中立刻触发一跳闹须弥dot伤害	CriticalStrike	1024	17070	1	EventCaster	EventTarget	12	0	0	18	0	0	0	0	0
+1459	奇遇_雪山恩仇_打坐开始	BeHit	1024	17219	1	EventCaster	EventCaster	0	0	0	0	17	0	0	0	0
+1460	平笃未命中再次添加瞬发	Miss	1024	17466	1	EventCaster	EventCaster	0	0	0	3	896	0	0	0	0
+1461	丐帮奇穴_打狗套路回蓝	Hit	1024	17530	1	EventCaster	EventCaster	2147483648	0	0	7	0	0	0	0	0
+1462	95雷·海纳命中目标	Hit	51	4876	16	EventCaster	EventCaster	4096	0		16	0	0	0	0	0
+1463	95雷·灭气命中目标	Hit	51	4876	17	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1464	95雷·锐刃命中目标	Hit	51	4876	18	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1465	95雷·御受命中目标	Hit	51	4876	19	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1466	列宿吟唱被击加春泥	BeHitOTAction	1024	17629	1	EventCaster	EventCaster	131564	0	0	2	0	0	0	0	0
+1467	耗豆几率回豆	Cast	512	17751	1	EventCaster	EventCaster	1048576	0	0	5	0	0	0	0	0
+1468	击杀目标回豆	Kill	1024	17746	10	EventCaster	EventCaster	131231	0	0	3	0	0	0	0	0
+1469	端午活动_乌龟受击加分	BeHit	1024	17759	1	EventCaster	EventTarget	2	0	0	15	0	0	0	0	0
+1470	罗汉金身被击回血	BeHit	1024	17760	1	EventCaster	EventCaster	131564	0	0	5	0	0	0	0	0
+1472	经脉-发招删太虚无敌	Cast	1024	18061	1	EventCaster	EventCaster	202751	0	0	31	0	0	0	0	0
+1473	握针被击吞噬跳数	BeHit	1024	18274	1	EventCaster	EventCaster	131564	0	0	2	0	0	0	0	0
+1474	明教_消耗日能打标记	Cast	1024	18287	1	EventCaster	EventCaster	536870912	0	0	8	0	0	0	0	0
+1475	明教_消耗月能打标记	Cast	1024	18287	2	EventCaster	EventCaster	134217728	0	0	8	0	0	0	0	0
+1476	明教_伤害招式封轻功	Hit	1024	18289	1	EventCaster	EventTarget	96	0	0	8	0	0	0	0	0
+1477	五毒_蜈蚣存在被会心加速	BeCriticalStrike	1024	6804	1	EventCaster	EventCaster	131564	0	0	9	0	0	0	0	0
+1478	五毒_玄水蛊期间被击定身	BeHit	104	18321	1	EventCaster	EventTarget	131564	0	0	9	0	0	0	0	0
+1479	100价值量水·百川特效	Hit	1024	4877	18	EventCaster	EventCaster	4096	0	0	16	0	0	0	0	0
+1480	100价值量水·灭虚特效	Hit	1024	4877	19	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1481	100价值量水·斩流特效	Hit	1024	4877	20	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1482	100价值量水·封山特效	Hit	1024	4877	21	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1483	95雷·海纳命中目标·饰品	Hit	51	4876	20	EventCaster	EventCaster	4096	0		16	0	0	0	0	0
+1484	95雷·灭气命中目标·饰品	Hit	51	4876	21	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1485	95雷·锐刃命中目标·饰品	Hit	51	4876	22	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1486	95雷·御受命中目标·饰品	Hit	51	4876	23	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1487	丐帮反击	BeHit	1024	18527	1	EventCaster	EventTarget	131564	0	0	7	0	0	0	0	0
+1488	明教_是否为背后判定	PreCast	1024	18631	1	EventCaster	EventTarget	131711	0	0	8	0	0	0	0	0
+1489	通用斩杀奇穴——低于40血10会心会效	PreCast	1024	18696	1	EventCaster	EventTarget	131564	0	0	18	0	0	0	0	0
+1490	气剑增加四象两仪伤害	PreCast	1024	18698	1	EventCaster	EventCaster	268435456	0	0	3	0	0	0	0	0
+1491	攻击有几率定身目标	BeHit	103	18699	1	EventCaster	EventTarget	131564	0	0	9	0	0		0	0
+1492	冰天闪避瞬发夕照	Dodge	1024	18713	1	EventCaster	EventCaster	131084	0	0	6	0	0	0	0	0
+1493	明教_双消耗破魔增伤	PreCast	1024	18720	1	EventCaster	EventCaster	0	0		8	3967	0		0	0
+1494	通用判定是否存在兰摧标记	PreCast	1024	18722	1	EventCaster	EventTarget	1169	0	0	2	0	0	0	0	0
+1495	快雪时晴根据dot打伤害	PreCast	1024	18725	1	EventCaster	EventTarget	67108864	0	0	2	0	0	0	0	0
+1496	招架后减CD	Parry	1024	18726	1	EventCaster	EventCaster	131564	0	0	14	0	0	0	0	0
+1497	慈悲愿闪避回能	Dodge	1024	18731	1	EventCaster	EventCaster	131103	0	0	8	0	0	0	0	0
+1498	通用50血触发会心会效	PreCast	1024	18732	1	EventCaster	EventTarget	131564	0	0	4	0	0	0	0	0
+1499	蝎心加伤害	PreCast	1024	18733	1	EventCaster	EventTarget	8388608	0	0	9	0	0	0	0	0
+1500	战意增加自身招式伤害	PreCast	1024	18740	1	EventCaster	EventCaster	8388609	0	0	1	0	0	0	0	0
+1501	气点增加三环伤害	PreCast	1024	18742	1	EventCaster	EventCaster	0	0	0	3	364	0	0	0	0
+1502	四象会心获得气剑	CriticalStrike	1024	18794	1	EventCaster	EventCaster	0	64	0	3	0	0		0	0
+1503	夕照云飞断潮触发增强	PreCast	1024	18813	1	EventCaster	EventTarget	0	2	0	6	0	0	0	0	0
+1504	沙漠风暴伤害吸收盾	BeHit	1024	18879	1	EventCaster	EventCaster	492	0	0	16	0	0	0	0	0
+1505	沙漠风暴_被动减速	BeHit	307	18878	1	EventCaster	EventTarget	131564	0	0	16	0	0	0	0	0
+1506	沙漠风暴_反击	BeHit	307	18880	1	EventCaster	EventTarget	131308	0	0	16	0	0	0	0	0
+1507	沙漠风暴加闪避	BeHit	102	18881	1	EventCaster	EventCaster	492	0	0	16	0	0	0	0	0
+1508	沙漠风暴_加dot	Hit	1024	18882	1	EventCaster	EventTarget	492	0	0	16	0	0	0	0	0
+1509	风来吴山命中多个玩家伤害递减	PreCast	1024	18995	1	EventCaster	EventCaster	0	512		6	0	0		0	0
+1510	历战异闻录_牡丹_痛血指反伤1级	Hit	1024	19267	1	EventTarget	EventCaster	448	0	0	0	0	0		0	0
+1511	历战异闻录_牡丹_痛血指反伤2级	Hit	1024	19267	2	EventTarget	EventCaster	448	0	0	0	0	0		0	0
+1512	历战异闻录_牡丹_痛血指反伤3级	Hit	1024	19267	3	EventTarget	EventCaster	448	0	0	0	0	0		0	0
+1513	历战异闻录_牡丹_痛血指反伤4级	Hit	1024	19267	4	EventTarget	EventCaster	448	0	0	0	0	0		0	0
+1514	命中流血目标增加穿云伤害	PreCast	1024	18740	1	EventCaster	EventTarget	268435456	0	0	1	0	0	0	0	0
+1515	命中急曲目标加伤害	PreCast	1024	19520	1	EventCaster	EventTarget	0	0	0	4	2707	0	0	0	0
+1516	李渡城_刺客_隐身监控_出招	Cast	1024	19546	1	EventCaster	EventCaster	1	0	0	15	0	0	0	0	0
+1517	李渡城_刺客_隐身监控_被击	BeHit	1024	19546	1	EventCaster	EventCaster	131564	0	0	15	0	0	0	0	0
+1518	无月灼燃	BeHit	1024	19686	1	EventCaster	EventTarget	1	0	0	15	0	0	0	0	0
+1519	泥兰洞天_被击判断	Hit	1024	19769	1	EventCaster	EventTarget	192511	0	0	0	0	0	0	96	160
+1520	轻功被击扣气力值	BeHit	1024	20212	1	EventCaster	EventCaster	131564	0	0	0	0	0		0	0
+1521	轻功发招扣气力值	Cast	1024	20283	1	EventCaster	EventCaster	131564	0	0	0	0	0		0	0
+1522	冰火岛_荒血路_月下对决反噬监控	Hit	1024	20164	1	EventCaster	EventTarget	131565	0	0	0	0	0	0	0	0
+1523	竞技场附近被击破坏	BeHit	1024	20181	1	EventCaster	EventCaster	131564	0	0	15	0	0		0	0
+1526	定波砥澜被击	BeHit	1024	20252	1	EventCaster	EventCaster	131564	0	0	32	0	0		0	0
+1527	四象命中两仪提高伤害	Hit	1024	20269	1	EventCaster	EventCaster	0	0	0	3	896	0	0	0	0
+1528	源明信无伤	BeHit	1024	20445	1	EventCaster	EventCaster	144	0	0	0	0	0	0	0	0
+1529	兰摧玉折定身锁足会心提高35	PreCast	1024	20447	1	EventCaster	EventTarget	0	0	0	2	18730	0	0	0	0
+1530	兰摧生风定身锁足会心提高35	PreCast	1024	20447	1	EventCaster	EventTarget	0	0	0	2	18729	0	0	0	0
+1531	兰摧乱撒定身锁足会心提高35	PreCast	1024	20447	1	EventCaster	EventTarget	0	0	0	2	13848	0	0	0	0
+1532	兰摧乱撒生风定身锁足会心提高35	PreCast	1024	20447	1	EventCaster	EventTarget	0	0	0	2	18745	0	0	0	0
+1533	钟林毓秀定身锁足会心提高35	PreCast	1024	20447	1	EventCaster	EventTarget	0	0	0	2	285	0	0	0	0
+1534	钟林乱撒定身锁足会心提高35	PreCast	1024	20447	1	EventCaster	EventTarget	0	0	0	2	13847	0	0	0	0
+1535	钟林寒碧定身锁足会心提高35	PreCast	1024	20447	1	EventCaster	EventTarget	0	0	0	2	3037	0	0	0	0
+1536	兰摧芙蓉定身锁足会心提高35	PreCast	1024	20447	1	EventCaster	EventTarget	0	0	0	2	6136	0	0	0	0
+1537	钟林芙蓉定身锁足会心提高35	PreCast	1024	20447	1	EventCaster	EventTarget	0	0	0	2	6135	0	0	0	0
+1538	兰摧芙蓉生风定身锁足会心提高35	PreCast	1024	20447	1	EventCaster	EventTarget	0	0	0	2	18748	0	0	0	0
+1540	明教_驱夜是否为背后判定	PreCast	1024	18631	1	EventCaster	EventCaster	0	0	0	8	3979	0	1	64	192
+1541	命中亢龙持续伤害减伤10%	Hit	1024	20495	1	EventCaster	EventCaster	0	0	0	7	8542	0	0	0	0
+1542	斩刀后减伤	Cast	1024	20510	1	EventCaster	EventCaster	0	0	0	14	13054	0	0	0	0
+1543	木落雁归会心重置湛然若海	CriticalStrike	512	20512	1	EventCaster	EventCaster	0	0	0	32	19819	0	0	0	0
+1544	逸尘步虚闪避加伤害	BeMiss	1024	20529	1	EventCaster	EventCaster	131564	0	0	32	0	0		0	0
+1545	缠心_施展千丝重置丝牵	Hit	307	20533	1	EventCaster	EventCaster	0	0	0	9	2213	0	0	0	0
+1546	灵犀_施展百足重置影滞	Hit	1024	20536	1	EventCaster	EventCaster	0	0	0	9	2212	0	0	0	0
+1547	玉蟾_施展蟾啸重置蟾躁	Hit	1024	20539	1	EventCaster	EventCaster	0	0	0	9	2210	0	0	0	0
+1548	玉蟾_施展加强版蟾啸重置蟾躁	Hit	1024	20539	1	EventCaster	EventCaster	0	0	0	9	6626	0	0	0	0
+1549	裂涛掌招式会心降低逸尘步虚调息时间	CriticalStrike	1024	20553	1	EventCaster	EventCaster	268435456	0	0	32	0	0	0	0	0
+1550	飞天蚀肌弹触发5%化学镖	Hit	717	3304	1	EventCaster	EventTarget	0	0	0	10	18776	0		0	0
+1551	命中飓风内的目标	PreCast	1024	20587	1	EventCaster	EventCaster	131564	0	0	32	0	0	0	0	0
+1552	被击触发重置减伤	BeHit	1024	20588	1	EventCaster	EventCaster	131564	0	0	32	0	0	0	0	0
+1553	冰火岛_荒血路_月下对决BOSS反伤	BeHit	1024	20678	1	EventCaster	EventTarget	2228735	24576	0	0	0	0	0	0	0
+1554	2350品雷·海纳命中目标	Hit	51	4876	24	EventCaster	EventCaster	4096	0		16	0	0	0	0	0
+1555	2350品雷·灭气命中目标	Hit	51	4876	25	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1556	2350品雷·锐刃命中目标	Hit	51	4876	26	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1557	2350品雷·御受命中目标	Hit	51	4876	27	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1558	打断目标后沉默	HitOTAction	1024	20736	1	EventCaster	EventTarget	0	0	0	32	20065	1	0	0	0
+1559	招式会心加小队伤害_阵法	CriticalStrike	1024	20737	1	EventCaster	EventCaster	131084	0	0	32	0	0	0	0	0
+1560	释放九霄踏云步增加小队移速_阵法	Cast	1024	20739	1	EventCaster	EventCaster	536870912	0	0	32	0	0	0	0	0
+1561	队友受暴击提高阵眼会效	BeCriticalStrike	1024	20740	1	EventCaster	EventCaster	131564	0	0	32	0	0	0	0	0
+1562	删除蓬莱战宠保护自身效果	BeMiss	1024	20749	1	EventCaster	EventCaster	539100158	0	0	32	0	0	0	0	0
+1563	命中技能前判断目标高度	PreCast	1024	20752	1	EventCaster	EventTarget	0	0	0	32	0	0	0	0	0
+1564	被击减少调息时间	BeHit	1024	20755	1	EventCaster	EventCaster	131564	0	0	32	0	0		0	0
+1565	迷渊岛_方家弟子被治疗	BeHit	1024	20765	1	EventCaster	EventTarget	4096	0	0	0	0	0	0	0	0
+1566	读天下无狗加减速减伤	PreCast	1024	20807	1	EventCaster	EventCaster	1	0	0	7	20803	0	0	0	0
+1567	释放技能	Cast	1024	20809	1	EventCaster	EventCaster	262144	0	0	32	0	0	0	0	0
+1569	九辩馆_海盗被击	BeHit	1024	20853	1	EventCaster	EventCaster	131571	0	0	0	0	0	0	0	0
+1570	命中后删除无视内防BUFF	Hit	1024	20968	1	EventCaster	EventCaster	492	0	0	10	0	0	0	0	0
+1571	2300阵营拍卖水·百川命中	Hit	1024	4877	22	EventCaster	EventCaster	4096	0	0	16	0	0	0	0	0
+1572	2300阵营拍卖水·灭虚命中	Hit	1024	4877	23	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1573	2300阵营拍卖水·斩流命中	Hit	1024	4877	24	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1574	2300阵营拍卖水·封山命中	Hit	1024	4877	25	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1575	气纯空战降低命中	Hit	1024	21031	1	EventCaster	EventTarget	128	0	0	3	0	0		0	0
+1576	蓬莱PVE套装属性触发加外功攻击	Cast	102	21038	1	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1577	战斗轻功特性	Dodge	1024	21043	1	EventCaster	EventCaster	131086	0	0	4	0	0	0	0	0
+1578	战斗轻功特性施展技能	Cast	1024	21044	1	EventCaster	EventTarget	4160	0	0	4	0	0	0	0	0
+1579	群体隐身发招显形	Cast	1024	21047	1	EventCaster	EventCaster	131564	32768		8	0	0		0	0
+1580	群体隐身被击显形	BeHit	1024	21047	1	EventCaster	EventCaster	131564	0		8	0	0		0	0
+1581	莫问空战宫伤害加成	PreCast	1024	21048	1	EventCaster	EventTarget	67108864	0	0	17	0	0	0	0	0
+1582	藏剑空战冲刺无敌	Cast	1024	21060	1	EventCaster	EventCaster	8388608	0	0	6	0	0	0	0	0
+1583	霸刀空战命中目标回气力值	Hit	1024	21061	1	EventCaster	EventCaster	14	0	0	18	0	0	0	0	0
+1584	蓬莱70大CW	Cast	31	21185	1	EventCaster	EventCaster	12	0		16	0	0		0	0
+1585	蓬莱80大CW	Cast	31	21185	2	EventCaster	EventCaster	12	0		16	0	0		0	0
+1586	蓬莱90大CW	Cast	31	21185	3	EventCaster	EventCaster	12	0		16	0	0		0	0
+1587	蓬莱95大CW	Cast	31	21185	4	EventCaster	EventCaster	12	0		16	0	0		0	0
+1588	蓬莱100大CW	Cast	31	21185	5	EventCaster	EventCaster	12	0		16	0	0		0	0
+1589	贪魔体被击回血	BeHit	1024	21189	1	EventCaster	EventCaster	131564	0	0	8	0	0		0	0
+1590	橙武花间触发雪月	PreCast	1024	20447	1	EventCaster	EventTarget	0	2147483648	0	2	0	0	0	0	0
+1591	无相被击50%几率解控	BeHit	512	14756	1	EventCaster	EventCaster	131564	0	0	5	0	0	0	0	0
+1592	释放技能删除潜龙勿用	Cast	1024	21286	1	EventCaster	EventCaster	16777216	0	0	7	0	0	0	0	0
+1593	凭虚闪避回血	Dodge	1024	21291	1	EventCaster	EventCaster	131084	0	0	3	0	0	0	0	0
+1594	沙漠风暴_月影沙被击现形	BeHit	1024	21289	1	EventCaster	EventCaster	131564	0		0	0	0		0	0
+1595	沙漠风暴_月影沙打人显形	Cast	1024	21290	1	EventCaster	EventCaster	131564	32768		0	0	0		0	0
+1596	尘归海_3号_过量治疗事件	BeOverHeal	1024	21598	1	EventCaster	EventCaster	4097	0	0	0	0	0	0	0	0
+1597	100橙武_气纯	Cast	25	1853	5	EventCaster	EventCaster	128	0		16	0	0		0	0
+1598	100橙武_剑纯	Cast	31	1852	5	EventCaster	EventCaster	12	0		16	0	0		0	0
+1599	易经100大CW	Cast	69	1854	5	EventCaster	EventCaster	32	0		16	0	0		0	0
+1600	洗髓100大CW	Cast	31	1855	5	EventCaster	EventCaster	16	0		16	0	0		0	0
+1601	100橙武_傲血天策	Cast	31	1850	5	EventCaster	EventCaster	12	0		16	0	0		0	0
+1602	100橙武_铁牢天策	Cast	31	1851	5	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1603	冰心100大CW	Cast	25	1858	5	EventCaster	EventCaster	64	0		16	0	0		0	0
+1604	奶秀100大CW	Cast	31	18977	3	EventCaster	EventTarget	4096	0		16	0	0		0	0
+1605	分山100大CW	Cast	31	13410	9	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1606	铁骨100大CW	Cast	31	13410	10	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1607	莫问100大CW	Cast	25	15183	5	EventCaster	EventCaster	64	0		16	0	0		0	0
+1608	相知100大CW	Cast	25	15184	5	EventCaster	EventCaster	4096	0		16	0	0		0	0
+1609	100橙武_花间万花	Cast	31	1856	5	EventCaster	EventCaster	128	0		16	0	0		0	0
+1610	100橙武_离经万花	Cast	61	1857	5	EventCaster	EventCaster	4096	0		16	0	0		0	0
+1611	100橙武_轻剑藏剑	Cast	25	1881	5	EventCaster	EventCaster	12	0		16	0	0		0	0
+1612	100橙武_重剑藏剑	Cast	37	1882	5	EventCaster	EventCaster	12	0		16	0	0		0	0
+1613	100橙武_焚影明教	Cast	24	4940	5	EventCaster	EventCaster	96	0		16	0	0		0	0
+1614	100橙武_明尊明教	Cast	25	4941	5	EventCaster	EventCaster	96	0		16	0	0		0	0
+1615	100橙武_天罗诡道	Cast	25	3477	5	EventCaster	EventCaster	268	0		16	0	0		0	0
+1616	100橙武_惊羽诀	Cast	25	3476	5	EventCaster	EventCaster	12	0		16	0	0		0	0
+1617	100橙武_毒经	Cast	89	3065	5	EventCaster	EventCaster	256	0		16	0	0		0	0
+1618	100橙武_补天	Cast	51	3066	5	EventCaster	EventCaster	4096	0		16	0	0		0	0
+1619	100橙武_丐帮	Hit	15	6950	5	EventCaster	EventCaster	12	0	0	16	0	0	0	0	0
+1620	100橙武_霸刀	Cast	31	16984	5	EventCaster	EventCaster	12	0		16	0	0		0	0
+1621	尘归海_监测释放技能	Cast	1024	21358	1	EventCaster	EventCaster	2228735	24576	0	0	0	0	0	0	0
+1622	moba受击标记伤害来源	BeHit	1024	21606	1	EventCaster	EventTarget	131564	0	0	15	0	0		0	0
+1623	预热_东海霸王擂_易伤标记处理	BeHit	1024	21638	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+1624	moba小绿甲技能事件	BeHit	1024	21659	1	EventCaster	EventCaster	131564	0	0	15	0	0	0	0	0
+1625	预热_东海霸王擂_19888偷酒小贼被击	BeHit	1024	21663	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+1626	moba装备内防兰顿之兆	BeHit	1024	21742	1	EventCaster	EventTarget	131093	0	0	15	0	0	0	0	0
+1627	moba装备外防兰顿之兆	BeHit	1024	21741	1	EventCaster	EventTarget	1	0	0	15	0	0	0	0	0
+1628	禅灵被击记仇	BeHit	1024	21699	1	EventCaster	EventTarget	131564	0	0	5	0	0		0	0
+1629	禅灵攻击记仇	Hit	1024	21701	1	EventCaster	EventTarget	67239968	0	0	5	0	0		0	0
+1630	剑纯伤害招式附带额外效果	Hit	1024	21726	1	EventCaster	EventTarget	134217728	0	0	3	0	0		0	0
+1631	剑破会心回复15%内力	CriticalStrike	1024	21728	1	EventCaster	EventCaster	0	0	0	4	2716	0	0	0	0
+1632	被击延长血怒时间	BeHit	1024	14906	1	EventCaster	EventCaster	131564	0	0	14	0	0	0	0	0
+1633	moba装备44914描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1634	moba装备44918描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1635	moba装备44923描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1636	moba装备44924描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1637	moba装备44933描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1638	MOBA打野刀	Hit	1024	21755	1	EventCaster	EventTarget	131093	0	0	15	0	0	0	0	0
+1639	天策单次伤害效果增益删除	Hit	1024	2859	2	EventCaster	EventCaster	4	0		1	0	0		0	0
+1640	2600挑战副本水·百川命中	Hit	1024	4877	26	EventCaster	EventCaster	4096	0	0	16	0	0	0	0	0
+1641	2600挑战副本水·灭虚命中	Hit	1024	4877	27	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1642	2600挑战副本水·斩流命中	Hit	1024	4877	28	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1643	2600挑战副本水·封山命中	Hit	1024	4877	29	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1644	2600品阵营拍卖雷·海纳命中目标	Hit	51	4876	28	EventCaster	EventCaster	4096	0		16	0	0	0	0	0
+1645	2600品阵营拍卖雷·灭气命中目标	Hit	51	4876	29	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1646	2600品阵营拍卖雷·锐刃命中目标	Hit	51	4876	30	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1647	2600品阵营拍卖雷·御受命中目标	Hit	51	4876	31	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1648	moba装备吸血武器描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1649	moba装备辅助武器初级描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1650	moba装备辅助武器中级描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1651	moba装备辅助武器高级描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1652	moba装备辅打野武器初级描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1653	moba装备打野武器中级描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1654	moba装备打野武器高级描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1655	moba装备鞋子初级描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1656	moba装备鞋子中级描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1657	moba装备鞋子高级描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1658	moba装备44932描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1659	moba装备44915描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1660	moba折磨武器	Hit	1024	21773	1	EventCaster	EventTarget	131093	0	0	15	0	0	0	0	0
+1661	招式命中目标触发事件	Hit	1024	21832	1	EventCaster	EventTarget	131582	0	0	17	0	0	0	0	0
+1662	moba初级小绿甲技能事件	BeHit	1024	21842	1	EventCaster	EventCaster	1	0	0	15	0	0	0	0	0
+1663	moba中级小绿甲技能事件	BeHit	1024	21843	1	EventCaster	EventCaster	1	0	0	15	0	0	0	0	0
+1664	moba装备4491944920描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1665	moba装备44921描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1666	moba装备44926描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1667	moba装备44878描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1668	moba装备44898描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1669	moba装备44927描述占坑	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1670	MOBA减疗装备	Hit	1024	21864	1	EventCaster	EventTarget	131565	0	0	15	0	0	0	0	0
+1671	MOBA二级打野刀	Hit	1024	21866	1	EventCaster	EventTarget	131093	0	0	15	0	0	0	0	0
+1672	MOBA三级打野刀	Hit	1024	21867	1	EventCaster	EventTarget	131093	0	0	15	0	0	0	0	0
+1673	剧毒蛤蟆	BeHit	1024	21871	1	EventCaster	EventTarget	511	0	0	15	0	0	0	0	0
+1674	MOBA防御终极武器	Hit	1024	21873	1	EventCaster	EventTarget	1	0	0	15	0	0	0	0	0
+1675	饕餮洞小怪被击	BeHit	1024	21919	1	EventCaster	EventTarget	1	0	0	13	0	0	0	0	0
+1676	moba装备生命低于30%护盾狂暴	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1677	moba装备复活甲	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1678	moba装备提高生命恢复	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1679	moba装备脱战恢复	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1680	moba装备杀人刀	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1681	moba装备光环降低10%调息速率	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1682	moba装备10%几率闪避外功招式	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1683	MOBA辅助武器，双削弱	Hit	1024	21929	1	EventCaster	EventTarget	131093	0	0	15	0	0	0	0	0
+1684	MOBA辅助武器，单削弱	Hit	1024	21931	1	EventCaster	EventTarget	131093	0	0	15	0	0	0	0	0
+1685	命中急曲目标剑气长江加会心会效	PreCast	1024	21937	1	EventCaster	EventTarget	0	0	0	4	561	0	0	0	0
+1686	MOBA触发穿透	Hit	1024	21944	1	EventCaster	EventTarget	1	0	0	15	0	0	0	0	0
+1688	命中后删除加会心	Hit	1024	21960	1	EventCaster	EventCaster	264	0	0	10	0	0	0	0	0
+1689	暴雨梨花针吞化学镖	Hit	717	3304	1	EventCaster	EventTarget	0	134217728	0	10	0	0		0	0
+1690	MOBA治疗被打断	BeHit	1024	21967	1	EventCaster	EventCaster	131564	0	0	15	0	0		0	0
+1691	神机车普攻触发	Hit	717	3304	1	EventCaster	EventTarget	0	0	0	10	21854	0		0	0
+1692	神机车重弩触发	Hit	717	3304	1	EventCaster	EventTarget	0	0	0	10	21850	0		0	0
+1693	moba装备无视15%防御	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1694	moba补刀斧技能事件	Hit	1024	21973	1	EventCaster	EventTarget	131073	0	0	15	0	0	0	0	0
+1695	moba装备防御武器持续回血中级	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1696	moba装备防御武器持续回血高级	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1697	鲲鹏岛装备治疗目标加AP	Hit	51	22008	1	EventCaster	EventTarget	4096	0	0	16	0	0	0	0	0
+1698	鲲鹏岛装备被击反伤	BeHit	153	22010	1	EventCaster	EventTarget	131582	0	0	16	0	0	0	0	0
+1700	新附魔T头	Cast	102	22122	1	EventCaster	EventCaster	131196	0	0	16	0	0	0	0	0
+1701	新附魔T衣服	BeHit	1024	22128	1	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1702	新附魔T腰带	BeHit	154	22129	1	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1703	新附魔T护手	Cast	102	22134	1	EventCaster	EventTarget	131196	0	0	16	0	0	0	0	0
+1704	输出护腕附魔命中目标触发额外伤害	Hit	102	22166	1	EventCaster	EventTarget	492	0	0	16	0	0	0	0	0
+1705	输出腰带附魔伤害波动	Hit	205	22169	1	EventCaster	EventCaster	492	0	0	16	0	0	0	0	0
+1706	治疗护腕附魔命中目标触发减伤	Cast	205	22155	1	EventCaster	EventTarget	4096	0		16	0	0		0	0
+1707	MOBA电刀技能事件	Hit	1024	22172	1	EventCaster	EventTarget	131565	0	0	15	0	0	0	0	0
+1708	输出鞋子附魔触发Aoe伤害	Hit	1024	22187	1	EventCaster	EventTarget	492	0	0	16	0	0	0	0	0
+1709	受到攻击治疗附魔加会心	BeHit	1024	22211	1	EventCaster	EventCaster	131564	0	0	16	0	0		0	0
+1710	moba装备电刀鞋	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+1711	腾空轻功监控	Cast	1024	22275	1	EventCaster	EventCaster	0	0	0	3	15566	1	0	0	0
+1712	腾空轻功监控02	Cast	1024	22275	1	EventCaster	EventCaster	0	0	0	3	15601	1	0	0	0
+1713	腾空轻功监控03	Cast	1024	22275	1	EventCaster	EventCaster	0	0	0	3	15603	1	0	0	0
+1714	腾空轻功监控04	Cast	1024	22275	1	EventCaster	EventCaster	0	0	0	3	15605	1	0	0	0
+1715	腾空轻功监控05	Cast	1024	22275	1	EventCaster	EventCaster	0	0	0	3	15702	1	0	0	0
+1716	腾空梯云纵监控	Cast	1024	22275	1	EventCaster	EventCaster	0	0	0	3	346	1	0	0	0
+1717	ACT浪客行_词缀_雷霆护体	BeHit	1024	22965	1	EventCaster	EventCaster	492	0	0	0	0	0	0	0	0
+1718	玄鹤别院_开锁被击	BeHit	1024	22410	1	EventTarget	EventCaster	131571	0	0	0	0	0	0	0	0
+1720	解除十方玄机	PreCast	1024	22437	1	EventCaster	EventCaster	0	2	0	33	0	0	0	0	0
+1721	明教特殊武器_破魔击监控	Hit	1024	22622	1	EventCaster	EventCaster	0	0	0	16	3967	0	0	0	0
+1722	血覆黄泉打断沉默	HitOTAction	1024	22641	1	EventCaster	EventTarget	0	0	0	33	22640	1	0	0	0
+1723	圣焰击杀处理	Kill	1024	22670	1	EventCaster	EventCaster	545	0	0	8	22643	0	0	0	0
+1724	被击降低天地调息	BeHit	256	15130	1	EventCaster	EventCaster	131564	0	0	4	0	0		0	0
+1725	明教特殊武器_神焰击监控	Cast	1024	22668	1	EventCaster	EventCaster	0	0	0	16	3979	0	0	0	0
+1726	春泥被击反击上dot	BeHit	1024	22763	1	EventCaster	EventTarget	131564	0	0	2	0	0		0	0
+1727	被击提前触发dot伤害	BeHit	1024	22763	1	EventCaster	EventTarget	131564	0	0	2	0	0		0	0
+1728	命中后删神机飞返	Hit	1024	15151	1	EventCaster	EventCaster	264	0	0	10	0	0	0	0	0
+1729	凌雪阁阵法四重会心加会效	CriticalStrike	1024	22813	1	EventCaster	EventCaster	492	0	0	33	0	0	0	0	0
+1730	凌雪阁阵法五重日月吴钩加闪避	Cast	1024	22814	1	EventCaster	EventCaster	0	0	0	33	22320	0	0	0	0
+1731	凌雪阁阵法六重被会心加会心	BeCriticalStrike	1024	22815	1	EventCaster	EventCaster	131564	0	0	33	0	0	0	0	0
+1732	蔷薇列岛_隐身被击显形	BeHit	1024	22817	1	EventCaster	EventCaster	131564	0		0	0	0		0	0
+1733	蔷薇列岛_隐身打人显形	Cast	1024	22817	1	EventCaster	EventCaster	131564	4294967295		0	0	0		0	0
+1734	提针命中低血量加会心	PreCast	1024	22792	1	EventCaster	EventCaster	8393745	0	0	2	138	0	0	0	0
+1735	天策特殊武器_疾如风触发	Cast	1024	22810	1	EventCaster	EventCaster	0	0	0	16	412	0	0	0	0
+1736	济苍生打倭寇	Hit	1024	22831	1	EventCaster	EventTarget	131565	0	0	15	0	0	0	0	0
+1737	凌雪阁斩无常弹飞技能事件	BlockLongRange	1024	22841	1	EventCaster	EventCaster	131565	0	0	33	0	0	0	0	0
+1738	凌雪阁PVE四件套加AP	Cast	102	22896	1	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1739	藏剑特殊武器_千切判断	Cast	1024	23103	1	EventCaster	EventCaster	0	0	0	16	1649	0	0	0	0
+1740	藏剑特殊武器_血钉判断	Hit	1024	23069	1	EventCaster	EventCaster	0	0	0	16	1590	0	0	0	0
+1741	藏剑特殊武器_吐信判断	Cast	1024	23081	1	EventCaster	EventCaster	0	0	0	16	1581	0	0	0	0
+1742	藏剑特殊武器_七步判断	Cast	1024	23058	1	EventCaster	EventCaster	0	0	0	16	1613	0	0	0	0
+1743	藏剑特殊武器_血毒蛇锥	Cast	1024	23072	1	EventCaster	EventCaster	0	8388608	0	6	1579	0	0	0	0
+1744	藏剑特殊武器_青竹判断	Cast	1024	23083	1	EventCaster	EventCaster	0	0	0	16	18322	0	0	0	0
+1745	藏剑特殊武器_背刺吐信	PreCast	1024	23446	1	EventCaster	EventCaster	0	0	0	16	23078	0	1	64	192
+1746	气纯特殊武器_舒翅振飞	Cast	1024	21319	1	EventCaster	EventCaster	0	0	0	16	312	0	0	0	0
+1747	气纯特殊武器_太玄剑条件	Cast	1024	23114	1	EventCaster	EventCaster	0	0	0	16	355	0	0	0	0
+1748	气纯特殊武器_太虚幻境	Cast	1024	23130	1	EventCaster	EventCaster	0	0	0	16	369	0	0	0	0
+1749	天策特殊武器_撼如雷触发	Cast	1024	22811	1	EventCaster	EventCaster	0	0	0	16	404	0	0	0	0
+1750	ACT浪客行_倏忽易	Dodge	1024	23158	1	EventCaster	EventTarget	165886	0	0	0	0	0	0	0	0
+1751	丐帮特殊武器_龙影被击	BeHit	1024	23167	1	EventCaster	EventCaster	131564	0	0	16	0	0		0	0
+1752	气纯特殊武器_舒翅飞剑	Cast	1024	23178	1	EventCaster	EventCaster	0	0	0	16	303	0	0	0	0
+1753	ACT浪客行_鬼步	Dodge	1024	23205	1	EventCaster	EventCaster	165886	0	0	0	0	0	0	0	0
+1754	七秀特殊武器_治疗溢出监控	OverHeal	1024	23222	1	EventCaster	EventCaster	4097	0	0	16	23212	0	0	0	0
+1755	ACT浪客行_水·封山	Hit	1024	23230	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+1756	ACT浪客行_水·血魂	Hit	1024	23230	2	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+1757	ACT浪客行_水·痛切	Hit	1024	23230	3	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+1758	ACT浪客行_水·急速	Hit	1024	23230	4	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+1759	剑纯特殊武器_狂字判断	Kill	1024	23289	1	EventCaster	EventCaster	164351	0	0	16	0	0	0	0	0
+1760	剑纯特殊武器_我字判断	BeHit	1024	23290	1	EventCaster	EventCaster	131582	0	0	16	0	0	0	0	0
+1761	剑纯特殊武器_剑字判断	Hit	1024	23288	1	EventCaster	EventCaster	0	0	0	16	2699	0	0	0	0
+1762	ACT浪客行_暗涌	BeHit	51	23304	1	EventCaster	EventCaster	165886	0	0	0	0	0	0	0	0
+1763	ACT浪客行_饮血	Kill	1024	23306	1	EventCaster	EventCaster	165886	0	0	0	0	0	0	0	0
+1764	ACT浪客行_残心	Hit	1024	23307	1	EventCaster	EventTarget	165886	0	0	0	0	0	0	0	0
+1765	七秀特殊武器_绫罗红波	Cast	1024	23221	1	EventCaster	EventCaster	0	0	0	0	23317	0	0	0	0
+1766	少林金刚被击	BeHit	1024	22121	1	EventCaster	EventCaster	131566	0	0	5	0	0	0	0	0
+1767	少林连杀计数	Hit	1024	19	1	EventCaster	EventCaster	1	0	0	5	0	0	0	0	0
+1768	少林特殊武器_夜叉怒相	Cast	1024	23357	1	EventCaster	EventCaster	0	0	0	5	235	0	0	0	0
+1769	少林特殊武器_威德普渡	Cast	1024	23358	1	EventCaster	EventCaster	0	0	0	5	245	0	0	0	0
+1770	天策特殊武器_赤雷处决判断	Kill	1024	19	1	EventCaster	EventCaster	0	0	0	16	0	0	0	0	0
+1771	天策特殊武器_背水破釜判断	Kill	1024	23386	1	EventCaster	EventCaster	1966087	0	0	16	0	0	0	0	0
+1772	霸刀特殊武器升级任务_监控雷爆炎斩	Cast	1024	23392	1	EventCaster	EventCaster	0	0	0	15	21789	1	0	0	0
+1773	霸刀特殊武器升级任务_监控辰砂水银	Cast	1024	23393	1	EventCaster	EventCaster	0	0	0	15	21794	1	0	0	0
+1774	霸刀特殊武器升级任务_监控激荡愈水	Cast	1024	23394	1	EventCaster	EventCaster	0	0	0	15	21799	1	0	0	0
+1775	霸刀特殊武器升级任务_监控破甲锋刃	Cast	1024	23395	1	EventCaster	EventCaster	0	0	0	15	21796	1	0	0	0
+1776	凌雪阁70大CW	Cast	20	23396	1	EventCaster	EventCaster	12	0		16	0	0		0	0
+1777	凌雪阁80大CW	Cast	20	23396	2	EventCaster	EventCaster	12	0		16	0	0		0	0
+1778	凌雪阁90大CW	Cast	20	23396	3	EventCaster	EventCaster	12	0		16	0	0		0	0
+1779	凌雪阁95大CW	Cast	20	23396	4	EventCaster	EventCaster	12	0		16	0	0		0	0
+1780	凌雪阁100大CW	Cast	20	23396	5	EventCaster	EventCaster	12	0		16	0	0		0	0
+1781	霸刀特殊武器_火啸雷吟监控刀啸风吟	BeHit	1024	23397	1	EventTarget	EventCaster	0	0	0	16	16027	0	0	0	0
+1782	唐门_内功阵法第五层	Cast	1024	3333	1	EventCaster	EventCaster	2147483648	0	0	10	0	0	0	0	0
+1783	万花特殊武器_弹指泛音触发A	Cast	1024	23404	1	EventCaster	EventCaster	0	0	0	16	180	0	0	0	0
+1784	万花特殊武器_弹指泛音触发B	Cast	1024	23404	1	EventCaster	EventCaster	0	0	0	16	2663	0	0	0	0
+1785	七秀第一段舞蹈监控	BeHitOTAction	1024	23432	1	EventCaster	EventCaster	2097152	0	0	16	0	0	0	0	0
+1786	藏剑蛇牙锥心事件	Cast	1024	23440	1	EventCaster	EventTarget	0	0	0	16	1646	0	0	0	0
+1787	徵命中音域目标伤害提高	PreCast	1024	23444	1	EventCaster	EventTarget	0	1024	0	17	0	0	0	0	0
+1788	劫烬下个技能加50%会心	PreCast	1024	23445	1	EventCaster	EventCaster	12	0	0	33	0	0	0	0	0
+1789	天策特殊武器_守如山触发	Cast	1024	22809	1	EventCaster	EventCaster	0	0	0	16	413	0	0	0	0
+1790	新附魔T头凌雪藏锋	Cast	102	22122	2	EventCaster	EventCaster	131196	0	0	16	0	0	0	0	0
+1791	新附魔T衣服凌雪藏锋	BeHit	1024	22128	2	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1792	新附魔T腰带凌雪藏锋	BeHit	154	22129	2	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1793	新附魔T护手凌雪藏锋	Cast	102	23459	1	EventCaster	EventTarget	131196	0	0	16	0	0	0	0	0
+1794	明教特殊武器_烈阳皮甲	BeHit	1024	23559	1	EventCaster	EventTarget	131582	0	0	16	0	0	0	0	0
+1795	蔷薇列岛特效腰坠_治疗目标加AP	Hit	51	22008	2	EventCaster	EventTarget	4096	0	0	16	0	0	0	0	0
+1796	蔷薇列岛特效腰坠_被击反伤	BeHit	153	23461	1	EventCaster	EventTarget	131582	0	0	16	0	0	0	0	0
+1797	五毒新版特殊武器_无支祁被击	BeHit	1024	23468	1	EventCaster	EventCaster	131582	0	0	16	0	0		0	0
+1799	金戈回澜会心减CD	CriticalStrike	1024	23481	1	EventCaster	EventCaster	0	0	0	33	22621	0		0	0
+1800	2900挑战副本水·百川命中	Hit	1024	4877	30	EventCaster	EventCaster	4096	0	0	16	0	0	0	0	0
+1801	2900挑战副本水·灭虚命中	Hit	1024	4877	31	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1802	2900挑战副本水·斩流命中	Hit	1024	4877	32	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1803	2900挑战副本水·封山命中	Hit	1024	4877	33	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1804	2940品阵营拍卖雷·海纳命中目标	Hit	51	4876	32	EventCaster	EventCaster	4096	0		16	0	0	0	0	0
+1805	2940品阵营拍卖雷·灭气命中目标	Hit	51	4876	33	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1806	2940品阵营拍卖雷·锐刃命中目标	Hit	51	4876	34	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1807	2940品阵营拍卖雷·御受命中目标	Hit	51	4876	35	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1808	蛇牙判断	Cast	1024	23440	1	EventCaster	EventCaster	0	0	0	16	1646	0	0	0	0
+1809	中极穴积寒事件	Cast	1024	23515	1	EventCaster	EventCaster	0	0	0	16	130	0	0	0	0
+1810	志室穴积寒事件	Cast	1024	23516	1	EventCaster	EventCaster	0	0	0	16	136	0	0	0	0
+1811	太渊穴积寒事件	Cast	1024	23517	1	EventCaster	EventCaster	0	0	0	16	131	0	0	0	0
+1812	厥阴俞穴积寒事件	Cast	1024	23518	1	EventCaster	EventCaster	0	0	0	16	132	0	0	0	0
+1813	涌泉穴积寒事件	Cast	1024	23519	1	EventCaster	EventCaster	0	0	0	16	100	0	0	0	0
+1814	少林特殊武器_慧火护身	BeHit	1024	23541	1	EventCaster	EventTarget	17	0	0	5	0	0	0	0	0
+1815	天策特殊武器_掠火八方事件	Cast	1024	23571	1	EventCaster	EventCaster	0	0	0	16	427	0	0	0	0
+1816	明教闪避判断	Dodge	1024	23560	1	EventCaster	EventCaster	131581	0	0	16	0	0	0	0	0
+1820	ACT浪客行_凌雪阁夜雪	BeHit	103	23632	1	EventCaster	EventTarget	131074	0	0	0	0	0	0	0	0
+1821	剑纯特殊武器_狂字伤害标记	Hit	1024	23720	1	EventCaster	EventTarget	492	0	0	16	0	0	0	0	0
+1822	ACT浪客行_狼牙_护盾反弹	BeHit	1024	22295	1	EventCaster	EventTarget	492	0	0	0	0	0	0	0	0
+1823	明教特殊武器_贪魔体判断	Hit	1024	23744	1	EventCaster	EventCaster	0	0	0	16	3973	0	0	0	0
+1824	天策特殊武器_炎枪被击判断	BeHit	1024	23751	1	EventCaster	EventTarget	0	0	0	16	6231	1	0	0	0
+1825	万花特殊武器_弹指泛音触发C	Cast	1024	23404	1	EventCaster	EventCaster	0	0	0	16	14639	0	0	0	0
+1826	天策特殊武器_炎枪被击判断2	BeHit	1024	23751	1	EventCaster	EventTarget	0	0	0	16	6232	1	0	0	0
+1827	范阳夜变_鑫鑫被击事件	BeHit	1024	23856	1	EventCaster	EventCaster	2047	0	0	0	0	0	0	0	0
+1828	范阳夜变_刀盾兵被击	BeHit	1024	23879	1	EventTarget	EventCaster	2097152	0	0	0	0	0	0	0	0
+1829	广陵月附带额外伤害	Hit	1024	23936	1	EventCaster	EventTarget	492	0	0	4	0	0	0	0	0
+1830	明教特殊武器_净世破魔击月判断	Cast	1024	23957	1	EventCaster	EventCaster	0	0	0	16	4038	0	0	0	0
+1831	明教特殊武器_净世破魔击日判定	Cast	1024	23958	1	EventCaster	EventCaster	0	0	0	16	4037	0	0	0	0
+1832	食髓降低调息	CriticalStrike	1024	23987	1	EventCaster	EventCaster	0	0	0	9	2477	0	0	0	0
+1833	破军命中目标触发额外伤害	BeHit	1024	24009	1	EventTarget	EventCaster	0	536870912	0	1	0	0	0	0	0
+1834	鸡蛋会心触发连弩额外伤害	Hit	1024	24038	1	EventCaster	EventTarget	0	0	0	10	3105	0		0	0
+1835	灵蛇攻击加额外伤害	CriticalStrike	1024	24044	1	EventCaster	EventCaster	2147483648	0	0	9	0	0	0	0	0
+1836	伤害招式触发额外伤害	Hit	1024	24045	1	EventCaster	EventTarget	256	0	0	9	0	0		0	0
+1837	鸡蛋会心触发连弩额外伤害	Hit	1024	24038	1	EventCaster	EventTarget	0	0	0	10	18776	0		0	0
+1838	新附魔T头结庐在江湖	Cast	102	22122	3	EventCaster	EventCaster	131196	0	0	16	0	0	0	0	0
+1839	新附魔T衣服结庐在江湖	BeHit	1024	22128	3	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1840	新附魔T腰带结庐在江湖	BeHit	154	22129	3	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1841	新附魔T护手结庐在江湖	Cast	102	24146	1	EventCaster	EventTarget	131196	0	0	16	0	0	0	0	0
+1842	新附魔DPS鞋结庐在江湖	Hit	1024	22187	2	EventCaster	EventTarget	492	0	0	16	0	0	0	0	0
+1843	新附魔DPS护手结庐在江湖	Hit	102	22166	2	EventCaster	EventTarget	492	0	0	16	0	0	0	0	0
+1844	食髓降低调息	CriticalStrike	1024	23987	1	EventCaster	EventCaster	0	0	0	9	18423	0	0	0	0
+1845	3250挑战副本水·百川命中	Hit	1024	4877	34	EventCaster	EventCaster	4096	0	0	16	0	0	0	0	0
+1846	3250挑战副本水·灭虚命中	Hit	1024	4877	35	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1847	3250挑战副本水·斩流命中	Hit	1024	4877	36	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1848	3250挑战副本水·封山命中	Hit	1024	4877	37	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1849	3300品阵营拍卖雷·海纳命中目标	Hit	51	4876	36	EventCaster	EventCaster	4096	0		16	0	0	0	0	0
+1850	3300品阵营拍卖雷·灭气命中目标	Hit	51	4876	37	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1851	3300品阵营拍卖雷·锐刃命中目标	Hit	51	4876	38	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1852	3300品阵营拍卖雷·御受命中目标	Hit	51	4876	39	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1853	范阳夜变_蹑云逐月事件	Cast	1024	24206	1	EventCaster	EventCaster	0	0	0	0	9003	0	0	0	0
+1854	范阳夜变_迎风回浪事件	Cast	1024	24206	1	EventCaster	EventCaster	0	0	0	0	9004	0	0	0	0
+1855	范阳夜变_凌霄揽胜	Cast	1024	24206	1	EventCaster	EventCaster	0	0	0	0	9005	0	0	0	0
+1856	范阳夜变_瑶台枕鹤	Cast	1024	24206	1	EventCaster	EventCaster	0	0	0	0	9006	0	0	0	0
+1858	卦象·水坎反伤	BeHit	1024	24444	1	EventCaster	EventTarget	131564	0	0	34	0	0		0	0
+1859	达摩洞_血斗士被击事件	BeHit	1024	24446	1	EventTarget	EventTarget	131583	0	0	0	0	0	0	0	0
+1860	额外回能触发事件	Hit	1024	24699	1	EventCaster	EventTarget	0	268435456	0	34	0	0	0	0	0
+1861	镜花别院_击落	Cast	1024	24442	1	EventCaster	EventTarget	0	2147483648	0	0	0	0	0	0	0
+1862	镜花别院_驱散	Cast	1024	24673	1	EventCaster	EventTarget	0	64	0	0	0	0	0	0	0
+1863	耗豆几率获得下次伤害	Cast	512	24882	1	EventCaster	EventCaster	1048576	0	0	5	0	0	0	0	0
+1864	新缩地造成额外伤害	Hit	1024	24883	1	EventCaster	EventTarget	32	0	0	5	0	0		0	0
+1865	洗髓被击加buff	BeHit	1024	25587	1	EventCaster	EventTarget	131564	0	0	5	0	0	0	0	0
+1866	远距离治疗目标	Hit	1024	24904	1	EventCaster	EventTarget	4096	0	0	2	0	0	0	0	0
+1867	布散耗蓝治疗	Hit	1024	24906	1	EventCaster	EventTarget	4096	0	0	2	0	0	0	0	0
+1868	布散被击耗蓝	BeHit	1024	24908	1	EventCaster	EventCaster	131564	0	0	2	0	0		0	0
+1869	持续治疗效果	Hit	1024	24910	1	EventCaster	EventTarget	4096	0	0	2	0	0	0	0	0
+1870	藏剑弟子受治疗技能事件	BeHit	1024	24963	1	EventCaster	EventTarget	4097	0	0	15	0	0	0	0	0
+1871	兵连续提高临伤害	Hit	1024	24966	1	EventCaster	EventCaster	0	536870912	0	34	0	0	0	0	0
+1872	受小怪攻击事件	BeHit	1024	24968	1	EventTarget	EventCaster	1	0	0	15	24967	1	0	0	0
+1873	对目标造成伤害触发轻鸣	Hit	1024	29967	1	EventCaster	EventTarget	492	0	0	9	0	0	0	0	0
+1874	灵蛇攻击前	PreCast	1024	25042	1	EventCaster	EventTarget	0	0	0	9	2472	1		0	0
+1875	灵蛇幻击前	PreCast	1024	25042	1	EventCaster	EventTarget	0	0	0	9	2477	1		0	0
+1876	被击加御	BeHit	1024	25065	1	EventCaster	EventCaster	14	0	0	5	0	0	0	0	0
+1877	卦象·水坎反伤增强	BeHit	1024	24444	2	EventCaster	EventTarget	131564	0	0	34	0	0		0	0
+1878	闻踪直接附带断潮	Hit	1024	25084	1	EventCaster	EventTarget	0	262144		6	0	0		0	0
+1879	NPC受小怪攻击事件	BeHit	1024	25211	1	EventTarget	EventCaster	1	0	0	15	24967	1	0	0	0
+1880	招架回血	Parry	1024	25217	1	EventCaster	EventCaster	131084	0	0	14	0	0	0	0	0
+1881	桑柔附带额外伤害	Hit	1024	25231	1	EventCaster	EventTarget	131564	0	0	17	0	0	0	0	0
+1882	古道附带额外治疗	Hit	1024	25237	1	EventCaster	EventTarget	4096	0	0	17	0	0	0	0	0
+1883	110历程装备_衣服_护盾1	BeHit	1024	25248	1	EventCaster	EventCaster	149502	0	0	16	0	0	0	0	0
+1884	110历程装备_衣服_护盾2	BeHit	1024	25248	2	EventCaster	EventCaster	149502	0	0	16	0	0	0	0	0
+1885	110历程装备_衣服_护盾3	BeHit	1024	25248	3	EventCaster	EventCaster	149502	0	0	16	0	0	0	0	0
+1886	110历程装备_武器_AP	Kill	1024	25249	1	EventCaster	EventCaster	4294967295	0	0	16	0	0	0	0	0
+1887	110历程装备_武器_AP2	Kill	1024	25249	2	EventCaster	EventCaster	4294967295	0	0	16	0	0	0	0	0
+1888	110历程装备_武器_AP3	Kill	1024	25249	3	EventCaster	EventCaster	4294967295	0	0	16	0	0	0	0	0
+1889	110历程装备_护腕_hot	Kill	1024	25250	1	EventCaster	EventCaster	4294967295	0	0	16	0	0	0	0	0
+1890	110历程装备_护腕_hot2	Kill	1024	25250	2	EventCaster	EventCaster	4294967295	0	0	16	0	0	0	0	0
+1891	110历程装备_护腕_hot3	Kill	1024	25250	3	EventCaster	EventCaster	4294967295	0	0	16	0	0	0	0	0
+1892	110历程装备_腰坠_破招	Hit	51	25251	1	EventCaster	EventCaster	131570	0	0	16	0	0	0	0	0
+1893	110历程装备_腰坠_破招2	Hit	51	25251	2	EventCaster	EventCaster	131570	0	0	16	0	0	0	0	0
+1894	110历程装备_腰坠_破招3	Hit	51	25251	3	EventCaster	EventCaster	131570	0	0	16	0	0	0	0	0
+1895	破釜会心减cd	CriticalStrike	1024	25257	1	EventCaster	EventCaster	0	0	0	18	20991	0		0	0
+1896	青冥攻击破绽目标	Hit	1024	25273	1	EventCaster	EventTarget	0	8	0	32	0	0	0	0	0
+1897	隐身受攻击	BeHit	1024	25478	1	EventCaster	EventCaster	147948	0	0	15	0	0	0	0	0
+1898	隐身放技能	Cast	1024	25478	1	EventCaster	EventCaster	2228735	0	0	15	0	0	0	0	0
+1899	盈袖霜降事件	PreCast	1024	19520	1	EventCaster	EventTarget	0	0	0	4	15127	0	0	0	0
+1900	阵法四重触发事件	CriticalStrike	1024	25527	1	EventCaster	EventCaster	131564	0	0	34	0	0		0	0
+1901	阵法五重触发事件	Cast	1024	25528	1	EventCaster	EventCaster	0	0	0	34	24375	0	0	0	0
+1902	阵法六重触发事件	BeCriticalStrike	1024	25529	1	EventCaster	EventCaster	131564	0	0	34	0	0	0	0	0
+1903	蓬莱特殊武器_下落判断	Cast	1024	25549	1	EventCaster	EventCaster	0	0	0	0	20944	0	0	0	0
+1904	新附魔T腰带奉天证道	BeHit	154	22129	4	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1905	新附魔T护手奉天证道	Cast	102	25657	1	EventCaster	EventTarget	131196	0	0	16	0	0	0	0	0
+1906	新附魔T衣服奉天证道	BeHit	1024	22128	4	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1907	新附魔T头奉天证道	Cast	102	22122	4	EventCaster	EventCaster	131196	0	0	16	0	0	0	0	0
+1908	达摩洞_五项斩被击1	BeHit	1024	25665	1	EventCaster	EventCaster	2097152	0	0	0	21926	0	0	0	0
+1909	达摩洞_五项斩被击2	BeHit	1024	25665	1	EventCaster	EventCaster	2097152	0	0	0	21992	0	0	0	0
+1910	PVE四件套效果治疗奉天证道	Cast	102	3071	2	EventCaster	EventCaster	4096	0		16	0	0		0	0
+1911	PVE四件套效果少林奉天证道	Cast	102	1305	2	EventCaster	EventCaster	32	0		16	0	0		0	0
+1912	PVE四件套效果万花奉天证道	Cast	102	1320	2	EventCaster	EventCaster	128	0		16	0	0		0	0
+1913	PVE四件套效果天策奉天证道	Cast	102	1304	2	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1914	PVE四件套效果气纯奉天证道	Cast	102	1319	2	EventCaster	EventCaster	128	0		16	0	0		0	0
+1915	PVE四件套效果剑纯奉天证道	Cast	102	1307	2	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1916	PVE四件套效果冰心奉天证道	Cast	102	1306	2	EventCaster	EventCaster	64	0		16	0	0		0	0
+1917	PVE四件套效果毒经奉天证道	Cast	102	2528	2	EventCaster	EventCaster	256	0		16	0	0		0	0
+1918	PVE四件套效果天罗奉天证道	Cast	102	3388	3	EventCaster	EventCaster	268	0		16	0	0		0	0
+1919	PVE四件套效果惊羽奉天证道	Cast	102	3388	4	EventCaster	EventCaster	12	0		16	0	0		0	0
+1920	PVE四件套效果藏剑奉天证道	Cast	102	1906	2	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1921	PVE四件套效果丐帮奉天证道	Cast	102	1307	2	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1922	PVE四件套效果明教奉天证道	Cast	68	4803	2	EventCaster	EventCaster	96	0		16	0	0		0	0
+1923	PVE四件套效果苍云奉天证道	Cast	102	1304	2	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1924	PVE四件套效果莫问奉天证道	Cast	102	14539	2	EventCaster	EventCaster	64	0		16	0	0		0	0
+1925	PVE四件套效果霸刀奉天证道	Cast	102	16986	2	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1926	PVE四件套效果蓬莱奉天证道	Cast	102	21038	2	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1927	PVE四件套效果凌雪阁奉天证道	Cast	102	22896	2	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1928	110级新CW特效易经	Cast	307	25766	1	EventCaster	EventTarget	0	0		16	2572	0		0	0
+1929	110级新CW特效花间	Cast	614	25768	1	EventCaster	EventTarget	0	0		16	18730	0		0	0
+1930	110级新CW特效冰心	Cast	307	25769	1	EventCaster	EventTarget	0	0		16	2716	0		0	0
+1931	110级新CW特效气纯	Cast	307	25770	1	EventCaster	EventTarget	0	0		16	367	0		0	0
+1932	110级新CW特效剑纯	Cast	307	25771	1	EventCaster	EventTarget	0	0		16	2699	0		0	0
+1933	110级新CW特效傲血	Cast	307	25772	1	EventCaster	EventTarget	0	0		16	415	0		0	0
+1934	110级新CW特效毒经	Cast	307	25773	1	EventCaster	EventTarget	0	4194304		16	0	0		0	0
+1935	110级新CW特效天罗	Cast	205	25774	1	EventCaster	EventTarget	0	8388608		16	0	0		0	0
+1936	110级新CW特效惊羽	Cast	205	25775	1	EventCaster	EventTarget	0	67108864		16	0	0		0	0
+1937	110级新CW特效藏剑	Cast	307	25776	1	EventCaster	EventTarget	0	0		16	1593	0		0	0
+1938	110级新CW特效焚影	Cast	307	25777	1	EventCaster	EventTarget	0	0		16	3979	0		0	0
+1939	110级新CW特效丐帮	Cast	512	25779	1	EventCaster	EventTarget	0	0		16	5266	0		0	0
+1940	110级新CW特效分山	Cast	307	25780	1	EventCaster	EventTarget	0	0		16	13047	0		0	0
+1941	110级新CW特效莫问	Cast	307	25781	1	EventCaster	EventTarget	0	0		16	14068	0		0	0
+1942	110级新CW特效霸刀	Cast	102	25782	1	EventCaster	EventTarget	0	33554432		16	0	0		0	0
+1943	110级新CW特效蓬莱	Cast	307	25783	1	EventCaster	EventTarget	0	0		16	19818	0		0	0
+1944	110级新CW特效凌雪	Cast	307	25784	1	EventCaster	EventTarget	0	16		16	0	0		0	0
+1945	110级新CW特效问水	Cast	205	25785	1	EventCaster	EventTarget	0	0		16	1646	0		0	0
+1946	110级新CW特效离经	Cast	307	25788	1	EventCaster	EventTarget	0	0		16	142	0		0	0
+1947	110级新CW特效云裳	Cast	307	25789	1	EventCaster	EventTarget	0	0		16	569	0		0	0
+1948	110级新CW特效补天	Cast	512	25790	1	EventCaster	EventTarget	0	0		16	2957	0		0	0
+1949	110级新CW特效相知	Cast	205	25792	1	EventCaster	EventTarget	0	0		16	14141	0		0	0
+1950	110级新CW特效洗髓	Cast	307	25794	1	EventCaster	EventTarget	0	0		16	233	0		0	0
+1951	110级新CW特效铁牢	Cast	307	25795	1	EventCaster	EventTarget	0	0		16	403	0		0	0
+1952	110级新CW特效明尊	Cast	205	25796	1	EventCaster	EventTarget	0	65536		16	0	0		0	0
+1953	110级新CW特效铁骨	Cast	205	25797	1	EventCaster	EventTarget	0	0		16	13045	0		0	0
+1954	删除天策弟子的渊	BeHit	1024	25798	1	EventCaster	EventCaster	131564	0	0	15	0	0		0	0
+1955	衍天宗PVE基础AP提高	Cast	102	25828	1	EventCaster	EventCaster	128	0		16	0	0		0	0
+1956	衍天宗PVE双会提高	Cast	102	25828	2	EventCaster	EventCaster	128	0		16	0	0		0	0
+1957	衍天宗70级橙武特效	Cast	25	25831	1	EventCaster	EventCaster	128	0		16	0	0		0	0
+1958	衍天宗80级橙武特效	Cast	25	25831	2	EventCaster	EventCaster	128	0		16	0	0		0	0
+1959	衍天宗90级橙武特效	Cast	25	25831	3	EventCaster	EventCaster	128	0		16	0	0		0	0
+1960	衍天宗95级橙武特效	Cast	25	25831	4	EventCaster	EventCaster	128	0		16	0	0		0	0
+1961	衍天宗100级橙武特效	Cast	25	25831	5	EventCaster	EventCaster	128	0		16	0	0		0	0
+1962	110级新CW特效衍天	Cast	256	25837	1	EventCaster	EventTarget	0	0		16	24369	0		0	0
+1963	110级CW第三条易经	Cast	31	1854	6	EventCaster	EventCaster	32	0		16	0	0		0	0
+1964	110级CW第三条洗髓	Cast	31	1855	6	EventCaster	EventCaster	16	0		16	0	0		0	0
+1965	110级CW第三条花间	Cast	31	1856	6	EventCaster	EventCaster	128	0		16	0	0		0	0
+1966	110级CW第三条离经	Cast	61	1857	6	EventCaster	EventCaster	4096	0		16	0	0		0	0
+1967	110级CW第三条傲血	Cast	82	1850	6	EventCaster	EventCaster	12	0		16	0	0		0	0
+1968	110级CW第三条铁牢	Cast	31	1851	6	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1969	110级CW第三条气纯	Cast	25	1853	6	EventCaster	EventCaster	128	0		16	0	0		0	0
+1970	110级CW第三条剑纯	Cast	31	1852	6	EventCaster	EventCaster	12	0		16	0	0		0	0
+1971	110级CW第三条冰心	Cast	25	1858	6	EventCaster	EventCaster	64	0		16	0	0		0	0
+1972	110级CW第三条奶秀	Cast	31	18977	4	EventCaster	EventTarget	4096	0		16	0	0		0	0
+1973	110级CW第三条毒经	Cast	89	3065	6	EventCaster	EventCaster	256	0		16	0	0		0	0
+1974	110级CW第三条奶毒	Cast	51	3066	6	EventCaster	EventCaster	4096	0		16	0	0		0	0
+1975	110级CW第三条田螺	Cast	25	3477	6	EventCaster	EventCaster	268	0		16	0	0		0	0
+1976	110级CW第三条鲸鱼	Cast	25	3476	6	EventCaster	EventCaster	12	0		16	0	0		0	0
+1977	110级CW第三条轻剑藏剑	Cast	25	1881	6	EventCaster	EventCaster	12	0		16	0	0		0	0
+1978	110级CW第三条重剑藏剑	Cast	37	1882	6	EventCaster	EventCaster	12	0		16	0	0		0	0
+1979	110级CW第三条丐帮	Hit	15	6950	6	EventCaster	EventCaster	12	0	0	16	0	0	0	0	0
+1980	110级CW第三条焚影	Cast	24	4940	6	EventCaster	EventCaster	96	0		16	0	0		0	0
+1981	110级CW第三条明尊	Cast	25	4941	6	EventCaster	EventCaster	96	0		16	0	0		0	0
+1982	110级CW第三条分山	Cast	31	13410	11	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1983	110级CW第三条铁骨	Cast	31	13410	12	EventCaster	EventCaster	131084	0		16	0	0		0	0
+1984	110级CW第三条莫问	Cast	25	15183	6	EventCaster	EventCaster	64	0		16	0	0		0	0
+1985	110级CW第三条相知	Cast	25	15184	6	EventCaster	EventCaster	4096	0		16	0	0		0	0
+1986	110级CW第三条霸刀	Cast	31	16984	6	EventCaster	EventCaster	12	0		16	0	0		0	0
+1987	110级CW第三条蓬莱	Cast	31	21185	6	EventCaster	EventCaster	12	0		16	0	0		0	0
+1988	110级CW第三条凌雪阁	Cast	20	23396	6	EventCaster	EventCaster	12	0		16	0	0		0	0
+1989	5070挑战副本水·百川命中	Hit	1024	4877	38	EventCaster	EventCaster	4096	0	0	16	0	0	0	0	0
+1990	5070挑战副本水·灭虚命中	Hit	1024	4877	39	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1991	5070挑战副本水·斩流命中	Hit	1024	4877	40	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1992	5070挑战副本水·封山命中	Hit	1024	4877	41	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+1993	46905140品阵营拍卖雷·海纳命中目标	Hit	51	4876	40	EventCaster	EventCaster	4096	0		16	0	0	0	0	0
+1994	46905140品阵营拍卖雷·灭气命中目标	Hit	51	4876	41	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1995	46905140品阵营拍卖雷·锐刃命中目标	Hit	51	4876	42	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1996	46905140品阵营拍卖雷·御受命中目标	Hit	51	4876	43	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+1997	衍天宗110级橙武特效	Cast	25	25831	6	EventCaster	EventCaster	128	0		16	0	0		0	0
+1998	洗髓被偏离加buff	BeMiss	1024	25587	1	EventCaster	EventTarget	131564	0	0	5	0	0	0	0	0
+1999	龙门飞剑特殊武器输出	Hit	1024	26013	1	EventCaster	EventTarget	131564	0	0	16	0	0	0	0	0
+2000	冬至活动抵挡伤害	BeHit	1024	26106	1	EventCaster	EventCaster	131564	0	0	8	0	0	0	0	0
+2001	龙门飞剑特殊武器治疗	Hit	1024	26116	1	EventCaster	EventTarget	4096	0	0	16	0	0	0	0	0
+2002	龙门飞剑特殊武器防御	Hit	1024	26140	1	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2004	遗恨断水刃叠buff	Hit	1024	26761	1	EventCaster	EventTarget	0	67108864	0	33	0	0	0	0	0
+2005	连涯攻击目标	Hit	1024	26748	1	EventCaster	EventTarget	0	16	0	32	0	0	0	0	0
+2006	ACT浪客行_丐帮新增益	Hit	1024	26787	1	EventCaster	EventTarget	1	0	0	0	0	0	0	0	0
+2007	明教_诛邪	Cast	1024	4477	3	EventCaster	EventCaster	0	0		8	22890	0		0	0
+2008	5680挑战副本水·百川命中	Hit	1024	4877	42	EventCaster	EventCaster	4096	0	0	16	0	0	0	0	0
+2009	5680挑战副本水·灭虚命中	Hit	1024	4877	43	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2010	5680挑战副本水·斩流命中	Hit	1024	4877	44	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2011	5680挑战副本水·封山命中	Hit	1024	4877	45	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2012	5760品阵营拍卖雷·海纳命中目标	Hit	51	4876	44	EventCaster	EventCaster	4096	0		16	0	0	0	0	0
+2013	5760品阵营拍卖雷·灭气命中目标	Hit	51	4876	45	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+2014	5760品阵营拍卖雷·锐刃命中目标	Hit	51	4876	46	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+2015	5760品阵营拍卖雷·御受命中目标	Hit	51	4876	47	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+2016	连缘蛊加成判定技能	PreCast	1024	26914	1	EventCaster	EventTarget	0	33554432	0	9	0	0	0	0	0
+2017	新附魔T腰带白帝风云	BeHit	154	22129	5	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2018	新附魔T护手白帝风云	Cast	102	26939	1	EventCaster	EventTarget	131196	0	0	16	0	0	0	0	0
+2019	新附魔T衣白帝风云	BeHit	1024	22128	5	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2020	新附魔T头白帝风云	Cast	102	22122	5	EventCaster	EventCaster	131196	0	0	16	0	0	0	0	0
+2021	ACT浪客行_纯阳道心	CriticalStrike	1024	26979	1	EventCaster	EventTarget	131217	0	0	0	0	0	0	0	0
+2022	ACT浪客行_苍云烨疆被击	BeHit	1024	26988	1	EventCaster	EventCaster	1	0	0	0	0	0	0	0	0
+2023	明法易伤判定	PreCast	1024	26989	1	EventCaster	EventTarget	0	128	0	5	0	0	0	0	0
+2024	明法增益移除	Cast	1024	26991	1	EventCaster	EventTarget	0	1048576	0	5	0	0	0	0	0
+2026	修罗僧_Boss吟唱被击	BeHit	1024	27056	1	EventCaster	EventTarget	131555	0	0	0	0	0	0	0	0
+2027	清疏裸彼针会心	CriticalStrike	1024	6111	1	EventCaster	EventCaster	0	0	0	2	26666	0	0	0	0
+2028	清疏彼针握针会心	CriticalStrike	1024	6111	1	EventCaster	EventCaster	0	0	0	2	26667	0	0	0	0
+2029	清疏彼针有奇穴无握针	CriticalStrike	1024	6111	1	EventCaster	EventCaster	0	0	0	2	26668	0	0	0	0
+2030	修罗僧_P1_技能数检测	BeHit	1024	27180	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+2031	修罗僧_P1_暴击数检测	BeCriticalStrike	1024	27181	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+2032	修罗僧_P1_扶摇监控	Cast	1024	27362	1	EventCaster	EventCaster	0	0	0	0	9002	0	0	0	0
+2033	修罗僧_P4_被击监控	BeHit	1024	27407	1	EventCaster	EventCaster	131555	0	0	0	0	0	0	0	0
+2034	修罗僧_P4_内力球被击监控	BeHit	1024	27429	1	EventCaster	EventTarget	131555	0	0	0	0	0	0	0	0
+2035	青川濯莲发起攻击	Cast	1024	27672	1	EventCaster	EventCaster	131564	0	0	35	0	0		0	0
+2036	凌然天风获得跳跃次数	Cast	1024	27700	1	EventCaster	EventCaster	0	8388608	0	35	0	0	0	0	0
+2039	逐云寒蕊触发破隐	Hit	1024	27787	1	EventCaster	EventTarget	131564	32768		35	0	0		0	0
+2043	道具笑醉狂_被击回血_原1290	BeHit	512	14630	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+2044	雷域大泽_3号_吟唱监控	Cast	1024	27913	1	EventCaster	EventCaster	33792	0	0	0	0	0	0	0	0
+2049	 施展招式解除不可选中效果_原1430	Cast	1024	27977	1	EventCaster	EventCaster	4294901246	0	0	0	0	0	0	0	0
+2050	沙漠风暴_春泥被击回血	BeHit	1024	27979	1	EventCaster	EventCaster	131564	0	0	16	0	0		0	0
+2051	绿野蔓生反击	BeHit	1024	27994	1	EventCaster	EventTarget	131564	0	0	35	0	0	0	0	0
+2052	道具_翔极碧落打断目标后沉默	HitOTAction	1024	27995	1	EventCaster	EventTarget	0	0	0	0	27904	1	0	0	0
+2053	道具_唐门隐身破除	Cast	1024	28001	1	EventCaster	EventCaster	35910636	32768	0	0	0	0	0	0	0
+2054	道具_十方玄机_解除时_原1720	PreCast	1024	27873	1	EventCaster	EventCaster	4294901246	2	0	0	0	0	0	0	0
+2055	道具_暗尘弥散_打人显形_原696	PreCast	1024	27922	1	EventCaster	EventCaster	131564	0		0	0	0		0	0
+2056	道具_暗尘弥散_被打显形_原697	BeHit	1024	27922	1	EventCaster	EventCaster	131564	0		0	0	0		0	0
+2057	雷域大泽_3号_蛊兽被击	BeHit	1024	28028	1	EventCaster	EventTarget	1	0	0	0	0	0	0	0	0
+2060	百战异闻录_玩家_破竹返_死亡监控	BeKill	1024	28179	1	EventCaster	EventTarget	4294967295	4294967295	0	0	0	0	0	0	0
+2061	百战异闻录_玩家_一刀柄锤_反击	BeHit	1024	28316	1	EventCaster	EventTarget	35907583	24576	0	0	0	0	0	0	0
+2062	百战异闻录_玩家_一刀柄锤_暴击	CriticalStrike	1024	28218	1	EventCaster	EventCaster	4294967295	4294967295	0	0	0	0	0	0	0
+2064	步临易伤判定	PreCast	1024	28249	1	EventCaster	EventTarget	0	128	0	14	0	0	0	0	0
+2065	步临易伤移除	Cast	1024	28250	1	EventCaster	EventTarget	0	1048576	0	14	0	0	0	0	0
+2066	百战异闻录_陈月_清露护花_被击	BeHit	1024	28614	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+2067	百战异闻录_秦雷_神注射击_击杀	Kill	1024	28308	1	EventCaster	EventTarget	0	0	0	0	28190	0	0	0	0
+2068	百战异闻录_玩家_杜钱_杀红眼	Hit	1024	28342	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+2069	百战异闻录_玩家_顽抗_死亡监控	BeKill	1024	28179	1	EventCaster	EventTarget	4294967295	4294967295	0	0	0	0	0	0	0
+2070	枪法铁林_被击	BeHit	1024	28331	1	EventCaster	EventCaster	131583	0	0	0	0	0	0	0	0
+2071	枪法铁林_被击反伤内功	BeHit	1024	28333	1	EventCaster	EventTarget	480	0	0	0	0	0	0	0	0
+2072	枪法铁林_被击反伤外功	BeHit	1024	28332	1	EventCaster	EventTarget	131084	0	0	0	0	0	0	0	0
+2073	剑心通明_打断	HitOTAction	1024	28322	1	EventCaster	EventCaster	0	0	0	0	28391	0		0	0
+2074	断泽惊鸿掠水打断	HitOTAction	1024	28378	1	EventCaster	EventCaster	0	0	0	35	28377	1	0	0	0
+2075	陌归受击减对方加速	BeHit	1024	28478	1	EventCaster	EventTarget	131564	0	0	35	0	0	0	0	0
+2076	踏月式掠途_打断	HitOTAction	1024	28958	1	EventCaster	EventTarget	131564	0	0	0	28529	0		0	0
+2077	冰天闪避加buff	Dodge	1024	28589	1	EventCaster	EventCaster	131084	0	0	6	0	0	0	0	0
+2078	忘忧受击判断气血值	BeHit	1024	28625	1	EventCaster	EventCaster	131564	0	0	35	0	0	0	0	0
+2079	定波式_受击	BeHit	1024	28626	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+2080	百战异闻录_毛毛_御法八式_反击	BeHit	1024	28632	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+2081	百战异闻录_牡丹_浴血反噬	Hit	1024	28658	1	EventTarget	EventCaster	448	0	0	0	0	0		0	0
+2082	七宝触发无视血量拿云	BeHit	307	14749	1	EventCaster	EventCaster	131564	0	0	5	0	0	0	0	0
+2083	百药宣时爆发中和	Cast	1024	28757	1	EventCaster	EventCaster	0	67108864		35	0	0		0	0
+2084	丐帮_温酒_额外掌法伤害	Hit	1024	33711	1	EventCaster	EventTarget	0	16777216	0	7	0	0	0	0	0
+2085	九字诀命中标记伤害提高	PreCast	1024	28840	1	EventCaster	EventTarget	0	1024	0	34	0	0	0	0	0
+2086	血涂风暴_击杀	BeKill	1024	28846	1	EventCaster	EventTarget	1	0	0	0	0	0	0	0	0
+2087	丐帮_温酒_期间击杀重置	Kill	1024	28916	1	EventCaster	EventTarget	1	0	0	7	0	0	0	0	0
+2088	乱暮浊茵阵4会心	CriticalStrike	1024	28929	1	EventCaster	EventCaster	492	0	0	35	0	0		0	0
+2089	乱暮浊茵阵5中和	Cast	1024	28939	1	EventCaster	EventCaster	0	0	0	35	28081	0	0	0	0
+2090	乱暮浊茵阵5一击	Cast	1024	28953	1	EventCaster	EventTarget	131564	0	0	35	0	0		0	0
+2091	乱暮浊茵阵6击杀	Kill	1024	28954	1	EventCaster	EventCaster	131564	0	0	35	0	0		0	0
+2092	潜光藏象阵5中和	Cast	1024	28982	1	EventCaster	EventCaster	0	0	0	35	28082	0	0	0	0
+2093	潜光藏象阵6被会心添加护盾	BeCriticalStrike	1024	28983	1	EventCaster	EventCaster	131564	0	0	35	0	0	0	0	0
+2094	火卦额外触发	BeHit	1024	28986	1	EventTarget	EventCaster	0	536870912	0	34	0	0	0	0	0
+2095	神占水卦攻击减伤	Cast	1024	24444	3	EventCaster	EventTarget	128	0	0	34	0	0		0	0
+2096	武傀召来_被治疗	BeHit	1024	29062	1	EventCaster	EventCaster	4096	0	0	0	0	0	0	0	0
+2097	百战异闻录_气刃法_会心	CriticalStrike	1024	29058	1	EventCaster	EventCaster	4294967295	3758096383	0	0	0	0	0	0	0
+2098	天原绝境_剑宗饮冰	Cast	410	29056	1	EventCaster	EventTarget	131532	0	0	0	0	0	0	0	0
+2099	天原绝境_武家饮血	Cast	1024	29061	1	EventCaster	EventTarget	131532	0	0	0	0	0	0	0	0
+2100	武傀召来_被击	BeHit	1024	29065	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+2101	天原绝境_橙裤降攻	BeHit	1024	29068	1	EventCaster	EventTarget	131532	0	0	0	0	0	0	0	0
+2102	风车命中惊雷buff	BeHit	1024	29129	1	EventTarget	EventCaster	0	64	0	6	0	0	0	0	0
+2104	百战异闻录_方宇谦_流星剑被击	BeHit	1024	29164	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+2105	百战异闻录_卫栖梧_破剑八刀被击	BeHit	1024	29174	1	EventCaster	EventTarget	33792	0	0	0	0	0	0	0	0
+2106	百战异闻录_五灵加护_烈焰披风反弹	BeHit	1024	29205	1	EventCaster	EventTarget	35842047	0	0	0	0	0	0	0	0
+2107	百战异闻录_卫栖梧_梁上君子被击	BeHit	1024	29208	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+2108	百战异闻录_牡丹_血涂风暴死亡创建血球	BeKill	1024	29227	1	EventCaster	EventCaster	4294967295	0	0	0	0	0	0	0	0
+2110	管家给的春泥	BeHit	1024	29321	1	EventCaster	EventCaster	131564	0	0	15	0	0		0	0
+2111	百战异闻录_韦柔丝_归血龙麟_治疗监控	BeHit	1024	29714	1	EventCaster	EventCaster	4096	0	0	0	0	0	0	0	0
+2112	百战异闻录_程沐华_风邪手_吟唱	PreCast	1024	29457	1	EventCaster	EventCaster	1	0	0	0	0	0	0	0	0
+2113	百战异闻录_程沐华_天元封气法_吟唱	PreCast	1024	29458	1	EventCaster	EventCaster	1	0	0	0	0	0	0	0	0
+2114	百战异闻录_程沐华_骊山黄泉_被击	BeHit	1024	29459	1	EventCaster	EventTarget	1	0	0	0	0	0	0	0	0
+2115	百战异闻录_程沐华_玄珠花蜜_被击	BeHit	1024	29492	1	EventCaster	EventTarget	1	0	0	0	0	0	0	0	0
+2116	丐帮_3%蜀犬大附魔	Hit	1024	29511	1	EventCaster	EventTarget	0	1	0	7	0	0	0	0	0
+2118	飘黄逐云寒蕊附带额外伤害	Hit	1024	29541	1	EventCaster	EventTarget	131564	0		35	0	0		0	0
+2119	铁牢5%大附魔_风爆发	Hit	1024	29547	1	EventCaster	EventCaster	0	134217728	0	1	0	0	0	0	0
+2120	外功百锻	Hit	1024	29553	1	EventCaster	EventTarget	12	0	0	6	0	0	0	0	0
+2121	内功百锻	Hit	1024	29548	1	EventCaster	EventTarget	272	0	0	6	0	0	0	0	0
+2122	治疗百锻	Hit	1024	29554	1	EventCaster	EventTarget	4096	0	0	6	0	0	0	0	0
+2123	百战异闻录_鲨之息_水下击杀判定	Kill	1024	35088	1	EventCaster	EventCaster	1	0	0	0	0	0	0	0	0
+2124	奶秀大附魔额外治疗	Hit	1024	29656	1	EventCaster	EventTarget	0	33554432	0	4	0	0	0	0	0
+2125	北天药宗无方PVE四件套	Cast	102	29667	2	EventCaster	EventCaster	256	0		16	0	0		0	0
+2126	6340挑战副本水·百川命中	Hit	1024	4877	46	EventCaster	EventCaster	4096	0	0	16	0	0	0	0	0
+2127	6340挑战副本水·灭虚命中	Hit	1024	4877	47	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2128	6340挑战副本水·斩流命中	Hit	1024	4877	48	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2129	6340挑战副本水·封山命中	Hit	1024	4877	49	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2130	6430品阵营拍卖雷·海纳命中目标	Hit	51	4876	48	EventCaster	EventCaster	4096	0		16	0	0	0	0	0
+2131	6430品阵营拍卖雷·灭气命中目标	Hit	51	4876	49	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+2132	6430品阵营拍卖雷·锐刃命中目标	Hit	51	4876	50	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+2133	6430品阵营拍卖雷·御受命中目标	Hit	51	4876	51	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+2134	北天药宗无方大CW100	Cast	25	29694	5	EventCaster	EventCaster	256	0		16	0	0		0	0
+2135	北天药宗无方大CW110	Cast	25	29694	6	EventCaster	EventCaster	256	0		16	0	0		0	0
+2136	北天药宗灵素大CW100	Cast	31	29696	5	EventCaster	EventTarget	4096	0		16	0	0		0	0
+2137	北天药宗灵素大CW110	Cast	31	29696	6	EventCaster	EventTarget	4096	0		16	0	0		0	0
+2138	110级CW新增特效无方	Cast	205	29698	1	EventCaster	EventTarget	0	4194304		16	0	0		0	0
+2139	110级CW新增特效灵素	Cast	205	29699	1	EventCaster	EventTarget	0	0		16	27632	0		0	0
+2140	新附魔T腰带_北天药宗	BeHit	154	22129	6	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2141	新附魔T护手北天药宗	Cast	102	29705	1	EventCaster	EventTarget	131196	0	0	16	0	0	0	0	0
+2142	新附魔T衣北天药宗	BeHit	1024	22128	6	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2143	新附魔T头白帝风云	Cast	102	22122	6	EventCaster	EventCaster	131196	0	0	16	0	0	0	0	0
+2144	无我无剑减疗增伤	PreCast	1024	29731	1	EventCaster	EventTarget	0	1	0	3	0	0	0	0	0
+2147	百战异闻录_卫栖梧_破剑八刀被击反弹	BeHit	1024	29824	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+2148	龙门飞剑特殊武器输出2022	Hit	1024	26013	2	EventCaster	EventTarget	131564	0	0	16	0	0	0	0	0
+2149	龙门飞剑特殊武器治疗2022	Hit	1024	26116	2	EventCaster	EventTarget	4096	0	0	16	0	0	0	0	0
+2150	龙门飞剑特殊武器防御2022	Hit	1024	26140	2	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2151	百战异闻录_韦柔丝_灵狐截刃攻击判定	BeHit	1024	29982	1	EventCaster	EventTarget	35816447	0	0	0	0	0	0	0	0
+2152	百战异闻录_韦柔丝_玩家读条监控	BeHitOTAction	1024	29982	1	EventCaster	EventTarget	33792	0	0	0	0	0	0	0	0
+2153	三星临无视化劲触发	PreCast	1024	29985	1	EventCaster	EventCaster	0	512	0	34	0	0	0	0	0
+2154	三星临无视化劲移除	Cast	1024	29985	1	EventCaster	EventTarget	0	268435456	0	34	0	0	0	0	0
+2156	三阳穿心掌_打断事件	HitOTAction	1024	30022	1	EventCaster	EventTarget	131564	0	0	0	29343	0		0	0
+2157	冬至附魔火1	PreCast	1024	30031	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+2158	冬至附魔火2	PreCast	1024	30032	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+2159	冬至附魔火3	PreCast	1024	30040	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+2160	冬至附魔火4	PreCast	1024	30041	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+2161	百战异闻录_程沐华_双月长针打断	HitOTAction	1024	29998	1	EventCaster	EventTarget	1	0	0	0	29292	0	0	0	0
+2162	河阳之战_5号_伐违被击	BeHit	1024	30058	1	EventCaster	EventTarget	131583	0	0	0	0	0	0	0	0
+2163	百战异闻录_卫栖梧_八手夺刃小轻功判定_后2	Cast	1024	30103	1	EventCaster	EventCaster	0	0	0	0	9007	0	0	0	0
+2164	百战异闻录_卫栖梧_八手夺刃小轻功判定_后	Cast	1024	30103	1	EventCaster	EventCaster	0	0	0	0	9004	0	0	0	0
+2165	百战异闻录_卫栖梧_八手夺刃小轻功判定_左	Cast	1024	30103	1	EventCaster	EventCaster	0	0	0	0	9005	0	0	0	0
+2166	百战异闻录_卫栖梧_八手夺刃小轻功判定_右	Cast	1024	30103	1	EventCaster	EventCaster	0	0	0	0	9006	0	0	0	0
+2167	冬至附魔火套装	Hit	204	30042	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+2168	冬至附魔草套装	Hit	1024	30095	1	EventCaster	EventCaster	1	0	0	0	0	0	0	0	0
+2169	百战异闻录_卫栖梧_缠丝手后跳闪避判定	Cast	1024	30102	1	EventCaster	EventCaster	0	0	0	0	9004	0	0	0	0
+2170	道具_凌然天风	Cast	1024	30130	1	EventCaster	EventCaster	4294967295	0	0	0	0	0	0	0	0
+2171	百战异闻录_方宇谦_流云剑绕背	BeHit	1024	30194	1	EventTarget	EventCaster	4294901759	0	0	0	0	0	0	0	0
+2172	百战异闻录_陆寻_光刻印攻击	Hit	1024	30209	1	EventCaster	EventTarget	4294967295	4294967295	0	0	0	0	0	0	0
+2173	道具_逐云寒蕊触发破隐	Hit	1024	30284	1	EventCaster	EventTarget	131564	32768		16	0	0		0	0
+2174	驭兽攻击判定	BeHit	1024	30286	1	EventCaster	EventTarget	131564	0	0	15	0	0	0	0	0
+2175	丐帮烟霞_烟雨行额外伤害	Hit	1024	30300	1	EventCaster	EventTarget	2147483648	0	0	7	0	0	0	0	0
+2176	清音长啸打断沉默	HitOTAction	1024	30302	1	EventCaster	EventTarget	0	0	0	17	14095	0		0	0
+2177	道具_绿野蔓生	BeHit	1024	30303	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+2178	天策特殊武器_掠火八方事件战八方奇穴版	Cast	1024	23571	1	EventCaster	EventCaster	0	0	0	16	6520	0	0	0	0
+2179	NPC被击	BeHit	1024	30427	1	EventCaster	EventCaster	4294967295	4294967295	0	0	0	0	0	0	0
+2181	持国回忆录_血眼龙王_红尘落英拳_外功	BeHit	1024	30484	1	EventCaster	EventCaster	131084	0		0	0	0		0	0
+2182	持国回忆录_血眼龙王_红尘落英拳_内功	BeHit	1024	30484	1	EventCaster	EventCaster	480	0		0	0	0		0	0
+2183	英雄持国回忆录_鼠王_鼠毛千针	BeHit	1024	30483	1	EventCaster	EventTarget	131564	0		0	0	0		0	0
+2184	百战异闻录_玩家_金钟罩被击	BeHit	1024	30511	1	EventTarget	EventCaster	0	0	0	0	232	0	0	0	0
+2185	百战异闻录_玩家_裂石buff被击	BeHit	1024	30515	1	EventTarget	EventCaster	0	0	0	0	3097	0	0	0	0
+2186	孤芳挂飞花	Hit	1024	30519	1	EventCaster	EventTarget	256	0		35	0	0		0	0
+2187	百战异闻录_玩家_丐帮血龙摆尾左	Cast	1024	32108	1	EventCaster	EventCaster	0	0	0	0	9005	0	0	0	0
+2188	炼石命中判定	Hit	1024	30528	1	EventCaster	EventTarget	0	8	0	9	0	0	0	0	0
+2189	新钗燕额外伤害	Hit	1024	30534	1	EventCaster	EventTarget	0	33554432	0	4	0	0	0	0	0
+2190	百战异闻录_玩家_杜钱_杀红眼_复制	Hit	1024	30576	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+2191	百战异闻录_玩家_血涂风暴_击杀_复制	BeKill	1024	30662	1	EventCaster	EventTarget	1	0	0	0	0	0	0	0	0
+2192	留风被击减攻击	BeHit	1024	30725	1	EventCaster	EventTarget	131564	0	0	4	0	0	0	0	0
+2193	天地期间被攻击减蝶踏cd	BeHit	307	30729	1	EventCaster	EventTarget	131564	0	0	4	0	0	0	0	0
+2194	舞霁命中风袖额外治疗效果	BeHit	1024	30730	1	EventTarget	EventCaster	4096	0	0	4	0	0	0	0	0
+2195	春泥永字触发蓄力	Cast	1024	30738	1	EventCaster	EventCaster	128	0	0	2	0	0	0	0	0
+2197	枪法铁林_被击_外部	BeHit	1024	30751	1	EventCaster	EventCaster	131583	0	0	0	0	0	0	0	0
+2198	枪法铁林_被击反伤内功_外部	BeHit	1024	30752	1	EventCaster	EventTarget	480	0	0	0	0	0	0	0	0
+2199	枪法铁林_被击反伤外功_外部	BeHit	1024	30753	1	EventCaster	EventTarget	131084	0	0	0	0	0	0	0	0
+2200	三阳穿心掌_打断事件_复制	HitOTAction	1024	30758	1	EventCaster	EventTarget	131564	0	0	0	28529	0		0	0
+2201	轻剑触发断潮	CriticalStrike	512	18386	1	EventCaster	EventTarget	0	262144		6	0	0		0	0
+2202	百战异闻录_外部技能_一刀柄锤_反击	BeHit	1024	30602	1	EventCaster	EventTarget	4294967295	4294967295	0	0	0	0	0	0	0
+2203	百战异闻录_外部技能_气刃法_会心	CriticalStrike	1024	30630	1	EventCaster	EventCaster	4294967295	3758096383	0	0	0	0	0	0	0
+2204	百战异闻录_外部技能_五灵加护_烈焰披风反弹	BeHit	1024	30691	1	EventCaster	EventTarget	35842047	0	0	0	0	0	0	0	0
+2206	裂石buff被击_外部	BeHit	1024	30802	1	EventTarget	EventCaster	0	0	0	0	3097	0	0	0	0
+2207	百战异闻录_玩家_金钟罩被击_外部	BeHit	1024	30819	1	EventTarget	EventCaster	0	0	0	0	232	0	0	0	0
+2208	百战异闻录_玩家_玄龙丹被击	BeHit	1024	30879	1	EventCaster	EventTarget	2214526975	0	0	0	0	0	0	0	0
+2209	引魂灵蛇攻击前	PreCast	1024	25042	1	EventCaster	EventTarget	0	0	0	9	22997	1		0	0
+2210	新附魔T腰带_江湖无限	BeHit	154	22129	7	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2211	新附魔T护手_江湖无限	Cast	102	30969	1	EventCaster	EventTarget	131196	0	0	16	0	0	0	0	0
+2212	新附魔T衣_江湖无限	BeHit	1024	22128	7	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2213	新附魔T头_江湖无限	Cast	102	22122	7	EventCaster	EventCaster	131196	0	0	16	0	0	0	0	0
+2214	七刀无视化劲	PreCast	1024	30916	1	EventCaster	EventTarget	1	1048576	0	18	0	0	0	0	0
+2215	七刀无视化劲移除	Cast	1024	30917	1	EventCaster	EventTarget	1	128	0	18	0	0	0	0	0
+2216	震霄_七刀命中小圈	Cast	1024	30935	1	EventCaster	EventCaster	1	64	0	18	0	0	0	0	0
+2217	7000挑战副本水·百川命中	Hit	1024	4877	50	EventCaster	EventCaster	4096	0	0	16	0	0	0	0	0
+2218	7000挑战副本水·灭虚命中	Hit	1024	4877	51	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2219	7000挑战副本水·斩流命中	Hit	1024	4877	52	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2220	7000挑战副本水·封山命中	Hit	1024	4877	53	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2221	7500品阵营拍卖雷·海纳命中目标	Hit	51	4876	52	EventCaster	EventCaster	4096	0		16	0	0	0	0	0
+2222	7500品阵营拍卖雷·灭气命中目标	Hit	51	4876	53	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+2223	7500品阵营拍卖雷·锐刃命中目标	Hit	51	4876	54	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+2224	7500品阵营拍卖雷·御受命中目标	Hit	51	4876	55	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+2225	浪客行_金钱镖	Cast	1024	30956	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+2227	浪客行_浮云	Cast	1024	30968	1	EventCaster	EventTarget	1020	0	0	0	0	0	0	0	0
+2228	浪客行_秘药奉还	BeHit	1024	30972	1	EventCaster	EventTarget	1	0	0	0	0	0	0	0	0
+2229	浪客行_灵巧步法	BeHit	1024	31009	1	EventCaster	EventCaster	1	0	0	0	0	0	0	0	0
+2230	共醉队友被击回复5%气血	BeHit	512	31017	1	EventCaster	EventCaster	131564	0	0	7	0	0	0	0	0
+2231	浪客行_震荡波蓄力	Cast	1024	31035	1	EventCaster	EventTarget	508	0	0	0	0	0	0	0	0
+2238	楚州_江天夜宴_傅七殊_梅花三弄	BeHit	1024	31395	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+2291	康宴别小技能反弹	BeHit	1024	31485	1	EventCaster	EventCaster	131565	0	0	36	0	0	0	0	0
+2312	百战异闻录_提多罗吒_铁甲木人被击	BeHit	1024	31563	1	EventTarget	EventCaster	132607	0	0	0	0	0	0	0	0
+2316	康宴别小技能反弹_npc	BeHit	1024	31717	1	EventCaster	EventCaster	131565	0	0	36	0	0	0	0	0
+2318	唐小珂闪避成功	BeHit	1024	31843	1	EventCaster	EventCaster	131565	0	0	36	0	0	0	0	0
+2319	百战异闻录_内部属性_暴击时造成伤害	CriticalStrike	1024	31846	1	EventCaster	EventTarget	1	0	0	0	0	0	0	0	0
+2320	发招产生破绽	Cast	1024	31888	1	EventCaster	EventCaster	0	524288	0	37	0	0	0	0	0
+2321	百战异闻录_血眼龙王_血雾龙印_击杀回血	Kill	1024	31915	1	EventCaster	EventCaster	1	0	0	0	0	0	0	0	0
+2322	火焰护体	Hit	1024	31939	1	EventCaster	EventCaster	131564	0	0	15	0	0	0	0	0
+2323	楚州_玩家_使用技能死亡	Cast	1024	31971	1	EventCaster	EventCaster	4294967295	4294967295	0	0	0	0	0	0	0
+2324	百战异闻录_玩家_黑洞死亡爆炸判定	BeKill	1024	32013	1	EventCaster	EventCaster	131555	0	0	0	0	0	0	0	0
+2325	百战异闻录_玩家_玩家被黑洞炸死无法复活	BeKill	1024	32019	1	EventTarget	EventTarget	0	0	0	0	32011	0	0	0	0
+2326	百战异闻录_玩家_丐帮血龙摆尾后	Cast	1024	32108	1	EventCaster	EventCaster	0	0	0	0	9004	0	0	0	0
+2327	百战异闻录_玩家_丐帮血龙摆尾右	Cast	1024	32108	1	EventCaster	EventCaster	0	0	0	0	9006	0	0	0	0
+2328	西津渡_4号_韩敬青_刀锋毒影后跳监控	Cast	1024	32130	1	EventCaster	EventCaster	0	0	0	0	9007	0	0	0	0
+2329	西津渡_苏凤楼_被击监控	BeHit	1024	32171	1	EventCaster	EventCaster	131555	0	0	0	0	0	0	0	0
+2330	道具_绛唇珠袖施展轻功定身受伤	Cast	1024	32251	1	EventCaster	EventCaster	65536	0	0	0	0	0		0	0
+2331	道具_傍花随柳施展招式定身	Cast	1024	32286	1	EventCaster	EventCaster	28	0	0	0	0	0		0	0
+2332	道具_徐如林回血技能事件	Hit	512	32291	1	EventCaster	EventCaster	131084	0	0	0	0	0		0	0
+2333	百战异闻录_选牌系统_击中目标耐力判断	Hit	1024	32298	1	EventCaster	EventTarget	131325	0	0	0	0	0	0	0	0
+2334	百战异闻录_选牌系统_击中目标精神判断	Hit	1024	32297	1	EventCaster	EventTarget	131325	0	0	0	0	0	0	0	0
+2335	道具_御海刀反击事件	BeHit	1024	32312	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+2336	命中弱点追加伤害	Hit	1024	32324	1	EventCaster	EventTarget	4	0	0	37	0	0	0	0	0
+2337	轻功产生破绽	Cast	1024	31888	1	EventCaster	EventCaster	65536	0	0	37	0	0	0	0	0
+2338	斗转吞附带攻击眩晕	BeHit	1024	32406	1	EventCaster	EventTarget	5	0	0	3	0	0	0	0	0
+2339	破绽提高起落势伤害	PreCast	1024	32460	1	EventCaster	EventTarget	0	8388608	0	37	0	0	0	0	0
+2340	西津渡_2号_刘展_聂云检测	Cast	1024	32482	1	EventCaster	EventCaster	0	0	0	0	9003	0		0	0
+2341	西津渡_2号_刘展_迎风检测	Cast	1024	32482	1	EventCaster	EventCaster	0	0	0	0	9004	0		0	0
+2342	西津渡_2号_刘展_瑶台检测	Cast	1024	32482	1	EventCaster	EventCaster	0	0	0	0	9006	0		0	0
+2343	西津渡_2号_刘展_凌霄检测	Cast	1024	32482	1	EventCaster	EventCaster	0	0	0	0	9005	0		0	0
+2344	流血期间释放技能监控	Cast	1024	32550	1	EventCaster	EventCaster	131564	0	0	37	0	0	0	0	0
+2345	怒翼海雕协助攻击	Hit	1024	32595	1	EventCaster	EventTarget	5	0	0	32	0	0	0	0	0
+2346	无可证被击叠buff	BeHit	1024	32643	1	EventCaster	EventTarget	131564	0	0	5	0	0	0	0	0
+2347	明教_强化月劫被消耗	BeHit	1024	32657	1	EventCaster	EventTarget	32	0	0	8	0	0	0	0	0
+2350	百战异闻录_万蛇骨_npc死亡检测	BeKill	1024	32743	1	EventCaster	EventCaster	4294967295	4294967295	0	0	0	0	0	0	0
+2351	踏不闪避重置天地	BeHit	1024	32751	1	EventCaster	EventTarget	131084	0	0	4	0	0	0	0	0
+2352	受到治疗删除重创	BeHit	1024	32754	1	EventCaster	EventTarget	4096	0	0	1	0	0	0	0	0
+2353	受到治疗删除云熙	BeHit	1024	32758	1	EventCaster	EventTarget	4096	0	0	6	0	0	0	0	0
+2354	寂灭蛊伤害	BeHit	1024	33325	1	EventTarget	EventCaster	492	0	0	9	0	0	0	0	0
+2355	剑道万象层数叠加	BeHit	1024	32763	1	EventCaster	EventCaster	492	0	0	3	0	0	0	0	0
+2356	奶秀花瓣添加减益	Hit	1024	32786	1	EventCaster	EventTarget	131564	0	0	4	0	0	0	0	0
+2357	典刑狱折磨	BeHit	1024	32881	1	EventCaster	EventTarget	4096	0	0	33	0	0	0	0	0
+2358	天策连环枪	Hit	1024	32910	1	EventCaster	EventTarget	0	268435456	0	1	0	0	0	0	0
+2359	队员招式会心增加阵眼会效	CriticalStrike	1024	33070	1	EventCaster	EventCaster	492	0	0	37	0	0	0	0	0
+2360	施展灭影队友无视减伤	Cast	1024	33072	1	EventCaster	EventCaster	0	0	0	37	32419	0	0	0	0
+2361	队友重伤回锐意和识破	BeKill	1024	33073	1	EventCaster	EventCaster	131583	0	0	37	0	0		0	0
+2362	明教_冰柱被击事件	BeHit	1024	33101	1	EventCaster	EventCaster	131564	0	0	8	0	0	0	0	0
+2363	灭影名字目标回血	Hit	1024	33115	1	EventCaster	EventTarget	4	0	0	37	0	0	0	0	0
+2364	剑气长江会心叠急曲	CriticalStrike	1024	6918	1	EventCaster	EventCaster	0	0	0	4	30524	0		0	0
+2365	剑破虚空会心叠急曲	CriticalStrike	1024	6918	1	EventCaster	EventCaster	0	0	0	4	2716	0		0	0
+2366	霜疾剑影留痕会心叠急曲	CriticalStrike	1024	6918	1	EventCaster	EventCaster	0	0	0	4	30538	0		0	0
+2367	杀机断魂千机变增益	PreCast	1024	33142	1	EventCaster	EventCaster	0	16777216	0	10	0	0	0	0	0
+2368	杀机会断魂千机变增益删除	Cast	1024	33145	1	EventCaster	EventCaster	0	16777216	0	10	0	0	0	0	0
+2369	杀机断魂天绝地灭增益	PreCast	1024	33143	1	EventCaster	EventCaster	0	16	0	10	0	0	0	0	0
+2370	杀机断魂天绝地灭增益删除	Cast	1024	33145	1	EventCaster	EventCaster	0	16	0	10	0	0	0	0	0
+2371	杀机断魂暗藏杀机增益	PreCast	1024	33144	1	EventCaster	EventCaster	0	512	0	10	0	0	0	0	0
+2372	杀机断魂暗藏杀机增益删除	Cast	1024	33145	1	EventCaster	EventCaster	0	512	0	10	0	0	0	0	0
+2373	浪客行刀宗_受击为攻击者添加标记	BeHit	1024	33151	1	EventTarget	EventCaster	131564	0	0	0	0	0	0	0	0
+2374	浪客行刀宗_对标记目标攻击提高攻击力	BeCast	1024	33152	1	EventCaster	EventTarget	131078	0	0	0	0	0	0	0	0
+2375	场景事件_横刀断浪_被击护盾	BeHit	1024	25248	4	EventCaster	EventCaster	148990	0	0	15	0	0	0	0	0
+2376	场景事件_横刀断浪_续航HOT	Kill	1024	25250	4	EventCaster	EventCaster	4294967295	0	0	15	0	0	0	0	0
+2377	120级橙戒-输出	Hit	1024	33208	1	EventCaster	EventTarget	482	0	0	16	0	0	0	0	0
+2378	120级橙戒-治疗	Hit	1024	33209	1	EventCaster	EventTarget	4096	0	0	16	0	0	0	0	0
+2383	新附魔T衣服横刀断浪	BeHit	1024	22128	8	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2384	新附魔T头横刀断浪	Cast	102	22122	8	EventCaster	EventCaster	131196	0	0	16	0	0	0	0	0
+2385	新附魔T腰带横刀断浪	BeHit	154	22129	8	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2386	西津渡_4号_韩敬青_刀锋毒影后跳监控2	Cast	1024	32130	1	EventCaster	EventCaster	0	0	0	0	9003	0	0	0	0
+2387	西津渡_4号_韩敬青_刀锋毒影后跳监控3	Cast	1024	32130	1	EventCaster	EventCaster	0	0	0	0	9004	0	0	0	0
+2388	西津渡_4号_韩敬青_刀锋毒影后跳监控4	Cast	1024	32130	1	EventCaster	EventCaster	0	0	0	0	9005	0	0	0	0
+2389	西津渡_4号_韩敬青_刀锋毒影后跳监控5	Cast	1024	32130	1	EventCaster	EventCaster	0	0	0	0	9006	0	0	0	0
+2390	刀宗110橙武触发	Cast	25	33238	1	EventCaster	EventCaster	131084	0		16	0	0		0	0
+2391	刀宗120橙武触发	Cast	25	33238	2	EventCaster	EventCaster	131084	0		16	0	0		0	0
+2392	110级CW额外伤害特效刀宗	Cast	256	33239	1	EventCaster	EventTarget	67108864	0		16	0	0		0	0
+2393	新附魔Dps横刀断浪鞋子	CriticalStrike	1024	33247	1	EventCaster	EventTarget	494	0	0	16	0	0	0	0	0
+2394	新附魔奶妈腰带	Hit	1024	33248	1	EventCaster	EventTarget	4096	0	0	16	0	0	0	0	0
+2395	新附魔T护手	Cast	102	33249	1	EventCaster	EventCaster	131073	0	0	16	0	0	0	0	0
+2396	新附魔T衣服横刀断浪1	BeHit	1024	22128	9	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2397	新附魔T头横刀断浪1	Cast	102	22122	9	EventCaster	EventCaster	131196	0	0	16	0	0	0	0	0
+2398	新附魔T横刀断浪1	BeHit	154	22129	9	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2399	11150英雄副本水·百川命中	Hit	1024	4877	54	EventCaster	EventCaster	4096	0	0	16	0	0	0	0	0
+2400	11150英雄副本水·灭虚命中	Hit	1024	4877	55	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2401	11150英雄副本水·斩流命中	Hit	1024	4877	56	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2402	11150英雄副本水·封山命中	Hit	1024	4877	57	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2403	1130011800阵营拍卖雷·海纳命中目标	Hit	51	4876	56	EventCaster	EventCaster	4096	0		16	0	0	0	0	0
+2404	1130011800阵营拍卖雷·灭气命中目标	Hit	51	4876	57	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+2405	1130011800阵营拍卖雷·锐刃命中目标	Hit	51	4876	58	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+2406	1130011800阵营拍卖雷·御受命中目标	Hit	51	4876	59	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+2407	120级橙武第三条铁骨	Cast	31	13410	14	EventCaster	EventCaster	131084	0		16	0	0		0	0
+2408	120级橙武第三条分山	Cast	31	13410	13	EventCaster	EventCaster	131084	0		16	0	0		0	0
+2409	120级洗髓经CW特效第三条	Cast	31	1855	7	EventCaster	EventCaster	16	0		16	0	0		0	0
+2410	120级易筋经CW特效第三条	Cast	69	1854	7	EventCaster	EventCaster	32	0		16	0	0		0	0
+2411	120级惊羽诀CW特效第三条	Cast	25	3476	7	EventCaster	EventCaster	12	0		16	0	0		0	0
+2412	120级天罗诡道CW特效第三条	Cast	25	3477	7	EventCaster	EventCaster	268	0		16	0	0		0	0
+2413	120级衍天宗CW特效第三条	Cast	25	25831	7	EventCaster	EventCaster	128	0		16	0	0		0	0
+2414	120级无方CW特效第三条	Cast	25	29694	7	EventCaster	EventCaster	256	0		16	0	0		0	0
+2415	120级橙武第三条莫问	Cast	25	15183	7	EventCaster	EventCaster	64	0		16	0	0		0	0
+2416	120级橙武第三条冰心	Cast	25	1858	7	EventCaster	EventCaster	64	0		16	0	0		0	0
+2417	120级花间CW特效第三条	Cast	31	1856	7	EventCaster	EventCaster	128	0		16	0	0		0	0
+2418	120级气纯Cw特效	Cast	25	1853	7	EventCaster	EventCaster	128	0		16	0	0		0	0
+2419	120级剑纯cw特效	Cast	31	1852	7	EventCaster	EventCaster	12	0		16	0	0		0	0
+2420	120级毒经cw特效	Cast	89	3065	7	EventCaster	EventCaster	256	0		16	0	0		0	0
+2421	120级焚影cw特效	Cast	24	4940	7	EventCaster	EventCaster	96	0		16	0	0		0	0
+2422	120级明尊cw特效	Cast	25	4941	7	EventCaster	EventCaster	96	0		16	0	0		0	0
+2423	120级蓬莱cw特效	Cast	31	21185	7	EventCaster	EventCaster	12	0		16	0	0		0	0
+2424	120级傲血cw特效	Cast	82	1850	7	EventCaster	EventCaster	12	0		16	0	0		0	0
+2425	120级铁牢cw特效	Cast	31	1851	7	EventCaster	EventCaster	131084	0		16	0	0		0	0
+2426	120级山居cw特效	Cast	37	1882	7	EventCaster	EventCaster	12	0		16	0	0		0	0
+2427	120级问水cw特效	Cast	25	1881	7	EventCaster	EventCaster	12	0		16	0	0		0	0
+2428	120级凌雪cw特效	Cast	20	23396	7	EventCaster	EventCaster	12	0		16	0	0		0	0
+2430	120级霸刀cw特效	Cast	31	16984	7	EventCaster	EventCaster	12	0		16	0	0		0	0
+2431	120级丐帮cw特效	Hit	15	6950	7	EventCaster	EventCaster	12	0	0	16	0	0	0	0	0
+2432	120级奶花cw描述	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+2433	120级奶秀cw描述	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+2434	120级奶毒cw描述	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+2435	120级奶歌cw描述	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+2436	120级奶药cw描述	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+2437	百战异闻录_陆寻_横戈平潮击杀	Kill	1024	33367	1	EventTarget	EventTarget	1	0	0	0	0	0	0	0	0
+2438	百战异闻录_华鹤炎_反击耐力	BeHit	1024	33537	1	EventCaster	EventTarget	1	0	0	0	0	0	0	0	0
+2439	镖人联动刀马_普攻恢复生命值	Hit	1024	33563	1	EventCaster	EventCaster	537001984	0	0	0	0	0	0	0	0
+2440	上衫勇刀反击	BeHit	1024	33589	1	EventCaster	EventTarget	147967	0	0	0	0	0	0	0	0
+2441	镖人联动竖_清除自身会心增益	Hit	1024	33515	1	EventCaster	EventCaster	131072	0	0	0	0	0	0	0	0
+2442	龙门飞剑特殊武器输出2023	Hit	1024	26013	3	EventCaster	EventTarget	131564	0	0	16	0	0	0	0	0
+2443	龙门飞剑特殊武器治疗2023	Hit	1024	26116	3	EventCaster	EventTarget	4096	0	0	16	0	0	0	0	0
+2444	龙门飞剑特殊武器防御2023	Hit	1024	26140	3	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2445	人剑合一引爆谢云流气场	Cast	1024	33631	1	EventCaster	EventCaster	1	0	0	0	3783	0	0	0	0
+2446	百战异闻录_玩家_丐帮血龙摆尾前	Cast	1024	32108	1	EventCaster	EventCaster	0	0	0	0	9003	0	0	0	0
+2447	镖人联动燕子娘_伤口目标易伤	PreCast	1024	33655	1	EventCaster	EventTarget	131072	0	0	0	0	0	0	0	0
+2448	镖人联动阿育娅_延长大招时间	Hit	1024	33520	1	EventCaster	EventCaster	131072	0	0	0	0	0	0	0	0
+2449	镖人联动阿育娅_额外射箭	Hit	1024	33526	2	EventCaster	EventTarget	131072	0	0	0	0	0	0	0	0
+2450	百战异闻录_上杉勇刀_被击反击	BeHit	1024	33694	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+2451	镖人联动流派_基础破绽触发	Hit	1024	33700	1	EventCaster	EventTarget	131072	0	0	0	0	0	0	0	0
+2452	镖人联动流派_对破绽目标打伤害计数	Hit	1024	33702	1	EventCaster	EventTarget	131072	0	0	0	0	0	0	0	0
+2453	镖人联动流派_基础割伤触发	Hit	1024	33704	1	EventCaster	EventTarget	536870912	0	0	0	0	0	0	0	0
+2454	镖人联动流派_对割伤目标伤害时标记	Hit	1024	33710	1	EventCaster	EventTarget	131072	0	0	0	0	0	0	0	0
+2455	镖人联动流派_对割伤目标攻击炸一跳	Hit	1024	33708	1	EventCaster	EventTarget	131072	0	0	0	0	0	0	0	0
+2456	镖人联动流派_攻击目标出易伤	Hit	1024	33744	1	EventCaster	EventTarget	536870912	0	0	0	0	0	0	0	0
+2457	镖人联动小怪_攻击触发	BeHit	1024	33721	1	EventCaster	EventCaster	131564	0	0	0	0	0		0	0
+2458	镖人联动流派_气血流攻击附带真伤	Hit	1024	33780	1	EventCaster	EventTarget	536870912	0	0	0	0	0	0	0	0
+2459	提多罗吒_乐器被击	BeHit	1024	33821	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+2460	镖人联动开局装备_对低血量目标增伤	PreCast	1024	33839	1	EventCaster	EventTarget	131072	0	0	0	0	0	0	0	0
+2461	镖人联动流派_攻击目标出失衡	Hit	1024	33745	1	EventCaster	EventTarget	131072	0	0	0	0	0	0	0	0
+2462	镖人联动流派_易伤目标攻击触发	Hit	1024	33852	1	EventCaster	EventCaster	131308	0	0	0	0	0		0	0
+2464	武狱黑牢_牛波_沉睡被击	BeHit	1024	34262	1	EventTarget	EventCaster	131564	0	0	0	0	0	0	0	0
+2465	武狱黑牢_牛波_美梦被击	BeHit	1024	34263	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+2466	武狱黑牢_时风_击杀回血	Kill	1024	34079	1	EventCaster	EventTarget	4294967295	0	0	0	0	0	0	0	0
+2467	武狱黑牢_牛波_坚硬表皮	BeHit	1024	34375	1	EventCaster	EventTarget	131564	0	0	0	0	0	0	0	0
+2468	百战异闻录_韦柔丝_被击检测	BeHit	1024	34381	1	EventCaster	EventTarget	131546	0	0	0	0	0	0	0	0
+2469	武狱黑牢_武狱黑牢_油灯玩家被击	BeHit	1024	34402	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+2470	武狱黑牢_乐临川_打断监控	BeHitOTAction	1024	34418	1	EventCaster	EventTarget	2097152	0	0	0	0	0	0	0	0
+2471	202303预热_洪笑尘	BeHit	1024	34477	1	EventCaster	EventCaster	131072	0	0	0	0	0	0	0	0
+2473	武狱黑牢_牛波_坚硬表皮玩家	Hit	1024	34528	1	EventCaster	EventCaster	131564	0	0	0	0	0	1	0	112
+2474	武狱黑牢_牛波_坚硬表皮玩家2	Hit	1024	34528	1	EventCaster	EventCaster	131564	0	0	0	0	0	1	144	255
+2476	武狱黑牢_解兰舟飞虹身法被击	BeHit	1024	34638	1	EventCaster	EventCaster	131564	0	0	0	0	0	0	0	0
+2477	怀泽蛊伤害	BeHit	1024	34667	1	EventTarget	EventCaster	492	0	0	9	0	0	0	0	0
+2478	群侠万变dps腰带附魔	PreCast	205	22169	1	EventCaster	EventCaster	492	0	0	16	0	0	0	0	0
+2479	群侠万变治疗护手附魔	Cast	205	22155	1	EventCaster	EventTarget	4096	0		16	0	0		0	0
+2480	群侠万变治疗衣服附魔	BeHit	1024	22211	1	EventCaster	EventCaster	131564	0	0	16	0	0		0	0
+2481	群侠万变t腰带附魔	BeHit	154	22129	10	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2482	群侠万变t护手附魔	Cast	102	33249	1	EventCaster	EventCaster	131073	0	0	16	0	0	0	0	0
+2483	群侠万变t衣服附魔	BeHit	1024	22128	10	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2484	群侠万变t头附魔	Cast	102	22122	10	EventCaster	EventCaster	131196	0	0	16	0	0	0	0	0
+2485	群侠万变dps护手附魔	Hit	102	22166	2	EventCaster	EventTarget	492	0	0	16	0	0	0	0	0
+2486	格挡	BeHit	1024	34770	1	EventCaster	EventTarget	148990	0	0	15	0	0	0	0	0
+2487	百战异闻录_程沐华_推手致死	Kill	1024	34781	1	EventCaster	EventTarget	0	0	0	0	34780	0	0	0	0
+2488	怀泽蛊成长	BeHit	1024	34917	1	EventTarget	EventCaster	4096	0	0	9	0	0	0	0	0
+2489	丐帮对酌命中	Hit	1024	34932	1	EventCaster	EventTarget	238	0	0	7	0	0	0	0	0
+2491	月嘉禾重击叠层	BeHit	1024	34950	1	EventTarget	EventCaster	131564	0	0	36	0	0	0	0	0
+2492	月嘉禾招式目标被击	BeHit	1024	34959	1	EventTarget	EventCaster	131564	0	0	36	0	0	0	0	0
+2493	月嘉禾绝技追加伤害	Cast	1024	34961	1	EventCaster	EventTarget	131564	0	0	36	0	0		0	0
+2494	群侠万变治疗腰带	Hit	1024	33248	1	EventCaster	EventTarget	4096	0	0	16	0	0	0	0	0
+2495	群侠万变dps鞋子	CriticalStrike	1024	33247	1	EventCaster	EventTarget	494	0	0	16	0	0	0	0	0
+2496	12450副本水·百川命中	Hit	1024	4877	58	EventCaster	EventCaster	4096	0	0	16	0	0	0	0	0
+2497	12450副本水·灭虚命中	Hit	1024	4877	59	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2498	12450副本水·斩流命中	Hit	1024	4877	60	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2499	12450副本水·封山命中	Hit	1024	4877	61	EventCaster	EventCaster	131564	0	0	16	0	0	0	0	0
+2500	1260013200阵营拍卖雷·海纳命中	Hit	51	4876	60	EventCaster	EventCaster	4096	0		16	0	0	0	0	0
+2501	1260013200阵营拍卖雷·灭气命中	Hit	51	4876	61	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+2502	1260013200阵营拍卖雷·锐刃命中	Hit	51	4876	62	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+2503	1260013200阵营拍卖雷·御受命中	Hit	51	4876	63	EventCaster	EventCaster	131564	0		16	0	0	0	0	0
+2504	月嘉禾绝技追加伤害_npc	Cast	1024	35047	1	EventCaster	EventTarget	131564	0	0	36	0	0		0	0
+2505	月嘉禾任务NPC被击	BeHit	512	35081	1	EventCaster	EventCaster	35652078	0	0	15	0	0	0	0	0
+2506	120级群侠万变赛季橙戒-输出	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+2507	120级群侠万变赛季橙戒-治疗	Hit	0	19	1	EventCaster	EventCaster	1	0	0	16	0	0	0	0	0
+2508	百战异闻录_玩家_夜叉探海诀击杀	BeKill	1024	35118	1	EventCaster	EventTarget	1	0	0	0	35114	0	0	0	0
+2509	百战异闻录_玩家_麻沸散受到治疗	BeHit	1024	35121	1	EventTarget	EventCaster	4096	0	0	0	0	0	0	0	0
+2510	百战异闻录_玩家_兔死狐悲格挡	BeHit	1024	35122	1	EventCaster	EventTarget	131564	0	0	0	0	0		0	0
+2511	百战异闻录_玩家_破竹返闪避	Dodge	1024	28179	1	EventCaster	EventTarget	131086	0		0	0	0		0	0
+2512	百战异闻录_玩家_破竹返招架	Parry	1024	28179	1	EventCaster	EventTarget

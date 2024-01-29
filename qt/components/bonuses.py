@@ -35,7 +35,7 @@ class TeamGainsWidget(QWidget):
         tab_layout.addWidget(self.team_gains["袖气"], 0, 0)
 
         self.team_gains["左旋右转"] = {
-            "stack": SpinWithLabel(TEAM_GAINS_NAME["左旋右转"], "层数", maximum=100)
+            "stack": SpinWithLabel(TEAM_GAINS_NAME["左旋右转"], "层数", maximum=133)
         }
         tab_layout.addWidget(self.team_gains["左旋右转"]["stack"], 1, 0)
         self.team_gains["泠风解怀"] = {
@@ -179,7 +179,7 @@ class TeamGainsWidget(QWidget):
         tabs.addTab(tab, "长歌")
 
         self.team_gains["庄周梦"] = {
-            "stack": SpinWithLabel(TEAM_GAINS_NAME["庄周梦"], "层数"),
+            "stack": SpinWithLabel(TEAM_GAINS_NAME["庄周梦"], "层数", maximum=133),
             "rate": SpinWithLabel(TEAM_GAINS_NAME["庄周梦"], "覆盖", maximum=100)
         }
         tab_layout.addWidget(self.team_gains["庄周梦"]["stack"], 0, 0)
@@ -204,7 +204,7 @@ class TeamGainsWidget(QWidget):
         tab_layout.addWidget(self.team_gains["飘黄"]["rate"], 0, 0)
 
         self.team_gains["配伍"] = {
-            "rate": SpinWithLabel(TEAM_GAINS_NAME["配伍"], "覆盖", maximum=int(100 / 6))
+            "rate": SpinWithLabel(TEAM_GAINS_NAME["配伍"], "覆盖", maximum=100)
         }
         tab_layout.addWidget(self.team_gains["配伍"]["rate"], 1, 0)
 
