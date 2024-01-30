@@ -101,8 +101,8 @@ class 号令三军:
 
         def __call__(self, status: Status):
             rate = self.duration * FRAME_PER_SECOND / status.total_frame
-            status.attribute.strain_base += self.value * self.stack * rate
-            status.attribute.strain_base += self.value / 2 * self.stack * rate
+            value = int(self.value * self.stack * rate + self.value / 2 * self.stack * rate)
+            status.attribute.strain_base += value
 
     def __init__(self, value):
         self.duration = 30
@@ -156,7 +156,7 @@ class 舍身弘法:
             self.rate = rate / 100
 
         def __call__(self, status: Status):
-            status.attribute.strain_base += self.value * self.stack * self.rate
+            status.attribute.strain_base += int(self.value * self.stack * self.rate)
 
     def __init__(self, value):
         self.value = value
@@ -286,7 +286,7 @@ class 朝圣言:
             self.rate = rate / 100
 
         def __call__(self, status: Status):
-            status.attribute.strain_base += self.value * self.stack * self.rate
+            status.attribute.strain_base += int(self.value * self.stack * self.rate)
 
     def __init__(self, value1, value2):
         self.value1 = value1
@@ -331,8 +331,8 @@ class 振奋:
             self.rate = rate / 100
 
         def __call__(self, status: Status):
-            status.attribute.physical_overcome_base += self.value * self.stack * self.rate
-            status.attribute.magical_overcome_base += self.value * self.stack * self.rate
+            status.attribute.physical_overcome_base += int(self.value * self.stack * self.rate)
+            status.attribute.magical_overcome_base += int(self.value * self.stack * self.rate)
 
     def __init__(self, value):
         self.value = value
@@ -369,7 +369,7 @@ class 庄周梦:
             self.rate = rate / 100
 
         def __call__(self, status: Status):
-            status.attribute.strain_base += self.value * self.stack * self.rate
+            status.attribute.strain_base += int(self.value * self.stack * self.rate)
 
     def __init__(self, value):
         self.value = value

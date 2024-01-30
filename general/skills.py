@@ -55,7 +55,7 @@ class 外功_昆吾_弦刃(TriggerSkill, PhysicalDamage):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["大附魔手-冷却"].trigger()
+        self.status.buffs["大附魔腕-冷却"].trigger()
 
 
 class 内功_昆吾_弦刃(TriggerSkill, MagicalDamage):
@@ -74,7 +74,7 @@ class 内功_昆吾_弦刃(TriggerSkill, MagicalDamage):
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["大附魔手-冷却"].trigger()
+        self.status.buffs["大附魔腕-冷却"].trigger()
 
 
 class 外功_刃凌(TriggerSkill, PhysicalDamage):
