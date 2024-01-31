@@ -505,6 +505,40 @@ class MagicalDamage(DamageSkill):
         return damage
 
 
+class MixedDamage(DamageSkill):
+    @property
+    def critical_strike(self):
+        return self.attribute.physical_critical_strike + self.skill_critical_strike
+
+    def calculate(self, level):
+        self.level = level
+        damage = init_result(
+            self.damage_base, self.damage_rand, self.damage_gain,
+            self.attack_power_cof, self.attack_power_cof_gain, self.attribute.magical_attack_power,
+            self.weapon_damage_cof, self.weapon_damage_cof_gain, self.attribute.weapon_damage,
+            self.surplus_cof, self.surplus_cof_gain, self.attribute.surplus
+        )
+
+        damage = damage_addition_result(damage, self.attribute.magical_damage_addition + self.skill_damage_addition)
+        damage = overcome_result(damage, self.attribute.magical_overcome,
+                                 self.target.magical_shield_base,
+                                 self.target.magical_shield_gain + self.skill_shield_gain,
+                                 self.attribute.magical_shield_ignore + self.skill_shield_ignore,
+                                 self.target.shield_constant)
+        # if critical:
+        #     damage = critical_result(damage, attribute.physical_critical_power)
+        damage = critical_result(damage,
+                                 self.attribute.physical_critical_strike + self.skill_critical_strike,
+                                 self.attribute.physical_critical_power + self.skill_critical_power)
+        damage = level_reduction_result(damage, self.attribute.level, self.target.level)
+        damage = strain_result(damage, self.attribute.strain)
+        damage = pve_addition_result(damage, self.attribute.pve_addition + self.skill_pve_addition)
+        damage = vulnerable_result(damage, self.target.magical_vulnerable)
+        damage = damage
+
+        return damage
+
+
 """"""
 
 
@@ -527,6 +561,8 @@ class DotSkill(PeriodicalSkill):
             if tick == res_tick:
                 self.status.buffs[self.name].clear()
                 self.post_cast()
+            else:
+                self.status.durations[self.name] -= tick * self.interval
 
     def pre_cast(self):
         super().pre_cast()
