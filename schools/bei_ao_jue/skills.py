@@ -1,5 +1,6 @@
 from base.constant import PHYSICAL_ATTACK_POWER_COF, WEAPON_DAMAGE_COF, PHYSICAL_DOT_ATTACK_POWER_COF, SURPLUS_COF
-from base.skill import *
+from base.skill import Melee, CastingSkill, ActionSkill, DotSkill, PlacementSkill, TriggerSkill, OverdrawSkill, \
+    PhysicalDamage
 
 """
     Base Skills
@@ -179,18 +180,14 @@ class 闹须弥(CastingSkill):
 
         self.cd_base = 25 * 16
 
+        self.sub_skills = ["闹须弥-持续"]
+
     @property
     def condition(self):
         return self.status.stacks["松烟竹雾"]
 
-    def pre_cast(self):
-        super().pre_cast()
-        self.status.skills["闹须弥-持续"].cast()
-
 
 class 擒龙六斩(CastingSkill):
-    related_skills = ["逐鹰式"]
-
     def __init__(self, status):
         super().__init__(status)
         self.name = "擒龙六斩"
@@ -227,15 +224,13 @@ class 惊燕式(CastingSkill, PhysicalDamage):
         super().post_cast()
         self.level = 1
         self.status.skills["破"].cast(2)
-        self.status.skills["逐鹰式"].activate = True
+        self.status.buffs["擒龙六斩"].trigger()
 
 
 class 逐鹰式(CastingSkill, PhysicalDamage):
     def __init__(self, status):
         super().__init__(status)
         self.name = "逐鹰式"
-
-        self.activate = False
 
         self.interval_list = [4, 6]
 
@@ -247,12 +242,11 @@ class 逐鹰式(CastingSkill, PhysicalDamage):
 
     @property
     def condition(self):
-        return self.status.skills['擒龙六斩'].available
+        return self.status.skills['擒龙六斩'].available and self.status.stacks["擒龙六斩"] == 1
 
     def pre_cast(self):
         super().pre_cast()
-        self.status.cds["擒龙六斩"] += self.status.skills["擒龙六斩"].cd
-        self.status.energies["擒龙六斩"] -= 1
+        self.status.skills["擒龙六斩"].set_cd()
 
     def post_hit(self):
         super().post_hit()
@@ -262,7 +256,7 @@ class 逐鹰式(CastingSkill, PhysicalDamage):
         super().post_cast()
         self.level = 1
         self.status.skills["破"].cast(2)
-        self.activate = False
+        self.status.buffs["擒龙六斩"].trigger()
 
 
 class 坚壁清野_持续(PlacementSkill, PhysicalDamage):
@@ -380,20 +374,13 @@ class 降麒式(CastingSkill):
         super().__init__(status)
         self.name = "降麒式"
 
-        self.activate = False
-
         self.gcd_base = 0
+
+        self.sub_skills = ["降麒式-持续"]
 
     @property
     def condition(self):
-        return self.status.stacks["松烟竹雾"]
-
-    def post_cast(self):
-        super().post_cast()
-        self.status.buffs["降麒式-计数"].clear()
-        self.status.buffs["降麒式-就绪"].clear()
-        self.status.buffs["降麒式"].trigger()
-        self.status.skills["降麒式-持续"].cast()
+        return self.status.stacks["松烟竹雾"] and self.status.stacks["降麒式-就绪"]
 
 
 class 降麒式_持续(PlacementSkill, PhysicalDamage):
@@ -411,6 +398,11 @@ class 降麒式_持续(PlacementSkill, PhysicalDamage):
 
         self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(60 * 2)
         self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
+
+    def pre_cast(self):
+        super().pre_cast()
+        self.status.buffs["降麒式-计数"].clear()
+        self.status.buffs["降麒式-就绪"].clear()
 
 
 class 上将军印_神兵(TriggerSkill, PhysicalDamage):

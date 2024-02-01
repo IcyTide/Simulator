@@ -1,4 +1,4 @@
-from base.buff import Buff, GainBuff, SnapshotBuff, DotBuff, CountBuff, CDBuff, TriggerBuff, PlacementBuff, Energy
+from base.buff import Buff, GainBuff, DotBuff, CountBuff, CDBuff, TriggerBuff, PlacementBuff
 from general.buffs import 内功双会套装
 
 
@@ -8,7 +8,7 @@ class 嗔怒(内功双会套装):
         self.name = "嗔怒"
 
 
-class 剑舞(SnapshotBuff, Energy):
+class 剑舞(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "剑舞"
@@ -16,6 +16,8 @@ class 剑舞(SnapshotBuff, Energy):
         self.stack_max = 10
 
         self.value = 31 / 1024
+
+        self.gain_attribute = "attack_power"
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -26,7 +28,7 @@ class 剑舞(SnapshotBuff, Energy):
         self.status.attribute.magical_attack_power_gain -= self.value * stack
 
 
-class 满堂(SnapshotBuff):
+class 满堂(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "满堂"
@@ -36,25 +38,55 @@ class 满堂(SnapshotBuff):
 
         self.duration = 15 * 16
 
-        self.values = [0.08, 21 / 1024]
+        self.sub_buffs = ["满堂-会心", "满堂-会效"]
+
+
+class 满堂_会心(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "满堂-会心"
+
+        self.stack_add = 5
+        self.stack_max = 5
+
+        self.value = 0.08
+
+        self.gain_attribute = "critical_strike"
 
     def add(self):
         super().add()
-        self.status.attribute.magical_critical_strike_gain += self.values[0]
+        self.status.attribute.magical_critical_strike_gain += self.value
 
     def remove(self):
         super().remove()
-        self.status.attribute.magical_critical_strike_gain -= self.values[0]
+        self.status.attribute.magical_critical_strike_gain -= self.value
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        self.status.attribute.magical_critical_strike_gain += self.values[0]
-        self.status.attribute.magical_critical_power_gain += self.values[1]
+        self.status.attribute.magical_critical_strike_gain += self.value
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        self.status.attribute.magical_critical_strike_gain -= self.values[0]
-        self.status.attribute.magical_critical_power_gain -= self.values[1]
+        self.status.attribute.magical_critical_strike_gain -= self.value
+
+
+class 满堂_会效(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "满堂-会效"
+
+        self.stack_add = 5
+        self.stack_max = 5
+
+        self.value = 21 / 1024
+
+    def gain(self, level, stack):
+        super().gain(level, stack)
+        self.status.attribute.magical_critical_power_gain += self.value
+
+    def revoke(self, level, stack):
+        super().revoke(level, stack)
+        self.status.attribute.magical_critical_power_gain -= self.value
 
 
 class 急曲_持续(DotBuff):
@@ -65,7 +97,7 @@ class 急曲_持续(DotBuff):
         self.stack_max = 3
 
 
-class 繁音急节(SnapshotBuff):
+class 繁音急节(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "繁音急节"
@@ -73,6 +105,8 @@ class 繁音急节(SnapshotBuff):
         self.duration = 20 * 16
 
         self.value = 461 / 1024
+
+        self.gain_attribute = "attack_power"
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -117,17 +151,19 @@ class 广陵月(Buff):
     def remove(self):
         super().remove()
         self.status.skills["剑破虚空"].cost = True
-        self.status.buffs["广陵月-增益"].clear()
+        self.status.buffs["广陵月-会效"].clear()
 
 
-class 广陵月_增益(SnapshotBuff):
+class 广陵月_会效(GainBuff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "广陵月-增益"
+        self.name = "广陵月-会效"
 
         self.stack_max = 10
 
         self.value = 20 / 1024
+
+        self.gain_attribute = "critical_power"
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -138,7 +174,7 @@ class 广陵月_增益(SnapshotBuff):
         self.status.attribute.magical_critical_power_gain -= self.value * stack
 
 
-class 流玉(SnapshotBuff):
+class 流玉(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "流玉"
@@ -147,7 +183,8 @@ class 流玉(SnapshotBuff):
 
         self.value = 512 / 1024
 
-        self.gain_group = ["玳弦急曲", "玳弦急曲-新妆"]
+        self.gain_skills = ["玳弦急曲", "玳弦急曲-新妆"]
+        self.gain_attribute = "damage_addition"
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -206,7 +243,7 @@ class 盈袖(Buff):
         self.status.attribute.extra_haste -= self.value
 
 
-class 化冰(SnapshotBuff):
+class 化冰(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "化冰"
@@ -241,7 +278,7 @@ class 化冰_计数(CountBuff):
             self.clear()
 
 
-class 夜天(SnapshotBuff):
+class 夜天(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "夜天"
@@ -249,6 +286,8 @@ class 夜天(SnapshotBuff):
         self.duration = 2 * 16
 
         self.value = 102 / 1024
+
+        self.gain_attribute = "damage_addition"
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -284,7 +323,7 @@ class 凝华(CountBuff):
         self.duration = 20 * 16
 
 
-class 霜降(SnapshotBuff):
+class 霜降(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "霜降"
@@ -292,7 +331,9 @@ class 霜降(SnapshotBuff):
         self.stack_max = 3
 
         self.values = [154 / 1024, 307 / 1024, 461 / 1024]
-        self.gain_group = ["玳弦急曲", "玳弦急曲-新妆"]
+
+        self.gain_skills = ["玳弦急曲", "玳弦急曲-新妆"]
+        self.gain_attribute = "damage_addition"
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -336,6 +377,6 @@ class 气吞长江_持续(DotBuff):
         self.stack_max = 3
 
 
-BUFFS = [嗔怒, 剑舞, 满堂, 急曲_持续, 繁音急节, 枕上, 广陵月, 广陵月_增益, 流玉, 流玉_持续,
+BUFFS = [嗔怒, 剑舞, 满堂, 满堂_会心, 满堂_会效, 急曲_持续, 繁音急节, 枕上, 广陵月, 广陵月_会效, 流玉, 流玉_持续,
          钗燕_计数, 盈袖, 化冰, 化冰_计数, 夜天, 琼霄_持续, 琼霄_冷却, 凝华, 霜降,
          飞霜绛露, 飞霜绛露_冷却, 气吞长江_持续]

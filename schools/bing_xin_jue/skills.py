@@ -1,5 +1,6 @@
 from base.constant import MAGICAL_ATTACK_POWER_COF, MAGICAL_DOT_ATTACK_POWER_COF, SURPLUS_COF
-from base.skill import *
+from base.skill import Melee, LoopSkill, CastingSkill, ChannelSkill, DotSkill, PlacementSkill, TriggerSkill, \
+    MagicalDamage
 
 """
     Base Skills
@@ -29,7 +30,8 @@ class 名动四方(LoopSkill):
 
     def post_hit(self):
         super().post_hit()
-        self.status.buffs["剑舞"].increase(2)
+        for _ in range(2):
+            self.status.buffs["剑舞"].trigger()
 
 
 class 急曲_持续(DotSkill, MagicalDamage):
@@ -246,7 +248,7 @@ class 广陵月_伤害(MagicalDamage):
 
     def pre_cast(self):
         super().pre_cast()
-        self.status.buffs["广陵月-增益"].trigger()
+        self.status.buffs["广陵月-会效"].trigger()
 
 
 class 流玉_持续(DotSkill, MagicalDamage):
@@ -443,6 +445,7 @@ SKILLS_MAP = {
     "猿公剑法": [急曲_持续, 玳弦急曲, 剑破虚空, 破_虚空, 剑气长江, 剑影留痕],
     "西河剑器": [名动四方, 江海凝光],
     "剑器浑脱": [繁音急节, 心鼓弦, 婆罗门],
-    "奇穴": [玳弦急曲_新妆, 广陵月, 广陵月_伤害, 流玉_持续, 破_流玉, 钗燕, 钗燕_明, 盈袖, 化冰, 琼霄_持续, 琼霄_急曲, 凝华, 凝华_明]
+    "奇穴": [玳弦急曲_新妆, 广陵月, 广陵月_伤害, 流玉_持续, 破_流玉, 钗燕, 钗燕_明, 盈袖, 化冰, 琼霄_持续, 琼霄_急曲,
+             凝华, 凝华_明]
 }
 SKILLS = sum(SKILLS_MAP.values(), [])

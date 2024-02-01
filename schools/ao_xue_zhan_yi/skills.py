@@ -1,5 +1,6 @@
 from base.constant import PHYSICAL_ATTACK_POWER_COF, WEAPON_DAMAGE_COF, PHYSICAL_DOT_ATTACK_POWER_COF, SURPLUS_COF
-from base.skill import *
+from base.skill import Melee, CastingSkill, ChannelSkill, ChargingSkill, DotSkill, TriggerSkill, HastedCD, \
+    PhysicalDamage
 
 """
     Base Skills
@@ -270,6 +271,21 @@ class 龙牙_龙血(PhysicalDamage):
         self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024 * 0.1)
 
 
+class 虎贲(TriggerSkill):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "虎贲"
+
+        self.probability = 0.3
+
+        self.is_cast = False
+        self.is_hit = False
+
+    def post_cast(self):
+        super().post_cast()
+        self.status.buffs["战意"].increase(3)
+
+
 class 画角闻龙(PhysicalDamage):
     def __init__(self, status):
         super().__init__(status)
@@ -304,6 +320,6 @@ SKILLS_MAP = {
     "虎牙令": [撼如雷],
     "奔雷枪术": [突, 灭],
     "游龙骑法": [任驰骋, 断魂刺],
-    "奇穴": [穿云_挫锐, 击水, 渊, 龙牙_龙血],
+    "奇穴": [穿云_挫锐, 击水, 渊, 龙牙_龙血, 虎贲],
 }
 SKILLS = sum(SKILLS_MAP.values(), [])

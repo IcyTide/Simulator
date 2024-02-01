@@ -1,17 +1,16 @@
-import random
-
 from base.constant import MAGICAL_ATTACK_POWER_COF, WEAPON_DAMAGE_COF, MAGICAL_DOT_ATTACK_POWER_COF, SURPLUS_COF
-from base.skill import *
+from base.skill import Melee, Skill, LoopSkill, CastingSkill, ChannelSkill, TriggerSkill, ChargingSkill, DotSkill, \
+    PlacementSkill, PhysicalDamage, MixedDamage
 
 """
     Base Skills
 """
 
 
-class 六合棍(Melee):
+class 罡风镖法(Melee):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "六合棍"
+        self.name = "罡风镖法"
 
         self.gcd_index = self.name
         self.gcd_base = 24
@@ -99,10 +98,6 @@ class 蚀肌弹(CastingSkill, MixedDamage):
         self.damage_base = 180
         self.damage_rand = 20
         self._attack_power_cof = MAGICAL_ATTACK_POWER_COF(108 * 1.2 * 1.1 * 1.05 * 1.05 * 1.1 * 1.1 * 1.1 * 1.1)
-
-    @property
-    def attack_power_cof(self):
-        return self._attack_power_cof + MAGICAL_ATTACK_POWER_COF(self.interval_base)
 
     @property
     def condition(self):
@@ -215,10 +210,6 @@ class 天绝地灭_持续_一(Skill):
     @property
     def tick(self):
         return self.tick_base + self.status.stacks["聚精凝神"]
-
-    @property
-    def interval(self):
-        return max(40, super().interval)
 
     def pre_cast(self):
         super().pre_cast()
@@ -467,10 +458,11 @@ class 天绝地灭_诡鉴_二(天绝地灭_持续_一):
 
 
 SKILLS_MAP = {
-    "通用": [六合棍, 神机回复, 破],
+    "通用": [罡风镖法, 神机回复, 破],
     "乾坤一掷": [孔雀翎, 暴雨梨花针],
     "九宫飞星": [
-        蚀肌弹, 蚀肌弹_外功, 天女散花, 天女散花_伤害, 化血, 天绝地灭, 天绝地灭_伤害, 天绝地灭_持续_一, 天绝地灭_持续_二, 天绝地灭_持续_三,
+        蚀肌弹, 蚀肌弹_外功, 天女散花, 天女散花_伤害, 化血, 天绝地灭, 天绝地灭_伤害, 天绝地灭_持续_一, 天绝地灭_持续_二,
+        天绝地灭_持续_三,
         千机变, 连弩, 鬼斧神工, 暗藏杀机, 图穷匕见
     ],
     "天魔无相": [心无旁骛],

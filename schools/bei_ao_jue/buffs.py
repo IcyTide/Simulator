@@ -1,4 +1,4 @@
-from base.buff import Buff, GainBuff, SnapshotBuff, DotBuff, CountBuff, CDBuff, PlacementBuff, TriggerBuff
+from base.buff import Buff, GainBuff, DotBuff, CountBuff, CDBuff, PlacementBuff, TriggerBuff
 from general.buffs import 外功双会套装
 
 
@@ -15,7 +15,6 @@ class 秀明尘身(Buff):
 
 
 class 松烟竹雾(Buff):
-    related_skills = ["逐鹰式"]
 
     def __init__(self, status):
         super().__init__(status)
@@ -23,14 +22,22 @@ class 松烟竹雾(Buff):
 
     def remove(self):
         super().remove()
-        for skill in self.related_skills:
-            self.status.skills[skill].activate = False
+        self.status.buffs["擒龙六斩"].clear()
 
 
 class 雪絮金屏(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "雪絮金屏"
+
+
+class 擒龙六斩(Buff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "擒龙六斩"
+
+        self.duration = 160
+        self.stack_max = 5
 
 
 class 闹须弥_持续(DotBuff):
@@ -52,16 +59,16 @@ class 冥鼓(GainBuff):
 
         self.value = 410 / 1024
 
-        self.gain_group = ["破"]
+        self.gain_skills = ["破"]
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_shield_gain -= self.value
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_shield_gain += self.value
 
 
@@ -75,7 +82,7 @@ class 霜天(GainBuff):
         self.stack_max = 7
         self.value = 0.15
 
-        self.gain_group = ["上将军印"]
+        self.gain_skills = ["上将军印"]
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -127,39 +134,86 @@ class 见尘(PlacementBuff):
         self.name = "见尘"
 
 
-class 含风(SnapshotBuff):
+class 含风(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "含风"
 
         self.duration = 24 * 16
+        self.stack_max = 2
+
+        self.sub_buffs = ["含风-会心", "含风-会效", "含风-增伤"]
+
+
+class 含风_会心(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "含风-会心"
 
         self.stack_max = 2
-        self.values = [0.05, 51 / 1024, 51 / 1024]
+        
+        self.value = 0.05
+
+        self.gain_attribute = "critical_strike"
 
     def add(self):
         super().add()
-        self.status.attribute.physical_critical_strike_gain += self.values[0]
+        self.status.attribute.physical_critical_strike_gain += self.value
 
     def remove(self):
         super().remove()
-        self.status.attribute.physical_critical_strike_gain -= self.values[0]
+        self.status.attribute.physical_critical_strike_gain -= self.value
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        self.status.attribute.physical_critical_strike_gain += self.values[0] * stack
-        self.status.attribute.physical_critical_power_gain += self.values[1] * stack
-        self.status.skills["刀啸风吟"].skill_damage_addition += self.values[2] * stack
-        self.status.skills["坚壁清野"].skill_damage_addition += self.values[2] * stack
+        self.status.attribute.physical_critical_strike_gain += self.value * stack
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        self.status.attribute.physical_critical_strike_gain -= self.values[0] * stack
-        self.status.attribute.physical_critical_power_gain -= self.values[1] * stack
-        self.status.skills["刀啸风吟"].skill_damage_addition -= self.values[2] * stack
-        self.status.skills["坚壁清野"].skill_damage_addition -= self.values[2] * stack
+        self.status.attribute.physical_critical_strike_gain -= self.value * stack
 
 
+class 含风_会效(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "含风-会效"
+
+        self.stack_max = 2
+        self.value = 51 / 1024
+
+        self.gain_attribute = "critical_power"
+
+    def gain(self, level, stack):
+        super().gain(level, stack)
+        self.status.attribute.physical_critical_power_gain += self.value * stack
+
+    def revoke(self, level, stack):
+        super().revoke(level, stack)
+        self.status.attribute.physical_critical_power_gain -= self.value * stack
+
+
+class 含风_增伤(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "含风-增伤"
+
+        self.stack_max = 2
+        self.value = 51 / 1024
+            
+        self.gain_skills = ["刀啸风吟", "坚壁清野"]
+        self.gain_attribute = "damage_addition"
+
+    def gain(self, level, stack):
+        super().gain(level, stack)
+        for skill in self.gain_skills:
+            self.status.skills[skill].skill_damage_addition += self.value * stack
+
+    def revoke(self, level, stack):
+        super().revoke(level, stack)
+        for skill in self.gain_skills:
+            self.status.skills[skill].skill_damage_addition -= self.value * stack
+            
+        
 class 降麒式_计数(CountBuff):
     def __init__(self, status):
         super().__init__(status)
@@ -181,22 +235,16 @@ class 降麒式_就绪(Buff):
 
         self.duration = 15 * 16
 
-    def add(self):
-        super().add()
-        self.status.skills["降麒式"].activate = True
-
-    def remove(self):
-        super().remove()
-        self.status.skills["降麒式"].activate = False
-
 
 class 降麒式_持续(PlacementBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "降麒式-持续"
 
+        self.sub_buffs = ["降麒式"]
 
-class 降麒式(SnapshotBuff):
+
+class 降麒式(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "降麒式"
@@ -204,6 +252,8 @@ class 降麒式(SnapshotBuff):
         self.duration = 15 * 16
 
         self.value = 205 / 1024
+
+        self.gain_attribute = "damage_addition"
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -251,7 +301,7 @@ class 背水沉舟_持续(Buff):
 
 
 BUFFS = [
-    朔气, 秀明尘身, 松烟竹雾, 雪絮金屏, 闹须弥_持续, 坚壁清野_持续,
-    冥鼓, 霜天, 楚歌, 楚歌_计数, 见尘, 含风, 降麒式_计数, 降麒式_就绪, 降麒式_持续, 降麒式,
+    朔气, 秀明尘身, 松烟竹雾, 雪絮金屏, 擒龙六斩, 闹须弥_持续, 坚壁清野_持续,
+    冥鼓, 霜天, 楚歌, 楚歌_计数, 见尘, 含风, 含风_会心, 含风_会效, 含风_增伤, 降麒式_计数, 降麒式_就绪, 降麒式_持续, 降麒式,
     沉夜重雪, 沉夜重雪_冷却, 背水沉舟_持续
 ]

@@ -193,9 +193,9 @@ class Equipments:
         set_count = {}
         set_effect = {}
         for equipment in self.equipments.values():
-            if not equipment.name or equipment.position == "secondary_weapon":
+            if not equipment.name:
                 continue
-            final_gains += [EQUIP_GAINS[gain] for gain in equipment.gains + equipment.special_enchant]
+            final_gains += [gain for gain in equipment.gains + equipment.special_enchant]
             if equipment.set_id not in set_count:
                 set_count[equipment.set_id] = 0
                 set_effect[equipment.set_id] = equipment.set_data
@@ -207,9 +207,9 @@ class Equipments:
                     break
                 for effect in effects:
                     if gain := effect.get("gain"):
-                        final_gains.append(EQUIP_GAINS[gain])
+                        final_gains.append(gain)
 
-        return list(set(final_gains))
+        return [EQUIP_GAINS[gain] for gain in set(final_gains)]
 
 
 def equipments_script(equipments_widget: EquipmentsWidget):

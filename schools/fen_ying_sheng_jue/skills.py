@@ -1,5 +1,5 @@
 from base.constant import MAGICAL_ATTACK_POWER_COF, WEAPON_DAMAGE_COF, MAGICAL_DOT_ATTACK_POWER_COF, SURPLUS_COF
-from base.skill import *
+from base.skill import Melee, CastingSkill, DotSkill, TriggerSkill, FixedInterval, PhysicalDamage, MagicalDamage
 
 """
     Base Skills
@@ -900,7 +900,7 @@ class 驱夜断愁_神兵(TriggerSkill, PhysicalDamage):
 
         self.damage_base = 20
         self.damage_rand = 2
-        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(50)
+        self.attack_power_cof = MAGICAL_ATTACK_POWER_COF(50)
 
 
 SKILLS_MAP = {

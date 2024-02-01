@@ -1,4 +1,4 @@
-from base.buff import Buff, GainBuff, SnapshotBuff, DotBuff, CDBuff, PlacementBuff, TriggerBuff, Energy, ExtendBuff
+from base.buff import Buff, GainBuff, DotBuff, CDBuff, PlacementBuff, TriggerBuff, Energy, ExtendBuff
 from general.buffs import 外功双会套装
 
 
@@ -98,22 +98,24 @@ class 沧浪三叠(Buff):
         self.stack_max = 2
 
 
-class 灭影追风(GainBuff):
+class 灭影追风(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "灭影追风"
 
         self.duration = 6 * 16
 
+        self.sub_buffs = ["灭影追风-破防", "灭影追风-会心", "灭影追风-会效"]
+
+
+class 灭影追风_破防(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "灭影追风-破防"
+
         self.value = 102 / 1024
 
-    def add(self):
-        super().add()
-        self.status.buffs["灭影追风-快照"].trigger()
-
-    def remove(self):
-        super().remove()
-        self.status.buffs["灭影追风-快照"].clear()
+        self.gain_attribute = "overcome"
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -124,30 +126,52 @@ class 灭影追风(GainBuff):
         self.status.attribute.physical_overcome_gain -= self.value
 
 
-class 灭影追风_快照(SnapshotBuff):
+class 灭影追风_会心(GainBuff):
     def __init__(self, status):
         super().__init__(status)
-        self.name = "灭影追风-快照"
+        self.name = "灭影追风-会心"
 
-        self.values = [0.1, 100 / 1024]
+        self.duration = 6 * 16
+
+        self.value = 0.1
+
+        self.gain_attribute = "critical_strike"
 
     def add(self):
         super().add()
-        self.status.attribute.physical_critical_strike_gain += self.values[0]
+        self.status.attribute.physical_critical_strike_gain += self.value
 
     def remove(self):
         super().remove()
-        self.status.attribute.physical_critical_strike_gain -= self.values[0]
+        self.status.attribute.physical_critical_strike_gain -= self.value
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        self.status.attribute.physical_critical_strike_gain += self.values[0]
-        self.status.attribute.physical_critical_power_gain += self.values[1]
+        self.status.attribute.physical_critical_strike_gain += self.value
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        self.status.attribute.physical_critical_strike_gain -= self.values[0]
-        self.status.attribute.physical_critical_power_gain -= self.values[1]
+        self.status.attribute.physical_critical_strike_gain -= self.value
+
+
+class 灭影追风_会效(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "灭影追风-会效"
+
+        self.duration = 6 * 16
+
+        self.value = 100 / 1024
+
+        self.gain_attribute = "critical_power"
+
+    def gain(self, level, stack):
+        super().gain(level, stack)
+        self.status.attribute.physical_critical_power_gain += self.value
+
+    def revoke(self, level, stack):
+        super().revoke(level, stack)
+        self.status.attribute.physical_critical_power_gain -= self.value
 
 
 class 戗风(GainBuff):
@@ -158,16 +182,17 @@ class 戗风(GainBuff):
         self.duration = 8 * 16
         self.value = 154 / 1024
         
-        self.gain_group = ["沧浪三叠·一", "沧浪三叠·二", "沧浪三叠·三", "横云断浪", "孤锋破浪"]
+        self.gain_skills = ["沧浪三叠·一", "沧浪三叠·二", "沧浪三叠·三", "横云断浪", "孤锋破浪"]
+        self.gain_attribute = "damage_addition"
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_damage_addition += self.value
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_damage_addition -= self.value
 
 
@@ -179,16 +204,17 @@ class 雨积(GainBuff):
         self.duration = 160
         self.value = 154 / 1024
 
-        self.gain_group = ["行云式·一", "行云式·二", "行云式·三", "停云式"]
+        self.gain_skills = ["行云式·一", "行云式·二", "行云式·三", "停云式"]
+        self.gain_attribute = "damage_addition"
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_damage_addition += self.value
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_damage_addition -= self.value
 
 
@@ -208,16 +234,17 @@ class 镇机(GainBuff):
             922 / 1024
         ]
 
-        self.gain_group = ["断云式", "断云式-额外"]
+        self.gain_skills = ["断云式", "断云式-额外"]
+        self.gain_attribute = "damage_addition"
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_damage_addition += self.values[stack - 1]
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_damage_addition -= self.values[stack - 1]
 
 
@@ -244,7 +271,7 @@ class 长溯(Buff):
         self.status.skills["孤锋破浪"].tick_base = 1 + self.status.stacks[self.name]
 
 
-class 涤瑕(SnapshotBuff):
+class 涤瑕(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "涤瑕"
@@ -253,7 +280,8 @@ class 涤瑕(SnapshotBuff):
 
         self.values = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
 
-        self.gain_group = ["流血"]
+        self.gain_skills = ["流血"]
+        self.gain_attribute = "damage_addition"
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -272,6 +300,7 @@ class 流岚(GainBuff, ExtendBuff):
         self.duration = 0
         self.duration_add = 20 * 16
         self.duration_max = 60 * 16
+
         self.value = 410 / 1024
 
     def gain(self, level, stack):
@@ -334,6 +363,7 @@ class 背水沉舟_持续(Buff):
 
 
 BUFFS = [
-    朔气, 锐意, 身形, 识破, 破绽, 流血, 单手持刀, 双手持刀, 行云式, 沧浪三叠, 灭影追风, 灭影追风_快照,
+    朔气, 锐意, 身形, 识破, 破绽, 流血, 单手持刀, 双手持刀, 行云式, 沧浪三叠,
+    灭影追风, 灭影追风_破防, 灭影追风_会心, 灭影追风_会效,
     戗风, 雨积, 镇机, 界破, 长溯, 涤瑕, 流岚, 潋风, 截辕_持续
 ]

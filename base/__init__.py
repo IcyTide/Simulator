@@ -19,12 +19,10 @@ class Monitor(dict):
         return result
 
     def __add__(self, other: dict):
-        result = {}
-        for key, value in self.items():
-            result[key] = value
+        result = self.copy()
         for key, value in other.items():
             result[key] = value
-        return result.items()
+        return result
 
     def min(self):
         return min(self.values(), default=FRAME_PER_SECOND)

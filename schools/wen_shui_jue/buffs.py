@@ -30,18 +30,12 @@ class 山居剑意(GainBuff):
     def add(self):
         super().add()
         self.status.skills["断潮"].probability = 1
-        for attr, value in self.status.attribute.primary_weapon_attribute.items():
-            setattr(self.status.attribute, attr, getattr(self.status.attribute, attr) - value)
-        for attr, value in self.status.attribute.secondary_weapon_attribute.items():
-            setattr(self.status.attribute, attr, getattr(self.status.attribute, attr) + value)
+        self.status.attribute.apply_secondary_weapon()
 
     def remove(self):
         super().remove()
         self.status.skills["断潮"].probability = 717 / 1024
-        for attr, value in self.status.attribute.secondary_weapon_attribute.items():
-            setattr(self.status.attribute, attr, getattr(self.status.attribute, attr) - value)
-        for attr, value in self.status.attribute.primary_weapon_attribute.items():
-            setattr(self.status.attribute, attr, getattr(self.status.attribute, attr) + value)
+        self.status.attribute.apply_primary_weapon()
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -149,7 +143,7 @@ class 凤鸣(GainBuff):
 
         self.values = [0.15, 154 / 1024]
 
-        self.gain_group = ["夕照雷峰", "云飞玉皇", "云飞玉皇-额外"]
+        self.gain_skills = ["夕照雷峰", "云飞玉皇", "云飞玉皇-额外"]
 
     def add(self):
         super().add()
@@ -189,7 +183,7 @@ class 造化(GainBuff):
 
         self.values = [102 / 1024, 154 / 1024]
 
-        self.gain_group = ["夕照雷峰", "云飞玉皇", "云飞玉皇-额外"]
+        self.gain_skills = ["夕照雷峰", "云飞玉皇", "云飞玉皇-额外"]
 
     def add(self):
         super().add()
@@ -225,7 +219,7 @@ class 层云(GainBuff):
 
         self.values = [72 / 1024, 143 / 1024, 215 / 1024, 287 / 1024, 358 / 1024]
 
-        self.gain_group = ["风来吴山-持续"]
+        self.gain_skills = ["风来吴山-持续"]
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -279,7 +273,7 @@ class 碧归(GainBuff):
 
         self.value = 307 / 1024
 
-        self.gain_group = ["夕照雷峰", "云飞玉皇", "云飞玉皇-额外"]
+        self.gain_skills = ["夕照雷峰", "云飞玉皇", "云飞玉皇-额外"]
 
     def gain(self, level, stack):
         super().gain(level, stack)

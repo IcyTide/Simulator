@@ -167,7 +167,7 @@ class 琼霄:
 class 凝华:
     @staticmethod
     def post_cast_effect_trigger(self: Skill):
-        self.status.buffs["凝华"].trigger()
+        self.status.buffs["凝华"].trigger(stack=3)
 
     @staticmethod
     def post_cast_effect_consume(self: Skill):

@@ -27,8 +27,11 @@ class 器攻套装:
 
 
 class 夕照雷峰大橙武:
+    def __init__(self):
+        self.value = 51 / 1024
+
     def __call__(self, status: Status):
-        status.skills["夕照雷峰"].skill_damage_addition += 51 / 1024
+        status.skills["夕照雷峰"].skill_damage_addition += self.value
 
 
 class 听雷大橙武:

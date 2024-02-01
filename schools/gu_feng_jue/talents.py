@@ -93,17 +93,9 @@ class 承磊:
 
 
 class 镇机:
-    @staticmethod
-    def add_effect(self: Buff):
-        self.status.buffs["镇机"].trigger()
-
-    @staticmethod
-    def clear_effect(self: Buff):
-        self.status.buffs["镇机"].clear()
 
     def __call__(self, status: Status):
-        status.buffs["破绽"].add_effect.append(self.add_effect)
-        status.buffs["破绽"].clear_effect.append(self.clear_effect)
+        status.buffs["破绽"].sub_buffs.append("镇机")
 
 
 class 界破:
@@ -145,17 +137,8 @@ class 周流:
 
 
 class 涤瑕:
-    @staticmethod
-    def add_effect(self: Buff):
-        self.status.buffs["涤瑕"].trigger()
-
-    @staticmethod
-    def clear_effect(self: Buff):
-        self.status.buffs["涤瑕"].clear()
-
     def __call__(self, status: Status):
-        status.buffs["流血"].add_effect.append(self.add_effect)
-        status.buffs["流血"].clear_effect.append(self.clear_effect)
+        status.buffs["流血"].sub_buffs.append("涤瑕")
 
 
 class 强膂:

@@ -144,7 +144,6 @@ class 降麒式:
 
     def __call__(self, status: Status):
         related_skills = ["惊燕式", "逐鹰式"]
-
         for skill in related_skills:
             status.skills[skill].post_cast_effect.append(self.post_cast_effect)
 

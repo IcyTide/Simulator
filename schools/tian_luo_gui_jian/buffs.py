@@ -1,4 +1,4 @@
-from base.buff import Buff, GainBuff, SnapshotBuff, DotBuff, CountBuff, CDBuff, TriggerBuff, PlacementBuff, Energy
+from base.buff import Buff, GainBuff, DotBuff, CountBuff, CDBuff, PlacementBuff, Energy
 from general.buffs import 内功双会套装
 
 
@@ -16,7 +16,7 @@ class 神机(Energy):
         self.stack_max = 100
 
 
-class 气魄(SnapshotBuff):
+class 气魄(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "气魄"
@@ -25,6 +25,8 @@ class 气魄(SnapshotBuff):
         self.stack_max = 5
 
         self.value = 20 / 1024
+
+        self.gain_attribute = "attack_power"
 
     def add(self):
         super().add()
@@ -155,13 +157,16 @@ class 天绝地灭_持续_三(天绝地灭_持续_一):
         self.name = "天绝地灭-持续-三"
 
 
-class 扬威(SnapshotBuff):
+class 扬威(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "扬威"
 
         self.duration = 15 * 16
+
         self.value = 512 / 1024
+
+        self.gain_attribute = "attack_power"
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -181,34 +186,66 @@ class 鬼斧弹药(Buff):
         self.stack_max = 50
 
 
-class 心无旁骛(SnapshotBuff):
+class 心无旁骛(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "心无旁骛"
 
         self.duration = 10 * 16
 
-        self.values = [0.15, 300 / 1024]
+        self.sub_buffs = ["心无旁骛-会心", "心无旁骛-会效"]
 
     def add(self):
         super().add()
         self.status.skills["神机回复"].gain = 20
-        self.status.attribute.physical_critical_strike_gain += self.values[0]
 
     def remove(self):
         super().remove()
         self.status.skills["神机回复"].gain = 10
-        self.status.attribute.physical_critical_strike_gain -= self.values[0]
+
+
+class 心无旁骛_会心(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "心无旁骛-会心"
+
+        self.value = 0.15
+
+        self.gain_attribute = "critical_strike"
+
+    def add(self):
+        super().add()
+        self.status.attribute.physical_critical_strike_gain += self.value
+
+    def remove(self):
+        super().remove()
+        self.status.attribute.physical_critical_strike_gain -= self.value
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        self.status.attribute.physical_critical_strike_gain += self.values[0]
-        self.status.attribute.physical_critical_power_gain += self.values[1]
+        self.status.attribute.physical_critical_strike_gain += self.value
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        self.status.attribute.physical_critical_strike_gain -= self.values[0]
-        self.status.attribute.physical_critical_power_gain -= self.values[1]
+        self.status.attribute.physical_critical_strike_gain -= self.value
+
+
+class 心无旁骛_会效(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "心无旁骛-会效"
+
+        self.value = 300 / 1024
+
+        self.gain_attribute = "critical_power"
+
+    def gain(self, level, stack):
+        super().gain(level, stack)
+        self.status.attribute.physical_critical_power_gain += self.value
+
+    def revoke(self, level, stack):
+        super().revoke(level, stack)
+        self.status.attribute.physical_critical_power_gain -= self.value
 
 
 class 血影留痕(Buff):
@@ -235,6 +272,9 @@ class 弩心(GainBuff):
         self.duration = 96
         self.value = 154 / 1024
 
+        self.gain_attribute = "overcome"
+
+
     def gain(self, level, stack):
         super().gain(level, stack)
         self.status.attribute.magical_overcome_gain += self.value
@@ -244,12 +284,14 @@ class 弩心(GainBuff):
         self.status.attribute.magical_overcome_gain -= self.value
 
 
-class 擘两分星_内功伤害(SnapshotBuff):
+class 擘两分星_内功伤害(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "擘两分星-内功伤害"
 
         self.value = 205 / 1024
+
+        self.gain_attribute = "damage_addition"
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -267,16 +309,17 @@ class 擘两分星_陷阱伤害(GainBuff):
 
         self.value = 103 / 1024
 
-        self.gain_group = ["天绝地灭-伤害", "血影留痕-天绝地灭", "天风汲雨", "图穷匕见", "血影留痕-图穷匕见"]
+        self.gain_skills = ["天绝地灭-伤害", "血影留痕-天绝地灭", "天风汲雨", "图穷匕见", "血影留痕-图穷匕见"]
+        self.gain_attribute = "damage_addition"
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_damage_addition += self.value
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_damage_addition += self.value
 
 
@@ -298,10 +341,12 @@ class 聚精凝神(Buff):
     def add(self):
         super().add()
         self.status.attribute.haste_gain += self.value
+        self.status.buffs["天绝地灭-冷却"].duration -= 1
 
     def remove(self):
         super().remove()
         self.status.attribute.haste_gain -= self.value
+        self.status.buffs["天绝地灭-冷却"].duration += 1
 
 
 class 杀机断魂_千机变(GainBuff):
@@ -312,16 +357,17 @@ class 杀机断魂_千机变(GainBuff):
         self.value = 103 / 1024
         self.stack_max = 5
 
-        self.gain_group = ["连弩"]
+        self.gain_skills = ["连弩"]
+        self.gain_attribute = "damage_addition"
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_damage_addition += self.value * stack
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_damage_addition -= self.value * stack
 
 
@@ -333,7 +379,8 @@ class 杀机断魂_天绝地灭(杀机断魂_千机变):
         self.value = 206 / 1024
         self.stack_max = 3
 
-        self.gain_group = ["天绝地灭-伤害", "血影留痕-天绝地灭", "天风汲雨"]
+        self.gain_skills = ["天绝地灭-伤害", "血影留痕-天绝地灭", "天风汲雨"]
+        self.gain_attribute = "damage_addition"
 
 
 class 杀机断魂_暗藏杀机(杀机断魂_千机变):
@@ -343,7 +390,8 @@ class 杀机断魂_暗藏杀机(杀机断魂_千机变):
 
         self.value = 309 / 1024
 
-        self.gain_group = ["图穷匕见", "血影留痕-图穷匕见"]
+        self.gain_skills = ["图穷匕见", "血影留痕-图穷匕见"]
+        self.gain_attribute = "damage_addition"
 
 
 class 催寒(GainBuff):
@@ -426,8 +474,6 @@ class 诡鉴冥微_冷却_二(诡鉴冥微_冷却_一):
 
 
 BUFFS = [佛吼, 神机, 气魄, 天女散花_伤害, 化血, 千机变, 暗藏杀机_一, 暗藏杀机_二, 暗藏杀机_三, 暗藏杀机_计数, 天绝地灭_冷却,
-         天绝地灭_计数,
-         天绝地灭_持续_一, 天绝地灭_持续_二, 天绝地灭_持续_三, 扬威, 鬼斧弹药, 心无旁骛, 血影留痕, 天风汲雨, 弩心,
-         擘两分星_内功伤害, 擘两分星_陷阱伤害, 流星赶月_冷却, 聚精凝神, 杀机断魂_千机变, 杀机断魂_天绝地灭,
-         杀机断魂_暗藏杀机,
-         催寒, 诡鉴冥微_一, 诡鉴冥微_二, 天绝地灭_诡鉴_一, 天绝地灭_诡鉴_二, 诡鉴冥微_冷却_一, 诡鉴冥微_冷却_二]
+         天绝地灭_计数, 天绝地灭_持续_一, 天绝地灭_持续_二, 天绝地灭_持续_三, 扬威, 鬼斧弹药, 心无旁骛, 心无旁骛_会心, 心无旁骛_会效,
+         血影留痕, 天风汲雨, 弩心, 擘两分星_内功伤害, 擘两分星_陷阱伤害, 流星赶月_冷却, 聚精凝神, 杀机断魂_千机变, 杀机断魂_天绝地灭,
+         杀机断魂_暗藏杀机, 催寒, 诡鉴冥微_一, 诡鉴冥微_二, 天绝地灭_诡鉴_一, 天绝地灭_诡鉴_二, 诡鉴冥微_冷却_一, 诡鉴冥微_冷却_二]

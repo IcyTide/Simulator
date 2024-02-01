@@ -110,14 +110,11 @@ class 牧云:
 class 风虎:
     @staticmethod
     def increase_effect(self: Buff):
-        self.status.buffs["风虎"].clear()
-        self.status.buffs["风虎"].trigger(self.status.stacks[self.name])
+        self.status.buffs["风虎"].trigger(stack=self.status.stacks[self.name] - self.status.stacks["风虎"])
 
     @staticmethod
     def decrease_effect(self: Buff):
-        self.status.buffs["风虎"].clear()
-        if stack := self.status.stacks[self.name]:
-            self.status.buffs["风虎"].trigger(stack)
+        self.status.buffs["风虎"].consume(self.status.stacks["风虎"] - self.status.stacks[self.name])
 
     def __call__(self, status: Status):
         status.buffs["战意"].increase_effect.append(self.increase_effect)
@@ -128,12 +125,14 @@ class 战心:
     @staticmethod
     def post_cast_effect(self: Skill):
         self.status.buffs["战意"].increase(3)
-        self.status.skills["流血"].cast()
-        self.status.buffs["战心"].trigger()
+        self.status.skills["流血"].cast(2)
 
     @staticmethod
     def pre_cast_effect(self: Skill):
-        self.status.buffs["战心"].clear()
+        if self.level == 1:
+            self.status.buffs["战心"].clear()
+        else:
+            self.status.buffs["战心"].trigger()
 
     def __call__(self, status: Status):
         status.skills["灭"].post_cast_effect.append(self.post_cast_effect)
@@ -146,18 +145,9 @@ class 渊:
 
 
 class 夜征:
-    @staticmethod
-    def add_effect(self: Buff):
-        self.status.buffs["夜征"].trigger()
-
-    @staticmethod
-    def remove_effect(self: Buff):
-        self.status.buffs["夜征"].clear()
-
     def __call__(self, status: Status):
         status.buffs["激雷"].duration *= 2.5
-        status.buffs["激雷"].add_effect.append(self.add_effect)
-        status.buffs["激雷"].remove_effect.append(self.remove_effect)
+        status.buffs["激雷"].sub_buffs.append("夜征")
 
 
 class 龙血:
@@ -173,8 +163,7 @@ class 龙血:
 class 虎贲:
     @staticmethod
     def post_cast_effect(self: Skill):
-        if self.roll < 0.3:
-            self.status.buffs["战意"].increase(3)
+        self.status.skills["虎贲"].cast()
 
     def __call__(self, status: Status):
         status.skills["龙牙"].post_cast_effect.append(self.post_cast_effect)

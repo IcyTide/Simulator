@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from functools import partial
 from itertools import chain
 
+from base import Monitor
 from base.constant import PHYSICAL_ATTACK_POWER_COF, WEAPON_DAMAGE_COF
 from base.status import Status
 from utils.damage import *
@@ -23,7 +24,7 @@ def apply_haste(haste, value):
 class Snapshot:
     level: int = 1
     critical_strike: float = 0
-    gains: dict = None
+    gains: list = None
 
 
 @dataclass
@@ -46,9 +47,8 @@ class Skill:
     energy: int = 1
 
     level: int = 1
-    snapshot: [Snapshot] = None
     haste: float = 0
-    dice: random.Random = None
+    snapshot: [Snapshot, "Skill"] = None
 
     def __post_init__(self):
         self.pre_cast_effect = []
@@ -56,6 +56,8 @@ class Skill:
         self.pre_hit_effect = []
         self.critical_hit_effect = []
         self.post_hit_effect = []
+
+        self.sub_skills = []
 
         self.dice = random.Random(82)
 
@@ -145,6 +147,9 @@ class Skill:
             for _ in range(self.tick):
                 self.hit()
 
+        for skill in self.sub_skills:
+            self.status.skills[skill].cast()
+
     def post_cast(self):
         self.status.ticks.pop(self.name)
         self.status.intervals.pop(self.name)
@@ -172,10 +177,11 @@ class Skill:
             self.status.intervals[self.name] = self.interval
 
     def record(self, critical, level, times=1):
-        gains = tuple(
-            Gains(buff, level, stack) for buff, (level, stack) in self.status.gains[""] + self.status.gains[self.name]
-        )
-        self.status.record(Damage(self.name, critical, level, times, gains))
+        gains = []
+        for gain in self.status.gains.values():
+            for buff, (buff_level, stack) in (gain[""] + gain[self.name]).items():
+                gains.append(Gains(buff, buff_level, stack))
+        self.status.record(Damage(self.name, critical, level, times, tuple(gains)))
 
     @staticmethod
     def to_overdraw(skill):
@@ -547,6 +553,7 @@ class ActionSkill(ChannelSkill, FixedInterval):
 
 
 class DotSkill(PeriodicalSkill):
+    snapshot_attrs = ["attack_power", "critical_strike", "critical_power", "strain", "damage_addition"]
 
     def consume(self, tick=0):
         if not tick:
@@ -566,17 +573,74 @@ class DotSkill(PeriodicalSkill):
 
     def pre_cast(self):
         super().pre_cast()
+        gains = []
+        for attr in self.snapshot_attrs:
+            for buff, (level, stack) in (self.status.gains[attr][""] + self.status.gains[attr][self.name]).items():
+                gains.append(Gains(buff, level, stack))
         self.snapshot = Snapshot(
-            self.level, self.critical_strike, self.status.snapshots[""] + self.status.snapshots[self.name]
+            self.level, self.critical_strike, gains
         )
 
     def record(self, critical, level, times=1):
-        gains = tuple(
-            Gains(buff, level, stack)
-            for buff, (level, stack) in
-            dict(chain(self.status.gains[""] + self.status.gains[self.name], self.snapshot.gains)).items()
+        gains = []
+        for attr in self.status.gains:
+            if attr in self.snapshot_attrs:
+                continue
+            for buff, (buff_level, stack) in (self.status.gains[attr][""] + self.status.gains[attr][self.name]).items():
+                gains.append(Gains(buff, buff_level, stack))
+        times = times * max(1, self.status.stacks[self.name])
+        self.status.record(Damage(self.name, critical, level, times, tuple(gains + self.snapshot.gains)))
+
+
+class PetDamage(DamageSkill):
+    snapshot_attrs = ["attack_power", "critical_strike", "overcome", "strain"]
+
+    def pre_cast(self):
+        super().pre_cast()
+        gains = []
+        for attr in self.snapshot_attrs:
+            for buff, (level, stack) in (self.status.gains[attr][""] + self.status.gains[attr][self.name]).items():
+                gains.append(Gains(buff, level, stack))
+        self.snapshot = Snapshot(
+            self.level, self.critical_strike, gains
         )
-        self.status.record(Damage(self.name, critical, level, times * max(1, self.status.stacks[self.name]), gains))
+
+    def record(self, critical, level, times=1):
+        gains = []
+        for attr in self.status.gains:
+            if attr in self.snapshot_attrs:
+                continue
+            for buff, (buff_level, stack) in (self.status.gains[attr][""] + self.status.gains[attr][self.name]).items():
+                gains.append(Gains(buff, buff_level, stack))
+        self.status.record(Damage(self.name, critical, level, times, tuple(gains + self.snapshot.gains)))
+
+    def calculate(self, level):
+        self.level = level
+        damage = init_result(
+            self.damage_base, self.damage_rand, self.damage_gain,
+            self.attack_power_cof, self.attack_power_cof_gain, self.attribute.magical_attack_power,
+            self.weapon_damage_cof, self.weapon_damage_cof_gain, self.attribute.weapon_damage,
+            self.surplus_cof, self.surplus_cof_gain, self.attribute.surplus
+        )
+
+        # damage = damage_addition_result(damage, self.attribute.magical_damage_addition + self.skill_damage_addition)
+        damage = overcome_result(damage, self.attribute.magical_overcome,
+                                 self.target.magical_shield_base,
+                                 self.target.magical_shield_gain + self.skill_shield_gain,
+                                 0,
+                                 self.target.shield_constant)
+        # if critical:
+        #     damage = critical_result(damage, attribute.physical_critical_power)
+        damage = critical_result(damage,
+                                 self.attribute.magical_critical_strike + self.skill_critical_strike,
+                                 self.attribute.magical_critical_power + self.skill_critical_power)
+        damage = level_reduction_result(damage, self.attribute.level, self.target.level)
+        damage = strain_result(damage, self.attribute.strain)
+        # damage = pve_addition_result(damage, self.attribute.pve_addition + self.skill_pve_addition)
+        damage = vulnerable_result(damage, self.target.magical_vulnerable)
+        damage = damage
+
+        return damage
 
 
 class PlacementSkill(PeriodicalSkill, FixedInterval):

@@ -1,5 +1,5 @@
 from base.constant import PHYSICAL_ATTACK_POWER_COF, WEAPON_DAMAGE_COF, PHYSICAL_DOT_ATTACK_POWER_COF, SURPLUS_COF
-from base.skill import *
+from base.skill import Melee, CastingSkill, ChargingSkill, TriggerSkill, DotSkill, PlacementSkill, PhysicalDamage
 
 """
     Base Skills

@@ -239,7 +239,7 @@ class 风来吴山(CastingSkill):
 
         self.cd_base = 90 * 16
 
-        self.sub_skill = "风来吴山-引导"
+        self.sub_skills = ["风来吴山-引导"]
 
         self.cost = 50
 
@@ -247,9 +247,9 @@ class 风来吴山(CastingSkill):
     def condition(self):
         return self.status.stacks["山居剑意"] and self.status.stacks["剑气"] > self.cost
 
-    def post_cast(self):
-        super().post_cast()
-        self.status.skills[self.sub_skill].cast()
+    def pre_cast(self):
+        super().pre_cast()
+        self.status.buffs["剑气"].decrease(self.cost)
 
 
 class 九溪弥烟(CastingSkill, PhysicalDamage):

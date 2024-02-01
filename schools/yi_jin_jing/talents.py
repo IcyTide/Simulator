@@ -139,14 +139,11 @@ class 净果:
 class 三生:
     @staticmethod
     def increase_effect(self: Buff):
-        self.status.buffs["三生"].clear()
-        self.status.buffs["三生"].trigger(self.status.stacks["禅那"])
+        self.status.buffs["三生"].trigger(stack=self.status.stacks[self.name] - self.status.stacks["禅那"])
 
     @staticmethod
     def decrease_effect(self: Buff):
-        self.status.buffs["三生"].clear()
-        if stack := self.status.stacks["禅那"]:
-            self.status.buffs["三生"].trigger(stack)
+        self.status.buffs["三生"].consume(self.status.stacks["三生"] - self.status.stacks[self.name])
 
     def __call__(self, status: Status):
         status.buffs["禅那"].increase_effect.append(self.increase_effect)

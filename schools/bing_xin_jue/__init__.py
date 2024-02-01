@@ -8,6 +8,8 @@ from schools.bing_xin_jue.recipes import RECIPES, RECIPE_GAINS
 
 
 def initiation(status: Status):
+    for _ in range(10):
+        status.buffs["剑舞"].trigger()
     status.skills["名动四方"].cast()
 
 

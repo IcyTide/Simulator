@@ -106,12 +106,11 @@ class Attribute:
     pve_addition: float = 0
     cd_reduction: float = 0
 
-    primary_weapon_attribute: dict = None
-    secondary_weapon_attribute: dict = None
-
     def __post_init__(self):
         self.primary_weapon_attribute = {}
+        self.primary_weapon_gain = []
         self.secondary_weapon_attribute = {}
+        self.secondary_weapon_gain = []
 
         self.grad_attrs = {}
         self.delta_attr = ""
@@ -120,6 +119,18 @@ class Attribute:
 
         self.all_major_base += MAJOR_BASE
         self.all_critical_power_base += 0
+
+    def apply_primary_weapon(self):
+        for attr, value in self.primary_weapon_attribute.items():
+            setattr(self, attr, getattr(self, attr) + value)
+        for attr, value in self.secondary_weapon_attribute.items():
+            setattr(self, attr, getattr(self, attr) - value)
+
+    def apply_secondary_weapon(self):
+        for attr, value in self.primary_weapon_attribute.items():
+            setattr(self, attr, getattr(self, attr) - value)
+        for attr, value in self.secondary_weapon_attribute.items():
+            setattr(self, attr, getattr(self, attr) + value)
 
     """ Major Attr Function"""
 

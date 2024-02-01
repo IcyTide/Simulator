@@ -18,13 +18,12 @@ class Buff:
     stack_remove: int = 1
     stack_max: int = 1
 
-    dice: random.Random = None
-
     def __post_init__(self):
         self.add_effect = []
         self.remove_effect = []
         self.clear_effect = []
 
+        self.sub_buffs = []
         self.dice = random.Random(82)
 
     @property
@@ -63,6 +62,9 @@ class Buff:
         for _ in range(stack):
             self.add()
 
+        for buff in self.sub_buffs:
+            self.status.buffs[buff].trigger()
+
     def consume(self, stack=None):
         if stack is None:
             stack = self.stack_remove
@@ -72,11 +74,16 @@ class Buff:
         for _ in range(stack):
             self.remove()
 
+        for buff in self.sub_buffs:
+            self.status.buffs[buff].consume()
+
     def clear(self):
         for _ in range(self.status.stacks[self.name]):
             self.remove()
         for effect in self.clear_effect:
             effect(self)
+        for buff in self.sub_buffs:
+            self.status.buffs[buff].clear()
 
 
 class TriggerBuff(Buff):
@@ -99,7 +106,7 @@ class ExtendBuff(Buff):
         else:
             self.status.durations[self.name] += self.duration_add
 
-    def extend(self):
+    def extend(self):   # only extend if exists
         if duration := self.status.durations[self.name]:
             self.status.durations[self.name] = min(self.duration_max, duration + self.duration_add)
 
@@ -124,21 +131,22 @@ class GainBuff(Buff):
         super().__post_init__()
         self.gain_effect: list = []
         self.revoke_effect: list = []
-        self.gain_group = [""]
+        self.gain_skills = [""]
+        self.gain_attribute = ""
 
     def add(self):
         super().add()
-        for gain_index in self.gain_group:
-            self.status.gains[gain_index][self.name] = (self.level, self.status.stacks[self.name])
+        for gain_skill in self.gain_skills:
+            self.status.gains[self.gain_attribute][gain_skill][self.name] = (self.level, self.status.stacks[self.name])
 
     def remove(self):
         super().remove()
         if stack := self.status.stacks[self.name]:
-            for gain_index in self.gain_group:
-                self.status.gains[gain_index][self.name] = (self.level, stack)
+            for gain_skill in self.gain_skills:
+                self.status.gains[self.gain_attribute][gain_skill][self.name] = (self.level, stack)
         else:
-            for gain_index in self.gain_group:
-                self.status.gains[gain_index].pop(self.name)
+            for gain_skill in self.gain_skills:
+                self.status.gains[self.gain_attribute][gain_skill].pop(self.name)
 
     def gain(self, level, stack):
         for effect in self.gain_effect:
@@ -147,22 +155,6 @@ class GainBuff(Buff):
     def revoke(self, level, stack):
         for effect in self.revoke_effect:
             effect(self, level, stack)
-
-
-class SnapshotBuff(GainBuff):
-    def add(self):
-        super().add()
-        for gain_index in self.gain_group:
-            self.status.snapshots[gain_index][self.name] = (self.level, self.status.stacks[self.name])
-
-    def remove(self):
-        super().remove()
-        if stack := self.status.stacks[self.name]:
-            for gain_index in self.gain_group:
-                self.status.snapshots[gain_index][self.name] = (self.level, stack)
-        else:
-            for gain_index in self.gain_group:
-                self.status.snapshots[gain_index].pop(self.name)
 
 
 class Energy(Buff):

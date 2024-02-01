@@ -120,7 +120,7 @@ class 怜光:
 
 class 层云:
     def __call__(self, status: Status):
-        status.skills["风来吴山"].sub_skill = "风来吴山-持续"
+        status.skills["风来吴山"].sub_skills = ["风来吴山-持续"]
 
 
 class 撼岳:

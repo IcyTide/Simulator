@@ -96,18 +96,9 @@ class 流星赶月:
 
 
 class 聚精凝神:
-    @staticmethod
-    def add_effect(self: Buff):
-        self.status.buffs["聚精凝神"].trigger()
-
-    @staticmethod
-    def remove_effect(self: Buff):
-        self.status.buffs["聚精凝神"].clear()
-
     def __call__(self, status: Status):
         status.buffs["心无旁骛"].duration += 5 * 16
-        status.buffs["心无旁骛"].add_effect.append(self.add_effect)
-        status.buffs["心无旁骛"].remove_effect.append(self.remove_effect)
+        status.buffs["心无旁骛"].sub_buffs.append("聚精凝神")
 
 
 class 化血迷心:

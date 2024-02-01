@@ -32,8 +32,15 @@ class Status:
         self.buffs = {}
         self.durations = Monitor(0)
         self.stacks = Monitor(0)
-        self.gains = defaultdict(monitor)
-        self.snapshots = defaultdict(monitor)
+        self.gains = {
+            "": defaultdict(monitor),
+            "attack_power": defaultdict(monitor),
+            "critical_strike": defaultdict(monitor),
+            "critical_power": defaultdict(monitor),
+            "overcome": defaultdict(monitor),
+            "strain": defaultdict(monitor),
+            "damage_addition": defaultdict(monitor)
+        }
 
         for buff in buffs:
             buff = buff(self)

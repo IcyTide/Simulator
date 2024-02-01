@@ -1,5 +1,4 @@
-from base.buff import Buff, GainBuff, SnapshotBuff, DotBuff, CountBuff, CDBuff, TriggerBuff, PlacementBuff, Energy, \
-    ExtendBuff
+from base.buff import Buff, GainBuff, DotBuff, CDBuff, TriggerBuff, Energy, ExtendBuff
 from general.buffs import 内功双会套装
 
 
@@ -60,7 +59,8 @@ class 幽月轮(GainBuff):
 
         self.stack_max = 2
 
-        self.gain_group = ["幽月轮"]
+        self.gain_skills = ["幽月轮"]
+        self.gain_attribute = "critical-strike"
 
     def add(self):
         super().add()
@@ -85,7 +85,7 @@ class 银月斩_持续(DotBuff):
         self.name = "银月斩-持续"
 
 
-class 光明相(SnapshotBuff):
+class 光明相(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "光明相"
@@ -94,30 +94,31 @@ class 光明相(SnapshotBuff):
 
         self.stack_max = 3
 
-        self.gain_group = [
+        self.gain_skills = [
             "净世破魔击·日", "净世破魔击·月", "生死劫·日", "生死劫·月", "诛邪镇魔-日", "诛邪镇魔-月",
             "靡业报劫", "靡业报劫·日", "靡业报劫·月"
         ]
+        self.gain_attribute = "critical_strike"
 
     def add(self):
         super().add()
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_critical_strike += 1
 
     def remove(self):
         super().remove()
         if not self.status.stacks[self.name]:
-            for skill in self.gain_group:
+            for skill in self.gain_skills:
                 self.status.skills[skill].skill_critical_strike -= 1
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_critical_strike += 1
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_critical_strike -= 1
 
 
@@ -160,28 +161,68 @@ class 诛邪镇魔(Buff):
             self.skill_list = ("诛邪镇魔-日", "诛邪镇魔-月")
 
 
-class 明光_日(GainBuff):
+class 明光_日(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "明光·日"
 
         self.duration = 960
 
-        self.gain_group = ["净世破魔击·日", "生死劫·日", "悬象著明·日"]
+        self.sub_buffs = ["明光·日-会效", "明光·日-会效"]
 
-        self.values = [0.15, 102 / 1024]
+
+class 明光_日_会心(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "明光·日-会心"
+
+        self.value = 0.15
+
+        self.gain_skills = ["净世破魔击·日", "生死劫·日", "悬象著明·日", "靡业报劫·日"]
+        self.gain_attribute = "critical_strike"
+
+    def add(self):
+        super().add()
+        for skill in self.gain_skills:
+            self.status.skills[skill].skill_critical_strike += self.value
+
+    def remove(self):
+        super().remove()
+        for skill in self.gain_skills:
+            self.status.skills[skill].skill_critical_strike -= self.value
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        for skill in self.gain_group:
-            self.status.skills[skill].skill_critical_strike += self.values[0]
-            self.status.skills[skill].skill_critical_power += self.values[1]
+        for skill in self.gain_skills:
+            self.status.skills[skill].skill_critical_strike += self.value
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        for skill in self.gain_group:
-            self.status.skills[skill].skill_critical_strike -= self.values[0]
-            self.status.skills[skill].skill_critical_power -= self.values[1]
+        for skill in self.gain_skills:
+            self.status.skills[skill].skill_critical_strike -= self.value
+
+
+class 明光_日_会效(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "明光·日-会效"
+
+        self.duration = 960
+
+        self.value = 102 / 1024
+
+        self.gain_skills = ["净世破魔击·日", "生死劫·日", "悬象著明·日", "靡业报劫·日"]
+        self.gain_attribute = "critical_power"
+
+    def gain(self, level, stack):
+        super().gain(level, stack)
+        for skill in self.gain_skills:
+            self.status.skills[skill].skill_critical_power += self.value
+
+    def revoke(self, level, stack):
+        super().revoke(level, stack)
+        for skill in self.gain_skills:
+            self.status.skills[skill].skill_critical_power -= self.value
 
 
 class 明光_月(GainBuff):
@@ -191,9 +232,10 @@ class 明光_月(GainBuff):
 
         self.duration = 960
 
-        self.gain_group = ["净世破魔击·月", "生死劫·月", "悬象著明·月"]
-
         self.value = 246 / 1024
+
+        self.gain_skills = ["净世破魔击·月", "生死劫·月", "悬象著明·月", "靡业报劫·月"]
+        self.gain_attribute = "attack_power"
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -254,20 +296,21 @@ class 超凡入圣(GainBuff):
         self.name = "超凡入圣"
 
         self.duration = 160  # TODO: duration
-        self.gain_group = [
-            "净世破魔击·日", "净世破魔击·日-外功", "净世破魔击·月", "净世破魔击·月-外功", "诛邪镇魔-日", "诛邪镇魔-月"
+        self.gain_skills = [
+            "净世破魔击·日",  "净世破魔击·月", "诛邪镇魔-日", "诛邪镇魔-月"
         ]
+        self.gain_attribute = "damage_addition"
 
         self.value = 205 / 1024
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_damage_addition += self.value
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_damage_addition -= self.value
 
 
@@ -295,6 +338,8 @@ class 诛戮(GainBuff):
         self.duration = 20 * 16
 
         self.value = 102 / 1024
+
+        self.gain_attribute = "attack_power"
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -343,7 +388,7 @@ class 日月齐光_日(Buff):
         self.duration = 192
 
 
-class 日月齐光_月(SnapshotBuff, ExtendBuff):
+class 日月齐光_月(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "日月齐光·月"
@@ -375,7 +420,7 @@ class 日月齐光_悬象著明(Buff):
         self.duration = 384
 
 
-class 日月齐光(SnapshotBuff, ExtendBuff):
+class 日月齐光(GainBuff, ExtendBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "日月齐光"
@@ -386,6 +431,8 @@ class 日月齐光(SnapshotBuff, ExtendBuff):
         self.stack_max = 3
 
         self.values = [51 / 1024, 154 / 1024, 307 / 1024]
+
+        self.gain_attribute = "damage_addition"
 
     def add(self):
         super().add()
@@ -415,20 +462,21 @@ class 驱夷逐法(GainBuff):
         super().__init__(status)
         self.name = "驱夷逐法"
 
-        self.gain_group = [
+        self.value = 512 / 1024
+
+        self.gain_skills = [
             "净世破魔击·日", "净世破魔击·日-外功", "净世破魔击·月", "净世破魔击·月-外功", "诛邪镇魔-日", "诛邪镇魔-月"
         ]
-
-        self.value = 512 / 1024
+        self.gain_attribute = "damage_addition"
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_damage_addition += self.value
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_damage_addition -= self.value
 
 
@@ -453,5 +501,8 @@ class 桑莲妙境_冷却(CDBuff):
 
 
 BUFFS = [明尊, 日灵, 月灵, 暗尘, 赤日轮, 烈日, 幽月轮, 银月斩_持续, 光明相,
-         魂_日, 魂_月, 诛邪镇魔, 明光_日, 明光_月, 灼烧, 日月同辉, 日月灵魂, 靡业报劫_日, 靡业报劫_月, 超凡入圣, 用晦而明, 诛戮, 降灵尊,
-         悬象著明_日, 悬象著明_月, 日月齐光_日, 日月齐光_月, 日月齐光_净世破魔击, 日月齐光_生死劫, 日月齐光_悬象著明, 日月齐光, 驱夷逐法]
+         魂_日, 魂_月, 诛邪镇魔, 明光_日, 明光_日_会心, 明光_日_会效, 明光_月, 灼烧, 日月同辉, 日月灵魂, 靡业报劫_日,
+         靡业报劫_月, 超凡入圣,
+         用晦而明, 诛戮, 降灵尊,
+         悬象著明_日, 悬象著明_月, 日月齐光_日, 日月齐光_月, 日月齐光_净世破魔击, 日月齐光_生死劫, 日月齐光_悬象著明,
+         日月齐光, 驱夷逐法]

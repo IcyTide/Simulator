@@ -20,7 +20,7 @@ def main():
     gains = ([TALENT_GAINS[talents[0]] for talents in TALENTS]
              + [RECIPE_GAINS[recipe] for recipes in RECIPES.values() for recipe in recipes[:4]])
     simulator = Simulator(attribute, SKILLS, BUFFS, gains, Target(), duration,
-                          prepare=prepare, priority=priority, loop=loop, initiation=initiation,verbose=True)
+                          prepare=prepare, priority=priority, loop=loop, initiation=initiation, verbose=True)
     counts = simulator()
     dps, details, summary, gradients = analyze_details(1, simulator, counts)
     print(details)

@@ -1,4 +1,4 @@
-from base.buff import Buff, GainBuff, SnapshotBuff, DotBuff, CDBuff, PlacementBuff, TriggerBuff, Energy
+from base.buff import Buff, GainBuff, DotBuff, CDBuff, TriggerBuff, Energy
 from general.buffs import 外功双会套装
 
 
@@ -34,7 +34,7 @@ class 流血(DotBuff):
         self.stack_max = 2
 
 
-class 激雷(SnapshotBuff):
+class 激雷(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "激雷"
@@ -42,6 +42,8 @@ class 激雷(SnapshotBuff):
         self.duration = 6 * 16
 
         self.value = 0.3
+
+        self.gain_attribute = "critical_strike"
 
     def add(self):
         super().add()
@@ -60,7 +62,7 @@ class 激雷(SnapshotBuff):
         self.status.attribute.physical_critical_strike_gain -= self.value
 
 
-class 驰骋(SnapshotBuff):
+class 驰骋(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "驰骋"
@@ -68,6 +70,8 @@ class 驰骋(SnapshotBuff):
         self.duration = 15 * 16
 
         self.value = 154 / 1024
+
+        self.gain_attribute = "attack_power"
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -110,20 +114,21 @@ class 大漠(GainBuff):
         self.duration = 10 * 16
         self.value = 205 / 1024
 
-        self.gain_group = ["龙牙", "龙牙-龙血"]
+        self.gain_skills = ["龙牙", "龙牙-龙血"]
+        self.gain_attribute = "damage_addition"
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_damage_addition += self.value
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].skill_damage_addition -= self.value
 
 
-class 龙驭(SnapshotBuff):
+class 龙驭(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "龙驭"
@@ -131,6 +136,8 @@ class 龙驭(SnapshotBuff):
         self.stack_max = 3
 
         self.value = 72 / 1024
+
+        self.gain_attribute = "damage_addition"
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -157,32 +164,62 @@ class 牧云(Buff):
         self.status.buffs["牧云-增益"].clear()
 
 
-class 牧云_增益(SnapshotBuff):
+class 牧云_增益(Buff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "牧云-增益"
 
+        self.duration = 60 * 16
         self.stack_max = 4
 
-        self.values = [0.03, 60 / 1024]
+        self.sub_buffs = ["牧云-会心", "牧云-会效"]
+
+
+class 牧云_会心(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "牧云-会心"
+        self.stack_max = 4
+
+        self.value = 0.03
+
+        self.gain_attribute = "critical_strike"
 
     def add(self):
         super().add()
-        self.status.attribute.physical_critical_strike_gain += self.values[0]
+        self.status.attribute.physical_critical_strike_gain += self.value
 
     def remove(self):
         super().remove()
-        self.status.attribute.physical_critical_strike_gain -= self.values[0]
+        self.status.attribute.physical_critical_strike_gain -= self.value
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        self.status.attribute.physical_critical_strike_gain += self.values[0] * stack
-        self.status.attribute.physical_critical_power_gain += self.values[1] * stack
+        self.status.attribute.physical_critical_strike_gain += self.value * stack
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        self.status.attribute.physical_critical_strike_gain -= self.values[0] * stack
-        self.status.attribute.physical_critical_power_gain -= self.values[1] * stack
+        self.status.attribute.physical_critical_strike_gain -= self.value * stack
+
+
+class 牧云_会效(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "牧云-会效"
+
+        self.stack_max = 4
+
+        self.value = 60 / 1024
+
+        self.gain_attribute = "critical_power"
+
+    def gain(self, level, stack):
+        super().gain(level, stack)
+        self.status.attribute.physical_critical_power_gain += self.value * stack
+
+    def revoke(self, level, stack):
+        super().revoke(level, stack)
+        self.status.attribute.physical_critical_power_gain -= self.value * stack
 
 
 class 风虎(GainBuff):
@@ -192,38 +229,40 @@ class 风虎(GainBuff):
 
         self.values = [51 / 1024, 102 / 1024, 154 / 1024, 205 / 1024, 256 / 1024]
 
-        self.gain_group = ["穿云", "龙吟", "龙牙", "龙牙-龙血", "灭"]
+        self.gain_skills = ["穿云", "龙吟", "龙牙", "龙牙-龙血", "灭"]
+        self.gain_attribute = "damage_addition"
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        for skill in self.gain_group:
-            self.status.skills[skill].skill_damage_addition += self.values[level - 1]
+        for skill in self.gain_skills:
+            self.status.skills[skill].skill_damage_addition += self.values[stack - 1]
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        for skill in self.gain_group:
-            self.status.skills[skill].skill_damage_addition -= self.values[level - 1]
+        for skill in self.gain_skills:
+            self.status.skills[skill].skill_damage_addition -= self.values[stack - 1]
 
 
-class 战心(SnapshotBuff):
+class 战心(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "战心"
 
-        self.gain_group = ["流血"]
+        self.gain_skills = ["流血"]
+        self.gain_attribute = "attack_power"
 
     def gain(self, level, stack):
         super().gain(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].attack_power_cof_gain += 0.2
 
     def revoke(self, level, stack):
         super().revoke(level, stack)
-        for skill in self.gain_group:
+        for skill in self.gain_skills:
             self.status.skills[skill].attack_power_cof_gain -= 0.2
 
 
-class 渊(SnapshotBuff):
+class 渊(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "渊"
@@ -231,6 +270,8 @@ class 渊(SnapshotBuff):
         self.duration = 10 * 16
 
         self.value = 512 / 1024
+
+        self.gain_attribute = "attack_power"
 
     def gain(self, level, stack):
         super().gain(level, stack)
@@ -245,6 +286,8 @@ class 夜征(GainBuff):
     def __init__(self, status):
         super().__init__(status)
         self.name = "夜征"
+
+        self.duration = 15 * 16
 
         self.value = 717 / 1024
 
@@ -285,5 +328,5 @@ class 旷野孤疆_冷却(CDBuff):
 
 BUFFS = [
     军啸, 战意, 骑御, 流血, 激雷, 驰骋,
-    挫锐, 大漠, 龙驭, 牧云, 牧云_增益, 风虎, 战心, 渊, 夜征, 旷野孤疆, 旷野孤疆_冷却
+    挫锐, 大漠, 龙驭, 牧云, 牧云_增益, 牧云_会心, 牧云_会效, 风虎, 战心, 渊, 夜征, 旷野孤疆, 旷野孤疆_冷却
 ]

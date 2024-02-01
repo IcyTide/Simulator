@@ -186,10 +186,10 @@ class 靡业报劫:
 
     def __call__(self, status: Status):
         status.skills["生死劫"].cd_base += 14 * 16
-        status.skills["生死劫·日"].post_cast_effect.append(self.post_cast_effect_sun)
-        status.skills["生死劫·月"].post_cast_effect.append(self.post_cast_effect_moon)
-        status.skills["生死劫·日·悬象"].post_cast_effect.append(self.post_cast_effect_sun_shadow)
-        status.skills["生死劫·月·悬象"].post_cast_effect.append(self.post_cast_effect_moon_shadow)
+        status.skills["生死劫·日"].post_cast_effect.insert(0, self.post_cast_effect_sun)
+        status.skills["生死劫·月"].post_cast_effect.insert(0, self.post_cast_effect_moon)
+        status.skills["生死劫·日·悬象"].post_cast_effect.insert(0, self.post_cast_effect_sun_shadow)
+        status.skills["生死劫·月·悬象"].post_cast_effect.insert(0, self.post_cast_effect_moon_shadow)
 
 
 class 超凡入圣:
