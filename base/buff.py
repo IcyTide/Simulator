@@ -1,7 +1,7 @@
 import random
 from dataclasses import dataclass
 
-from base.status import Status
+from base.status import Status, Gains
 
 
 @dataclass
@@ -174,6 +174,18 @@ class Energy(Buff):
         self.status.stacks[self.name] = max(self.status.stacks[self.name] - stack, 0)
         for effect in self.decrease_effect:
             effect(self)
+
+
+class Pet(Buff):
+    snapshot_attrs = ["attack_power", "critical_power", "overcome", "strain"]
+    gains = []
+
+    def add(self):
+        super().add()
+        self.gains = []
+        for attr in self.snapshot_attrs:
+            for buff, (level, stack) in (self.status.gains[attr][""] + self.status.gains[attr][self.name]).items():
+                self.gains.append(Gains(buff, level, stack))
 
 
 class CDBuff(Buff):

@@ -1,18 +1,11 @@
 import random
-from collections import namedtuple
 
 from dataclasses import dataclass
 from functools import partial
-from itertools import chain
 
-from base import Monitor
 from base.constant import PHYSICAL_ATTACK_POWER_COF, WEAPON_DAMAGE_COF
-from base.status import Status
+from base.status import Status, Gains, Damage
 from utils.damage import *
-
-
-Gains = namedtuple("Gains", ["buff", "level", "stack"])
-Damage = namedtuple("Damage", ["skill", "critical", "level", "times", "gains"])
 
 
 @cache
@@ -147,12 +140,12 @@ class Skill:
             for _ in range(self.tick):
                 self.hit()
 
-        for skill in self.sub_skills:
-            self.status.skills[skill].cast()
-
     def post_cast(self):
         self.status.ticks.pop(self.name)
         self.status.intervals.pop(self.name)
+
+        for skill in self.sub_skills:
+            self.status.skills[skill].cast()
 
         for effect in self.post_cast_effect:
             effect(self)
@@ -593,37 +586,29 @@ class DotSkill(PeriodicalSkill):
 
 
 class PetDamage(DamageSkill):
-    snapshot_attrs = ["attack_power", "critical_strike", "overcome", "strain"]
-
-    def pre_cast(self):
-        super().pre_cast()
-        gains = []
-        for attr in self.snapshot_attrs:
-            for buff, (level, stack) in (self.status.gains[attr][""] + self.status.gains[attr][self.name]).items():
-                gains.append(Gains(buff, level, stack))
-        self.snapshot = Snapshot(
-            self.level, self.critical_strike, gains
-        )
+    pet = None
 
     def record(self, critical, level, times=1):
+        pet = self.status.buffs[self.pet]
         gains = []
         for attr in self.status.gains:
-            if attr in self.snapshot_attrs:
+            if attr in pet.snapshot_attrs:
                 continue
-            for buff, (buff_level, stack) in (self.status.gains[attr][""] + self.status.gains[attr][self.name]).items():
+            for buff, (buff_level, stack) in (self.status.gains[attr][""] + self.status.gains[attr][self.pet]).items():
                 gains.append(Gains(buff, buff_level, stack))
-        self.status.record(Damage(self.name, critical, level, times, tuple(gains + self.snapshot.gains)))
+        self.status.record(Damage(self.name, critical, level, times, tuple(gains + pet.gains)))
 
     def calculate(self, level):
         self.level = level
+        attack_power = 0.87 * self.attribute.magical_attack_power + 59 / 1664 * self.attribute.surplus  # TODO: need confirm
         damage = init_result(
             self.damage_base, self.damage_rand, self.damage_gain,
-            self.attack_power_cof, self.attack_power_cof_gain, self.attribute.magical_attack_power,
+            self.attack_power_cof, self.attack_power_cof_gain, attack_power,
             self.weapon_damage_cof, self.weapon_damage_cof_gain, self.attribute.weapon_damage,
             self.surplus_cof, self.surplus_cof_gain, self.attribute.surplus
         )
 
-        # damage = damage_addition_result(damage, self.attribute.magical_damage_addition + self.skill_damage_addition)
+        damage = damage_addition_result(damage, self.skill_damage_addition)
         damage = overcome_result(damage, self.attribute.magical_overcome,
                                  self.target.magical_shield_base,
                                  self.target.magical_shield_gain + self.skill_shield_gain,
@@ -636,7 +621,7 @@ class PetDamage(DamageSkill):
                                  self.attribute.magical_critical_power + self.skill_critical_power)
         damage = level_reduction_result(damage, self.attribute.level, self.target.level)
         damage = strain_result(damage, self.attribute.strain)
-        # damage = pve_addition_result(damage, self.attribute.pve_addition + self.skill_pve_addition)
+        damage = pve_addition_result(damage, self.skill_pve_addition)
         damage = vulnerable_result(damage, self.target.magical_vulnerable)
         damage = damage
 

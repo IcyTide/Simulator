@@ -1,8 +1,13 @@
-from collections import defaultdict
+from collections import defaultdict, namedtuple
 
 from base import Monitor, monitor
 from base.attribute import Attribute
 from base.target import Target
+
+
+Gains = namedtuple("Gains", ["buff", "level", "stack"])
+
+Damage = namedtuple("Damage", ["skill", "critical", "level", "times", "gains"])
 
 
 class Status:

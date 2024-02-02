@@ -97,7 +97,6 @@ class 破(MagicalDamage):
         self.is_cast = False
         self.is_hit = False
 
-        self.damage_base = 1
         self.surplus_cof = SURPLUS_COF(1024 * 1024 * (1.2 * 0.33 * 0.33 - 1))
 
 

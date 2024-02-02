@@ -159,6 +159,7 @@ class 化血(DotSkill, MixedDamage):
         self.tick_base = 8
         self.interval_base = 48
 
+        self.damage_base = 100
         self.attack_power_cof = MAGICAL_DOT_ATTACK_POWER_COF(140 * 1.3 * 1.05 * 1.1, self.interval_base)
 
 
