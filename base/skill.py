@@ -3,7 +3,7 @@ import random
 from dataclasses import dataclass
 from functools import partial
 
-from base.constant import PHYSICAL_ATTACK_POWER_COF, WEAPON_DAMAGE_COF
+from base.constant import PHYSICAL_ATTACK_POWER_COF, WEAPON_DAMAGE_COF, SURPLUS_SCALE
 from base.status import Status, Gains, Damage
 from utils.damage import *
 
@@ -600,7 +600,7 @@ class PetDamage(DamageSkill):
 
     def calculate(self, level):
         self.level = level
-        attack_power = 0.87 * self.attribute.magical_attack_power + 59 / 1664 * self.attribute.surplus  # TODO: need confirm
+        attack_power = 0.87 * self.attribute.magical_attack_power + 59 / 1664 * SURPLUS_SCALE * self.attribute.surplus  # TODO: need confirm
         damage = init_result(
             self.damage_base, self.damage_rand, self.damage_gain,
             self.attack_power_cof, self.attack_power_cof_gain, attack_power,
