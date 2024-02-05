@@ -28,7 +28,7 @@ class Buff:
 
     @property
     def roll(self):
-        return random.random()
+        return self.dice.random()
 
     def set_duration(self):
         # self.status.durations[self.name] = min(self.duration_max, self.status.durations[self.name] + self.duration)
