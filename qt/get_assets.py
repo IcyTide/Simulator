@@ -67,13 +67,14 @@ SPECIAL_ENCHANT_MAP = {
     },
 }
 
+equip_min_level = 11000
 equip_params = {
     "client": "std",
     "pv_type": 1,
     "pz": 1,
     "page": 1,
     "per": 300,
-    "min_level": 11000,
+    "min_level": 9000,
     "max_level": 15000
 }
 
@@ -100,7 +101,7 @@ def get_equips_list(position):
 
     result = {get_equip_name(row): get_equip_detail(row) for row in reversed(equips) if
               row['SubType'] != "0" or row['DetailType'] != "9"}
-
+    result = {k: v for k, v in result.items() if v['level'] >= equip_min_level or v['max_strength'] == 8}
     return result
 
 
@@ -119,7 +120,7 @@ def get_secondary_weapons():
         equips.extend(res['list'])
 
     result = {get_equip_name(row): get_equip_detail(row) for row in reversed(equips)}
-
+    result = {k: v for k, v in result.items() if v['level'] >= equip_min_level or v['max_strength'] == 8}
     return result
 
 
