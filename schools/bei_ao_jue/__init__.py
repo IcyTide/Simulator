@@ -8,11 +8,12 @@ from schools.bei_ao_jue.recipes import RECIPES, RECIPE_GAINS
 
 
 def initiation(status: Status):
-    pass
+    status.buffs["降麒式-计数"].trigger(stack=5)
 
 
-prepare = '雪絮金屏,刀啸风吟,坚壁清野,松烟竹雾,闹须弥,秀明尘身,破釜沉舟'
 priority = '霜风刀法,雷走风切'
+
+prepare = '雪絮金屏,刀啸风吟,松烟竹雾,闹须弥,擒龙六斩,降麒式(坚壁清野:cd=0),秀明尘身,破釜沉舟'
 loop = """上将军印,破釜沉舟,雪絮金屏(刀啸风吟:cd=0),刀啸风吟,松烟竹雾,擒龙六斩,秀明尘身,
 上将军印,破釜沉舟,破釜沉舟,松烟竹雾(刀啸风吟:cd=0),擒龙六斩,秀明尘身,
 上将军印,雪絮金屏,刀啸风吟,松烟竹雾,擒龙六斩,秀明尘身,破釜沉舟,

@@ -1,6 +1,6 @@
 from base.constant import PHYSICAL_ATTACK_POWER_COF, WEAPON_DAMAGE_COF, PHYSICAL_DOT_ATTACK_POWER_COF, SURPLUS_COF
 from base.skill import Melee, CastingSkill, ActionSkill, DotSkill, PlacementSkill, TriggerSkill, OverdrawSkill, \
-    PhysicalDamage
+    PhysicalDamage, ChannelSkill
 
 """
     Base Skills
@@ -119,6 +119,7 @@ class 上将军印(ActionSkill, PhysicalDamage):
         super().__init__(status)
         self.name = "上将军印"
 
+        self.is_cast = False
         self.hit_with_cast = True
 
         self.cd_base = 18 * 16
@@ -152,8 +153,8 @@ class 破釜沉舟(CastingSkill, OverdrawSkill, PhysicalDamage):
         return self.status.stacks["秀明尘身"]
 
     def post_cast(self):
-        super().post_cast()
         self.status.skills["破"].cast(3)
+        super().post_cast()
 
 
 class 闹须弥_持续(DotSkill, PhysicalDamage):
@@ -315,6 +316,26 @@ class 刀啸风吟(CastingSkill, PhysicalDamage):
         super().post_hit()
 
 
+class 醉斩白蛇(ChannelSkill, PhysicalDamage):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "醉斩白蛇"
+
+        self.is_cast = False
+        self.hit_with_cast = True
+
+        self.tick_base = 4
+        self.interval_base = 8
+
+        self.damage_base = 255
+        self.damage_rand = 20
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(64 * 1.2 * 1.05 * 0.9 * 1.1 * 1.1)
+
+    @property
+    def condition(self):
+        return self.status.stacks["雪絮金屏"]
+
+
 """
     Talent Skills
 """
@@ -440,7 +461,7 @@ SKILLS_MAP = {
     "殷雷腿": [雷走风切],
     "秀明尘身": [秀明尘身, 上将军印, 破釜沉舟],
     "松烟竹雾": [松烟竹雾, 闹须弥, 闹须弥_持续, 擒龙六斩, 惊燕式, 逐鹰式],
-    "雪絮金屏": [雪絮金屏, 刀啸风吟, 坚壁清野_持续, 坚壁清野],
+    "雪絮金屏": [雪絮金屏, 刀啸风吟, 醉斩白蛇,坚壁清野_持续, 坚壁清野],
     "奇穴": [见尘, 楚歌, 绝期, 降麒式, 降麒式_持续],
 }
 SKILLS = sum(SKILLS_MAP.values(), [])

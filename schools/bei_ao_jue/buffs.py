@@ -97,6 +97,27 @@ class 霜天(GainBuff):
         self.status.skills["上将军印"].weapon_damage_cof_gain -= self.value * stack
 
 
+class 化蛟(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "化蛟"
+
+        self.duration = 16
+
+        self.stack_max = 7
+        self.value = 256 / 1024
+
+        self.gain_skills = ["醉斩白蛇"]
+
+    def gain(self, level, stack):
+        super().gain(level, stack)
+        self.status.skills["醉斩白蛇"].skill_damage_addition += self.value * stack
+
+    def revoke(self, level, stack):
+        super().revoke(level, stack)
+        self.status.skills["醉斩白蛇"].skill_damage_addition -= self.value * stack
+        
+        
 class 楚歌(Buff):
     def __init__(self, status):
         super().__init__(status)
@@ -213,6 +234,24 @@ class 含风_增伤(GainBuff):
         for skill in self.gain_skills:
             self.status.skills[skill].skill_damage_addition -= self.value * stack
             
+  
+class 斩纷(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "斩纷"
+
+        self.value = 154 / 1024
+
+        self.gain_attribute = "attack_power"
+
+    def gain(self, level, stack):
+        super().gain(level, stack)
+        self.status.attribute.physical_attack_power_gain += self.value * stack
+
+    def revoke(self, level, stack):
+        super().revoke(level, stack)
+        self.status.attribute.physical_attack_power_gain -= self.value * stack
+        
         
 class 降麒式_计数(CountBuff):
     def __init__(self, status):
@@ -236,6 +275,60 @@ class 降麒式_就绪(Buff):
         self.duration = 15 * 16
 
 
+class 心境(Buff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "心境"
+
+        self.sub_buffs = ["心境-会心", "心境-会效"]
+
+
+class 心境_会心(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "心境-会心"
+
+        self.value = 0.2
+
+        self.gain_attribute = "critical_strike"
+        self.gain_skills = ["刀啸风吟", "醉斩白蛇"]
+
+    def add(self):
+        super().add()
+        self.status.attribute.physical_critical_strike_gain += self.value
+
+    def remove(self):
+        super().remove()
+        self.status.attribute.physical_critical_strike_gain -= self.value
+
+    def gain(self, level, stack):
+        super().gain(level, stack)
+        self.status.attribute.physical_critical_strike_gain += self.value * stack
+
+    def revoke(self, level, stack):
+        super().revoke(level, stack)
+        self.status.attribute.physical_critical_strike_gain -= self.value * stack
+
+
+class 心境_会效(GainBuff):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "心境-会效"
+
+        self.value = 204 / 1024
+
+        self.gain_attribute = "critical_power"
+        self.gain_skills = ["刀啸风吟", "醉斩白蛇"]
+
+    def gain(self, level, stack):
+        super().gain(level, stack)
+        self.status.attribute.physical_critical_power_gain += self.value * stack
+
+    def revoke(self, level, stack):
+        super().revoke(level, stack)
+        self.status.attribute.physical_critical_power_gain -= self.value * stack
+    
+    
 class 降麒式_持续(PlacementBuff):
     def __init__(self, status):
         super().__init__(status)
@@ -301,7 +394,7 @@ class 背水沉舟_持续(Buff):
 
 
 BUFFS = [
-    朔气, 秀明尘身, 松烟竹雾, 雪絮金屏, 擒龙六斩, 闹须弥_持续, 坚壁清野_持续,
+    朔气, 秀明尘身, 松烟竹雾, 雪絮金屏, 擒龙六斩, 闹须弥_持续, 坚壁清野_持续, 心境, 心境_会心, 心境_会效, 斩纷, 化蛟,
     冥鼓, 霜天, 楚歌, 楚歌_计数, 见尘, 含风, 含风_会心, 含风_会效, 含风_增伤, 降麒式_计数, 降麒式_就绪, 降麒式_持续, 降麒式,
     沉夜重雪, 沉夜重雪_冷却, 背水沉舟_持续
 ]

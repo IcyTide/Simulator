@@ -30,15 +30,17 @@ class 阳关:
 class 冥鼓:
     @staticmethod
     def pre_cast_effect(self: Skill):
-        if self.level == 3:
-            self.status.buffs["冥鼓"].trigger()
-        else:
-            self.status.buffs["冥鼓"].clear()
+        self.status.buffs["冥鼓"].trigger()
+
+    @staticmethod
+    def post_cast_effect(self: Skill):
+        self.status.buffs["冥鼓"].clear()
 
     def __call__(self, status: Status):
         status.skills["破釜沉舟"].skill_damage_addition += 205 / 1024
         status.skills["破釜沉舟"].skill_shield_gain -= 410 / 1024
-        status.skills["破"].pre_cast_effect.append(self.pre_cast_effect)
+        status.skills["破釜沉舟"].pre_cast_effect.append(self.pre_cast_effect)
+        status.skills["破釜沉舟"].post_cast_effect.append(self.post_cast_effect)
 
 
 class 霜天:
@@ -58,6 +60,25 @@ class 霜天:
         status.skills["上将军印"].post_cast_effect.append(self.post_cast_effect)
 
 
+class 化蛟:
+    @staticmethod
+    def post_hit_effect(self: Skill):
+        self.status.buffs["化蛟"].trigger()
+        # if self.status.counts[self.name] < 4:
+        #     self.weapon_damage_cof_gain += 0.15
+
+    @staticmethod
+    def post_cast_effect(self: Skill):
+        self.status.buffs["化蛟"].clear()
+        # self.weapon_damage_cof_gain -= 0.15 * min(4, count)
+
+    def __call__(self, status: Status):
+        status.skills["醉斩白蛇"].cd_base = 8 * 16
+        status.skills["醉斩白蛇"].tick_base += 3
+        status.skills["醉斩白蛇"].post_hit_effect.append(self.post_hit_effect)
+        status.skills["醉斩白蛇"].post_cast_effect.append(self.post_cast_effect)
+
+
 class 见尘:
     @staticmethod
     def pre_cast_effect(self: Skill):
@@ -66,6 +87,22 @@ class 见尘:
 
     def __call__(self, status: Status):
         status.skills["上将军印"].pre_cast_effect.append(self.pre_cast_effect)
+
+
+class 心境:
+    @staticmethod
+    def pre_cast_effect(self: Skill):
+        self.status.buffs["心境"].trigger()
+
+    @staticmethod
+    def post_cast_effect(self: Skill):
+        self.status.buffs["心境"].clear()
+
+    def __call__(self, status: Status):
+        status.skills["坚壁清野"].cd_base += 18 * 16
+        status.skills["坚壁清野-持续"].interval_list = [16] * 12
+        status.skills["坚壁清野-持续"].pre_cast_effect.append(self.pre_cast_effect)
+        status.skills["坚壁清野-持续"].post_cast_effect.append(self.post_cast_effect)
 
 
 class 含风:
@@ -81,6 +118,16 @@ class 分疆:
     def __call__(self, status: Status):
         status.skills["上将军印"].interval_list = [4, 4, 5, 5, 5, 5, 4]
         status.skills["见尘"].interval_list = [5, 4, 5, 5, 5, 5, 4]
+
+
+class 斩纷:
+    @staticmethod
+    def pre_cast_effect(self: Skill):
+        self.status.buffs["斩纷"].trigger()
+
+    def __call__(self, status: Status):
+        status.skills["醉斩白蛇"].instant = True
+        status.skills["醉斩白蛇"].pre_cast_effect.append(self.pre_cast_effect)
 
 
 class 星火:
@@ -122,6 +169,12 @@ class 绝期:
                 skill.post_hit_effect.append(self.post_hit_effect)
 
 
+class 砺锋:
+    def __call__(self, status: Status):
+        status.skills["醉斩白蛇"].interval_base = 6
+        status.skills["醉斩白蛇"].skill_damage_addition += 256 / 1024
+
+
 class 重烟:
     @staticmethod
     def add_effect(self: Buff):
@@ -152,14 +205,14 @@ TALENTS = [
     ["龙息"],
     ["归酣"],
     ["阳关", "冥鼓"],
-    ["霜天"],
+    ["霜天", "化蛟"],
     ["含风"],
-    ["见尘"],
-    ["分疆"],
+    ["见尘", "心境"],
+    ["分疆", "斩纷"],
     ["星火"],
     ["楚歌"],
     ["绝期"],
-    ["重烟"],
+    ["重烟", "砺锋"],
     ["降麒式"]
 ]
 TALENT_GAINS = {
@@ -168,12 +221,16 @@ TALENT_GAINS = {
     "阳关": 阳关(),
     "冥鼓": 冥鼓(),
     "霜天": 霜天(),
+    "化蛟": 化蛟(),
     "含风": 含风(),
     "见尘": 见尘(),
+    "心境": 心境(),
     "分疆": 分疆(),
+    "斩纷": 斩纷(),
     "星火": 星火(),
     "楚歌": 楚歌(),
     "绝期": 绝期(),
     "重烟": 重烟(),
+    "砺锋": 砺锋(),
     "降麒式": 降麒式(),
 }
