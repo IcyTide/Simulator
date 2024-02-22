@@ -14,6 +14,8 @@ class 外功双会套装(TriggerBuff):
 class 外功会心套装(GainBuff):
     def __init__(self, status):
         super().__init__(status)
+        self.name = "外功会心套装"
+
         self.value = 0.04
 
         self.gain_attribute = "critical_strike"
@@ -38,6 +40,8 @@ class 外功会心套装(GainBuff):
 class 外功会效套装(GainBuff):
     def __init__(self, status):
         super().__init__(status)
+        self.name = "外功会效套装"
+
         self.value = 41 / 1024
 
         self.gain_attribute = "critical_power"
@@ -64,6 +68,8 @@ class 内功双会套装(TriggerBuff):
 class 内功会心套装(GainBuff):
     def __init__(self, status):
         super().__init__(status)
+        self.name = "内功会心套装"
+
         self.value = 0.04
 
         self.gain_attribute = "critical_strike"
@@ -88,6 +94,8 @@ class 内功会心套装(GainBuff):
 class 内功会效套装(GainBuff):
     def __init__(self, status):
         super().__init__(status)
+        self.name = "内功会效套装"
+
         self.value = 41 / 1024
 
         self.gain_attribute = "critical_power"

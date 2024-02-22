@@ -9626,34 +9626,6 @@
         "set_id": "",
         "set_data": {}
     },
-    "测试武器 (破防 会心 加速) 11650": {
-        "school": "少林",
-        "kind": "内功",
-        "level": 11650,
-        "max_strength": 8,
-        "base": {
-            "weapon_damage_base": 4265,
-            "weapon_damage_rand": 2843
-        },
-        "magic": {
-            "spunk_base": 1356,
-            "magical_attack_power_base": 6503,
-            "magical_critical_strike_base": 4913,
-            "magical_overcome_base": 5669,
-            "haste_base": 1890
-        },
-        "embed": {
-            "magical_attack_power_base": 86,
-            "spunk_base": 36,
-            "magical_overcome_base": 161
-        },
-        "gains": [
-            "1139"
-        ],
-        "special_enchant": null,
-        "set_id": "",
-        "set_data": {}
-    },
     "照夜弓·跃 () 11600": {
         "school": "通用",
         "kind": "通用",
