@@ -317,7 +317,7 @@ class 潋风(Buff):
         super().__init__(status)
         self.name = "潋风"
 
-        self.duration = 6 * 16
+        self.duration = 4 * 16
 
 
 class 截辕_持续(DotBuff):

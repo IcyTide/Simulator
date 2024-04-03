@@ -63,11 +63,11 @@ class Status:
         for gcd_index in self.gcd_group - gap:
             self.gcd_group.pop(gcd_index)
 
-        for buff in self.durations - gap:
-            self.buffs[buff].clear()
-
         for skill in self.intervals - gap:
             self.skills[skill].hit()
+
+        for buff in self.durations - gap:
+            self.buffs[buff].clear()
 
         reduction_gap = gap * (1 + self.attribute.cd_reduction)
         for skill in self.cds - reduction_gap:

@@ -529,11 +529,11 @@ class 潋风_携刃(PhysicalDamage):
 
         self.damage_base = 78
         self.damage_rand = 10
-        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(150 * 1.1)
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(150 * 1.1 * 2.5)
 
     def post_cast(self):
         super().post_cast()
-        self.status.buffs["锐意"].increase(5)
+        self.status.buffs["锐意"].increase(10)
         self.status.skills["留客雨"].reset()
 
 

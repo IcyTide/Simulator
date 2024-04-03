@@ -8,8 +8,8 @@ from schools.bei_ao_jue.recipes import RECIPES, RECIPE_GAINS
 
 
 def initiation(status: Status):
-    status.buffs["降麒式-计数"].trigger(stack=5)
-
+    # status.buffs["降麒式-计数"].trigger(stack=5)
+    pass
 
 priority = '霜风刀法,雷走风切'
 

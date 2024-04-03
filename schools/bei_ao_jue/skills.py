@@ -1,6 +1,6 @@
 from base.constant import PHYSICAL_ATTACK_POWER_COF, WEAPON_DAMAGE_COF, PHYSICAL_DOT_ATTACK_POWER_COF, SURPLUS_COF
 from base.skill import Melee, CastingSkill, ActionSkill, DotSkill, PlacementSkill, TriggerSkill, OverdrawSkill, \
-    PhysicalDamage, ChannelSkill
+    PhysicalDamage, ChannelSkill, ChargingSkill
 
 """
     Base Skills
@@ -93,7 +93,8 @@ class 破(PhysicalDamage):
         self.surplus_cof = [
             SURPLUS_COF(1024 * 1024 * (0.1375 - 1)),
             SURPLUS_COF(1024 * 1024 * (0.275 - 1)),
-            SURPLUS_COF(1024 * 1024 * (0.875 - 1))
+            SURPLUS_COF(1024 * 1024 * (0.875 - 1)),
+            SURPLUS_COF(1024 * 1024 * (0.42 - 1))
         ]
 
 
@@ -135,17 +136,62 @@ class 上将军印(ActionSkill, PhysicalDamage):
         return self.status.stacks["秀明尘身"]
 
 
-class 破釜沉舟(CastingSkill, OverdrawSkill, PhysicalDamage):
+class 项王击鼎(CastingSkill, PhysicalDamage):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "项王击鼎"
+
+        self.damage_base = 250
+        self.damage_rand = 15
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(200 * 1.2 * 0.9 * 1.1 * 1.1)
+        self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
+
+    @property
+    def condition(self):
+        return self.status.stacks["秀明尘身"]
+
+    def post_cast(self):
+        super().post_cast()
+        if self.status.stacks[self.name] == 2:
+            self.status.buffs[self.name].clear()
+            self.status.skills["项王击鼎-持续"].cast()
+        else:
+            self.status.buffs[self.name].trigger()
+
+
+class 项王击鼎_持续(ActionSkill, PhysicalDamage):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "项王击鼎-持续"
+
+        self.interval_base = 8
+        self.tick_base = 4
+
+        self.damage_base = 190
+        self.damage_rand = 15
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(128 * 0.9 * 1.1)
+        self.weapon_damage_cof = WEAPON_DAMAGE_COF(1024)
+
+    @property
+    def interval_list(self):
+        return [24] + [self.interval_base] * (self.tick_base - 1)
+
+    @property
+    def condition(self):
+        return self.status.stacks["秀明尘身"]
+
+
+class 破釜沉舟(CastingSkill, ChargingSkill, PhysicalDamage):
     def __init__(self, status):
         super().__init__(status)
         self.name = "破釜沉舟"
 
-        self.cd_base = 9 * 16
+        self.cd_base = 8 * 16
         self.energy = 2
 
         self.damage_base = 350
         self.damage_rand = 20
-        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(400 * 0.9 * 0.95 * 1.1 * 1.15)
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(400 * 0.9 * 0.95 * 1.1 * 1.15 * 1.1)
         self.weapon_damage_cof = WEAPON_DAMAGE_COF(2048)
 
     @property
@@ -204,7 +250,7 @@ class 擒龙六斩(CastingSkill):
         self.status.skills["惊燕式"].cast()
 
 
-class 惊燕式(CastingSkill, PhysicalDamage):
+class 惊燕式(ActionSkill, PhysicalDamage):
     def __init__(self, status):
         super().__init__(status)
         self.name = "惊燕式"
@@ -228,7 +274,7 @@ class 惊燕式(CastingSkill, PhysicalDamage):
         self.status.buffs["擒龙六斩"].trigger()
 
 
-class 逐鹰式(CastingSkill, PhysicalDamage):
+class 逐鹰式(ActionSkill, PhysicalDamage):
     def __init__(self, status):
         super().__init__(status)
         self.name = "逐鹰式"
@@ -339,6 +385,46 @@ class 醉斩白蛇(ChannelSkill, PhysicalDamage):
 """
     Talent Skills
 """
+
+
+class 余声(CastingSkill, PhysicalDamage):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "余声"
+
+        self.activate = False
+
+        self.gcd_index = self.name
+
+        self.damage_base = 180
+        self.damage_rand = 50
+
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(310 * 1.3)
+
+    @property
+    def condition(self):
+        return self.status.buffs["秀明尘身"]
+
+    def post_cast(self):
+        super().post_cast()
+        self.activate = False
+
+
+class 掠关(PlacementSkill, PhysicalDamage):
+    def __init__(self, status):
+        super().__init__(status)
+        self.name = "掠关"
+
+        self.is_cast = False
+        self.is_hit = False
+
+        self.damage_base = 90
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(1.4375 * 10 * 16)
+        self.interval_list = [0, 24] + [6] * 3
+
+    def post_hit(self):
+        super().post_hit()
+        self.status.skills["破"].cast(4)
 
 
 class 见尘(PlacementSkill, PhysicalDamage):
@@ -459,9 +545,9 @@ class 背水沉舟_持续(DotSkill, PhysicalDamage):
 SKILLS_MAP = {
     "通用": [霜风刀法, 破, 上将军印_神兵, 背水沉舟_持续],
     "殷雷腿": [雷走风切],
-    "秀明尘身": [秀明尘身, 上将军印, 破釜沉舟],
+    "秀明尘身": [秀明尘身, 上将军印, 破釜沉舟, 项王击鼎, 项王击鼎_持续],
     "松烟竹雾": [松烟竹雾, 闹须弥, 闹须弥_持续, 擒龙六斩, 惊燕式, 逐鹰式],
-    "雪絮金屏": [雪絮金屏, 刀啸风吟, 醉斩白蛇,坚壁清野_持续, 坚壁清野],
-    "奇穴": [见尘, 楚歌, 绝期, 降麒式, 降麒式_持续],
+    "雪絮金屏": [雪絮金屏, 刀啸风吟, 醉斩白蛇, 坚壁清野_持续, 坚壁清野],
+    "奇穴": [见尘, 余声, 掠关, 楚歌, 绝期, 降麒式, 降麒式_持续],
 }
 SKILLS = sum(SKILLS_MAP.values(), [])

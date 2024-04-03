@@ -136,9 +136,10 @@ class Skill:
         self.level = level
 
         self.pre_cast()
-        if not self.interval:
-            for _ in range(self.tick):
-                self.hit()
+        for _ in range(self.tick):
+            if self.interval:
+                break
+            self.hit()
 
     def post_cast(self):
         self.status.ticks.pop(self.name)
@@ -366,29 +367,19 @@ class LoopSkill(Skill):
 
 
 class FixedInterval(Skill):
-    _interval_list: list = None
-    _duration: int = 0
-
-    @property
-    def interval_list(self):
-        return self._interval_list
-
-    @interval_list.setter
-    def interval_list(self, interval_list):
-        self._interval_list = interval_list
-        self._duration = sum(interval_list)
+    interval_list: list = None
 
     @property
     def interval(self):
-        return self._interval_list[self.status.ticks[self.name]]
+        return self.interval_list[self.status.ticks[self.name]]
 
     @property
     def tick(self):
-        return len(self._interval_list)
+        return len(self.interval_list)
 
     @property
     def duration(self):
-        return self._duration
+        return sum(self.interval_list)
 
 
 """"""
