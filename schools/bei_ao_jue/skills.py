@@ -94,7 +94,7 @@ class 破(PhysicalDamage):
             SURPLUS_COF(1024 * 1024 * (0.1375 - 1)),
             SURPLUS_COF(1024 * 1024 * (0.275 - 1)),
             SURPLUS_COF(1024 * 1024 * (0.875 - 1)),
-            SURPLUS_COF(1024 * 1024 * (0.42 - 1))
+            SURPLUS_COF(1024 * 1024 * (0.4375 * 1.2 - 1))
         ]
 
 
@@ -174,7 +174,7 @@ class 项王击鼎_持续(ActionSkill, PhysicalDamage):
 
     @property
     def interval_list(self):
-        return [24] + [self.interval_base] * (self.tick_base - 1)
+        return [self.interval_base + 24] + [self.interval_base] * (self.tick_base - 1)
 
     @property
     def condition(self):
@@ -351,7 +351,7 @@ class 刀啸风吟(CastingSkill, PhysicalDamage):
         self.damage_base = 250
         self.damage_rand = 20
 
-        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(256 * 1.2 * 1.05 * 1.1 * 1.1 * 1.05)
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(256 * 1.2 * 1.05 * 1.1 * 1.1 * 1.05 * 1.1)
 
     @property
     def condition(self):
@@ -410,7 +410,7 @@ class 余声(CastingSkill, PhysicalDamage):
         self.activate = False
 
 
-class 掠关(PlacementSkill, PhysicalDamage):
+class 掠关(PhysicalDamage):
     def __init__(self, status):
         super().__init__(status)
         self.name = "掠关"
@@ -419,12 +419,12 @@ class 掠关(PlacementSkill, PhysicalDamage):
         self.is_hit = False
 
         self.damage_base = 90
-        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(1.4375 * 10 * 16)
-        self.interval_list = [0, 24] + [6] * 3
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(1.4375 * 10 * 16 * 1.3)
 
     def post_hit(self):
         super().post_hit()
         self.status.skills["破"].cast(4)
+        self.status.buffs["掠关-计数"].trigger()
 
 
 class 见尘(PlacementSkill, PhysicalDamage):
@@ -454,7 +454,7 @@ class 楚歌(PhysicalDamage):
 
         self.damage_base = 55
         self.damage_rand = 5
-        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(1200 * 0.8)
+        self.attack_power_cof = PHYSICAL_ATTACK_POWER_COF(1200 * 0.8 * 1.5)
 
 
 class 绝期(TriggerSkill, PhysicalDamage):

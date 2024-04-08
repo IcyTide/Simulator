@@ -204,17 +204,23 @@ class 掠关:
     @staticmethod
     def post_cast_effect(self: Skill):
         self.status.buffs["项王击鼎"].trigger(stack=2)
-        self.status.buffs["掠关-就绪"].trigger()
+        self.status.buffs["掠关"].trigger()
+
+    @staticmethod
+    def post_hit_effect(self: Skill):
+        if self.status.stacks["掠关"] and self.status.stacks["掠关-计数"] < 5:
+            self.status.skills["掠关"].cast()
 
     @staticmethod
     def post_cast_effect_consume(self: Skill):
-        if self.status.stacks["掠关-就绪"]:
-            self.status.skills["掠关"].cast()
-            self.status.buffs["掠关-就绪"].clear()
+        self.status.buffs["掠关"].clear()
+        self.status.buffs["掠关-计数"].clear()
 
     def __call__(self, status: Status):
         status.skills["上将军印"].post_cast_effect.append(self.post_cast_effect)
-        status.skills["项王击鼎"].post_cast_effect.append(self.post_cast_effect_consume)
+        status.skills["项王击鼎-持续"].post_hit_effect.append(self.post_hit_effect)
+        status.skills["项王击鼎"].post_hit_effect.append(self.post_hit_effect)
+        status.skills["项王击鼎-持续"].post_cast_effect.append(self.post_cast_effect_consume)
 
 
 class 楚歌:
@@ -283,12 +289,12 @@ class 降麒式:
 TALENTS = [
     ["龙息", "虎踞"],
     ["归酣", "沧雪"],
-    ["阳关", "冥鼓"],
+    ["冥鼓", "阳关"],
     ["霜天", "化蛟", "余声"],
     ["含风"],
     ["见尘", "逐鹿"],
     ["分疆", "斩纷", "百战"],
-    ["星火", "绝河", "掠关"],
+    ["掠关", "星火", "绝河"],
     ["楚歌"],
     ["绝期"],
     ["重烟", "砺锋"],
