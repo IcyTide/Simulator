@@ -24,29 +24,12 @@ class Series:
         return "\n".join([f"{i}:\t{d}" for i, d in zip(self.index, self.data)])
 
     def __getitem__(self, key):
-        if isinstance(key, (list, tuple)):
-            assert all(isinstance(k, bool) for k in key)
-            assert len(self.data) == len(key)
-            index, data = [], []
-            for i, k in enumerate(key):
-                if not k:
-                    continue
-                index.append(self.index[i])
-                data.append(self.data[i])
-            return Series(data, index)
         if key in self.index:
             return self.data[self.index.index(key)]
         raise IndexError(f"{key} not in index")
 
     def __setitem__(self, key, value):
-        if isinstance(key, (list, tuple)):
-            assert all(isinstance(k, bool) for k in key)
-            assert len(self.data) == len(key)
-            for i, k in enumerate(key):
-                if not k:
-                    continue
-                self.data[i] = value
-        elif key in self.index:
+        if key in self.index:
             self.data[key] = value
         else:
             self.index.append(key)
@@ -130,21 +113,27 @@ class Series:
 class DataFrame:
     index: int = 0
     columns: List[str]
+    rows: Dict[int, object]
     data: Dict[str, Series]
 
-    def __init__(self, data: Dict[str, Series]=None, index: int=0, columns: List[str]=None):
+    def __init__(
+            self, data: Dict[str, Series]=None, index: int=0, columns: List[str]=None, rows: Dict[int, object]= None
+    ):
         self.index = index
         if data:
+            assert rows is not None
             self.data = data
             self.columns = list(self.data)
+            self.rows = rows
         else:
-            assert columns
+            assert columns is not None
+            self.data = {c: Series() for c in columns}
             self.columns = columns
-            self.data = {c: Series() for c in self.columns}
+            self.rows = {}
 
     def __repr__(self):
         content = "\t" + "\t".join(self.columns)
-        for i in self.indexes:
+        for i in self.rows:
             row = f"{i}"
             for c in self.columns:
                 row += f"\t{self.data[c][i]}"
@@ -155,30 +144,51 @@ class DataFrame:
         if isinstance(key, str):
             return self.data[key]
         elif isinstance(key, int):
-            return Series([self.data[c][key] for c in self.columns], self.columns)
+            # return Series([self.data[c][key] for c in self.columns], self.columns)
+            return self.rows[key]
         elif isinstance(key, Series):
-            assert len(self.indexes) == len(key)
-            frame_data = {}
+            assert len(self.rows) == len(key)
+            frame_data, rows = {}, {}
             for c in self.columns:
-                index, series_data = [], []
+                series_data, index = [], []
                 for i, k in key.items():
                     if not k:
                         continue
-                    index.append(i)
                     series_data.append(self.data[c][i])
+                    index.append(i)
+                    rows[i] = self.rows[i]
                 frame_data[c] = Series(series_data, index)
-            return DataFrame(frame_data, self.index)
+            return DataFrame(frame_data, self.index, self.columns, rows)
+
+    def __setitem__(self, key, value):
+        if isinstance(key, str):
+            self.data[key] = value
+        elif isinstance(key, int):
+            self.rows[key] = value
+            for c in self.columns:
+                self.data[c][key] = getattr(value, c)
+        elif isinstance(key, Series):
+            for i, k in key.items():
+                if not k:
+                    continue
+                for c in self.columns:
+                    self.data[c][i] = getattr(value, c)
+                self.rows[i] = value
 
     def __getattr__(self, name):
         if name in self.columns:
             return self[name]
         raise AttributeError(f"DataFrame has not attribute {name}")
 
+    def __iter__(self):
+        for i in self.rows:
+            yield self.rows[i]
+
     def append(self, item):
-        assert len(item) == len(self.columns)
-        
-        for c, e in zip(self.columns, item):
-            self.data[c][self.index] = e
+        self.rows[self.index] = item
+        setattr(item, "index", self.index)
+        for c in self.columns:
+            self.data[c][self.index] = getattr(item, c)
         self.index += 1
 
     def remove(self, index):
@@ -190,25 +200,34 @@ class DataFrame:
         else:
             for c in self.columns:
                 self.data[c].remove(index)
+            self.rows.pop(index)
 
-    @property
-    def indexes(self):
-        indexes = []
-        for i in range(self.index):
-            for c in self.columns:
-                if i not in self.data[c].index:
-                    break
-            else:
-                indexes.append(i)
-        return indexes
+    def first(self):
+        return list(self.rows.values())[0]
+
+    def last(self):
+        return list(self.rows.values())[-1]
+
+    def __bool__(self):
+        if self.rows:
+            return True
+        else:
+            return False
 
 if __name__ == '__main__':
     df = DataFrame(columns=["a", "b", "c", "d"])
     print(df)
+    class Inst:
+        def __init__(self, a, b, c, d):
+            self.a = a
+            self.b = b
+            self.c = c
+            self.d = d
 
-    df.append([1, 2, 3, (1, 2)])
-    df.append([4, 5, 6, (1, 2)])
-    df.append([7, 8, 9, (1, 2)])
+
+    df.append(Inst(1, 2, 3, (1, 2)))
+    df.append(Inst(4, 5, 6, (1, 2)))
+    df.append(Inst(7, 8, 9, (1, 2)))
     print("\n添加新行后:")
     print(df)
 
@@ -216,7 +235,7 @@ if __name__ == '__main__':
     print("\n移除索引为2的行后:")
     print(df)
 
-    df.append([7, 8, 9, (1, 2)])
+    df.append(Inst(7, 8, 9, (1, 2)))
     print("\n添加新行后:")
     print(df)
 
@@ -239,7 +258,6 @@ if __name__ == '__main__':
     df.b += 4
     print("b列加4后:")
     print(df)
-
 
     # 使用remove方法
     df.remove(cond_1 & cond_2)
