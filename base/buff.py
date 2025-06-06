@@ -9,10 +9,6 @@ from tools.regex import camel_to_capital
 
 
 class BuffInSetting(BaseSetting):
-    _aliases = {
-        "Name": "buff_name",
-    }
-
     buff_id: int
     buff_level: int
 

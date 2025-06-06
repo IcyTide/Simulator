@@ -53,7 +53,7 @@ class BaseScript:
         return self.character_map.get(character_id)
 
     def add_character(self, character: 'BaseCharacter'):
-        self.character_map[character.character_id] = character
+        self.character_map[character.id] = character
 
     def set_timer(self, delay_frame: int, timer_function: Callable, *args):
         self.timer_map[self.frame + delay_frame].append(Timer(self.frame, delay_frame, timer_function, *args))

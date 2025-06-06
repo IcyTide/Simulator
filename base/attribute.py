@@ -8,6 +8,7 @@ class UselessAttribute:
 class ResourceAttribute:
     max_life_percent_add: int = 0
 
+    mana_replenish_ext: int = 0
     mana_replenish_percent: int = 0
 
     max_sun_energy: int = 0
@@ -15,6 +16,8 @@ class ResourceAttribute:
 
 
 class CofAttribute:
+    strength_to_physics_attack_power_cof: int = 0
+    strength_to_physics_overcome_cof: int = 0
     spunk_to_solar_and_lunar_attack_power_cof: int = 0
     spunk_to_solar_and_lunar_critical_strike_cof: int = 0
 
@@ -43,6 +46,7 @@ class DefenseAttribute:
 
 
 class AttackAttribute(CofAttribute):
+    physics_attack_power_base: int = 0
     solar_attack_power_base: int = 0
     lunar_attack_power_base: int = 0
 
@@ -62,6 +66,7 @@ class DamageAttribute:
 
 
 class OtherAttribute(UselessAttribute):
+    all_shield_ignore_percent: int = 0
     dst_npc_damage_coefficient: int = 0
 
 

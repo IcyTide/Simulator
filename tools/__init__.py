@@ -1,16 +1,21 @@
-import json
 import os
 import re
 
 import pandas as pd
 
 BASE_DIR = "../jx3_hd_src"
+PLATFORM = "skill_mobile"
 
 
-def read_tab(file):
-    file_path = os.path.join(BASE_DIR, file)
-    df = pd.read_csv(file_path, sep="\t", low_memory=False, encoding="utf-8", on_bad_lines="skip")
-    df = df.where(pd.notna(df), None)
+def read_tab(*files):
+    df = None
+    for file in files:
+        file_path = os.path.join(BASE_DIR, file)
+        if df is None:
+            df = pd.read_csv(file_path, sep="\t", low_memory=False, encoding="utf-8", on_bad_lines="skip")
+        else:
+            df = pd.concat([df, pd.read_csv(file_path, sep="\t", low_memory=False, encoding="utf-8", on_bad_lines="skip")])
+    df = df.where(pd.notna(df), 0)
     return df
 
 

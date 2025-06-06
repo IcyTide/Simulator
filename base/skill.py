@@ -3,13 +3,12 @@ from typing import List, Optional
 
 from base import BaseSetting
 from base.script import AttributeEffect
-from enums.skill import *
+from enums.script import *
 from settings import skill_settings
 
 
 @dataclass
 class SlowCheckBuff:
-    check_type: BUFF_CHECK_TYPE
     buff_id: int
     stack_num: int
     stack_num_compare_flag: BUFF_COMPARE_FLAG
@@ -109,7 +108,7 @@ class SkillInSetting(BaseSetting):
 
 class SkillInScript(SkillInSetting):
     attribute_effects: List[AttributeEffect]
-    slow_check_buffs: List[SlowCheckBuff]
+    slow_check_self_buffs: List[SlowCheckBuff]
     check_self_learnt_skills: List[CheckSelfLearntSkill]
     bind_buffs: BindBuffs[Optional[BindBuff]]
     cooldowns: CoolDowns
@@ -118,7 +117,7 @@ class SkillInScript(SkillInSetting):
     def __init__(self):
         super().__init__()
         self.attribute_effects = []
-        self.slow_check_buffs = []
+        self.slow_check_self_buffs = []
         self.check_self_learnt_skills = []
         self.bind_buffs = BindBuffs()
         self.cooldowns = CoolDowns()
@@ -128,24 +127,18 @@ class SkillInScript(SkillInSetting):
         self.attribute_effects.append(AttributeEffect(attribute_effect_mode, attribute_type, param_1, param_2))
 
     def add_slow_check_self_buff(self, buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag):
-        self.slow_check_buffs.append(SlowCheckBuff(
-            BUFF_CHECK_TYPE.SELF, buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag
+        self.slow_check_self_buffs.append(SlowCheckBuff(
+            buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag
         ))
 
-    def add_slow_check_dest_buff(self, buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag):
-        self.slow_check_buffs.append(SlowCheckBuff(
-            BUFF_CHECK_TYPE.DEST, buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag
-        ))
-
-    def add_slow_check_self_own_buff(self, buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag):
-        self.slow_check_buffs.append(SlowCheckBuff(
-            BUFF_CHECK_TYPE.SELF_OWN, buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag
-        ))
-
-    def add_slow_check_dest_own_buff(self, buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag):
-        self.slow_check_buffs.append(SlowCheckBuff(
-            BUFF_CHECK_TYPE.DEST_OWN, buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag
-        ))
+    # def add_slow_check_dest_buff(self, buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag):
+    #     pass
+    #
+    # def add_slow_check_self_own_buff(self, buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag):
+    #     pass
+    #
+    # def add_slow_check_dest_own_buff(self, buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag):
+    #     pass
 
     def add_check_self_learnt_skill(self, skill_id, level, level_compare_flag):
         self.check_self_learnt_skills.append(CheckSelfLearntSkill(skill_id, level, level_compare_flag))

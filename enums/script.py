@@ -3,15 +3,27 @@ from enum import IntEnum, StrEnum, auto
 
 class EXECUTE_TYPE(StrEnum):
     APPLY = "Apply"
+    APPLY_SETUP = "ApplySetup"
+    APPLY_BULLET_TO_DEST = "ApplyBulletToDest"
+    APPLY_BULLET_TO_DEST_AND_ROLLBACK = "ApplyBulletToDestAndRollback"
     UNAPPLY = "UnApply"
+    UNAPPLY_SETUP = "UnApplySetup"
+    UNAPPLY_BULLET_TO_DEST = "UnApplyBulletToDest"
+    UNAPPLY_BULLET_TO_DEST_AND_ROLLBACK = "UnApplyBulletToDestAndRollback"
     GET_SKILL_LEVEL_DATA = "GetSkillLevelData"
     GET_SKILL_RECIPE_DATA = "GetSkillRecipeData"
 
+    ON_CHANNEL_BEGIN = "OnChannelBegin"
+    ON_CHANNEL_END = "OnChannelEnd"
+    ON_SKILL_LEVEL_UP = "OnSkillLevelUp"
+    ON_SKILL_FORGOTTEN = "OnSkillForgotten"
+    ON_BULLET_DESTROY = "OnBulletDestroy"
     ON_REMOVE = "OnRemove"
 
 
 class GLOBAL(IntEnum):
     GAME_FPS = 16
+
 
 class RELATION_FORCE(IntEnum):
     CHUNYANG = auto()
@@ -37,6 +49,7 @@ class PLAYER_ARENA_TYPE(IntEnum):
 
 
 class SKILL_KIND_TYPE(IntEnum):
+    PHYSICS = auto()
     SOLAR_MAGIC = auto()
     LUNAR_MAGIC = auto()
 
@@ -63,6 +76,9 @@ class ATTRIBUTE_TYPE(IntEnum):
 
     # Behavior
     EXECUTE_SCRIPT = auto()
+    EXECUTE_SCRIPT_SETUP = auto()
+    EXECUTE_SCRIPT_BULLET_TO_DEST = auto()
+    EXECUTE_SCRIPT_BULLET_TO_DEST_AND_ROLLBACK = auto()
     CAST_SKILL = auto()
     CALL_BUFF = auto()
     SET_TALENT_RECIPE = auto()
@@ -95,6 +111,7 @@ class ATTRIBUTE_TYPE(IntEnum):
     CALL_POISON_DAMAGE = auto()
 
     # Attack Attribute
+    PHYSICS_ATTACK_POWER_BASE = auto()
     SOLAR_ATTACK_POWER_BASE = auto()
     LUNAR_ATTACK_POWER_BASE = auto()
 
@@ -103,10 +120,13 @@ class ATTRIBUTE_TYPE(IntEnum):
     PHYSICS_SHIELD_BASE = auto()
 
     # Cof Attribute
+    STRENGTH_TO_PHYSICS_ATTACK_POWER_COF = auto()
+    STRENGTH_TO_PHYSICS_OVERCOME_COF = auto()
     SPUNK_TO_SOLAR_AND_LUNAR_ATTACK_POWER_COF = auto()
     SPUNK_TO_SOLAR_AND_LUNAR_CRITICAL_STRIKE_COF = auto()
 
     # Other Attribute
+    ALL_SHIELD_IGNORE_PERCENT = auto()
     DST_NPC_DAMAGE_COEFFICIENT = auto()
 
     # Resource Attribute
@@ -114,10 +134,29 @@ class ATTRIBUTE_TYPE(IntEnum):
     MAX_MOON_ENERGY = auto()
 
     MAX_LIFE_PERCENT_ADD = auto()
+    MANA_REPLENISH_EXT = auto()
     MANA_REPLENISH_PERCENT = auto()
+
+
+class BUFF_COMPARE_FLAG(IntEnum):
+    EQUAL = auto()
+    NOT_EQUAL = auto()
+    GREATER_EQUAL = auto()
+    LESS_EQUAL = auto()
+    GREATER = auto()
+    LESS = auto()
+
+
+class SKILL_COMPARE_FLAG(IntEnum):
+    EQUAL = auto()
+    NOT_EQUAL = auto()
+    GREATER_EQUAL = auto()
+    LESS_EQUAL = auto()
+    GREATER = auto()
+    LESS = auto()
 
 
 ENV_VARIABLES = [
     GLOBAL, RELATION_FORCE, PLAYER_ARENA_TYPE, SKILL_KIND_TYPE, ABSORB_ATTRIBUTE_SHIELD_TYPE,
-    ATTRIBUTE_EFFECT_MODE, ATTRIBUTE_TYPE,
+    ATTRIBUTE_EFFECT_MODE, ATTRIBUTE_TYPE, BUFF_COMPARE_FLAG, SKILL_COMPARE_FLAG
 ]

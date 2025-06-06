@@ -9,7 +9,7 @@ class BaseSetting:
     def __getattr__(self, item):
         if item in self._aliases:
             item = self._aliases[item]
-        else:
+        elif item.lower() != item:
             item = camel_to_snake(item)
         if item in dir(self):
             return getattr(self, item)
@@ -17,5 +17,8 @@ class BaseSetting:
             raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{item}'")
 
     def __setattr__(self, key, value):
-        key = camel_to_snake(key)
+        if key in self._aliases:
+            key = self._aliases[key]
+        elif key.lower() != key:
+            key = camel_to_snake(key)
         super().__setattr__(key, value)
