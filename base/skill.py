@@ -1,14 +1,16 @@
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List, Optional
 
 from base import BaseSetting
-from base.script import AttributeEffect
+from base.script import Effect, Script
+from base.utils import apply_haste
 from enums.script import *
 from settings import skill_settings
 
 
 @dataclass
-class SlowCheckBuff:
+class CheckBuff:
     buff_id: int
     stack_num: int
     stack_num_compare_flag: BUFF_COMPARE_FLAG
@@ -17,57 +19,10 @@ class SlowCheckBuff:
 
 
 @dataclass
-class CheckSelfLearntSkill:
-    skill_id: int
-    level: int
-    level_compare_flag: SKILL_COMPARE_FLAG
-
-
-@dataclass
-class DelaySubSkill:
-    delay: int
+class SubSkill:
+    interval: int
     skill_id: int
     skill_level: int
-
-
-@dataclass
-class BindBuff:
-    buff_id: int
-    buff_level: int
-
-
-class BindBuffs(list):
-    def bind(self, index, buff_id, buff_level):
-        if len(self) < index:
-            for i in range(len(self), index):
-                self.append(None)
-        self[index - 1] = BindBuff(buff_id, buff_level)
-
-
-class CoolDowns:
-    public_cooldown: int
-    normal_cooldowns: List[Optional[int]]
-    check_cooldowns: List[Optional[int]]
-
-    def __init__(self):
-        self.public_cooldown = 0
-        self.normal_cooldowns = []
-        self.check_cooldowns = []
-
-    def set_public(self, cooldown_id):
-        self.public_cooldown = cooldown_id
-
-    def set_normal(self, index, cooldown_id):
-        if len(self.normal_cooldowns) < index:
-            for i in range(len(self.normal_cooldowns), index):
-                self.normal_cooldowns.append(None)
-        self.normal_cooldowns[index - 1] = cooldown_id
-
-    def set_check(self, index, cooldown_id):
-        if len(self.check_cooldowns) < index:
-            for i in range(len(self.check_cooldowns), index):
-                self.check_cooldowns.append(None)
-        self.check_cooldowns[index - 1] = cooldown_id
 
 
 class SkillInSetting(BaseSetting):
@@ -76,27 +31,17 @@ class SkillInSetting(BaseSetting):
         "dwLevel": "skill_level"
     }
 
-    index: int
     skill_id: int
 
     max_level: int
     kind_type: int
-
-    mount_request_type: int
-    mount_request_detail: int
-
-    target_relation_none: int
-    target_relation_self: int
-    target_relation_enemy: int
-
-    target_type_player: int
-    target_type_npc: int
 
     skill_event_mask_1: int
     skill_event_mask_2: int
 
     recipe_type: int
 
+    path: str
     script_file: str
 
     def __init__(self):
@@ -105,61 +50,142 @@ class SkillInSetting(BaseSetting):
             setattr(self, k, v)
 
 
-
 class SkillInScript(SkillInSetting):
-    attribute_effects: List[AttributeEffect]
-    slow_check_self_buffs: List[SlowCheckBuff]
-    check_self_learnt_skills: List[CheckSelfLearntSkill]
-    bind_buffs: BindBuffs[Optional[BindBuff]]
-    cooldowns: CoolDowns
-    delay_sub_skills: List[DelaySubSkill]
+    self_rollback_effects: List[Effect]
+    dest_rollback_effects: List[Effect]
+    self_effects: List[Effect]
+    dest_effects: List[Effect]
+
+    check_self_own_buffs: List[CheckBuff]
+    check_dest_own_buffs: List[CheckBuff]
+    check_self_buffs: List[CheckBuff]
+    check_dest_buffs: List[CheckBuff]
+
+    public_cooldown: int = 0
+    normal_cooldowns: List[Optional[int]]
+    check_cooldowns: List[Optional[int]]
+
+    delay_sub_skills: List[SubSkill]
+
+    prepare_frames: int = 0
+    min_prepare_frames: int = 0
+    instant_channel: bool = False
+    channel_interval: int = 0
+    min_channel_interval: int = 0
+    channel_frame: int = 0
+    min_channel_frame: int = 0
 
     def __init__(self):
         super().__init__()
-        self.attribute_effects = []
-        self.slow_check_self_buffs = []
-        self.check_self_learnt_skills = []
-        self.bind_buffs = BindBuffs()
-        self.cooldowns = CoolDowns()
+        self.self_rollback_effects = []
+        self.dest_rollback_effects = []
+        self.self_effects = []
+        self.dest_effects = []
+
+        self.check_self_own_buffs = []
+        self.check_dest_own_buffs = []
+        self.check_self_buffs = []
+        self.check_dest_buffs = []
+
+        self.normal_cooldowns = []
+
         self.delay_sub_skills = []
 
-    def add_attribute(self, attribute_effect_mode, attribute_type, param_1, param_2):
-        self.attribute_effects.append(AttributeEffect(attribute_effect_mode, attribute_type, param_1, param_2))
+        self.script = Script(str(Path(self.path, self.script_file)))
 
-    def add_slow_check_self_buff(self, buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag):
-        self.slow_check_self_buffs.append(SlowCheckBuff(
+    def add_attribute(
+            self, attribute_effect_mode: ATTRIBUTE_EFFECT_MODE, attribute_type: ATTRIBUTE_TYPE, param_1, param_2
+    ):
+        if attribute_effect_mode == ATTRIBUTE_EFFECT_MODE.EFFECT_TO_SELF_AND_ROLLBACK:
+            self.self_rollback_effects.append(Effect(attribute_type, param_1, param_2))
+        elif attribute_effect_mode == ATTRIBUTE_EFFECT_MODE.EFFECT_TO_DEST_AND_ROLLBACK:
+            self.dest_rollback_effects.append(Effect(attribute_type, param_1, param_2))
+        elif attribute_effect_mode == ATTRIBUTE_EFFECT_MODE.EFFECT_TO_SELF_NOT_ROLLBACK:
+            self.self_effects.append(Effect(attribute_type, param_1, param_2))
+        elif attribute_effect_mode == ATTRIBUTE_EFFECT_MODE.EFFECT_TO_DEST_NOT_ROLLBACK:
+            self.dest_effects.append(Effect(attribute_type, param_1, param_2))
+
+    def add_slow_check_self_own_buff(
+            self, buff_id: int,
+            stack_num: int, stack_num_compare_flag: BUFF_COMPARE_FLAG,
+            level: int, level_compare_flag: BUFF_COMPARE_FLAG
+    ):
+        self.check_self_own_buffs.append(CheckBuff(
             buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag
         ))
 
-    # def add_slow_check_dest_buff(self, buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag):
-    #     pass
-    #
-    # def add_slow_check_self_own_buff(self, buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag):
-    #     pass
-    #
-    # def add_slow_check_dest_own_buff(self, buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag):
-    #     pass
+    def add_slow_check_dest_own_buff(
+            self, buff_id: int,
+            stack_num: int, stack_num_compare_flag: BUFF_COMPARE_FLAG,
+            level: int, level_compare_flag: BUFF_COMPARE_FLAG
+    ):
+        self.check_dest_own_buffs.append(CheckBuff(
+            buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag
+        ))
 
-    def add_check_self_learnt_skill(self, skill_id, level, level_compare_flag):
-        self.check_self_learnt_skills.append(CheckSelfLearntSkill(skill_id, level, level_compare_flag))
+    def add_slow_check_self_buff(
+            self, buff_id: int,
+            stack_num: int, stack_num_compare_flag: BUFF_COMPARE_FLAG,
+            level: int, level_compare_flag: BUFF_COMPARE_FLAG
+    ):
+        self.check_self_buffs.append(CheckBuff(
+            buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag
+        ))
 
-    def bind_buff(self, index, buff_id, buff_level):
-        self.bind_buffs.bind(index, buff_id, buff_level)
+    def add_slow_check_dest_buff(
+            self, buff_id: int,
+            stack_num: int, stack_num_compare_flag: BUFF_COMPARE_FLAG,
+            level: int, level_compare_flag: BUFF_COMPARE_FLAG
+    ):
+        self.check_dest_buffs.append(CheckBuff(
+            buff_id, stack_num, stack_num_compare_flag, level, level_compare_flag
+        ))
 
     def set_public_cool_down(self, cooldown_id):
-        self.cooldowns.set_public(cooldown_id)
+        self.public_cooldown = cooldown_id
 
     def set_normal_cool_down(self, index, cooldown_id):
-        self.cooldowns.set_normal(index, cooldown_id)
-
-    def set_check_cool_down(self, index, cooldown_id):
-        self.cooldowns.set_check(index, cooldown_id)
-
-    def set_delay_sub_skill(self, delay, skill_id, skill_level):
-        self.delay_sub_skills.append(DelaySubSkill(delay, skill_id, skill_level))
+        if len(self.normal_cooldowns) < index:
+            for _ in range(len(self.normal_cooldowns), index):
+                self.normal_cooldowns.append(None)
+        self.normal_cooldowns[index - 1] = cooldown_id
 
 
-class Skill(SkillInScript):
+class SkillInPython(SkillInScript):
+
+    def __init__(self):
+        super().__init__()
+        self.timer_index = []
+
+    def get_prepare_frames(self, haste: float):
+        if not self.prepare_frames:
+            return 0
+        if 0 < self.min_prepare_frames < self.prepare_frames:
+            return max(apply_haste(self.prepare_frames, haste), self.min_prepare_frames)
+        return self.prepare_frames
+
+    def get_channel_interval(self, haste: float):
+        if not self.channel_interval:
+            return 0
+        if 0 < self.min_channel_interval < self.channel_interval:
+            return max(apply_haste(self.channel_interval, haste), self.min_channel_interval)
+        return self.channel_interval
+
+    def get_channel_frame(self, haste: float):
+        if not self.channel_frame:
+            return 0
+        if 0 < self.min_channel_frame < self.channel_frame:
+            return max(apply_haste(self.channel_frame, haste), self.min_channel_frame)
+        return self.channel_frame
+
+    def get_channel_count(self, haste: float):
+        channel_frame, channel_interval = self.get_channel_frame(haste), self.get_channel_interval(haste)
+        return int(channel_frame / channel_interval)
+
+
+class Skill(SkillInPython):
+    index: int
+
     source_id: int
 
     def __init__(self, source_id, skill_id, skill_level):
@@ -167,3 +193,4 @@ class Skill(SkillInScript):
         self.skill_id = skill_id
         self.skill_level = skill_level
         super().__init__()
+        self.script.get_skill_level_data(self)

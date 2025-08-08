@@ -1,16 +1,20 @@
+from pathlib import Path
+from typing import List
+
 from base import BaseSetting
-from base.attribute import Attribute
-from base.constant import BINARY_SCALE
-from base.script import AttributeEffect
+from base.script import Effect, Script
 from base.skill import Skill
-from enums.script import ATTRIBUTE_EFFECT_MODE, ATTRIBUTE_TYPE
-from settings import buff_settings as settings
+from enums.script import ATTRIBUTE_TYPE
+from settings import buff_settings
 from tools.regex import camel_to_capital
 
 
 class BuffInSetting(BaseSetting):
     buff_id: int
     buff_level: int
+
+    append_type: int
+    detach_type: int
 
     is_stackable: bool
     is_countable: bool
@@ -19,43 +23,62 @@ class BuffInSetting(BaseSetting):
     count: int
     interval: int
     min_interval: int
-    max_interval: int
-    exclude: int
 
+    exclude: int
+    global_exclude: int
+    coexist: int
+
+    path: str
     script_file: str
 
-
     def __init__(self):
-        setting_row = settings[
-            (settings['ID'] == self.buff_id) & (settings['Level'] == self.buff_level)
-        ].iloc[0]
+        setting_row = buff_settings[
+            (buff_settings['ID'] == self.buff_id) & (buff_settings['Level'] == self.buff_level)
+            ].iloc[0]
         for k, v in setting_row.items():
             setattr(self, k, v)
 
-        self.begin_attributes = self.get_attributes(15, 'begin')
-        self.active_attributes = self.get_attributes(2, 'active')
-        self.end_attributes = self.get_attributes(2, 'end_time')
-
-    def get_attributes(self, max_attr_nums, prefix):
-        attributes = []
-        for i in range(max_attr_nums):
-            attr_type = getattr(self, f'{prefix}_attrib{i + 1}')
-            if not attr_type:
-                break
-            param_1, param_2 = getattr(self, f'{prefix}_value{i + 1}_a'), getattr(self, f'{prefix}_value{i + 1}_b')
-            attr_type = camel_to_capital(attr_type[2:])
-            attr_type = getattr(ATTRIBUTE_TYPE, attr_type)
-            attributes.append(
-                AttributeEffect(ATTRIBUTE_EFFECT_MODE.EFFECT_TO_DEST_NOT_ROLLBACK, attr_type, param_1, param_2)
-            )
-        return attributes
-
 
 class BuffInScript(BuffInSetting):
-    attribute: Attribute
-    source_skill: Skill
+    begin_effects: List[Effect]
+    active_effects: List[Effect]
+    end_effects: List[Effect]
 
+    script: Script = None
+
+    def __init__(self):
+        super().__init__()
+        self.begin_effects = self.get_effects('begin')
+        self.active_effects = self.get_effects('active')
+        self.end_effects = self.get_effects('end_time')
+
+        if self.script_file:
+            self.script = Script(str(Path(self.path, self.script_file)))
+
+    def get_effects(self, prefix):
+        effects = []
+        i = 0
+        while True:
+            attrib = f"{prefix}_attrib{i + 1}"
+            if not hasattr(self, attrib):
+                break
+            attribute_type = getattr(self, attrib)
+            if not attribute_type:
+                break
+            param_1, param_2 = getattr(self, f'{prefix}_value{i + 1}_a'), getattr(self, f'{prefix}_value{i + 1}_b')
+            attribute_type = camel_to_capital(attribute_type[2:])
+            effects.append(
+                Effect(ATTRIBUTE_TYPE[attribute_type], param_1, param_2)
+            )
+            i += 1
+        return effects
+
+
+class BuffInPython(BuffInScript):
     index: int = 0
+
+    source_id: int
+    source_skill: Skill
 
     tick: int = 0
     left_active_count: int = 0
@@ -63,32 +86,11 @@ class BuffInScript(BuffInSetting):
     stack_num: int = 0
     custom_value: int = 0
 
-    @property
-    def active_frame(self):
-        active_frame = int(self.interval * BINARY_SCALE / (BINARY_SCALE + self.attribute.haste))
-        active_frame = min(active_frame, self.max_interval)
-        active_frame = max(active_frame, self.min_interval)
-        return active_frame
 
-
-class BuffWithMethod(BuffInScript):
-    def begin(self):
-        pass
-
-    def end(self):
-        pass
-
-    def call_damage(self):
-        pass
-
-
-class Buff(BuffWithMethod):
-    source_id: int
-    source_level: int
-
-    def __init__(self, source_id, source_level, buff_id, buff_level):
+class Buff(BuffInPython):
+    def __init__(self, source_id: int, source_level: int, buff_id: int, buff_level: int, source_skill: Skill):
         self.source_id = source_id
-        self.source_level = source_level
         self.buff_id = buff_id
         self.buff_level = buff_level
+        self.source_skill = source_skill
         super().__init__()

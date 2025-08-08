@@ -1,6 +1,19 @@
 from enum import IntEnum, StrEnum, auto
 
 
+class GLOBAL(IntEnum):
+    GAME_FPS = 16
+
+
+class ABSORB_ATTRIBUTE_SHIELD_TYPE(IntEnum):
+    GLOBAL = auto()
+    PHYSICS = auto()
+    SOLAR = auto()
+    LUNAR = auto()
+    NEUTRAL = auto()
+    POISON = auto()
+
+
 class EXECUTE_TYPE(StrEnum):
     APPLY = "Apply"
     APPLY_SETUP = "ApplySetup"
@@ -21,48 +34,6 @@ class EXECUTE_TYPE(StrEnum):
     ON_REMOVE = "OnRemove"
 
 
-class GLOBAL(IntEnum):
-    GAME_FPS = 16
-
-
-class RELATION_FORCE(IntEnum):
-    CHUNYANG = auto()
-    PLAYER_CHUNYANG = auto()
-    WANHUA = auto()
-    PLAYER_WANHUA = auto()
-    QIXIU = auto()
-    PLAYER_QIXIU = auto()
-    TIANCE = auto()
-    PLAYER_TIANCE = auto()
-    SHAOLIN = auto()
-    PLAYER_SHAOLIN = auto()
-    CANGJIAN = auto()
-    PLAYER_CANGJIAN = auto()
-    WUDU = auto()
-    PLAYER_WUDU = auto()
-    TANGMEN = auto()
-    PLAYER_TANGMEN = auto()
-
-
-class PLAYER_ARENA_TYPE(IntEnum):
-    DPS = auto()
-
-
-class SKILL_KIND_TYPE(IntEnum):
-    PHYSICS = auto()
-    SOLAR_MAGIC = auto()
-    LUNAR_MAGIC = auto()
-
-
-class ABSORB_ATTRIBUTE_SHIELD_TYPE(IntEnum):
-    GLOBAL = auto()
-    PHYSICS = auto()
-    SOLAR = auto()
-    LUNAR = auto()
-    NEUTRAL = auto()
-    POISON = auto()
-
-
 class ATTRIBUTE_EFFECT_MODE(IntEnum):
     EFFECT_TO_SELF_AND_ROLLBACK = auto()
     EFFECT_TO_DEST_AND_ROLLBACK = auto()
@@ -71,8 +42,10 @@ class ATTRIBUTE_EFFECT_MODE(IntEnum):
 
 
 class ATTRIBUTE_TYPE(IntEnum):
-    # Global
-    KUNGFU_TYPE = auto()
+    USELESS = 0
+
+    # Useless Attribute
+    CHANGE_POSE_STATE = 0
 
     # Behavior
     EXECUTE_SCRIPT = auto()
@@ -82,14 +55,6 @@ class ATTRIBUTE_TYPE(IntEnum):
     CAST_SKILL = auto()
     CALL_BUFF = auto()
     SET_TALENT_RECIPE = auto()
-    SKILL_EVENT_HANDLER = auto()
-    SET_ADAPTIVE_SKILL_TYPE = auto()
-
-    # Useless Attribute
-    ACTIVE_THREAT_COEFFICIENT = auto()
-    DROP_DEFENCE = auto()
-    BEAT_BACK_RATE = auto()
-    DECRITICAL_DAMAGE_POWER_BASE_KILONUM_RATE = auto()
 
     # Damage Attribute
     SKILL_PHYSICS_DAMAGE = auto()
@@ -110,14 +75,36 @@ class ATTRIBUTE_TYPE(IntEnum):
     CALL_NEUTRAL_DAMAGE = auto()
     CALL_POISON_DAMAGE = auto()
 
+    CALL_SURPLUS_PHYSICS_DAMAGE = auto()
+    CALL_SURPLUS_SOLAR_DAMAGE = auto()
+    CALL_SURPLUS_LUNAR_DAMAGE = auto()
+    CALL_SURPLUS_NEUTRAL_DAMAGE = auto()
+    CALL_SURPLUS_POISON_DAMAGE = auto()
+
     # Attack Attribute
     PHYSICS_ATTACK_POWER_BASE = auto()
     SOLAR_ATTACK_POWER_BASE = auto()
     LUNAR_ATTACK_POWER_BASE = auto()
 
+    PHYSICS_ATTACK_POWER_PERCENT = auto()
+    SOLAR_ATTACK_POWER_PERCENT = auto()
+    LUNAR_ATTACK_POWER_PERCENT = auto()
+
+    # Major Attribute
+
+    # Critical Attribute
+    PHYSICS_CRITICAL_STRIKE_BASE_RATE = auto()
+    SOLAR_CRITICAL_STRIKE_BASE_RATE = auto()
+    LUNAR_CRITICAL_STRIKE_BASE_RATE = auto()
+
+    MAGIC_CRITICAL_DAMAGE_POWER_BASE_KILO_NUM_RATE = auto()
+
+    # Minor Attribute
+    STRAIN_PERCENT = auto()
+
     # Defense Attribute
-    MAGIC_SHIELD = auto()
     PHYSICS_SHIELD_BASE = auto()
+    MAGIC_SHIELD = auto()
 
     # Cof Attribute
     STRENGTH_TO_PHYSICS_ATTACK_POWER_COF = auto()
@@ -128,14 +115,7 @@ class ATTRIBUTE_TYPE(IntEnum):
     # Other Attribute
     ALL_SHIELD_IGNORE_PERCENT = auto()
     DST_NPC_DAMAGE_COEFFICIENT = auto()
-
-    # Resource Attribute
-    MAX_SUN_ENERGY = auto()
-    MAX_MOON_ENERGY = auto()
-
-    MAX_LIFE_PERCENT_ADD = auto()
-    MANA_REPLENISH_EXT = auto()
-    MANA_REPLENISH_PERCENT = auto()
+    GLOBAL_DAMGAGE_FACTOR = auto()
 
 
 class BUFF_COMPARE_FLAG(IntEnum):
@@ -157,6 +137,6 @@ class SKILL_COMPARE_FLAG(IntEnum):
 
 
 ENV_VARIABLES = [
-    GLOBAL, RELATION_FORCE, PLAYER_ARENA_TYPE, SKILL_KIND_TYPE, ABSORB_ATTRIBUTE_SHIELD_TYPE,
-    ATTRIBUTE_EFFECT_MODE, ATTRIBUTE_TYPE, BUFF_COMPARE_FLAG, SKILL_COMPARE_FLAG
+    GLOBAL, ABSORB_ATTRIBUTE_SHIELD_TYPE,
+    EXECUTE_TYPE, ATTRIBUTE_EFFECT_MODE, ATTRIBUTE_TYPE, BUFF_COMPARE_FLAG, SKILL_COMPARE_FLAG
 ]

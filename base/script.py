@@ -1,73 +1,43 @@
-from collections import defaultdict
 from dataclasses import dataclass
-from typing import Union, TYPE_CHECKING, Callable, Dict, List
-import lupa.lua54 as lupa
+from pathlib import Path
+from typing import TYPE_CHECKING, Union
 
-from enums.script import *
-from tools import read_script
+import lupa.lua51 as lupa
+
+from enums.script import ENV_VARIABLES
+
 if TYPE_CHECKING:
-    from base.character import BaseCharacter
+    from base.character import Character  # noqa
+    from base.skill import Skill  # noqa
+
+from enums.script import ATTRIBUTE_TYPE
 
 
 @dataclass
-class AttributeEffect:
-    attribute_effect_mode: ATTRIBUTE_EFFECT_MODE
+class Effect:
     attribute_type: ATTRIBUTE_TYPE
     param_1: Union[int, float, str]
     param_2: int
 
 
-
-class Timer:
-    timer_function: Callable
-    args: tuple
-    set_frame: int
-    delay_frame: int
-
-    def __init__(self, set_frame: int, delay_frame: int, timer_function: Callable, *args):
-        self.timer_function = timer_function
-        self.set_frame = set_frame
-        self.delay_frame = delay_frame
-        self.args = args
-
-    @property
-    def tick_frame(self):
-        return self.set_frame + self.delay_frame
-
-    def __call__(self):
-        self.timer_function(*self.args)
-
-
 class BaseScript:
-    engine: lupa.LuaRuntime
-    character_map: Dict[int, 'BaseCharacter']
-    time_map: Dict[int, List[Timer]]
-    frame: int
+    base_path = Path("../jx3_hd_src")
 
-    def __init__(self):
-        self.character_map = {}
-        self.timer_map = defaultdict(list)
-        self.frame = 0
+    def __init__(self, lua_path: str):
+        self.engine = lupa.LuaRuntime(encoding="gbk")
+        self.prepare_engine()
+        lua_path = Path("scripts") / lua_path
+        self.execute(lua_path)
 
-    def get_character_by_id(self, character_id):
-        return self.character_map.get(character_id)
+    def prepare_engine(self):
+        self.engine.globals().GetEditorString = self.get_editor_string
+        self.engine.globals().IsClient = self.is_client
+        self.engine.globals().Include = self.include
+        for enum_class in ENV_VARIABLES:
+            setattr(self.engine.globals(), enum_class.__name__, enum_class)
 
-    def add_character(self, character: 'BaseCharacter'):
-        self.character_map[character.id] = character
-
-    def set_timer(self, delay_frame: int, timer_function: Callable, *args):
-        self.timer_map[self.frame + delay_frame].append(Timer(self.frame, delay_frame, timer_function, *args))
-
-    def process_timer(self):
-        for frame, timers in self.timer_map.items():
-            if frame > self.frame:
-                break
-            for timer in timers:
-                timer()
-        self.timer_map.pop(self.frame)
-
-class Script(BaseScript):
-    engine: lupa.LuaRuntime = None
+    def include(self, file):
+        self.execute(file)
 
     @staticmethod
     def get_editor_string(*params):
@@ -77,31 +47,48 @@ class Script(BaseScript):
     def is_client():
         return True
 
-    def get_player(self, character_id):
-        return self.get_character_by_id(character_id)
+    def execute(self, lua_path):
+        lua_path = self.base_path / lua_path
+        try:
+            with open(lua_path, encoding="utf-8") as f:
+                lua_code = f.read()
+            self.engine.execute(lua_code)
+        except:
+            with open(lua_path, "rb") as f:
+                lua_code = f.read()
+            self.engine.execute(lua_code)
 
-    def get_npc(self, character_id):
-        return self.get_character_by_id(character_id)
 
-    def prepare_script(self):
-        if not self.engine:
-            self.engine = lupa.LuaRuntime()
-            for enum_class in ENV_VARIABLES:
-                setattr(self.engine.globals(), enum_class.__name__, enum_class)
-            self.engine.globals().GetEditorString = self.get_editor_string
-            self.engine.globals().IsClient = self.is_client
-            self.engine.globals().GetPlayer = self.get_player
-            self.engine.globals().GetNpc = self.get_npc
-            self.engine.execute(read_script("include", "skill.lh"))
-            self.engine.execute(read_script("include", "newskill.lh"))
-        return self.engine
+class Script(BaseScript):
 
-    def load_script(self, *script_file):
-        if script_content := read_script(*script_file):
-            self.prepare_script()
-            self.engine.execute(script_content)
-            return self.engine
-        return None
+    def get_skill_level_data(self, skill: "Skill"):
+        return self.engine.globals().GetSkillLevelData(skill)
 
-    def execute(self, execute_type: EXECUTE_TYPE, *args):
-        return self.engine.globals()[execute_type.value](*args)
+    def apply_by_editor(self, skill: "Skill"): ...
+
+    def can_cast(self, player: "Character", pre_result: bool = True):
+        return self.engine.globals().CanCast(player, pre_result)
+
+    def apply(self, character_id: int, skill_source_id: int):
+        return self.engine.globals().Apply(character_id, skill_source_id)
+
+    def unapply(self, character_id: int):
+        return self.engine.globals().UnApply(character_id)
+
+    def apply_setup(self, setuper_id: int):
+        return self.engine.globals().ApplySetup(setuper_id)
+
+    def unapply_setup(self, setuper_id: int):
+        return self.engine.globals().UnApplySetup(setuper_id)
+
+    def apply_bullet_to_dest_and_rollback(self, target_id: int, caster_id: int):
+        return self.engine.globals().ApplyBulletToDestAndRollback(target_id, caster_id)
+
+    def unapply_bullet_to_dest_and_rollback(self, target_id: int, caster_id: int):
+        return self.engine.globals().UnApplyBulletToDestAndRollback(target_id, caster_id)
+
+    def on_bullet_destroy(self, caster_id: int, hit_count: int):
+        return self.engine.globals().OnBulletDestroy(caster_id, hit_count)
+
+    def on_channel_end(self, caster: "Character", is_complete: bool):
+        return self.engine.globals().OnChannelEnd(caster, is_complete)
