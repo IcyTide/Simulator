@@ -36,10 +36,12 @@ class SkillInSetting(BaseSetting):
     max_level: int
     kind_type: int
 
-    skill_event_mask_1: int
-    skill_event_mask_2: int
+    skill_event_mask1: int
+    skill_event_mask2: int
 
     recipe_type: int
+
+    cast_mask: int
 
     path: str
     script_file: str
@@ -48,6 +50,9 @@ class SkillInSetting(BaseSetting):
         setting_row = skill_settings[skill_settings['SkillID'] == self.skill_id].iloc[0]
         for k, v in setting_row.items():
             setattr(self, k, v)
+        self.cast_mask = int(self.cast_mask)
+        self.skill_event_mask1 = int(self.skill_event_mask1)
+        self.skill_event_mask2 = int(self.skill_event_mask2)
 
 
 class SkillInScript(SkillInSetting):
@@ -62,8 +67,8 @@ class SkillInScript(SkillInSetting):
     check_dest_buffs: List[CheckBuff]
 
     public_cooldown: int = 0
-    normal_cooldowns: List[Optional[int]]
-    check_cooldowns: List[Optional[int]]
+    normal_cooldowns: List[int]
+    check_cooldowns: List[int]
 
     delay_sub_skills: List[SubSkill]
 
@@ -74,6 +79,8 @@ class SkillInScript(SkillInSetting):
     min_channel_interval: int = 0
     channel_frame: int = 0
     min_channel_frame: int = 0
+
+    ignore_prepare_state: bool = False
 
     def __init__(self):
         super().__init__()
@@ -87,11 +94,12 @@ class SkillInScript(SkillInSetting):
         self.check_self_buffs = []
         self.check_dest_buffs = []
 
-        self.normal_cooldowns = []
+        self.normal_cooldowns = [0] * 3
+        self.check_cooldowns = [0] * 3
 
         self.delay_sub_skills = []
 
-        self.script = Script(str(Path(self.path, self.script_file)))
+        self.script = Script(str(Path(self.path, self.script_file))) if self.script_file else Script()
 
     def add_attribute(
             self, attribute_effect_mode: ATTRIBUTE_EFFECT_MODE, attribute_type: ATTRIBUTE_TYPE, param_1, param_2
@@ -145,17 +153,24 @@ class SkillInScript(SkillInSetting):
         self.public_cooldown = cooldown_id
 
     def set_normal_cool_down(self, index, cooldown_id):
-        if len(self.normal_cooldowns) < index:
-            for _ in range(len(self.normal_cooldowns), index):
-                self.normal_cooldowns.append(None)
         self.normal_cooldowns[index - 1] = cooldown_id
+
+    def set_check_cool_down(self, index, cooldown_id):
+        self.check_cooldowns[index - 1] = cooldown_id
+
+    def set_delay_sub_skill(self, frame: int, skill_id: int, skill_level: int, reselect_target: bool):
+        self.delay_sub_skills.append(SubSkill(frame, skill_id, skill_level))
 
 
 class SkillInPython(SkillInScript):
+    index: int = 0
+
+    cooldown_adds: List[Optional[int]]
 
     def __init__(self):
         super().__init__()
         self.timer_index = []
+        self.cooldown_adds = [0] * 3
 
     def get_prepare_frames(self, haste: float):
         if not self.prepare_frames:
@@ -184,8 +199,6 @@ class SkillInPython(SkillInScript):
 
 
 class Skill(SkillInPython):
-    index: int
-
     source_id: int
 
     def __init__(self, source_id, skill_id, skill_level):

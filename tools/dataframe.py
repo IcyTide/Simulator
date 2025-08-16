@@ -78,21 +78,21 @@ class Series:
 
 
 class DataFrame:
-    _index: int = 0
     columns: List[str]
     rows: Dict[int, object]
 
     def __init__(
-            self, columns: List[str], rows: Dict[int, object] = None, index: int = 0
+            self, columns: List[str], rows: Dict[int, object] = None
     ):
         self.columns = columns
         if rows:
             self.rows = rows
         else:
             self.rows = {}
-        self._index = index
 
     def __repr__(self):
+        if not self.rows:
+            return ""
         content = "," + ",".join(self.columns)
         for i, row in self.rows.items():
             sub_content = f"{i}"
@@ -113,7 +113,7 @@ class DataFrame:
                 if not k:
                     continue
                 rows[i] = self.rows[i]
-            return DataFrame(self.columns, rows, self._index)
+            return DataFrame(self.columns, rows)
         else:
             assert False
 
@@ -138,14 +138,24 @@ class DataFrame:
         for i in self.rows:
             yield self.rows[i]
 
+    def get_index(self):
+        if not self.rows:
+            return 1
+        max_index = max(self.rows)
+        for i in range(1, max_index):
+            if i not in self.rows:
+                return i
+        return max_index + 1
+
     def append(self, item):
         if not item.index:
-            item.index = self._index
-            self._index += 1
+            item.index = self.get_index()
         self.rows[item.index] = item
         return item.index
 
     def remove(self, index):
+        if index not in self.rows:
+            return None
         return self.rows.pop(index)
 
     def first(self):

@@ -4,14 +4,20 @@ from typing import List
 from base import BaseSetting
 from base.script import Effect, Script
 from base.skill import Skill
+from base.utils import apply_haste
 from enums.script import ATTRIBUTE_TYPE
 from settings import buff_settings
 from tools.regex import camel_to_capital
 
 
 class BuffInSetting(BaseSetting):
+    _aliases = {
+        "Name": "buff_name"
+    }
+
     buff_id: int
     buff_level: int
+    buff_name: str
 
     append_type: int
     detach_type: int
@@ -44,7 +50,7 @@ class BuffInScript(BuffInSetting):
     active_effects: List[Effect]
     end_effects: List[Effect]
 
-    script: Script = None
+    script: Script
 
     def __init__(self):
         super().__init__()
@@ -52,8 +58,7 @@ class BuffInScript(BuffInSetting):
         self.active_effects = self.get_effects('active')
         self.end_effects = self.get_effects('end_time')
 
-        if self.script_file:
-            self.script = Script(str(Path(self.path, self.script_file)))
+        self.script = Script(str(Path(self.path, self.script_file))) if self.script_file else Script()
 
     def get_effects(self, prefix):
         effects = []
@@ -82,9 +87,27 @@ class BuffInPython(BuffInScript):
 
     tick: int = 0
     left_active_count: int = 0
+    active_frame: int = 0
     next_active_frame: int = 0
     stack_num: int = 0
     custom_value: int = 0
+
+    sub_buffs: List["Buff"]
+
+    def __init__(self):
+        super().__init__()
+        self.sub_buffs = []
+
+    @property
+    def left_frame(self):
+        return self.left_active_count * self.active_frame + self.next_active_frame
+
+    def get_active_frame(self, haste: float):
+        if not self.interval:
+            return 0
+        if 0 < self.min_interval < self.interval:
+            return max(apply_haste(self.interval, haste), self.min_interval)
+        return self.interval
 
 
 class Buff(BuffInPython):

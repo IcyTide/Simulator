@@ -1,7 +1,7 @@
 from base import BaseSetting
+from base.constant import FRAME_PER_SECOND
 from base.utils import apply_haste
 from settings import cooldown_settings
-from tools.regex import camel_to_snake
 
 
 class CooldownInSetting(BaseSetting):
@@ -10,6 +10,8 @@ class CooldownInSetting(BaseSetting):
     }
 
     cooldown_id: int = 0
+
+    cooldown_add: int = 0
 
     duration: int = 0
     min_duration: int = 0
@@ -23,18 +25,26 @@ class CooldownInSetting(BaseSetting):
         for k, v in setting_row.items():
             setattr(self, k, v)
 
+    @property
+    def interval(self):
+        return int(self.duration * FRAME_PER_SECOND + self.cooldown_add)
+
+    @property
+    def min_interval(self):
+        return int(self.min_duration * FRAME_PER_SECOND)
+
 
 class CooldownInPython(CooldownInSetting):
-    index: int
+    index: int = 0
 
-    left_duration: int
-    used_count: int
-    draft_count: int
+    left_interval: int = 0
+    used_count: int = 0
+    draft_count: int = 0
 
-    def get_duration(self, haste: float):
+    def get_interval(self, haste: float):
         if self.can_accelerate:
-            return max(apply_haste(self.duration, haste), self.min_duration)
-        return self.duration
+            return max(apply_haste(self.interval, haste), self.min_interval)
+        return self.interval
 
 
 class Cooldown(CooldownInPython):
